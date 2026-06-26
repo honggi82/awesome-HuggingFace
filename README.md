@@ -10,6 +10,19 @@ A taxonomy-first archive of Hugging Face Daily Papers from 2023-05 through 2026-
   </a>
 </p>
 
+<div align="center">
+  <!-- Keep these links. Translations will automatically update with the README. -->
+  <a href="https://github.com/honggi82/awesome-HuggingFace">English</a> |
+  <a href="https://www.readme-i18n.com/honggi82/awesome-HuggingFace?lang=de">Deutsch</a> |
+  <a href="https://www.readme-i18n.com/honggi82/awesome-HuggingFace?lang=es">Español</a> |
+  <a href="https://www.readme-i18n.com/honggi82/awesome-HuggingFace?lang=fr">français</a> |
+  <a href="https://www.readme-i18n.com/honggi82/awesome-HuggingFace?lang=ja">日本語</a> |
+  <a href="https://www.readme-i18n.com/honggi82/awesome-HuggingFace?lang=ko">한국어</a> |
+  <a href="https://www.readme-i18n.com/honggi82/awesome-HuggingFace?lang=pt">Português</a> |
+  <a href="https://www.readme-i18n.com/honggi82/awesome-HuggingFace?lang=ru">Русский</a> |
+  <a href="https://www.readme-i18n.com/honggi82/awesome-HuggingFace?lang=zh">中文</a>
+</div>
+
 Generated on 2026-06-26 from the public Hugging Face Daily Papers API. This edition covers **38 monthly pages** from `2023-05` through `2026-06` and includes **16,240 unique papers** submitted to HF Daily Papers during that period.
 
 ## Project Links

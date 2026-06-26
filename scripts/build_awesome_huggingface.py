@@ -1256,6 +1256,26 @@ def md_table_row(cells):
     return "| " + " | ".join(str(cell).replace("\n", " ").replace("|", "\\|") for cell in cells) + " |"
 
 
+def readme_language_selector(owner, repo):
+    base = f"https://www.readme-i18n.com/{owner}/{repo}"
+    return "\n".join(
+        [
+            '<div align="center">',
+            "  <!-- Keep these links. Translations will automatically update with the README. -->",
+            f'  <a href="https://github.com/{owner}/{repo}">English</a> |',
+            f'  <a href="{base}?lang=de">Deutsch</a> |',
+            f'  <a href="{base}?lang=es">Español</a> |',
+            f'  <a href="{base}?lang=fr">français</a> |',
+            f'  <a href="{base}?lang=ja">日本語</a> |',
+            f'  <a href="{base}?lang=ko">한국어</a> |',
+            f'  <a href="{base}?lang=pt">Português</a> |',
+            f'  <a href="{base}?lang=ru">Русский</a> |',
+            f'  <a href="{base}?lang=zh">中文</a>',
+            "</div>",
+        ]
+    )
+
+
 def write_readme(papers, analysis):
     grouped = category_stats(papers)
     category_lines = []
@@ -1318,6 +1338,8 @@ A taxonomy-first archive of Hugging Face Daily Papers from {PERIOD_TEXT}.
     <img src="https://img.shields.io/badge/Open_Interactive_Website-{website_badge_message}-0f766e?style=for-the-badge" alt="Open Interactive Website">
   </a>
 </p>
+
+{readme_language_selector(OWNER, REPO_NAME)}
 
 Generated on {date.today().isoformat()} from the public Hugging Face Daily Papers API. This edition covers **{len(MONTHS)} monthly pages** from `{START_MONTH}` through `{END_MONTH}` and includes **{len(papers):,} unique papers** submitted to HF Daily Papers during that period.
 
