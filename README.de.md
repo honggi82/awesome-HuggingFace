@@ -1,7 +1,7 @@
-# Awesome Hugging Face Papers
+# Fantastische Papiere zum Umarmen von Gesichtern
 [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
 
-A taxonomy-first archive of Hugging Face Daily Papers from 2023-05 through 2026-06.
+Ein Taxonomie-First-Archiv der Hugging Face Daily Papers von 2023-05 bis 2026-06.
 
 <p align="center">
   <a href="https://honggi82.github.io/awesome-HuggingFace/">
@@ -10,8 +10,8 @@ A taxonomy-first archive of Hugging Face Daily Papers from 2023-05 through 2026-
 </p>
 
 <div align="center">
-  <a href="README.md"><strong>English</strong></a> |
-  <a href="README.de.md">Deutsch</a> |
+  <a href="README.md">English</a> |
+  <a href="README.de.md"><strong>Deutsch</strong></a> |
   <a href="README.es.md">Español</a> |
   <a href="README.fr.md">français</a> |
   <a href="README.ja.md">日本語</a> |
@@ -21,72 +21,72 @@ A taxonomy-first archive of Hugging Face Daily Papers from 2023-05 through 2026-
   <a href="README.zh.md">中文</a>
 </div>
 
-Generated on 2026-06-26 from the public Hugging Face Daily Papers API. This edition covers **38 monthly pages** from `2023-05` through `2026-06` and includes **16,240 unique papers** submitted to HF Daily Papers during that period.
+Generiert am 26.06.2026 aus der öffentlichen Hugging Face Daily Papers API. Diese Ausgabe umfasst **38 monatliche Seiten** von `2023-05` bis `2026-06` und umfasst **16.240 einzigartige Artikel**, die in diesem Zeitraum bei HF Daily Papers eingereicht wurden.
 
-## Project Links
+## Projektlinks
 
-- Open Interactive Website: https://honggi82.github.io/awesome-HuggingFace/
-- Complete paper dataset: `data/papers_2023_05_2026_06.csv`
-- Taxonomy dataset with key ideas, strengths, and limitations: `data/papers_taxonomy_2023_05_2026_06.csv`
-- Raw monthly API archive index: `data/hf_daily_papers_monthly_index_2023_05_2026_06.json`
-- Per-month raw API payloads: `data/monthly/`
-- Period analysis: `data/period_analysis_2023_05_2026_06.json`
-- Link audit: `data/link_audit_2023_05_2026_06.json`
-- English review draft: `paper/review_en.html`
-- Korean review draft: `paper/review_ko.html`
+- Öffnen Sie die interaktive Website: https://honggi82.github.io/awesome-HuggingFace/
+- Vollständiger Papierdatensatz: `data/papers_2023_05_2026_06.csv`
+- Taxonomie-Datensatz mit Schlüsselideen, Stärken und Einschränkungen: `data/papers_taxonomy_2023_05_2026_06.csv`
+- Roher monatlicher API-Archivindex: `data/hf_daily_papers_monthly_index_2023_05_2026_06.json`
+- Rohe API-Nutzlasten pro Monat: `data/monthly/`
+- Periodenanalyse: `data/period_analysis_2023_05_2026_06.json`
+- Linkprüfung: `data/link_audit_2023_05_2026_06.json`
+- Englischer Rezensionsentwurf: `paper/review_en.html`
+- Koreanischer Rezensionsentwurf: `paper/review_ko.html`
 
-## Keywords Convention
+## Schlüsselwortkonvention
 
-These badges define the keyword tags used to scan and extend this collection.
+Diese Abzeichen definieren die Schlüsselwort-Tags, die zum Scannen und Erweitern dieser Sammlung verwendet werden.
 
-- ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) **foundation-models**: Foundation models, LLMs, scaling, prompting, alignment, or retrieval-augmented generation.
-- ![agents](https://img.shields.io/badge/keyword-agents-dc2626) **agents**: Agentic systems, tool use, planning, memory, autonomous workflows, or long-horizon task execution.
-- ![vision](https://img.shields.io/badge/keyword-vision-0891b2) **vision**: Image, video, segmentation, OCR, visual recognition, and vision-language understanding.
-- ![multimodal](https://img.shields.io/badge/keyword-multimodal-0e7490) **multimodal**: Cross-modal representation learning and models that connect text, image, audio, video, or 3D data.
-- ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) **generative-media**: Diffusion, image/video/audio generation, editing, 3D generation, GANs, and world models.
-- ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) **efficient-ai**: Quantization, LoRA/PEFT, distillation, serving, kernels, compression, memory, and training efficiency.
-- ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) **datasets-benchmarks**: Datasets, evaluations, benchmarks, metrics, surveys, leaderboards, and annotation workflows.
-- ![trustworthy-ai](https://img.shields.io/badge/keyword-trustworthy--ai-be123c) **trustworthy-ai**: Safety, interpretability, privacy, robustness, fairness, security, jailbreaks, and responsible AI.
-- ![robotics](https://img.shields.io/badge/keyword-robotics-7c3aed) **robotics**: Embodied AI, robotics, control, manipulation, navigation, policies, autonomous driving, and UAVs.
-- ![ai4science](https://img.shields.io/badge/keyword-ai4science-16a34a) **ai4science**: AI for science, healthcare, biology, chemistry, medicine, climate, materials, and engineering.
-- ![audio-speech](https://img.shields.io/badge/keyword-audio--speech-db2777) **audio-speech**: Speech, audio, voice, music, translation, and spoken-language interfaces.
-- ![code-ai](https://img.shields.io/badge/keyword-code--ai-475569) **code-ai**: Code models, program synthesis, software engineering, repository understanding, and developer workflows.
-- ![ai-research](https://img.shields.io/badge/keyword-ai--research-64748b) **ai-research**: General AI research when no narrower deterministic tag is triggered.
+- ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) **foundation-models**: Foundation-Modelle, LLMs, Skalierung, Eingabeaufforderung, Ausrichtung oder abruferweiterte Generierung.
+- ![Agenten](https://img.shields.io/badge/keyword-agents-dc2626) **Agenten**: Agentensysteme, Werkzeugnutzung, Planung, Speicher, autonome Arbeitsabläufe oder Aufgabenausführung über einen langen Zeitraum.
+- ![vision](https://img.shields.io/badge/keyword-vision-0891b2) **Vision**: Bild, Video, Segmentierung, OCR, visuelle Erkennung und Vision-Sprachverständnis.
+- ![multimodal](https://img.shields.io/badge/keyword-multimodal-0e7490) **multimodal**: Cross-modales Repräsentationslernen und Modelle, die Text-, Bild-, Audio-, Video- oder 3D-Daten verbinden.
+- ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) **generative-media**: Verbreitung, Bild-/Video-/Audiogenerierung, Bearbeitung, 3D-Generierung, GANs und Weltmodelle.
+- ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) **efficient-ai**: Quantisierung, LoRA/PEFT, Destillation, Bereitstellung, Kernel, Komprimierung, Speicher und Trainingseffizienz.
+- ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) **datasets-benchmarks**: Datensätze, Auswertungen, Benchmarks, Metriken, Umfragen, Bestenlisten und Anmerkungsworkflows.
+- ![trustworthy-ai](https://img.shields.io/badge/keyword-trustworthy--ai-be123c) **trustworthy-ai**: Sicherheit, Interpretierbarkeit, Datenschutz, Robustheit, Fairness, Sicherheit, Jailbreaks und verantwortungsvolle KI.
+- ![Robotik](https://img.shields.io/badge/keyword-robotics-7c3aed) **Robotik**: Verkörperte KI, Robotik, Steuerung, Manipulation, Navigation, Richtlinien, autonomes Fahren und UAVs.
+- ![ai4science](https://img.shields.io/badge/keyword-ai4science-16a34a) **ai4science**: KI für Wissenschaft, Gesundheitswesen, Biologie, Chemie, Medizin, Klima, Materialien und Technik.
+- ![audio-speech](https://img.shields.io/badge/keyword-audio--speech-db2777) **audio-speech**: Schnittstellen für Sprache, Audio, Stimme, Musik, Übersetzung und gesprochene Sprache.
+- ![code-ai](https://img.shields.io/badge/keyword-code--ai-475569) **code-ai**: Codemodelle, Programmsynthese, Softwareentwicklung, Repository-Verständnis und Entwickler-Workflows.
+- ![ai-research](https://img.shields.io/badge/keyword-ai--research-64748b) **ai-research**: Allgemeine KI-Forschung, wenn kein engeres deterministisches Tag ausgelöst wird.
 
-## Taxonomy Overview
+## Übersicht über die Taxonomie
 
-- **All Taxonomies**: 16,240 papers
-- **Years covered**: 2023, 2024, 2025, 2026
-- **Months covered**: 2023-05 through 2026-06
-- **GitHub repositories linked in HF metadata**: 10,262
-- **Project pages linked in HF metadata**: 5,488
-- **arXiv links generated from HF paper IDs**: 16,240
-- **HF upvotes captured**: 383,309
-- **HF comments captured**: 40,157
+- **Alle Taxonomien**: 16.240 Artikel
+- **Abgedeckte Jahre**: 2023, 2024, 2025, 2026
+- **Abgedeckte Monate**: 2023–05 bis 2026–06
+- **In HF-Metadaten verknüpfte GitHub-Repositorys**: 10.262
+- **In HF-Metadaten verlinkte Projektseiten**: 5.488
+- **aus HF-Papier-IDs generierte arXiv-Links**: 16.240
+- **HF-Upvotes erfasst**: 383.309
+- **Erfasste HF-Kommentare**: 40.157
 
-## Research Insights
+## Forschungseinblicke
 
-- **Most active month**: `2025-10` with **945 papers**
-- **Most common keyword convention**: `datasets-benchmarks` across **12,115 tagged papers**
-- **Top taxonomy by paper count**: `Foundation Models and Large Language Models` with **8,096 papers**
-- The interactive website supports period range, taxonomy, keyword convention, repository-link, and text-search filtering.
+- **Aktivster Monat**: `2025-10` mit **945 Beiträgen**
+- **Häufigste Schlüsselwortkonvention**: `datasets-benchmarks` in **12.115 getaggten Artikeln**
+- **Top-Taxonomie nach Papieranzahl**: `Foundation Models and Large Language Models` mit **8.096 Papieren**
+- Die interaktive Website unterstützt Zeitraumbereich, Taxonomie, Schlüsselwortkonvention, Repository-Link und Textsuchfilterung.
 
-## Taxonomy Collections
+## Taxonomiesammlungen
 
-### Foundation Models and Large Language Models
+### Grundlagenmodelle und große Sprachmodelle
 
-- Papers covered: **8,096**
-- HF upvotes in category: **200,286**
-- GitHub repos linked: **5,138**
-- Top keyword tags: `foundation-models` (7675), `datasets-benchmarks` (6205), `efficient-ai` (3646), `code-ai` (2912), `vision` (2902)
-- Category overview:
-  - HF Daily Papers in this area concentrate on open model families, instruction tuning, retrieval, alignment, long context, and adaptation.
-  - The strongest signals often combine public weights or code with practical training, evaluation, and deployment recipes.
-  - Recent months show increasingly system-oriented LLM work: adapters, agents, benchmarks, tool use, and efficient serving.
-- Limitations:
-  - Community attention does not prove model quality or safety.
-  - Model capability claims depend heavily on benchmark design, data leakage controls, and deployment context.
-  - Metadata cannot replace reading the full paper and release artifacts.
+- Abgedeckte Papiere: **8.096**
+- HF-Upvotes in der Kategorie: **200.286**
+- Verlinkte GitHub-Repos: **5.138**
+- Top-Keyword-Tags: `foundation-models` (7675), `datasets-benchmarks` (6205), `efficient-ai` (3646), `code-ai` (2912), `vision` (2902)
+- Kategorieübersicht:
+  - HF Daily Papers in diesem Bereich konzentrieren sich auf offene Modellfamilien, Befehlsoptimierung, Abruf, Ausrichtung, langen Kontext und Anpassung.
+  - Die stärksten Signale kombinieren häufig öffentliche Gewichtungen oder Code mit praktischen Schulungs-, Bewertungs- und Bereitstellungsrezepten.
+  - Die letzten Monate zeigen eine zunehmend systemorientierte LLM-Arbeit: Adapter, Agenten, Benchmarks, Tool-Nutzung und effiziente Bereitstellung.
+- Einschränkungen:
+  - Die Aufmerksamkeit der Gemeinschaft ist kein Beweis für die Qualität oder Sicherheit des Modells.
+  - Ansprüche an die Modellfähigkeit hängen stark vom Benchmark-Design, den Kontrollen von Datenlecks und dem Bereitstellungskontext ab.
+  - Metadaten können das Lesen des gesamten Artikels und der Release-Artefakte nicht ersetzen.
 
 <details>
 <summary><strong>Show representative papers for Foundation Models and Large Language Models</strong></summary>
@@ -114,24 +114,24 @@ These badges define the keyword tags used to scan and extend this collection.
 | 34 | [SkillClaw: Let Skills Evolve Collectively with Agentic Evolver](https://huggingface.co/papers/2604.08377)<br><sub>Ziyu Ma, Shidong Yang, Yuxiang Ji, Xucong Wang, Yong Wang, Yiming Hu, Tongwen Huang, Xiangxiang Chu</sub><br><sub>[HF](https://huggingface.co/papers/2604.08377) · [Code](https://github.com/AMAP-ML/SkillClaw)</sub> | 2026-04 | 295 upvotes; 2,022 GitHub stars | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![code-ai](https://img.shields.io/badge/keyword-code--ai-475569) | SkillClaw enables collective skill evolution in multi-user LLM agent systems by aggregating user interactions to autonomously update and improve reusable skills across the ecosystem. |
 | 35 | [rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking](https://huggingface.co/papers/2501.04519)<br><sub>Xinyu Guan, Li Lyna Zhang, Yifei Liu, Ning Shang, Youran Sun, Yi Zhu, Fan Yang, Mao Yang</sub><br><sub>[HF](https://huggingface.co/papers/2501.04519)</sub> | 2025-01 | 290 upvotes | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | rStar-Math enhances small language models' math reasoning capabilities through Monte Carlo Tree Search and self-evolution, achieving state-of-the-art performance on various benchmarks without distillation from larger models. |
 
-_8,076 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_8.076 weitere Artikel in dieser Kategorie sind in `data/papers_2023_05_2026_06.csv` und auf der interaktiven Website verfügbar._
 
 </details>
 
-### Generative Media, Diffusion, and World Models
+### Generative Medien, Verbreitung und Weltmodelle
 
-- Papers covered: **2,039**
-- HF upvotes in category: **48,871**
-- GitHub repos linked: **1,210**
-- Top keyword tags: `generative-media` (1970), `vision` (1845), `datasets-benchmarks` (1207), `efficient-ai` (1082), `foundation-models` (977)
-- Category overview:
-  - Generative work spans diffusion, controllable editing, 3D scenes, video, audio, and world-model simulation.
-  - HF attention often follows papers that ship demos, code, model weights, or striking visual examples.
-  - The category increasingly connects generation quality with controllability, evaluation, and downstream embodied use.
-- Limitations:
-  - Aesthetic or demo quality is not the same as factuality, controllability, or safe deployment.
-  - Copyright, data provenance, and misuse risks are frequently under-specified in metadata.
-  - Evaluation remains difficult across cultures, modalities, and creative tasks.
+- Abgedeckte Papiere: **2.039**
+- HF-Upvotes in der Kategorie: **48.871**
+- Verlinkte GitHub-Repos: **1.210**
+- Top-Keyword-Tags: `generative-media` (1970), `vision` (1845), `datasets-benchmarks` (1207), `efficient-ai` (1082), `foundation-models` (977)
+- Kategorieübersicht:
+  - Generative Arbeit umfasst Diffusion, kontrollierbare Bearbeitung, 3D-Szenen, Video, Audio und Weltmodellsimulation.
+  - HF-Aufmerksamkeit folgt oft Papieren, die Demos, Code, Modellgewichte oder eindrucksvolle visuelle Beispiele enthalten.
+  - Die Kategorie verbindet Erzeugungsqualität zunehmend mit Kontrollierbarkeit, Bewertung und nachgelagerter verkörperter Nutzung.
+- Einschränkungen:
+  - Ästhetische oder Demo-Qualität ist nicht dasselbe wie Faktizität, Kontrollierbarkeit oder sicherer Einsatz.
+  - Urheberrecht, Datenherkunft und Missbrauchsrisiken werden in Metadaten häufig unterbewertet.
+  - Die Bewertung bleibt über alle Kulturen, Modalitäten und kreativen Aufgaben hinweg schwierig.
 
 <details>
 <summary><strong>Show representative papers for Generative Media, Diffusion, and World Models</strong></summary>
@@ -159,24 +159,24 @@ _8,076 additional papers in this category are available in `data/papers_2023_05_
 | 165 | [Kling-Omni Technical Report](https://huggingface.co/papers/2512.16776)<br><sub>Kling Team, Jialu Chen, Yuanzheng Ci, Xiangyu Du, Zipeng Feng, Kun Gai, Sainan Guo, Feng Han et al.</sub><br><sub>[HF](https://huggingface.co/papers/2512.16776)</sub> | 2025-12 | 174 upvotes | ![vision](https://img.shields.io/badge/keyword-vision-0891b2) ![multimodal](https://img.shields.io/badge/keyword-multimodal-0e7490) ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) | Kling-Omni is a versatile generative framework that synthesizes high-quality videos from multimodal inputs, integrating generation, editing, and reasoning into a unified system. |
 | 178 | [Seedance 2.0: Advancing Video Generation for World Complexity](https://huggingface.co/papers/2604.14148)<br><sub>Team Seedance, De Chen, Liyang Chen, Xin Chen, Ying Chen, Zhuo Chen, Zhuowei Chen, Feng Cheng et al.</sub><br><sub>[HF](https://huggingface.co/papers/2604.14148) · [Project](https://seed.bytedance.com/en/seedance2_0)</sub> | 2026-04 | 166 upvotes | ![vision](https://img.shields.io/badge/keyword-vision-0891b2) ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) | Seedance 2.0 is a multi-modal audio-video generation model that supports text, image, audio, and video inputs with improved generation quality and speed. |
 
-_2,019 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_2.019 weitere Artikel in dieser Kategorie sind in `data/papers_2023_05_2026_06.csv` und auf der interaktiven Website verfügbar._
 
 </details>
 
-### Data, Evaluation, and Benchmarks
+### Daten, Auswertung und Benchmarks
 
-- Papers covered: **1,947**
-- HF upvotes in category: **38,250**
-- GitHub repos linked: **1,297**
-- Top keyword tags: `datasets-benchmarks` (1914), `foundation-models` (1096), `vision` (1045), `code-ai` (685), `generative-media` (674)
-- Category overview:
-  - Benchmark and dataset papers anchor the HF stream by defining what new models are asked to do.
-  - Recent work emphasizes long-horizon tasks, multimodal evaluation, domain-specific datasets, and benchmark contamination controls.
-  - Community traction is strongest when data and evaluation code are public and reusable.
-- Limitations:
-  - Benchmarks can saturate, leak into training data, or miss real-world failure modes.
-  - Dataset representativeness and annotation reliability require full-document inspection.
-  - A high upvote count may reflect usefulness rather than scientific completeness.
+- Behandelte Papiere: **1.947**
+- HF-Upvotes in der Kategorie: **38.250**
+- Verlinkte GitHub-Repos: **1.297**
+- Top-Keyword-Tags: `datasets-benchmarks` (1914), `foundation-models` (1096), `vision` (1045), `code-ai` (685), `generative-media` (674)
+- Kategorieübersicht:
+  - Benchmark- und Datensatzpapiere verankern den HF-Strom, indem sie definieren, was neue Modelle leisten sollen.
+  - In den jüngsten Arbeiten liegt der Schwerpunkt auf Langzeitaufgaben, multimodaler Bewertung, domänenspezifischen Datensätzen und Benchmark-Kontaminationskontrollen.
+  - Die Community-Anziehung ist am stärksten, wenn Daten und Evaluierungscode öffentlich und wiederverwendbar sind.
+- Einschränkungen:
+  - Benchmarks können überlastet sein, in Trainingsdaten eindringen oder reale Fehlermodi übersehen.
+  - Die Repräsentativität des Datensatzes und die Zuverlässigkeit der Anmerkungen erfordern eine vollständige Dokumentenprüfung.
+  - Eine hohe Anzahl positiver Stimmen spiegelt möglicherweise eher die Nützlichkeit als die wissenschaftliche Vollständigkeit wider.
 
 <details>
 <summary><strong>Show representative papers for Data, Evaluation, and Benchmarks</strong></summary>
@@ -204,24 +204,24 @@ _2,019 additional papers in this category are available in `data/papers_2023_05_
 | 312 | [RuCCoD: Towards Automated ICD Coding in Russian](https://huggingface.co/papers/2502.21263)<br><sub>Aleksandr Nesterov, Andrey Sakhovskiy, Ivan Sviridov, Airat Valiev, Vladimir Makharev, Petr Anokhin, Galina Zubkova, Elena Tutubalina</sub><br><sub>[HF](https://huggingface.co/papers/2502.21263) · [Code](https://github.com/auto-icd-coding/ruccod)</sub> | 2025-03 | 133 upvotes; 3 GitHub stars | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | Experiments on a new Russian-language ICD coding dataset using models like BERT, LLaMA with LoRA, and RAG show significant accuracy improvements in automated clinical coding compared to manual annotations. |
 | 318 | [DeepResearchEval: An Automated Framework for Deep Research Task Construction and Agentic Evaluation](https://huggingface.co/papers/2601.09688)<br><sub>Yibo Wang, Lei Wang, Yue Deng, Keming Wu, Yao Xiao, Huanjin Yao, Liwei Kang, Hai Ye et al.</sub><br><sub>[HF](https://huggingface.co/papers/2601.09688) · [Code](https://github.com/Infinity-AILab/DeepResearchEval) · [Project](https://infinity-ailab.github.io/deep_research_eval/)</sub> | 2026-01 | 128 upvotes; 138 GitHub stars | ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | DeepResearchEval presents an automated framework for creating complex research tasks and evaluating them through agent-based methods that adapt to task specifics and verify facts without relying on citations. |
 
-_1,927 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_1.927 weitere Artikel in dieser Kategorie sind in `data/papers_2023_05_2026_06.csv` und auf der interaktiven Website verfügbar._
 
 </details>
 
-### Vision, Multimodal, and Video Understanding
+### Vision, Multimodalität und Videoverständnis
 
-- Papers covered: **1,235**
-- HF upvotes in category: **27,259**
-- GitHub repos linked: **809**
-- Top keyword tags: `vision` (1216), `datasets-benchmarks` (884), `multimodal` (675), `generative-media` (602), `foundation-models` (564)
-- Category overview:
-  - Vision-language models, video understanding, document intelligence, and segmentation-oriented foundation models dominate the visible HF stream.
-  - The field is moving from isolated perception tasks toward integrated multimodal assistants and retrieval workflows.
-  - Public demos, thumbnails, and repositories make visual papers especially discoverable on HF.
-- Limitations:
-  - Visual benchmark gains may not transfer to rare classes, low-resource domains, or messy deployment inputs.
-  - Multimodal models can inherit web-scale biases and hallucinate grounded details.
-  - Metadata summaries rarely capture dataset composition or annotation quality.
+- Abgedeckte Papiere: **1.235**
+- HF-Upvotes in der Kategorie: **27.259**
+- GitHub-Repos verlinkt: **809**
+- Top-Keyword-Tags: `vision` (1216), `datasets-benchmarks` (884), `multimodal` (675), `generative-media` (602), `foundation-models` (564)
+- Kategorieübersicht:
+  - Vision-Sprachmodelle, Videoverständnis, Dokumentintelligenz und segmentierungsorientierte Grundlagenmodelle dominieren den sichtbaren HF-Strom.
+  - Das Feld bewegt sich von isolierten Wahrnehmungsaufgaben hin zu integrierten multimodalen Assistenten und Abrufworkflows.
+  - Öffentliche Demos, Miniaturansichten und Repositories machen visuelle Arbeiten auf HF besonders auffindbar.
+- Einschränkungen:
+  - Visuelle Benchmark-Gewinne lassen sich möglicherweise nicht auf seltene Klassen, ressourcenarme Domänen oder unordentliche Bereitstellungseingaben übertragen.
+  - Multimodale Modelle können Web-Scale-Vorurteile übernehmen und fundierte Details halluzinieren.
+  - Metadatenzusammenfassungen erfassen selten die Zusammensetzung des Datensatzes oder die Qualität der Anmerkungen.
 
 <details>
 <summary><strong>Show representative papers for Vision, Multimodal, and Video Understanding</strong></summary>
@@ -249,24 +249,24 @@ _1,927 additional papers in this category are available in `data/papers_2023_05_
 | 302 | [PaliGemma 2: A Family of Versatile VLMs for Transfer](https://huggingface.co/papers/2412.03555)<br><sub>Andreas Steiner, André Susano Pinto, Michael Tschannen, Daniel Keysers, Xiao Wang, Yonatan Bitton, Alexey Gritsenko, Matthias Minderer et al.</sub><br><sub>[HF](https://huggingface.co/papers/2412.03555)</sub> | 2024-12 | 136 upvotes | ![vision](https://img.shields.io/badge/keyword-vision-0891b2) ![multimodal](https://img.shields.io/badge/keyword-multimodal-0e7490) ![audio-speech](https://img.shields.io/badge/keyword-audio--speech-db2777) | PaliGemma 2 integrates a SigLIP-So400m vision encoder with Gemma 2 models of varying sizes and resolutions, advancing transfer performance across diverse vision-language tasks, including OCR and captioning. |
 | 304 | [Emerging Properties in Unified Multimodal Pretraining](https://huggingface.co/papers/2505.14683)<br><sub>Chaorui Deng, Deyao Zhu, Kunchang Li, Chenhui Gou, Feng Li, Zeyu Wang, Shu Zhong, Weihao Yu et al.</sub><br><sub>[HF](https://huggingface.co/papers/2505.14683) · [Project](https://bagel-ai.org/)</sub> | 2025-05 | 136 upvotes | ![vision](https://img.shields.io/badge/keyword-vision-0891b2) ![multimodal](https://img.shields.io/badge/keyword-multimodal-0e7490) ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) | BAGEL, an open-source foundational model trained on diverse multimodal data, significantly outperforms existing models in both generation and understanding tasks. |
 
-_1,215 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_1.215 weitere Artikel in dieser Kategorie sind in `data/papers_2023_05_2026_06.csv` und auf der interaktiven Website verfügbar._
 
 </details>
 
-### Robotics, Embodied AI, and Control
+### Robotik, verkörperte KI und Kontrolle
 
-- Papers covered: **831**
-- HF upvotes in category: **23,414**
-- GitHub repos linked: **504**
-- Top keyword tags: `datasets-benchmarks` (551), `foundation-models` (460), `vision` (450), `robotics` (423), `efficient-ai` (402)
-- Category overview:
-  - Embodied AI work connects foundation models with simulation, navigation, manipulation, and policy learning.
-  - World models, video-language grounding, and dataset-driven robotics benchmarks are increasingly interdependent.
-  - Public code and simulators help readers move from paper claims to reproducible experiments.
-- Limitations:
-  - Simulated results can fail under physical dynamics, hardware limits, and safety constraints.
-  - Real-world evaluation is expensive and often narrower than benchmark framing.
-  - HF metadata rarely captures all robot platforms or environment assumptions.
+- Behandelte Papiere: **831**
+- HF-Upvotes in der Kategorie: **23.414**
+- GitHub-Repos verlinkt: **504**
+- Top-Keyword-Tags: `datasets-benchmarks` (551), `foundation-models` (460), `vision` (450), `robotics` (423), `efficient-ai` (402)
+- Kategorieübersicht:
+  - Die verkörperte KI-Arbeit verbindet grundlegende Modelle mit Simulation, Navigation, Manipulation und politischem Lernen.
+  - Weltmodelle, Video-Sprachgrundlagen und datensatzgesteuerte Robotik-Benchmarks sind zunehmend voneinander abhängig.
+  - Öffentlicher Code und Simulatoren helfen den Lesern, von Behauptungen auf Papier zu reproduzierbaren Experimenten überzugehen.
+- Einschränkungen:
+  - Simulierte Ergebnisse können aufgrund physikalischer Dynamik, Hardwaregrenzen und Sicherheitsbeschränkungen fehlschlagen.
+  - Die Bewertung unter realen Bedingungen ist teuer und oft enger als die Benchmark-Einstellung.
+  - HF-Metadaten erfassen selten alle Roboterplattformen oder Umgebungsannahmen.
 
 <details>
 <summary><strong>Show representative papers for Robotics, Embodied AI, and Control</strong></summary>
@@ -294,24 +294,24 @@ _1,215 additional papers in this category are available in `data/papers_2023_05_
 | 214 | [Reverse-Engineered Reasoning for Open-Ended Generation](https://huggingface.co/papers/2509.06160)<br><sub>Haozhe Wang, Haoran Que, Qixin Xu, Minghao Liu, Wangchunshu Zhou, Jiazhan Feng, Wanjun Zhong, Wei Ye et al.</sub><br><sub>[HF](https://huggingface.co/papers/2509.06160) · [Code](https://github.com/multimodal-art-projection/REER_DeepWriter) · [Project](https://m-a-p.ai/REER_DeepWriter/)</sub> | 2025-09 | 151 upvotes; 98 GitHub stars | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | REER, a new paradigm for deep reasoning, uses reverse engineering to discover step-by-step reasoning processes, enabling a model to perform competitively on open-ended tasks. |
 | 224 | [From Blind Spots to Gains: Diagnostic-Driven Iterative Training for Large Multimodal Models](https://huggingface.co/papers/2602.22859)<br><sub>Hongrui Jia, Chaoya Jiang, Shikun Zhang, Wei Ye</sub><br><sub>[HF](https://huggingface.co/papers/2602.22859) · [Code](https://github.com/hongruijia/DPE)</sub> | 2026-02 | 150 upvotes; 34 GitHub stars | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![vision](https://img.shields.io/badge/keyword-vision-0891b2) | Diagnostic-driven Progressive Evolution enables continuous improvement of large multimodal models through iterative diagnosis and targeted data generation guided by identified weaknesses. |
 
-_811 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_811 weitere Artikel in dieser Kategorie sind in `data/papers_2023_05_2026_06.csv` und auf der interaktiven Website verfügbar._
 
 </details>
 
-### Efficient Training, Inference, and AI Systems
+### Effiziente Trainings-, Inferenz- und KI-Systeme
 
-- Papers covered: **747**
-- HF upvotes in category: **17,290**
-- GitHub repos linked: **475**
-- Top keyword tags: `efficient-ai` (715), `datasets-benchmarks` (419), `vision` (398), `foundation-models` (362), `generative-media` (310)
-- Category overview:
-  - Systems papers focus on making foundation models cheaper to train, adapt, serve, compress, and personalize.
-  - Quantization, adapters, memory management, speculative decoding, and inference kernels recur across months.
-  - GitHub-linked releases are especially important because implementation details often carry the contribution.
-- Limitations:
-  - Reported speedups can depend on hardware, batch size, compiler stack, and hidden engineering assumptions.
-  - Efficiency can trade off with robustness, calibration, or multilingual coverage.
-  - Metadata does not expose enough detail to audit all benchmark settings.
+- Behandelte Papiere: **747**
+- HF-Upvotes in der Kategorie: **17.290**
+- GitHub-Repos verlinkt: **475**
+- Top-Keyword-Tags: `efficient-ai` (715), `datasets-benchmarks` (419), `vision` (398), `foundation-models` (362), `generative-media` (310)
+- Kategorieübersicht:
+  - Systempapiere konzentrieren sich darauf, die Schulung, Anpassung, Bereitstellung, Komprimierung und Personalisierung von Grundmodellen kostengünstiger zu gestalten.
+  - Quantisierung, Adapter, Speicherverwaltung, spekulative Dekodierung und Inferenzkerne kommen über Monate hinweg immer wieder vor.
+  - Mit GitHub verknüpfte Veröffentlichungen sind besonders wichtig, da Implementierungsdetails häufig den Beitrag enthalten.
+- Einschränkungen:
+  - Gemeldete Beschleunigungen können von der Hardware, der Stapelgröße, dem Compiler-Stack und versteckten technischen Annahmen abhängen.
+  - Effizienz kann durch Robustheit, Kalibrierung oder mehrsprachige Abdeckung beeinträchtigt werden.
+  - Metadaten stellen nicht genügend Details bereit, um alle Benchmark-Einstellungen zu prüfen.
 
 <details>
 <summary><strong>Show representative papers for Efficient Training, Inference, and AI Systems</strong></summary>
@@ -339,24 +339,24 @@ _811 additional papers in this category are available in `data/papers_2023_05_20
 | 309 | [Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale](https://huggingface.co/papers/2603.25040)<br><sub>Yicheng Zou, Dongsheng Zhu, Lin Zhu, Tong Zhu, Yunhua Zhou, Peiheng Zhou, Xinyu Zhou, Dongzhan Zhou et al.</sub><br><sub>[HF](https://huggingface.co/papers/2603.25040)</sub> | 2026-03 | 134 upvotes | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![vision](https://img.shields.io/badge/keyword-vision-0891b2) | Intern-S1-Pro is a one-trillion-parameter scientific multimodal foundation model that enhances general and scientific capabilities through advanced agent functionalities and specialized task mastery across multiple scientific disciplines. |
 | 337 | [Diffusion Models Are Real-Time Game Engines](https://huggingface.co/papers/2408.14837)<br><sub>Dani Valevski, Yaniv Leviathan, Moab Arar, Shlomi Fruchter</sub><br><sub>[HF](https://huggingface.co/papers/2408.14837)</sub> | 2024-08 | 126 upvotes | ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) | GameNGen, a neural model-powered game engine, simulates high-quality gameplay in real-time using a diffusion model conditioned on past frames and actions. |
 
-_727 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_727 weitere Artikel in dieser Kategorie sind in `data/papers_2023_05_2026_06.csv` und auf der interaktiven Website verfügbar._
 
 </details>
 
-### Agents, Tool Use, and Autonomous Workflows
+### Agenten, Tool-Nutzung und autonome Arbeitsabläufe
 
-- Papers covered: **520**
-- HF upvotes in category: **15,013**
-- GitHub repos linked: **335**
-- Top keyword tags: `agents` (509), `datasets-benchmarks` (397), `foundation-models` (307), `efficient-ai` (202), `code-ai` (197)
-- Category overview:
-  - Agent papers increasingly evaluate long-horizon workflows rather than single-turn benchmark answers.
-  - Tool-use, memory, planning, and verifiable task completion are common design axes.
-  - HF engagement is strongest when papers pair agent methods with public harnesses, benchmark suites, or usable repositories.
-- Limitations:
-  - Agent benchmarks can overstate reliability when task distributions are narrow.
-  - Long-horizon systems need stronger evidence on recovery, safety, and monitoring.
-  - Repository availability does not guarantee reproducibility.
+- Behandelte Papiere: **520**
+- HF-Upvotes in der Kategorie: **15.013**
+- GitHub-Repos verlinkt: **335**
+- Top-Keyword-Tags: `agents` (509), `datasets-benchmarks` (397), `foundation-models` (307), `efficient-ai` (202), `code-ai` (197)
+- Kategorieübersicht:
+  - In Agentenpapieren werden zunehmend Arbeitsabläufe über einen längeren Zeitraum hinweg bewertet, statt nur einzelne Benchmark-Antworten zu liefern.
+  - Werkzeugnutzung, Gedächtnis, Planung und überprüfbare Aufgabenerledigung sind gängige Entwurfsachsen.
+  - Das HF-Engagement ist am stärksten, wenn in den Artikeln Agentenmethoden mit öffentlichen Systemen, Benchmark-Suiten oder nutzbaren Repositories kombiniert werden.
+- Einschränkungen:
+  - Agenten-Benchmarks können die Zuverlässigkeit überbewerten, wenn die Aufgabenverteilung eng ist.
+  - Langfristige Systeme benötigen stärkere Erkenntnisse zu Wiederherstellung, Sicherheit und Überwachung.
+  - Die Verfügbarkeit des Repositorys garantiert keine Reproduzierbarkeit.
 
 <details>
 <summary><strong>Show representative papers for Agents, Tool Use, and Autonomous Workflows</strong></summary>
@@ -384,24 +384,24 @@ _727 additional papers in this category are available in `data/papers_2023_05_20
 | 353 | [rStar2-Agent: Agentic Reasoning Technical Report](https://huggingface.co/papers/2508.20722)<br><sub>Ning Shang, Yifei Liu, Yi Zhu, Li Lyna Zhang, Weijiang Xu, Xinyu Guan, Buze Zhang, Bingcheng Dong et al.</sub><br><sub>[HF](https://huggingface.co/papers/2508.20722) · [Code](https://github.com/microsoft/rStar)</sub> | 2025-08 | 120 upvotes; 1,421 GitHub stars | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) | rStar2-Agent, a 14B math reasoning model trained with agentic reinforcement learning, achieves state-of-the-art performance by efficiently handling complex problem-solving with advanced cognitive behaviors and minimal computational resources. |
 | 354 | [WebSailor: Navigating Super-human Reasoning for Web Agent](https://huggingface.co/papers/2507.02592)<br><sub>Kuan Li, Zhongwang Zhang, Huifeng Yin, Liwen Zhang, Litu Ou, Jialong Wu, Wenbiao Yin, Baixuan Li et al.</sub><br><sub>[HF](https://huggingface.co/papers/2507.02592) · [Project](https://github.com/Alibaba-NLP/WebAgent)</sub> | 2025-07 | 127 upvotes | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) | WebSailor, a post-training methodology, enhances open-source LLMs with sophisticated reasoning to match proprietary systems in complex information-seeking tasks. |
 
-_500 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_500 weitere Artikel in dieser Kategorie sind in `data/papers_2023_05_2026_06.csv` und auf der interaktiven Website verfügbar._
 
 </details>
 
-### General Machine Learning and Optimization
+### Allgemeines maschinelles Lernen und Optimierung
 
-- Papers covered: **394**
-- HF upvotes in category: **5,285**
-- GitHub repos linked: **257**
-- Top keyword tags: `datasets-benchmarks` (238), `vision` (168), `efficient-ai` (162), `code-ai` (158), `foundation-models` (150)
-- Category overview:
-  - General ML papers collect methods, surveys, and cross-cutting improvements that do not sit cleanly in one application area.
-  - This category is useful as a catch-all map of methods that later diffuse into LLM, vision, robotics, and science workflows.
-  - Citation and HF engagement signals should be read as visibility signals, not final judgments.
-- Limitations:
-  - Broad method categories can obscure task-specific constraints.
-  - Metadata-driven taxonomy may under-classify specialized contributions.
-  - Full-paper reading is required for methodological rigor.
+- Behandelte Papiere: **394**
+- HF-Upvotes in der Kategorie: **5.285**
+- GitHub-Repos verlinkt: **257**
+- Top-Keyword-Tags: `datasets-benchmarks` (238), `vision` (168), `efficient-ai` (162), `code-ai` (158), `foundation-models` (150)
+- Kategorieübersicht:
+  - Allgemeine ML-Papiere sammeln Methoden, Umfragen und bereichsübergreifende Verbesserungen, die nicht eindeutig in einen Anwendungsbereich passen.
+  - Diese Kategorie eignet sich als Übersichtskarte der Methoden, die später in LLM-, Vision-, Robotik- und Wissenschaftsworkflows Einzug halten.
+  - Zitat- und HF-Engagement-Signale sollten als Sichtbarkeitssignale und nicht als endgültige Urteile verstanden werden.
+- Einschränkungen:
+  - Breite Methodenkategorien können aufgabenspezifische Einschränkungen verschleiern.
+  - Die auf Metadaten basierende Taxonomie kann dazu führen, dass Fachbeiträge unterklassifiziert werden.
+  - Für die methodische Genauigkeit ist eine vollständige Lektüre des Papiers erforderlich.
 
 <details>
 <summary><strong>Show representative papers for General Machine Learning and Optimization</strong></summary>
@@ -429,24 +429,24 @@ _500 additional papers in this category are available in `data/papers_2023_05_20
 | 1845 | [YOLOv9: Learning What You Want to Learn Using Programmable Gradient Information](https://huggingface.co/papers/2402.13616)<br><sub>Chien-Yao Wang, I-Hau Yeh, Hong-Yuan Mark Liao</sub><br><sub>[HF](https://huggingface.co/papers/2402.13616) · [Code](https://github.com/ibaiGorordo/ONNX-YOLOv9-MIT-Object-Detection)</sub> | 2024-02 | 49 upvotes; 40 GitHub stars | ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | The paper addresses data loss in deep networks through programmable gradient information (PGI) and introduces the Generalized Efficient Layer Aggregation Network (GELAN) to improve parameter utilization and achieve competitive results in object detection. |
 | 1904 | [Kolmogorov-Arnold Transformer](https://huggingface.co/papers/2409.10594)<br><sub>Xingyi Yang, Xinchao Wang</sub><br><sub>[HF](https://huggingface.co/papers/2409.10594) · [Code](https://github.com/Adamdad/kat)</sub> | 2024-09 | 45 upvotes; 848 GitHub stars | ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) | The Kolmogorov-Arnold Transformer replaces MLP layers with Kolmogorov-Arnold Network layers to enhance transformers, overcoming challenges related to inference speed, computation efficiency, and weight initialization through rational basis, group learning, and variance-preserving techniques. |
 
-_374 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_374 weitere Beiträge in dieser Kategorie sind in `data/papers_2023_05_2026_06.csv` und auf der interaktiven Website verfügbar._
 
 </details>
 
-### Speech, Audio, NLP, and Code Applications
+### Sprach-, Audio-, NLP- und Codeanwendungen
 
-- Papers covered: **260**
-- HF upvotes in category: **5,264**
-- GitHub repos linked: **147**
-- Top keyword tags: `datasets-benchmarks` (192), `code-ai` (161), `audio-speech` (123), `foundation-models` (118), `vision` (97)
-- Category overview:
-  - Application papers translate core model advances into speech, translation, retrieval, dialogue, code, and document workflows.
-  - HF traction often follows practical demos, evaluation suites, or repositories that let users reproduce a workflow.
-  - Code and retrieval papers increasingly overlap with agentic and LLM-system categories.
-- Limitations:
-  - Task-specific benchmarks can hide brittle behavior outside their domain.
-  - Language and locale coverage may be uneven.
-  - Repository links are helpful but do not guarantee maintained implementations.
+- Abgedeckte Papiere: **260**
+- HF-Upvotes in der Kategorie: **5.264**
+- GitHub-Repos verlinkt: **147**
+- Top-Keyword-Tags: `datasets-benchmarks` (192), `code-ai` (161), `audio-speech` (123), `foundation-models` (118), `vision` (97)
+- Kategorieübersicht:
+  - Anwendungspapiere übersetzen Kernmodellfortschritte in Sprach-, Übersetzungs-, Abruf-, Dialog-, Code- und Dokument-Workflows.
+  - HF-Traktion folgt häufig praktischen Demos, Evaluierungssuiten oder Repositories, mit denen Benutzer einen Arbeitsablauf reproduzieren können.
+  - Code- und Retrieval-Dokumente überschneiden sich zunehmend mit Agenten- und LLM-Systemkategorien.
+- Einschränkungen:
+  - Aufgabenspezifische Benchmarks können sprödes Verhalten außerhalb ihres Bereichs verbergen.
+  - Die Sprach- und Gebietsabdeckung kann ungleichmäßig sein.
+  - Repository-Links sind hilfreich, garantieren jedoch keine gepflegten Implementierungen.
 
 <details>
 <summary><strong>Show representative papers for Speech, Audio, NLP, and Code Applications</strong></summary>
@@ -474,24 +474,24 @@ _374 additional papers in this category are available in `data/papers_2023_05_20
 | 1353 | [Voxtral TTS](https://huggingface.co/papers/2603.25551)<br><sub>Alexander H. Liu, Alexis Tacnet, Andy Ehrenberg, Andy Lo, Chen-Yo Sun, Guillaume Lample, Henry Lagarde, Jean-Malo Delignon et al.</sub><br><sub>[HF](https://huggingface.co/papers/2603.25551) · [Project](https://mistral.ai/news/voxtral-tts)</sub> | 2026-03 | 63 upvotes | ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) ![audio-speech](https://img.shields.io/badge/keyword-audio--speech-db2777) | Voxtral TTS is a multilingual text-to-speech model that generates natural speech from short reference audio using a hybrid architecture combining semantic token generation and flow-matching for acoustic tokens. |
 | 1422 | [Step-Audio-R1 Technical Report](https://huggingface.co/papers/2511.15848)<br><sub>Fei Tian, Xiangyu Tony Zhang, Yuxin Zhang, Haoyang Zhang, Yuxin Li, Daijiao Liu, Yayue Deng, Donghang Wu et al.</sub><br><sub>[HF](https://huggingface.co/papers/2511.15848) · [Project](https://stepaudiollm.github.io/step-audio-r1/)</sub> | 2025-11 | 60 upvotes | ![vision](https://img.shields.io/badge/keyword-vision-0891b2) ![multimodal](https://img.shields.io/badge/keyword-multimodal-0e7490) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) | Step-Audio-R1, using the Modality-Grounded Reasoning Distillation framework, achieves strong reasoning capabilities in audio, outperforming previous models and demonstrating the transferability of reasoning across modalities. |
 
-_240 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_240 weitere Artikel in dieser Kategorie sind in `data/papers_2023_05_2026_06.csv` und auf der interaktiven Website verfügbar._
 
 </details>
 
-### Responsible, Safe, and Interpretable AI
+### Verantwortungsvolle, sichere und interpretierbare KI
 
-- Papers covered: **126**
-- HF upvotes in category: **1,839**
-- GitHub repos linked: **63**
-- Top keyword tags: `trustworthy-ai` (119), `datasets-benchmarks` (78), `foundation-models` (62), `efficient-ai` (42), `code-ai` (40)
-- Category overview:
-  - Responsible AI papers move between interpretability, jailbreak resistance, data governance, privacy, and evaluation for deployed models.
-  - The HF corpus makes safety work visible when it includes reproducible attacks, datasets, or inspection tools.
-  - Interpretability and alignment topics increasingly overlap with model scaling and agentic behavior.
-- Limitations:
-  - Safety claims need adversarial and real-world validation beyond benchmark results.
-  - Explanations can be plausible without being faithful to internal mechanisms.
-  - Metadata cannot capture all threat models or deployment constraints.
+- Behandelte Papiere: **126**
+- HF-Upvotes in der Kategorie: **1.839**
+- GitHub-Repos verlinkt: **63**
+- Top-Keyword-Tags: `trustworthy-ai` (119), `datasets-benchmarks` (78), `foundation-models` (62), `efficient-ai` (42), `code-ai` (40)
+- Kategorieübersicht:
+  - Verantwortungsvolle KI-Papiere bewegen sich zwischen Interpretierbarkeit, Jailbreak-Resistenz, Datenverwaltung, Datenschutz und Bewertung für bereitgestellte Modelle.
+  - Der HF-Korpus macht Sicherheitsarbeit sichtbar, wenn er reproduzierbare Angriffe, Datensätze oder Inspektionstools umfasst.
+  - Interpretierbarkeits- und Ausrichtungsthemen überschneiden sich zunehmend mit Modellskalierung und Agentenverhalten.
+- Einschränkungen:
+  - Sicherheitsaussagen bedürfen einer kontroversen und realen Validierung, die über Benchmark-Ergebnisse hinausgeht.
+  - Erklärungen können plausibel sein, ohne internen Mechanismen treu zu bleiben.
+  - Metadaten können nicht alle Bedrohungsmodelle oder Bereitstellungseinschränkungen erfassen.
 
 <details>
 <summary><strong>Show representative papers for Responsible, Safe, and Interpretable AI</strong></summary>
@@ -519,24 +519,24 @@ _240 additional papers in this category are available in `data/papers_2023_05_20
 | 4429 | [MoCapAnything V2: End-to-End Motion Capture for Arbitrary Skeletons](https://huggingface.co/papers/2604.28130)<br><sub>Kehong Gong, Zhengyu Wen, Dao Thien Phong, Mingxi Xu, Weixia He, Qi Wang, Ning Zhang, Zhengyu Li et al.</sub><br><sub>[HF](https://huggingface.co/papers/2604.28130) · [Code](https://github.com/animotionlab26/MocapAnything) · [Project](https://animotionlab.github.io/MoCapAnythingV2/)</sub> | 2026-05 | 22 upvotes; 282 GitHub stars | ![vision](https://img.shields.io/badge/keyword-vision-0891b2) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![trustworthy-ai](https://img.shields.io/badge/keyword-trustworthy--ai-be123c) | A fully end-to-end framework for arbitrary-skeleton motion capture that jointly optimizes video-to-pose and pose-to-rotation prediction while addressing rotation ambiguity through reference pose-rotation pairs and skeleton-aware attention mechanisms. |
 | 4535 | [A Trajectory-Based Safety Audit of Clawdbot (OpenClaw)](https://huggingface.co/papers/2602.14364)<br><sub>Tianyu Chen, Dongrui Liu, Xia Hu, Jingyi Yu, Wenjie Wang</sub><br><sub>[HF](https://huggingface.co/papers/2602.14364) · [Code](https://github.com/tychenn/clawdbot_report)</sub> | 2026-02 | 25 upvotes; 12 GitHub stars | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | Clawdbot, a self-hosted AI agent with diverse tool capabilities, exhibits varying safety performance across different risk dimensions, particularly struggling with ambiguous or adversarial inputs despite consistent reliability in specified tasks. |
 
-_106 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_106 weitere Artikel in dieser Kategorie sind in `data/papers_2023_05_2026_06.csv` und auf der interaktiven Website verfügbar._
 
 </details>
 
-### Graph, Recommendation, and Structured Learning
+### Diagramm, Empfehlung und strukturiertes Lernen
 
-- Papers covered: **34**
-- HF upvotes in category: **419**
-- GitHub repos linked: **22**
-- Top keyword tags: `datasets-benchmarks` (24), `foundation-models` (14), `efficient-ai` (14), `code-ai` (13), `agents` (7)
-- Category overview:
-  - Structured learning papers cover graph reasoning, recommenders, tabular models, time series, causality, and optimization.
-  - These papers are less visually dominant but often provide reusable methods for domain systems.
-  - The category bridges core ML with applied workflows that do not fit pure language or vision buckets.
-- Limitations:
-  - Benchmark datasets can be narrow and sensitive to preprocessing.
-  - Graph and recommender evaluation may not reflect real deployment feedback loops.
-  - Metadata can underspecify assumptions about structure and leakage.
+- Behandelte Papiere: **34**
+- HF-Upvotes in der Kategorie: **419**
+- GitHub-Repos verlinkt: **22**
+- Top-Keyword-Tags: `datasets-benchmarks` (24), `foundation-models` (14), `efficient-ai` (14), `code-ai` (13), `agents` (7)
+- Kategorieübersicht:
+  - Strukturierte Lernpapiere befassen sich mit dem Denken in Diagrammen, Empfehlungen, tabellarischen Modellen, Zeitreihen, Kausalität und Optimierung.
+  - Diese Papiere sind optisch weniger dominant, bieten jedoch häufig wiederverwendbare Methoden für Domänensysteme.
+  - Die Kategorie verbindet Kern-ML mit angewandten Arbeitsabläufen, die nicht in reine Sprach- oder Visionsbereiche passen.
+- Einschränkungen:
+  - Benchmark-Datensätze können eng und empfindlich gegenüber der Vorverarbeitung sein.
+  - Die Diagramm- und Empfehlungsauswertung spiegelt möglicherweise nicht die tatsächlichen Feedbackschleifen der Bereitstellung wider.
+  - Metadaten können Annahmen über Struktur und Datenlecks unzureichend spezifizieren.
 
 <details>
 <summary><strong>Show representative papers for Graph, Recommendation, and Structured Learning</strong></summary>
@@ -564,24 +564,24 @@ _106 additional papers in this category are available in `data/papers_2023_05_20
 | 12659 | [Quantitative Risk Management in Volatile Markets with an Expectile-Based Framework for the FTSE Index](https://huggingface.co/papers/2507.13391)<br><sub>Abiodun Finbarrs Oketunji</sub><br><sub>[HF](https://huggingface.co/papers/2507.13391) · [Code](https://github.com/0xnu/expectile-based-framework) · [Project](https://github.com/0xnu/expectile-based-framework)</sub> | 2025-07 | 6 upvotes | ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) ![trustworthy-ai](https://img.shields.io/badge/keyword-trustworthy--ai-be123c) | This research presents a framework for quantitative risk management in volatile markets, specifically focusing on expectile-based methodologies applied to the FTSE 100 index. |
 | 12770 | [Residual Stream Duality in Modern Transformer Architectures](https://huggingface.co/papers/2603.16039)<br><sub>Yifan Zhang</sub><br><sub>[HF](https://huggingface.co/papers/2603.16039) · [Code](https://github.com/yifanzhang-pro/residual-stream-duality) · [Project](https://github.com/yifanzhang-pro/residual-stream-duality)</sub> | 2026-03 | 4 upvotes; 6 GitHub stars | ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | The residual stream in Transformers can be viewed through a two-axis framework where sequence position and layer depth provide different pathways for information flow, with causal depth-wise residual attention equivalent to sequence-axis short sliding-window attention. |
 
-_14 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_14 weitere Artikel in dieser Kategorie sind in `data/papers_2023_05_2026_06.csv` und auf der interaktiven Website verfügbar._
 
 </details>
 
-### AI for Science, Medicine, and Engineering
+### KI für Wissenschaft, Medizin und Technik
 
-- Papers covered: **11**
-- HF upvotes in category: **119**
-- GitHub repos linked: **5**
-- Top keyword tags: `ai4science` (9), `datasets-benchmarks` (6), `generative-media` (5), `agents` (4), `foundation-models` (3)
-- Category overview:
-  - AI-for-science papers apply foundation and generative methods to biology, chemistry, medicine, climate, materials, and engineering design.
-  - Visible HF papers often combine domain data with open models, code, or benchmark resources.
-  - Recent work is moving toward specialized scientific agents and editable scientific artifacts.
-- Limitations:
-  - Domain claims require validation under expert protocols and external datasets.
-  - Biomedical and engineering deployment introduces safety, regulation, and reproducibility constraints.
-  - Metadata summaries cannot substitute for domain expert review.
+- Behandelte Papiere: **11**
+- HF-Upvotes in der Kategorie: **119**
+- GitHub-Repos verlinkt: **5**
+- Top-Keyword-Tags: `ai4science` (9), `datasets-benchmarks` (6), `generative-media` (5), `agents` (4), `foundation-models` (3)
+- Kategorieübersicht:
+  - AI-for-Science-Artikel wenden grundlegende und generative Methoden auf Biologie, Chemie, Medizin, Klima, Materialien und technisches Design an.
+  - Visible HF-Papiere kombinieren häufig Domänendaten mit offenen Modellen, Code oder Benchmark-Ressourcen.
+  - Die jüngste Arbeit geht in Richtung spezialisierter wissenschaftlicher Agenten und bearbeitbarer wissenschaftlicher Artefakte.
+- Einschränkungen:
+  - Domänenansprüche erfordern eine Validierung anhand von Expertenprotokollen und externen Datensätzen.
+  - Der biomedizinische und technische Einsatz führt zu Sicherheits-, Regulierungs- und Reproduzierbarkeitsbeschränkungen.
+  - Metadatenzusammenfassungen können die Überprüfung durch einen Domänenexperten nicht ersetzen.
 
 <details>
 <summary><strong>Show representative papers for AI for Science, Medicine, and Engineering</strong></summary>
@@ -602,7 +602,7 @@ _14 additional papers in this category are available in `data/papers_2023_05_202
 
 </details>
 
-## Research Timeline
+## Zeitleiste der Forschung
 
 | Month | Papers |
 | ---: | ---: |
@@ -645,26 +645,26 @@ _14 additional papers in this category are available in `data/papers_2023_05_202
 | 2026-05 | 936 |
 | 2026-06 | 861 |
 
-## Methodology
+## Methodik
 
-The collection uses the Hugging Face Daily Papers monthly API endpoint, equivalent to the public monthly pages at `https://huggingface.co/papers/month/YYYY-MM`. Each month from `2023-05` through `2026-06` is paginated until the API returns no more results. Records are deduplicated by HF paper/arXiv id, then enriched with deterministic taxonomy, keyword tags, key ideas, strengths, and limitations using only public metadata fields exposed by Hugging Face.
+Die Sammlung verwendet den monatlichen API-Endpunkt Hugging Face Daily Papers, der den öffentlichen Monatsseiten unter `https://huggingface.co/papers/month/YYYY-MM` entspricht. Jeder Monat von `2023-05` bis `2026-06` wird so lange paginiert, bis die API keine Ergebnisse mehr zurückgibt. Datensätze werden von HF paper/arXiv id dedupliziert und dann mit deterministischer Taxonomie, Schlüsselwort-Tags, Schlüsselideen, Stärken und Einschränkungen angereichert, wobei nur öffentliche Metadatenfelder verwendet werden, die von Hugging Face bereitgestellt werden.
 
-Ranking is not a quality score. It is a deterministic browsing order based on HF upvotes, discussion comments, linked GitHub stars, and the presence of repository or project-page metadata. The full archive keeps every collected monthly paper rather than selecting only top papers.
+Ranking ist kein Qualitätsfaktor. Es handelt sich um eine deterministische Browsing-Reihenfolge, die auf HF-Upvotes, Diskussionskommentaren, verknüpften GitHub-Stars und dem Vorhandensein von Repository- oder Projektseiten-Metadaten basiert. Das vollständige Archiv bewahrt alle gesammelten Monatszeitungen auf, anstatt nur Top-Zeitungen auszuwählen.
 
-This repository follows `github-awesome-skill2` in metadata-adapter mode. The local `jehyunlee/paper-curation` checkout was inspected, but full PDF review stages were not run because they require separate explicit approval for paid or metered APIs and are impractical for this full monthly HF archive.
+Dieses Repository folgt `github-awesome-skill2` im Metadatenadaptermodus. Der lokale `jehyunlee/paper-curation`-Checkout wurde überprüft, es wurden jedoch keine vollständigen PDF-Überprüfungsphasen durchgeführt, da diese eine gesonderte explizite Genehmigung für kostenpflichtige oder gemessene APIs erfordern und für dieses vollständige monatliche HF-Archiv unpraktisch sind.
 
-## Caveats
+## Vorbehalte
 
-- This is a metadata-driven archive, not a full systematic review of every PDF.
-- HF upvotes, comments, and GitHub stars measure visibility and community attention, not scientific validity.
-- `2026-06` is time-sensitive; counts may change if Hugging Face updates historical metadata.
-- Some HF entries have missing repository, project page, author, thumbnail, or keyword metadata.
-- Link audit combines full URL format checks with sampled HTTP checks to avoid excessive requests to public services.
+- Hierbei handelt es sich um ein metadatengesteuertes Archiv und nicht um eine vollständige systematische Überprüfung aller PDF-Dateien.
+- HF-Upvotes, Kommentare und GitHub-Sterne messen Sichtbarkeit und Community-Aufmerksamkeit, nicht wissenschaftliche Validität.
+- `2026-06` ist zeitkritisch; Die Anzahl kann sich ändern, wenn Hugging Face die historischen Metadaten aktualisiert.
+- Bei einigen HF-Einträgen fehlen Repository-, Projektseiten-, Autor-, Miniaturbild- oder Schlüsselwort-Metadaten.
+- Das Link-Audit kombiniert vollständige URL-Formatprüfungen mit stichprobenartigen HTTP-Prüfungen, um übermäßige Anfragen an öffentliche Dienste zu vermeiden.
 
-## Acknowledgements
+## Danksagungen
 
-This repository and interactive site were created with appreciation for [jehyunlee/paper-curation](https://github.com/jehyunlee/paper-curation). Its workflow informed the taxonomy-first organization, provenance tracking, and honest metadata-driven limitations used here.
+Dieses Repository und die interaktive Website wurden mit Dank an [jehyunlee/paper-curation](https://github.com/jehyunlee/paper-curation) erstellt. Sein Arbeitsablauf beeinflusste die hier verwendete Taxonomie-First-Organisation, Herkunftsverfolgung und ehrliche metadatengesteuerte Einschränkungen.
 
-## License
+## Lizenz
 
-CC-BY-4.0 for text and metadata curation; upstream paper metadata belongs to the original sources.
+CC-BY-4.0 für die Text- und Metadatenkuratierung; Die Metadaten des Upstream-Papiers gehören zu den Originalquellen.

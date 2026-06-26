@@ -1257,20 +1257,18 @@ def md_table_row(cells):
 
 
 def readme_language_selector(owner, repo):
-    base = f"https://www.readme-i18n.com/{owner}/{repo}"
     return "\n".join(
         [
             '<div align="center">',
-            "  <!-- Keep these links. Translations will automatically update with the README. -->",
-            f'  <a href="https://github.com/{owner}/{repo}">English</a> |',
-            f'  <a href="{base}?lang=de">Deutsch</a> |',
-            f'  <a href="{base}?lang=es">Español</a> |',
-            f'  <a href="{base}?lang=fr">français</a> |',
-            f'  <a href="{base}?lang=ja">日本語</a> |',
-            f'  <a href="{base}?lang=ko">한국어</a> |',
-            f'  <a href="{base}?lang=pt">Português</a> |',
-            f'  <a href="{base}?lang=ru">Русский</a> |',
-            f'  <a href="{base}?lang=zh">中文</a>',
+            '  <a href="README.md"><strong>English</strong></a> |',
+            '  <a href="README.de.md">Deutsch</a> |',
+            '  <a href="README.es.md">Español</a> |',
+            '  <a href="README.fr.md">français</a> |',
+            '  <a href="README.ja.md">日本語</a> |',
+            '  <a href="README.ko.md">한국어</a> |',
+            '  <a href="README.pt.md">Português</a> |',
+            '  <a href="README.ru.md">Русский</a> |',
+            '  <a href="README.zh.md">中文</a>',
             "</div>",
         ]
     )

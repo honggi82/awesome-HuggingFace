@@ -1,7 +1,7 @@
-# Awesome Hugging Face Papers
+# 멋진 포옹 페이스 페이퍼
 [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
 
-A taxonomy-first archive of Hugging Face Daily Papers from 2023-05 through 2026-06.
+2023-05년부터 2026-06년까지 Hugging Face Daily Papers의 분류학 우선 아카이브입니다.
 
 <p align="center">
   <a href="https://honggi82.github.io/awesome-HuggingFace/">
@@ -10,83 +10,83 @@ A taxonomy-first archive of Hugging Face Daily Papers from 2023-05 through 2026-
 </p>
 
 <div align="center">
-  <a href="README.md"><strong>English</strong></a> |
+  <a href="README.md">English</a> |
   <a href="README.de.md">Deutsch</a> |
   <a href="README.es.md">Español</a> |
   <a href="README.fr.md">français</a> |
   <a href="README.ja.md">日本語</a> |
-  <a href="README.ko.md">한국어</a> |
+  <a href="README.ko.md"><strong>한국어</strong></a> |
   <a href="README.pt.md">Português</a> |
   <a href="README.ru.md">Русский</a> |
   <a href="README.zh.md">中文</a>
 </div>
 
-Generated on 2026-06-26 from the public Hugging Face Daily Papers API. This edition covers **38 monthly pages** from `2023-05` through `2026-06` and includes **16,240 unique papers** submitted to HF Daily Papers during that period.
+공개 Hugging Face Daily Papers API에서 2026년 6월 26일에 생성되었습니다. 이 버전은 `2023-05`부터 `2026-06`까지 **38개의 월간 페이지**를 다루며 해당 기간 동안 HF Daily Papers에 제출된 **16,240개의 고유 논문**을 포함합니다.
 
-## Project Links
+## 프로젝트 링크
 
-- Open Interactive Website: https://honggi82.github.io/awesome-HuggingFace/
-- Complete paper dataset: `data/papers_2023_05_2026_06.csv`
-- Taxonomy dataset with key ideas, strengths, and limitations: `data/papers_taxonomy_2023_05_2026_06.csv`
-- Raw monthly API archive index: `data/hf_daily_papers_monthly_index_2023_05_2026_06.json`
-- Per-month raw API payloads: `data/monthly/`
-- Period analysis: `data/period_analysis_2023_05_2026_06.json`
-- Link audit: `data/link_audit_2023_05_2026_06.json`
-- English review draft: `paper/review_en.html`
-- Korean review draft: `paper/review_ko.html`
+- 개방형 대화형 웹사이트: https://honggi82.github.io/awesome-HuggingFace/
+- 완전한 종이 데이터세트: `data/papers_2023_05_2026_06.csv`
+- 핵심 아이디어, 강점 및 제한 사항이 포함된 분류 데이터 세트: `data/papers_taxonomy_2023_05_2026_06.csv`
+- 원시 월별 API 아카이브 인덱스: `data/hf_daily_papers_monthly_index_2023_05_2026_06.json`
+- 월별 원시 API 페이로드: `data/monthly/`
+- 기간 분석: `data/period_analysis_2023_05_2026_06.json`
+- 링크 감사: `data/link_audit_2023_05_2026_06.json`
+- 영문 리뷰 초안: `paper/review_en.html`
+- 한국어 검토 초안: `paper/review_ko.html`
 
-## Keywords Convention
+## 키워드 규칙
 
-These badges define the keyword tags used to scan and extend this collection.
+이러한 배지는 이 컬렉션을 검색하고 확장하는 데 사용되는 키워드 태그를 정의합니다.
 
-- ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) **foundation-models**: Foundation models, LLMs, scaling, prompting, alignment, or retrieval-augmented generation.
-- ![agents](https://img.shields.io/badge/keyword-agents-dc2626) **agents**: Agentic systems, tool use, planning, memory, autonomous workflows, or long-horizon task execution.
-- ![vision](https://img.shields.io/badge/keyword-vision-0891b2) **vision**: Image, video, segmentation, OCR, visual recognition, and vision-language understanding.
-- ![multimodal](https://img.shields.io/badge/keyword-multimodal-0e7490) **multimodal**: Cross-modal representation learning and models that connect text, image, audio, video, or 3D data.
-- ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) **generative-media**: Diffusion, image/video/audio generation, editing, 3D generation, GANs, and world models.
-- ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) **efficient-ai**: Quantization, LoRA/PEFT, distillation, serving, kernels, compression, memory, and training efficiency.
-- ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) **datasets-benchmarks**: Datasets, evaluations, benchmarks, metrics, surveys, leaderboards, and annotation workflows.
-- ![trustworthy-ai](https://img.shields.io/badge/keyword-trustworthy--ai-be123c) **trustworthy-ai**: Safety, interpretability, privacy, robustness, fairness, security, jailbreaks, and responsible AI.
-- ![robotics](https://img.shields.io/badge/keyword-robotics-7c3aed) **robotics**: Embodied AI, robotics, control, manipulation, navigation, policies, autonomous driving, and UAVs.
-- ![ai4science](https://img.shields.io/badge/keyword-ai4science-16a34a) **ai4science**: AI for science, healthcare, biology, chemistry, medicine, climate, materials, and engineering.
-- ![audio-speech](https://img.shields.io/badge/keyword-audio--speech-db2777) **audio-speech**: Speech, audio, voice, music, translation, and spoken-language interfaces.
-- ![code-ai](https://img.shields.io/badge/keyword-code--ai-475569) **code-ai**: Code models, program synthesis, software engineering, repository understanding, and developer workflows.
-- ![ai-research](https://img.shields.io/badge/keyword-ai--research-64748b) **ai-research**: General AI research when no narrower deterministic tag is triggered.
+- ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) **foundation-models**: 기초 모델, LLM, 스케일링, 프롬프트, 정렬 또는 검색 증강 생성.
+- ![에이전트](https://img.shields.io/badge/keyword-agents-dc2626) **에이전트**: 에이전트 시스템, 도구 사용, 계획, 메모리, 자율 워크플로 또는 장거리 작업 실행.
+- ![비전](https://img.shields.io/badge/keyword-vision-0891b2) **비전**: 이미지, 비디오, 분할, OCR, 시각적 인식 및 비전 언어 이해.
+- ![다중모달](https://img.shields.io/badge/keyword-multimodal-0e7490) **다중모달**: 텍스트, 이미지, 오디오, 비디오 또는 3D 데이터를 연결하는 교차 모달 표현 학습 및 모델입니다.
+- ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) **generative-media**: 확산, 이미지/비디오/오디오 생성, 편집, 3D 생성, GAN 및 월드 모델.
+- ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) **efficient-ai**: 양자화, LoRA/PEFT, 증류, 서빙, 커널, 압축, 메모리 및 훈련 효율성.
+- ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) **datasets-benchmarks**: 데이터 세트, 평가, 벤치마크, 측정항목, 설문조사, 리더보드 및 주석 워크플로입니다.
+- ![trustworthy-ai](https://img.shields.io/badge/keyword-trustworthy--ai-be123c) **trustworthy-ai**: 안전, 해석 가능성, 개인 정보 보호, 견고성, 공정성, 보안, 탈옥 및 책임감 있는 AI.
+- ![로봇공학](https://img.shields.io/badge/keyword-robotics-7c3aed) **로봇공학**: 구현된 AI, 로봇공학, 제어, 조작, 내비게이션, 정책, 자율 주행 및 UAV입니다.
+- ![ai4science](https://img.shields.io/badge/keyword-ai4science-16a34a) **ai4science**: 과학, 의료, 생물학, 화학, 의학, 기후, 재료 및 엔지니어링을 위한 AI입니다.
+- ![오디오-음성](https://img.shields.io/badge/keyword-audio--speech-db2777) **오디오-음성**: 음성, 오디오, 음성, 음악, 번역 및 음성 언어 인터페이스입니다.
+- ![code-ai](https://img.shields.io/badge/keyword-code--ai-475569) **code-ai**: 코드 모델, 프로그램 합성, 소프트웨어 엔지니어링, 저장소 이해 및 개발자 워크플로.
+- ![ai-research](https://img.shields.io/badge/keyword-ai--research-64748b) **ai-research**: 더 좁은 결정적 태그가 트리거되지 않을 때 일반 AI 연구입니다.
 
-## Taxonomy Overview
+## 분류 개요
 
-- **All Taxonomies**: 16,240 papers
-- **Years covered**: 2023, 2024, 2025, 2026
-- **Months covered**: 2023-05 through 2026-06
-- **GitHub repositories linked in HF metadata**: 10,262
-- **Project pages linked in HF metadata**: 5,488
-- **arXiv links generated from HF paper IDs**: 16,240
-- **HF upvotes captured**: 383,309
-- **HF comments captured**: 40,157
+- **모든 분류법**: 16,240개 논문
+- **대상 연도**: 2023, 2024, 2025, 2026
+- **대상 기간**: 2023-05년부터 2026-06년까지
+- **HF 메타데이터에 연결된 GitHub 저장소**: 10,262
+- **HF 메타데이터에 링크된 프로젝트 페이지**: 5,488
+- **HF 문서 ID에서 생성된 arXiv 링크**: 16,240
+- **HF 찬성 투표 캡처**: 383,309
+- **HF 댓글 캡처**: 40,157
 
-## Research Insights
+## 연구 통찰
 
-- **Most active month**: `2025-10` with **945 papers**
-- **Most common keyword convention**: `datasets-benchmarks` across **12,115 tagged papers**
-- **Top taxonomy by paper count**: `Foundation Models and Large Language Models` with **8,096 papers**
-- The interactive website supports period range, taxonomy, keyword convention, repository-link, and text-search filtering.
+- **가장 활동적인 달**: `2025-10`, **945개 논문**
+- **가장 일반적인 키워드 규칙**: **12,115개의 태그가 지정된 논문**에서 `datasets-benchmarks`
+- **논문 수 기준 상위 분류**: `Foundation Models and Large Language Models`, **8,096개 논문**
+- 대화형 웹사이트는 기간 범위, 분류, 키워드 규칙, 저장소 링크 및 텍스트 검색 필터링을 지원합니다.
 
-## Taxonomy Collections
+## 분류 컬렉션
 
-### Foundation Models and Large Language Models
+### 기초 모델 및 대규모 언어 모델
 
-- Papers covered: **8,096**
-- HF upvotes in category: **200,286**
-- GitHub repos linked: **5,138**
-- Top keyword tags: `foundation-models` (7675), `datasets-benchmarks` (6205), `efficient-ai` (3646), `code-ai` (2912), `vision` (2902)
-- Category overview:
-  - HF Daily Papers in this area concentrate on open model families, instruction tuning, retrieval, alignment, long context, and adaptation.
-  - The strongest signals often combine public weights or code with practical training, evaluation, and deployment recipes.
-  - Recent months show increasingly system-oriented LLM work: adapters, agents, benchmarks, tool use, and efficient serving.
-- Limitations:
-  - Community attention does not prove model quality or safety.
-  - Model capability claims depend heavily on benchmark design, data leakage controls, and deployment context.
-  - Metadata cannot replace reading the full paper and release artifacts.
+- 다루는 논문: **8,096**
+- 카테고리 내 HF 찬성표 수: **200,286**
+- 연결된 GitHub 저장소: **5,138**
+- 상위 키워드 태그: `foundation-models`(7675), `datasets-benchmarks`(6205), `efficient-ai`(3646), `code-ai`(2912), `vision`(2902)
+- 카테고리 개요:
+  - 이 분야의 HF Daily Papers는 개방형 모델 계열, 명령 조정, 검색, 정렬, 긴 컨텍스트 및 적응에 중점을 둡니다.
+  - 가장 강력한 신호는 공개 가중치나 코드를 실제 교육, 평가 및 배포 방법과 결합하는 경우가 많습니다.
+  - 최근 몇 달 동안 어댑터, 에이전트, 벤치마크, 도구 사용 및 효율적인 서비스 제공 등 시스템 중심의 LLM 작업이 점점 늘어나고 있습니다.
+- 제한사항:
+  - 커뮤니티의 관심은 모델의 품질이나 안전성을 입증하지 않습니다.
+  - 모델 기능 주장은 벤치마크 설계, 데이터 유출 제어 및 배포 컨텍스트에 크게 좌우됩니다.
+  - 메타데이터는 전체 논문 및 릴리스 아티팩트 읽기를 대체할 수 없습니다.
 
 <details>
 <summary><strong>Show representative papers for Foundation Models and Large Language Models</strong></summary>
@@ -114,24 +114,24 @@ These badges define the keyword tags used to scan and extend this collection.
 | 34 | [SkillClaw: Let Skills Evolve Collectively with Agentic Evolver](https://huggingface.co/papers/2604.08377)<br><sub>Ziyu Ma, Shidong Yang, Yuxiang Ji, Xucong Wang, Yong Wang, Yiming Hu, Tongwen Huang, Xiangxiang Chu</sub><br><sub>[HF](https://huggingface.co/papers/2604.08377) · [Code](https://github.com/AMAP-ML/SkillClaw)</sub> | 2026-04 | 295 upvotes; 2,022 GitHub stars | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![code-ai](https://img.shields.io/badge/keyword-code--ai-475569) | SkillClaw enables collective skill evolution in multi-user LLM agent systems by aggregating user interactions to autonomously update and improve reusable skills across the ecosystem. |
 | 35 | [rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking](https://huggingface.co/papers/2501.04519)<br><sub>Xinyu Guan, Li Lyna Zhang, Yifei Liu, Ning Shang, Youran Sun, Yi Zhu, Fan Yang, Mao Yang</sub><br><sub>[HF](https://huggingface.co/papers/2501.04519)</sub> | 2025-01 | 290 upvotes | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | rStar-Math enhances small language models' math reasoning capabilities through Monte Carlo Tree Search and self-evolution, achieving state-of-the-art performance on various benchmarks without distillation from larger models. |
 
-_8,076 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_이 카테고리의 8,076개 추가 논문은 `data/papers_2023_05_2026_06.csv` 및 대화형 웹사이트에서 확인할 수 있습니다._
 
 </details>
 
-### Generative Media, Diffusion, and World Models
+### 생성적 미디어, 확산 및 세계 모델
 
-- Papers covered: **2,039**
-- HF upvotes in category: **48,871**
-- GitHub repos linked: **1,210**
-- Top keyword tags: `generative-media` (1970), `vision` (1845), `datasets-benchmarks` (1207), `efficient-ai` (1082), `foundation-models` (977)
-- Category overview:
-  - Generative work spans diffusion, controllable editing, 3D scenes, video, audio, and world-model simulation.
-  - HF attention often follows papers that ship demos, code, model weights, or striking visual examples.
-  - The category increasingly connects generation quality with controllability, evaluation, and downstream embodied use.
-- Limitations:
-  - Aesthetic or demo quality is not the same as factuality, controllability, or safe deployment.
-  - Copyright, data provenance, and misuse risks are frequently under-specified in metadata.
-  - Evaluation remains difficult across cultures, modalities, and creative tasks.
+- 다루는 논문: **2,039**
+- 카테고리 내 HF 찬성표 수: **48,871**
+- 연결된 GitHub 저장소: **1,210**
+- 상위 키워드 태그: `generative-media`(1970), `vision`(1845), `datasets-benchmarks`(1207), `efficient-ai`(1082), `foundation-models`(977)
+- 카테고리 개요:
+  - 생성 작업에는 확산, 제어 가능한 편집, 3D 장면, 비디오, 오디오 및 세계 모델 시뮬레이션이 포함됩니다.
+  - HF의 관심은 종종 데모, 코드, 모델 가중치 또는 눈에 띄는 시각적 예를 제공하는 문서를 따릅니다.
+  - 이 범주는 점점 더 발전 품질을 제어 가능성, 평가 및 하류 구현 사용과 연결합니다.
+- 제한사항:
+  - 미적 품질이나 데모 품질은 사실성, 제어 가능성 또는 안전한 배포와는 다릅니다.
+  - 저작권, 데이터 출처, 오용 위험은 메타데이터에 과소 명시되는 경우가 많습니다.
+  - 문화, 양식, 창의적인 작업 전반에 걸쳐 평가는 여전히 어렵습니다.
 
 <details>
 <summary><strong>Show representative papers for Generative Media, Diffusion, and World Models</strong></summary>
@@ -159,24 +159,24 @@ _8,076 additional papers in this category are available in `data/papers_2023_05_
 | 165 | [Kling-Omni Technical Report](https://huggingface.co/papers/2512.16776)<br><sub>Kling Team, Jialu Chen, Yuanzheng Ci, Xiangyu Du, Zipeng Feng, Kun Gai, Sainan Guo, Feng Han et al.</sub><br><sub>[HF](https://huggingface.co/papers/2512.16776)</sub> | 2025-12 | 174 upvotes | ![vision](https://img.shields.io/badge/keyword-vision-0891b2) ![multimodal](https://img.shields.io/badge/keyword-multimodal-0e7490) ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) | Kling-Omni is a versatile generative framework that synthesizes high-quality videos from multimodal inputs, integrating generation, editing, and reasoning into a unified system. |
 | 178 | [Seedance 2.0: Advancing Video Generation for World Complexity](https://huggingface.co/papers/2604.14148)<br><sub>Team Seedance, De Chen, Liyang Chen, Xin Chen, Ying Chen, Zhuo Chen, Zhuowei Chen, Feng Cheng et al.</sub><br><sub>[HF](https://huggingface.co/papers/2604.14148) · [Project](https://seed.bytedance.com/en/seedance2_0)</sub> | 2026-04 | 166 upvotes | ![vision](https://img.shields.io/badge/keyword-vision-0891b2) ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) | Seedance 2.0 is a multi-modal audio-video generation model that supports text, image, audio, and video inputs with improved generation quality and speed. |
 
-_2,019 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_이 카테고리의 2,019개 추가 논문은 `data/papers_2023_05_2026_06.csv` 및 대화형 웹사이트에서 확인할 수 있습니다._
 
 </details>
 
-### Data, Evaluation, and Benchmarks
+### 데이터, 평가 및 벤치마크
 
-- Papers covered: **1,947**
-- HF upvotes in category: **38,250**
-- GitHub repos linked: **1,297**
-- Top keyword tags: `datasets-benchmarks` (1914), `foundation-models` (1096), `vision` (1045), `code-ai` (685), `generative-media` (674)
-- Category overview:
-  - Benchmark and dataset papers anchor the HF stream by defining what new models are asked to do.
-  - Recent work emphasizes long-horizon tasks, multimodal evaluation, domain-specific datasets, and benchmark contamination controls.
-  - Community traction is strongest when data and evaluation code are public and reusable.
-- Limitations:
-  - Benchmarks can saturate, leak into training data, or miss real-world failure modes.
-  - Dataset representativeness and annotation reliability require full-document inspection.
-  - A high upvote count may reflect usefulness rather than scientific completeness.
+- 다루는 논문: **1,947**
+- 카테고리 내 HF 찬성표 수: **38,250**
+- 연결된 GitHub 저장소: **1,297**
+- 상위 키워드 태그: `datasets-benchmarks`(1914), `foundation-models`(1096), `vision`(1045), `code-ai`(685), `generative-media`(674)
+- 카테고리 개요:
+  - 벤치마크 및 데이터 세트 문서는 새로운 모델이 수행해야 할 작업을 정의하여 HF 스트림을 고정합니다.
+  - 최근 연구에서는 장거리 작업, 다중 모드 평가, 도메인별 데이터 세트 및 벤치마크 오염 제어를 강조합니다.
+  - 데이터와 평가 코드가 공개되고 재사용 가능할 때 커뮤니티 견인력이 가장 강력해집니다.
+- 제한사항:
+  - 벤치마크는 포화되거나 훈련 데이터로 유출되거나 실제 실패 모드를 놓칠 수 있습니다.
+  - 데이터세트 대표성과 주석 신뢰성을 위해서는 전체 문서 검사가 필요합니다.
+  - 높은 찬성표 수는 과학적 완전성보다는 유용성을 반영할 수 있습니다.
 
 <details>
 <summary><strong>Show representative papers for Data, Evaluation, and Benchmarks</strong></summary>
@@ -204,24 +204,24 @@ _2,019 additional papers in this category are available in `data/papers_2023_05_
 | 312 | [RuCCoD: Towards Automated ICD Coding in Russian](https://huggingface.co/papers/2502.21263)<br><sub>Aleksandr Nesterov, Andrey Sakhovskiy, Ivan Sviridov, Airat Valiev, Vladimir Makharev, Petr Anokhin, Galina Zubkova, Elena Tutubalina</sub><br><sub>[HF](https://huggingface.co/papers/2502.21263) · [Code](https://github.com/auto-icd-coding/ruccod)</sub> | 2025-03 | 133 upvotes; 3 GitHub stars | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | Experiments on a new Russian-language ICD coding dataset using models like BERT, LLaMA with LoRA, and RAG show significant accuracy improvements in automated clinical coding compared to manual annotations. |
 | 318 | [DeepResearchEval: An Automated Framework for Deep Research Task Construction and Agentic Evaluation](https://huggingface.co/papers/2601.09688)<br><sub>Yibo Wang, Lei Wang, Yue Deng, Keming Wu, Yao Xiao, Huanjin Yao, Liwei Kang, Hai Ye et al.</sub><br><sub>[HF](https://huggingface.co/papers/2601.09688) · [Code](https://github.com/Infinity-AILab/DeepResearchEval) · [Project](https://infinity-ailab.github.io/deep_research_eval/)</sub> | 2026-01 | 128 upvotes; 138 GitHub stars | ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | DeepResearchEval presents an automated framework for creating complex research tasks and evaluating them through agent-based methods that adapt to task specifics and verify facts without relying on citations. |
 
-_1,927 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_이 카테고리의 1,927개 추가 논문은 `data/papers_2023_05_2026_06.csv` 및 대화형 웹사이트에서 확인할 수 있습니다._
 
 </details>
 
-### Vision, Multimodal, and Video Understanding
+### 비전, 다중 모드 및 비디오 이해
 
-- Papers covered: **1,235**
-- HF upvotes in category: **27,259**
-- GitHub repos linked: **809**
-- Top keyword tags: `vision` (1216), `datasets-benchmarks` (884), `multimodal` (675), `generative-media` (602), `foundation-models` (564)
-- Category overview:
-  - Vision-language models, video understanding, document intelligence, and segmentation-oriented foundation models dominate the visible HF stream.
-  - The field is moving from isolated perception tasks toward integrated multimodal assistants and retrieval workflows.
-  - Public demos, thumbnails, and repositories make visual papers especially discoverable on HF.
-- Limitations:
-  - Visual benchmark gains may not transfer to rare classes, low-resource domains, or messy deployment inputs.
-  - Multimodal models can inherit web-scale biases and hallucinate grounded details.
-  - Metadata summaries rarely capture dataset composition or annotation quality.
+- 다루는 논문: **1,235**
+- 카테고리 내 HF 찬성표 수: **27,259**
+- GitHub 저장소 링크됨: **809**
+- 인기 키워드 태그: `vision`(1216), `datasets-benchmarks`(884), `multimodal`(675), `generative-media`(602), `foundation-models`(564)
+- 카테고리 개요:
+  - 비전 언어 모델, 비디오 이해, 문서 인텔리전스, 분할 지향 기반 모델이 가시적인 HF 스트림을 지배합니다.
+  - 이 분야는 고립된 인식 작업에서 통합된 다중 모드 보조자 및 검색 워크플로로 이동하고 있습니다.
+  - 공개 데모, 썸네일 및 저장소를 통해 특히 HF에서 시각적 문서를 검색할 수 있습니다.
+- 제한사항:
+  - 시각적 벤치마크 이점은 희귀 클래스, 리소스가 부족한 도메인 또는 지저분한 배포 입력으로 이전되지 않을 수 있습니다.
+  - 다중 모드 모델은 웹 규모 편향을 상속하고 근거 있는 세부 사항을 환각화할 수 있습니다.
+  - 메타데이터 요약은 데이터세트 구성이나 주석 품질을 거의 포착하지 못합니다.
 
 <details>
 <summary><strong>Show representative papers for Vision, Multimodal, and Video Understanding</strong></summary>
@@ -249,24 +249,24 @@ _1,927 additional papers in this category are available in `data/papers_2023_05_
 | 302 | [PaliGemma 2: A Family of Versatile VLMs for Transfer](https://huggingface.co/papers/2412.03555)<br><sub>Andreas Steiner, André Susano Pinto, Michael Tschannen, Daniel Keysers, Xiao Wang, Yonatan Bitton, Alexey Gritsenko, Matthias Minderer et al.</sub><br><sub>[HF](https://huggingface.co/papers/2412.03555)</sub> | 2024-12 | 136 upvotes | ![vision](https://img.shields.io/badge/keyword-vision-0891b2) ![multimodal](https://img.shields.io/badge/keyword-multimodal-0e7490) ![audio-speech](https://img.shields.io/badge/keyword-audio--speech-db2777) | PaliGemma 2 integrates a SigLIP-So400m vision encoder with Gemma 2 models of varying sizes and resolutions, advancing transfer performance across diverse vision-language tasks, including OCR and captioning. |
 | 304 | [Emerging Properties in Unified Multimodal Pretraining](https://huggingface.co/papers/2505.14683)<br><sub>Chaorui Deng, Deyao Zhu, Kunchang Li, Chenhui Gou, Feng Li, Zeyu Wang, Shu Zhong, Weihao Yu et al.</sub><br><sub>[HF](https://huggingface.co/papers/2505.14683) · [Project](https://bagel-ai.org/)</sub> | 2025-05 | 136 upvotes | ![vision](https://img.shields.io/badge/keyword-vision-0891b2) ![multimodal](https://img.shields.io/badge/keyword-multimodal-0e7490) ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) | BAGEL, an open-source foundational model trained on diverse multimodal data, significantly outperforms existing models in both generation and understanding tasks. |
 
-_1,215 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_이 카테고리의 1,215개 추가 논문은 `data/papers_2023_05_2026_06.csv` 및 대화형 웹사이트에서 확인할 수 있습니다._
 
 </details>
 
-### Robotics, Embodied AI, and Control
+### 로봇 공학, 구현된 AI 및 제어
 
-- Papers covered: **831**
-- HF upvotes in category: **23,414**
-- GitHub repos linked: **504**
-- Top keyword tags: `datasets-benchmarks` (551), `foundation-models` (460), `vision` (450), `robotics` (423), `efficient-ai` (402)
-- Category overview:
-  - Embodied AI work connects foundation models with simulation, navigation, manipulation, and policy learning.
-  - World models, video-language grounding, and dataset-driven robotics benchmarks are increasingly interdependent.
-  - Public code and simulators help readers move from paper claims to reproducible experiments.
-- Limitations:
-  - Simulated results can fail under physical dynamics, hardware limits, and safety constraints.
-  - Real-world evaluation is expensive and often narrower than benchmark framing.
-  - HF metadata rarely captures all robot platforms or environment assumptions.
+- 다루는 논문: **831**
+- 카테고리 내 HF 찬성표 수: **23,414**
+- 연결된 GitHub 저장소: **504**
+- 상위 키워드 태그: `datasets-benchmarks`(551), `foundation-models`(460), `vision`(450), `robotics`(423), `efficient-ai`(402)
+- 카테고리 개요:
+  - 구현된 AI 작업은 기초 모델을 시뮬레이션, 탐색, 조작 및 정책 학습과 연결합니다.
+  - 세계 모델, 비디오 언어 기반 및 데이터 세트 기반 로봇 공학 벤치마크의 상호 의존성은 점점 더 커지고 있습니다.
+  - 공개 코드와 시뮬레이터는 독자가 종이 주장에서 재현 가능한 실험으로 전환하는 데 도움이 됩니다.
+- 제한사항:
+  - 시뮬레이션 결과는 물리적 역학, 하드웨어 제한, 안전 제약으로 인해 실패할 수 있습니다.
+  - 실제 평가는 비용이 많이 들고 벤치마크 프레이밍보다 범위가 좁은 경우가 많습니다.
+  - HF 메타데이터는 모든 로봇 플랫폼이나 환경 가정을 캡처하는 경우가 거의 없습니다.
 
 <details>
 <summary><strong>Show representative papers for Robotics, Embodied AI, and Control</strong></summary>
@@ -294,24 +294,24 @@ _1,215 additional papers in this category are available in `data/papers_2023_05_
 | 214 | [Reverse-Engineered Reasoning for Open-Ended Generation](https://huggingface.co/papers/2509.06160)<br><sub>Haozhe Wang, Haoran Que, Qixin Xu, Minghao Liu, Wangchunshu Zhou, Jiazhan Feng, Wanjun Zhong, Wei Ye et al.</sub><br><sub>[HF](https://huggingface.co/papers/2509.06160) · [Code](https://github.com/multimodal-art-projection/REER_DeepWriter) · [Project](https://m-a-p.ai/REER_DeepWriter/)</sub> | 2025-09 | 151 upvotes; 98 GitHub stars | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | REER, a new paradigm for deep reasoning, uses reverse engineering to discover step-by-step reasoning processes, enabling a model to perform competitively on open-ended tasks. |
 | 224 | [From Blind Spots to Gains: Diagnostic-Driven Iterative Training for Large Multimodal Models](https://huggingface.co/papers/2602.22859)<br><sub>Hongrui Jia, Chaoya Jiang, Shikun Zhang, Wei Ye</sub><br><sub>[HF](https://huggingface.co/papers/2602.22859) · [Code](https://github.com/hongruijia/DPE)</sub> | 2026-02 | 150 upvotes; 34 GitHub stars | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![vision](https://img.shields.io/badge/keyword-vision-0891b2) | Diagnostic-driven Progressive Evolution enables continuous improvement of large multimodal models through iterative diagnosis and targeted data generation guided by identified weaknesses. |
 
-_811 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_이 카테고리의 811개 추가 논문은 `data/papers_2023_05_2026_06.csv` 및 대화형 웹사이트에서 확인할 수 있습니다._
 
 </details>
 
-### Efficient Training, Inference, and AI Systems
+### 효율적인 훈련, 추론 및 AI 시스템
 
-- Papers covered: **747**
-- HF upvotes in category: **17,290**
-- GitHub repos linked: **475**
-- Top keyword tags: `efficient-ai` (715), `datasets-benchmarks` (419), `vision` (398), `foundation-models` (362), `generative-media` (310)
-- Category overview:
-  - Systems papers focus on making foundation models cheaper to train, adapt, serve, compress, and personalize.
-  - Quantization, adapters, memory management, speculative decoding, and inference kernels recur across months.
-  - GitHub-linked releases are especially important because implementation details often carry the contribution.
-- Limitations:
-  - Reported speedups can depend on hardware, batch size, compiler stack, and hidden engineering assumptions.
-  - Efficiency can trade off with robustness, calibration, or multilingual coverage.
-  - Metadata does not expose enough detail to audit all benchmark settings.
+- 다루는 논문: **747**
+- 카테고리 내 HF 찬성표 수: **17,290**
+- 연결된 GitHub 저장소: **475**
+- 상위 키워드 태그: `efficient-ai`(715), `datasets-benchmarks`(419), `vision`(398), `foundation-models`(362), `generative-media`(310)
+- 카테고리 개요:
+  - 시스템 논문은 기초 모델을 더 저렴하게 교육하고, 조정하고, 제공하고, 압축하고, 개인화하는 데 중점을 둡니다.
+  - 양자화, 어댑터, 메모리 관리, 추론적 디코딩 및 추론 커널은 몇 달에 걸쳐 반복됩니다.
+  - GitHub에 연결된 릴리스는 구현 세부 사항에 기여하는 경우가 많기 때문에 특히 중요합니다.
+- 제한사항:
+  - 보고된 속도 향상은 하드웨어, 배치 크기, 컴파일러 스택 및 숨겨진 엔지니어링 가정에 따라 달라질 수 있습니다.
+  - 효율성은 견고성, 보정 또는 다국어 지원 범위와 절충될 수 있습니다.
+  - 메타데이터는 모든 벤치마크 설정을 감사할 만큼 충분한 세부 정보를 공개하지 않습니다.
 
 <details>
 <summary><strong>Show representative papers for Efficient Training, Inference, and AI Systems</strong></summary>
@@ -339,24 +339,24 @@ _811 additional papers in this category are available in `data/papers_2023_05_20
 | 309 | [Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale](https://huggingface.co/papers/2603.25040)<br><sub>Yicheng Zou, Dongsheng Zhu, Lin Zhu, Tong Zhu, Yunhua Zhou, Peiheng Zhou, Xinyu Zhou, Dongzhan Zhou et al.</sub><br><sub>[HF](https://huggingface.co/papers/2603.25040)</sub> | 2026-03 | 134 upvotes | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![vision](https://img.shields.io/badge/keyword-vision-0891b2) | Intern-S1-Pro is a one-trillion-parameter scientific multimodal foundation model that enhances general and scientific capabilities through advanced agent functionalities and specialized task mastery across multiple scientific disciplines. |
 | 337 | [Diffusion Models Are Real-Time Game Engines](https://huggingface.co/papers/2408.14837)<br><sub>Dani Valevski, Yaniv Leviathan, Moab Arar, Shlomi Fruchter</sub><br><sub>[HF](https://huggingface.co/papers/2408.14837)</sub> | 2024-08 | 126 upvotes | ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) | GameNGen, a neural model-powered game engine, simulates high-quality gameplay in real-time using a diffusion model conditioned on past frames and actions. |
 
-_727 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_이 카테고리의 727개 추가 논문은 `data/papers_2023_05_2026_06.csv` 및 대화형 웹사이트에서 확인할 수 있습니다._
 
 </details>
 
-### Agents, Tool Use, and Autonomous Workflows
+### 에이전트, 도구 사용 및 자율적인 워크플로
 
-- Papers covered: **520**
-- HF upvotes in category: **15,013**
-- GitHub repos linked: **335**
-- Top keyword tags: `agents` (509), `datasets-benchmarks` (397), `foundation-models` (307), `efficient-ai` (202), `code-ai` (197)
-- Category overview:
-  - Agent papers increasingly evaluate long-horizon workflows rather than single-turn benchmark answers.
-  - Tool-use, memory, planning, and verifiable task completion are common design axes.
-  - HF engagement is strongest when papers pair agent methods with public harnesses, benchmark suites, or usable repositories.
-- Limitations:
-  - Agent benchmarks can overstate reliability when task distributions are narrow.
-  - Long-horizon systems need stronger evidence on recovery, safety, and monitoring.
-  - Repository availability does not guarantee reproducibility.
+- 다루는 논문: **520**
+- 카테고리 내 HF 찬성표 수: **15,013**
+- 연결된 GitHub 저장소: **335**
+- 인기 키워드 태그: `agents`(509), `datasets-benchmarks`(397), `foundation-models`(307), `efficient-ai`(202), `code-ai`(197)
+- 카테고리 개요:
+  - 에이전트 문서에서는 단일 턴 벤치마크 답변보다는 장기적인 워크플로를 점점 더 평가하고 있습니다.
+  - 도구 사용, 메모리, 계획 및 검증 가능한 작업 완료는 일반적인 설계 축입니다.
+  - HF 참여는 논문에서 에이전트 방법을 공용 하네스, 벤치마크 제품군 또는 사용 가능한 저장소와 결합할 때 가장 강력합니다.
+- 제한사항:
+  - 작업 분포가 좁은 경우 에이전트 벤치마크가 안정성을 과대평가할 수 있습니다.
+  - 장거리 시스템에는 복구, 안전 및 모니터링에 대한 더 강력한 증거가 필요합니다.
+  - 저장소 가용성은 재현성을 보장하지 않습니다.
 
 <details>
 <summary><strong>Show representative papers for Agents, Tool Use, and Autonomous Workflows</strong></summary>
@@ -384,24 +384,24 @@ _727 additional papers in this category are available in `data/papers_2023_05_20
 | 353 | [rStar2-Agent: Agentic Reasoning Technical Report](https://huggingface.co/papers/2508.20722)<br><sub>Ning Shang, Yifei Liu, Yi Zhu, Li Lyna Zhang, Weijiang Xu, Xinyu Guan, Buze Zhang, Bingcheng Dong et al.</sub><br><sub>[HF](https://huggingface.co/papers/2508.20722) · [Code](https://github.com/microsoft/rStar)</sub> | 2025-08 | 120 upvotes; 1,421 GitHub stars | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) | rStar2-Agent, a 14B math reasoning model trained with agentic reinforcement learning, achieves state-of-the-art performance by efficiently handling complex problem-solving with advanced cognitive behaviors and minimal computational resources. |
 | 354 | [WebSailor: Navigating Super-human Reasoning for Web Agent](https://huggingface.co/papers/2507.02592)<br><sub>Kuan Li, Zhongwang Zhang, Huifeng Yin, Liwen Zhang, Litu Ou, Jialong Wu, Wenbiao Yin, Baixuan Li et al.</sub><br><sub>[HF](https://huggingface.co/papers/2507.02592) · [Project](https://github.com/Alibaba-NLP/WebAgent)</sub> | 2025-07 | 127 upvotes | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) | WebSailor, a post-training methodology, enhances open-source LLMs with sophisticated reasoning to match proprietary systems in complex information-seeking tasks. |
 
-_500 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_이 카테고리의 500개 추가 논문은 `data/papers_2023_05_2026_06.csv` 및 대화형 웹사이트에서 확인할 수 있습니다._
 
 </details>
 
-### General Machine Learning and Optimization
+### 일반 기계 학습 및 최적화
 
-- Papers covered: **394**
-- HF upvotes in category: **5,285**
-- GitHub repos linked: **257**
-- Top keyword tags: `datasets-benchmarks` (238), `vision` (168), `efficient-ai` (162), `code-ai` (158), `foundation-models` (150)
-- Category overview:
-  - General ML papers collect methods, surveys, and cross-cutting improvements that do not sit cleanly in one application area.
-  - This category is useful as a catch-all map of methods that later diffuse into LLM, vision, robotics, and science workflows.
-  - Citation and HF engagement signals should be read as visibility signals, not final judgments.
-- Limitations:
-  - Broad method categories can obscure task-specific constraints.
-  - Metadata-driven taxonomy may under-classify specialized contributions.
-  - Full-paper reading is required for methodological rigor.
+- 다루는 논문: **394**
+- 카테고리 내 HF 찬성표 수: **5,285**
+- 연결된 GitHub 저장소: **257**
+- 상위 키워드 태그: `datasets-benchmarks`(238), `vision`(168), `efficient-ai`(162), `code-ai`(158), `foundation-models`(150)
+- 카테고리 개요:
+  - 일반 ML 논문은 하나의 애플리케이션 영역에 완전히 포함되지 않는 방법, 설문 조사 및 교차 개선 사항을 수집합니다.
+  - 이 범주는 나중에 LLM, 비전, 로봇 공학 및 과학 워크플로로 확산되는 포괄적인 방법 지도로 유용합니다.
+  - 인용 및 HF 참여 신호는 최종 판단이 아닌 가시성 신호로 읽어야 합니다.
+- 제한사항:
+  - 광범위한 방법 범주는 작업별 제약 조건을 모호하게 만들 수 있습니다.
+  - 메타데이터 기반 분류법은 전문적인 기여를 과소 분류할 수 있습니다.
+  - 방법론적 엄격함을 위해서는 전체 논문 읽기가 필요합니다.
 
 <details>
 <summary><strong>Show representative papers for General Machine Learning and Optimization</strong></summary>
@@ -429,24 +429,24 @@ _500 additional papers in this category are available in `data/papers_2023_05_20
 | 1845 | [YOLOv9: Learning What You Want to Learn Using Programmable Gradient Information](https://huggingface.co/papers/2402.13616)<br><sub>Chien-Yao Wang, I-Hau Yeh, Hong-Yuan Mark Liao</sub><br><sub>[HF](https://huggingface.co/papers/2402.13616) · [Code](https://github.com/ibaiGorordo/ONNX-YOLOv9-MIT-Object-Detection)</sub> | 2024-02 | 49 upvotes; 40 GitHub stars | ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | The paper addresses data loss in deep networks through programmable gradient information (PGI) and introduces the Generalized Efficient Layer Aggregation Network (GELAN) to improve parameter utilization and achieve competitive results in object detection. |
 | 1904 | [Kolmogorov-Arnold Transformer](https://huggingface.co/papers/2409.10594)<br><sub>Xingyi Yang, Xinchao Wang</sub><br><sub>[HF](https://huggingface.co/papers/2409.10594) · [Code](https://github.com/Adamdad/kat)</sub> | 2024-09 | 45 upvotes; 848 GitHub stars | ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) | The Kolmogorov-Arnold Transformer replaces MLP layers with Kolmogorov-Arnold Network layers to enhance transformers, overcoming challenges related to inference speed, computation efficiency, and weight initialization through rational basis, group learning, and variance-preserving techniques. |
 
-_374 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_이 카테고리의 374개 추가 논문은 `data/papers_2023_05_2026_06.csv` 및 대화형 웹사이트에서 확인할 수 있습니다._
 
 </details>
 
-### Speech, Audio, NLP, and Code Applications
+### 음성, 오디오, NLP 및 코드 애플리케이션
 
-- Papers covered: **260**
-- HF upvotes in category: **5,264**
-- GitHub repos linked: **147**
-- Top keyword tags: `datasets-benchmarks` (192), `code-ai` (161), `audio-speech` (123), `foundation-models` (118), `vision` (97)
-- Category overview:
-  - Application papers translate core model advances into speech, translation, retrieval, dialogue, code, and document workflows.
-  - HF traction often follows practical demos, evaluation suites, or repositories that let users reproduce a workflow.
-  - Code and retrieval papers increasingly overlap with agentic and LLM-system categories.
-- Limitations:
-  - Task-specific benchmarks can hide brittle behavior outside their domain.
-  - Language and locale coverage may be uneven.
-  - Repository links are helpful but do not guarantee maintained implementations.
+- 다루는 논문 수: **260**
+- 카테고리 내 HF 찬성표 수: **5,264**
+- 연결된 GitHub 저장소: **147**
+- 인기 키워드 태그: `datasets-benchmarks`(192), `code-ai`(161), `audio-speech`(123), `foundation-models`(118), `vision`(97)
+- 카테고리 개요:
+  - 응용 서류는 핵심 모델 발전을 음성, 번역, 검색, 대화, 코드 및 문서 작업 흐름으로 변환합니다.
+  - HF 견인은 종종 사용자가 워크플로우를 재현할 수 있는 실제 데모, 평가 세트 또는 저장소를 따릅니다.
+  - 코드 및 검색 논문은 에이전트 및 LLM 시스템 범주와 점점 더 중복됩니다.
+- 제한사항:
+  - 작업별 벤치마크는 도메인 외부의 취약한 동작을 숨길 수 있습니다.
+  - 언어 및 로캘 적용 범위가 고르지 않을 수 있습니다.
+  - 저장소 링크는 도움이 되지만 구현 유지를 보장하지는 않습니다.
 
 <details>
 <summary><strong>Show representative papers for Speech, Audio, NLP, and Code Applications</strong></summary>
@@ -474,24 +474,24 @@ _374 additional papers in this category are available in `data/papers_2023_05_20
 | 1353 | [Voxtral TTS](https://huggingface.co/papers/2603.25551)<br><sub>Alexander H. Liu, Alexis Tacnet, Andy Ehrenberg, Andy Lo, Chen-Yo Sun, Guillaume Lample, Henry Lagarde, Jean-Malo Delignon et al.</sub><br><sub>[HF](https://huggingface.co/papers/2603.25551) · [Project](https://mistral.ai/news/voxtral-tts)</sub> | 2026-03 | 63 upvotes | ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) ![audio-speech](https://img.shields.io/badge/keyword-audio--speech-db2777) | Voxtral TTS is a multilingual text-to-speech model that generates natural speech from short reference audio using a hybrid architecture combining semantic token generation and flow-matching for acoustic tokens. |
 | 1422 | [Step-Audio-R1 Technical Report](https://huggingface.co/papers/2511.15848)<br><sub>Fei Tian, Xiangyu Tony Zhang, Yuxin Zhang, Haoyang Zhang, Yuxin Li, Daijiao Liu, Yayue Deng, Donghang Wu et al.</sub><br><sub>[HF](https://huggingface.co/papers/2511.15848) · [Project](https://stepaudiollm.github.io/step-audio-r1/)</sub> | 2025-11 | 60 upvotes | ![vision](https://img.shields.io/badge/keyword-vision-0891b2) ![multimodal](https://img.shields.io/badge/keyword-multimodal-0e7490) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) | Step-Audio-R1, using the Modality-Grounded Reasoning Distillation framework, achieves strong reasoning capabilities in audio, outperforming previous models and demonstrating the transferability of reasoning across modalities. |
 
-_240 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_이 카테고리의 240개 추가 논문은 `data/papers_2023_05_2026_06.csv` 및 대화형 웹사이트에서 확인할 수 있습니다._
 
 </details>
 
-### Responsible, Safe, and Interpretable AI
+### 책임감 있고 안전하며 해석 가능한 AI
 
-- Papers covered: **126**
-- HF upvotes in category: **1,839**
-- GitHub repos linked: **63**
-- Top keyword tags: `trustworthy-ai` (119), `datasets-benchmarks` (78), `foundation-models` (62), `efficient-ai` (42), `code-ai` (40)
-- Category overview:
-  - Responsible AI papers move between interpretability, jailbreak resistance, data governance, privacy, and evaluation for deployed models.
-  - The HF corpus makes safety work visible when it includes reproducible attacks, datasets, or inspection tools.
-  - Interpretability and alignment topics increasingly overlap with model scaling and agentic behavior.
-- Limitations:
-  - Safety claims need adversarial and real-world validation beyond benchmark results.
-  - Explanations can be plausible without being faithful to internal mechanisms.
-  - Metadata cannot capture all threat models or deployment constraints.
+- 다루는 논문: **126**
+- 카테고리 내 HF 찬성표 수: **1,839**
+- 연결된 GitHub 저장소: **63**
+- 인기 키워드 태그: `trustworthy-ai`(119), `datasets-benchmarks`(78), `foundation-models`(62), `efficient-ai`(42), `code-ai`(40)
+- 카테고리 개요:
+  - 책임 있는 AI 문서는 해석 가능성, 탈옥 저항, 데이터 거버넌스, 개인 정보 보호 및 배포된 모델에 대한 평가 사이를 이동합니다.
+  - HF 코퍼스는 재현 가능한 공격, 데이터 세트 또는 검사 도구를 포함할 때 안전 작업을 가시화합니다.
+  - 해석 가능성 및 정렬 주제는 모델 확장 및 에이전트 동작과 점점 더 중복됩니다.
+- 제한사항:
+  - 안전 주장에는 벤치마크 결과를 넘어서는 적대적인 실제 검증이 필요합니다.
+  - 설명은 내부 메커니즘에 충실하지 않고도 그럴듯할 수 있습니다.
+  - 메타데이터는 모든 위협 모델이나 배포 제약 조건을 캡처할 수 없습니다.
 
 <details>
 <summary><strong>Show representative papers for Responsible, Safe, and Interpretable AI</strong></summary>
@@ -519,24 +519,24 @@ _240 additional papers in this category are available in `data/papers_2023_05_20
 | 4429 | [MoCapAnything V2: End-to-End Motion Capture for Arbitrary Skeletons](https://huggingface.co/papers/2604.28130)<br><sub>Kehong Gong, Zhengyu Wen, Dao Thien Phong, Mingxi Xu, Weixia He, Qi Wang, Ning Zhang, Zhengyu Li et al.</sub><br><sub>[HF](https://huggingface.co/papers/2604.28130) · [Code](https://github.com/animotionlab26/MocapAnything) · [Project](https://animotionlab.github.io/MoCapAnythingV2/)</sub> | 2026-05 | 22 upvotes; 282 GitHub stars | ![vision](https://img.shields.io/badge/keyword-vision-0891b2) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![trustworthy-ai](https://img.shields.io/badge/keyword-trustworthy--ai-be123c) | A fully end-to-end framework for arbitrary-skeleton motion capture that jointly optimizes video-to-pose and pose-to-rotation prediction while addressing rotation ambiguity through reference pose-rotation pairs and skeleton-aware attention mechanisms. |
 | 4535 | [A Trajectory-Based Safety Audit of Clawdbot (OpenClaw)](https://huggingface.co/papers/2602.14364)<br><sub>Tianyu Chen, Dongrui Liu, Xia Hu, Jingyi Yu, Wenjie Wang</sub><br><sub>[HF](https://huggingface.co/papers/2602.14364) · [Code](https://github.com/tychenn/clawdbot_report)</sub> | 2026-02 | 25 upvotes; 12 GitHub stars | ![foundation-models](https://img.shields.io/badge/keyword-foundation--models-2563eb) ![agents](https://img.shields.io/badge/keyword-agents-dc2626) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | Clawdbot, a self-hosted AI agent with diverse tool capabilities, exhibits varying safety performance across different risk dimensions, particularly struggling with ambiguous or adversarial inputs despite consistent reliability in specified tasks. |
 
-_106 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_이 카테고리의 106개 추가 논문은 `data/papers_2023_05_2026_06.csv` 및 대화형 웹사이트에서 확인할 수 있습니다._
 
 </details>
 
-### Graph, Recommendation, and Structured Learning
+### 그래프, 추천, 구조화된 학습
 
-- Papers covered: **34**
-- HF upvotes in category: **419**
-- GitHub repos linked: **22**
-- Top keyword tags: `datasets-benchmarks` (24), `foundation-models` (14), `efficient-ai` (14), `code-ai` (13), `agents` (7)
-- Category overview:
-  - Structured learning papers cover graph reasoning, recommenders, tabular models, time series, causality, and optimization.
-  - These papers are less visually dominant but often provide reusable methods for domain systems.
-  - The category bridges core ML with applied workflows that do not fit pure language or vision buckets.
-- Limitations:
-  - Benchmark datasets can be narrow and sensitive to preprocessing.
-  - Graph and recommender evaluation may not reflect real deployment feedback loops.
-  - Metadata can underspecify assumptions about structure and leakage.
+- 다루는 논문: **34**
+- 카테고리 내 HF 찬성 투표 수: **419**
+- 연결된 GitHub 저장소: **22**
+- 인기 키워드 태그: `datasets-benchmarks`(24), `foundation-models`(14), `efficient-ai`(14), `code-ai`(13), `agents`(7)
+- 카테고리 개요:
+  - 구조화된 학습 문서에서는 그래프 추론, 추천자, 표 형식 모델, 시계열, 인과성 및 최적화를 다룹니다.
+  - 이러한 논문은 시각적으로 덜 중요하지만 도메인 시스템에 재사용 가능한 방법을 제공하는 경우가 많습니다.
+  - 이 범주는 순수 언어 또는 비전 버킷에 맞지 않는 응용 워크플로와 핵심 ML을 연결합니다.
+- 제한사항:
+  - 벤치마크 데이터 세트는 범위가 좁고 전처리에 민감할 수 있습니다.
+  - 그래프 및 추천자 평가에는 실제 배포 피드백 루프가 반영되지 않을 수 있습니다.
+  - 메타데이터는 구조 및 누출에 대한 가정을 과소 명시할 수 있습니다.
 
 <details>
 <summary><strong>Show representative papers for Graph, Recommendation, and Structured Learning</strong></summary>
@@ -564,24 +564,24 @@ _106 additional papers in this category are available in `data/papers_2023_05_20
 | 12659 | [Quantitative Risk Management in Volatile Markets with an Expectile-Based Framework for the FTSE Index](https://huggingface.co/papers/2507.13391)<br><sub>Abiodun Finbarrs Oketunji</sub><br><sub>[HF](https://huggingface.co/papers/2507.13391) · [Code](https://github.com/0xnu/expectile-based-framework) · [Project](https://github.com/0xnu/expectile-based-framework)</sub> | 2025-07 | 6 upvotes | ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) ![trustworthy-ai](https://img.shields.io/badge/keyword-trustworthy--ai-be123c) | This research presents a framework for quantitative risk management in volatile markets, specifically focusing on expectile-based methodologies applied to the FTSE 100 index. |
 | 12770 | [Residual Stream Duality in Modern Transformer Architectures](https://huggingface.co/papers/2603.16039)<br><sub>Yifan Zhang</sub><br><sub>[HF](https://huggingface.co/papers/2603.16039) · [Code](https://github.com/yifanzhang-pro/residual-stream-duality) · [Project](https://github.com/yifanzhang-pro/residual-stream-duality)</sub> | 2026-03 | 4 upvotes; 6 GitHub stars | ![generative-media](https://img.shields.io/badge/keyword-generative--media-a855f7) ![efficient-ai](https://img.shields.io/badge/keyword-efficient--ai-0f766e) ![datasets-benchmarks](https://img.shields.io/badge/keyword-datasets--benchmarks-f59e0b) | The residual stream in Transformers can be viewed through a two-axis framework where sequence position and layer depth provide different pathways for information flow, with causal depth-wise residual attention equivalent to sequence-axis short sliding-window attention. |
 
-_14 additional papers in this category are available in `data/papers_2023_05_2026_06.csv` and the interactive website._
+_이 카테고리의 14개 추가 논문은 `data/papers_2023_05_2026_06.csv` 및 대화형 웹사이트에서 확인할 수 있습니다._
 
 </details>
 
-### AI for Science, Medicine, and Engineering
+### 과학, 의학, 공학을 위한 AI
 
-- Papers covered: **11**
-- HF upvotes in category: **119**
-- GitHub repos linked: **5**
-- Top keyword tags: `ai4science` (9), `datasets-benchmarks` (6), `generative-media` (5), `agents` (4), `foundation-models` (3)
-- Category overview:
-  - AI-for-science papers apply foundation and generative methods to biology, chemistry, medicine, climate, materials, and engineering design.
-  - Visible HF papers often combine domain data with open models, code, or benchmark resources.
-  - Recent work is moving toward specialized scientific agents and editable scientific artifacts.
-- Limitations:
-  - Domain claims require validation under expert protocols and external datasets.
-  - Biomedical and engineering deployment introduces safety, regulation, and reproducibility constraints.
-  - Metadata summaries cannot substitute for domain expert review.
+- 다루는 논문: **11**
+- 카테고리 내 HF 찬성표 수: **119**
+- 연결된 GitHub 저장소: **5**
+- 인기 키워드 태그: `ai4science`(9), `datasets-benchmarks`(6), `generative-media`(5), `agents`(4), `foundation-models`(3)
+- 카테고리 개요:
+  - 과학을 위한 AI 논문은 생물학, 화학, 의학, 기후, 재료 및 엔지니어링 설계에 기초 및 생성 방법을 적용합니다.
+  - Visible HF 논문은 도메인 데이터를 개방형 모델, 코드 또는 벤치마크 리소스와 결합하는 경우가 많습니다.
+  - 최근 작업은 전문화된 과학 에이전트와 편집 가능한 과학 유물을 향해 나아가고 있습니다.
+- 제한사항:
+  - 도메인 소유권 주장에는 전문가 프로토콜 및 외부 데이터세트에 따른 검증이 필요합니다.
+  - 생의학 및 엔지니어링 배포에는 안전, 규제 및 재현성 제약이 발생합니다.
+  - 메타데이터 요약은 도메인 전문가 검토를 대체할 수 없습니다.
 
 <details>
 <summary><strong>Show representative papers for AI for Science, Medicine, and Engineering</strong></summary>
@@ -602,7 +602,7 @@ _14 additional papers in this category are available in `data/papers_2023_05_202
 
 </details>
 
-## Research Timeline
+## 연구 일정
 
 | Month | Papers |
 | ---: | ---: |
@@ -645,26 +645,26 @@ _14 additional papers in this category are available in `data/papers_2023_05_202
 | 2026-05 | 936 |
 | 2026-06 | 861 |
 
-## Methodology
+## 방법론
 
-The collection uses the Hugging Face Daily Papers monthly API endpoint, equivalent to the public monthly pages at `https://huggingface.co/papers/month/YYYY-MM`. Each month from `2023-05` through `2026-06` is paginated until the API returns no more results. Records are deduplicated by HF paper/arXiv id, then enriched with deterministic taxonomy, keyword tags, key ideas, strengths, and limitations using only public metadata fields exposed by Hugging Face.
+컬렉션은 `https://huggingface.co/papers/month/YYYY-MM`의 공개 월간 페이지에 해당하는 Hugging Face Daily Papers 월간 API 엔드포인트를 사용합니다. API가 더 이상 결과를 반환하지 않을 때까지 `2023-05`부터 `2026-06`까지 매달 페이지가 매겨집니다. 기록은 HF 논문/arXiv ID를 통해 중복 제거된 후 Hugging Face에서 공개된 공개 메타데이터 필드만 사용하여 결정론적 분류, 키워드 태그, 핵심 아이디어, 강점 및 제한 사항으로 보강됩니다.
 
-Ranking is not a quality score. It is a deterministic browsing order based on HF upvotes, discussion comments, linked GitHub stars, and the presence of repository or project-page metadata. The full archive keeps every collected monthly paper rather than selecting only top papers.
+순위는 품질 점수가 아닙니다. 이는 HF 찬성 투표, 토론 댓글, 연결된 GitHub 스타, 저장소 또는 프로젝트 페이지 메타데이터의 존재 여부를 기반으로 하는 결정적인 탐색 순서입니다. 전체 아카이브는 상위 논문만 선택하는 것이 아니라 수집된 모든 월간 논문을 보관합니다.
 
-This repository follows `github-awesome-skill2` in metadata-adapter mode. The local `jehyunlee/paper-curation` checkout was inspected, but full PDF review stages were not run because they require separate explicit approval for paid or metered APIs and are impractical for this full monthly HF archive.
+이 저장소는 메타데이터 어댑터 모드에서 `github-awesome-skill2`를 따릅니다. 로컬 `jehyunlee/paper-curation` 체크아웃을 검사했지만 전체 PDF 검토 단계는 유료 또는 측정 API에 대해 별도의 명시적 승인이 필요하고 이 전체 월간 HF 아카이브에는 실용적이지 않기 때문에 실행되지 않았습니다.
 
-## Caveats
+## 주의사항
 
-- This is a metadata-driven archive, not a full systematic review of every PDF.
-- HF upvotes, comments, and GitHub stars measure visibility and community attention, not scientific validity.
-- `2026-06` is time-sensitive; counts may change if Hugging Face updates historical metadata.
-- Some HF entries have missing repository, project page, author, thumbnail, or keyword metadata.
-- Link audit combines full URL format checks with sampled HTTP checks to avoid excessive requests to public services.
+- 이는 모든 PDF에 대한 전체 체계적 검토가 아닌 메타데이터 기반 아카이브입니다.
+- HF 찬성 투표, 댓글 및 GitHub 스타는 과학적 타당성이 아닌 가시성과 커뮤니티 관심을 측정합니다.
+- `2026-06`는 시간에 민감합니다. Hugging Face가 과거 메타데이터를 업데이트하면 개수가 변경될 수 있습니다.
+- 일부 HF 항목에는 저장소, 프로젝트 페이지, 작성자, 썸네일 또는 키워드 메타데이터가 누락되어 있습니다.
+- 링크 감사는 전체 URL 형식 검사와 샘플링된 HTTP 검사를 결합하여 공용 서비스에 대한 과도한 요청을 방지합니다.
 
-## Acknowledgements
+## 감사의 말
 
-This repository and interactive site were created with appreciation for [jehyunlee/paper-curation](https://github.com/jehyunlee/paper-curation). Its workflow informed the taxonomy-first organization, provenance tracking, and honest metadata-driven limitations used here.
+이 저장소와 인터랙티브 사이트는 [jeyunlee/paper-curation](https://github.com/jehyunlee/paper-curation)에 대한 감사의 마음으로 만들어졌습니다. 해당 워크플로는 여기에 사용된 분류 우선 구성, 출처 추적 및 정직한 메타데이터 기반 제한 사항을 알려줍니다.
 
-## License
+## 라이센스
 
-CC-BY-4.0 for text and metadata curation; upstream paper metadata belongs to the original sources.
+텍스트 및 메타데이터 큐레이션을 위한 CC-BY-4.0; 업스트림 종이 메타데이터는 원본 소스에 속합니다.
