@@ -786,6 +786,137 @@ def category_stats(papers):
     }
 
 
+def top_counter_items(counter, limit=3):
+    return [{"name": name, "count": count} for name, count in counter.most_common(limit)]
+
+
+def names_with_counts(items):
+    if not items:
+        return "no dominant signal"
+    return ", ".join(f"{item['name']} ({item['count']:,})" for item in items)
+
+
+def period_insight_for_range(papers, start_month, end_month):
+    rows = [paper for paper in papers if start_month <= paper["source_month"] <= end_month]
+    months = [month for month in MONTHS if start_month <= month <= end_month]
+    month_counts = Counter(p["source_month"] for p in rows)
+    category_counts = Counter(p["category"] for p in rows)
+    keyword_counts = Counter(tag for p in rows for tag in p["keyword_tags"])
+    peak_month, peak_month_count = max(((month, month_counts.get(month, 0)) for month in months), key=lambda item: (item[1], item[0]), default=(start_month, 0))
+    active_months = sum(1 for month in months if month_counts.get(month, 0))
+    midpoint = max(1, len(months) // 2)
+    early_months = set(months[:midpoint])
+    late_months = set(months[midpoint:])
+    early_category = Counter(p["category"] for p in rows if p["source_month"] in early_months).most_common(1)
+    late_category = Counter(p["category"] for p in rows if p["source_month"] in late_months).most_common(1)
+    first_count = month_counts.get(months[0], 0) if months else 0
+    last_count = month_counts.get(months[-1], 0) if months else 0
+    if last_count > first_count * 1.25:
+        movement = "expanded toward the end of the selected period"
+    elif first_count > last_count * 1.25:
+        movement = "was more concentrated near the beginning of the selected period"
+    else:
+        movement = "stayed relatively steady across the selected period"
+    top_categories = top_counter_items(category_counts, 3)
+    top_keywords = top_counter_items(keyword_counts, 5)
+    top_papers = sorted(rows, key=lambda p: (-p["upvotes"], -p["github_stars"], p["rank"]))[:5]
+    top_paper = top_papers[0] if top_papers else {}
+    repo_count = sum(1 for p in rows if p["github_repo"])
+    project_count = sum(1 for p in rows if p["project_page"])
+    upvotes = sum(p["upvotes"] for p in rows)
+    comments = sum(p["num_comments"] for p in rows)
+    range_label = f"{start_month} to {end_month}"
+    top_category_text = names_with_counts(top_categories)
+    top_keyword_text = names_with_counts(top_keywords[:3])
+    early_category_text = early_category[0][0] if early_category else "no dominant taxonomy"
+    late_category_text = late_category[0][0] if late_category else early_category_text
+    top_paper_title = top_paper.get("title", "No paper")
+    top_paper_month = top_paper.get("source_month", start_month)
+    top_paper_category = top_paper.get("category", "no taxonomy")
+    top_paper_upvotes = top_paper.get("upvotes", 0)
+    return {
+        "key": f"{start_month}..{end_month}",
+        "start": start_month,
+        "end": end_month,
+        "range": range_label,
+        "papers": len(rows),
+        "activeMonths": active_months,
+        "peakMonth": peak_month,
+        "peakMonthCount": peak_month_count,
+        "firstMonthCount": first_count,
+        "lastMonthCount": last_count,
+        "movement": movement,
+        "topCategories": top_categories,
+        "topKeywords": top_keywords,
+        "repoCount": repo_count,
+        "projectCount": project_count,
+        "upvotes": upvotes,
+        "comments": comments,
+        "topPapers": [
+            {
+                "rank": p["rank"],
+                "id": p["id"],
+                "title": p["title"],
+                "month": p["source_month"],
+                "category": p["category"],
+                "upvotes": p["upvotes"],
+                "githubStars": p["github_stars"],
+                "hfUrl": p["hf_url"],
+            }
+            for p in top_papers
+        ],
+        "timeline": {
+            "title": "Research Timeline",
+            "summary": [
+                f"For {range_label}, the Hugging Face Daily Papers corpus contains {len(rows):,} papers across {active_months:,} active months. Activity peaks in {peak_month} with {peak_month_count:,} papers, and the monthly pattern {movement}.",
+                f"The strongest taxonomy signals are {top_category_text}. Earlier selected months lean toward {early_category_text}, while later selected months lean toward {late_category_text}, showing how HF-visible research attention shifts across the range.",
+                f"The leading HF-visible paper in this period is \"{top_paper_title}\" ({top_paper_month}, {top_paper_upvotes:,} upvotes) in {top_paper_category}. Frequent keywords such as {top_keyword_text} connect the period to foundation models, multimodal systems, generative media, agents, evaluation, and efficient AI.",
+            ],
+        },
+        "insights": [
+            {
+                "label": "Foundation Layer",
+                "title": "Foundation models remain the shared substrate",
+                "body": f"{top_category_text} dominate {range_label}, showing which parts of the HF research stream became reusable layers for downstream work.",
+                "implication": "Implication: compare periods by data, model interface, evaluation, and deployment artifacts rather than by model names alone.",
+            },
+            {
+                "label": "Open Artifacts",
+                "title": "GitHub and project pages shape reuse",
+                "body": f"{repo_count:,} papers link GitHub repositories and {project_count:,} link project pages, making implementation details and demos central to how the period is read.",
+                "implication": "Implication: repository quality, licenses, reproducibility notes, and maintained demos matter alongside paper claims.",
+            },
+            {
+                "label": "Community Signal",
+                "title": "HF attention highlights visible research moments",
+                "body": f"The selected range carries {upvotes:,} HF upvotes and {comments:,} comments, with the strongest monthly activity in {peak_month}.",
+                "implication": "Implication: HF engagement is a discovery signal, not a scientific validity score; high-signal papers still need full-method review.",
+            },
+            {
+                "label": "Keyword Convention",
+                "title": "Keyword mix reveals the period's practical focus",
+                "body": f"Frequent tags such as {top_keyword_text} show whether the period centers on models, benchmarks, multimodal work, generation, agents, code, or systems.",
+                "implication": "Implication: use keyword filters to separate broad community visibility from narrower research questions.",
+            },
+            {
+                "label": "Metadata Limits",
+                "title": "Recent HF maps need expert correction",
+                "body": f"The period view is metadata-driven and preserves every collected HF Daily Paper from {range_label}; it does not replace reading PDFs, code, datasets, and evaluation details.",
+                "implication": "Implication: treat this site as a navigable map, then layer in domain expertise for methodological conclusions.",
+            },
+        ],
+    }
+
+
+def build_period_insights(papers):
+    insights = {}
+    for start_index, start_month in enumerate(MONTHS):
+        for end_month in MONTHS[start_index:]:
+            item = period_insight_for_range(papers, start_month, end_month)
+            insights[item["key"]] = item
+    return insights
+
+
 def period_analysis(papers):
     by_month = Counter(p["source_month"] for p in papers)
     by_year = Counter(p["year"] for p in papers)
@@ -804,6 +935,7 @@ def period_analysis(papers):
         "github_repo_count": sum(1 for p in papers if p["github_repo"]),
         "project_page_count": sum(1 for p in papers if p["project_page"]),
         "arxiv_url_count": sum(1 for p in papers if p["arxiv_url"]),
+        "periodInsights": build_period_insights(papers),
         "top_upvoted": [
             {"rank": p["rank"], "id": p["id"], "title": p["title"], "upvotes": p["upvotes"], "hf_url": p["hf_url"]}
             for p in sorted(papers, key=lambda p: (-p["upvotes"], p["rank"]))[:25]
@@ -1194,6 +1326,8 @@ def write_site(papers, analysis):
     months_json = json.dumps(MONTHS)
     colors_json = json.dumps(color_map, ensure_ascii=False)
     keyword_descriptions_json = json.dumps(keyword_descriptions, ensure_ascii=False)
+    period_insights_payload = json.dumps(analysis["periodInsights"], ensure_ascii=False, separators=(",", ":"))
+    safe_period_insights = period_insights_payload.replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e")
 
     html_doc = f"""<!doctype html>
 <html lang="en">
@@ -1276,10 +1410,17 @@ def write_site(papers, analysis):
     .timeline-narrative h3 {{ margin: 0 0 8px; font-size: 16px; color: var(--ink); }}
     .timeline-narrative ul {{ margin: 0; padding-left: 20px; }}
     .timeline-narrative li {{ margin: 5px 0; }}
+    .timeline-copy p {{ margin: 8px 0; }}
     .insight-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }}
     .insight-card {{ border: 1px solid var(--line); border-radius: 6px; background: #fff; padding: 12px; }}
     .insight-card strong {{ display: block; font-size: 24px; line-height: 1.15; }}
     .insight-card span {{ display: block; color: var(--muted); font-size: 13px; margin-top: 4px; }}
+    .period-insights {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-bottom: 10px; }}
+    .insight-box {{ border: 1px solid var(--line); border-radius: 6px; background: #fff; padding: 12px; }}
+    .insight-label {{ color: var(--accent); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; }}
+    .insight-box h3 {{ margin: 6px 0 8px; font-size: 16px; line-height: 1.25; }}
+    .insight-box p {{ margin: 6px 0; color: var(--muted); font-size: 13px; }}
+    .insight-implication {{ color: var(--ink); font-weight: 700; }}
     .insight-list {{ border: 1px solid var(--line); border-radius: 6px; background: var(--soft); padding: 12px 16px; margin: 10px 0 0; }}
     .insight-list h3 {{ margin: 0 0 8px; font-size: 16px; }}
     .insight-list ol {{ margin: 0; padding-left: 22px; }}
@@ -1385,8 +1526,9 @@ def write_site(papers, analysis):
     <section class="analysis-section" aria-labelledby="insightsTitle">
       <div class="section-head">
         <h2 id="insightsTitle">Research Insights</h2>
-        <p>Insights update from the currently selected period, taxonomy, keyword convention, search, and repository-link filters.</p>
+        <p>Period-specific insight cards are generated from the selected month range; the numeric cards below still update with taxonomy, keyword, search, and repository-link filters.</p>
       </div>
+      <div id="periodInsights" class="period-insights"></div>
       <div id="insights" class="insight-grid"></div>
       <div id="topPapers" class="insight-list"></div>
     </section>
@@ -1411,8 +1553,10 @@ def write_site(papers, analysis):
     </section>
   </main>
   <script id="paper-data" type="application/json">{safe_payload}</script>
+  <script id="period-insights-data" type="application/json">{safe_period_insights}</script>
   <script>
     const papers = JSON.parse(document.getElementById('paper-data').textContent);
+    const periodInsights = JSON.parse(document.getElementById('period-insights-data').textContent);
     const colors = {colors_json};
     const months = {months_json};
     const keywordDescriptions = {keyword_descriptions_json};
@@ -1430,6 +1574,7 @@ def write_site(papers, analysis):
       timeline: document.getElementById('timelineChart'),
       timelineSummary: document.getElementById('timelineSummary'),
       timelineNarrative: document.getElementById('timelineNarrative'),
+      periodInsights: document.getElementById('periodInsights'),
       insights: document.getElementById('insights'),
       topPapers: document.getElementById('topPapers'),
       keywordStatus: document.getElementById('keywordFilterStatus')
@@ -1473,6 +1618,9 @@ def write_site(papers, analysis):
       const to = els.toMonth.value;
       return from <= to ? {{from, to}} : {{from: to, to: from}};
     }}
+    function periodInsightForBounds(bounds) {{
+      return periodInsights[`${{bounds.from}}..${{bounds.to}}`] || null;
+    }}
     function rangeMonths(from, to) {{
       return months.filter(month => month >= from && month <= to);
     }}
@@ -1506,6 +1654,7 @@ def write_site(papers, analysis):
     }}
     function renderTimeline(filtered) {{
       const bounds = periodBounds();
+      const periodBrief = periodInsightForBounds(bounds);
       const visibleMonths = rangeMonths(bounds.from, bounds.to);
       const counts = new Map(visibleMonths.map(month => [month, 0]));
       filtered.forEach(p => counts.set(p.month, (counts.get(p.month) || 0) + 1));
@@ -1533,11 +1682,28 @@ def write_site(papers, analysis):
       const recentCategory = topCategoryFor(recentRows);
       const firstCount = counts.get(firstActive) || 0;
       const lastCount = counts.get(lastActive) || 0;
-      els.timelineNarrative.innerHTML = `<h3>How this research stream moved</h3><ul>
+      const periodSummary = periodBrief && periodBrief.timeline && periodBrief.timeline.summary
+        ? `<div class="timeline-copy">${{periodBrief.timeline.summary.map(item => `<p>${{escapeHtml(item)}}</p>`).join('')}}</div>`
+        : '';
+      els.timelineNarrative.innerHTML = `${{periodSummary}}<h3>Filtered stream movement</h3><ul>
         <li>Activity starts at <strong>${{firstActive}}</strong> with ${{firstCount.toLocaleString()}} matching papers and reaches <strong>${{lastActive}}</strong> with ${{lastCount.toLocaleString()}} papers, so this filtered stream ${{trendLabel(firstCount, lastCount)}}.</li>
         <li>The busiest month in this view is <strong>${{peak[0]}}</strong> with ${{peak[1].toLocaleString()}} papers, marking the strongest HF Daily Papers visibility signal for the selected filters.</li>
         <li>Earlier selected months lean toward <strong>${{escapeHtml(earlyCategory[0])}}</strong>; later selected months lean toward <strong>${{escapeHtml(recentCategory[0])}}</strong>. This describes metadata-visible community attention, not a full-PDF scientific judgement.</li>
       </ul>`;
+    }}
+    function renderPeriodInsights() {{
+      const bounds = periodBounds();
+      const periodBrief = periodInsightForBounds(bounds);
+      if (!periodBrief || !periodBrief.insights) {{
+        els.periodInsights.innerHTML = '';
+        return;
+      }}
+      els.periodInsights.innerHTML = periodBrief.insights.map(item => `<article class="insight-box">
+        <div class="insight-label">${{escapeHtml(item.label)}}</div>
+        <h3>${{escapeHtml(item.title)}}</h3>
+        <p>${{escapeHtml(item.body)}}</p>
+        <p class="insight-implication">${{escapeHtml(item.implication)}}</p>
+      </article>`).join('');
     }}
     function renderInsights(filtered) {{
       const categoryCounts = new Map();
@@ -1668,6 +1834,7 @@ def write_site(papers, analysis):
       els.count.textContent = `${{filtered.length.toLocaleString()}} papers`;
       els.filters.textContent = [category, `${{bounds.from}} to ${{bounds.to}}`, keyword === 'All Keywords' ? 'all keywords' : keyword, hasRepo ? 'GitHub linked' : 'all links', q ? 'search active' : ''].filter(Boolean).join(' | ');
       renderTimeline(filtered);
+      renderPeriodInsights();
       renderInsights(filtered);
       syncKeywordCards(filtered);
       renderTaxonomies(filtered);
