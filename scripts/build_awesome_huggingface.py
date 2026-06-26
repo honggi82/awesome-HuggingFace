@@ -1272,6 +1272,10 @@ def write_site(papers, analysis):
     .timeline-row {{ display: grid; grid-template-columns: 74px minmax(120px, 1fr) 68px; gap: 10px; align-items: center; font-size: 13px; }}
     .timeline-track {{ height: 12px; background: #e7edf4; border-radius: 999px; overflow: hidden; }}
     .timeline-bar {{ height: 100%; min-width: 2px; background: var(--accent); border-radius: 999px; }}
+    .timeline-narrative {{ border: 1px solid var(--line); border-radius: 6px; background: var(--soft); padding: 12px 16px; margin-top: 10px; color: var(--muted); }}
+    .timeline-narrative h3 {{ margin: 0 0 8px; font-size: 16px; color: var(--ink); }}
+    .timeline-narrative ul {{ margin: 0; padding-left: 20px; }}
+    .timeline-narrative li {{ margin: 5px 0; }}
     .insight-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }}
     .insight-card {{ border: 1px solid var(--line); border-radius: 6px; background: #fff; padding: 12px; }}
     .insight-card strong {{ display: block; font-size: 24px; line-height: 1.15; }}
@@ -1287,6 +1291,15 @@ def write_site(papers, analysis):
     .keyword-card span:not(.tag) {{ display: block; width: 100%; font-size: 13px; line-height: 1.45; }}
     .keyword-filter-status {{ color: var(--accent); font-weight: 700; margin: 10px 0 0; }}
     .result-line {{ display: flex; justify-content: space-between; gap: 12px; align-items: center; margin: 8px 0 14px; color: var(--muted); }}
+    .taxonomy-list {{ display: grid; gap: 12px; }}
+    .taxonomy-section {{ border: 1px solid var(--line); border-radius: 6px; background: #fff; overflow: hidden; }}
+    .taxonomy-section summary {{ cursor: pointer; list-style: none; padding: 13px 14px; display: flex; gap: 12px; align-items: center; justify-content: space-between; }}
+    .taxonomy-section summary::-webkit-details-marker {{ display: none; }}
+    .taxonomy-title {{ min-width: 0; }}
+    .taxonomy-title strong {{ display: block; }}
+    .taxonomy-title span {{ display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }}
+    .taxonomy-count {{ flex: 0 0 auto; color: var(--accent); font-weight: 800; font-size: 13px; }}
+    .taxonomy-body {{ border-top: 1px solid var(--line); padding: 12px; background: #fbfcfe; }}
     .paper-list {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 12px; }}
     .paper-card {{ border: 1px solid var(--line); border-radius: 6px; background: #fff; overflow: hidden; display: grid; grid-template-columns: 116px 1fr; min-height: 160px; }}
     .thumb {{ background: #eef2f7; min-height: 100%; }}
@@ -1305,10 +1318,12 @@ def write_site(papers, analysis):
     .card-links {{ display: flex; gap: 8px; flex-wrap: wrap; }}
     .card-links a {{ color: var(--accent-2); font-size: 12px; text-decoration: none; font-weight: 700; }}
     .empty {{ padding: 36px; border: 1px dashed #a7b2c1; border-radius: 6px; text-align: center; color: var(--muted); }}
+    .load-more {{ margin-top: 12px; border: 1px solid var(--accent); border-radius: 6px; background: #fff; color: var(--accent); font: inherit; font-weight: 800; padding: 8px 10px; cursor: pointer; }}
     @media (max-width: 860px) {{
       .stats {{ grid-template-columns: repeat(2, 1fr); }}
       .control-grid {{ grid-template-columns: 1fr 1fr; }}
       .figures {{ grid-template-columns: 1fr; }}
+      .taxonomy-section summary {{ align-items: flex-start; }}
     }}
     @media (max-width: 560px) {{
       .wrap, main {{ padding: 16px; }}
@@ -1365,6 +1380,7 @@ def write_site(papers, analysis):
         <p id="timelineSummary"></p>
       </div>
       <div id="timelineChart" class="timeline-chart"></div>
+      <div id="timelineNarrative" class="timeline-narrative"></div>
     </section>
     <section class="analysis-section" aria-labelledby="insightsTitle">
       <div class="section-head">
@@ -1386,7 +1402,13 @@ def write_site(papers, analysis):
       <strong id="resultCount"></strong>
       <span id="activeFilters"></span>
     </div>
-    <section id="papers" class="paper-list" aria-live="polite"></section>
+    <section class="analysis-section" aria-labelledby="taxonomyBrowserTitle">
+      <div class="section-head">
+        <h2 id="taxonomyBrowserTitle">Taxonomy Papers</h2>
+        <p>Open or close each taxonomy to inspect the matching papers for the current period and filters.</p>
+      </div>
+      <section id="papers" class="taxonomy-list" aria-live="polite"></section>
+    </section>
   </main>
   <script id="paper-data" type="application/json">{safe_payload}</script>
   <script>
@@ -1407,12 +1429,16 @@ def write_site(papers, analysis):
       filters: document.getElementById('activeFilters'),
       timeline: document.getElementById('timelineChart'),
       timelineSummary: document.getElementById('timelineSummary'),
+      timelineNarrative: document.getElementById('timelineNarrative'),
       insights: document.getElementById('insights'),
       topPapers: document.getElementById('topPapers'),
       keywordStatus: document.getElementById('keywordFilterStatus')
     }};
     els.fromMonth.value = months[0];
     els.toMonth.value = months[months.length - 1];
+    const taxonomyOrder = Array.from(els.category.options).map(option => option.value).filter(value => value !== 'All Taxonomies');
+    const taxonomyBatchSize = 120;
+    let taxonomyRowsByCategory = new Map();
     function textMatch(p, q) {{
       if (!q) return true;
       const haystack = [p.title, p.authors, p.summary, p.category, p.tags.join(' ')].join(' ').toLowerCase();
@@ -1453,6 +1479,17 @@ def write_site(papers, analysis):
     function topEntries(map, limit) {{
       return Array.from(map.entries()).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, limit);
     }}
+    function topCategoryFor(rows) {{
+      const counts = new Map();
+      rows.forEach(p => counts.set(p.category, (counts.get(p.category) || 0) + 1));
+      return topEntries(counts, 1)[0] || ['none', 0];
+    }}
+    function trendLabel(firstCount, lastCount) {{
+      if (!firstCount && !lastCount) return 'has no visible activity in the selected range';
+      if (lastCount > firstCount * 1.25) return 'expands toward the end of the selected range';
+      if (firstCount > lastCount * 1.25) return 'is heavier near the beginning of the selected range';
+      return 'stays relatively steady across the selected range';
+    }}
     function filterPapers() {{
       const q = els.q.value.trim().toLowerCase();
       const category = els.category.value;
@@ -1483,6 +1520,24 @@ def write_site(papers, analysis):
           <span>${{count.toLocaleString()}}</span>
         </div>`;
       }}).join('');
+      const activeMonths = visibleMonths.filter(month => (counts.get(month) || 0) > 0);
+      const firstActive = activeMonths[0] || bounds.from;
+      const lastActive = activeMonths[activeMonths.length - 1] || bounds.to;
+      const peak = visibleMonths.map(month => [month, counts.get(month) || 0]).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0] || [bounds.from, 0];
+      const midpoint = Math.floor(visibleMonths.length / 2);
+      const earlyMonths = new Set(visibleMonths.slice(0, Math.max(1, midpoint)));
+      const recentMonths = new Set(visibleMonths.slice(Math.max(1, midpoint)));
+      const earlyRows = filtered.filter(p => earlyMonths.has(p.month));
+      const recentRows = filtered.filter(p => recentMonths.has(p.month));
+      const earlyCategory = topCategoryFor(earlyRows);
+      const recentCategory = topCategoryFor(recentRows);
+      const firstCount = counts.get(firstActive) || 0;
+      const lastCount = counts.get(lastActive) || 0;
+      els.timelineNarrative.innerHTML = `<h3>How this research stream moved</h3><ul>
+        <li>Activity starts at <strong>${{firstActive}}</strong> with ${{firstCount.toLocaleString()}} matching papers and reaches <strong>${{lastActive}}</strong> with ${{lastCount.toLocaleString()}} papers, so this filtered stream ${{trendLabel(firstCount, lastCount)}}.</li>
+        <li>The busiest month in this view is <strong>${{peak[0]}}</strong> with ${{peak[1].toLocaleString()}} papers, marking the strongest HF Daily Papers visibility signal for the selected filters.</li>
+        <li>Earlier selected months lean toward <strong>${{escapeHtml(earlyCategory[0])}}</strong>; later selected months lean toward <strong>${{escapeHtml(recentCategory[0])}}</strong>. This describes metadata-visible community attention, not a full-PDF scientific judgement.</li>
+      </ul>`;
     }}
     function renderInsights(filtered) {{
       const categoryCounts = new Map();
@@ -1538,6 +1593,71 @@ def write_site(papers, analysis):
         els.toMonth.value = oldFrom;
       }}
     }}
+    function renderTaxonomyBody(details) {{
+      const category = details.dataset.category;
+      const rows = taxonomyRowsByCategory.get(category) || [];
+      const list = details.querySelector('.paper-list');
+      if (!list) return;
+      const visible = Math.min(rows.length, Number(details.dataset.visible || taxonomyBatchSize));
+      const cards = rows.slice(0, visible).map(card).join('');
+      const more = rows.length > visible
+        ? `<button class="load-more" type="button">Show next ${{Math.min(taxonomyBatchSize, rows.length - visible).toLocaleString()}} papers</button>`
+        : '';
+      list.innerHTML = cards || '<div class="empty">No papers match this taxonomy under the current filters.</div>';
+      if (more) {{
+        list.insertAdjacentHTML('afterend', more);
+        details.querySelector('.load-more').addEventListener('click', event => {{
+          event.preventDefault();
+          details.dataset.visible = String(visible + taxonomyBatchSize);
+          details.querySelector('.load-more')?.remove();
+          renderTaxonomyBody(details);
+        }});
+      }}
+    }}
+    function taxonomyMeta(rows) {{
+      const keywordCounts = new Map();
+      let repoCount = 0;
+      rows.forEach(p => {{
+        p.tags.forEach(tag => keywordCounts.set(tag, (keywordCounts.get(tag) || 0) + 1));
+        if (p.repo) repoCount += 1;
+      }});
+      const keywords = topEntries(keywordCounts, 3).map(([tag, count]) => `${{tag}} (${{count.toLocaleString()}})`).join(', ') || 'no keywords';
+      return `Top keywords: ${{keywords}} | GitHub-linked papers: ${{repoCount.toLocaleString()}}`;
+    }}
+    function renderTaxonomies(filtered) {{
+      taxonomyRowsByCategory = new Map();
+      filtered.forEach(p => {{
+        if (!taxonomyRowsByCategory.has(p.category)) taxonomyRowsByCategory.set(p.category, []);
+        taxonomyRowsByCategory.get(p.category).push(p);
+      }});
+      const orderedGroups = taxonomyOrder
+        .filter(category => taxonomyRowsByCategory.has(category))
+        .map(category => [category, taxonomyRowsByCategory.get(category)]);
+      if (!orderedGroups.length) {{
+        els.list.innerHTML = '<div class="empty">No taxonomy contains papers matching the current filters.</div>';
+        return;
+      }}
+      const selectedCategory = els.category.value;
+      els.list.innerHTML = orderedGroups.map(([category, rows]) => {{
+        const shouldOpen = selectedCategory !== 'All Taxonomies' || orderedGroups.length === 1;
+        return `<details class="taxonomy-section" data-category="${{escapeHtml(category)}}"${{shouldOpen ? ' open' : ''}}>
+          <summary>
+            <span class="taxonomy-title"><strong>${{escapeHtml(category)}}</strong><span>${{escapeHtml(taxonomyMeta(rows))}}</span></span>
+            <span class="taxonomy-count">${{rows.length.toLocaleString()}} papers</span>
+          </summary>
+          <div class="taxonomy-body">
+            <div class="paper-list"></div>
+          </div>
+        </details>`;
+      }}).join('');
+      els.list.querySelectorAll('.taxonomy-section').forEach(details => {{
+        details.dataset.visible = String(taxonomyBatchSize);
+        if (details.open) renderTaxonomyBody(details);
+        details.addEventListener('toggle', () => {{
+          if (details.open && !details.querySelector('.paper-card')) renderTaxonomyBody(details);
+        }});
+      }});
+    }}
     function render() {{
       const bounds = periodBounds();
       const category = els.category.value;
@@ -1550,11 +1670,7 @@ def write_site(papers, analysis):
       renderTimeline(filtered);
       renderInsights(filtered);
       syncKeywordCards(filtered);
-      const shown = filtered.slice(0, 500);
-      els.list.innerHTML = shown.length ? shown.map(card).join('') : '<div class="empty">No papers match the current filters.</div>';
-      if (filtered.length > shown.length) {{
-        els.list.insertAdjacentHTML('beforeend', `<div class="empty">Showing first ${{shown.length.toLocaleString()}} of ${{filtered.length.toLocaleString()}} matching papers. Refine search or use the CSV for the complete filtered set.</div>`);
-      }}
+      renderTaxonomies(filtered);
     }}
     function applyPeriodPreset() {{
       const selected = els.periodPreset.selectedOptions[0];
