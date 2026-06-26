@@ -1,0 +1,993 @@
+{
+  "generated_at": "2026-06-26",
+  "format_audit": {
+    "url_counts": {
+      "hf_url": 16240,
+      "arxiv_url": 16240,
+      "pdf_url": 16240,
+      "github_repo": 10262,
+      "project_page": 5488,
+      "thumbnail": 16240
+    },
+    "invalid_count": 0,
+    "invalid": []
+  },
+  "http_sample_audit": {
+    "sample_size": 120,
+    "checked_top_ranked_links_only": true,
+    "ok_count": 119,
+    "failures": [
+      {
+        "id": "2508.18106",
+        "field": "project_page",
+        "url": "https://aicgseceval.tencent.com/home",
+        "status": null,
+        "ok": false,
+        "error": "SSLError: HTTPSConnectionPool(host='aicgseceval.tencent.com', port=443): Max retries exceeded with url: /home (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:997)')))"
+      }
+    ],
+    "checked": [
+      {
+        "id": "2509.08721",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2509.08721",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2509.08721",
+        "field": "github_repo",
+        "url": "https://github.com/gensyn-ai/rl-swarm",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2509.08721",
+        "field": "project_page",
+        "url": "https://blog.gensyn.ai/sapo-efficient-lm-post-training-with-collective-rl/",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2509.08721",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2509.08721",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2402.17764",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2402.17764",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2402.17764",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2402.17764",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.02721",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2604.02721",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.02721",
+        "field": "github_repo",
+        "url": "https://github.com/deepreinforce-ai/codeforces",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.02721",
+        "field": "project_page",
+        "url": "https://deep-reinforce.com/cp.html",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.02721",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2604.02721",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2509.26507",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2509.26507",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2509.26507",
+        "field": "github_repo",
+        "url": "https://github.com/pathwaycom/bdh",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2509.26507",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2509.26507",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2510.04871",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2510.04871",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2510.04871",
+        "field": "github_repo",
+        "url": "https://github.com/SamsungSAILMontreal/TinyRecursiveModels",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2510.04871",
+        "field": "project_page",
+        "url": "https://alexiajm.github.io/2025/09/29/tiny_recursive_models.html#",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2510.04871",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2510.04871",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.20159",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2602.20159",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.20159",
+        "field": "github_repo",
+        "url": "https://github.com/Video-Reason/VBVR-EvalKit",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.20159",
+        "field": "project_page",
+        "url": "https://video-reason.com/",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.20159",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2602.20159",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.02176",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2604.02176",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.02176",
+        "field": "github_repo",
+        "url": "https://github.com/HongyuanLuke/frequencylaw",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.02176",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2604.02176",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2606.09967",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2606.09967",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2606.09967",
+        "field": "github_repo",
+        "url": "https://github.com/amap-cvlab/ABot-Earth-0.5",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2606.09967",
+        "field": "project_page",
+        "url": "https://abot-earth.amap.com/",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2606.09967",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2606.09967",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2501.12948",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2501.12948",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2501.12948",
+        "field": "github_repo",
+        "url": "https://github.com/deepseek-ai/deepseek-r1",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2501.12948",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2501.12948",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2606.18208",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2606.18208",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2606.18208",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2606.18208",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.14473",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2603.14473",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.14473",
+        "field": "github_repo",
+        "url": "https://github.com/tongjingqi/AI-Can-Learn-Scientific-Taste",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.14473",
+        "field": "project_page",
+        "url": "https://tongjingqi.github.io/AI-Can-Learn-Scientific-Taste/",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.14473",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2603.14473",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2605.28816",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2605.28816",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2605.28816",
+        "field": "project_page",
+        "url": "https://research.nvidia.com/labs/sil/projects/gamma-world/",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2605.28816",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2605.28816",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2412.15115",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2412.15115",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2412.15115",
+        "field": "github_repo",
+        "url": "https://github.com/QwenLM/Qwen2.5",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2412.15115",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2412.15115",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.16870",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2603.16870",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.16870",
+        "field": "github_repo",
+        "url": "https://github.com/OpenSenseNova/Demystifying_Video_Reasoning",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.16870",
+        "field": "project_page",
+        "url": "https://www.wruisi.com/demystifying_video_reasoning/",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.16870",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2603.16870",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.26164",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2603.26164",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.26164",
+        "field": "github_repo",
+        "url": "https://github.com/OpenDCAI/DataFlex",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.26164",
+        "field": "project_page",
+        "url": "https://opendcai.github.io/DataFlex-Doc/en/",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.26164",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2603.26164",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2606.05405",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2606.05405",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2606.05405",
+        "field": "github_repo",
+        "url": "https://github.com/rdi-berkeley/agents-last-exam",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2606.05405",
+        "field": "project_page",
+        "url": "https://agents-last-exam.org/",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2606.05405",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2606.05405",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2605.02881",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2605.02881",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2605.02881",
+        "field": "github_repo",
+        "url": "https://github.com/allenai/molmoact2",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2605.02881",
+        "field": "project_page",
+        "url": "https://allenai.org/blog/molmoact2",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2605.02881",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2605.02881",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.19835",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2603.19835",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.19835",
+        "field": "github_repo",
+        "url": "https://github.com/qwenpilot/FIPO",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.19835",
+        "field": "project_page",
+        "url": "https://qwen-pilot.notion.site/fipo",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.19835",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2603.19835",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2508.18106",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2508.18106",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2508.18106",
+        "field": "github_repo",
+        "url": "https://github.com/Tencent/AICGSecEval",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2508.18106",
+        "field": "project_page",
+        "url": "https://aicgseceval.tencent.com/home",
+        "status": null,
+        "ok": false,
+        "error": "SSLError: HTTPSConnectionPool(host='aicgseceval.tencent.com', port=443): Max retries exceeded with url: /home (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:997)')))"
+      },
+      {
+        "id": "2508.18106",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2508.18106",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2505.09388",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2505.09388",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2505.09388",
+        "field": "github_repo",
+        "url": "https://github.com/QwenLM/Qwen3",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2505.09388",
+        "field": "project_page",
+        "url": "https://qwenlm.github.io/blog/qwen3/",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2505.09388",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2505.09388",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.05400",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2602.05400",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.05400",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2602.05400",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.28032",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2603.28032",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.28032",
+        "field": "github_repo",
+        "url": "https://github.com/louiszengCN/CarlaAir",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.28032",
+        "field": "project_page",
+        "url": "https://github.com/louiszengCN/CarlaAir",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.28032",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2603.28032",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.06628",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2604.06628",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.06628",
+        "field": "github_repo",
+        "url": "https://github.com/Nebularaid2000/rethink_sft_generalization",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.06628",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2604.06628",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.00919",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2602.00919",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.00919",
+        "field": "github_repo",
+        "url": "https://github.com/greenvla/GreenVLA",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.00919",
+        "field": "project_page",
+        "url": "https://greenvla.github.io",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.00919",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2602.00919",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2512.24880",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2512.24880",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2512.24880",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2512.24880",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2605.20613",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2605.20613",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2605.20613",
+        "field": "github_repo",
+        "url": "https://github.com/sapientinc/HRM-Text",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2605.20613",
+        "field": "project_page",
+        "url": "https://github.com/sapientinc/HRM-Text",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2605.20613",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2605.20613",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2507.18071",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2507.18071",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2507.18071",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2507.18071",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2504.10479",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2504.10479",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2504.10479",
+        "field": "github_repo",
+        "url": "https://github.com/OpenGVLab/InternVL",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2504.10479",
+        "field": "project_page",
+        "url": "https://internvl.github.io/blog/2025-04-11-InternVL-3.0/",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2504.10479",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2504.10479",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2508.10104",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2508.10104",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2508.10104",
+        "field": "github_repo",
+        "url": "https://github.com/facebookresearch/dinov3",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2508.10104",
+        "field": "project_page",
+        "url": "https://ai.meta.com/blog/dinov3-self-supervised-vision-model/",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2508.10104",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2508.10104",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.16790",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2603.16790",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.16790",
+        "field": "github_repo",
+        "url": "https://github.com/CSJianYang/Industrial-Coder",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.16790",
+        "field": "project_page",
+        "url": "https://huggingface.co/Multilingual-Multimodal-NLP/IndustrialCoder",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2603.16790",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2603.16790",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2501.08313",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2501.08313",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2501.08313",
+        "field": "github_repo",
+        "url": "https://github.com/MiniMax-AI/MiniMax-01",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2501.08313",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2501.08313",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2504.01990",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2504.01990",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2504.01990",
+        "field": "github_repo",
+        "url": "https://github.com/FoundationAgents/awesome-foundation-agents",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2504.01990",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2504.01990",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2511.18538",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2511.18538",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2511.18538",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2511.18538",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.08377",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2604.08377",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.08377",
+        "field": "github_repo",
+        "url": "https://github.com/AMAP-ML/SkillClaw",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2604.08377",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2604.08377",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2501.04519",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2501.04519",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2501.04519",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2501.04519",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.08222",
+        "field": "hf_url",
+        "url": "https://huggingface.co/papers/2602.08222",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.08222",
+        "field": "github_repo",
+        "url": "https://github.com/chenzehao82/Weak-Driven-Learning",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      },
+      {
+        "id": "2602.08222",
+        "field": "arxiv_url",
+        "url": "https://arxiv.org/abs/2602.08222",
+        "status": 200,
+        "ok": true,
+        "error": ""
+      }
+    ]
+  },
+  "scope_note": "All URLs were format-audited. HTTP checks were sampled from top-ranked HF, GitHub, project, and arXiv links to avoid hammering public services."
+}

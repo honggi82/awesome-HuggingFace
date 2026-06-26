@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Curation Method</title>
+  <style>
+    body { font-family: Arial, 'Noto Sans KR', sans-serif; max-width: 1000px; margin: 36px auto; padding: 0 22px; line-height: 1.65; color: #172033; background: #fbfcfe; }
+    h1, h2, h3 { line-height: 1.2; color: #111827; }
+    h1 { border-bottom: 2px solid #d8e0ea; padding-bottom: 12px; }
+    a { color: #0f766e; }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; }
+    th, td { border-bottom: 1px solid #d8e0ea; padding: 9px; text-align: left; vertical-align: top; }
+    th { background: #eef3f8; }
+    code { background: #edf2f7; padding: 2px 5px; border-radius: 4px; }
+    img { max-width: 100%; }
+  </style>
+</head>
+<body>
+<h1 id="curation-method">Curation Method</h1>
+<h2 id="scope">Scope</h2>
+<ul>
+<li>Repository: <code>honggi82/awesome-HuggingFace</code></li>
+<li>Source: Hugging Face Daily Papers monthly pages and public API.</li>
+<li>Period: <code>2023-05</code> through <code>2026-06</code>.</li>
+<li>Included papers: every unique paper returned by the monthly API pages in that period.</li>
+</ul>
+<h2 id="data-source">Data Source</h2>
+<p>The source endpoint is <code>https://huggingface.co/api/daily_papers</code>, using <code>month=YYYY-MM</code>, <code>sort=publishedAt</code>, <code>limit=100</code>, and incrementing <code>p</code> until an empty page is returned. This corresponds to the public monthly pages such as <code>https://huggingface.co/papers/month/2023-05</code>.</p>
+<h2 id="ranking-and-taxonomy">Ranking And Taxonomy</h2>
+<p>No paper is excluded after successful monthly collection and deduplication. Ranking is a browsing order derived from HF upvotes, comments, GitHub stars recorded by HF, and availability of repository or project-page metadata. Taxonomy, keyword tags, key ideas, strengths, and limitations are deterministic metadata adapter outputs.</p>
+<h2 id="github-awesome-skill2-and-paper-curation-provenance">GitHub-Awesome Skill2 And Paper-Curation Provenance</h2>
+<p>This repository follows <code>github-awesome-skill2</code> in metadata-adapter mode. The local <code>jehyunlee/paper-curation</code> checkout at <code>E:\조선대\연구\paper-curation</code> was inspected. Full PDF review via direct <code>paper-curation</code> was not run because the requested full monthly HF archive is large and upstream full review stages require separate explicit approval for paid or metered APIs.</p>
+<h2 id="validation">Validation</h2>
+<p>Generated outputs include CSV/JSON datasets, README, README HTML companion, review Markdown files with HTML companions, a static GitHub Pages site, period analysis JSON, link audit JSON, and provenance JSON.</p>
+</body>
+</html>

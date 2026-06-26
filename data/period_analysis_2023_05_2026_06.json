@@ -1,0 +1,483 @@
+{
+  "generated_at": "2026-06-26",
+  "source": "Hugging Face Daily Papers monthly API",
+  "source_months": [
+    "2023-05",
+    "2023-06",
+    "2023-07",
+    "2023-08",
+    "2023-09",
+    "2023-10",
+    "2023-11",
+    "2023-12",
+    "2024-01",
+    "2024-02",
+    "2024-03",
+    "2024-04",
+    "2024-05",
+    "2024-06",
+    "2024-07",
+    "2024-08",
+    "2024-09",
+    "2024-10",
+    "2024-11",
+    "2024-12",
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06"
+  ],
+  "period": "2023-05 through 2026-06",
+  "total_papers": 16240,
+  "year_counts": {
+    "2023": 1609,
+    "2024": 3421,
+    "2025": 6603,
+    "2026": 4607
+  },
+  "month_counts": {
+    "2023-05": 259,
+    "2023-06": 256,
+    "2023-07": 185,
+    "2023-08": 113,
+    "2023-09": 185,
+    "2023-10": 144,
+    "2023-11": 174,
+    "2023-12": 293,
+    "2024-01": 219,
+    "2024-02": 256,
+    "2024-03": 218,
+    "2024-04": 199,
+    "2024-05": 155,
+    "2024-06": 345,
+    "2024-07": 345,
+    "2024-08": 271,
+    "2024-09": 254,
+    "2024-10": 482,
+    "2024-11": 285,
+    "2024-12": 392,
+    "2025-01": 266,
+    "2025-02": 502,
+    "2025-03": 611,
+    "2025-04": 456,
+    "2025-05": 728,
+    "2025-06": 680,
+    "2025-07": 383,
+    "2025-08": 452,
+    "2025-09": 535,
+    "2025-10": 945,
+    "2025-11": 412,
+    "2025-12": 633,
+    "2026-01": 573,
+    "2026-02": 785,
+    "2026-03": 745,
+    "2026-04": 707,
+    "2026-05": 936,
+    "2026-06": 861
+  },
+  "category_counts": {
+    "All Taxonomies": 16240,
+    "Foundation Models and Large Language Models": 8096,
+    "Generative Media, Diffusion, and World Models": 2039,
+    "Data, Evaluation, and Benchmarks": 1947,
+    "Vision, Multimodal, and Video Understanding": 1235,
+    "Robotics, Embodied AI, and Control": 831,
+    "Efficient Training, Inference, and AI Systems": 747,
+    "Agents, Tool Use, and Autonomous Workflows": 520,
+    "General Machine Learning and Optimization": 394,
+    "Speech, Audio, NLP, and Code Applications": 260,
+    "Responsible, Safe, and Interpretable AI": 126,
+    "Graph, Recommendation, and Structured Learning": 34,
+    "AI for Science, Medicine, and Engineering": 11
+  },
+  "keyword_counts": {
+    "datasets-benchmarks": 12115,
+    "foundation-models": 11788,
+    "vision": 8334,
+    "efficient-ai": 7438,
+    "code-ai": 5756,
+    "generative-media": 5588,
+    "trustworthy-ai": 3718,
+    "agents": 3678,
+    "multimodal": 3621,
+    "robotics": 3196,
+    "audio-speech": 1152,
+    "ai4science": 921,
+    "ai-research": 59
+  },
+  "github_repo_count": 10262,
+  "project_page_count": 5488,
+  "arxiv_url_count": 16240,
+  "top_upvoted": [
+    {
+      "rank": 1,
+      "id": "2509.08721",
+      "title": "Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing",
+      "upvotes": 665,
+      "hf_url": "https://huggingface.co/papers/2509.08721"
+    },
+    {
+      "rank": 3,
+      "id": "2604.02721",
+      "title": "GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning",
+      "upvotes": 637,
+      "hf_url": "https://huggingface.co/papers/2604.02721"
+    },
+    {
+      "rank": 2,
+      "id": "2402.17764",
+      "title": "The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits",
+      "upvotes": 630,
+      "hf_url": "https://huggingface.co/papers/2402.17764"
+    },
+    {
+      "rank": 4,
+      "id": "2509.26507",
+      "title": "The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain",
+      "upvotes": 551,
+      "hf_url": "https://huggingface.co/papers/2509.26507"
+    },
+    {
+      "rank": 6,
+      "id": "2602.20159",
+      "title": "A Very Big Video Reasoning Suite",
+      "upvotes": 526,
+      "hf_url": "https://huggingface.co/papers/2602.20159"
+    },
+    {
+      "rank": 5,
+      "id": "2510.04871",
+      "title": "Less is More: Recursive Reasoning with Tiny Networks",
+      "upvotes": 517,
+      "hf_url": "https://huggingface.co/papers/2510.04871"
+    },
+    {
+      "rank": 7,
+      "id": "2604.02176",
+      "title": "Adam's Law: Textual Frequency Law on Large Language Models",
+      "upvotes": 509,
+      "hf_url": "https://huggingface.co/papers/2604.02176"
+    },
+    {
+      "rank": 8,
+      "id": "2606.09967",
+      "title": "ABot-Earth 0.5: Generative 3D Earth Model",
+      "upvotes": 482,
+      "hf_url": "https://huggingface.co/papers/2606.09967"
+    },
+    {
+      "rank": 10,
+      "id": "2606.18208",
+      "title": "Looped World Models",
+      "upvotes": 463,
+      "hf_url": "https://huggingface.co/papers/2606.18208"
+    },
+    {
+      "rank": 9,
+      "id": "2501.12948",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "upvotes": 454,
+      "hf_url": "https://huggingface.co/papers/2501.12948"
+    },
+    {
+      "rank": 11,
+      "id": "2603.14473",
+      "title": "AI Can Learn Scientific Taste",
+      "upvotes": 431,
+      "hf_url": "https://huggingface.co/papers/2603.14473"
+    },
+    {
+      "rank": 12,
+      "id": "2605.28816",
+      "title": "Gamma-World: Generative Multi-Agent World Modeling Beyond Two Players",
+      "upvotes": 431,
+      "hf_url": "https://huggingface.co/papers/2605.28816"
+    },
+    {
+      "rank": 13,
+      "id": "2412.15115",
+      "title": "Qwen2.5 Technical Report",
+      "upvotes": 380,
+      "hf_url": "https://huggingface.co/papers/2412.15115"
+    },
+    {
+      "rank": 14,
+      "id": "2603.16870",
+      "title": "Demystifing Video Reasoning",
+      "upvotes": 373,
+      "hf_url": "https://huggingface.co/papers/2603.16870"
+    },
+    {
+      "rank": 15,
+      "id": "2603.26164",
+      "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
+      "upvotes": 365,
+      "hf_url": "https://huggingface.co/papers/2603.26164"
+    },
+    {
+      "rank": 16,
+      "id": "2606.05405",
+      "title": "Agents' Last Exam",
+      "upvotes": 364,
+      "hf_url": "https://huggingface.co/papers/2606.05405"
+    },
+    {
+      "rank": 21,
+      "id": "2602.05400",
+      "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
+      "upvotes": 356,
+      "hf_url": "https://huggingface.co/papers/2602.05400"
+    },
+    {
+      "rank": 17,
+      "id": "2605.02881",
+      "title": "MolmoAct2: Action Reasoning Models for Real-world Deployment",
+      "upvotes": 355,
+      "hf_url": "https://huggingface.co/papers/2605.02881"
+    },
+    {
+      "rank": 18,
+      "id": "2603.19835",
+      "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
+      "upvotes": 352,
+      "hf_url": "https://huggingface.co/papers/2603.19835"
+    },
+    {
+      "rank": 19,
+      "id": "2508.18106",
+      "title": "A.S.E: A Repository-Level Benchmark for Evaluating Security in AI-Generated Code",
+      "upvotes": 350,
+      "hf_url": "https://huggingface.co/papers/2508.18106"
+    },
+    {
+      "rank": 22,
+      "id": "2603.28032",
+      "title": "CARLA-Air: Fly Drones Inside a CARLA World -- A Unified Infrastructure for Air-Ground Embodied Intelligence",
+      "upvotes": 344,
+      "hf_url": "https://huggingface.co/papers/2603.28032"
+    },
+    {
+      "rank": 20,
+      "id": "2505.09388",
+      "title": "Qwen3 Technical Report",
+      "upvotes": 343,
+      "hf_url": "https://huggingface.co/papers/2505.09388"
+    },
+    {
+      "rank": 23,
+      "id": "2604.06628",
+      "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
+      "upvotes": 328,
+      "hf_url": "https://huggingface.co/papers/2604.06628"
+    },
+    {
+      "rank": 25,
+      "id": "2512.24880",
+      "title": "mHC: Manifold-Constrained Hyper-Connections",
+      "upvotes": 328,
+      "hf_url": "https://huggingface.co/papers/2512.24880"
+    },
+    {
+      "rank": 24,
+      "id": "2602.00919",
+      "title": "Green-VLA: Staged Vision-Language-Action Model for Generalist Robots",
+      "upvotes": 325,
+      "hf_url": "https://huggingface.co/papers/2602.00919"
+    }
+  ],
+  "top_github_stars": [
+    {
+      "rank": 9,
+      "id": "2501.12948",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "github_stars": 91981,
+      "github_repo": "https://github.com/deepseek-ai/deepseek-r1"
+    },
+    {
+      "rank": 1151,
+      "id": "2309.06180",
+      "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+      "github_stars": 84334,
+      "github_repo": "https://github.com/vllm-project/vllm"
+    },
+    {
+      "rank": 3655,
+      "id": "2606.03264",
+      "title": "PaddleOCR-VL-1.6: Expanding the Frontier of Document Parsing with Under-Optimized Region Refinement and Progressive Post-Training",
+      "github_stars": 83843,
+      "github_repo": "https://github.com/PaddlePaddle/PaddleOCR"
+    },
+    {
+      "rank": 674,
+      "id": "2407.16741",
+      "title": "OpenDevin: An Open Platform for AI Software Developers as Generalist Agents",
+      "github_stars": 78358,
+      "github_repo": "https://github.com/opendevin/opendevin"
+    },
+    {
+      "rank": 8814,
+      "id": "2307.03166",
+      "title": "VideoGLUE: Video General Understanding Evaluation of Foundation Models",
+      "github_stars": 77669,
+      "github_repo": "https://github.com/tensorflow/models"
+    },
+    {
+      "rank": 3921,
+      "id": "2311.04931",
+      "title": "GPT4All: An Ecosystem of Open Source Compressed Language Models",
+      "github_stars": 77371,
+      "github_repo": "https://github.com/nomic-ai/gpt4all"
+    },
+    {
+      "rank": 128,
+      "id": "2403.13372",
+      "title": "LlamaFactory: Unified Efficient Fine-Tuning of 100+ Language Models",
+      "github_stars": 72501,
+      "github_repo": "https://github.com/hiyouga/LLaMA-Factory"
+    },
+    {
+      "rank": 152,
+      "id": "2509.22186",
+      "title": "MinerU2.5: A Decoupled Vision-Language Model for Efficient High-Resolution Document Parsing",
+      "github_stars": 69732,
+      "github_repo": "https://github.com/opendatalab/MinerU"
+    },
+    {
+      "rank": 158,
+      "id": "2503.11576",
+      "title": "SmolDocling: An ultra-compact vision-language model for end-to-end multi-modal document conversion",
+      "github_stars": 62153,
+      "github_repo": "https://github.com/docling-project/docling"
+    },
+    {
+      "rank": 52,
+      "id": "2307.09288",
+      "title": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+      "github_stars": 59471,
+      "github_repo": "https://github.com/facebookresearch/llama"
+    },
+    {
+      "rank": 1047,
+      "id": "2504.19413",
+      "title": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+      "github_stars": 59456,
+      "github_repo": "https://github.com/mem0ai/mem0"
+    },
+    {
+      "rank": 5132,
+      "id": "2606.03748",
+      "title": "Ultralytics YOLO26: Unified Real-Time End-to-End Vision Models",
+      "github_stars": 58824,
+      "github_repo": "https://github.com/ultralytics/ultralytics"
+    },
+    {
+      "rank": 148,
+      "id": "2508.19205",
+      "title": "VibeVoice Technical Report",
+      "github_stars": 49629,
+      "github_repo": "https://github.com/microsoft/VibeVoice"
+    },
+    {
+      "rank": 1705,
+      "id": "2308.01320",
+      "title": "DeepSpeed-Chat: Easy, Fast and Affordable RLHF Training of ChatGPT-like Models at All Scales",
+      "github_stars": 42580,
+      "github_repo": "https://github.com/microsoft/DeepSpeed"
+    },
+    {
+      "rank": 2451,
+      "id": "2406.12793",
+      "title": "ChatGLM: A Family of Large Language Models from GLM-130B to GLM-4 All Tools",
+      "github_stars": 41036,
+      "github_repo": "https://github.com/thudm/chatglm-6b"
+    },
+    {
+      "rank": 1891,
+      "id": "2306.05685",
+      "title": "Judging LLM-as-a-judge with MT-Bench and Chatbot Arena",
+      "github_stars": 39487,
+      "github_repo": "https://github.com/lm-sys/fastchat"
+    },
+    {
+      "rank": 4072,
+      "id": "2311.07911",
+      "title": "Instruction-Following Evaluation for Large Language Models",
+      "github_stars": 38237,
+      "github_repo": "https://github.com/google-research/google-research"
+    },
+    {
+      "rank": 1149,
+      "id": "2305.10973",
+      "title": "Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold",
+      "github_stars": 35814,
+      "github_repo": "https://github.com/XingangPan/DragGAN"
+    },
+    {
+      "rank": 2182,
+      "id": "2603.08823",
+      "title": "Fish Audio S2 Technical Report",
+      "github_stars": 30976,
+      "github_repo": "https://github.com/fishaudio/fish-speech"
+    },
+    {
+      "rank": 4279,
+      "id": "2503.09642",
+      "title": "Open-Sora 2.0: Training a Commercial-Level Video Generation Model in $200k",
+      "github_stars": 29137,
+      "github_repo": "https://github.com/hpcaitech/open-sora"
+    },
+    {
+      "rank": 13,
+      "id": "2412.15115",
+      "title": "Qwen2.5 Technical Report",
+      "github_stars": 27333,
+      "github_repo": "https://github.com/QwenLM/Qwen2.5"
+    },
+    {
+      "rank": 20,
+      "id": "2505.09388",
+      "title": "Qwen3 Technical Report",
+      "github_stars": 27333,
+      "github_repo": "https://github.com/QwenLM/Qwen3"
+    },
+    {
+      "rank": 149,
+      "id": "2407.10671",
+      "title": "Qwen2 Technical Report",
+      "github_stars": 27333,
+      "github_repo": "https://github.com/qwenlm/qwen2"
+    },
+    {
+      "rank": 553,
+      "id": "2307.01952",
+      "title": "SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis",
+      "github_stars": 27199,
+      "github_repo": "https://github.com/stability-ai/generative-models"
+    },
+    {
+      "rank": 998,
+      "id": "2508.16279",
+      "title": "AgentScope 1.0: A Developer-Centric Framework for Building Agentic Applications",
+      "github_stars": 27197,
+      "github_repo": "https://github.com/agentscope-ai/agentscope"
+    }
+  ],
+  "notes": [
+    "This is a metadata-driven curation of Hugging Face Daily Papers monthly pages, not a full-PDF systematic review.",
+    "2026-06 is interpreted as the state available when generated on 2026-06-26."
+  ]
+}

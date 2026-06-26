@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hugging Face Daily Papers Review</title>
+  <style>
+    body { font-family: Arial, 'Noto Sans KR', sans-serif; max-width: 1000px; margin: 36px auto; padding: 0 22px; line-height: 1.65; color: #172033; background: #fbfcfe; }
+    h1, h2, h3 { line-height: 1.2; color: #111827; }
+    h1 { border-bottom: 2px solid #d8e0ea; padding-bottom: 12px; }
+    a { color: #0f766e; }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; }
+    th, td { border-bottom: 1px solid #d8e0ea; padding: 9px; text-align: left; vertical-align: top; }
+    th { background: #eef3f8; }
+    code { background: #edf2f7; padding: 2px 5px; border-radius: 4px; }
+    img { max-width: 100%; }
+  </style>
+</head>
+<body>
+<h1 id="hugging-face-daily-papers-review-2023-05-through-2026-06">Hugging Face Daily Papers Review (2023-05 through 2026-06)</h1>
+<h2 id="abstract">Abstract</h2>
+<p>This review draft summarizes a metadata-driven archive of 16,240 unique Hugging Face Daily Papers submitted from 2023-05 through 2026-06. The archive keeps every monthly paper surfaced through the public HF Daily Papers API, then organizes the corpus into taxonomy-first collections with deterministic keyword tags, key ideas, strengths, and limitations.</p>
+<h2 id="method">Method</h2>
+<p>Each monthly page was fetched through <code>https://huggingface.co/api/daily_papers?month=YYYY-MM</code>, paginated until empty, deduplicated by HF paper/arXiv id, and enriched only from public metadata. No paid API, paid LLM, paid translation, or paid compute was used.</p>
+<h2 id="taxonomy-counts">Taxonomy Counts</h2>
+<ul>
+<li>Foundation Models and Large Language Models: 8,096 papers</li>
+<li>Generative Media, Diffusion, and World Models: 2,039 papers</li>
+<li>Data, Evaluation, and Benchmarks: 1,947 papers</li>
+<li>Vision, Multimodal, and Video Understanding: 1,235 papers</li>
+<li>Robotics, Embodied AI, and Control: 831 papers</li>
+<li>Efficient Training, Inference, and AI Systems: 747 papers</li>
+<li>Agents, Tool Use, and Autonomous Workflows: 520 papers</li>
+<li>General Machine Learning and Optimization: 394 papers</li>
+<li>Speech, Audio, NLP, and Code Applications: 260 papers</li>
+<li>Responsible, Safe, and Interpretable AI: 126 papers</li>
+<li>Graph, Recommendation, and Structured Learning: 34 papers</li>
+<li>AI for Science, Medicine, and Engineering: 11 papers</li>
+</ul>
+<h2 id="highly-visible-papers">Highly Visible Papers</h2>
+<ul>
+<li><a href="https://huggingface.co/papers/2509.08721">Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing</a> (2025-09, 665 upvotes): Swarm sAmpling Policy Optimization (SAPO) is a decentralized and asynchronous RL algorithm that enhances post-training language models without supervised fine-tuning, achieving significant reward gains and scalability across diverse hardware.</li>
+<li><a href="https://huggingface.co/papers/2604.02721">GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning</a> (2026-04, 637 upvotes): GrandCode is a multi-agent reinforcement learning system that outperforms human competitors in competitive programming challenges by orchestrating specialized agent modules and employing novel reward policy optimization techniques.</li>
+<li><a href="https://huggingface.co/papers/2402.17764">The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits</a> (2024-02, 630 upvotes): A 1-bit LLM variant, BitNet b1.58, achieves comparable performance to full-precision models with reduced computational costs and introduces new scaling laws and hardware design opportunities.</li>
+<li><a href="https://huggingface.co/papers/2509.26507">The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain</a> (2025-10, 551 upvotes): BDH, a biologically inspired Large Language Model, combines scale-free network architecture with Hebbian learning to achieve Transformer-like performance while maintaining interpretability.</li>
+<li><a href="https://huggingface.co/papers/2602.20159">A Very Big Video Reasoning Suite</a> (2026-02, 526 upvotes): A large-scale video reasoning dataset and benchmark are introduced to study video intelligence capabilities beyond visual quality, enabling systematic analysis of spatiotemporal reasoning and generalization across diverse tasks.</li>
+<li><a href="https://huggingface.co/papers/2510.04871">Less is More: Recursive Reasoning with Tiny Networks</a> (2025-10, 517 upvotes): Tiny Recursive Model (TRM) achieves high generalization on complex puzzle tasks using a small, two-layer network with minimal parameters, outperforming larger language models.</li>
+<li><a href="https://huggingface.co/papers/2604.02176">Adam's Law: Textual Frequency Law on Large Language Models</a> (2026-04, 509 upvotes): A novel framework for improving large language model performance through textual frequency analysis, including laws, distillation, and curriculum training approaches.</li>
+<li><a href="https://huggingface.co/papers/2606.09967">ABot-Earth 0.5: Generative 3D Earth Model</a> (2026-06, 482 upvotes): ABot-Earth 0.5 generates realistic 3D environments from satellite imagery using 3D Gaussian Splatting representation, enabling fast synthesis and real-time visualization for Embodied AI applications.</li>
+<li><a href="https://huggingface.co/papers/2606.18208">Looped World Models</a> (2026-06, 463 upvotes): Looped World Models introduce iterative latent state refinement through shared transformer blocks, achieving 100x parameter efficiency while adapting computational depth to prediction complexity.</li>
+<li><a href="https://huggingface.co/papers/2501.12948">DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning</a> (2025-01, 454 upvotes): DeepSeek-R1-Zero and DeepSeek-R1 utilize reinforcement learning and multi-stage training to enhance reasoning capabilities, with DeepSeek-R1 achieving performance comparable to OpenAI-o1-1217.</li>
+<li><a href="https://huggingface.co/papers/2603.14473">AI Can Learn Scientific Taste</a> (2026-03, 431 upvotes): Great scientists have strong judgement and foresight, closely tied to what we call scientific taste.</li>
+<li><a href="https://huggingface.co/papers/2605.28816">Gamma-World: Generative Multi-Agent World Modeling Beyond Two Players</a> (2026-05, 431 upvotes): A generative multi-agent world model is presented that uses simplex rotary agent encoding and sparse hub attention to enable scalable, permutation-symmetric interaction between multiple agents in interactive video generation.</li>
+</ul>
+<h2 id="interpretation">Interpretation</h2>
+<p>The corpus shows how HF Daily Papers became a practical signal layer for open AI research: papers with code, project pages, demos, model releases, and benchmark artifacts are easier to discover and reuse. The strongest metadata signals cluster around foundation models, agents, multimodal models, generative media, efficient training/inference, and evaluation resources.</p>
+<h2 id="limitations">Limitations</h2>
+<p>This is not a full-PDF systematic review. HF upvotes, comments, and GitHub stars measure community visibility, not scientific validity. Full methodological claims require reading the papers, code, datasets, and evaluation details directly.</p>
+</body>
+</html>
