@@ -1535,6 +1535,14 @@ def write_site(papers, analysis):
     )
     color_map = {tag: color for tag, _desc, color, _needles in keyword_items}
     keyword_descriptions = {tag: desc for tag, desc, _color, _needles in keyword_items}
+    category_meta = {
+        item["name"]: {
+            "color": item["color"],
+            "trends": item.get("trends", []),
+            "limitations": item.get("limitations", []),
+        }
+        for item in CATEGORY_RULES
+    }
     stat_cards = "\n".join(
         [
             f'<div><strong>{len(papers):,}</strong><span>Papers</span></div>',
@@ -1546,6 +1554,7 @@ def write_site(papers, analysis):
     months_json = json.dumps(MONTHS)
     colors_json = json.dumps(color_map, ensure_ascii=False)
     keyword_descriptions_json = json.dumps(keyword_descriptions, ensure_ascii=False)
+    category_meta_json = json.dumps(category_meta, ensure_ascii=False)
     period_insights_payload = json.dumps(analysis["periodInsights"], ensure_ascii=False, separators=(",", ":"))
     safe_period_insights = period_insights_payload.replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e")
 
@@ -1652,21 +1661,32 @@ def write_site(papers, analysis):
     .keyword-card span:not(.tag) {{ display: block; width: 100%; font-size: 13px; line-height: 1.45; }}
     .keyword-filter-status {{ color: var(--accent); font-weight: 700; margin: 10px 0 0; }}
     .result-line {{ display: flex; justify-content: space-between; gap: 12px; align-items: center; margin: 8px 0 14px; color: var(--muted); }}
-    .taxonomy-list {{ display: grid; gap: 12px; }}
-    .taxonomy-section {{ border: 1px solid var(--line); border-radius: 6px; background: #fff; overflow: hidden; }}
-    .taxonomy-section summary {{ cursor: pointer; list-style: none; padding: 13px 14px; display: flex; gap: 12px; align-items: center; justify-content: space-between; }}
+    .taxonomy-list {{ display: grid; gap: 16px; }}
+    .taxonomy-total-summary {{ color: var(--muted); margin: -2px 0 12px; }}
+    .taxonomy-total-summary strong {{ color: var(--ink); }}
+    .taxonomy-section[hidden], .paper-card[hidden] {{ display: none !important; }}
+    .taxonomy-section {{ margin-top: 0; }}
+    .taxonomy-section > details {{ background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }}
+    .taxonomy-section summary {{ cursor: pointer; list-style: none; padding: 14px 18px; display: grid; grid-template-columns: 64px minmax(260px, 1fr) repeat(3, minmax(112px, auto)); gap: 12px; align-items: center; font-weight: 700; }}
     .taxonomy-section summary::-webkit-details-marker {{ display: none; }}
-    .taxonomy-title {{ min-width: 0; }}
-    .taxonomy-title strong {{ display: block; }}
-    .taxonomy-title span {{ display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }}
-    .taxonomy-count {{ flex: 0 0 auto; color: var(--accent); font-weight: 800; font-size: 13px; }}
-    .taxonomy-body {{ border-top: 1px solid var(--line); padding: 12px; background: #fbfcfe; }}
-    .paper-list {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 12px; }}
-    .paper-card {{ border: 1px solid var(--line); border-radius: 6px; background: #fff; overflow: hidden; display: grid; grid-template-columns: 116px 1fr; min-height: 160px; }}
-    .thumb {{ background: #eef2f7; min-height: 100%; }}
-    .thumb img {{ width: 100%; height: 100%; object-fit: cover; display: block; }}
-    .thumb .fallback {{ height: 100%; min-height: 160px; display: grid; place-items: center; color: #64748b; font-weight: 700; padding: 10px; text-align: center; }}
-    .paper-body {{ padding: 12px; min-width: 0; }}
+    .summary-thumb, .all-taxonomy-thumb {{ width: 56px; height: 40px; border: 1px solid var(--line); border-radius: 6px; background: var(--thumb-color, #eef5f3); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; }}
+    .all-taxonomy-thumb {{ background: var(--accent); }}
+    .summary-title {{ color: var(--accent); min-width: 0; }}
+    .category-count, .category-years, .category-citations {{ color: var(--muted); font-size: 13px; white-space: nowrap; }}
+    .category-count {{ color: var(--accent); font-weight: 800; }}
+    .section-intro {{ padding: 0 18px 14px; border-top: 1px solid var(--line); }}
+    .section-intro p {{ margin: 10px 0; color: var(--muted); }}
+    .section-intro strong {{ color: var(--ink); }}
+    .category-insight-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 12px; }}
+    .category-insight-box {{ padding: 12px 14px; background: #f4faf8; border: 1px solid #cfe7df; border-radius: 8px; }}
+    .category-insight-box.limitation-box {{ background: #fff8f1; border-color: #ead7c1; }}
+    .category-insight-box strong {{ display: block; margin-bottom: 6px; }}
+    .category-insight-box ul {{ margin: 0; padding-left: 20px; color: var(--muted); line-height: 1.55; }}
+    .taxonomy-body {{ border-top: 1px solid var(--line); background: #f9fbfd; }}
+    .paper-list {{ display: grid; gap: 12px; padding: 16px; background: #f9fbfd; }}
+    .paper-card {{ border: 1px solid var(--line); border-radius: 8px; background: #fff; overflow: hidden; display: grid; grid-template-columns: 58px 1fr; gap: 14px; padding: 14px; }}
+    .paper-rank {{ width: 44px; height: 44px; display: inline-grid; place-items: center; border-radius: 8px; background: var(--soft); color: var(--accent); font-weight: 900; }}
+    .paper-body {{ min-width: 0; }}
     .paper-meta {{ color: var(--muted); font-size: 12px; display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }}
     .paper-card h3 {{ margin: 0 0 5px; font-size: 16px; line-height: 1.25; letter-spacing: 0; }}
     .paper-card h3 a {{ color: var(--ink); text-decoration: none; }}
@@ -1684,13 +1704,13 @@ def write_site(papers, analysis):
       .stats {{ grid-template-columns: repeat(2, 1fr); }}
       .control-grid {{ grid-template-columns: 1fr 1fr; }}
       .figures {{ grid-template-columns: 1fr; }}
-      .taxonomy-section summary {{ align-items: flex-start; }}
+      .taxonomy-section summary {{ grid-template-columns: 56px 1fr; }}
+      .category-count, .category-years, .category-citations {{ white-space: normal; }}
     }}
     @media (max-width: 560px) {{
       .wrap, main {{ padding: 16px; }}
       .stats, .control-grid, .paper-list {{ grid-template-columns: 1fr; }}
       .paper-card {{ grid-template-columns: 1fr; }}
-      .thumb .fallback {{ min-height: 90px; }}
     }}
   </style>
 </head>
@@ -1770,6 +1790,7 @@ def write_site(papers, analysis):
         <h2 id="taxonomyBrowserTitle">Taxonomy Papers</h2>
         <p id="taxonomyLead">Open or close each taxonomy to inspect the matching papers for the current period and filters.</p>
       </div>
+      <p id="taxonomyTotalSummary" class="taxonomy-total-summary"></p>
       <section id="papers" class="taxonomy-list" aria-live="polite"></section>
     </section>
   </main>
@@ -1781,6 +1802,7 @@ def write_site(papers, analysis):
     const colors = {colors_json};
     const months = {months_json};
     const keywordDescriptions = {keyword_descriptions_json};
+    const categoryMeta = {category_meta_json};
     const els = {{
       q: document.getElementById('q'),
       category: document.getElementById('category'),
@@ -1810,6 +1832,7 @@ def write_site(papers, analysis):
       keywordsLead: document.getElementById('keywordsLead'),
       taxonomyBrowserTitle: document.getElementById('taxonomyBrowserTitle'),
       taxonomyLead: document.getElementById('taxonomyLead'),
+      taxonomyTotalSummary: document.getElementById('taxonomyTotalSummary'),
       keywordStatus: document.getElementById('keywordFilterStatus')
     }};
     const uiCopy = {{
@@ -1827,6 +1850,14 @@ def write_site(papers, analysis):
         keywordsLead: "Click a keyword card or use the keyword selector to inspect papers grouped by the collection's keyword convention.",
         taxonomyBrowserTitle: "Taxonomy Papers",
         taxonomyLead: "Open or close each taxonomy to inspect the matching papers for the current period and filters.",
+        totalSelected: "Total selected papers",
+        categoryCount: "Categories",
+        categories: "categories",
+        representativeEmphasis: "Representative emphasis",
+        topRankedPaper: "Top-ranked paper",
+        categoryOverview: "Category Overview",
+        limitationsTitle: "Limitations",
+        hfSignal: "HF upvotes",
         filteredMovementTitle: "Filtered stream movement",
         activityNote: "Activity starts at {{firstActive}} with {{firstCount}} matching papers and reaches {{lastActive}} with {{lastCount}} papers, so this filtered stream {{trend}}.",
         busiestNote: "The busiest month in this view is {{peakMonth}} with {{peakCount}} papers, marking the strongest HF Daily Papers visibility signal for the selected filters.",
@@ -1879,6 +1910,14 @@ def write_site(papers, analysis):
         keywordsLead: "키워드 카드를 클릭하거나 keyword selector를 사용해 이 컬렉션의 keyword convention별 논문을 확인할 수 있습니다.",
         taxonomyBrowserTitle: "Taxonomy별 논문",
         taxonomyLead: "각 taxonomy를 열거나 닫아 현재 기간과 필터에 맞는 논문을 확인하세요.",
+        totalSelected: "선택 논문 합계",
+        categoryCount: "카테고리",
+        categories: "개 카테고리",
+        representativeEmphasis: "대표 초점",
+        topRankedPaper: "상위 논문",
+        categoryOverview: "카테고리 개요",
+        limitationsTitle: "한계",
+        hfSignal: "HF upvote",
         filteredMovementTitle: "필터된 흐름 변화",
         activityNote: "활동은 {{firstActive}}에 일치 논문 {{firstCount}}편으로 시작해 {{lastActive}}에 {{lastCount}}편에 도달하므로, 이 필터된 흐름은 {{trend}}.",
         busiestNote: "이 보기에서 가장 바쁜 달은 {{peakMonth}}이며 논문 {{peakCount}}편으로, 선택 필터의 가장 강한 HF Daily Papers 가시성 신호입니다.",
@@ -1931,6 +1970,14 @@ def write_site(papers, analysis):
         keywordsLead: "点击关键词卡片或使用关键词选择器，按本集合的 keyword convention 查看论文。",
         taxonomyBrowserTitle: "Taxonomy 论文",
         taxonomyLead: "展开或收起每个 taxonomy，查看当前时期和筛选条件下的匹配论文。",
+        totalSelected: "入选论文总数",
+        categoryCount: "类别",
+        categories: "个类别",
+        representativeEmphasis: "代表性重点",
+        topRankedPaper: "排名最高论文",
+        categoryOverview: "类别概览",
+        limitationsTitle: "局限性",
+        hfSignal: "HF upvotes",
         filteredMovementTitle: "筛选流变化",
         activityNote: "活动从 {{firstActive}} 的 {{firstCount}} 篇匹配论文开始，到 {{lastActive}} 达到 {{lastCount}} 篇，因此此筛选流{{trend}}。",
         busiestNote: "此视图中最活跃的月份是 {{peakMonth}}，共有 {{peakCount}} 篇论文，是所选筛选条件下最强的 HF Daily Papers 可见度信号。",
@@ -1983,6 +2030,14 @@ def write_site(papers, analysis):
         keywordsLead: "キーワードカードをクリックするか keyword selector を使って、このコレクションの keyword convention 別に論文を確認できます。",
         taxonomyBrowserTitle: "Taxonomy 別論文",
         taxonomyLead: "各 taxonomy を開閉して、現在の期間とフィルタに一致する論文を確認してください。",
+        totalSelected: "選択論文合計",
+        categoryCount: "カテゴリ",
+        categories: "カテゴリ",
+        representativeEmphasis: "代表的な焦点",
+        topRankedPaper: "上位論文",
+        categoryOverview: "カテゴリ概要",
+        limitationsTitle: "限界",
+        hfSignal: "HF upvotes",
         filteredMovementTitle: "フィルタ後の流れ",
         activityNote: "活動は {{firstActive}} の一致論文 {{firstCount}} 本から始まり、{{lastActive}} で {{lastCount}} 本に達するため、このフィルタ後の流れは{{trend}}。",
         busiestNote: "このビューで最も活発な月は {{peakMonth}} で {{peakCount}} 本の論文があり、選択フィルタで最も強い HF Daily Papers 可視性シグナルです。",
@@ -2071,13 +2126,12 @@ def write_site(papers, analysis):
     }}
     function card(p) {{
       const chips = p.tags.map(tag => `<span class="chip" style="background:${{colors[tag] || '#64748b'}}">${{tag}}</span>`).join('');
-      const thumb = p.thumb ? `<img src="${{p.thumb}}" alt="">` : `<div class="fallback">${{p.category.split(',')[0]}}</div>`;
       const signals = `${{p.upvotes}} ${{t('hfUpvotes')}} | ${{p.comments}} ${{t('hfComments')}}${{p.stars ? ' | ' + p.stars.toLocaleString() + ' stars' : ''}}`;
       const links = [link('HF', p.hf), link('arXiv', p.arxiv), link('Code', p.repo), link('Project', p.project)].filter(Boolean).join('');
       return `<article class="paper-card">
-        <div class="thumb">${{thumb}}</div>
+        <div class="paper-rank">#${{p.rank}}</div>
         <div class="paper-body">
-          <div class="paper-meta"><span>#${{p.rank}}</span><span>${{p.month}}</span><span>${{p.category}}</span></div>
+          <div class="paper-meta"><span>${{p.month}}</span><span>${{p.category}}</span></div>
           <h3><a href="${{p.hf}}" target="_blank" rel="noopener">${{escapeHtml(p.title)}}</a></h3>
           <p class="authors">${{escapeHtml(p.authors || t('unknownAuthors'))}}</p>
           <div class="chips">${{chips}}</div>
@@ -2259,12 +2313,13 @@ def write_site(papers, analysis):
         els.toMonth.value = oldFrom;
       }}
     }}
-    function renderTaxonomyBody(details) {{
-      const category = details.dataset.category;
+    function renderTaxonomyBody(section) {{
+      const category = section.dataset.category;
       const rows = taxonomyRowsByCategory.get(category) || [];
-      const list = details.querySelector('.paper-list');
+      const list = section.querySelector('.paper-list');
       if (!list) return;
-      const visible = Math.min(rows.length, Number(details.dataset.visible || taxonomyBatchSize));
+      section.querySelector('.load-more')?.remove();
+      const visible = Math.min(rows.length, Number(section.dataset.visible || taxonomyBatchSize));
       const cards = rows.slice(0, visible).map(card).join('');
       const more = rows.length > visible
         ? `<button class="load-more" type="button">${{escapeHtml(formatText(t('showNext'), {{count: Math.min(taxonomyBatchSize, rows.length - visible).toLocaleString()}}))}}</button>`
@@ -2272,23 +2327,76 @@ def write_site(papers, analysis):
       list.innerHTML = cards || `<div class="empty">${{escapeHtml(t('emptyTaxonomy'))}}</div>`;
       if (more) {{
         list.insertAdjacentHTML('afterend', more);
-        details.querySelector('.load-more').addEventListener('click', event => {{
+        section.querySelector('.load-more').addEventListener('click', event => {{
           event.preventDefault();
-          details.dataset.visible = String(visible + taxonomyBatchSize);
-          details.querySelector('.load-more')?.remove();
-          renderTaxonomyBody(details);
+          section.dataset.visible = String(visible + taxonomyBatchSize);
+          section.querySelector('.load-more')?.remove();
+          renderTaxonomyBody(section);
         }});
       }}
     }}
-    function taxonomyMeta(rows) {{
+    function monthSpan(rows) {{
+      const rowMonths = rows.map(p => p.month).filter(Boolean).sort();
+      if (!rowMonths.length) return '-';
+      const first = rowMonths[0];
+      const last = rowMonths[rowMonths.length - 1];
+      return first === last ? first : `${{first}}-${{last}}`;
+    }}
+    function totalUpvotes(rows) {{
+      return rows.reduce((sum, p) => sum + Number(p.upvotes || 0), 0);
+    }}
+    function topPaper(rows) {{
+      return [...rows].sort((a, b) => (b.upvotes - a.upvotes) || (b.stars - a.stars) || (a.rank - b.rank))[0] || null;
+    }}
+    function categoryInitials(category) {{
+      if (category === 'All Taxonomies') return 'All';
+      return category.split(/[\s,]+/).filter(Boolean).slice(0, 2).map(word => word[0]).join('').toUpperCase();
+    }}
+    function categoryKeywordText(rows, limit = 4) {{
       const keywordCounts = new Map();
-      let repoCount = 0;
-      rows.forEach(p => {{
-        p.tags.forEach(tag => keywordCounts.set(tag, (keywordCounts.get(tag) || 0) + 1));
-        if (p.repo) repoCount += 1;
-      }});
-      const keywords = topEntries(keywordCounts, 3).map(([tag, count]) => `${{tag}} (${{count.toLocaleString()}})`).join(', ') || t('noKeywords');
-      return `${{t('topKeywords')}}: ${{keywords}} | ${{t('githubLinkedPapers')}}: ${{repoCount.toLocaleString()}}`;
+      rows.forEach(p => p.tags.forEach(tag => keywordCounts.set(tag, (keywordCounts.get(tag) || 0) + 1)));
+      return topEntries(keywordCounts, limit).map(([tag]) => tag).join(', ') || t('noKeywords');
+    }}
+    function listItems(items) {{
+      return items && items.length
+        ? `<ul>${{items.slice(0, 3).map(item => `<li>${{escapeHtml(item)}}</li>`).join('')}}</ul>`
+        : '';
+    }}
+    function taxonomyIntro(category, rows, isAll) {{
+      const top = topPaper(rows);
+      const topTitle = top ? top.title : t('noPapers');
+      const emphasis = isAll ? `${{t('allTaxonomies')}} - ${{categoryKeywordText(rows)}}` : categoryKeywordText(rows);
+      const meta = categoryMeta[category] || {{}};
+      const overview = isAll ? '' : `<div class="category-insight-grid">
+        <div class="category-insight-box"><strong>${{escapeHtml(t('categoryOverview'))}}</strong>${{listItems(meta.trends || [])}}</div>
+        <div class="category-insight-box limitation-box"><strong>${{escapeHtml(t('limitationsTitle'))}}</strong>${{listItems(meta.limitations || [])}}</div>
+      </div>`;
+      return `<div class="section-intro">
+        <p><strong>${{escapeHtml(t('representativeEmphasis'))}}:</strong> ${{escapeHtml(emphasis)}}</p>
+        <p><strong>${{escapeHtml(t('topRankedPaper'))}}:</strong> <span class="top-paper">${{escapeHtml(topTitle)}}</span></p>
+        ${{overview}}
+      </div>`;
+    }}
+    function taxonomySection(category, rows, isAll, shouldOpen) {{
+      const meta = categoryMeta[category] || {{}};
+      const color = meta.color || '#0f766e';
+      const thumb = isAll
+        ? '<span class="all-taxonomy-thumb" aria-hidden="true">All</span>'
+        : `<span class="summary-thumb" style="--thumb-color:${{escapeHtml(color)}}">${{escapeHtml(categoryInitials(category))}}</span>`;
+      const upvoteText = `${{totalUpvotes(rows).toLocaleString()}} ${{t('hfSignal')}}`;
+      return `<section class="taxonomy-section${{isAll ? ' all-taxonomy-section' : ''}}" data-category="${{escapeHtml(category)}}">
+        <details${{shouldOpen ? ' open' : ''}}>
+          <summary>
+            ${{thumb}}
+            <span class="summary-title">${{escapeHtml(isAll ? t('allTaxonomies') : category)}}</span>
+            <span class="category-count">${{escapeHtml(formatText(t('paperCount'), {{count: rows.length.toLocaleString()}}))}}</span>
+            <span class="category-years">${{escapeHtml(monthSpan(rows))}}</span>
+            <span class="category-citations">${{escapeHtml(upvoteText)}}</span>
+          </summary>
+          ${{taxonomyIntro(category, rows, isAll)}}
+          <div class="taxonomy-body"><div class="paper-list"></div></div>
+        </details>
+      </section>`;
     }}
     function renderTaxonomies(filtered) {{
       taxonomyRowsByCategory = new Map();
@@ -2296,31 +2404,28 @@ def write_site(papers, analysis):
         if (!taxonomyRowsByCategory.has(p.category)) taxonomyRowsByCategory.set(p.category, []);
         taxonomyRowsByCategory.get(p.category).push(p);
       }});
+      const activeCategoryCount = taxonomyRowsByCategory.size;
+      if (els.taxonomyTotalSummary) {{
+        els.taxonomyTotalSummary.innerHTML = `<strong>${{escapeHtml(t('totalSelected'))}}:</strong> ${{escapeHtml(formatText(t('paperCount'), {{count: filtered.length.toLocaleString()}}))}}; <strong>${{escapeHtml(t('categoryCount'))}}:</strong> ${{activeCategoryCount.toLocaleString()}} ${{escapeHtml(t('categories'))}}.`;
+      }}
       const orderedGroups = taxonomyOrder
         .filter(category => taxonomyRowsByCategory.has(category))
         .map(category => [category, taxonomyRowsByCategory.get(category)]);
-      if (!orderedGroups.length) {{
+      if (!orderedGroups.length || !filtered.length) {{
         els.list.innerHTML = `<div class="empty">${{escapeHtml(t('emptyTaxonomyList'))}}</div>`;
         return;
       }}
       const selectedCategory = els.category.value;
-      els.list.innerHTML = orderedGroups.map(([category, rows]) => {{
-        const shouldOpen = selectedCategory !== 'All Taxonomies' || orderedGroups.length === 1;
-        return `<details class="taxonomy-section" data-category="${{escapeHtml(category)}}"${{shouldOpen ? ' open' : ''}}>
-          <summary>
-            <span class="taxonomy-title"><strong>${{escapeHtml(category)}}</strong><span>${{escapeHtml(taxonomyMeta(rows))}}</span></span>
-            <span class="taxonomy-count">${{escapeHtml(formatText(t('paperCount'), {{count: rows.length.toLocaleString()}}))}}</span>
-          </summary>
-          <div class="taxonomy-body">
-            <div class="paper-list"></div>
-          </div>
-        </details>`;
-      }}).join('');
+      taxonomyRowsByCategory.set('All Taxonomies', filtered);
+      const allSection = taxonomySection('All Taxonomies', filtered, true, false);
+      const categorySections = orderedGroups.map(([category, rows]) => taxonomySection(category, rows, false, selectedCategory !== 'All Taxonomies' || orderedGroups.length === 1)).join('');
+      els.list.innerHTML = allSection + categorySections;
       els.list.querySelectorAll('.taxonomy-section').forEach(details => {{
         details.dataset.visible = String(taxonomyBatchSize);
-        if (details.open) renderTaxonomyBody(details);
-        details.addEventListener('toggle', () => {{
-          if (details.open && !details.querySelector('.paper-card')) renderTaxonomyBody(details);
+        const panel = details.querySelector('details');
+        if (panel?.open) renderTaxonomyBody(details);
+        panel?.addEventListener('toggle', () => {{
+          if (panel.open && !details.querySelector('.paper-card')) renderTaxonomyBody(details);
         }});
       }});
     }}
