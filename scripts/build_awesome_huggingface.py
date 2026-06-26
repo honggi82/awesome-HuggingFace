@@ -894,6 +894,10 @@ def badge(tag):
     return f"![{tag}](https://img.shields.io/badge/keyword-{label}-{color.lstrip('#')})"
 
 
+def shields_static_message(value):
+    return str(value).replace("-", "--").replace("_", "__").replace(" ", "_").replace("/", "%2F")
+
+
 def link_for_paper(paper):
     return paper["hf_url"] or paper["arxiv_url"] or paper["project_page"] or paper["github_repo"] or "#"
 
@@ -949,6 +953,9 @@ def write_readme(papers, analysis):
     for tag, description, _color, _needles in KEYWORD_CONVENTION:
         keyword_cards.append(f"- {badge(tag)} **{tag}**: {description}")
     keyword_cards.append("- ![ai-research](https://img.shields.io/badge/keyword-ai--research-64748b) **ai-research**: General AI research when no narrower deterministic tag is triggered.")
+    website_badge_message = shields_static_message(f"{OWNER}.github.io/{REPO_NAME}")
+    top_month = max(analysis["month_counts"].items(), key=lambda item: item[1])
+    top_keyword = max(analysis["keyword_counts"].items(), key=lambda item: item[1])
 
     readme = f"""# Awesome Hugging Face Papers
 
@@ -958,7 +965,7 @@ A taxonomy-first archive of Hugging Face Daily Papers from {PERIOD_TEXT}.
 
 <p align="center">
   <a href="https://{OWNER}.github.io/{REPO_NAME}/">
-    <img src="https://img.shields.io/badge/Open_Interactive_Website-{OWNER}.github.io%2F{REPO_NAME}-0f766e?style=for-the-badge" alt="Open Interactive Website">
+    <img src="https://img.shields.io/badge/Open_Interactive_Website-{website_badge_message}-0f766e?style=for-the-badge" alt="Open Interactive Website">
   </a>
 </p>
 
@@ -993,11 +1000,18 @@ These badges define the keyword tags used to scan and extend this collection.
 - **HF upvotes captured**: {sum(p['upvotes'] for p in papers):,}
 - **HF comments captured**: {sum(p['num_comments'] for p in papers):,}
 
+## Research Insights
+
+- **Most active month**: `{top_month[0]}` with **{top_month[1]:,} papers**
+- **Most common keyword convention**: `{top_keyword[0]}` across **{top_keyword[1]:,} tagged papers**
+- **Top taxonomy by paper count**: `{next(iter(grouped.keys()))}` with **{len(next(iter(grouped.values()))):,} papers**
+- The interactive website supports period range, taxonomy, keyword convention, repository-link, and text-search filtering.
+
 ## Taxonomy Collections
 
 {chr(10).join(category_lines)}
 
-## Monthly Coverage
+## Research Timeline
 
 {chr(10).join(month_rows)}
 
@@ -1142,12 +1156,33 @@ def write_site(papers, analysis):
     safe_payload = payload.replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e")
     categories = ["All Taxonomies"] + list(category_stats(papers).keys())
     category_options = "\n".join(f'<option value="{escape_attr(cat)}">{html.escape(cat)}</option>' for cat in categories)
-    year_options = "\n".join(f'<option value="{year}">{year}</option>' for year in ["All Years", "2023", "2024", "2025", "2026"])
-    month_options = '<option value="All Months">All Months</option>\n' + "\n".join(f'<option value="{month}">{month}</option>' for month in MONTHS)
-    keyword_cards = "\n".join(
-        f'<article class="keyword-card"><span class="tag" style="--tag-color:{color}">{html.escape(tag)}</span><p>{html.escape(description)}</p></article>'
-        for tag, description, color, _needles in KEYWORD_CONVENTION
+    month_options = "\n".join(f'<option value="{month}">{month}</option>' for month in MONTHS)
+    period_presets = [("all", START_MONTH, END_MONTH, f"All months ({START_MONTH} to {END_MONTH})")]
+    for year in sorted({month[:4] for month in MONTHS}):
+        year_months = [month for month in MONTHS if month.startswith(year)]
+        period_presets.append((year, year_months[0], year_months[-1], year))
+    for value, start, label in [
+        ("2024-2026", "2024-01", "2024 to 2026"),
+        ("2025-2026", "2025-01", "2025 to 2026"),
+    ]:
+        if start in MONTHS:
+            period_presets.append((value, start, END_MONTH, label))
+    period_options = ['<option value="custom">Custom range</option>']
+    for value, start, end, label in period_presets:
+        selected = " selected" if value == "all" else ""
+        period_options.append(f'<option value="{escape_attr(value)}" data-from="{start}" data-to="{end}"{selected}>{html.escape(label)}</option>')
+    period_options = "\n".join(period_options)
+    keyword_items = list(KEYWORD_CONVENTION) + [("ai-research", "General AI research when no narrower deterministic tag is triggered.", "#64748b", [])]
+    keyword_options = '<option value="All Keywords">All Keywords</option>\n' + "\n".join(
+        f'<option value="{escape_attr(tag)}">{html.escape(tag)}</option>'
+        for tag, _description, _color, _needles in keyword_items
     )
+    keyword_cards = "\n".join(
+        f'<button class="keyword-card" type="button" data-keyword="{escape_attr(tag)}" aria-pressed="false"><span class="tag" style="--tag-color:{color}">{html.escape(tag)}</span><span>{html.escape(description)}</span></button>'
+        for tag, description, color, _needles in keyword_items
+    )
+    color_map = {tag: color for tag, _desc, color, _needles in keyword_items}
+    keyword_descriptions = {tag: desc for tag, desc, _color, _needles in keyword_items}
     stat_cards = "\n".join(
         [
             f'<div><strong>{len(papers):,}</strong><span>Papers</span></div>',
@@ -1156,6 +1191,9 @@ def write_site(papers, analysis):
             f'<div><strong>{sum(p["upvotes"] for p in papers):,}</strong><span>HF Upvotes</span></div>',
         ]
     )
+    months_json = json.dumps(MONTHS)
+    colors_json = json.dumps(color_map, ensure_ascii=False)
+    keyword_descriptions_json = json.dumps(keyword_descriptions, ensure_ascii=False)
 
     html_doc = f"""<!doctype html>
 <html lang="en">
@@ -1174,6 +1212,7 @@ def write_site(papers, analysis):
       --accent: #0f766e;
       --accent-2: #2563eb;
       --accent-3: #be123c;
+      --soft: #eef5f3;
     }}
     * {{ box-sizing: border-box; }}
     body {{
@@ -1207,7 +1246,7 @@ def write_site(papers, analysis):
       background: rgba(251, 252, 254, 0.96);
       backdrop-filter: blur(10px);
     }}
-    .control-grid {{ display: grid; grid-template-columns: minmax(220px, 1.7fr) repeat(4, minmax(130px, 1fr)); gap: 10px; }}
+    .control-grid {{ display: grid; grid-template-columns: minmax(220px, 1.5fr) repeat(5, minmax(132px, 1fr)) minmax(140px, .8fr); gap: 10px; }}
     input, select {{
       width: 100%;
       min-height: 40px;
@@ -1225,12 +1264,28 @@ def write_site(papers, analysis):
     figure {{ margin: 0; border: 1px solid var(--line); border-radius: 6px; background: #fff; padding: 12px; }}
     figure img {{ display: block; width: 100%; height: auto; }}
     figcaption {{ color: var(--muted); font-size: 13px; margin-top: 8px; }}
-    details {{ border: 1px solid var(--line); border-radius: 6px; background: #fff; padding: 12px 14px; margin: 14px 0 22px; }}
-    summary {{ cursor: pointer; font-weight: 700; }}
+    .analysis-section {{ margin: 26px 0; }}
+    .section-head {{ display: flex; gap: 16px; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }}
+    .section-head h2 {{ margin: 0; font-size: 22px; letter-spacing: 0; }}
+    .section-head p {{ margin: 0; color: var(--muted); max-width: 720px; }}
+    .timeline-chart {{ display: grid; gap: 8px; border: 1px solid var(--line); border-radius: 6px; background: #fff; padding: 12px; }}
+    .timeline-row {{ display: grid; grid-template-columns: 74px minmax(120px, 1fr) 68px; gap: 10px; align-items: center; font-size: 13px; }}
+    .timeline-track {{ height: 12px; background: #e7edf4; border-radius: 999px; overflow: hidden; }}
+    .timeline-bar {{ height: 100%; min-width: 2px; background: var(--accent); border-radius: 999px; }}
+    .insight-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }}
+    .insight-card {{ border: 1px solid var(--line); border-radius: 6px; background: #fff; padding: 12px; }}
+    .insight-card strong {{ display: block; font-size: 24px; line-height: 1.15; }}
+    .insight-card span {{ display: block; color: var(--muted); font-size: 13px; margin-top: 4px; }}
+    .insight-list {{ border: 1px solid var(--line); border-radius: 6px; background: var(--soft); padding: 12px 16px; margin: 10px 0 0; }}
+    .insight-list h3 {{ margin: 0 0 8px; font-size: 16px; }}
+    .insight-list ol {{ margin: 0; padding-left: 22px; }}
+    .insight-list li {{ margin: 5px 0; }}
     .keyword-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin-top: 12px; }}
-    .keyword-card {{ border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fff; }}
+    .keyword-card {{ border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fff; display: grid; gap: 8px; align-items: start; text-align: left; font: inherit; cursor: pointer; color: var(--muted); }}
+    .keyword-card[aria-pressed="true"], .keyword-card.is-selected {{ border-color: var(--accent); box-shadow: 0 0 0 2px rgba(15,118,110,.14); color: var(--ink); }}
     .keyword-card .tag {{ display: inline-block; color: #fff; background: var(--tag-color); border-radius: 4px; padding: 3px 7px; font-size: 12px; font-weight: 700; }}
-    .keyword-card p {{ margin: 8px 0 0; color: var(--muted); font-size: 13px; }}
+    .keyword-card span:not(.tag) {{ display: block; width: 100%; font-size: 13px; line-height: 1.45; }}
+    .keyword-filter-status {{ color: var(--accent); font-weight: 700; margin: 10px 0 0; }}
     .result-line {{ display: flex; justify-content: space-between; gap: 12px; align-items: center; margin: 8px 0 14px; color: var(--muted); }}
     .paper-list {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 12px; }}
     .paper-card {{ border: 1px solid var(--line); border-radius: 6px; background: #fff; overflow: hidden; display: grid; grid-template-columns: 116px 1fr; min-height: 160px; }}
@@ -1286,8 +1341,10 @@ def write_site(papers, analysis):
     <div class="wrap control-grid">
       <input id="q" type="search" placeholder="Search title, authors, summaries, tags">
       <select id="category">{category_options}</select>
-      <select id="year">{year_options}</select>
-      <select id="month">{month_options}</select>
+      <select id="periodPreset" aria-label="Period preset">{period_options}</select>
+      <select id="fromMonth" aria-label="Start month">{month_options}</select>
+      <select id="toMonth" aria-label="End month">{month_options}</select>
+      <select id="keyword" aria-label="Keyword convention">{keyword_options}</select>
       <label class="check"><input id="hasRepo" type="checkbox"> GitHub only</label>
     </div>
   </section>
@@ -1302,10 +1359,29 @@ def write_site(papers, analysis):
         <figcaption>Monthly coverage from {START_MONTH} through {END_MONTH}.</figcaption>
       </figure>
     </section>
-    <details>
-      <summary>Keyword convention</summary>
+    <section class="analysis-section" aria-labelledby="timelineTitle">
+      <div class="section-head">
+        <h2 id="timelineTitle">Research Timeline</h2>
+        <p id="timelineSummary"></p>
+      </div>
+      <div id="timelineChart" class="timeline-chart"></div>
+    </section>
+    <section class="analysis-section" aria-labelledby="insightsTitle">
+      <div class="section-head">
+        <h2 id="insightsTitle">Research Insights</h2>
+        <p>Insights update from the currently selected period, taxonomy, keyword convention, search, and repository-link filters.</p>
+      </div>
+      <div id="insights" class="insight-grid"></div>
+      <div id="topPapers" class="insight-list"></div>
+    </section>
+    <section class="analysis-section" id="keywords-convention" aria-labelledby="keywordsTitle">
+      <div class="section-head">
+        <h2 id="keywordsTitle">Keywords Convention</h2>
+        <p>Click a keyword card or use the keyword selector to inspect papers grouped by the collection's keyword convention.</p>
+      </div>
       <div class="keyword-grid">{keyword_cards}</div>
-    </details>
+      <p class="keyword-filter-status" id="keywordFilterStatus"></p>
+    </section>
     <div class="result-line">
       <strong id="resultCount"></strong>
       <span id="activeFilters"></span>
@@ -1315,17 +1391,28 @@ def write_site(papers, analysis):
   <script id="paper-data" type="application/json">{safe_payload}</script>
   <script>
     const papers = JSON.parse(document.getElementById('paper-data').textContent);
-    const colors = {json.dumps({tag: color for tag, _desc, color, _needles in KEYWORD_CONVENTION}, ensure_ascii=False)};
+    const colors = {colors_json};
+    const months = {months_json};
+    const keywordDescriptions = {keyword_descriptions_json};
     const els = {{
       q: document.getElementById('q'),
       category: document.getElementById('category'),
-      year: document.getElementById('year'),
-      month: document.getElementById('month'),
+      periodPreset: document.getElementById('periodPreset'),
+      fromMonth: document.getElementById('fromMonth'),
+      toMonth: document.getElementById('toMonth'),
+      keyword: document.getElementById('keyword'),
       hasRepo: document.getElementById('hasRepo'),
       list: document.getElementById('papers'),
       count: document.getElementById('resultCount'),
-      filters: document.getElementById('activeFilters')
+      filters: document.getElementById('activeFilters'),
+      timeline: document.getElementById('timelineChart'),
+      timelineSummary: document.getElementById('timelineSummary'),
+      insights: document.getElementById('insights'),
+      topPapers: document.getElementById('topPapers'),
+      keywordStatus: document.getElementById('keywordFilterStatus')
     }};
+    els.fromMonth.value = months[0];
+    els.toMonth.value = months[months.length - 1];
     function textMatch(p, q) {{
       if (!q) return true;
       const haystack = [p.title, p.authors, p.summary, p.category, p.tags.join(' ')].join(' ').toLowerCase();
@@ -1337,7 +1424,7 @@ def write_site(papers, analysis):
     function card(p) {{
       const chips = p.tags.map(tag => `<span class="chip" style="background:${{colors[tag] || '#64748b'}}">${{tag}}</span>`).join('');
       const thumb = p.thumb ? `<img src="${{p.thumb}}" alt="">` : `<div class="fallback">${{p.category.split(',')[0]}}</div>`;
-      const signals = `${{p.upvotes}} upvotes · ${{p.comments}} comments${{p.stars ? ' · ' + p.stars.toLocaleString() + ' stars' : ''}}`;
+      const signals = `${{p.upvotes}} upvotes | ${{p.comments}} comments${{p.stars ? ' | ' + p.stars.toLocaleString() + ' stars' : ''}}`;
       const links = [link('HF', p.hf), link('arXiv', p.arxiv), link('Code', p.repo), link('Project', p.project)].filter(Boolean).join('');
       return `<article class="paper-card">
         <div class="thumb">${{thumb}}</div>
@@ -1355,28 +1442,143 @@ def write_site(papers, analysis):
     function escapeHtml(value) {{
       return String(value || '').replace(/[&<>"']/g, ch => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}}[ch]));
     }}
-    function render() {{
+    function periodBounds() {{
+      const from = els.fromMonth.value;
+      const to = els.toMonth.value;
+      return from <= to ? {{from, to}} : {{from: to, to: from}};
+    }}
+    function rangeMonths(from, to) {{
+      return months.filter(month => month >= from && month <= to);
+    }}
+    function topEntries(map, limit) {{
+      return Array.from(map.entries()).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, limit);
+    }}
+    function filterPapers() {{
       const q = els.q.value.trim().toLowerCase();
       const category = els.category.value;
-      const year = els.year.value;
-      const month = els.month.value;
+      const bounds = periodBounds();
+      const keyword = els.keyword.value;
       const hasRepo = els.hasRepo.checked;
-      const filtered = papers.filter(p =>
+      return papers.filter(p =>
         textMatch(p, q) &&
         (category === 'All Taxonomies' || p.category === category) &&
-        (year === 'All Years' || p.year === year) &&
-        (month === 'All Months' || p.month === month) &&
+        (p.month >= bounds.from && p.month <= bounds.to) &&
+        (keyword === 'All Keywords' || p.tags.includes(keyword)) &&
         (!hasRepo || !!p.repo)
       );
+    }}
+    function renderTimeline(filtered) {{
+      const bounds = periodBounds();
+      const visibleMonths = rangeMonths(bounds.from, bounds.to);
+      const counts = new Map(visibleMonths.map(month => [month, 0]));
+      filtered.forEach(p => counts.set(p.month, (counts.get(p.month) || 0) + 1));
+      const maxCount = Math.max(1, ...Array.from(counts.values()));
+      els.timelineSummary.textContent = `${{bounds.from}} to ${{bounds.to}} | ${{filtered.length.toLocaleString()}} matching papers across ${{visibleMonths.length}} months`;
+      els.timeline.innerHTML = visibleMonths.map(month => {{
+        const count = counts.get(month) || 0;
+        const width = count ? Math.max(2, Math.round((count / maxCount) * 100)) : 0;
+        return `<div class="timeline-row">
+          <strong>${{month}}</strong>
+          <div class="timeline-track" aria-label="${{month}} ${{count}} papers"><div class="timeline-bar" style="width:${{width}}%"></div></div>
+          <span>${{count.toLocaleString()}}</span>
+        </div>`;
+      }}).join('');
+    }}
+    function renderInsights(filtered) {{
+      const categoryCounts = new Map();
+      const keywordCounts = new Map();
+      let upvotes = 0;
+      let comments = 0;
+      let repoCount = 0;
+      let projectCount = 0;
+      filtered.forEach(p => {{
+        categoryCounts.set(p.category, (categoryCounts.get(p.category) || 0) + 1);
+        p.tags.forEach(tag => keywordCounts.set(tag, (keywordCounts.get(tag) || 0) + 1));
+        upvotes += Number(p.upvotes || 0);
+        comments += Number(p.comments || 0);
+        if (p.repo) repoCount += 1;
+        if (p.project) projectCount += 1;
+      }});
+      const topCategory = topEntries(categoryCounts, 1)[0] || ['none', 0];
+      const topKeyword = topEntries(keywordCounts, 1)[0] || ['none', 0];
+      const avgUpvotes = filtered.length ? Math.round(upvotes / filtered.length) : 0;
+      const cards = [
+        {{ label: 'Matching papers', value: filtered.length.toLocaleString(), detail: 'Current filtered corpus' }},
+        {{ label: 'Top taxonomy', value: topCategory[1].toLocaleString(), detail: topCategory[0] }},
+        {{ label: 'Top keyword', value: topKeyword[1].toLocaleString(), detail: topKeyword[0] }},
+        {{ label: 'GitHub linked', value: repoCount.toLocaleString(), detail: `${{projectCount.toLocaleString()}} project pages` }},
+        {{ label: 'HF upvotes', value: upvotes.toLocaleString(), detail: `${{avgUpvotes.toLocaleString()}} average per paper` }},
+        {{ label: 'HF comments', value: comments.toLocaleString(), detail: 'Discussion signals captured from HF' }}
+      ];
+      els.insights.innerHTML = cards.map(item => `<article class="insight-card"><strong>${{escapeHtml(item.value)}}</strong><span>${{escapeHtml(item.label)}} - ${{escapeHtml(item.detail)}}</span></article>`).join('');
+      const topPapers = [...filtered].sort((a, b) => (b.upvotes - a.upvotes) || (b.stars - a.stars) || (a.rank - b.rank)).slice(0, 5);
+      els.topPapers.innerHTML = topPapers.length
+        ? `<h3>Most visible papers in this view</h3><ol>${{topPapers.map(p => `<li><a href="${{p.hf}}" target="_blank" rel="noopener">${{escapeHtml(p.title)}}</a> <span>(${{p.month}}, ${{p.upvotes.toLocaleString()}} upvotes${{p.stars ? ', ' + p.stars.toLocaleString() + ' stars' : ''}})</span></li>`).join('')}}</ol>`
+        : '<h3>Most visible papers in this view</h3><p>No papers match the current filters.</p>';
+    }}
+    function syncKeywordCards(filtered) {{
+      const keyword = els.keyword.value;
+      document.querySelectorAll('[data-keyword]').forEach(button => {{
+        const selected = button.dataset.keyword === keyword;
+        button.setAttribute('aria-pressed', String(selected));
+        button.classList.toggle('is-selected', selected);
+      }});
+      const description = keyword === 'All Keywords' ? 'all keyword conventions' : `${{keyword}} - ${{keywordDescriptions[keyword] || ''}}`;
+      els.keywordStatus.textContent = `Selected keyword: ${{description}} | Matching papers: ${{filtered.length.toLocaleString()}}`;
+    }}
+    function syncPreset() {{
+      const bounds = periodBounds();
+      const matched = Array.from(els.periodPreset.options).find(option => option.dataset.from === bounds.from && option.dataset.to === bounds.to);
+      els.periodPreset.value = matched ? matched.value : 'custom';
+    }}
+    function normalizeRangeInputs() {{
+      if (els.fromMonth.value > els.toMonth.value) {{
+        const oldFrom = els.fromMonth.value;
+        els.fromMonth.value = els.toMonth.value;
+        els.toMonth.value = oldFrom;
+      }}
+    }}
+    function render() {{
+      const bounds = periodBounds();
+      const category = els.category.value;
+      const keyword = els.keyword.value;
+      const hasRepo = els.hasRepo.checked;
+      const q = els.q.value.trim();
+      const filtered = filterPapers();
       els.count.textContent = `${{filtered.length.toLocaleString()}} papers`;
-      els.filters.textContent = [category, year, month, hasRepo ? 'GitHub linked' : 'all links', q ? 'search active' : ''].filter(Boolean).join(' · ');
+      els.filters.textContent = [category, `${{bounds.from}} to ${{bounds.to}}`, keyword === 'All Keywords' ? 'all keywords' : keyword, hasRepo ? 'GitHub linked' : 'all links', q ? 'search active' : ''].filter(Boolean).join(' | ');
+      renderTimeline(filtered);
+      renderInsights(filtered);
+      syncKeywordCards(filtered);
       const shown = filtered.slice(0, 500);
       els.list.innerHTML = shown.length ? shown.map(card).join('') : '<div class="empty">No papers match the current filters.</div>';
       if (filtered.length > shown.length) {{
         els.list.insertAdjacentHTML('beforeend', `<div class="empty">Showing first ${{shown.length.toLocaleString()}} of ${{filtered.length.toLocaleString()}} matching papers. Refine search or use the CSV for the complete filtered set.</div>`);
       }}
     }}
-    [els.q, els.category, els.year, els.month, els.hasRepo].forEach(el => el.addEventListener('input', render));
+    function applyPeriodPreset() {{
+      const selected = els.periodPreset.selectedOptions[0];
+      if (!selected || selected.value === 'custom') {{
+        render();
+        return;
+      }}
+      els.fromMonth.value = selected.dataset.from;
+      els.toMonth.value = selected.dataset.to;
+      render();
+    }}
+    function handleRangeChange() {{
+      normalizeRangeInputs();
+      syncPreset();
+      render();
+    }}
+    els.periodPreset.addEventListener('input', applyPeriodPreset);
+    [els.fromMonth, els.toMonth].forEach(el => el.addEventListener('input', handleRangeChange));
+    [els.q, els.category, els.keyword, els.hasRepo].forEach(el => el.addEventListener('input', render));
+    document.querySelectorAll('[data-keyword]').forEach(button => button.addEventListener('click', () => {{
+      els.keyword.value = button.dataset.keyword;
+      render();
+      document.getElementById('papers').scrollIntoView({{behavior: 'smooth', block: 'start'}});
+    }}));
     render();
   </script>
 </body>

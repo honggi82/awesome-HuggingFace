@@ -6,7 +6,7 @@ A taxonomy-first archive of Hugging Face Daily Papers from 2023-05 through 2026-
 
 <p align="center">
   <a href="https://honggi82.github.io/awesome-HuggingFace/">
-    <img src="https://img.shields.io/badge/Open_Interactive_Website-honggi82.github.io%2Fawesome-HuggingFace-0f766e?style=for-the-badge" alt="Open Interactive Website">
+    <img src="https://img.shields.io/badge/Open_Interactive_Website-honggi82.github.io%2Fawesome--HuggingFace-0f766e?style=for-the-badge" alt="Open Interactive Website">
   </a>
 </p>
 
@@ -52,6 +52,13 @@ These badges define the keyword tags used to scan and extend this collection.
 - **arXiv links generated from HF paper IDs**: 16,240
 - **HF upvotes captured**: 383,309
 - **HF comments captured**: 40,157
+
+## Research Insights
+
+- **Most active month**: `2025-10` with **945 papers**
+- **Most common keyword convention**: `datasets-benchmarks` across **12,115 tagged papers**
+- **Top taxonomy by paper count**: `Foundation Models and Large Language Models` with **8,096 papers**
+- The interactive website supports period range, taxonomy, keyword convention, repository-link, and text-search filtering.
 
 ## Taxonomy Collections
 
@@ -585,7 +592,7 @@ _14 additional papers in this category are available in `data/papers_2023_05_202
 </details>
 
 
-## Monthly Coverage
+## Research Timeline
 
 | Month | Papers |
 | ---: | ---: |
