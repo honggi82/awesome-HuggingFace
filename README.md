@@ -23,6 +23,20 @@ A taxonomy-first archive of Hugging Face Daily Papers from 2023-05 through 2026-
 
 Generated on 2026-06-26 from the public Hugging Face Daily Papers API. This edition covers **38 monthly pages** from `2023-05` through `2026-06` and includes **16,240 unique papers** submitted to HF Daily Papers during that period.
 
+
+<!-- BEGIN CODEX PAPER CURATION -->
+
+## Codex-Native Full Curation
+
+- Full curation site: https://honggi82.github.io/awesome-HuggingFace/paper_curation/
+- Local static entry: `docs/paper_curation/index.html`
+- Related Papers graph: `docs/paper_curation/huggingface/network.html`
+- PaperBanana-compatible timeline: `docs/paper_curation/huggingface/category_timeline_codex_native.png`
+- Processed PDF evidence in this staged run: 40 papers
+- Modeling stack: `allenai/specter2_base` embeddings, `hdbscan.HDBSCAN` clustering, `umap.UMAP` projection
+
+<!-- END CODEX PAPER CURATION -->
+
 ## Project Links
 
 - Open Interactive Website: https://honggi82.github.io/awesome-HuggingFace/

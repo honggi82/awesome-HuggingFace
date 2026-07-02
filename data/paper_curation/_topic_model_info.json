@@ -1,0 +1,217 @@
+{
+  "model": "Codex-native SPECTER2 + HDBSCAN + UMAP bottom-up classification",
+  "processedPapers": 40,
+  "embedding": {
+    "requestedEmbeddingModel": "allenai/specter2_base",
+    "actualEmbeddingModel": "allenai/specter2_base",
+    "localFilesOnly": true,
+    "fallbackUsed": false,
+    "specter2": {
+      "requestedEmbeddingModel": "allenai/specter2_base",
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\models\\specter2_base",
+      "inspectedSources": [
+        {
+          "path": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\models\\specter2_base",
+          "exists": true
+        }
+      ],
+      "localFilesOnly": true,
+      "success": true,
+      "actualEmbeddingModel": "allenai/specter2_base",
+      "embeddingShape": [
+        40,
+        768
+      ]
+    }
+  },
+  "clusterer": {
+    "requestedClusterer": "hdbscan.HDBSCAN",
+    "actualClusterer": "hdbscan.HDBSCAN",
+    "fallbackUsed": false,
+    "matrix": "specter2-normalized",
+    "minClusterSize": 2,
+    "clusterSelectionMethod": "leaf",
+    "allowSingleCluster": false,
+    "labels": [
+      3,
+      -1,
+      4,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      4,
+      -1,
+      1,
+      -1,
+      6,
+      2,
+      0,
+      1,
+      -1,
+      4,
+      0,
+      6,
+      6,
+      -1,
+      -1,
+      -1,
+      0,
+      3,
+      7,
+      1,
+      -1,
+      0,
+      5,
+      1,
+      -1,
+      2,
+      4,
+      7,
+      2,
+      5,
+      6,
+      4
+    ],
+    "clusterCount": 8,
+    "noiseCount": 14,
+    "attempts": [
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 2,
+        "clusterSelectionMethod": "eom",
+        "allowSingleCluster": false,
+        "clusterCount": 8,
+        "noiseCount": 14
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 2,
+        "clusterSelectionMethod": "eom",
+        "allowSingleCluster": true,
+        "clusterCount": 1,
+        "noiseCount": 9
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 2,
+        "clusterSelectionMethod": "leaf",
+        "allowSingleCluster": false,
+        "clusterCount": 8,
+        "noiseCount": 14
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 2,
+        "clusterSelectionMethod": "leaf",
+        "allowSingleCluster": true,
+        "clusterCount": 8,
+        "noiseCount": 14
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 3,
+        "clusterSelectionMethod": "eom",
+        "allowSingleCluster": false,
+        "clusterCount": 3,
+        "noiseCount": 9
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 3,
+        "clusterSelectionMethod": "eom",
+        "allowSingleCluster": true,
+        "clusterCount": 1,
+        "noiseCount": 9
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 3,
+        "clusterSelectionMethod": "leaf",
+        "allowSingleCluster": false,
+        "clusterCount": 5,
+        "noiseCount": 11
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 3,
+        "clusterSelectionMethod": "leaf",
+        "allowSingleCluster": true,
+        "clusterCount": 5,
+        "noiseCount": 11
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 5,
+        "clusterSelectionMethod": "eom",
+        "allowSingleCluster": false,
+        "clusterCount": 2,
+        "noiseCount": 9
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 5,
+        "clusterSelectionMethod": "eom",
+        "allowSingleCluster": true,
+        "clusterCount": 1,
+        "noiseCount": 9
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 5,
+        "clusterSelectionMethod": "leaf",
+        "allowSingleCluster": false,
+        "clusterCount": 3,
+        "noiseCount": 14
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 5,
+        "clusterSelectionMethod": "leaf",
+        "allowSingleCluster": true,
+        "clusterCount": 3,
+        "noiseCount": 14
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 8,
+        "clusterSelectionMethod": "eom",
+        "allowSingleCluster": false,
+        "clusterCount": 2,
+        "noiseCount": 9
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 8,
+        "clusterSelectionMethod": "eom",
+        "allowSingleCluster": true,
+        "clusterCount": 1,
+        "noiseCount": 9
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 8,
+        "clusterSelectionMethod": "leaf",
+        "allowSingleCluster": false,
+        "clusterCount": 3,
+        "noiseCount": 14
+      },
+      {
+        "matrix": "specter2-normalized",
+        "minClusterSize": 8,
+        "clusterSelectionMethod": "leaf",
+        "allowSingleCluster": true,
+        "clusterCount": 3,
+        "noiseCount": 14
+      }
+    ]
+  },
+  "projection": {
+    "requestedProjection": "umap.UMAP",
+    "actualProjection": "umap.UMAP",
+    "fallbackUsed": false,
+    "nNeighbors": 15
+  },
+  "note": "SPECTER2 is loaded with local_files_only=True; no network download or paid API call is made. If the cached model or optional libraries are unavailable, the fallback is recorded here."
+}

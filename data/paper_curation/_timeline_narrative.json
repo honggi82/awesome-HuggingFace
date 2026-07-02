@@ -1,0 +1,51 @@
+{
+  "mode": "codex-native-paperbanana-compatible-timeline",
+  "summary": "Codex generated a PaperBanana-compatible timeline artifact path without calling external image APIs.",
+  "categories": [
+    {
+      "id": "hdbscan-bridge-and-noise-papers",
+      "name": "HDBSCAN Bridge and Noise Papers",
+      "count": 14
+    },
+    {
+      "id": "hdbscan-cluster-reasoning-reinforcement-learning-llms",
+      "name": "HDBSCAN Cluster: reasoning, reinforcement, learning, llms",
+      "count": 5
+    },
+    {
+      "id": "hdbscan-cluster-zhang1-arxiv-li1-chen1",
+      "name": "HDBSCAN Cluster: zhang1, arxiv, li1, chen1",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-figure-qwen-https-report",
+      "name": "HDBSCAN Cluster: figure, qwen, https, report",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-university-shanghai-code-training",
+      "name": "HDBSCAN Cluster: university, shanghai, code, training",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-figure-video-reasoning-university",
+      "name": "HDBSCAN Cluster: figure, video, reasoning, university",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-sharing-efficient-post-training-language",
+      "name": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-sequence-optimization-gspo-learning",
+      "name": "HDBSCAN Cluster: sequence, optimization, gspo, learning",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-lightning-attention-scaling-model",
+      "name": "HDBSCAN Cluster: lightning, attention, scaling, model",
+      "count": 2
+    }
+  ]
+}

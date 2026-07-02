@@ -1,0 +1,406 @@
+{
+  "mode": "codex-native-full-curation",
+  "topic": "huggingface",
+  "papers": [
+    {
+      "slug": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
+      "title": "Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing",
+      "category": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "key": "FOLDER00001_af26518a47dc",
+      "sourceIndex": null,
+      "textBytes": 44954,
+      "figuresExtracted": 3,
+      "excerpt": "## arXiv:2509.08721v1[cs.LG]10Sep2025 # Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing Gensyn AI Team Jeffrey Amico, Gabriel Passamani Andrade†, John Donaghy†, Ben Fielding, Tristin Forbus, Harry Grieve, Semih Kara†, Jari Kolehmainen, Yihua Lou†, Christopher Nies, Edward Phillip Flores Nuño, Diogo Ortega, Shikhar Rastogi†, Austin Virts, Matthew J. Wright †Primary contributors. Authors are listed in alphabetical order. Post-training language models (LMs) with reinforcement learning (RL) can enhance their complex reasoning capabilities without supervised fine-tuning, as demonstrated by DeepSeekR1-Zero (DeepSeek-AI et al., 2025). However, effectively utilizing RL for LMs requires significant parallelization to scale-up inference, which introduces non-trivial technical challenges (e.g. latency, memory, and reliability) alongside ever-growing financial cos"
+    },
+    {
+      "slug": "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
+      "title": "The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00002_45fd74a4c976",
+      "sourceIndex": null,
+      "textBytes": 24724,
+      "figuresExtracted": 3,
+      "excerpt": "# arXiv:2402.17764v1[cs.CL]27Feb2024 ## The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits #### Shuming Ma∗ Hongyu Wang∗ Lingxiao Ma Lei Wang Wenhui Wang Shaohan Huang Li Dong Ruiping Wang Jilong Xue Furu Wei⋄ https://aka.ms/GeneralAI ### Abstract Recent research, such as BitNet [WMD+23], is paving the way for a new era of 1bit Large Language Models (LLMs). In this work, we introduce a 1-bit LLM variant, namely BitNet b1.58, in which every single parameter (or weight) of the LLM is ternary {-1, 0, 1}. It matches the full-precision (i.e., FP16 or BF16) Transformer LLM with the same model size and training tokens in terms of both perplexity and end-task performance, while being significantly more cost-effective in terms of latency, memory, throughput, and energy consumption. More profoundly, the 1.58-bit LLM defines a new scaling law and recipe for training new generations o"
+    },
+    {
+      "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
+      "title": "GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, llms",
+      "key": "FOLDER00003_07f36ae7acd9",
+      "sourceIndex": null,
+      "textBytes": 76254,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2604.02721v1[cs.AI]3Apr2026 ## GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning Xiaoya Li, Xiaofei Sun, Guoyin Wang∗, Songqiao Su, Chris Shum and Jiwei Li DeepReinforce Team Abstract Competitive programming remains one of the last few human strongholds in coding against AI. The best AI system to date still underperforms the best humans competitive programming: the most recent best result, Google’s Gemini 3 Deep Think, attained 8th place even not being evaluated under live competition conditions. In this work, we introduce GrandCode, a multi-agent RL system designed for competitive programming. The capability of GrandCode is attributed to two key factors: (1) It orchestrates a variety of agentic modules (hypothesis proposal, solver, test generator, summarization, etc) and jointly improves them through post-training and online tes"
+    },
+    {
+      "slug": "026_The_Dragon_Hatchling_The_Missing_Link_between_the_Transforme",
+      "title": "The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00004_127c6b950d93",
+      "sourceIndex": null,
+      "textBytes": 261618,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2509.26507v1[cs.NE]30Sep2025 ## THE DRAGON HATCHLING: THE MISSING LINK BETWEEN THE TRANSFORMER AND MODELS OF THE BRAIN Adrian Kosowski∗† Przemysław Uzna´nski† Jan Chorowski† Zuzanna Stamirowska† Michał Bartoszkiewicz† Pathway, Palo Alto, USA research@pathway.com ##### ABSTRACT The relationship between computing systems and the brain has served as motivation for pioneering theoreticians since John von Neumann and Alan Turing. Uniform, scale-free biological networks, such as the brain, have powerful properties, including generalizing over time, which is the main barrier for Machine Learning on the path to Universal Reasoning Models. We introduce ‘Dragon Hatchling’ (BDH), a new Large Language Model architecture based on a scale-free biologically inspired network of n locally-interacting neuron particles. BDH couples strong theoretical foundations and inherent interpretability withou"
+    },
+    {
+      "slug": "027_Less_is_More_Recursive_Reasoning_with_Tiny_Networks",
+      "title": "Less is More: Recursive Reasoning with Tiny Networks",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00005_2c9133cfdb16",
+      "sourceIndex": null,
+      "textBytes": 48364,
+      "figuresExtracted": 2,
+      "excerpt": "## Less is More: Recursive Reasoning with Tiny Networks Alexia Jolicoeur-Martineau Samsung SAIL Montr´eal alexia.j@samsung.com # arXiv:2510.04871v1[cs.LG]6Oct2025 ### Abstract Hierarchical Reasoning Model (HRM) is a novel approach using two small neural networks recursing at different frequencies. This biologically inspired method beats Large Language models (LLMs) on hard puzzle tasks such as Sudoku, Maze, and ARC-AGI while trained with small models (27M parameters) on small data (∼ 1000 examples). HRM holds great promise for solving hard problems with small networks, but it is not yet well understood and may be suboptimal. We propose Tiny Recursive Model (TRM), a much simpler recursive reasoning approach that achieves significantly higher generalization than HRM, while using a single tiny network with only 2 layers. With only 7M parameters, TRM obtains 45% test-accuracy on ARC-AGI1 and"
+    },
+    {
+      "slug": "076_A_Very_Big_Video_Reasoning_Suite",
+      "title": "A Very Big Video Reasoning Suite",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00006_dd10def1d36c",
+      "sourceIndex": 5,
+      "textBytes": 144021,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2602.20159v2[cs.CV]24Feb2026 VIDEO-REASON.COM ## A Very Big Video Reasoning Suite Maijunxian Wang*1 Ruisi Wang*2 Juyi Lin*3 Ran Ji*4 Thadd¨aus Wiedemer5 Qingying Gao6 Dezhi Luo7 Yaoyao Qian3 Lianyu Huang8 Zelong Hong9 Jiahui Ge8 Qianli Ma10 Hang He11 Yifan Zhou10 Lingzi Guo12 Lantao Mei12 Jiachen Li13 Hanwen Xing8 Tianqi Zhao14 Fengyuan Yu2 Weihang Xiao15 Yizheng Jiao16 Jianheng Hou8 Danyang Zhang17 Pengcheng Xu18 Boyang Zhong19 Zehong Zhao4 Gaoyun Fang20 John Kitaoka21 Yile Xu22 Hua Xu23 Kenton Blacutt24 Tin Nguyen25 Siyuan Song13 Haoran Sun6 Shaoyue Wen20 Linyang He26 Runming Wang6 Yanzhi Wang3 Mengyue Yang27 Ziqiao Ma7 Rapha¨el Milli`ere28 Freda Shi29 Nuno Vasconcelos4 Daniel Khashabi6 Alan Yuille6 Yilun Du30 Ziming Liu12 Bo Li2 Dahua Lin31 Ziwei Liu2 Vikash Kumar32 Yijiang Li4 Lei Yang31 Zhongang Cai2† Hokin Deng32† 1 University of California, Berkeley 2 Nanyang Technological"
+    },
+    {
+      "slug": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
+      "title": "Adam's Law: Textual Frequency Law on Large Language Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00007_f1204ba044c3",
+      "sourceIndex": 6,
+      "textBytes": 101929,
+      "figuresExtracted": 5,
+      "excerpt": "## Adam’s Law: Textual Frequency Law on Large Language Models Hongyuan Adam Lu♣*, Z.L.♣∗, Victor Wei♣, Zefan Zhang♣, Zhao Hong♣, Qiqi Xiang♣ Bowen Cao♡, Wai Lam♡ ♣FaceMind Corporation ♡The Chinese University of Hong Kong hongyuanlu@outlook.com # arXiv:2604.02176v3[cs.CL]28Jun2026 Abstract While textual frequency has been validated as relevant to human cognition in reading speed, its relatedness to Large Language Models (LLMs) is seldom studied. We propose a novel research direction in terms of textual data frequency, which is an understudied topic, to the best of our knowledge. Our framework is composed of three units. First, this paper proposes Textual Frequency Law (TFL), which indicates that frequent textual data should be preferred for LLMs for both prompting and fine-tuning. Since many LLMs are closedsource in their training data, we propose using online resources to estimate the se"
+    },
+    {
+      "slug": "078_ABot-Earth_05_Generative_3D_Earth_Model",
+      "title": "ABot-Earth 0.5: Generative 3D Earth Model",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00008_1f2a0a11302a",
+      "sourceIndex": 7,
+      "textBytes": 56337,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] AMAP CV Lab Alibaba Group ## ABot-Earth 0.5: Generative 3D Earth Model ### AMAP CV Lab We present ABot-Earth 0.5, a generative 3D framework designed to synthesize vast, seamless 3D environments from ubiquitous, geospatially referenced satellite imagery. To achieve this, we propose a novel generative model formulated directly with the 3D Gaussian Splatting (3DGS) representation. The model is trained on a diverse corpus of existing real-world urban reconstructions, learning to generate realistic geometry and textures. At inference, it synthesizes novel 3D scenes conditioned solely on satellite imagery at a scalable rate of under 10 minutes per square kilometer, while demonstrating exceptional realism. The framework is designed for accessibility, with integrated hierarchical level-of-detail (LOD) structures that permit real-time, interactive visualization on web-based map engines"
+    },
+    {
+      "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, llms",
+      "key": "FOLDER00009_e247d7b4176f",
+      "sourceIndex": 8,
+      "textBytes": 238083,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2501.12948v2[cs.CL]4Jan2026 ## DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning DeepSeek-AI research@deepseek.com ### Abstract General reasoning represents a long-standing and formidable challenge in artificial intelligence. Recent breakthroughs, exemplified by large language models (LLMs) (Brown et al., 2020; OpenAI, 2023) and chain-of-thought prompting (Wei et al., 2022b), have achieved considerable success on foundational reasoning tasks. However, this success is heavily contingent upon extensive human-annotated demonstrations, and models’ capabilities are still insufficient for more complex problems. Here we show that the reasoning abilities of LLMs can be incentivized through pure reinforcement learning (RL), obviating the need for human-labeled reasoning trajectories. The proposed RL framework facilitates the emergent development of advance"
+    },
+    {
+      "slug": "080_Looped_World_Models",
+      "title": "Looped World Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00010_6d9a07f81015",
+      "sourceIndex": 9,
+      "textBytes": 83378,
+      "figuresExtracted": 3,
+      "excerpt": "# arXiv:2606.18208v1[cs.LG]16Jun2026 ## LOOPED WORLD MODELS ### FaceMind Research Asia [Figure 1] Leading Contributors Hongyuan Adam Lu* Z.L. Victor Wei Core Contributors Qun Zhang Jinrui Zeng Bowen Cao Lingwei Meng Mocheng Li Zezhong Wang Haonan Yin Naifu Xue Minyu Chen Cenyuan Zhang Zefan Zhang Hao Wei Jiawei Zhou Haoran Xu Hao Yang Ronglai Zuo Tongda Xu Yonghao Li Jian Chen Hebin Wang Zeyu Gao Yang Li Wei Zhao Qimin Zhong Siqi Liu Yumeng Zhang Leyan Cui Zhangyu Wang Wai Lam ABSTRACT Current world models face a fundamental tension: faithful long-horizon simulation demands deep computation, but deeper models are expensive to deploy and prone to compounding errors. We resolve this by introducing Looped World Models (LoopWM), which are the first looped architectures for world modelling. Our method iteratively refines latent environment states through a parameter-shared transformer block. "
+    },
+    {
+      "slug": "081_AI_Can_Learn_Scientific_Taste",
+      "title": "AI Can Learn Scientific Taste",
+      "category": "HDBSCAN Cluster: zhang1, arxiv, li1, chen1",
+      "key": "FOLDER00011_58c904a08eda",
+      "sourceIndex": 10,
+      "textBytes": 158305,
+      "figuresExtracted": 4,
+      "excerpt": "# arXiv:2603.14473v1[cs.CL]15Mar2026 OpenMOSS [Figure 1] ## AI Can Learn Scientific Taste Jingqi Tong1,2,3,*, Mingzhe Li1,2,3,*, Hangcheng Li1,2,3,*, Yongzhuo Yang1,3,‡, Yurong Mou1,2,3,‡, Weĳie Ma1,2, Zhiheng Xi1, Hongji Chen1,3, Xiaoran Liu1,2,3, Qinyuan Cheng1,2,3, Ming Zhang1, Qiguang Chen5, Weifeng Ge1, Qipeng Guo2, Tianlei Ying1,2, Tianxiang Sun2, Yining Zheng1,2,3, Xinchi Chen1,3,†, Jun Zhao1,†, Ning Ding4, Xuanjing Huang1, Yugang Jiang1, Xipeng Qiu1,2,3,† 1Fudan University 2Shanghai Innovation Institute 3OpenMOSS Team 4Tsinghua University 5Central South University * Equal contribution. † Corresponding author. ‡ Core contributors ### Abstract Great scientists have strong judgement and foresight, closely tied to what we call scientific taste. Here, we use the term to refer to the capacity to judge and propose research ideas with high potential impact. However, most relative researc"
+    },
+    {
+      "slug": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
+      "title": "Gamma-World: Generative Multi-Agent World Modeling Beyond Two Players",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00012_8f53e8798157",
+      "sourceIndex": 11,
+      "textBytes": 63526,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] 2026-5-28 ## Gamma-World: Generative Multi-Agent World Modeling Beyond Two Players Fangfu Liu1,2* Kai He1,3,4* Tianchang Shen1 Tianshi Cao1 Sanja Fidler1,3,4 Yueqi Duan2 Jun Gao1 Igor Gilitschenski3,4† Zian Wang1† Xuanchi Ren1† 1NVIDIA 2Tsinghua University 3University of Toronto 4Vector Institute Project page: research.nvidia.com/gamma-world |[Figure 2]<br><br>[Figure 3]<br><br>Agent 1 Agent 2 Agent 3 Agent 4<br><br>[Figure 4]<br><br>[Figure 5]<br><br>[Figure 6]<br><br>[Figure 7]| |[Figure 8]<br><br>[Figure 9]<br><br>Agent 1 Agent 2 Agent 3 Agent 4<br><br>[Figure 10]<br><br>[Figure 11]<br><br>[Figure 12]<br><br>[Figure 13]| | |---|---|---|---| |[Figure 14]<br><br>Agent 1 Agent 2|[Figure 15]<br><br>Agent 1 Agent 2|[Figure 16]|[Figure 17]| [Figure 18] [Figure 19] # arXiv:2605.28816v1[cs.CV]27May2026 Real-worldSceneGameScene [Figure 20] [Figure 21] [Figure 22] [Figure 23] [Figure"
+    },
+    {
+      "slug": "083_Qwen25_Technical_Report",
+      "title": "Qwen2.5 Technical Report",
+      "category": "HDBSCAN Cluster: figure, qwen, https, report",
+      "key": "FOLDER00013_a400d0a3210e",
+      "sourceIndex": 12,
+      "textBytes": 96661,
+      "figuresExtracted": 3,
+      "excerpt": "[Figure 1] 2025-01-06 # arXiv:2412.15115v2[cs.CL]3Jan2025 ### Qwen2.5 Technical Report [Figure 2] ###### Qwen Team https://huggingface.co/Qwen https://modelscope.cn/organization/qwen https://github.com/QwenLM/Qwen2.5 #### Abstract In this report, we introduce Qwen2.5, a comprehensive series of large language models (LLMs) designed to meet diverse needs. Compared to previous iterations, Qwen 2.5 has been significantly improved during both the pre-training and post-training stages. In terms of pre-training, we have scaled the high-quality pre-training datasets from the previous 7 trillion tokens to 18 trillion tokens. This provides a strong foundation for common sense, expert knowledge, and reasoning capabilities. In terms of post-training, we implement intricate supervised finetuning with over 1 million samples, as well as multistage reinforcement learning, including offline learning DPO "
+    },
+    {
+      "slug": "084_Demystifing_Video_Reasoning",
+      "title": "Demystifing Video Reasoning",
+      "category": "HDBSCAN Cluster: figure, video, reasoning, university",
+      "key": "FOLDER00014_50cd36f9e215",
+      "sourceIndex": 13,
+      "textBytes": 73866,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.16870v2[cs.CV]26May2026 [Figure 1] [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] [Figure 7] ## Demystifying Video Reasoning Ruisi Wang1, Zhongang Cai ,1, Fanyi Pu1,2, Junxiang Xu1, Wanqi Yin1, Maijunxian Wang3, Ran Ji4, Chenyang Gu1, Bo Li2, Ziqi Huang2, Hokin Deng5, Dahua Lin1, Ziwei Liu2, Lei Yang1 Corresponding Author 1 SenseTime Research 2 Nanyang Technological University 3 University of California, Berkeley 4 University of California, San Diego 5 Carnegie Mellon University ### Abstract Recent advances in video generation have revealed an unexpected phenomenon: diffusion-based video models exhibit non-trivial reasoning capabilities. Prior work attributes this to a Chain-of-Frames (CoF) mechanism, where reasoning is assumed to unfold sequentially across video frames. In this work, we challenge this assumption and uncover a fundamentally different mechanism. We sh"
+    },
+    {
+      "slug": "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini",
+      "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
+      "category": "HDBSCAN Cluster: university, shanghai, code, training",
+      "key": "FOLDER00015_27487e16e6cf",
+      "sourceIndex": 14,
+      "textBytes": 72155,
+      "figuresExtracted": 4,
+      "excerpt": "# arXiv:2603.26164v1[cs.LG]27Mar2026 [Figure 1] March 30, 2026 ## DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models Hao Liang∗,†, Zhengyang Zhao∗, Meiyi Qiang∗, Mingrui Chen∗, Lu Ma, Rongyi Yu, Hengyi Feng, Shixuan Sun, Zimo Meng, Xiaochen Ma, Xuanlin Yang, Qifeng Cai, Ruichuan An, Bohan Zeng, Zhen Hao Wong, Chengyu Shen, Runming He, Zhaoyang Han, Yaowei Zheng, Fangcheng Fu, Conghui He, Bin Cui, Zhiyu Li, Weinan E, Wentao Zhang‡ 1Peking University, 2Institute for Advanced Algorithms Research, Shanghai, 3OriginHub Technology, 4LLaMA-Factory Team, 5Zhongguancun Academy, 6OpenDataLab, Shanghai Artificial Intelligence Laboratory, 7Shanghai Jiao Tong University Data-centric training has emerged as a promising direction for improving large language models (LLMs) by optimizing not only model parameters but also the selection, composition, and weighting of "
+    },
+    {
+      "slug": "319_Agents_Last_Exam",
+      "title": "Agents' Last Exam",
+      "category": "HDBSCAN Cluster: zhang1, arxiv, li1, chen1",
+      "key": "FOLDER00016_4754adcaab2e",
+      "sourceIndex": 15,
+      "textBytes": 144650,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2606.05405v2[cs.AI]11Jun2026 [Figure 1] ## Agents’ Last Exam Website GitHub HuggingFace Leaderboard [Figure 2] #### Organization & Execution Team Yiyou Sun*, Xinyang Han*, Weichen Zhang*, Yuanbo Pang*, Tianyu Wang*, Yuhan Cao*, Yixiao Huang*, Chris Duroiu, Haoyun Zhang, Jeffrey Lin, Weishu Zhang, Tyler Zeng, Ying Yan, Bo Liu, Hanson Wen, Mingyang Xu, Xiaoyuan Liu, Zimeng Chen, Weiyan Shi, Amanda Dsouza, Vincent Sunn Chen, Dawn Song* * Core contributors. #### Advisory Committee Patrick Bryant, Carl Boettiger, Yamini Rangan, Bradley Rothenberg, Kyle Steinfeld, Arvind Rao, Tapio Schneider, Georgios Yannakakis, Laure Zanna, Kaan Ozbay, Ida Sim, Tarek Zohdi, George Em Karniadakis, Jack Gallant, Teresa Head-Gordon #### Data Contributors Yushan Li, Wenxi Deng, Tao Sun, Huiqi Wang, Zhun Wang, Justin Xu, Chris Yuhao Liu, Yafei Cheng, Rongwang Hu, Aras Bacho, Shengcao Cao, Zengyi Qin, Yixi"
+    },
+    {
+      "slug": "320_MolmoAct2_Action_Reasoning_Models_for_Real-world_Deployment",
+      "title": "MolmoAct2: Action Reasoning Models for Real-world Deployment",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00017_cfd9a664c2c0",
+      "sourceIndex": 16,
+      "textBytes": 184062,
+      "figuresExtracted": 5,
+      "excerpt": "# MolmoAct2 ### Action Reasoning Models for Real-World Deployment Haoquan Fang♥1,2∗ Jiafei Duan♥1,2,3∗ DonovanClay♥1,2 SamWang♥1,4 ShuoLiu♥2 WeikaiHuang♥1,2 XiangFan♥1,2 Wei-ChuanTsai♥2 Shirui Chen♥1,2 Yi Ru Wang♥1,2 Shanli Xing♥2 JaeminCho1,2,5 JaeSungPark1 AinazEftekhar1,2 PeterSushko1 KarenFarley1 AngadWadhwa2 Cole Harrison6 Winson Han1 Ying-Chun Lee2 Eli VanderBilt1 Rose Hendrix1 Suveen Ellawela7 Lucas Ngoo7 Joyce Chai8 Zhongzheng Ren♥1,2,9 Ali Farhadi♥1,2 Dieter Fox♥1,2 Ranjay Krishna♥1,2 ## arXiv:2605.02881v2[cs.RO]8May2026 1Allen Institute for AI, 2University of Washington, 3National University of Singapore, 4University of Pennsylvania, 5Johns Hopkins University, 6Amazon, 7Cortex AI, 8University of Michigan, 9University of North Carolina at Chapel Hill * denotes equal contribution in no particular order. ♥ marks core contributors. See full author contributions here. MolmoAct2: Mol"
+    },
+    {
+      "slug": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
+      "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, llms",
+      "key": "FOLDER00018_b37c28309d81",
+      "sourceIndex": 17,
+      "textBytes": 99957,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.19835v3[cs.LG]31Mar2026 [Figure 1] 2026-04-01 ## FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization [Figure 2] ##### Qwen Pilot Team, Alibaba Group ∗ Project Page GitHub HuggingFace ModelScope [Figure 3] [Figure 4] #### Abstract We present Future-KL Influenced Policy Optimization (FIPO), a reinforcement learning algorithm designed to overcome reasoning bottlenecks in large language models. While GRPO style training scales effectively, it typically relies on outcome-based rewards (ORM) that distribute a global advantage uniformly across every token in a trajectory. We argue that this coarse-grained credit assignment imposes a performance ceiling by failing to distinguish critical logical pivots from trivial tokens. FIPO addresses this by incorporating discounted future-KL divergence into the policy update, creating a dense advantage formulation that "
+    },
+    {
+      "slug": "322_ASE_A_Repository-Level_Benchmark_for_Evaluating_Security_in",
+      "title": "A.S.E: A Repository-Level Benchmark for Evaluating Security in AI-Generated Code",
+      "category": "HDBSCAN Cluster: university, shanghai, code, training",
+      "key": "FOLDER00019_f578c07c2033",
+      "sourceIndex": 18,
+      "textBytes": 84262,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2508.18106v3[cs.SE]18Sep2025 ## A.S.E: A Repository-Level Benchmark for Evaluating Security in AI-Generated Code Keke Lian1†, Bing Wang2†, Lei Zhang3, Libo Chen4, Junjie Wang5, Ziming Zhao6, Yujiu Yang5, Miaoqian Lin1, Haotong Duan1, Haoran Zhao3, Shuang Liao3, Mingda Guo3, Jiazheng Quan2, Yilu Zhong2, Chenhao He4, Zichuan Chen4, Jie Wu5, Haoling Li5, Zhaoxuan Li7, Jiongchi Yu8, Hui Li2∗, Dong Zhang1∗ 1Tencent 2Peking University 3Fudan University 4Shanghai Jiao Tong University 5Tsinghua University 6Zhejiang University 7Institute of Information Engineering, Chinese Academy of Sciences 8Singapore Management University A.S.E Code: https://github.com/Tencent/AICGSecEval A.S.E Website: https://aicgseceval.tencent.com/home #### Abstract The increasing adoption of large language models (LLMs) in software engineering necessitates rigorous security evaluation of their generated code. Howe"
+    },
+    {
+      "slug": "323_Qwen3_Technical_Report",
+      "title": "Qwen3 Technical Report",
+      "category": "HDBSCAN Cluster: figure, qwen, https, report",
+      "key": "FOLDER00020_81a86ff7c3c8",
+      "sourceIndex": 19,
+      "textBytes": 118269,
+      "figuresExtracted": 2,
+      "excerpt": "# arXiv:2505.09388v1[cs.CL]14May2025 [Figure 1] 2025-05-15 ## Qwen3 Technical Report [Figure 2] #### Qwen Team https://huggingface.co/Qwen https://modelscope.cn/organization/qwen https://github.com/QwenLM/Qwen3 ### Abstract In this work, we present Qwen3, the latest version of the Qwen model family. Qwen3 comprises a series of large language models (LLMs) designed to advance performance, efficiency, and multilingual capabilities. The Qwen3 series includes models of both dense and Mixture-of-Expert (MoE) architectures, with parameter scales ranging from 0.6 to 235 billion. A key innovation in Qwen3 is the integration of thinking mode (for complex, multi-step reasoning) and non-thinking mode (for rapid, context-driven responses) into a unified framework. This eliminates the need to switch between different models—–such as chat-optimized models (e.g., GPT-4o) and dedicated reasoning models "
+    },
+    {
+      "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
+      "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
+      "category": "HDBSCAN Cluster: figure, qwen, https, report",
+      "key": "FOLDER00021_8502bdaf4994",
+      "sourceIndex": 20,
+      "textBytes": 218340,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2602.05400v2[cs.CL]7Feb2026 ## OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration ###### Shaobo Wang1,2†∗ Xuan Ouyang1,3∗ Tianyi Xu1,3∗ Yuzheng Hu4 Jialin Liu1 Guo Chen1 Tianyu Zhang5 Junhao Zheng2 Kexin Yang2 Xingzhang Ren2 Dayiheng Liu2 Linfeng Zhang1 [Figure 1] [Figure 2] [Figure 3] 1 EPIC Lab, SJTU 2 Qwen Team, Alibaba Group 3 UW–Madison 4 UIUC 5 Mila - Quebec AI Institute [Figure 4] [Figure 5] [Figure 6] OPUS achieves better efficiency and performance compared with both static and dynamic selection methods 8x Efficiency +2.2 Figure 1: OPUS outperforms random selection by an average of 2.2% accuracy across 10 benchmarks and achieves 8× reduction in computation on GPT-XL using FineWeb dataset. ### Abstract As high-quality public text approaches exhaustion, a phenomenon known as the Data Wall (Villalobos et al., 2022), "
+    },
+    {
+      "slug": "325_CARLA-Air_Fly_Drones_Inside_a_CARLA_World_--_A_Unified_Infra",
+      "title": "CARLA-Air: Fly Drones Inside a CARLA World -- A Unified Infrastructure for Air-Ground Embodied Intelligence",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00022_bafb5974ff85",
+      "sourceIndex": 21,
+      "textBytes": 62875,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.28032v2[cs.RO]22Apr2026 ## CARLA-AIR: Fly Drones Inside a CARLA World A Unified Infrastructure for Air-Ground Embodied Intelligence Tianle Zeng1 Yanci Wen1 Hong Zhang1,† [Figure 1] Figure 1: Overview of CARLA-Air, a unified simulation infrastructure for air-ground embodied intelligence. The examples shown here illustrate representative capabilities of the platform, including unified air-ground simulation, multi-modal sensing, embodied navigation, asset adaptation, and diverse urban scenarios within a single physically coherent environment. ### Abstract The convergence of low-altitude economies, embodied intelligence, and air-ground cooperative systems creates a growing need for simulation infrastructure capable of jointly modeling aerial and ground agents within a single physically coherent environment. Existing open-source platforms remain domain-segregated: urban driving s"
+    },
+    {
+      "slug": "326_Rethinking_Generalization_in_Reasoning_SFT_A_Conditional_Ana",
+      "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00023_6978f9941fd7",
+      "sourceIndex": 22,
+      "textBytes": 161148,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2604.06628v1[cs.AI]8Apr2026 ## Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability Qihan Ren1,2∗, Peng Wang1,3∗, Ruikun Cai3, Shuai Shao1, Dadi Guo1, Yuejin Xie1, Yafu Li1, Quanshi Zhang2, Xia Hu1, Jing Shao1, Dongrui Liu1† 1Shanghai Artificial Intelligence Laboratory 2Shanghai Jiao Tong University 3University of Science and Technology of China renqihan@sjtu.edu.cn yueyue233@mail.ustc.edu.cn {shaojing, liudongrui}@pjlab.org.cn https://github.com/Nebularaid2000/rethink sft generalization https://huggingface.co/collections/jasonrqh/rethink-sft-generalization https://modelscope.cn/collections/nebularaid/Rethink SFT generalization [Figure 1] [Figure 2] ### Abstract A prevailing narrative in LLM post-training holds that supervised finetuning (SFT) memorizes while reinforcement learning (RL) generalizes. We revisit this claim f"
+    },
+    {
+      "slug": "327_Green-VLA_Staged_Vision-Language-Action_Model_for_Generalist",
+      "title": "Green-VLA: Staged Vision-Language-Action Model for Generalist Robots",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00024_348a94e5f835",
+      "sourceIndex": 23,
+      "textBytes": 86005,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2602.00919v2[cs.RO]7Mar2026 ## Green-VLA: Staged Vision–Language–Action Model for Generalist Robots Manipulation Team, Sber Robotics Center* *A detailed list of contributors in section 7 [Figure 1] We introduce Green-VLA, a staged Vision–Language–Action framework for real-world deployment on the humanoid Green robot, while maintaining generalization across diverse embodiments. Green-VLA follows a five-stage curriculum: (L0) foundational VLMs, (L1) multimodal grounding, (R0) multi-embodiment pretraining, (R1) embodiment-specific adaptation, and (R2) RL-based policy alignment. Progression builds semantic and physical priors, learns shared affordances, and aligns policies for long-horizon execution beyond behavior cloning. At its core is a unified data and control stack for robot fleets. A scalable data-processing pipeline including DataQA and temporal-alignment filters and synchron"
+    },
+    {
+      "slug": "328_mHC_Manifold-Constrained_Hyper-Connections",
+      "title": "mHC: Manifold-Constrained Hyper-Connections",
+      "category": "HDBSCAN Cluster: university, shanghai, code, training",
+      "key": "FOLDER00025_d536b93915d7",
+      "sourceIndex": 24,
+      "textBytes": 59174,
+      "figuresExtracted": 5,
+      "excerpt": "## mHC: Manifold-Constrained Hyper-Connections Zhenda Xie*†, Yixuan Wei*, Huanqi Cao*, Chenggang Zhao, Chengqi Deng, Jiashi Li, Damai Dai, Huazuo Gao, Jiang Chang, Kuai Yu, Liang Zhao, Shangyan Zhou, Zhean Xu, Zhengyan Zhang, Wangding Zeng, Shengding Hu, Yuqing Wang, Jingyang Yuan, Lean Wang, Wenfeng Liang DeepSeek-AI ### Abstract # arXiv:2512.24880v2[cs.CL]5Jan2026 Recently, studies exemplified by Hyper-Connections (HC) have extended the ubiquitous residual connection paradigm established over the past decade by expanding the residual stream width and diversifying connectivity patterns. While yielding substantial performance gains, this diversification fundamentally compromises the identity mapping property intrinsic to the residual connection, which causes severe training instability and restricted scalability, and additionally incurs notable memory access overhead. To address these ch"
+    },
+    {
+      "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
+      "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
+      "category": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "key": "FOLDER00026_e94287efc152",
+      "sourceIndex": 25,
+      "textBytes": 79369,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2605.20613v1[cs.CL]20May2026 # HRM-Text: Efficient Pretraining Beyond Scaling Guan Wang1,∗,†, Changling Liu1,∗, Chenyu Wang2, Cai Zhou2, Yuhao Sun1, Yifei Wu1, Shuai Zhen1, Luca Scimeca1, Yasin Abbasi Yadkori1,† 1Sapient Intelligence 2MIT Abstract The current pretraining paradigm for large language models relies on massive compute and internet-scale raw text, creating a significant barrier to foundational research. In contrast, biological systems demonstrate highly sample-efficient learning through multi-timescale processing, such as the functional organization of the frontoparietal loop. Taking this as inspiration, we introduce HRM-Text, which replaces standard Transformers with a Hierarchical Recurrent Model (HRM) that decouples computation into slow-evolving strategic and fast-evolving execution layers. To stabilize this deep recurrence for language modeling, we introduce Mag"
+    },
+    {
+      "slug": "330_Group_Sequence_Policy_Optimization",
+      "title": "Group Sequence Policy Optimization",
+      "category": "HDBSCAN Cluster: sequence, optimization, gspo, learning",
+      "key": "FOLDER00027_94918922664a",
+      "sourceIndex": 26,
+      "textBytes": 23492,
+      "figuresExtracted": 3,
+      "excerpt": "[Figure 1] 2025-07-29 ## Group Sequence Policy Optimization Chujie Zheng∗ Shixuan Liu Mingze Li Xiong-Hui Chen Bowen Yu∗ Chang Gao Kai Dang Yuqiong Liu Rui Men An Yang Jingren Zhou Junyang Lin Qwen Team, Alibaba Inc. # arXiv:2507.18071v2[cs.LG]28Jul2025 #### Abstract This paper introduces Group Sequence Policy Optimization (GSPO), our stable, efficient, and performant reinforcement learning algorithm for training large language models. Unlike previous algorithms that adopt token-level importance ratios, GSPO defines the importance ratio based on sequence likelihood and performs sequence-level clipping, rewarding, and optimization. We demonstrate that GSPO achieves superior training efficiency and performance compared to the GRPO algorithm, notably stabilizes Mixtureof-Experts (MoE) RL training, and has the potential for simplifying the design of RL infrastructure. These merits of GSPO ha"
+    },
+    {
+      "slug": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
+      "title": "InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models",
+      "category": "HDBSCAN Cluster: zhang1, arxiv, li1, chen1",
+      "key": "FOLDER00028_e5264c4b16b0",
+      "sourceIndex": 27,
+      "textBytes": 122653,
+      "figuresExtracted": 3,
+      "excerpt": "# arXiv:2504.10479v3[cs.CV]19Apr2025 ## InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models Jinguo Zhu1∗, Weiyun Wang5,1∗†, Zhe Chen4,1∗†, Zhaoyang Liu1∗†, Shenglong Ye1∗, Lixin Gu1∗, Hao Tian2∗, Yuchen Duan6,1∗†, Weijie Su1, Jie Shao4,1†, Zhangwei Gao7,1†, Erfei Cui7,1†, Xuehui Wang7,1†, Yue Cao4,1†, Yangzhou Liu4,1†, Xingguang Wei1†, Hongjie Zhang1, Haomin Wang7,1†, Weiye Xu1†, Hao Li1†, Jiahao Wang1†, Nianchen Deng1, Songze Li1, Yinan He1, Tan Jiang2, Jiapeng Luo2, Yi Wang1, Conghui He1, Botian Shi1, Xingcheng Zhang1, Wenqi Shao1, Junjun He1, Yingtong Xiong1, Wenwen Qu1, Peng Sun1, Penglong Jiao1, Han Lv1, Lijun Wu1, Kaipeng Zhang1, Huipeng Deng1, Jiaye Ge1, Kai Chen1, Limin Wang4,1, Min Dou1, Lewei Lu2, Xizhou Zhu3,1, Tong Lu4, Dahua Lin6,1, Yu Qiao1, Jifeng Dai3,1 , Wenhai Wang6,1 1Shanghai AI Laboratory 2SenseTime Research 3Tsinghua Univer"
+    },
+    {
+      "slug": "332_DINOv3",
+      "title": "DINOv3",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00029_a3328f5ae17b",
+      "sourceIndex": 28,
+      "textBytes": 237604,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2508.10104v1[cs.CV]13Aug2025 ## DINOv3 Oriane Siméoni∗ Huy V. Vo∗ Maximilian Seitzer∗ Federico Baldassarre∗ Maxime Oquab∗ Cijo Jose Vasil Khalidov Marc Szafraniec Seungeun Yi Michaël Ramamonjisoa Francisco Massa Daniel Haziza Luca Wehrstedt Jianyuan Wang Timothée Darcet Théo Moutakanni Leonel Sentana Claire Roberts Andrea Vedaldi Jamie Tolan John Brandt1 Camille Couprie Julien Mairal2 Hervé Jégou Patrick Labatut Piotr Bojanowski Meta AI Research 1WRI 2Inria ∗corresponding authors: {osimeoni,huyvvo,seitzer,baldassarre,qas}@meta.com #### Abstract Self-supervised learning holds the promise of eliminating the need for manual data annotation, enabling models to scale effortlessly to massive datasets and larger architectures. By not being tailored to specific tasks or domains, this training paradigm has the potential to learn visual representations from diverse sources, ranging from na"
+    },
+    {
+      "slug": "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios",
+      "title": "InCoder-32B: Code Foundation Model for Industrial Scenarios",
+      "category": "HDBSCAN Cluster: university, shanghai, code, training",
+      "key": "FOLDER00030_44a8848066c5",
+      "sourceIndex": 29,
+      "textBytes": 161304,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.16790v3[cs.SE]31Mar2026 [Figure 1] ## InCoder-32B: Code Foundation Model for Industrial Scenarios Jian Yang1, Wei Zhang1, Jiajun Wu1, Junhang Cheng1, Shawn Guo2, Haowen Wang2, Weicheng Gu1, Yaxin Du3, Joseph Li4, Fanglin Xu2, Yizhi Li5, Lin Jing2, Yuanbo Wang1, Yuhan Gao1, Ruihao Gong1, Chuan Hao2, Ran Tao2, Aishan Liu1, Tuney Zheng2, Ganqu Cui6, Zhoujun Li1, Mingjie Tang7, Chenghua Lin5, Wayne Xin Zhao8, Xianglong Liu1, Ming Zhou9, Bryan Dai2, Weifeng Lv1 1Beihang University 2IQuest Research 3Shanghai Jiao Tong University 4ELLIS 5University of Manchester 6Shanghai Artificial Intelligence Laboratory 7Sichuan Univeristy 8Gaoling School of Artificial Intelligence, Renmin University of China 9Langboat †Corresponding Authors. Email: {jiayang}@buaa.edu.cn HuggingFace: https://huggingface.co/Multilingual-Multimodal-NLP/IndustrialCoder GitHub: https://github.com/CSJianYang/Industri"
+    },
+    {
+      "slug": "334_MiniMax-01_Scaling_Foundation_Models_with_Lightning_Attentio",
+      "title": "MiniMax-01: Scaling Foundation Models with Lightning Attention",
+      "category": "HDBSCAN Cluster: lightning, attention, scaling, model",
+      "key": "FOLDER00031_fa942766dee6",
+      "sourceIndex": 30,
+      "textBytes": 287301,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2501.08313v1[cs.CL]14Jan2025 [Figure 1] # MiniMax-01: Scaling Foundation Models with Lightning Attention MiniMax1 We introduce MiniMax-01 series, including MiniMax-Text-01 and MiniMax-VL-01, which are comparable to top-tier models while offering superior capabilities in processing longer contexts. The core lies in lightning attention and its efficient scaling. To maximize computational capacity, we integrate it with Mixture of Experts (MoE), creating a model with 32 experts and 456 billion total parameters, of which 45.9 billion are activated for each token. We develop an optimized parallel strategy and highly efficient computation-communication overlap techniques for MoE and lightning attention. This approach enables us to conduct efficient training and inference on models with hundreds of billions of parameters across contexts spanning millions of tokens. The context window of"
+    },
+    {
+      "slug": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
+      "title": "Advances and Challenges in Foundation Agents: From Brain-Inspired Intelligence to Evolutionary, Collaborative, and Safe Systems",
+      "category": "HDBSCAN Cluster: zhang1, arxiv, li1, chen1",
+      "key": "FOLDER00032_042b1763276f",
+      "sourceIndex": 31,
+      "textBytes": 1411183,
+      "figuresExtracted": 1,
+      "excerpt": "###### Advances and Challenges in Foundation Agents From Brain-Inspired Intelligence to Evolutionary, Collaborative, and Safe Systems ##### arXiv:2504.01990v2[cs.AI]2Aug2025 Bang Liu2,3,20∗†, Xinfeng Li4∗, Jiayi Zhang1,10∗, Jinlin Wang1∗, Tanjin He5∗, Sirui Hong1∗, Hongzhang Liu6∗, Shaokun Zhang7∗, Kaitao Song8∗, Kunlun Zhu9∗, Yuheng Cheng1∗, Suyuchen Wang2,3∗, Xiaoqiang Wang2,3∗, Yuyu Luo10∗, Haibo Jin9∗∗, Peiyan Zhang10, Ollie Liu11, Jiaqi Chen1, Huan Zhang2,3, Zhaoyang Yu1, Haochen Shi2,3, Boyan Li10, Dekun Wu2,3, Fengwei Teng1, Xiaojun Jia4, Jiawei Xu1, Jinyu Xiang1, Yizhang Lin1, Tianming Liu14, Tongliang Liu6, Yu Su15, Huan Sun15, Glen Berseth2,3,20, Jianyun Nie2, Ian Foster5, Logan Ward5, Qingyun Wu7, Yu Gu15, Mingchen Zhuge16, Xinbing Liang1, Xiangru Tang12, Haohan Wang9, Jiaxuan You9, Chi Wang19, Jian Pei17†, Qiang Yang10,18†, Xiao-Liang Qi13†, Chenglin Wu1∗†† 1MetaGPT, 2Univers"
+    },
+    {
+      "slug": "336_From_Code_Foundation_Models_to_Agents_and_Applications_A_Pra",
+      "title": "From Code Foundation Models to Agents and Applications: A Practical Guide to Code Intelligence",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00033_8b021f08937b",
+      "sourceIndex": 32,
+      "textBytes": 1037663,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] ### From Code Foundation Models to Agents and Applications: A Comprehensive Survey and Practical Guide to Code Intelligence BUAA-SKLCCSE, Alibaba, ByteDance, M-A-P, BJTU, OPPO, HKUST (GZ), BUPT, TeleAI, Shanghai AI Lab, Manchester, StepFun, UoS, SCU, CASIA, NJU, Kuaishou, HIT, Huawei Cloud, Tencent, Monash/CSIRO, NTU, ZJU, BIT, Ubiquant, NUS, HNU, PKU, CSU ### Abstract Large language models (LLMs) have fundamentally transformed automated software development by enabling direct translation of natural language descriptions into functional code, driving commercial adoption through tools like GitHub Copilot (Microsoft), Cursor (Anysphere), Trae (ByteDance), and Claude Code (Anthropic). While the field has evolved dramatically from rule-based systems to Transformer-based architectures, achieving performance improvements from single-digit to over 95% success rates on benchmarks like"
+    },
+    {
+      "slug": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
+      "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
+      "category": "HDBSCAN Cluster: figure, video, reasoning, university",
+      "key": "FOLDER00034_8bc56d204ac7",
+      "sourceIndex": 33,
+      "textBytes": 94309,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2604.08377v1[cs.AI]9Apr2026 [Figure 1] # SkillClaw: Let Skills Evolve Collectively with Agentic Evolver Ziyu Ma1∗, Shidong Yang1∗, Yuxiang Ji1∗, Xucong Wang1∗, Yong Wang1†, Yiming Hu1, Tongwen Huang1, Xiangxiang Chu1 1DreamX Team, ∗Equal contribution, †Project lead Large language model (LLM) agents such as OpenClaw rely on reusable skills to perform complex tasks, yet these skills remain largely static after deployment. As a result, similar workflows, tool usage patterns, and failure modes are repeatedly rediscovered across users, preventing the system from improving with experience. While interactions from different users provide complementary signals about when a skill works or fails, existing systems lack a mechanism to convert such heterogeneous experiences into reliable skill updates. To address these issues, we present SkillClaw, a framework for collective skill evolution "
+    },
+    {
+      "slug": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
+      "title": "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, llms",
+      "key": "FOLDER00035_fc3525c2b456",
+      "sourceIndex": 34,
+      "textBytes": 87188,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2501.04519v1[cs.CL]8Jan2025 ## rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking Xinyu Guan∗ Li Lyna Zhang∗⋄ Yifei Liu Ning Shang Youran Sun Yi Zhu Fan Yang Mao Yang Microsoft Research Asia ### Abstract We present rStar-Math to demonstrate that small language models (SLMs) can rival or even surpass the math reasoning capability of OpenAI o1, without distillation from superior models. rStar-Math achieves this by exercising “deep thinking” through Monte Carlo Tree Search (MCTS), where a math policy SLM performs test-time search guided by an SLM-based process reward model. rStar-Math introduces three innovations to tackle the challenges in training the two SLMs: (1) a novel code-augmented CoT data sythesis method, which performs extensive MCTS rollouts to generate step-by-step verified reasoning trajectories used to train the policy SLM; (2) a novel pr"
+    },
+    {
+      "slug": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
+      "title": "Weak-Driven Learning: How Weak Agents make Strong Agents Stronger",
+      "category": "HDBSCAN Cluster: sequence, optimization, gspo, learning",
+      "key": "FOLDER00036_31e22fa1f189",
+      "sourceIndex": 35,
+      "textBytes": 96730,
+      "figuresExtracted": 4,
+      "excerpt": "# arXiv:2602.08222v2[cs.AI]8Jun2026 ## Weak-Driven Learning: How Weak Agents Make Strong Agents Stronger Zehao Chen1,2,∗ Gongxun Li1,2,∗ Tianxiang Ai2,∗ Yifei Li1,2 Zixuan Huang1 Wang Zhou2 Tao Huang2 Fuzhen Zhuang1 Xianglong Liu1 Jianxin Li1 Deqing Wang1,† Yikun Ban1,† 1Beihang University 2China Telecom eSurfing Cloud ∗Equal contribution †Corresponding authors gyy_chenzehao@chinatelecom.cn zehaochenacid@buaa.edu.cn yikunb@buaa.edu.cn ### Abstract As supervised fine-tuning (SFT) becomes central to post-training large language models, target-only training can yield diminishing returns while hard samples remain under-learned. While existing methods continue to reinforce target predictions, informative corrective signal can remain latent in models’ own historical weak states. Motivated by this observation, we study Weak-Driven Learning, a post-training direction that repurposes weak histori"
+    },
+    {
+      "slug": "340_Recursive_Multi-Agent_Systems",
+      "title": "Recursive Multi-Agent Systems",
+      "category": "HDBSCAN Cluster: figure, video, reasoning, university",
+      "key": "FOLDER00037_f33e597ec366",
+      "sourceIndex": 36,
+      "textBytes": 105642,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2604.25917v1[cs.AI]28Apr2026 [Figure 1] # Recursive Multi-Agent Systems Xiyuan Yang1,*, Jiaru Zou1,2,*†, Rui Pan1, Ruizhong Qiu1, Pan Lu2, Shizhe Diao3, Jindong Jiang3, Hanghang Tong1, Tong Zhang1, Markus J. Buehler4, Jingrui He1 , James Zou2 1UIUC 2Stanford University 3NVIDIA 4MIT *Equal Contribution, Alphabetical Order †Project Lead Corresponding Authors Project Page: https://recursivemas.github.io [Figure 2] Recursive or looped language models have recently emerged as a new scaling axis by iteratively refining the same model computation over latent states to deepen reasoning. We extend such scaling principle from a single model to multi-agent systems, and ask: Can agent collaboration itself be scaled through recursion? To this end, we introduce RecursiveMAS, a recursive multi-agent framework that casts the entire system as a unified latent-space recursive computation. Recursi"
+    },
+    {
+      "slug": "341_MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightn",
+      "title": "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention",
+      "category": "HDBSCAN Cluster: lightning, attention, scaling, model",
+      "key": "FOLDER00038_c5daea06a99b",
+      "sourceIndex": 37,
+      "textBytes": 75471,
+      "figuresExtracted": 4,
+      "excerpt": "arXiv:2506.13585v1[cs.CL]16Jun2025 [Figure 1] # MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention MiniMax1 We introduce MiniMax-M1, the world’s first open-weight, large-scale hybrid-attention reasoning model. MiniMax-M1 is powered by a hybrid Mixture-of-Experts (MoE) architecture combined with a lightning attention mechanism. The model is developed based on our previous MiniMax-Text-01 model (MiniMax et al., 2025), which contains a total of 456 billion parameters with 45.9 billion parameters activated per token. The M1 model natively supports a context length of 1 million tokens, 8x the context size of DeepSeek R1. Furthermore, the lightning attention mechanism in MiniMax-M1 enables efficient scaling of test-time compute – For example, compared to DeepSeek R1, M1 consumes 25% of the FLOPs at a generation length of 100K tokens. These properties make M1 particularl"
+    },
+    {
+      "slug": "342_Qwen-Image_Technical_Report",
+      "title": "Qwen-Image Technical Report",
+      "category": "HDBSCAN Cluster: figure, qwen, https, report",
+      "key": "FOLDER00039_67f3a3187f0a",
+      "sourceIndex": 38,
+      "textBytes": 141226,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2508.02324v1[cs.CV]4Aug2025 [Figure 1] August 5, 2025 #### Qwen-Image Technical Report Qwen Team https://qwen.ai [Figure 2] https://huggingface.co/Qwen/Qwen-Image https://modelscope.cn/models/Qwen/Qwen-Image [Figure 3] https://github.com/QwenLM/Qwen-Image ###### Abstract We present Qwen-Image, an image generation foundation model in the Qwen series that achieves significant advances in complex text rendering and precise image editing. To address the challenges of complex text rendering, we design a comprehensive data pipeline that includes large-scale data collection, filtering, annotation, synthesis, and balancing. Moreover, we adopt a progressive training strategy that starts with nontext-to-text rendering, evolves from simple to complex textual inputs, and gradually scales up to paragraph-level descriptions. This curriculum learning approach substantially enhances the model’s "
+    },
+    {
+      "slug": "343_Reflect_Retry_Reward_Self-Improving_LLMs_via_Reinforcement_L",
+      "title": "Reflect, Retry, Reward: Self-Improving LLMs via Reinforcement Learning",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, llms",
+      "key": "FOLDER00040_95d719d8c56a",
+      "sourceIndex": 39,
+      "textBytes": 50448,
+      "figuresExtracted": 2,
+      "excerpt": "arXiv:2505.24726v1[cs.CL]30May2025 # Reflect, Retry, Reward: Self-Improving LLMs via Reinforcement Learning Shelly Bensal∗ Umar Jamil∗ Christopher Bryant Melisa Russak Kiran Kamble Dmytro Mozolevskyi Muayad Ali Waseem AlShikh Writer, Inc. {shelly, ..., waseem}@writer.com ## Abstract We explore a method for improving the performance of large language models through self-reflection and reinforcement learning. By incentivizing the model to generate better self-reflections when it answers incorrectly, we demonstrate that a model’s ability to solve complex, verifiable tasks can be enhanced even when generating synthetic data is infeasible and only binary feedback is available. Our framework operates in two stages: first, upon failing a given task, the model generates a self-reflective commentary analyzing its previous attempt; second, the model is given another attempt at the task with the se"
+    }
+  ]
+}

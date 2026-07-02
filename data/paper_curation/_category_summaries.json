@@ -1,0 +1,49 @@
+{
+  "categories": [
+    {
+      "name": "HDBSCAN Bridge and Noise Papers",
+      "summary": "Codex-native cluster containing 14 processed papers.",
+      "count": 14
+    },
+    {
+      "name": "HDBSCAN Cluster: reasoning, reinforcement, learning, llms",
+      "summary": "Codex-native cluster containing 5 processed papers.",
+      "count": 5
+    },
+    {
+      "name": "HDBSCAN Cluster: zhang1, arxiv, li1, chen1",
+      "summary": "Codex-native cluster containing 4 processed papers.",
+      "count": 4
+    },
+    {
+      "name": "HDBSCAN Cluster: figure, qwen, https, report",
+      "summary": "Codex-native cluster containing 4 processed papers.",
+      "count": 4
+    },
+    {
+      "name": "HDBSCAN Cluster: university, shanghai, code, training",
+      "summary": "Codex-native cluster containing 4 processed papers.",
+      "count": 4
+    },
+    {
+      "name": "HDBSCAN Cluster: figure, video, reasoning, university",
+      "summary": "Codex-native cluster containing 3 processed papers.",
+      "count": 3
+    },
+    {
+      "name": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
+    },
+    {
+      "name": "HDBSCAN Cluster: sequence, optimization, gspo, learning",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
+    },
+    {
+      "name": "HDBSCAN Cluster: lightning, attention, scaling, model",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
+    }
+  ]
+}
