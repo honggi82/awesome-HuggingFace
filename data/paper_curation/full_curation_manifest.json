@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-03T09:15:53.542535+00:00",
+  "generated": "2026-07-03T10:08:36.748256+00:00",
   "mode": "codex-native-full-curation",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "awesomeRepo": "E:\\조선대\\연구\\awesome-HuggingFace",
   "extractReport": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\_folder_source_extract_report.json",
-  "processedPapers": 80,
-  "sourceReportTotal": 80,
+  "processedPapers": 85,
+  "sourceReportTotal": 85,
   "sourceManifestTotal": 16212,
   "docsEntry": "docs/paper_curation/index.html",
   "networkEntry": "docs/paper_curation/huggingface/network.html",
@@ -19,6 +19,6 @@
   "clusterer": "hdbscan.HDBSCAN",
   "projection": "umap.UMAP",
   "missingRequired": [],
-  "copiedFiles": 894,
+  "copiedFiles": 946,
   "note": "Codex-native artifacts generated from extract-only evidence. Cached local SPECTER2, HDBSCAN, and UMAP are attempted; any fallback is recorded in _topic_model_info.json. External Claude/Gemini/PaperBanana APIs were not called."
 }

@@ -25,7 +25,7 @@
     {
       "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
       "title": "GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, deep",
+      "category": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
       "key": "FOLDER00003_07f36ae7acd9",
       "sourceIndex": null,
       "textBytes": 76254,
@@ -55,7 +55,7 @@
     {
       "slug": "076_A_Very_Big_Video_Reasoning_Suite",
       "title": "A Very Big Video Reasoning Suite",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, figure, li1, arxiv",
       "key": "FOLDER00006_dd10def1d36c",
       "sourceIndex": 5,
       "textBytes": 144021,
@@ -65,7 +65,7 @@
     {
       "slug": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
       "title": "Adam's Law: Textual Frequency Law on Large Language Models",
-      "category": "HDBSCAN Cluster: data, language, large, figure",
+      "category": "HDBSCAN Cluster: data, language, reasoning, large",
       "key": "FOLDER00007_f1204ba044c3",
       "sourceIndex": 6,
       "textBytes": 101929,
@@ -85,7 +85,7 @@
     {
       "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
       "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, deep",
+      "category": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
       "key": "FOLDER00009_e247d7b4176f",
       "sourceIndex": 8,
       "textBytes": 238083,
@@ -105,7 +105,7 @@
     {
       "slug": "081_AI_Can_Learn_Scientific_Taste",
       "title": "AI Can Learn Scientific Taste",
-      "category": "HDBSCAN Cluster: university, zhang1, chen1, li1",
+      "category": "HDBSCAN Cluster: university, zhang1, wang, zhang",
       "key": "FOLDER00011_58c904a08eda",
       "sourceIndex": 10,
       "textBytes": 158305,
@@ -125,7 +125,7 @@
     {
       "slug": "083_Qwen25_Technical_Report",
       "title": "Qwen2.5 Technical Report",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Cluster: qwen, qwen2, https, report",
       "key": "FOLDER00013_a400d0a3210e",
       "sourceIndex": 12,
       "textBytes": 96661,
@@ -175,7 +175,7 @@
     {
       "slug": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
       "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, deep",
+      "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
       "key": "FOLDER00018_b37c28309d81",
       "sourceIndex": 17,
       "textBytes": 99957,
@@ -195,7 +195,7 @@
     {
       "slug": "323_Qwen3_Technical_Report",
       "title": "Qwen3 Technical Report",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Cluster: qwen, qwen2, https, report",
       "key": "FOLDER00020_81a86ff7c3c8",
       "sourceIndex": 19,
       "textBytes": 118269,
@@ -205,7 +205,7 @@
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
-      "category": "HDBSCAN Cluster: data, language, large, figure",
+      "category": "HDBSCAN Cluster: data, language, reasoning, large",
       "key": "FOLDER00021_8502bdaf4994",
       "sourceIndex": 20,
       "textBytes": 218340,
@@ -275,7 +275,7 @@
     {
       "slug": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
       "title": "InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models",
-      "category": "HDBSCAN Cluster: university, zhang1, chen1, li1",
+      "category": "HDBSCAN Cluster: university, zhang1, wang, zhang",
       "key": "FOLDER00028_e5264c4b16b0",
       "sourceIndex": 27,
       "textBytes": 122653,
@@ -285,7 +285,7 @@
     {
       "slug": "332_DINOv3",
       "title": "DINOv3",
-      "category": "HDBSCAN Cluster: data, language, large, figure",
+      "category": "HDBSCAN Cluster: data, language, reasoning, large",
       "key": "FOLDER00029_a3328f5ae17b",
       "sourceIndex": 28,
       "textBytes": 237604,
@@ -315,7 +315,7 @@
     {
       "slug": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
       "title": "Advances and Challenges in Foundation Agents: From Brain-Inspired Intelligence to Evolutionary, Collaborative, and Safe Systems",
-      "category": "HDBSCAN Cluster: university, zhang1, chen1, li1",
+      "category": "HDBSCAN Cluster: university, zhang1, wang, zhang",
       "key": "FOLDER00032_042b1763276f",
       "sourceIndex": 31,
       "textBytes": 1411183,
@@ -345,7 +345,7 @@
     {
       "slug": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
       "title": "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, deep",
+      "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
       "key": "FOLDER00035_fc3525c2b456",
       "sourceIndex": 34,
       "textBytes": 87188,
@@ -425,7 +425,7 @@
     {
       "slug": "1727_CiteVQA_Benchmarking_Evidence_Attribution_for_Trustworthy_Do",
       "title": "CiteVQA: Benchmarking Evidence Attribution for Trustworthy Document Intelligence",
-      "category": "HDBSCAN Cluster: reasoning, data, cot, evidence",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00043_689fbea40b84",
       "sourceIndex": 42,
       "textBytes": 93544,
@@ -435,7 +435,7 @@
     {
       "slug": "1728_Reinforcement_Pre-Training",
       "title": "Reinforcement Pre-Training",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, deep",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00044_3dcd071cdafe",
       "sourceIndex": 43,
       "textBytes": 48294,
@@ -465,7 +465,7 @@
     {
       "slug": "1731_Phi-3_Technical_Report_A_Highly_Capable_Language_Model_Local",
       "title": "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00047_6bf122ba377f",
       "sourceIndex": 46,
       "textBytes": 59469,
@@ -525,7 +525,7 @@
     {
       "slug": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "title": "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00053_b501ac6425a5",
       "sourceIndex": 52,
       "textBytes": 99132,
@@ -555,7 +555,7 @@
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "title": "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model",
-      "category": "HDBSCAN Cluster: data, language, large, figure",
+      "category": "HDBSCAN Cluster: data, language, reasoning, large",
       "key": "FOLDER00056_e1a299738b86",
       "sourceIndex": 55,
       "textBytes": 87381,
@@ -635,7 +635,7 @@
     {
       "slug": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
       "title": "Less is Enough: Synthesizing Diverse Data in Feature Space of LLMs",
-      "category": "HDBSCAN Cluster: data, language, large, figure",
+      "category": "HDBSCAN Cluster: data, language, reasoning, large",
       "key": "FOLDER00064_292a7228313c",
       "sourceIndex": 63,
       "textBytes": 179027,
@@ -675,7 +675,7 @@
     {
       "slug": "1751_Is_Chain-of-Thought_Reasoning_of_LLMs_a_Mirage_A_Data_Distri",
       "title": "Is Chain-of-Thought Reasoning of LLMs a Mirage? A Data Distribution Lens",
-      "category": "HDBSCAN Cluster: reasoning, data, cot, evidence",
+      "category": "HDBSCAN Cluster: data, language, reasoning, large",
       "key": "FOLDER00068_7017db505186",
       "sourceIndex": 67,
       "textBytes": 107328,
@@ -685,7 +685,7 @@
     {
       "slug": "1752_The_Landscape_of_Agentic_Reinforcement_Learning_for_LLMs_A_S",
       "title": "The Landscape of Agentic Reinforcement Learning for LLMs: A Survey",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, figure, li1, arxiv",
       "key": "FOLDER00069_243ca31a6792",
       "sourceIndex": 68,
       "textBytes": 388541,
@@ -755,7 +755,7 @@
     {
       "slug": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
       "title": "Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond",
-      "category": "HDBSCAN Cluster: university, zhang1, chen1, li1",
+      "category": "HDBSCAN Cluster: university, zhang1, wang, zhang",
       "key": "FOLDER00076_8f66fe1850ac",
       "sourceIndex": 75,
       "textBytes": 384726,
@@ -765,7 +765,7 @@
     {
       "slug": "1760_Scaling_Latent_Reasoning_via_Looped_Language_Models",
       "title": "Scaling Latent Reasoning via Looped Language Models",
-      "category": "HDBSCAN Cluster: university, zhang1, chen1, li1",
+      "category": "HDBSCAN Cluster: university, zhang1, wang, zhang",
       "key": "FOLDER00077_e466b12b1813",
       "sourceIndex": 76,
       "textBytes": 185444,
@@ -801,6 +801,56 @@
       "textBytes": 161443,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2606.02437v2[cs.LG]2Jun2026 [Figure 1] ## On the Scaling of PEFT: Towards Million Personal Models of Trillion Parameters Mind Lab Parameter-efficient fine-tuning (PEFT) is usually evaluated as a cheaper alternative to full fine-tuning. This paper studies a broader possibility: whether small trainable adapters can serve as persistent local state on top of strong shared foundation models. In this view, a base model supplies common competence, while adapters may carry part of an instance-specific behavioral state, such as preferences, skills, tool habits, or memory-like updates. This framing is deliberately bounded: PEFT does not store the whole person or replace retrieval, but it may provide a compact unit of adaptive state that can be trained, evaluated, served, and composed at population scale. We study this possibility through three coupled scaling problems that must reinforce o"
+    },
+    {
+      "slug": "1886_OmniHuman-1_Rethinking_the_Scaling-Up_of_One-Stage_Condition",
+      "title": "OmniHuman-1: Rethinking the Scaling-Up of One-Stage Conditioned Human Animation Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00081_628213d7f3f8",
+      "sourceIndex": 80,
+      "textBytes": 55800,
+      "figuresExtracted": 5,
+      "excerpt": "arXiv:2502.01061v3[cs.CV]30Jun2025 # OmniHuman-1: Rethinking the Scaling-Up of One-Stage Conditioned Human Animation Models Gaojie Lin∗ Jianwen Jiang∗† Jiaqi Yang∗ Zerong Zheng∗ Chao Liang ByteDance https://omnihuman-lab.github.io/ [Figure 1] - Figure 1. The video frames generated by OmniHuman based on input audio and image. The generated results feature head and gesture movements, as well as facial expressions, that match the audio. OmniHuman generates realistic videos with any aspect ratio and body proportion, and significantly improves gesture generation and object interaction over existing methods, due to the data scaling up enabled by omni-conditions training. ## Abstract End-to-end human animation, such as audio-driven talking human generation, has undergone notable advancements in the recent few years. However, existing methods still struggle to scale up as large general video gen"
+    },
+    {
+      "slug": "1700_Qwen25-VL_Technical_Report",
+      "title": "Qwen2.5-VL Technical Report",
+      "category": "HDBSCAN Cluster: qwen, qwen2, https, report",
+      "key": "FOLDER00082_81c67876894a",
+      "sourceIndex": 81,
+      "textBytes": 92812,
+      "figuresExtracted": 1,
+      "excerpt": "# arXiv:2502.13923v1[cs.CV]19Feb2025 [Figure 1] March 5, 2025 ## Qwen2.5-VL Technical Report [Figure 2] [Figure 3] #### Qwen Team, Alibaba Group https://chat.qwenlm.ai https://huggingface.co/Qwen https://modelscope.cn/organization/qwen https://github.com/QwenLM/Qwen2.5-VL ### Abstract We introduce Qwen2.5-VL, the latest flagship model of Qwen vision-language series, which demonstrates significant advancements in both foundational capabilities and innovative functionalities. Qwen2.5-VL achieves a major leap forward in understanding and interacting with the world through enhanced visual recognition, precise object localization, robust document parsing, and long-video comprehension. A standout feature of Qwen2.5-VL is its ability to localize objects using bounding boxes or points accurately. It provides robust structured data extraction from invoices, forms, and tables, as well as detailed "
+    },
+    {
+      "slug": "1887_Code_as_Agent_Harness",
+      "title": "Code as Agent Harness",
+      "category": "HDBSCAN Cluster: university, figure, li1, arxiv",
+      "key": "FOLDER00083_c2eefb4863ea",
+      "sourceIndex": 82,
+      "textBytes": 370210,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.18747v1[cs.CL]18May2026 [Figure 1] [Figure 2] ## Code as Agent Harness ###### ♢ Toward Executable, Verifiable, and Stateful Agent Systems ♢ Xuying Ning1† Katherine Tieu1† Dongqi Fu2† Tianxin Wei1† Zihao Li1† Yuanchen Bei1† Jiaru Zou3 Mengting Ai1 Zhining Liu1 Ting-Wei Li1 Lingjie Chen1 Yanjun Zhao1 Ke Yang1 Bingxuan Li1 Cheng Qian1 Gaotang Li1 Xiao Lin1 Zhichen Zeng1 Ruizhong Qiu1 Sirui Chen1 Yifan Sun1 Xiyuan Yang1 Ruida Wang1 Rui Pan1 Chenyuan Yang1 Dylan Zhang1 Liri Fang1 Zikun Cui2 Yang Cao2 Pan Chen2 Dorothy Sun2 Ren Chen2 Mahesh Srinivasan2 Nipun Mathur2 Yinglong Xia2 Hong Li2 Hong Yan2 Pan Lu3 Lingming Zhang 1 Tong Zhang1 Hanghang Tong1 Jingrui He1 [Figure 3] 1University of Illinois Urbana-Champaign 2Meta 3Stanford University † Core Contributor, Corresponding Author [Figure 4] [Figure 5] Abstract: Recent large language models (LLMs) have demonstrated strong capabiliti"
+    },
+    {
+      "slug": "1888_MinT_Managed_Infrastructure_for_Training_and_Serving_Million",
+      "title": "MinT: Managed Infrastructure for Training and Serving Millions of LLMs",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00084_e54c2191c995",
+      "sourceIndex": 83,
+      "textBytes": 113849,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.13779v2[cs.LG]26May2026 [Figure 1] ## MinT: Managed Infrastructure for Training and Serving Millions of LLMs Mind Lab Abstract We present MindLab Toolkit (MinT), a managed infrastructure system for Low-Rank Adaptation (LoRA) post-training and online serving. MinT targets a setting where many trained policies are produced over a small number of expensive base-model deployments. Instead of materializing each policy as a merged full checkpoint, MinT keeps the base model resident and moves exported LoRA adapter revisions through rollout, update, export, evaluation, serving, and rollback. This adapterrevision path hides distributed training, serving, scheduling, and data movement behind a service interface, making large-scale LoRA RL easier to run and reproduce. MinT scales this adapter-revision path along three axes. Scale Up extends LoRA RL to frontierscale dense and Mixture-of"
+    },
+    {
+      "slug": "1889_InternVL35_Advancing_Open-Source_Multimodal_Models_in_Versat",
+      "title": "InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency",
+      "category": "HDBSCAN Cluster: university, zhang1, wang, zhang",
+      "key": "FOLDER00085_d15d9f25155c",
+      "sourceIndex": 84,
+      "textBytes": 152420,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2508.18265v2[cs.CV]27Aug2025 ## InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency Weiyun Wang∗, Zhangwei Gao∗, Lixin Gu∗, Hengjun Pu∗, Long Cui∗, Xingguang Wei∗, Zhaoyang Liu∗, Linglin Jing∗, Shenglong Ye∗, Jie Shao∗, Zhaokai Wang∗, Zhe Chen∗, Hongjie Zhang, Ganlin Yang, Haomin Wang, Qi Wei, Jinhui Yin, Wenhao Li, Erfei Cui, Guanzhou Chen, Zichen Ding, Changyao Tian, Zhenyu Wu, Jingjing Xie, Zehao Li, Bowen Yang, Yuchen Duan, Xuehui Wang, Zhi Hou, Haoran Hao, Tianyi Zhang, Songze Li, Xiangyu Zhao, Haodong Duan, Nianchen Deng, Bin Fu, Yinan He, Yi Wang, Conghui He, Botian Shi, Junjun He, Yingtong Xiong, Han Lv, Lijun Wu, Wenqi Shao, Kaipeng Zhang, Huipeng Deng, Biqing Qi, Jiaye Ge, Qipeng Guo, Wenwei Zhang, Songyang Zhang, Maosong Cao, Junyao Lin, Kexian Tang, Jianfei Gao, Haian Huang, Yuzhe Gu, Chengqi Lyu, Huanze Tang, Rui Wang, Haiju"
     }
   ]
 }

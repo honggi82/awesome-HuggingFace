@@ -5,27 +5,22 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 25
+      "count": 27
     },
     {
-      "id": "hdbscan-cluster-reasoning-reinforcement-learning-deep",
-      "name": "HDBSCAN Cluster: reasoning, reinforcement, learning, deep",
-      "count": 5
+      "id": "hdbscan-cluster-data-language-reasoning-large",
+      "name": "HDBSCAN Cluster: data, language, reasoning, large",
+      "count": 6
     },
     {
-      "id": "hdbscan-cluster-data-language-large-figure",
-      "name": "HDBSCAN Cluster: data, language, large, figure",
-      "count": 5
-    },
-    {
-      "id": "hdbscan-cluster-university-zhang1-chen1-li1",
-      "name": "HDBSCAN Cluster: university, zhang1, chen1, li1",
-      "count": 5
+      "id": "hdbscan-cluster-university-zhang1-wang-zhang",
+      "name": "HDBSCAN Cluster: university, zhang1, wang, zhang",
+      "count": 6
     },
     {
       "id": "hdbscan-cluster-university-code-https-figure",
       "name": "HDBSCAN Cluster: university, code, https, figure",
-      "count": 4
+      "count": 5
     },
     {
       "id": "hdbscan-cluster-deepseek-v3-efficient-language-sharing",
@@ -33,8 +28,13 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-qwen-models-report-qwen3",
-      "name": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "id": "hdbscan-cluster-university-figure-li1-arxiv",
+      "name": "HDBSCAN Cluster: university, figure, li1, arxiv",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-qwen-qwen2-https-report",
+      "name": "HDBSCAN Cluster: qwen, qwen2, https, report",
       "count": 3
     },
     {
@@ -63,6 +63,11 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-reasoning-competitive-programming-reinforcement",
+      "name": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-figure-agent-tokens-reasoning",
       "name": "HDBSCAN Cluster: figure, agent, tokens, reasoning",
       "count": 2
@@ -70,6 +75,11 @@
     {
       "id": "hdbscan-cluster-data-centric-shanghai-unified-framework",
       "name": "HDBSCAN Cluster: data-centric, shanghai, unified, framework",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-reasoning-policy-deep-rstar-math",
+      "name": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
       "count": 2
     },
     {
@@ -85,11 +95,6 @@
     {
       "id": "hdbscan-cluster-models-gaia-scientific-general",
       "name": "HDBSCAN Cluster: models, gaia, scientific, general",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-reasoning-data-cot-evidence",
-      "name": "HDBSCAN Cluster: reasoning, data, cot, evidence",
       "count": 2
     },
     {

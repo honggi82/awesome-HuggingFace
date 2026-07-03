@@ -1,6 +1,6 @@
 {
   "model": "Codex-native SPECTER2 + HDBSCAN + UMAP bottom-up classification",
-  "processedPapers": 80,
+  "processedPapers": 85,
   "embedding": {
     "requestedEmbeddingModel": "allenai/specter2_base",
     "actualEmbeddingModel": "allenai/specter2_base",
@@ -19,7 +19,7 @@
       "success": true,
       "actualEmbeddingModel": "allenai/specter2_base",
       "embeddingShape": [
-        80,
+        85,
         768
       ]
     }
@@ -33,89 +33,94 @@
     "clusterSelectionMethod": "leaf",
     "allowSingleCluster": false,
     "labels": [
-      15,
+      13,
       3,
-      17,
-      -1,
+      18,
       -1,
       -1,
       7,
+      10,
       -1,
-      17,
+      18,
       -1,
-      8,
+      5,
       0,
       14,
+      4,
       6,
-      9,
       -1,
       -1,
-      17,
-      11,
+      19,
+      8,
       14,
-      7,
+      10,
       -1,
+      -1,
+      12,
       -1,
       13,
-      -1,
-      15,
-      18,
-      8,
-      7,
-      11,
-      10,
-      8,
-      -1,
-      6,
       17,
-      -1,
-      6,
-      10,
-      4,
-      -1,
-      -1,
-      2,
       5,
-      17,
-      16,
-      12,
-      14,
+      10,
+      8,
+      11,
+      5,
+      -1,
+      4,
+      19,
+      -1,
+      4,
       11,
       15,
-      10,
+      -1,
+      -1,
+      1,
+      -1,
+      -1,
+      16,
+      9,
+      -1,
+      8,
+      13,
+      11,
       0,
       -1,
-      -1,
+      8,
       3,
-      13,
-      7,
-      4,
+      12,
+      10,
+      15,
       16,
-      2,
-      -1,
-      -1,
-      12,
-      1,
-      7,
-      -1,
-      -1,
-      12,
-      5,
-      -1,
-      -1,
-      4,
-      18,
       1,
       -1,
-      11,
-      8,
-      8,
       -1,
       9,
-      -1
+      2,
+      10,
+      -1,
+      -1,
+      9,
+      10,
+      7,
+      -1,
+      15,
+      17,
+      2,
+      -1,
+      8,
+      5,
+      5,
+      -1,
+      6,
+      -1,
+      -1,
+      14,
+      7,
+      -1,
+      5
     ],
-    "clusterCount": 19,
-    "noiseCount": 25,
+    "clusterCount": 20,
+    "noiseCount": 27,
     "attempts": [
       {
         "matrix": "specter2-normalized",
@@ -138,16 +143,16 @@
         "minClusterSize": 2,
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": false,
-        "clusterCount": 15,
-        "noiseCount": 36
+        "clusterCount": 16,
+        "noiseCount": 37
       },
       {
         "matrix": "specter2-normalized",
         "minClusterSize": 2,
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": true,
-        "clusterCount": 15,
-        "noiseCount": 36
+        "clusterCount": 16,
+        "noiseCount": 37
       },
       {
         "matrix": "specter2-normalized",
@@ -155,7 +160,7 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": false,
         "clusterCount": 9,
-        "noiseCount": 37
+        "noiseCount": 40
       },
       {
         "matrix": "specter2-normalized",
@@ -163,7 +168,7 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": true,
         "clusterCount": 1,
-        "noiseCount": 26
+        "noiseCount": 27
       },
       {
         "matrix": "specter2-normalized",
@@ -171,7 +176,7 @@
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": false,
         "clusterCount": 10,
-        "noiseCount": 44
+        "noiseCount": 47
       },
       {
         "matrix": "specter2-normalized",
@@ -179,7 +184,7 @@
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": true,
         "clusterCount": 10,
-        "noiseCount": 44
+        "noiseCount": 47
       },
       {
         "matrix": "specter2-normalized",
@@ -187,7 +192,7 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": false,
         "clusterCount": 2,
-        "noiseCount": 26
+        "noiseCount": 27
       },
       {
         "matrix": "specter2-normalized",
@@ -195,7 +200,7 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": true,
         "clusterCount": 1,
-        "noiseCount": 26
+        "noiseCount": 27
       },
       {
         "matrix": "specter2-normalized",
@@ -203,7 +208,7 @@
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": false,
         "clusterCount": 4,
-        "noiseCount": 43
+        "noiseCount": 47
       },
       {
         "matrix": "specter2-normalized",
@@ -211,7 +216,7 @@
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": true,
         "clusterCount": 4,
-        "noiseCount": 43
+        "noiseCount": 47
       },
       {
         "matrix": "specter2-normalized",
@@ -219,7 +224,7 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": false,
         "clusterCount": 2,
-        "noiseCount": 26
+        "noiseCount": 27
       },
       {
         "matrix": "specter2-normalized",
@@ -227,7 +232,7 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": true,
         "clusterCount": 1,
-        "noiseCount": 26
+        "noiseCount": 27
       },
       {
         "matrix": "specter2-normalized",
@@ -235,7 +240,7 @@
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": false,
         "clusterCount": 2,
-        "noiseCount": 26
+        "noiseCount": 27
       },
       {
         "matrix": "specter2-normalized",
@@ -243,7 +248,7 @@
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": true,
         "clusterCount": 2,
-        "noiseCount": 26
+        "noiseCount": 27
       }
     ]
   },
