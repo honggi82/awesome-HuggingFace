@@ -5,12 +5,7 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 49
-    },
-    {
-      "id": "hdbscan-cluster-university-zhang1-models-li1",
-      "name": "HDBSCAN Cluster: university, zhang1, models, li1",
-      "count": 9
+      "count": 56
     },
     {
       "id": "hdbscan-cluster-university-figure-code-https",
@@ -33,11 +28,6 @@
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-efficient-figure-attention-language",
-      "name": "HDBSCAN Cluster: efficient, figure, attention, language",
-      "count": 4
-    },
-    {
       "id": "hdbscan-cluster-multimodal-vision-kimi-glm-4",
       "name": "HDBSCAN Cluster: multimodal, vision, kimi, glm-4",
       "count": 4
@@ -48,9 +38,9 @@
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-reasoning-models-deepseek-v3-glm-4",
-      "name": "HDBSCAN Cluster: reasoning, models, deepseek-v3, glm-4",
-      "count": 3
+      "id": "hdbscan-cluster-model-diffusion-generation-ltx-2",
+      "name": "HDBSCAN Cluster: model, diffusion, generation, ltx-2",
+      "count": 4
     },
     {
       "id": "hdbscan-cluster-agentic-reasoning-reinforcement-learning",
@@ -58,8 +48,18 @@
       "count": 3
     },
     {
+      "id": "hdbscan-cluster-efficient-figure-language-loop",
+      "name": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-language-model-small-mutarjim",
       "name": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-zhang1-wang2-world-university",
+      "name": "HDBSCAN Cluster: zhang1, wang2, world, university",
       "count": 3
     },
     {
@@ -98,11 +98,6 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-language-large-llm-memory",
-      "name": "HDBSCAN Cluster: language, large, llm, memory",
-      "count": 2
-    },
-    {
       "id": "hdbscan-cluster-figure-agent-gamma-world-university",
       "name": "HDBSCAN Cluster: figure, agent, gamma-world, university",
       "count": 2
@@ -118,8 +113,23 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-transformers-normalization-without-dyt",
+      "name": "HDBSCAN Cluster: transformers, normalization, without, dyt",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-zhang1-wang1-li1-wu1",
+      "name": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-reinforcement-rewards-rpt-learning",
       "name": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-deepseek-v3-reasoning-glm-4-models",
+      "name": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "count": 2
     },
     {
@@ -130,11 +140,6 @@
     {
       "id": "hdbscan-cluster-figure-sec-thinking-tstars-tryon",
       "name": "HDBSCAN Cluster: figure, sec, thinking, tstars-tryon",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-diffusion-model-wang-vibevoice",
-      "name": "HDBSCAN Cluster: diffusion, model, wang, vibevoice",
       "count": 2
     },
     {
@@ -165,6 +170,11 @@
     {
       "id": "hdbscan-cluster-step3-vl-10b-https-multimodal-technical",
       "name": "HDBSCAN Cluster: step3-vl-10b, https, multimodal, technical",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-transformer-attention-language-differential",
+      "name": "HDBSCAN Cluster: transformer, attention, language, differential",
       "count": 2
     },
     {

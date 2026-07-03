@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-03T21:32:11.318193+00:00",
+  "generated": "2026-07-03T22:02:58.632679+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 145,
+  "sourceOffset": 150,
   "sourceLimit": 5,
-  "sourceEnd": 150,
+  "sourceEnd": 155,
   "batchTotal": 5,
-  "total": 150,
-  "ok": 150,
-  "textExtracted": 150,
-  "figureFiles": 675,
+  "total": 155,
+  "ok": 155,
+  "textExtracted": 155,
+  "figureFiles": 695,
   "sanityFailed": 0,
   "records": [
     {
@@ -1999,6 +1999,71 @@
       "textBytes": 89436,
       "sanityOk": true,
       "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Simple and Controllable Music Generation",
+      "key": "FOLDER00151_d3ee51dd9ac2",
+      "sourceIndex": 150,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00151_Simple and Controllable Music Generation.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 1,
+      "slug": "2541_Simple_and_Controllable_Music_Generation",
+      "textBytes": 69040,
+      "sanityOk": true,
+      "sanityReason": "ok (title 4/4 doi=T author=True)"
+    },
+    {
+      "title": "MinerU2.5: A Decoupled Vision-Language Model for Efficient High-Resolution Document Parsing",
+      "key": "FOLDER00152_a5863764f8de",
+      "sourceIndex": 151,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00152_MinerU2.5 A Decoupled Vision-Language Model for Efficient High-Resolution Document Parsing.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2542_MinerU25_A_Decoupled_Vision-Language_Model_for_Efficient_Hig",
+      "textBytes": 114299,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Qwen2.5-Omni Technical Report",
+      "key": "FOLDER00153_643b6c9e51d9",
+      "sourceIndex": 152,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00153_Qwen2.5-Omni Technical Report.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 4,
+      "slug": "2543_Qwen25-Omni_Technical_Report",
+      "textBytes": 72072,
+      "sanityOk": true,
+      "sanityReason": "ok (title 4/4 doi=T author=True)"
+    },
+    {
+      "title": "Retentive Network: A Successor to Transformer for Large Language Models",
+      "key": "FOLDER00154_325e8d86e25f",
+      "sourceIndex": 153,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00154_Retentive Network A Successor to Transformer for Large Language Models.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2544_Retentive_Network_A_Successor_to_Transformer_for_Large_Langu",
+      "textBytes": 42595,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Transformers without Normalization",
+      "key": "FOLDER00155_a10ab96ec28d",
+      "sourceIndex": 154,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00155_Transformers without Normalization.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2545_Transformers_without_Normalization",
+      "textBytes": 67154,
+      "sanityOk": true,
+      "sanityReason": "ok (title 3/3 doi=T author=True)"
     }
   ]
 }

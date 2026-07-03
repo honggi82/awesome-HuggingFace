@@ -3,12 +3,7 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 49
-    },
-    {
-      "id": "hdbscan-cluster-university-zhang1-models-li1",
-      "name": "HDBSCAN Cluster: university, zhang1, models, li1",
-      "count": 9
+      "count": 56
     },
     {
       "id": "hdbscan-cluster-university-figure-code-https",
@@ -31,11 +26,6 @@
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-efficient-figure-attention-language",
-      "name": "HDBSCAN Cluster: efficient, figure, attention, language",
-      "count": 4
-    },
-    {
       "id": "hdbscan-cluster-multimodal-vision-kimi-glm-4",
       "name": "HDBSCAN Cluster: multimodal, vision, kimi, glm-4",
       "count": 4
@@ -46,9 +36,9 @@
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-reasoning-models-deepseek-v3-glm-4",
-      "name": "HDBSCAN Cluster: reasoning, models, deepseek-v3, glm-4",
-      "count": 3
+      "id": "hdbscan-cluster-model-diffusion-generation-ltx-2",
+      "name": "HDBSCAN Cluster: model, diffusion, generation, ltx-2",
+      "count": 4
     },
     {
       "id": "hdbscan-cluster-agentic-reasoning-reinforcement-learning",
@@ -56,8 +46,18 @@
       "count": 3
     },
     {
+      "id": "hdbscan-cluster-efficient-figure-language-loop",
+      "name": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-language-model-small-mutarjim",
       "name": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-zhang1-wang2-world-university",
+      "name": "HDBSCAN Cluster: zhang1, wang2, world, university",
       "count": 3
     },
     {
@@ -96,11 +96,6 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-language-large-llm-memory",
-      "name": "HDBSCAN Cluster: language, large, llm, memory",
-      "count": 2
-    },
-    {
       "id": "hdbscan-cluster-figure-agent-gamma-world-university",
       "name": "HDBSCAN Cluster: figure, agent, gamma-world, university",
       "count": 2
@@ -116,8 +111,23 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-transformers-normalization-without-dyt",
+      "name": "HDBSCAN Cluster: transformers, normalization, without, dyt",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-zhang1-wang1-li1-wu1",
+      "name": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-reinforcement-rewards-rpt-learning",
       "name": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-deepseek-v3-reasoning-glm-4-models",
+      "name": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "count": 2
     },
     {
@@ -128,11 +138,6 @@
     {
       "id": "hdbscan-cluster-figure-sec-thinking-tstars-tryon",
       "name": "HDBSCAN Cluster: figure, sec, thinking, tstars-tryon",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-diffusion-model-wang-vibevoice",
-      "name": "HDBSCAN Cluster: diffusion, model, wang, vibevoice",
       "count": 2
     },
     {
@@ -166,6 +171,11 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-transformer-attention-language-differential",
+      "name": "HDBSCAN Cluster: transformer, attention, language, differential",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-generation-long-video-real-time",
       "name": "HDBSCAN Cluster: generation, long, video, real-time",
       "count": 2
@@ -174,13 +184,13 @@
   "assignments": [
     {
       "slug": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
-      "category": "HDBSCAN Cluster: reasoning, models, deepseek-v3, glm-4",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
-      "category": "HDBSCAN Cluster: language, large, llm, memory",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -234,7 +244,7 @@
     },
     {
       "slug": "081_AI_Can_Learn_Scientific_Taste",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -258,7 +268,7 @@
     },
     {
       "slug": "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -294,7 +304,7 @@
     },
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
-      "category": "HDBSCAN Cluster: efficient, figure, attention, language",
+      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -324,7 +334,7 @@
     },
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: transformers, normalization, without, dyt",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -336,7 +346,7 @@
     },
     {
       "slug": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -360,7 +370,7 @@
     },
     {
       "slug": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Cluster: zhang1, wang2, world, university",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -462,7 +472,7 @@
     },
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
-      "category": "HDBSCAN Cluster: reasoning, models, deepseek-v3, glm-4",
+      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -492,7 +502,7 @@
     },
     {
       "slug": "1737_LLM_in_a_flash_Efficient_Large_Language_Model_Inference_with",
-      "category": "HDBSCAN Cluster: language, large, llm, memory",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -558,7 +568,7 @@
     },
     {
       "slug": "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation",
-      "category": "HDBSCAN Cluster: diffusion, model, wang, vibevoice",
+      "category": "HDBSCAN Cluster: model, diffusion, generation, ltx-2",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -624,7 +634,7 @@
     },
     {
       "slug": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Cluster: zhang1, wang2, world, university",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -642,7 +652,7 @@
     },
     {
       "slug": "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -696,7 +706,7 @@
     },
     {
       "slug": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
-      "category": "HDBSCAN Cluster: reasoning, models, deepseek-v3, glm-4",
+      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -750,7 +760,7 @@
     },
     {
       "slug": "2023_OpenWorldLib_A_Unified_Codebase_and_Definition_of_Advanced_W",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Cluster: zhang1, wang2, world, university",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -810,7 +820,7 @@
     },
     {
       "slug": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
-      "category": "HDBSCAN Cluster: efficient, figure, attention, language",
+      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -822,7 +832,7 @@
     },
     {
       "slug": "2122_Differential_Transformer",
-      "category": "HDBSCAN Cluster: efficient, figure, attention, language",
+      "category": "HDBSCAN Cluster: transformer, attention, language, differential",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -834,7 +844,7 @@
     },
     {
       "slug": "2163_A_Survey_of_Reinforcement_Learning_for_Large_Reasoning_Model",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -894,7 +904,7 @@
     },
     {
       "slug": "2255_AutoResearchClaw_Self-Reinforcing_Autonomous_Research_with_H",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -936,7 +946,7 @@
     },
     {
       "slug": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
-      "category": "HDBSCAN Cluster: efficient, figure, attention, language",
+      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -972,7 +982,7 @@
     },
     {
       "slug": "2354_LTX-2_Efficient_Joint_Audio-Visual_Foundation_Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: model, diffusion, generation, ltx-2",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1056,7 +1066,7 @@
     },
     {
       "slug": "2496_VibeVoice_Technical_Report",
-      "category": "HDBSCAN Cluster: diffusion, model, wang, vibevoice",
+      "category": "HDBSCAN Cluster: model, diffusion, generation, ltx-2",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1069,6 +1079,36 @@
     {
       "slug": "2498_TransitLM_A_Large-Scale_Dataset_and_Benchmark_for_Map-Free_T",
       "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2541_Simple_and_Controllable_Music_Generation",
+      "category": "HDBSCAN Cluster: model, diffusion, generation, ltx-2",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2542_MinerU25_A_Decoupled_Vision-Language_Model_for_Efficient_Hig",
+      "category": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2543_Qwen25-Omni_Technical_Report",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2544_Retentive_Network_A_Successor_to_Transformer_for_Large_Langu",
+      "category": "HDBSCAN Cluster: transformer, attention, language, differential",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2545_Transformers_without_Normalization",
+      "category": "HDBSCAN Cluster: transformers, normalization, without, dyt",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     }

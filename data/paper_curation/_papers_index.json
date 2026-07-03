@@ -5,7 +5,7 @@
     {
       "slug": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
       "title": "Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing",
-      "category": "HDBSCAN Cluster: reasoning, models, deepseek-v3, glm-4",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00001_af26518a47dc",
       "sourceIndex": null,
       "textBytes": 44954,
@@ -15,7 +15,7 @@
     {
       "slug": "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
       "title": "The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits",
-      "category": "HDBSCAN Cluster: language, large, llm, memory",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00002_45fd74a4c976",
       "sourceIndex": null,
       "textBytes": 24724,
@@ -105,7 +105,7 @@
     {
       "slug": "081_AI_Can_Learn_Scientific_Taste",
       "title": "AI Can Learn Scientific Taste",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00011_58c904a08eda",
       "sourceIndex": 10,
       "textBytes": 158305,
@@ -145,7 +145,7 @@
     {
       "slug": "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini",
       "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00015_27487e16e6cf",
       "sourceIndex": 14,
       "textBytes": 72155,
@@ -205,7 +205,7 @@
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
-      "category": "HDBSCAN Cluster: efficient, figure, attention, language",
+      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
       "key": "FOLDER00021_8502bdaf4994",
       "sourceIndex": 20,
       "textBytes": 218340,
@@ -255,7 +255,7 @@
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: transformers, normalization, without, dyt",
       "key": "FOLDER00026_e94287efc152",
       "sourceIndex": 25,
       "textBytes": 79369,
@@ -275,7 +275,7 @@
     {
       "slug": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
       "title": "InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
       "key": "FOLDER00028_e5264c4b16b0",
       "sourceIndex": 27,
       "textBytes": 122653,
@@ -315,7 +315,7 @@
     {
       "slug": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
       "title": "Advances and Challenges in Foundation Agents: From Brain-Inspired Intelligence to Evolutionary, Collaborative, and Safe Systems",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Cluster: zhang1, wang2, world, university",
       "key": "FOLDER00032_042b1763276f",
       "sourceIndex": 31,
       "textBytes": 1411183,
@@ -485,7 +485,7 @@
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
       "title": "DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models",
-      "category": "HDBSCAN Cluster: reasoning, models, deepseek-v3, glm-4",
+      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "key": "FOLDER00049_07cf0d16c82c",
       "sourceIndex": 48,
       "textBytes": 68593,
@@ -535,7 +535,7 @@
     {
       "slug": "1737_LLM_in_a_flash_Efficient_Large_Language_Model_Inference_with",
       "title": "LLM in a flash: Efficient Large Language Model Inference with Limited Memory",
-      "category": "HDBSCAN Cluster: language, large, llm, memory",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00054_1cf19c9e4b12",
       "sourceIndex": 53,
       "textBytes": 91659,
@@ -645,7 +645,7 @@
     {
       "slug": "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation",
       "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
-      "category": "HDBSCAN Cluster: diffusion, model, wang, vibevoice",
+      "category": "HDBSCAN Cluster: model, diffusion, generation, ltx-2",
       "key": "FOLDER00065_f953c8971cba",
       "sourceIndex": 64,
       "textBytes": 94565,
@@ -755,7 +755,7 @@
     {
       "slug": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
       "title": "Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Cluster: zhang1, wang2, world, university",
       "key": "FOLDER00076_8f66fe1850ac",
       "sourceIndex": 75,
       "textBytes": 384726,
@@ -785,7 +785,7 @@
     {
       "slug": "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio",
       "title": "DataFlow: An LLM-Driven Framework for Unified Data Preparation and Workflow Automation in the Era of Data-Centric AI",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00079_064bbcad8b7d",
       "sourceIndex": 78,
       "textBytes": 134657,
@@ -875,7 +875,7 @@
     {
       "slug": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
       "title": "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models",
-      "category": "HDBSCAN Cluster: reasoning, models, deepseek-v3, glm-4",
+      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "key": "FOLDER00088_ec7f05bf1eae",
       "sourceIndex": 87,
       "textBytes": 87726,
@@ -965,7 +965,7 @@
     {
       "slug": "2023_OpenWorldLib_A_Unified_Codebase_and_Definition_of_Advanced_W",
       "title": "OpenWorldLib: A Unified Codebase and Definition of Advanced World Models",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Cluster: zhang1, wang2, world, university",
       "key": "FOLDER00097_06d313401545",
       "sourceIndex": 96,
       "textBytes": 91225,
@@ -1065,7 +1065,7 @@
     {
       "slug": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
       "title": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling",
-      "category": "HDBSCAN Cluster: efficient, figure, attention, language",
+      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
       "key": "FOLDER00107_4c4b048fabae",
       "sourceIndex": 106,
       "textBytes": 57470,
@@ -1085,7 +1085,7 @@
     {
       "slug": "2122_Differential_Transformer",
       "title": "Differential Transformer",
-      "category": "HDBSCAN Cluster: efficient, figure, attention, language",
+      "category": "HDBSCAN Cluster: transformer, attention, language, differential",
       "key": "FOLDER00109_cb0fec7db820",
       "sourceIndex": 108,
       "textBytes": 71150,
@@ -1105,7 +1105,7 @@
     {
       "slug": "2163_A_Survey_of_Reinforcement_Learning_for_Large_Reasoning_Model",
       "title": "A Survey of Reinforcement Learning for Large Reasoning Models",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00111_cd5a477d2124",
       "sourceIndex": 110,
       "textBytes": 424729,
@@ -1205,7 +1205,7 @@
     {
       "slug": "2255_AutoResearchClaw_Self-Reinforcing_Autonomous_Research_with_H",
       "title": "AutoResearchClaw: Self-Reinforcing Autonomous Research with Human-AI Collaboration",
-      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00121_00ec5d98ca85",
       "sourceIndex": 120,
       "textBytes": 83910,
@@ -1275,7 +1275,7 @@
     {
       "slug": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
       "title": "LlamaFactory: Unified Efficient Fine-Tuning of 100+ Language Models",
-      "category": "HDBSCAN Cluster: efficient, figure, attention, language",
+      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
       "key": "FOLDER00128_088ef61f71e2",
       "sourceIndex": 127,
       "textBytes": 58891,
@@ -1335,7 +1335,7 @@
     {
       "slug": "2354_LTX-2_Efficient_Joint_Audio-Visual_Foundation_Model",
       "title": "LTX-2: Efficient Joint Audio-Visual Foundation Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: model, diffusion, generation, ltx-2",
       "key": "FOLDER00134_d15fe444ec5a",
       "sourceIndex": 133,
       "textBytes": 44273,
@@ -1475,7 +1475,7 @@
     {
       "slug": "2496_VibeVoice_Technical_Report",
       "title": "VibeVoice Technical Report",
-      "category": "HDBSCAN Cluster: diffusion, model, wang, vibevoice",
+      "category": "HDBSCAN Cluster: model, diffusion, generation, ltx-2",
       "key": "FOLDER00148_136af8a674d0",
       "sourceIndex": 147,
       "textBytes": 27704,
@@ -1501,6 +1501,56 @@
       "textBytes": 89436,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2605.22355v1[cs.CL]21May2026 ## TransitLM: A Large-Scale Dataset and Benchmark for Map-Free Transit Route Generation Hanyu Guo∗ Jiedong Yang∗ Chao Chen Longfei Xu Kaikui Liu Xiangxiang Chu AMAP, Alibaba Group Beijing, China {guohanyu.ghy,jiedong.yjd,cc201598,longfei.xl,damon}@alibaba-inc.com cxxgtxy@gmail.com ### Abstract Public transit route planning traditionally depends on structured map infrastructure and complex routing engines, and no existing dataset supports training models to bypass this dependency. We present TransitLM, a large-scale dataset of over 13 million transit route planning records from four Chinese cities covering 120,845 stations and 13,666 lines, released as a continual pre-training corpus and benchmark data for three evaluation tasks with complementary metrics. Experiments show that an LLM trained on TransitLM produces structurally valid routes at high accu"
+    },
+    {
+      "slug": "2541_Simple_and_Controllable_Music_Generation",
+      "title": "Simple and Controllable Music Generation",
+      "category": "HDBSCAN Cluster: model, diffusion, generation, ltx-2",
+      "key": "FOLDER00151_d3ee51dd9ac2",
+      "sourceIndex": 150,
+      "textBytes": 69040,
+      "figuresExtracted": 1,
+      "excerpt": "# arXiv:2306.05284v3[cs.SD]30Jan2024 ## Simple and Controllable Music Generation #### Jade Copet♠♢ Felix Kreuk♠♢ Itai Gat Tal Remez David Kant Gabriel Synnaeve ♢ Yossi Adi∗♢ Alexandre Défossez ♢ ♠: equal contributions, ♢: core team Meta AI {jadecopet, felixkreuk, adiyoss}@meta.com ### Abstract We tackle the task of conditional music generation. We introduce MUSICGEN, a single Language Model (LM) that operates over several streams of compressed discrete music representation, i.e., tokens. Unlike prior work, MUSICGEN is comprised of a single-stage transformer LM together with efficient token interleaving patterns, which eliminates the need for cascading several models, e.g., hierarchically or upsampling. Following this approach, we demonstrate how MUSICGEN can generate high-quality samples, both mono and stereo, while being conditioned on textual description or melodic features, allowing b"
+    },
+    {
+      "slug": "2542_MinerU25_A_Decoupled_Vision-Language_Model_for_Efficient_Hig",
+      "title": "MinerU2.5: A Decoupled Vision-Language Model for Efficient High-Resolution Document Parsing",
+      "category": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
+      "key": "FOLDER00152_a5863764f8de",
+      "sourceIndex": 151,
+      "textBytes": 114299,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2509.22186v2[cs.CV]29Sep2025 [Figure 1] ###### MinerU2.5: A Decoupled Vision-Language Model for Efficient High-Resolution Document Parsing Junbo Niu1,2∗, Zheng Liu1,2∗, Zhuangcheng Gu1∗, Bin Wang1∗‡, Linke Ouyang1∗ Zhiyuan Zhao1∗, Tao Chu1∗, Tianyao He1∗, Fan Wu1∗, Qintong Zhang1,2∗, Zhenjiang Jin1∗ Guang Liang1, Rui Zhang1, Wenzheng Zhang1,2, Yuan Qu1, Zhifei Ren1, Yuefeng Sun1 Yuanhong Zheng1, Dongsheng Ma1, Zirui Tang1,3, Boyu Niu1,3, Ziyang Miao1, Hejun Dong1 Siyi Qian1,2, Junyuan Zhang1, Jingzhou Chen1,2, Fangdong Wang1, Xiaomeng Zhao1, Liqun Wei1 Wei Li1, Shasha Wang1, Ruiliang Xu1, Yuanyuan Cao1, Lu Chen1, Qianqian Wu1, Huaiyu Gu1 Lindong Lu1, Keming Wang1, Dechen Lin1, Guanlin Shen1, Xuanhe Zhou1,3, Linfeng Zhang3 Yuhang Zang1, Xiaoyi Dong1, Jiaqi Wang1, Bo Zhang1, Lei Bai1, Pei Chu1, Weijia Li1, Jiang Wu1 Lijun Wu1, Zhenxiang Li1, Guangyu Wang1, Zhongying Tu1, Chao Xu1, "
+    },
+    {
+      "slug": "2543_Qwen25-Omni_Technical_Report",
+      "title": "Qwen2.5-Omni Technical Report",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00153_643b6c9e51d9",
+      "sourceIndex": 152,
+      "textBytes": 72072,
+      "figuresExtracted": 4,
+      "excerpt": "# arXiv:2503.20215v1[cs.CL]26Mar2025 [Figure 1] 2025-03-27 ## Qwen2.5-Omni Technical Report [Figure 2] ###### Qwen Team https://huggingface.co/Qwen https://modelscope.cn/organization/qwen https://github.com/QwenLM/Qwen2.5-Omni ### Abstract In this report, we present Qwen2.5-Omni, an end-to-end multimodal model designed to perceive diverse modalities, including text, images, audio, and video, while simultaneously generating text and natural speech responses in a streaming manner. To enable the streaming of multimodal information inputs, both audio and visual encoders utilize a block-wise processing approach. This strategy effectively decouples the handling of long sequences of multimodal data, assigning the perceptual responsibilities to the multimodal encoder and entrusting the modeling of extended sequences to a large language model. Such a division of labor enhances the fusion of diffe"
+    },
+    {
+      "slug": "2544_Retentive_Network_A_Successor_to_Transformer_for_Large_Langu",
+      "title": "Retentive Network: A Successor to Transformer for Large Language Models",
+      "category": "HDBSCAN Cluster: transformer, attention, language, differential",
+      "key": "FOLDER00154_325e8d86e25f",
+      "sourceIndex": 153,
+      "textBytes": 42595,
+      "figuresExtracted": 5,
+      "excerpt": "## Retentive Network: A Successor to Transformer for Large Language Models Yutao Sun∗†‡ Li Dong∗† Shaohan Huang† Shuming Ma† Yuqing Xia† Jilong Xue† Jianyong Wang‡ Furu Wei†⋄ † Microsoft Research ‡ Tsinghua University https://aka.ms/GeneralAI # arXiv:2307.08621v4[cs.CL]9Aug2023 ### Abstract In this work, we propose Retentive Network (RETNET) as a foundation architecture for large language models, simultaneously achieving training parallelism, low-cost inference, and good performance. We theoretically derive the connection between recurrence and attention. Then we propose the retention mechanism for sequence modeling, which supports three computation paradigms, i.e., parallel, recurrent, and chunkwise recurrent. Specifically, the parallel representation allows for training parallelism. The recurrent representation enables low-cost O(1) inference, which improves decoding throughput, latenc"
+    },
+    {
+      "slug": "2545_Transformers_without_Normalization",
+      "title": "Transformers without Normalization",
+      "category": "HDBSCAN Cluster: transformers, normalization, without, dyt",
+      "key": "FOLDER00155_a10ab96ec28d",
+      "sourceIndex": 154,
+      "textBytes": 67154,
+      "figuresExtracted": 5,
+      "excerpt": "arXiv:2503.10622v2[cs.LG]14Jun2025 Transformers without Normalization Jiachen Zhu1,2, Xinlei Chen1, Kaiming He3, Yann LeCun1,2, Zhuang Liu1,4,† 1FAIR, Meta, 2New York University, 3MIT, 4Princeton University †Project lead Normalization layers are ubiquitous in modern neural networks and have long been considered essential. This work demonstrates that Transformers without normalization can achieve the same or better performance using a remarkably simple technique. We introduce Dynamic Tanh (DyT), an element-wise operation DyT(x) = tanh(αx), as a drop-in replacement for normalization layers in Transformers. DyT is inspired by the observation that layer normalization in Transformers often produces tanh-like, S-shaped input-output mappings. By incorporating DyT, Transformers without normalization can match or exceed the performance of their normalized counterparts, mostly without hyperparamet"
     }
   ]
 }
