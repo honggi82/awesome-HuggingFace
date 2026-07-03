@@ -5,7 +5,7 @@
     {
       "slug": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
       "title": "Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing",
-      "category": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
+      "category": "HDBSCAN Cluster: sharing, efficient, post-training, language",
       "key": "FOLDER00001_af26518a47dc",
       "sourceIndex": null,
       "textBytes": 44954,
@@ -25,7 +25,7 @@
     {
       "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
       "title": "GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
+      "category": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
       "key": "FOLDER00003_07f36ae7acd9",
       "sourceIndex": null,
       "textBytes": 76254,
@@ -65,7 +65,7 @@
     {
       "slug": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
       "title": "Adam's Law: Textual Frequency Law on Large Language Models",
-      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
+      "category": "HDBSCAN Cluster: language, data, figure, textual",
       "key": "FOLDER00007_f1204ba044c3",
       "sourceIndex": 6,
       "textBytes": 101929,
@@ -85,7 +85,7 @@
     {
       "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
       "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
+      "category": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
       "key": "FOLDER00009_e247d7b4176f",
       "sourceIndex": 8,
       "textBytes": 238083,
@@ -125,7 +125,7 @@
     {
       "slug": "083_Qwen25_Technical_Report",
       "title": "Qwen2.5 Technical Report",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
       "key": "FOLDER00013_a400d0a3210e",
       "sourceIndex": 12,
       "textBytes": 96661,
@@ -135,7 +135,7 @@
     {
       "slug": "084_Demystifing_Video_Reasoning",
       "title": "Demystifing Video Reasoning",
-      "category": "HDBSCAN Cluster: figure, video, reasoning, university",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00014_50cd36f9e215",
       "sourceIndex": 13,
       "textBytes": 73866,
@@ -175,7 +175,7 @@
     {
       "slug": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
       "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
+      "category": "HDBSCAN Cluster: reasoning, policy, deep, reinforcement",
       "key": "FOLDER00018_b37c28309d81",
       "sourceIndex": 17,
       "textBytes": 99957,
@@ -185,7 +185,7 @@
     {
       "slug": "322_ASE_A_Repository-Level_Benchmark_for_Evaluating_Security_in",
       "title": "A.S.E: A Repository-Level Benchmark for Evaluating Security in AI-Generated Code",
-      "category": "HDBSCAN Cluster: university, code, engineering, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00019_f578c07c2033",
       "sourceIndex": 18,
       "textBytes": 84262,
@@ -195,7 +195,7 @@
     {
       "slug": "323_Qwen3_Technical_Report",
       "title": "Qwen3 Technical Report",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
       "key": "FOLDER00020_81a86ff7c3c8",
       "sourceIndex": 19,
       "textBytes": 118269,
@@ -205,7 +205,7 @@
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
-      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
+      "category": "HDBSCAN Cluster: language, data, figure, textual",
       "key": "FOLDER00021_8502bdaf4994",
       "sourceIndex": 20,
       "textBytes": 218340,
@@ -255,7 +255,7 @@
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
-      "category": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
+      "category": "HDBSCAN Cluster: sharing, efficient, post-training, language",
       "key": "FOLDER00026_e94287efc152",
       "sourceIndex": 25,
       "textBytes": 79369,
@@ -265,7 +265,7 @@
     {
       "slug": "330_Group_Sequence_Policy_Optimization",
       "title": "Group Sequence Policy Optimization",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
+      "category": "HDBSCAN Cluster: optimization, group, policy, sequence",
       "key": "FOLDER00027_94918922664a",
       "sourceIndex": 26,
       "textBytes": 23492,
@@ -285,7 +285,7 @@
     {
       "slug": "332_DINOv3",
       "title": "DINOv3",
-      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
+      "category": "HDBSCAN Cluster: language, data, figure, textual",
       "key": "FOLDER00029_a3328f5ae17b",
       "sourceIndex": 28,
       "textBytes": 237604,
@@ -295,7 +295,7 @@
     {
       "slug": "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios",
       "title": "InCoder-32B: Code Foundation Model for Industrial Scenarios",
-      "category": "HDBSCAN Cluster: university, code, engineering, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00030_44a8848066c5",
       "sourceIndex": 29,
       "textBytes": 161304,
@@ -335,7 +335,7 @@
     {
       "slug": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
-      "category": "HDBSCAN Cluster: figure, video, reasoning, university",
+      "category": "HDBSCAN Cluster: recursive, skills, systems, multi-agent",
       "key": "FOLDER00034_8bc56d204ac7",
       "sourceIndex": 33,
       "textBytes": 94309,
@@ -345,7 +345,7 @@
     {
       "slug": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
       "title": "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
+      "category": "HDBSCAN Cluster: reasoning, policy, deep, reinforcement",
       "key": "FOLDER00035_fc3525c2b456",
       "sourceIndex": 34,
       "textBytes": 87188,
@@ -355,7 +355,7 @@
     {
       "slug": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
       "title": "Weak-Driven Learning: How Weak Agents make Strong Agents Stronger",
-      "category": "HDBSCAN Cluster: agents, agent, learning, weak",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00036_31e22fa1f189",
       "sourceIndex": 35,
       "textBytes": 96730,
@@ -365,7 +365,7 @@
     {
       "slug": "340_Recursive_Multi-Agent_Systems",
       "title": "Recursive Multi-Agent Systems",
-      "category": "HDBSCAN Cluster: figure, video, reasoning, university",
+      "category": "HDBSCAN Cluster: recursive, skills, systems, multi-agent",
       "key": "FOLDER00037_f33e597ec366",
       "sourceIndex": 36,
       "textBytes": 105642,
@@ -385,7 +385,7 @@
     {
       "slug": "342_Qwen-Image_Technical_Report",
       "title": "Qwen-Image Technical Report",
-      "category": "HDBSCAN Cluster: qwen-image, image, model, qwen",
+      "category": "HDBSCAN Cluster: image, models, generation, qwen-image",
       "key": "FOLDER00039_67f3a3187f0a",
       "sourceIndex": 38,
       "textBytes": 141226,
@@ -425,7 +425,7 @@
     {
       "slug": "1727_CiteVQA_Benchmarking_Evidence_Attribution_for_Trustworthy_Do",
       "title": "CiteVQA: Benchmarking Evidence Attribution for Trustworthy Document Intelligence",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, data, cot, evidence",
       "key": "FOLDER00043_689fbea40b84",
       "sourceIndex": 42,
       "textBytes": 93544,
@@ -435,7 +435,7 @@
     {
       "slug": "1728_Reinforcement_Pre-Training",
       "title": "Reinforcement Pre-Training",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
+      "category": "HDBSCAN Cluster: reasoning, policy, deep, reinforcement",
       "key": "FOLDER00044_3dcd071cdafe",
       "sourceIndex": 43,
       "textBytes": 48294,
@@ -445,7 +445,7 @@
     {
       "slug": "1729_Agent_Learning_via_Early_Experience",
       "title": "Agent Learning via Early Experience",
-      "category": "HDBSCAN Cluster: agents, agent, learning, weak",
+      "category": "HDBSCAN Cluster: agent, experience, yang1, which",
       "key": "FOLDER00045_ba69b71147e7",
       "sourceIndex": 44,
       "textBytes": 118639,
@@ -455,7 +455,7 @@
     {
       "slug": "1730_A_Survey_of_Context_Engineering_for_Large_Language_Models",
       "title": "A Survey of Context Engineering for Large Language Models",
-      "category": "HDBSCAN Cluster: university, code, engineering, https",
+      "category": "HDBSCAN Cluster: university, models, xiamen, large",
       "key": "FOLDER00046_3f2b33464bcb",
       "sourceIndex": 45,
       "textBytes": 551644,
@@ -465,7 +465,7 @@
     {
       "slug": "1731_Phi-3_Technical_Report_A_Highly_Capable_Language_Model_Local",
       "title": "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00047_6bf122ba377f",
       "sourceIndex": 46,
       "textBytes": 59469,
@@ -475,7 +475,7 @@
     {
       "slug": "1732_ClawBench_Can_AI_Agents_Complete_Everyday_Online_Tasks",
       "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
-      "category": "HDBSCAN Cluster: university, code, engineering, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00048_7d8b86a69b60",
       "sourceIndex": 47,
       "textBytes": 44311,
@@ -485,7 +485,7 @@
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
       "title": "DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models",
-      "category": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00049_07cf0d16c82c",
       "sourceIndex": 48,
       "textBytes": 68593,
@@ -555,7 +555,7 @@
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "title": "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model",
-      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
+      "category": "HDBSCAN Cluster: language, data, figure, textual",
       "key": "FOLDER00056_e1a299738b86",
       "sourceIndex": 55,
       "textBytes": 87381,
@@ -565,7 +565,7 @@
     {
       "slug": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
       "title": "Z-Image: An Efficient Image Generation Foundation Model with Single-Stream Diffusion Transformer",
-      "category": "HDBSCAN Cluster: qwen-image, image, model, qwen",
+      "category": "HDBSCAN Cluster: image, models, generation, qwen-image",
       "key": "FOLDER00057_85f52b7d18cd",
       "sourceIndex": 56,
       "textBytes": 233804,
@@ -575,7 +575,7 @@
     {
       "slug": "1741_SkillOpt_Executive_Strategy_for_Self-Evolving_Agent_Skills",
       "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
-      "category": "HDBSCAN Cluster: agents, agent, learning, weak",
+      "category": "HDBSCAN Cluster: agent, experience, yang1, which",
       "key": "FOLDER00058_cb6c569830d7",
       "sourceIndex": 57,
       "textBytes": 95497,
@@ -615,7 +615,7 @@
     {
       "slug": "1745_SocialOmni_Benchmarking_Audio-Visual_Social_Interactivity_in",
       "title": "SocialOmni: Benchmarking Audio-Visual Social Interactivity in Omni Models",
-      "category": "HDBSCAN Cluster: university, xiamen, models, figure",
+      "category": "HDBSCAN Cluster: university, models, xiamen, large",
       "key": "FOLDER00062_02f4f420adf3",
       "sourceIndex": 61,
       "textBytes": 85252,
@@ -625,7 +625,7 @@
     {
       "slug": "1746_Crafter_A_Multi-Agent_Harness_for_Editable_Scientific_Figure",
       "title": "Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
       "key": "FOLDER00063_0936ba6d5400",
       "sourceIndex": 62,
       "textBytes": 80050,
@@ -665,7 +665,7 @@
     {
       "slug": "1750_Thinking_with_Video_Video_Generation_as_a_Promising_Multimod",
       "title": "Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm",
-      "category": "HDBSCAN Cluster: university, xiamen, models, figure",
+      "category": "HDBSCAN Cluster: university, models, xiamen, large",
       "key": "FOLDER00067_ac95597a6878",
       "sourceIndex": 66,
       "textBytes": 100230,
@@ -675,7 +675,7 @@
     {
       "slug": "1751_Is_Chain-of-Thought_Reasoning_of_LLMs_a_Mirage_A_Data_Distri",
       "title": "Is Chain-of-Thought Reasoning of LLMs a Mirage? A Data Distribution Lens",
-      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
+      "category": "HDBSCAN Cluster: reasoning, data, cot, evidence",
       "key": "FOLDER00068_7017db505186",
       "sourceIndex": 67,
       "textBytes": 107328,
@@ -701,6 +701,56 @@
       "textBytes": 72929,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2604.05015v1[cs.CV]6Apr2026 [Figure 1] Technical Report ## Video-MME-v2: Towards the Next Stage in Benchmarks for Comprehensive Video Understanding Video-MME Team∗ https://video-mme-v2.netlify.app/ #### Abstract With the rapid advancement of video understanding, existing benchmarks are becoming increasingly saturated, exposing a critical discrepancy between inflated leaderboard scores and real-world model capabilities. To address this widening gap, we introduce Video-MME-v2, a comprehensive benchmark designed to rigorously evaluate the robustness and faithfulness of video understanding. To systematically evaluate model capabilities, we design a progressive tri-level hierarchy that incrementally increases the complexity of video comprehension, ranging from multi-point visual information aggregation, to temporal dynamics modeling, and ultimately to complex multimodal reasoning. Bes"
+    },
+    {
+      "slug": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
+      "title": "Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation",
+      "category": "HDBSCAN Cluster: image, models, generation, qwen-image",
+      "key": "FOLDER00071_8339c62b1c6b",
+      "sourceIndex": 70,
+      "textBytes": 189067,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2511.14993v3[cs.CV]26May2026 ## Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation #### Kandinsky Lab∗ ∗ A detailed list of the contributors can be found in the end of this paper. [Figure 1] Abstract: This report introduces Kandinsky 5.0, a family of state-of-the-art foundation models for high-resolution image and 10-second video synthesis. The framework comprises three core line-up of models: Kandinsky 5.0 Image Lite – a line-up of 6B parameter image generation models, Kandinsky 5.0 Video Lite – a fast and lightweight 2B parameter text-to-video and image-to-video models, and Kandinsky 5.0 Video Pro – 19B parameter models that achieves superior video generation quality. We provide a comprehensive review of the data curation lifecycle – including collection, processing, filtering and clustering – for the multi-stage training pipeline that involves extensiv"
+    },
+    {
+      "slug": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
+      "title": "GDPO: Group reward-Decoupled Normalization Policy Optimization for Multi-reward RL Optimization",
+      "category": "HDBSCAN Cluster: optimization, group, policy, sequence",
+      "key": "FOLDER00072_98f3b1b6fec2",
+      "sourceIndex": 71,
+      "textBytes": 77232,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2601.05242v1[cs.CL]8Jan2026 [Figure 1] 2026-1-9 ## GDPO: Group reward-Decoupled Normalization Policy Optimization for Multi-reward RL Optimization Shih-Yang Liu1, Xin Dong*, Ximing Lu, Shizhe Diao, Peter Belcak, Mingjie Liu, Min-Hung Chen, Hongxu Yin, Yu-Chiang Frank Wang, Kwang-Ting Cheng1, Yejin Choi, Jan Kautz, Pavlo Molchanov NVIDIA As language models become increasingly capable, users expect them to provide not only accurate responses but also behaviors aligned with diverse human preferences across a variety of scenarios. To achieve this, Reinforcement learning (RL) pipelines have begun incorporating multiple rewards, each capturing a distinct preference, to guide models toward these desired behaviors. However, recent work has defaulted to apply Group Relative Policy Optimization (GRPO) under multi-reward setting without examining its suitability. In this paper, we demonstra"
+    },
+    {
+      "slug": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
+      "title": "PaperBanana: Automating Academic Illustration for AI Scientists",
+      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "key": "FOLDER00073_6aee964fcc91",
+      "sourceIndex": 72,
+      "textBytes": 126607,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] 2026-3-25 # PaperBanana: Automating Academic Illustration for AI Scientists [Figure 2] ###### Dawei Zhu1 2 *, Rui Meng2, Yale Song2, Xiyu Wei1, Sujian Li1, Tomas Pfister2 and Jinsung Yoon2 1Peking University, 2Google Cloud AI Research https://dwzhu-pku.github.io/PaperBanana/ Despite rapid advances in autonomous AI scientists powered by language models, generating publicationready illustrations remains a labor-intensive bottleneck in the research workflow. To lift this burden, we introduce PaperBanana, an agentic framework for automated generation of publication-ready academic illustrations. Powered by state-of-the-art VLMs and image generation models, PaperBanana orchestrates specialized agents to retrieve references, plan content and style, render images, and iteratively refine via self-critique. To rigorously evaluate our framework, we introduce PaperBananaBench, comprising "
+    },
+    {
+      "slug": "1757_Mean_Mode_Screaming_Mean--Variance_Split_Residuals_for_1000-",
+      "title": "Mean Mode Screaming: Mean--Variance Split Residuals for 1000-Layer Diffusion Transformers",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00074_8ab1ffe1552b",
+      "sourceIndex": 73,
+      "textBytes": 96211,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.06169v1[cs.LG]7May2026 ## Mean Mode Screaming: Mean–Variance Split Residuals for 1000-Layer Diffusion Transformers Pengqi Lu Beijing, China luer5old@gmail.com [Figure 1] Figure 1: Text-to-image generation samples from our 1000-layer MV-Split DiT. More samples are provided in Appendix M. Code: https://github.com/erwold/mv-split. Model weights: https://huggingface.co/StableKirito/mvsplit-dit-1000l. ### Abstract Scaling Diffusion Transformers (DiTs) to hundreds of layers introduces a structural vulnerability: networks can enter a silent, mean-dominated collapse state that homogenizes token representations and suppresses centered variation. Through mechanistic auditing, we isolate the trigger event of this collapse as Mean Mode Screaming (MMS). MMS can occur even when training appears stable, with a mean-coherent backward shock on residual writers that opens deep residual branch"
+    },
+    {
+      "slug": "1758_InCoder-32B-Thinking_Industrial_Code_World_Model_for_Thinkin",
+      "title": "InCoder-32B-Thinking: Industrial Code World Model for Thinking",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
+      "key": "FOLDER00075_00c9387798d3",
+      "sourceIndex": 74,
+      "textBytes": 79388,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2604.03144v1[cs.AR]3Apr2026 [Figure 1] ### InCoder-32B-Thinking: Industrial Code World Model for Thinking Jian Yang1, Wei Zhang1, Jiajun Wu1, Junhang Cheng1, Tuney Zheng2, Fanglin Xu2, Weicheng Gu1, Lin Jing2, Yaxin Du3, Joseph Li4, Yizhi Li5, Yan Xing2, Chuan Hao2, Ran Tao2, Ruihao Gong1, Aishan Liu1, Zhoujun Li1, Mingjie Tang7, Chenghua Lin5, Siheng Chen3, Wayne Xin Zhao8†, Xianglong Liu1†, Ming Zhou9†, Bryan Dai2, Weifeng Lv1 1Beihang University 2IQuest Research 3Shanghai Jiao Tong University 4ELLIS 5University of Manchester 7Sichuan University 8Gaoling School of Artificial Intelligence, Renmin University of China 9Langboat †Corresponding Authors. Email: {jiayang}@buaa.edu.cn HuggingFace: https://huggingface.co/Multilingual-Multimodal-NLP/IndustrialCoder GitHub: https://github.com/CSJianYang/Industrial-Coder ### Abstract Industrial software development across chip design, GPU "
     }
   ]
 }
