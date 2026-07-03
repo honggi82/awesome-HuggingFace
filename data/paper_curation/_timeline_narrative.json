@@ -5,12 +5,7 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 27
-    },
-    {
-      "id": "hdbscan-cluster-data-language-large-models",
-      "name": "HDBSCAN Cluster: data, language, large, models",
-      "count": 7
+      "count": 34
     },
     {
       "id": "hdbscan-cluster-university-zhang1-wang-zhang",
@@ -23,18 +18,13 @@
       "count": 6
     },
     {
-      "id": "hdbscan-cluster-optimization-policy-reinforcement-training",
-      "name": "HDBSCAN Cluster: optimization, policy, reinforcement, training",
-      "count": 4
-    },
-    {
       "id": "hdbscan-cluster-image-qwen-models-https",
       "name": "HDBSCAN Cluster: image, qwen, models, https",
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-university-figure-li1-arxiv",
-      "name": "HDBSCAN Cluster: university, figure, li1, arxiv",
+      "id": "hdbscan-cluster-optimization-policy-training-group",
+      "name": "HDBSCAN Cluster: optimization, policy, training, group",
       "count": 3
     },
     {
@@ -53,6 +43,11 @@
       "count": 3
     },
     {
+      "id": "hdbscan-cluster-figure-university-li1-agentic",
+      "name": "HDBSCAN Cluster: figure, university, li1, agentic",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-sharing-efficient-post-training-language",
       "name": "HDBSCAN Cluster: sharing, efficient, post-training, language",
       "count": 2
@@ -65,6 +60,11 @@
     {
       "id": "hdbscan-cluster-reasoning-competitive-programming-reinforcement",
       "name": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-data-textual-law-frequency",
+      "name": "HDBSCAN Cluster: data, textual, law, frequency",
       "count": 2
     },
     {
@@ -88,13 +88,23 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-kimi-agentic-lumine-open",
-      "name": "HDBSCAN Cluster: kimi, agentic, lumine, open",
+      "id": "hdbscan-cluster-figure-language-opus-selection",
+      "name": "HDBSCAN Cluster: figure, language, opus, selection",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-kimi-glm-4-agentic-multimodal",
+      "name": "HDBSCAN Cluster: kimi, glm-4, agentic, multimodal",
       "count": 2
     },
     {
       "id": "hdbscan-cluster-models-gaia-scientific-general",
       "name": "HDBSCAN Cluster: models, gaia, scientific, general",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-reinforcement-language-feedback-rpt",
+      "name": "HDBSCAN Cluster: reinforcement, language, feedback, rpt",
       "count": 2
     },
     {
