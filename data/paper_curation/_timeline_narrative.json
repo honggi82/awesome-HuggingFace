@@ -8,9 +8,9 @@
       "count": 27
     },
     {
-      "id": "hdbscan-cluster-data-language-reasoning-large",
-      "name": "HDBSCAN Cluster: data, language, reasoning, large",
-      "count": 6
+      "id": "hdbscan-cluster-data-language-large-models",
+      "name": "HDBSCAN Cluster: data, language, large, models",
+      "count": 7
     },
     {
       "id": "hdbscan-cluster-university-zhang1-wang-zhang",
@@ -18,28 +18,23 @@
       "count": 6
     },
     {
-      "id": "hdbscan-cluster-university-code-https-figure",
-      "name": "HDBSCAN Cluster: university, code, https, figure",
-      "count": 5
+      "id": "hdbscan-cluster-university-figure-code-https",
+      "name": "HDBSCAN Cluster: university, figure, code, https",
+      "count": 6
     },
     {
-      "id": "hdbscan-cluster-deepseek-v3-efficient-language-sharing",
-      "name": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
-      "count": 3
+      "id": "hdbscan-cluster-optimization-policy-reinforcement-training",
+      "name": "HDBSCAN Cluster: optimization, policy, reinforcement, training",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-image-qwen-models-https",
+      "name": "HDBSCAN Cluster: image, qwen, models, https",
+      "count": 4
     },
     {
       "id": "hdbscan-cluster-university-figure-li1-arxiv",
       "name": "HDBSCAN Cluster: university, figure, li1, arxiv",
-      "count": 3
-    },
-    {
-      "id": "hdbscan-cluster-qwen-qwen2-https-report",
-      "name": "HDBSCAN Cluster: qwen, qwen2, https, report",
-      "count": 3
-    },
-    {
-      "id": "hdbscan-cluster-figure-video-reasoning-university",
-      "name": "HDBSCAN Cluster: figure, video, reasoning, university",
       "count": 3
     },
     {
@@ -48,14 +43,19 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-image-models-generation-qwen-image",
-      "name": "HDBSCAN Cluster: image, models, generation, qwen-image",
+      "id": "hdbscan-cluster-model-systems-figure-language",
+      "name": "HDBSCAN Cluster: model, systems, figure, language",
       "count": 3
     },
     {
       "id": "hdbscan-cluster-university-models-xiamen-large",
       "name": "HDBSCAN Cluster: university, models, xiamen, large",
       "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-sharing-efficient-post-training-language",
+      "name": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "count": 2
     },
     {
       "id": "hdbscan-cluster-language-large-llm-memory",
@@ -73,6 +73,11 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-qwen-qwen3-https-models",
+      "name": "HDBSCAN Cluster: qwen, qwen3, https, models",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-data-centric-shanghai-unified-framework",
       "name": "HDBSCAN Cluster: data-centric, shanghai, unified, framework",
       "count": 2
@@ -83,13 +88,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-glm-4-green-vla-model-multimodal",
-      "name": "HDBSCAN Cluster: glm-4, green-vla, model, multimodal",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-optimization-group-policy-sequence",
-      "name": "HDBSCAN Cluster: optimization, group, policy, sequence",
+      "id": "hdbscan-cluster-kimi-agentic-lumine-open",
+      "name": "HDBSCAN Cluster: kimi, agentic, lumine, open",
       "count": 2
     },
     {
@@ -100,6 +100,11 @@
     {
       "id": "hdbscan-cluster-agent-experience-yang1-which",
       "name": "HDBSCAN Cluster: agent, experience, yang1, which",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-deepseek-v3-reasoning-glm-4-models",
+      "name": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "count": 2
     },
     {

@@ -1,6 +1,6 @@
 {
   "model": "Codex-native SPECTER2 + HDBSCAN + UMAP bottom-up classification",
-  "processedPapers": 85,
+  "processedPapers": 90,
   "embedding": {
     "requestedEmbeddingModel": "allenai/specter2_base",
     "actualEmbeddingModel": "allenai/specter2_base",
@@ -19,7 +19,7 @@
       "success": true,
       "actualEmbeddingModel": "allenai/specter2_base",
       "embeddingShape": [
-        85,
+        90,
         768
       ]
     }
@@ -33,93 +33,98 @@
     "clusterSelectionMethod": "leaf",
     "allowSingleCluster": false,
     "labels": [
-      13,
-      3,
-      18,
-      -1,
-      -1,
-      7,
-      10,
-      -1,
-      18,
-      -1,
-      5,
-      0,
-      14,
-      4,
-      6,
-      -1,
-      -1,
-      19,
-      8,
-      14,
-      10,
-      -1,
-      -1,
-      12,
-      -1,
-      13,
-      17,
-      5,
-      10,
-      8,
-      11,
-      5,
-      -1,
+      16,
       4,
       19,
       -1,
-      4,
-      11,
-      15,
+      -1,
+      8,
+      5,
+      -1,
+      19,
+      -1,
+      6,
+      0,
+      14,
+      -1,
+      7,
       -1,
       -1,
-      1,
+      20,
+      9,
+      14,
+      5,
+      -1,
+      -1,
       -1,
       -1,
       16,
+      17,
+      6,
+      5,
       9,
+      12,
+      6,
       -1,
-      8,
-      13,
-      11,
-      0,
+      3,
+      20,
       -1,
-      8,
       3,
       12,
-      10,
       15,
-      16,
-      1,
       -1,
-      -1,
-      9,
+      13,
       2,
+      5,
+      17,
+      11,
       10,
-      -1,
       -1,
       9,
+      18,
+      12,
+      0,
+      -1,
+      9,
+      4,
+      -1,
+      5,
+      15,
+      11,
+      2,
+      -1,
+      -1,
       10,
-      7,
+      1,
+      5,
+      -1,
+      -1,
+      10,
+      5,
+      8,
       -1,
       15,
       17,
-      2,
+      1,
       -1,
-      8,
-      5,
-      5,
-      -1,
+      9,
+      6,
       6,
       -1,
-      -1,
-      14,
       7,
       -1,
-      5
+      -1,
+      15,
+      8,
+      -1,
+      6,
+      17,
+      3,
+      18,
+      13,
+      9
     ],
-    "clusterCount": 20,
+    "clusterCount": 21,
     "noiseCount": 27,
     "attempts": [
       {
@@ -128,7 +133,7 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": false,
         "clusterCount": 2,
-        "noiseCount": 2
+        "noiseCount": 0
       },
       {
         "matrix": "specter2-normalized",
@@ -136,31 +141,31 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": true,
         "clusterCount": 1,
-        "noiseCount": 2
+        "noiseCount": 0
       },
       {
         "matrix": "specter2-normalized",
         "minClusterSize": 2,
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": false,
-        "clusterCount": 16,
-        "noiseCount": 37
+        "clusterCount": 18,
+        "noiseCount": 35
       },
       {
         "matrix": "specter2-normalized",
         "minClusterSize": 2,
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": true,
-        "clusterCount": 16,
-        "noiseCount": 37
+        "clusterCount": 18,
+        "noiseCount": 35
       },
       {
         "matrix": "specter2-normalized",
         "minClusterSize": 3,
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": false,
-        "clusterCount": 9,
-        "noiseCount": 40
+        "clusterCount": 7,
+        "noiseCount": 38
       },
       {
         "matrix": "specter2-normalized",
@@ -168,23 +173,23 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": true,
         "clusterCount": 1,
-        "noiseCount": 27
+        "noiseCount": 28
       },
       {
         "matrix": "specter2-normalized",
         "minClusterSize": 3,
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": false,
-        "clusterCount": 10,
-        "noiseCount": 47
+        "clusterCount": 12,
+        "noiseCount": 45
       },
       {
         "matrix": "specter2-normalized",
         "minClusterSize": 3,
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": true,
-        "clusterCount": 10,
-        "noiseCount": 47
+        "clusterCount": 12,
+        "noiseCount": 45
       },
       {
         "matrix": "specter2-normalized",
@@ -192,7 +197,7 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": false,
         "clusterCount": 2,
-        "noiseCount": 27
+        "noiseCount": 28
       },
       {
         "matrix": "specter2-normalized",
@@ -200,23 +205,23 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": true,
         "clusterCount": 1,
-        "noiseCount": 27
+        "noiseCount": 28
       },
       {
         "matrix": "specter2-normalized",
         "minClusterSize": 5,
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": false,
-        "clusterCount": 4,
-        "noiseCount": 47
+        "clusterCount": 3,
+        "noiseCount": 33
       },
       {
         "matrix": "specter2-normalized",
         "minClusterSize": 5,
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": true,
-        "clusterCount": 4,
-        "noiseCount": 47
+        "clusterCount": 3,
+        "noiseCount": 33
       },
       {
         "matrix": "specter2-normalized",
@@ -224,7 +229,7 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": false,
         "clusterCount": 2,
-        "noiseCount": 27
+        "noiseCount": 28
       },
       {
         "matrix": "specter2-normalized",
@@ -232,7 +237,7 @@
         "clusterSelectionMethod": "eom",
         "allowSingleCluster": true,
         "clusterCount": 1,
-        "noiseCount": 27
+        "noiseCount": 28
       },
       {
         "matrix": "specter2-normalized",
@@ -240,7 +245,7 @@
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": false,
         "clusterCount": 2,
-        "noiseCount": 27
+        "noiseCount": 28
       },
       {
         "matrix": "specter2-normalized",
@@ -248,7 +253,7 @@
         "clusterSelectionMethod": "leaf",
         "allowSingleCluster": true,
         "clusterCount": 2,
-        "noiseCount": 27
+        "noiseCount": 28
       }
     ]
   },
