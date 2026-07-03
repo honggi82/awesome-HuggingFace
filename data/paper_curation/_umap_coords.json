@@ -1,502 +1,527 @@
 {
   "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective": {
-    "x": -3.53281,
-    "y": 8.852419,
-    "category": "HDBSCAN Cluster: sharing, efficient, post-training, language"
+    "x": 13.886415,
+    "y": 7.446692,
+    "category": "HDBSCAN Bridge and Noise Papers"
   },
   "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B": {
-    "x": -3.203827,
-    "y": 8.802688,
+    "x": 13.391516,
+    "y": 7.010523,
     "category": "HDBSCAN Cluster: language, large, llm, memory"
   },
   "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program": {
-    "x": -4.301527,
-    "y": 10.088471,
+    "x": 14.854828,
+    "y": 7.576019,
     "category": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement"
   },
   "026_The_Dragon_Hatchling_The_Missing_Link_between_the_Transforme": {
-    "x": -3.733368,
-    "y": 9.041759,
+    "x": 13.715318,
+    "y": 7.430785,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "027_Less_is_More_Recursive_Reasoning_with_Tiny_Networks": {
-    "x": -3.927269,
-    "y": 9.557384,
+    "x": 14.412728,
+    "y": 7.509429,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "076_A_Very_Big_Video_Reasoning_Suite": {
-    "x": -3.33945,
-    "y": 4.05051,
+    "x": 9.32915,
+    "y": 8.903055,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models": {
-    "x": -3.885156,
-    "y": 8.236989,
-    "category": "HDBSCAN Cluster: reasoning, data, textual, llms"
+    "x": 12.686065,
+    "y": 7.56196,
+    "category": "HDBSCAN Cluster: data, reasoning, llms, textual"
   },
   "078_ABot-Earth_05_Generative_3D_Earth_Model": {
-    "x": -1.959502,
-    "y": 9.797537,
+    "x": 13.579342,
+    "y": 5.299297,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R": {
-    "x": -4.14048,
-    "y": 10.124328,
+    "x": 14.982092,
+    "y": 7.497309,
     "category": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement"
   },
   "080_Looped_World_Models": {
-    "x": -4.632708,
-    "y": 6.652676,
+    "x": 11.456597,
+    "y": 8.635986,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "081_AI_Can_Learn_Scientific_Taste": {
-    "x": -4.121145,
-    "y": 3.38514,
-    "category": "HDBSCAN Cluster: university, models, zhang1, zhang"
+    "x": 8.125028,
+    "y": 8.399534,
+    "category": "HDBSCAN Cluster: university, models, arxiv, zhang1"
   },
   "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two": {
-    "x": -3.454819,
-    "y": 5.649492,
+    "x": 10.587008,
+    "y": 7.915324,
     "category": "HDBSCAN Cluster: figure, agent, tokens, reasoning"
   },
   "083_Qwen25_Technical_Report": {
-    "x": -2.774173,
-    "y": 9.08645,
+    "x": 13.422405,
+    "y": 6.498538,
     "category": "HDBSCAN Cluster: qwen, qwen3, https, models"
   },
   "084_Demystifing_Video_Reasoning": {
-    "x": -4.020866,
-    "y": 5.525057,
+    "x": 10.001088,
+    "y": 7.553037,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini": {
-    "x": -4.250208,
-    "y": 4.285118,
-    "category": "HDBSCAN Cluster: university, models, zhang1, zhang"
+    "x": 8.984449,
+    "y": 8.326323,
+    "category": "HDBSCAN Cluster: university, models, arxiv, zhang1"
   },
   "319_Agents_Last_Exam": {
-    "x": -3.619926,
-    "y": 3.32715,
+    "x": 8.193811,
+    "y": 8.904874,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "320_MolmoAct2_Action_Reasoning_Models_for_Real-world_Deployment": {
-    "x": -3.382143,
-    "y": 5.104084,
+    "x": 9.999896,
+    "y": 8.159664,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli": {
-    "x": -4.521223,
-    "y": 9.66028,
+    "x": 14.306765,
+    "y": 8.094616,
     "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math"
   },
   "322_ASE_A_Repository-Level_Benchmark_for_Evaluating_Security_in": {
-    "x": -3.622897,
-    "y": 4.38936,
-    "category": "HDBSCAN Cluster: university, figure, code, https"
+    "x": 9.265091,
+    "y": 8.620404,
+    "category": "HDBSCAN Cluster: university, code, https, figure"
   },
   "323_Qwen3_Technical_Report": {
-    "x": -2.930167,
-    "y": 9.082726,
+    "x": 13.826326,
+    "y": 6.668533,
     "category": "HDBSCAN Cluster: qwen, qwen3, https, models"
   },
   "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg": {
-    "x": -3.36394,
-    "y": 7.936428,
+    "x": 12.432951,
+    "y": 7.275542,
     "category": "HDBSCAN Cluster: figure, language, opus, data"
   },
   "325_CARLA-Air_Fly_Drones_Inside_a_CARLA_World_--_A_Unified_Infra": {
-    "x": -2.623906,
-    "y": 10.548726,
-    "category": "HDBSCAN Bridge and Noise Papers"
+    "x": 14.567955,
+    "y": 5.613951,
+    "category": "HDBSCAN Cluster: air-ground, embodied, lumine, open"
   },
   "326_Rethinking_Generalization_in_Reasoning_SFT_A_Conditional_Ana": {
-    "x": -4.31646,
-    "y": 6.181606,
+    "x": 11.169918,
+    "y": 8.484671,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "327_Green-VLA_Staged_Vision-Language-Action_Model_for_Generalist": {
-    "x": -3.106031,
-    "y": 10.687575,
+    "x": 15.002519,
+    "y": 6.177779,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "328_mHC_Manifold-Constrained_Hyper-Connections": {
-    "x": -4.818293,
-    "y": 6.131402,
+    "x": 10.78463,
+    "y": 8.671665,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling": {
-    "x": -3.779502,
-    "y": 9.148255,
-    "category": "HDBSCAN Cluster: sharing, efficient, post-training, language"
+    "x": 13.636847,
+    "y": 7.280565,
+    "category": "HDBSCAN Bridge and Noise Papers"
   },
   "330_Group_Sequence_Policy_Optimization": {
-    "x": -5.071715,
-    "y": 8.545554,
+    "x": 13.33405,
+    "y": 8.758921,
     "category": "HDBSCAN Cluster: optimization, policy, training, group"
   },
   "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes": {
-    "x": -4.047937,
-    "y": 3.24025,
-    "category": "HDBSCAN Cluster: university, models, zhang1, zhang"
+    "x": 7.775356,
+    "y": 8.827506,
+    "category": "HDBSCAN Cluster: university, models, arxiv, zhang1"
   },
   "332_DINOv3": {
-    "x": -2.574426,
-    "y": 7.674617,
+    "x": 11.92996,
+    "y": 6.618924,
     "category": "HDBSCAN Cluster: figure, language, opus, data"
   },
   "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios": {
-    "x": -3.812352,
-    "y": 4.574625,
-    "category": "HDBSCAN Cluster: university, figure, code, https"
+    "x": 9.387002,
+    "y": 8.518018,
+    "category": "HDBSCAN Cluster: university, code, https, figure"
   },
   "334_MiniMax-01_Scaling_Foundation_Models_with_Lightning_Attentio": {
-    "x": -2.92426,
-    "y": 9.782805,
-    "category": "HDBSCAN Cluster: lightning, attention, model, scaling"
+    "x": 14.024132,
+    "y": 6.757466,
+    "category": "HDBSCAN Cluster: lightning, attention, scaling, model"
   },
   "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp": {
-    "x": -4.055808,
-    "y": 2.953993,
-    "category": "HDBSCAN Cluster: university, models, zhang1, zhang"
+    "x": 7.777337,
+    "y": 8.954513,
+    "category": "HDBSCAN Cluster: university, models, arxiv, zhang1"
   },
   "336_From_Code_Foundation_Models_to_Agents_and_Applications_A_Pra": {
-    "x": -3.622241,
-    "y": 7.561865,
+    "x": 12.451946,
+    "y": 7.702585,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve": {
-    "x": -4.257814,
-    "y": 7.59028,
-    "category": "HDBSCAN Cluster: model, systems, figure, language"
+    "x": 12.580996,
+    "y": 8.565063,
+    "category": "HDBSCAN Cluster: skills, agent, agents, yang1"
   },
   "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev": {
-    "x": -4.285578,
-    "y": 9.90543,
+    "x": 14.596377,
+    "y": 7.843055,
     "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math"
   },
   "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro": {
-    "x": -5.002043,
-    "y": 7.174825,
+    "x": 12.128419,
+    "y": 8.653897,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "340_Recursive_Multi-Agent_Systems": {
-    "x": -4.06768,
-    "y": 7.615477,
-    "category": "HDBSCAN Cluster: model, systems, figure, language"
+    "x": 12.206683,
+    "y": 8.050252,
+    "category": "HDBSCAN Cluster: recursive, systems, model, multi-agent"
   },
   "341_MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightn": {
-    "x": -3.247496,
-    "y": 9.753271,
-    "category": "HDBSCAN Cluster: lightning, attention, model, scaling"
+    "x": 14.184712,
+    "y": 7.049381,
+    "category": "HDBSCAN Cluster: lightning, attention, scaling, model"
   },
   "342_Qwen-Image_Technical_Report": {
-    "x": -1.762712,
-    "y": 9.480749,
+    "x": 13.168077,
+    "y": 5.394598,
     "category": "HDBSCAN Cluster: image, qwen, models, https"
   },
   "343_Reflect_Retry_Reward_Self-Improving_LLMs_via_Reinforcement_L": {
-    "x": -4.908842,
-    "y": 9.324359,
+    "x": 13.97804,
+    "y": 8.318528,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1725_Kimi_K25_Visual_Agentic_Intelligence": {
-    "x": -2.975169,
-    "y": 10.635787,
+    "x": 14.884503,
+    "y": 6.314518,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1726_Intern-S1_A_Scientific_Multimodal_Foundation_Model": {
-    "x": -3.706868,
-    "y": 10.284097,
+    "x": 15.016486,
+    "y": 7.052495,
     "category": "HDBSCAN Cluster: models, gaia, scientific, general"
   },
   "1727_CiteVQA_Benchmarking_Evidence_Attribution_for_Trustworthy_Do": {
-    "x": -4.118232,
-    "y": 7.275154,
+    "x": 11.886417,
+    "y": 7.897861,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1728_Reinforcement_Pre-Training": {
-    "x": -4.827456,
-    "y": 9.243513,
-    "category": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning"
+    "x": 13.81624,
+    "y": 8.198774,
+    "category": "HDBSCAN Cluster: reinforcement, language, learning, rewards"
   },
   "1729_Agent_Learning_via_Early_Experience": {
-    "x": -4.814686,
-    "y": 6.775985,
-    "category": "HDBSCAN Cluster: agent, agents, experience, yang1"
+    "x": 11.687924,
+    "y": 8.80366,
+    "category": "HDBSCAN Cluster: skills, agent, agents, yang1"
   },
   "1730_A_Survey_of_Context_Engineering_for_Large_Language_Models": {
-    "x": -4.372787,
-    "y": 4.658576,
+    "x": 9.285949,
+    "y": 8.130636,
     "category": "HDBSCAN Cluster: university, models, xiamen, large"
   },
   "1731_Phi-3_Technical_Report_A_Highly_Capable_Language_Model_Local": {
-    "x": -2.691091,
-    "y": 8.910666,
+    "x": 13.519108,
+    "y": 6.823997,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1732_ClawBench_Can_AI_Agents_Complete_Everyday_Online_Tasks": {
-    "x": -3.553391,
-    "y": 5.058967,
-    "category": "HDBSCAN Cluster: university, figure, code, https"
+    "x": 9.800964,
+    "y": 8.269942,
+    "category": "HDBSCAN Cluster: university, code, https, figure"
   },
   "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod": {
-    "x": -3.584863,
-    "y": 10.020721,
+    "x": 14.464445,
+    "y": 7.183636,
     "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models"
   },
   "1734_ERNIE_50_Technical_Report": {
-    "x": -2.356889,
-    "y": 9.824451,
-    "category": "HDBSCAN Cluster: lightning, attention, model, scaling"
+    "x": 14.235871,
+    "y": 6.266949,
+    "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1735_Does_Your_Reasoning_Model_Implicitly_Know_When_to_Stop_Think": {
-    "x": -3.498429,
-    "y": 5.553683,
+    "x": 10.676107,
+    "y": 8.124746,
     "category": "HDBSCAN Cluster: figure, agent, tokens, reasoning"
   },
   "174_Llama_2_Open_Foundation_and_Fine-Tuned_Chat_Models": {
-    "x": -2.659137,
-    "y": 7.211637,
+    "x": 11.552444,
+    "y": 6.837141,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang": {
-    "x": -4.273883,
-    "y": 5.253983,
-    "category": "HDBSCAN Cluster: university, figure, code, https"
+    "x": 9.615396,
+    "y": 7.741674,
+    "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1737_LLM_in_a_flash_Efficient_Large_Language_Model_Inference_with": {
-    "x": -3.271817,
-    "y": 8.637614,
+    "x": 13.015471,
+    "y": 7.07476,
     "category": "HDBSCAN Cluster: language, large, llm, memory"
   },
   "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with": {
-    "x": -3.395184,
-    "y": 10.407027,
+    "x": 14.955817,
+    "y": 6.705218,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma": {
-    "x": -2.64057,
-    "y": 8.147094,
+    "x": 12.471976,
+    "y": 6.560431,
     "category": "HDBSCAN Cluster: figure, language, opus, data"
   },
   "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with": {
-    "x": -2.119853,
-    "y": 9.885806,
+    "x": 13.569735,
+    "y": 5.49474,
     "category": "HDBSCAN Cluster: image, qwen, models, https"
   },
   "1741_SkillOpt_Executive_Strategy_for_Self-Evolving_Agent_Skills": {
-    "x": -4.685295,
-    "y": 7.301664,
-    "category": "HDBSCAN Cluster: agent, agents, experience, yang1"
+    "x": 12.391175,
+    "y": 8.851572,
+    "category": "HDBSCAN Cluster: skills, agent, agents, yang1"
   },
   "1742_GAIA_a_benchmark_for_General_AI_Assistants": {
-    "x": -3.888018,
-    "y": 10.323347,
+    "x": 15.228351,
+    "y": 7.27442,
     "category": "HDBSCAN Cluster: models, gaia, scientific, general"
   },
   "1743_WildDet3D_Scaling_Promptable_3D_Detection_in_the_Wild": {
-    "x": -3.056343,
-    "y": 5.584509,
+    "x": 10.335896,
+    "y": 7.691505,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive": {
-    "x": -3.146488,
-    "y": 6.170883,
+    "x": 10.175541,
+    "y": 7.083679,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1745_SocialOmni_Benchmarking_Audio-Visual_Social_Interactivity_in": {
-    "x": -4.446361,
-    "y": 5.110795,
+    "x": 9.447969,
+    "y": 7.41338,
     "category": "HDBSCAN Cluster: university, models, xiamen, large"
   },
   "1746_Crafter_A_Multi-Agent_Harness_for_Editable_Scientific_Figure": {
-    "x": -3.790037,
-    "y": 7.023355,
-    "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation"
+    "x": 11.624609,
+    "y": 7.808806,
+    "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui"
   },
   "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of": {
-    "x": -3.745589,
-    "y": 8.405663,
-    "category": "HDBSCAN Bridge and Noise Papers"
+    "x": 12.915565,
+    "y": 7.454148,
+    "category": "HDBSCAN Cluster: data, reasoning, llms, textual"
   },
   "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation": {
-    "x": -4.551525,
-    "y": 5.321343,
+    "x": 9.345077,
+    "y": 7.406693,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1749_SQuTR_A_Robustness_Benchmark_for_Spoken_Query_to_Text_Retrie": {
-    "x": -3.849121,
-    "y": 4.775258,
+    "x": 9.6515,
+    "y": 8.190161,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1750_Thinking_with_Video_Video_Generation_as_a_Promising_Multimod": {
-    "x": -4.328811,
-    "y": 5.032585,
+    "x": 9.322605,
+    "y": 7.738242,
     "category": "HDBSCAN Cluster: university, models, xiamen, large"
   },
   "1751_Is_Chain-of-Thought_Reasoning_of_LLMs_a_Mirage_A_Data_Distri": {
-    "x": -4.378178,
-    "y": 8.412845,
-    "category": "HDBSCAN Cluster: reasoning, data, textual, llms"
+    "x": 12.845732,
+    "y": 8.029222,
+    "category": "HDBSCAN Cluster: data, reasoning, llms, textual"
   },
   "1752_The_Landscape_of_Agentic_Reinforcement_Learning_for_LLMs_A_S": {
-    "x": -3.298058,
-    "y": 4.45234,
+    "x": 9.691921,
+    "y": 8.712162,
     "category": "HDBSCAN Cluster: figure, university, li1, agentic"
   },
   "1753_Video-MME-v2_Towards_the_Next_Stage_in_Benchmarks_for_Compre": {
-    "x": -2.410393,
-    "y": 10.477121,
+    "x": 14.359334,
+    "y": 5.847347,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid": {
-    "x": -1.619281,
-    "y": 9.663267,
+    "x": 13.496372,
+    "y": 5.451995,
     "category": "HDBSCAN Cluster: image, qwen, models, https"
   },
   "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio": {
-    "x": -4.936141,
-    "y": 8.601518,
+    "x": 13.374897,
+    "y": 8.576014,
     "category": "HDBSCAN Cluster: optimization, policy, training, group"
   },
   "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis": {
-    "x": -2.072766,
-    "y": 10.168205,
-    "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation"
+    "x": 13.327771,
+    "y": 5.824069,
+    "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui"
   },
   "1757_Mean_Mode_Screaming_Mean--Variance_Split_Residuals_for_1000-": {
-    "x": -3.283168,
-    "y": 9.32461,
+    "x": 13.527524,
+    "y": 6.210511,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1758_InCoder-32B-Thinking_Industrial_Code_World_Model_for_Thinkin": {
-    "x": -3.777954,
-    "y": 4.714358,
-    "category": "HDBSCAN Cluster: university, figure, code, https"
+    "x": 9.477816,
+    "y": 8.181907,
+    "category": "HDBSCAN Cluster: university, code, https, figure"
   },
   "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey": {
-    "x": -3.736958,
-    "y": 2.991778,
-    "category": "HDBSCAN Cluster: university, models, zhang1, zhang"
+    "x": 7.873833,
+    "y": 8.878293,
+    "category": "HDBSCAN Cluster: university, models, arxiv, zhang1"
   },
   "1760_Scaling_Latent_Reasoning_via_Looped_Language_Models": {
-    "x": -4.237409,
-    "y": 3.041195,
-    "category": "HDBSCAN Cluster: university, models, zhang1, zhang"
+    "x": 8.005255,
+    "y": 8.522177,
+    "category": "HDBSCAN Cluster: university, models, arxiv, zhang1"
   },
   "1841_Feature-Level_Insights_into_Artificial_Text_Detection_with_S": {
-    "x": -3.439462,
-    "y": 8.217104,
+    "x": 12.674416,
+    "y": 7.083944,
     "category": "HDBSCAN Cluster: text, artificial, airi, clear"
   },
   "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio": {
-    "x": -3.876652,
-    "y": 3.720811,
-    "category": "HDBSCAN Cluster: university, models, zhang1, zhang"
+    "x": 8.454782,
+    "y": 8.593682,
+    "category": "HDBSCAN Cluster: university, models, arxiv, zhang1"
   },
   "1843_On_the_Scaling_of_PEFT_Towards_Million_Personal_Models_of_Tr": {
-    "x": -2.978967,
-    "y": 9.436392,
+    "x": 14.402414,
+    "y": 6.579028,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1886_OmniHuman-1_Rethinking_the_Scaling-Up_of_One-Stage_Condition": {
-    "x": -1.603033,
-    "y": 9.831829,
+    "x": 13.239822,
+    "y": 5.320635,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1700_Qwen25-VL_Technical_Report": {
-    "x": -1.987473,
-    "y": 9.184694,
+    "x": 12.815742,
+    "y": 5.819424,
     "category": "HDBSCAN Cluster: image, qwen, models, https"
   },
   "1887_Code_as_Agent_Harness": {
-    "x": -3.231423,
-    "y": 4.319023,
+    "x": 9.749475,
+    "y": 8.931804,
     "category": "HDBSCAN Cluster: figure, university, li1, agentic"
   },
   "1888_MinT_Managed_Infrastructure_for_Training_and_Serving_Million": {
-    "x": -2.825283,
-    "y": 9.509978,
+    "x": 14.281034,
+    "y": 6.656406,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1889_InternVL35_Advancing_Open-Source_Multimodal_Models_in_Versat": {
-    "x": -3.896785,
-    "y": 3.139126,
-    "category": "HDBSCAN Cluster: university, models, zhang1, zhang"
+    "x": 8.030831,
+    "y": 9.090358,
+    "category": "HDBSCAN Cluster: university, models, arxiv, zhang1"
   },
   "1931_VESPO_Variational_Sequence-Level_Soft_Policy_Optimization_fo": {
-    "x": -4.865373,
-    "y": 8.984903,
+    "x": 13.73917,
+    "y": 8.763779,
     "category": "HDBSCAN Cluster: optimization, policy, training, group"
   },
   "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration": {
-    "x": -3.706891,
-    "y": 7.427911,
-    "category": "HDBSCAN Cluster: model, systems, figure, language"
+    "x": 12.414145,
+    "y": 7.940951,
+    "category": "HDBSCAN Cluster: recursive, systems, model, multi-agent"
   },
   "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models": {
-    "x": -3.890938,
-    "y": 9.827322,
+    "x": 14.570618,
+    "y": 7.283989,
     "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models"
   },
   "1934_Lumine_An_Open_Recipe_for_Building_Generalist_Agents_in_3D_O": {
-    "x": -2.765693,
-    "y": 10.808059,
-    "category": "HDBSCAN Bridge and Noise Papers"
+    "x": 14.668039,
+    "y": 5.697231,
+    "category": "HDBSCAN Cluster: air-ground, embodied, lumine, open"
   },
   "1935_Watching_Reasoning_and_Searching_A_Video_Deep_Research_Bench": {
-    "x": -3.906204,
-    "y": 5.231161,
-    "category": "HDBSCAN Cluster: university, figure, code, https"
+    "x": 9.974626,
+    "y": 7.942151,
+    "category": "HDBSCAN Cluster: university, code, https, figure"
   },
   "1977_Mutarjim_Advancing_Bidirectional_Arabic-English_Translation": {
-    "x": -2.768398,
-    "y": 8.385858,
+    "x": 12.851944,
+    "y": 6.745307,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1978_Drivel-ology_Challenging_LLMs_with_Interpreting_Nonsense_wit": {
-    "x": -4.109605,
-    "y": 8.171267,
+    "x": 12.945395,
+    "y": 7.850175,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "738_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering": {
-    "x": -1.646711,
-    "y": 9.045332,
+    "x": 12.637402,
+    "y": 5.50677,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "1979_Agentic_Reasoning_for_Large_Language_Models": {
-    "x": -3.149778,
-    "y": 4.763359,
+    "x": 9.952373,
+    "y": 8.764601,
     "category": "HDBSCAN Cluster: figure, university, li1, agentic"
   },
   "1980_Bootstrapping_Exploration_with_Group-Level_Natural_Language": {
-    "x": -5.157202,
-    "y": 8.822502,
-    "category": "HDBSCAN Bridge and Noise Papers"
+    "x": 13.592628,
+    "y": 8.469976,
+    "category": "HDBSCAN Cluster: reinforcement, language, learning, rewards"
   },
   "2022_TermiGen_High-Fidelity_Environment_and_Robust_Trajectory_Syn": {
-    "x": -4.763313,
-    "y": 7.597244,
-    "category": "HDBSCAN Cluster: agent, agents, experience, yang1"
+    "x": 12.830701,
+    "y": 8.746724,
+    "category": "HDBSCAN Cluster: skills, agent, agents, yang1"
   },
   "2023_OpenWorldLib_A_Unified_Codebase_and_Definition_of_Advanced_W": {
-    "x": -4.167987,
-    "y": 3.317724,
-    "category": "HDBSCAN Cluster: university, models, zhang1, zhang"
+    "x": 8.020694,
+    "y": 8.644214,
+    "category": "HDBSCAN Cluster: university, models, arxiv, zhang1"
   },
   "2024_CLEAR_Character_Unlearning_in_Textual_and_Visual_Modalities": {
-    "x": -3.039555,
-    "y": 8.163897,
+    "x": 12.325578,
+    "y": 6.893559,
     "category": "HDBSCAN Cluster: text, artificial, airi, clear"
   },
   "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models": {
-    "x": -2.018512,
-    "y": 8.440845,
+    "x": 12.376923,
+    "y": 6.017545,
     "category": "HDBSCAN Bridge and Noise Papers"
   },
   "2026_DelTA_Discriminative_Token_Credit_Assignment_for_Reinforceme": {
-    "x": -5.110157,
-    "y": 9.245582,
-    "category": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning"
+    "x": 13.964152,
+    "y": 8.565121,
+    "category": "HDBSCAN Cluster: reinforcement, language, learning, rewards"
+  },
+  "2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I": {
+    "x": 9.686801,
+    "y": 7.286817,
+    "category": "HDBSCAN Bridge and Noise Papers"
+  },
+  "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti": {
+    "x": 14.698879,
+    "y": 6.847554,
+    "category": "HDBSCAN Bridge and Noise Papers"
+  },
+  "2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener": {
+    "x": 14.801477,
+    "y": 5.908116,
+    "category": "HDBSCAN Bridge and Noise Papers"
+  },
+  "2076_BabyVision_Visual_Reasoning_Beyond_Language": {
+    "x": 8.430173,
+    "y": 8.314774,
+    "category": "HDBSCAN Cluster: university, models, arxiv, zhang1"
+  },
+  "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation": {
+    "x": 13.745185,
+    "y": 5.189734,
+    "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui"
   }
 }

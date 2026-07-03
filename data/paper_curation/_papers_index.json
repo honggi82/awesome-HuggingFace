@@ -5,7 +5,7 @@
     {
       "slug": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
       "title": "Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing",
-      "category": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00001_af26518a47dc",
       "sourceIndex": null,
       "textBytes": 44954,
@@ -65,7 +65,7 @@
     {
       "slug": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
       "title": "Adam's Law: Textual Frequency Law on Large Language Models",
-      "category": "HDBSCAN Cluster: reasoning, data, textual, llms",
+      "category": "HDBSCAN Cluster: data, reasoning, llms, textual",
       "key": "FOLDER00007_f1204ba044c3",
       "sourceIndex": 6,
       "textBytes": 101929,
@@ -105,7 +105,7 @@
     {
       "slug": "081_AI_Can_Learn_Scientific_Taste",
       "title": "AI Can Learn Scientific Taste",
-      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
+      "category": "HDBSCAN Cluster: university, models, arxiv, zhang1",
       "key": "FOLDER00011_58c904a08eda",
       "sourceIndex": 10,
       "textBytes": 158305,
@@ -145,7 +145,7 @@
     {
       "slug": "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini",
       "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
-      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
+      "category": "HDBSCAN Cluster: university, models, arxiv, zhang1",
       "key": "FOLDER00015_27487e16e6cf",
       "sourceIndex": 14,
       "textBytes": 72155,
@@ -185,7 +185,7 @@
     {
       "slug": "322_ASE_A_Repository-Level_Benchmark_for_Evaluating_Security_in",
       "title": "A.S.E: A Repository-Level Benchmark for Evaluating Security in AI-Generated Code",
-      "category": "HDBSCAN Cluster: university, figure, code, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00019_f578c07c2033",
       "sourceIndex": 18,
       "textBytes": 84262,
@@ -215,7 +215,7 @@
     {
       "slug": "325_CARLA-Air_Fly_Drones_Inside_a_CARLA_World_--_A_Unified_Infra",
       "title": "CARLA-Air: Fly Drones Inside a CARLA World -- A Unified Infrastructure for Air-Ground Embodied Intelligence",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: air-ground, embodied, lumine, open",
       "key": "FOLDER00022_bafb5974ff85",
       "sourceIndex": 21,
       "textBytes": 62875,
@@ -255,7 +255,7 @@
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
-      "category": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00026_e94287efc152",
       "sourceIndex": 25,
       "textBytes": 79369,
@@ -275,7 +275,7 @@
     {
       "slug": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
       "title": "InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models",
-      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
+      "category": "HDBSCAN Cluster: university, models, arxiv, zhang1",
       "key": "FOLDER00028_e5264c4b16b0",
       "sourceIndex": 27,
       "textBytes": 122653,
@@ -295,7 +295,7 @@
     {
       "slug": "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios",
       "title": "InCoder-32B: Code Foundation Model for Industrial Scenarios",
-      "category": "HDBSCAN Cluster: university, figure, code, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00030_44a8848066c5",
       "sourceIndex": 29,
       "textBytes": 161304,
@@ -305,7 +305,7 @@
     {
       "slug": "334_MiniMax-01_Scaling_Foundation_Models_with_Lightning_Attentio",
       "title": "MiniMax-01: Scaling Foundation Models with Lightning Attention",
-      "category": "HDBSCAN Cluster: lightning, attention, model, scaling",
+      "category": "HDBSCAN Cluster: lightning, attention, scaling, model",
       "key": "FOLDER00031_fa942766dee6",
       "sourceIndex": 30,
       "textBytes": 287301,
@@ -315,7 +315,7 @@
     {
       "slug": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
       "title": "Advances and Challenges in Foundation Agents: From Brain-Inspired Intelligence to Evolutionary, Collaborative, and Safe Systems",
-      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
+      "category": "HDBSCAN Cluster: university, models, arxiv, zhang1",
       "key": "FOLDER00032_042b1763276f",
       "sourceIndex": 31,
       "textBytes": 1411183,
@@ -335,7 +335,7 @@
     {
       "slug": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
-      "category": "HDBSCAN Cluster: model, systems, figure, language",
+      "category": "HDBSCAN Cluster: skills, agent, agents, yang1",
       "key": "FOLDER00034_8bc56d204ac7",
       "sourceIndex": 33,
       "textBytes": 94309,
@@ -365,7 +365,7 @@
     {
       "slug": "340_Recursive_Multi-Agent_Systems",
       "title": "Recursive Multi-Agent Systems",
-      "category": "HDBSCAN Cluster: model, systems, figure, language",
+      "category": "HDBSCAN Cluster: recursive, systems, model, multi-agent",
       "key": "FOLDER00037_f33e597ec366",
       "sourceIndex": 36,
       "textBytes": 105642,
@@ -375,7 +375,7 @@
     {
       "slug": "341_MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightn",
       "title": "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention",
-      "category": "HDBSCAN Cluster: lightning, attention, model, scaling",
+      "category": "HDBSCAN Cluster: lightning, attention, scaling, model",
       "key": "FOLDER00038_c5daea06a99b",
       "sourceIndex": 37,
       "textBytes": 75471,
@@ -435,7 +435,7 @@
     {
       "slug": "1728_Reinforcement_Pre-Training",
       "title": "Reinforcement Pre-Training",
-      "category": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
+      "category": "HDBSCAN Cluster: reinforcement, language, learning, rewards",
       "key": "FOLDER00044_3dcd071cdafe",
       "sourceIndex": 43,
       "textBytes": 48294,
@@ -445,7 +445,7 @@
     {
       "slug": "1729_Agent_Learning_via_Early_Experience",
       "title": "Agent Learning via Early Experience",
-      "category": "HDBSCAN Cluster: agent, agents, experience, yang1",
+      "category": "HDBSCAN Cluster: skills, agent, agents, yang1",
       "key": "FOLDER00045_ba69b71147e7",
       "sourceIndex": 44,
       "textBytes": 118639,
@@ -475,7 +475,7 @@
     {
       "slug": "1732_ClawBench_Can_AI_Agents_Complete_Everyday_Online_Tasks",
       "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
-      "category": "HDBSCAN Cluster: university, figure, code, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00048_7d8b86a69b60",
       "sourceIndex": 47,
       "textBytes": 44311,
@@ -495,7 +495,7 @@
     {
       "slug": "1734_ERNIE_50_Technical_Report",
       "title": "ERNIE 5.0 Technical Report",
-      "category": "HDBSCAN Cluster: lightning, attention, model, scaling",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00050_7562d1a3af33",
       "sourceIndex": 49,
       "textBytes": 147469,
@@ -525,7 +525,7 @@
     {
       "slug": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "title": "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model",
-      "category": "HDBSCAN Cluster: university, figure, code, https",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00053_b501ac6425a5",
       "sourceIndex": 52,
       "textBytes": 99132,
@@ -575,7 +575,7 @@
     {
       "slug": "1741_SkillOpt_Executive_Strategy_for_Self-Evolving_Agent_Skills",
       "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
-      "category": "HDBSCAN Cluster: agent, agents, experience, yang1",
+      "category": "HDBSCAN Cluster: skills, agent, agents, yang1",
       "key": "FOLDER00058_cb6c569830d7",
       "sourceIndex": 57,
       "textBytes": 95497,
@@ -625,7 +625,7 @@
     {
       "slug": "1746_Crafter_A_Multi-Agent_Harness_for_Editable_Scientific_Figure",
       "title": "Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs",
-      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
       "key": "FOLDER00063_0936ba6d5400",
       "sourceIndex": 62,
       "textBytes": 80050,
@@ -635,7 +635,7 @@
     {
       "slug": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
       "title": "Less is Enough: Synthesizing Diverse Data in Feature Space of LLMs",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: data, reasoning, llms, textual",
       "key": "FOLDER00064_292a7228313c",
       "sourceIndex": 63,
       "textBytes": 179027,
@@ -675,7 +675,7 @@
     {
       "slug": "1751_Is_Chain-of-Thought_Reasoning_of_LLMs_a_Mirage_A_Data_Distri",
       "title": "Is Chain-of-Thought Reasoning of LLMs a Mirage? A Data Distribution Lens",
-      "category": "HDBSCAN Cluster: reasoning, data, textual, llms",
+      "category": "HDBSCAN Cluster: data, reasoning, llms, textual",
       "key": "FOLDER00068_7017db505186",
       "sourceIndex": 67,
       "textBytes": 107328,
@@ -725,7 +725,7 @@
     {
       "slug": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
       "title": "PaperBanana: Automating Academic Illustration for AI Scientists",
-      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
       "key": "FOLDER00073_6aee964fcc91",
       "sourceIndex": 72,
       "textBytes": 126607,
@@ -745,7 +745,7 @@
     {
       "slug": "1758_InCoder-32B-Thinking_Industrial_Code_World_Model_for_Thinkin",
       "title": "InCoder-32B-Thinking: Industrial Code World Model for Thinking",
-      "category": "HDBSCAN Cluster: university, figure, code, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00075_00c9387798d3",
       "sourceIndex": 74,
       "textBytes": 79388,
@@ -755,7 +755,7 @@
     {
       "slug": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
       "title": "Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond",
-      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
+      "category": "HDBSCAN Cluster: university, models, arxiv, zhang1",
       "key": "FOLDER00076_8f66fe1850ac",
       "sourceIndex": 75,
       "textBytes": 384726,
@@ -765,7 +765,7 @@
     {
       "slug": "1760_Scaling_Latent_Reasoning_via_Looped_Language_Models",
       "title": "Scaling Latent Reasoning via Looped Language Models",
-      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
+      "category": "HDBSCAN Cluster: university, models, arxiv, zhang1",
       "key": "FOLDER00077_e466b12b1813",
       "sourceIndex": 76,
       "textBytes": 185444,
@@ -785,7 +785,7 @@
     {
       "slug": "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio",
       "title": "DataFlow: An LLM-Driven Framework for Unified Data Preparation and Workflow Automation in the Era of Data-Centric AI",
-      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
+      "category": "HDBSCAN Cluster: university, models, arxiv, zhang1",
       "key": "FOLDER00079_064bbcad8b7d",
       "sourceIndex": 78,
       "textBytes": 134657,
@@ -845,7 +845,7 @@
     {
       "slug": "1889_InternVL35_Advancing_Open-Source_Multimodal_Models_in_Versat",
       "title": "InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency",
-      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
+      "category": "HDBSCAN Cluster: university, models, arxiv, zhang1",
       "key": "FOLDER00085_d15d9f25155c",
       "sourceIndex": 84,
       "textBytes": 152420,
@@ -865,7 +865,7 @@
     {
       "slug": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
       "title": "Heterogeneous Scientific Foundation Model Collaboration",
-      "category": "HDBSCAN Cluster: model, systems, figure, language",
+      "category": "HDBSCAN Cluster: recursive, systems, model, multi-agent",
       "key": "FOLDER00087_4449a0ace106",
       "sourceIndex": 86,
       "textBytes": 184544,
@@ -885,7 +885,7 @@
     {
       "slug": "1934_Lumine_An_Open_Recipe_for_Building_Generalist_Agents_in_3D_O",
       "title": "Lumine: An Open Recipe for Building Generalist Agents in 3D Open Worlds",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: air-ground, embodied, lumine, open",
       "key": "FOLDER00089_5c877ea4a55a",
       "sourceIndex": 88,
       "textBytes": 201532,
@@ -895,7 +895,7 @@
     {
       "slug": "1935_Watching_Reasoning_and_Searching_A_Video_Deep_Research_Bench",
       "title": "Watching, Reasoning, and Searching: A Video Deep Research Benchmark on Open Web for Agentic Video Reasoning",
-      "category": "HDBSCAN Cluster: university, figure, code, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00090_32240190a210",
       "sourceIndex": 89,
       "textBytes": 57994,
@@ -945,7 +945,7 @@
     {
       "slug": "1980_Bootstrapping_Exploration_with_Group-Level_Natural_Language",
       "title": "Bootstrapping Exploration with Group-Level Natural Language Feedback in Reinforcement Learning",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reinforcement, language, learning, rewards",
       "key": "FOLDER00095_946974fa004a",
       "sourceIndex": 94,
       "textBytes": 89363,
@@ -955,7 +955,7 @@
     {
       "slug": "2022_TermiGen_High-Fidelity_Environment_and_Robust_Trajectory_Syn",
       "title": "TermiGen: High-Fidelity Environment and Robust Trajectory Synthesis for Terminal Agents",
-      "category": "HDBSCAN Cluster: agent, agents, experience, yang1",
+      "category": "HDBSCAN Cluster: skills, agent, agents, yang1",
       "key": "FOLDER00096_4f0822cdffc0",
       "sourceIndex": 95,
       "textBytes": 63945,
@@ -965,7 +965,7 @@
     {
       "slug": "2023_OpenWorldLib_A_Unified_Codebase_and_Definition_of_Advanced_W",
       "title": "OpenWorldLib: A Unified Codebase and Definition of Advanced World Models",
-      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
+      "category": "HDBSCAN Cluster: university, models, arxiv, zhang1",
       "key": "FOLDER00097_06d313401545",
       "sourceIndex": 96,
       "textBytes": 91225,
@@ -995,12 +995,62 @@
     {
       "slug": "2026_DelTA_Discriminative_Token_Credit_Assignment_for_Reinforceme",
       "title": "DelTA: Discriminative Token Credit Assignment for Reinforcement Learning from Verifiable Rewards",
-      "category": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
+      "category": "HDBSCAN Cluster: reinforcement, language, learning, rewards",
       "key": "FOLDER00100_474146b29ef4",
       "sourceIndex": 99,
       "textBytes": 88739,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2605.21467v1[cs.LG]20May2026 ## DELTA: DISCRIMINATIVE TOKEN CREDIT ASSIGNMENT FOR REINFORCEMENT LEARNING FROM VERIFIABLE REWARDS Kaiyi Zhang1,2 , Wei Wu2†, Yankai Lin1† 1Gaoling School of Artificial Intelligence, Renmin University of China 2Ant International {kyzhang, yankailin}@ruc.edu.cn wuwei19850318@gmail.com Code: https://github.com/RUCBM/DelTA ABSTRACT Reinforcement learning from verifiable rewards (RLVR) has emerged as a central technique for improving the reasoning capabilities of large language models. Despite its effectiveness, how response-level rewards translate into token-level probability changes remains poorly understood. We introduce a discriminator view of RLVR updates, showing that the policy-gradient update direction implicitly acts as a linear discriminator over token-gradient vectors and thereby determines which token probabilities are increased or decreased "
+    },
+    {
+      "slug": "2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I",
+      "title": "JoyAI-VL-Interaction: Real-Time Vision-Language Interaction Intelligence",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00101_007e00953c4a",
+      "sourceIndex": 100,
+      "textBytes": 85306,
+      "figuresExtracted": 3,
+      "excerpt": "# arXiv:2606.14777v1[cs.CV]10Jun2026 [Figure 1] ## JoyAI-VL-Interaction: Real-Time Vision-Language Interaction Intelligence Dingyu Yao∗, Junhao Zhou∗, Chenxu Yang∗, Chuanyu Qin∗, Haowen Hou∗, Zheming Liang, Congcong Wang, Yuhang Cao, Shenglong Ye, Shuai Xie, Shuhuan Gu, Haoyang Huang, Qingyi Si∗,†, Nan Duan , Jiaqi Wang JD.com ∗Equal Contribution, †Project Lead, Corresponding Authors ### Abstract Many moments in the real world do not wait for a user to ask. A fire starts on a security monitor, an expression flickers across a video call, or a product a viewer wants flashes by in a livestream. Once missed, the moment is gone, because the physical world does not pause. Yet today’s large models remain mostly turn-based by design: they answer only when addressed, and even video-call apps that appear interactive still operate as question-answer systems, reacting only when polled or prompted. W"
+    },
+    {
+      "slug": "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti",
+      "title": "Step 3.5 Flash: Open Frontier-Level Intelligence with 11B Active Parameters",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00102_2c700711e69c",
+      "sourceIndex": 101,
+      "textBytes": 205457,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2602.10604v2[cs.CL]23Feb2026 [Figure 1] ## Step 3.5 Flash: Open Frontier-Level Intelligence with 11B Active Parameters StepFun Team GitHub HuggingFace ModelBlog ### Abstract We introduce Step 3.5 Flash, a sparse Mixture-of-Experts (MoE) model that bridges the gap between frontier-level agentic intelligence and computational efficiency. We focus on what matters most when building agents: reasoning that’s sharp, and execution that’s fast and reliable. Reflecting these priorities, Step 3.5 Flash pairs a 196B-parameter foundation for high-fidelity modeling with 11B active parameters for efficient inference, optimized by interleaved 3:1 Sliding Window/Full Attention and Multi-Token Prediction (MTP-3) to minimize the latency and cost of multi-round agentic interactions. Toward frontier-level intelligence, we design a scalable RL framework that integrates verifiable signals and preferen"
+    },
+    {
+      "slug": "2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener",
+      "title": "The Trinity of Consistency as a Defining Principle for General World Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00103_93d3431c273c",
+      "sourceIndex": 102,
+      "textBytes": 384143,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] ### The Trinity of Consistency as a Defining Principle for General World Models Full author list in Contributions The construction of World Models capable of learning, simulating, and reasoning about objective physical laws constitutes a foundational challenge in the pursuit of Artificial General Intelligence. Recent advancements represented by video generation models like Sora have demonstrated the potential of data-driven scaling laws to approximate physical dynamics, while the emerging Unified Multimodal Model (UMM) offers a promising architectural paradigm for integrating perception, language, and reasoning. Despite these advances, the field still lacks a principled theoretical framework that defines the essential properties requisite for a General World Model. In this paper, we propose that a World Model must be grounded in the Trinity of Consistency: Modal Consistency as"
+    },
+    {
+      "slug": "2076_BabyVision_Visual_Reasoning_Beyond_Language",
+      "title": "BabyVision: Visual Reasoning Beyond Language",
+      "category": "HDBSCAN Cluster: university, models, arxiv, zhang1",
+      "key": "FOLDER00104_e4ddbcbed6ff",
+      "sourceIndex": 103,
+      "textBytes": 75250,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2601.06521v1[cs.CV]10Jan2026 [Figure 1] JANUARY 13, 2026 ## BabyVision: Visual Reasoning Beyond Language Liang Chen1,6,∗Weichu Xie1,6∗, Yiyan Liang1,6∗, Hongfeng He1∗, Hans Zhao1∗, Zhibo Yang3, Zhiqi Huang4, Haoning Wu4, Haoyu Lu4, Y. charles4, Yiping Bao4, Yuantao Fan5, Guopeng Li5, Haiyang Shen1,6, Xuanzhong Chen1,7, Wendong Xu1, Shuzheng Si7, Zefan Cai8, Wenhao Chai9, Ziqi Huang10, Fangfu Liu7, Tianyu Liu6, Baobao Chang6, Xiaobo Hu2, Kaiyuan Chen2, Yixin Ren2, Yang Liu2, Yuan Gong2, Kuan Li1 1UniPat AI 2xbench 3Alibaba Group 4MoonShot AI 5StepFun 6Peking University 7Tsinghua University 8University of Wisconsin–Madison 9Princeton University 10Nanyang Technological University ### Abstract While humans develop core visual skills long before acquiring language, contemporary Multimodal LLMs (MLLMs) still rely heavily on linguistic priors to compensate for their fragile visual under"
+    },
+    {
+      "slug": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
+      "title": "Code2World: A GUI World Model via Renderable Code Generation",
+      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
+      "key": "FOLDER00105_f3af930e91a8",
+      "sourceIndex": 104,
+      "textBytes": 97988,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] ## Code2World: A GUI World Model via Renderable Code Generation # arXiv:2602.09856v1[cs.CV]10Feb2026 ###### Yuhao Zheng12* Lian Zhong3* Yi Wang2 Rui Dai2 Kaikui Liu2 Xiangxiang Chu2 Linyuan L¨u1 Philip Torr4 Kevin Qinghong Lin4 [Figure 2] Project Page Code Dataset Model #### Abstract Autonomous GUI agents interact with environments by perceiving interfaces and executing actions. As a virtual sandbox, the GUI World model empowers agents with human-like foresight by enabling action-conditioned prediction. However, existing text- and pixel-based approaches struggle to simultaneously achieve high visual fidelity and fine-grained structural controllability. To this end, we propose Code2World, a vision-language coder that simulates the next visual state via renderable code generation. Specifically, to address the data scarcity problem, we construct AndroidCode by translating GUI tra"
     }
   ]
 }

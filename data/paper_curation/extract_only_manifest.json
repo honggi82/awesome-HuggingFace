@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-03T13:12:21.288264+00:00",
+  "generated": "2026-07-03T13:44:32.719754+00:00",
   "mode": "extract-only",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "awesomeRepo": "E:\\조선대\\연구\\awesome-HuggingFace",
   "extractReport": "data/paper_curation/extract_only_report.json",
   "docsDir": "docs/paper_curation/extract_only",
   "paperDir": "paper/extract_only",
-  "recordCount": 100,
+  "recordCount": 105,
   "syncedPaperSlugs": [
     "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
     "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
@@ -107,13 +107,18 @@
     "2023_OpenWorldLib_A_Unified_Codebase_and_Definition_of_Advanced_W",
     "2024_CLEAR_Character_Unlearning_in_Textual_and_Visual_Modalities",
     "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
-    "2026_DelTA_Discriminative_Token_Credit_Assignment_for_Reinforceme"
+    "2026_DelTA_Discriminative_Token_Credit_Assignment_for_Reinforceme",
+    "2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I",
+    "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti",
+    "2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener",
+    "2076_BabyVision_Visual_Reasoning_Beyond_Language",
+    "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation"
   ],
   "copied": [
     {
       "source": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\_folder_source_extract_report.json",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\data\\paper_curation\\extract_only_report.json",
-      "bytes": 61680
+      "bytes": 64693
     },
     {
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective\\text.md",
@@ -5704,6 +5709,286 @@
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2026_DelTA_Discriminative_Token_Credit_Assignment_for_Reinforceme\\figures\\fig5.png",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2026_DelTA_Discriminative_Token_Credit_Assignment_for_Reinforceme\\figures\\fig5.png",
       "bytes": 122657
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\text.md",
+      "bytes": 85306
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\figures\\fig1.png",
+      "bytes": 647604
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\figures\\fig2.png",
+      "bytes": 180884
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\figures\\fig3.png",
+      "bytes": 131039
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\text.md",
+      "bytes": 85306
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\figures\\fig1.png",
+      "bytes": 647604
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\figures\\fig2.png",
+      "bytes": 180884
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2073_JoyAI-VL-Interaction_Real-Time_Vision-Language_Interaction_I\\figures\\fig3.png",
+      "bytes": 131039
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\text.md",
+      "bytes": 205457
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig1.png",
+      "bytes": 261877
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig2.png",
+      "bytes": 83443
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig3.png",
+      "bytes": 121602
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig4.png",
+      "bytes": 150277
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig5.png",
+      "bytes": 117511
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\text.md",
+      "bytes": 205457
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig1.png",
+      "bytes": 261877
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig2.png",
+      "bytes": 83443
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig3.png",
+      "bytes": 121602
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig4.png",
+      "bytes": 150277
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti\\figures\\fig5.png",
+      "bytes": 117511
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\text.md",
+      "bytes": 384143
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig1.png",
+      "bytes": 1102776
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig2.png",
+      "bytes": 273228
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig3.png",
+      "bytes": 291236
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig5.png",
+      "bytes": 856804
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig6.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig6.png",
+      "bytes": 637476
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\text.md",
+      "bytes": 384143
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig1.png",
+      "bytes": 1102776
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig2.png",
+      "bytes": 273228
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig3.png",
+      "bytes": 291236
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig5.png",
+      "bytes": 856804
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig6.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2075_The_Trinity_of_Consistency_as_a_Defining_Principle_for_Gener\\figures\\fig6.png",
+      "bytes": 637476
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\text.md",
+      "bytes": 75250
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig1.png",
+      "bytes": 326750
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig2.png",
+      "bytes": 293078
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig3.png",
+      "bytes": 694223
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig4.png",
+      "bytes": 179449
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig5.png",
+      "bytes": 1163427
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\text.md",
+      "bytes": 75250
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig1.png",
+      "bytes": 326750
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig2.png",
+      "bytes": 293078
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig3.png",
+      "bytes": 694223
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig4.png",
+      "bytes": 179449
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2076_BabyVision_Visual_Reasoning_Beyond_Language\\figures\\fig5.png",
+      "bytes": 1163427
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\text.md",
+      "bytes": 97988
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig1.png",
+      "bytes": 183615
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig2.png",
+      "bytes": 217286
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig3.png",
+      "bytes": 252389
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig4.png",
+      "bytes": 339432
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig5.png",
+      "bytes": 78581
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\text.md",
+      "bytes": 97988
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig1.png",
+      "bytes": 183615
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig2.png",
+      "bytes": 217286
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig3.png",
+      "bytes": 252389
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig4.png",
+      "bytes": 339432
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation\\figures\\fig5.png",
+      "bytes": 78581
     }
   ],
   "missing": [],
