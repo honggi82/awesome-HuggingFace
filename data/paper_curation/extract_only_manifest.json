@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-03T19:53:30.603014+00:00",
+  "generated": "2026-07-03T20:25:43.148476+00:00",
   "mode": "extract-only",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "awesomeRepo": "E:\\조선대\\연구\\awesome-HuggingFace",
   "extractReport": "data/paper_curation/extract_only_report.json",
   "docsDir": "docs/paper_curation/extract_only",
   "paperDir": "paper/extract_only",
-  "recordCount": 135,
+  "recordCount": 140,
   "syncedPaperSlugs": [
     "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
     "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
@@ -142,13 +142,18 @@
     "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
     "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
     "2354_LTX-2_Efficient_Joint_Audio-Visual_Foundation_Model",
-    "2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds"
+    "2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds",
+    "2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe",
+    "2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen",
+    "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
+    "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
+    "2403_LongLive_Real-time_Interactive_Long_Video_Generation"
   ],
   "copied": [
     {
       "source": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\_folder_source_extract_report.json",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\data\\paper_curation\\extract_only_report.json",
-      "bytes": 82683
+      "bytes": 85902
     },
     {
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective\\text.md",
@@ -7619,6 +7624,296 @@
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds\\figures\\fig5.png",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds\\figures\\fig5.png",
       "bytes": 1191332
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\text.md",
+      "bytes": 88702
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig1.png",
+      "bytes": 426613
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig2.png",
+      "bytes": 779643
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig3.png",
+      "bytes": 159322
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig4.png",
+      "bytes": 85328
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig5.png",
+      "bytes": 254419
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\text.md",
+      "bytes": 88702
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig1.png",
+      "bytes": 426613
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig2.png",
+      "bytes": 779643
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig3.png",
+      "bytes": 159322
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig4.png",
+      "bytes": 85328
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe\\figures\\fig5.png",
+      "bytes": 254419
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\text.md",
+      "bytes": 66055
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig1.png",
+      "bytes": 250022
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig2.png",
+      "bytes": 1232255
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig3.png",
+      "bytes": 310625
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig4.png",
+      "bytes": 303566
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig5.png",
+      "bytes": 357500
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\text.md",
+      "bytes": 66055
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig1.png",
+      "bytes": 250022
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig2.png",
+      "bytes": 1232255
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig3.png",
+      "bytes": 310625
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig4.png",
+      "bytes": 303566
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen\\figures\\fig5.png",
+      "bytes": 357500
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\text.md",
+      "bytes": 78498
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig1.png",
+      "bytes": 129245
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig2.png",
+      "bytes": 102717
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig3.png",
+      "bytes": 63670
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig4.png",
+      "bytes": 220818
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig5.png",
+      "bytes": 357356
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\text.md",
+      "bytes": 78498
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig1.png",
+      "bytes": 129245
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig2.png",
+      "bytes": 102717
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig3.png",
+      "bytes": 63670
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig4.png",
+      "bytes": 220818
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen\\figures\\fig5.png",
+      "bytes": 357356
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\text.md",
+      "bytes": 50780
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig1.png",
+      "bytes": 511471
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig2.png",
+      "bytes": 892217
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig3.png",
+      "bytes": 126651
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig4.png",
+      "bytes": 505841
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\text.md",
+      "bytes": 50780
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig1.png",
+      "bytes": 511471
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig2.png",
+      "bytes": 892217
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig3.png",
+      "bytes": 126651
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C\\figures\\fig4.png",
+      "bytes": 505841
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\text.md",
+      "bytes": 69742
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig1.png",
+      "bytes": 341378
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig2.png",
+      "bytes": 333245
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig3.png",
+      "bytes": 663784
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig5.png",
+      "bytes": 937900
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig6.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig6.png",
+      "bytes": 983944
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\text.md",
+      "bytes": 69742
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig1.png",
+      "bytes": 341378
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig2.png",
+      "bytes": 333245
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig3.png",
+      "bytes": 663784
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig5.png",
+      "bytes": 937900
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig6.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig6.png",
+      "bytes": 983944
     }
   ],
   "missing": [],

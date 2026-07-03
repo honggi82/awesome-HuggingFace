@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-03T19:52:53.781175+00:00",
+  "generated": "2026-07-03T20:25:06.802203+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 130,
+  "sourceOffset": 135,
   "sourceLimit": 5,
-  "sourceEnd": 135,
+  "sourceEnd": 140,
   "batchTotal": 5,
-  "total": 135,
-  "ok": 135,
-  "textExtracted": 135,
-  "figureFiles": 612,
+  "total": 140,
+  "ok": 140,
+  "textExtracted": 140,
+  "figureFiles": 636,
   "sanityFailed": 0,
   "records": [
     {
@@ -1804,6 +1804,71 @@
       "textBytes": 66552,
       "sanityOk": true,
       "sanityReason": "ok (title 5/5 doi=T author=True)"
+    },
+    {
+      "title": "Beyond the 80/20 Rule: High-Entropy Minority Tokens Drive Effective Reinforcement Learning for LLM Reasoning",
+      "key": "FOLDER00136_34c4cd38307d",
+      "sourceIndex": 135,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00136_Beyond the 8020 Rule High-Entropy Minority Tokens Drive Effective Reinforcement Learning f.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe",
+      "textBytes": 88702,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "ClawKeeper: Comprehensive Safety Protection for OpenClaw Agents Through Skills, Plugins, and Watchers",
+      "key": "FOLDER00137_220c9826a456",
+      "sourceIndex": 136,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00137_ClawKeeper Comprehensive Safety Protection for OpenClaw Agents Through Skills, Plugins, an.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen",
+      "textBytes": 66055,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "QeRL: Beyond Efficiency -- Quantization-enhanced Reinforcement Learning for LLMs",
+      "key": "FOLDER00138_d82ee87bba02",
+      "sourceIndex": 137,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00138_QeRL Beyond Efficiency -- Quantization-enhanced Reinforcement Learning for LLMs.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
+      "textBytes": 78498,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Idea2Story: An Automated Pipeline for Transforming Research Concepts into Complete Scientific Narratives",
+      "key": "FOLDER00139_67529da800a5",
+      "sourceIndex": 138,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00139_Idea2Story An Automated Pipeline for Transforming Research Concepts into Complete Scientif.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 4,
+      "slug": "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
+      "textBytes": 50780,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "LongLive: Real-time Interactive Long Video Generation",
+      "key": "FOLDER00140_62c00ac6aa07",
+      "sourceIndex": 139,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00140_LongLive Real-time Interactive Long Video Generation.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2403_LongLive_Real-time_Interactive_Long_Video_Generation",
+      "textBytes": 69742,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
     }
   ]
 }

@@ -55,7 +55,7 @@
     {
       "slug": "076_A_Very_Big_Video_Reasoning_Suite",
       "title": "A Very Big Video Reasoning Suite",
-      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00006_dd10def1d36c",
       "sourceIndex": 5,
       "textBytes": 144021,
@@ -125,7 +125,7 @@
     {
       "slug": "083_Qwen25_Technical_Report",
       "title": "Qwen2.5 Technical Report",
-      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
+      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
       "key": "FOLDER00013_a400d0a3210e",
       "sourceIndex": 12,
       "textBytes": 96661,
@@ -195,7 +195,7 @@
     {
       "slug": "323_Qwen3_Technical_Report",
       "title": "Qwen3 Technical Report",
-      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
+      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
       "key": "FOLDER00020_81a86ff7c3c8",
       "sourceIndex": 19,
       "textBytes": 118269,
@@ -225,7 +225,7 @@
     {
       "slug": "326_Rethinking_Generalization_in_Reasoning_SFT_A_Conditional_Ana",
       "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: sft, university, generalization, learning",
       "key": "FOLDER00023_6978f9941fd7",
       "sourceIndex": 22,
       "textBytes": 161148,
@@ -265,7 +265,7 @@
     {
       "slug": "330_Group_Sequence_Policy_Optimization",
       "title": "Group Sequence Policy Optimization",
-      "category": "HDBSCAN Cluster: optimization, policy, reinforcement, learning",
+      "category": "HDBSCAN Cluster: optimization, reinforcement, learning, policy",
       "key": "FOLDER00027_94918922664a",
       "sourceIndex": 26,
       "textBytes": 23492,
@@ -355,7 +355,7 @@
     {
       "slug": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
       "title": "Weak-Driven Learning: How Weak Agents make Strong Agents Stronger",
-      "category": "HDBSCAN Cluster: university, learning, sft, weak",
+      "category": "HDBSCAN Cluster: sft, university, generalization, learning",
       "key": "FOLDER00036_31e22fa1f189",
       "sourceIndex": 35,
       "textBytes": 96730,
@@ -385,7 +385,7 @@
     {
       "slug": "342_Qwen-Image_Technical_Report",
       "title": "Qwen-Image Technical Report",
-      "category": "HDBSCAN Cluster: generation, figure, image, model",
+      "category": "HDBSCAN Cluster: image, models, generation, qwen-image",
       "key": "FOLDER00039_67f3a3187f0a",
       "sourceIndex": 38,
       "textBytes": 141226,
@@ -465,7 +465,7 @@
     {
       "slug": "1731_Phi-3_Technical_Report_A_Highly_Capable_Language_Model_Local",
       "title": "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
       "key": "FOLDER00047_6bf122ba377f",
       "sourceIndex": 46,
       "textBytes": 59469,
@@ -565,7 +565,7 @@
     {
       "slug": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
       "title": "Z-Image: An Efficient Image Generation Foundation Model with Single-Stream Diffusion Transformer",
-      "category": "HDBSCAN Cluster: generation, figure, image, model",
+      "category": "HDBSCAN Cluster: image, models, generation, qwen-image",
       "key": "FOLDER00057_85f52b7d18cd",
       "sourceIndex": 56,
       "textBytes": 233804,
@@ -605,7 +605,7 @@
     {
       "slug": "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive",
       "title": "Tstars-Tryon 1.0: Robust and Realistic Virtual Try-On for Diverse Fashion Items",
-      "category": "HDBSCAN Cluster: generation, figure, image, model",
+      "category": "HDBSCAN Cluster: figure, sec, thinking, tstars-tryon",
       "key": "FOLDER00061_1125d5a3a04d",
       "sourceIndex": 60,
       "textBytes": 79230,
@@ -685,7 +685,7 @@
     {
       "slug": "1752_The_Landscape_of_Agentic_Reinforcement_Learning_for_LLMs_A_S",
       "title": "The Landscape of Agentic Reinforcement Learning for LLMs: A Survey",
-      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
+      "category": "HDBSCAN Cluster: figure, university, li1, agentic",
       "key": "FOLDER00069_243ca31a6792",
       "sourceIndex": 68,
       "textBytes": 388541,
@@ -705,7 +705,7 @@
     {
       "slug": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
       "title": "Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation",
-      "category": "HDBSCAN Cluster: generation, figure, image, model",
+      "category": "HDBSCAN Cluster: image, models, generation, qwen-image",
       "key": "FOLDER00071_8339c62b1c6b",
       "sourceIndex": 70,
       "textBytes": 189067,
@@ -715,7 +715,7 @@
     {
       "slug": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
       "title": "GDPO: Group reward-Decoupled Normalization Policy Optimization for Multi-reward RL Optimization",
-      "category": "HDBSCAN Cluster: optimization, policy, reinforcement, learning",
+      "category": "HDBSCAN Cluster: optimization, reinforcement, learning, policy",
       "key": "FOLDER00072_98f3b1b6fec2",
       "sourceIndex": 71,
       "textBytes": 77232,
@@ -815,7 +815,7 @@
     {
       "slug": "1700_Qwen25-VL_Technical_Report",
       "title": "Qwen2.5-VL Technical Report",
-      "category": "HDBSCAN Cluster: generation, figure, image, model",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00082_81c67876894a",
       "sourceIndex": 81,
       "textBytes": 92812,
@@ -825,7 +825,7 @@
     {
       "slug": "1887_Code_as_Agent_Harness",
       "title": "Code as Agent Harness",
-      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
+      "category": "HDBSCAN Cluster: figure, university, li1, agentic",
       "key": "FOLDER00083_c2eefb4863ea",
       "sourceIndex": 82,
       "textBytes": 370210,
@@ -855,7 +855,7 @@
     {
       "slug": "1931_VESPO_Variational_Sequence-Level_Soft_Policy_Optimization_fo",
       "title": "VESPO: Variational Sequence-Level Soft Policy Optimization for Stable Off-Policy LLM Training",
-      "category": "HDBSCAN Cluster: optimization, policy, reinforcement, learning",
+      "category": "HDBSCAN Cluster: optimization, reinforcement, learning, policy",
       "key": "FOLDER00086_1edc3aea10c9",
       "sourceIndex": 85,
       "textBytes": 80404,
@@ -935,7 +935,7 @@
     {
       "slug": "1979_Agentic_Reasoning_for_Large_Language_Models",
       "title": "Agentic Reasoning for Large Language Models",
-      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
+      "category": "HDBSCAN Cluster: figure, university, li1, agentic",
       "key": "FOLDER00094_e659672f18a1",
       "sourceIndex": 93,
       "textBytes": 467076,
@@ -1135,7 +1135,7 @@
     {
       "slug": "2166_On_the_Generalization_of_SFT_A_Reinforcement_Learning_Perspe",
       "title": "On the Generalization of SFT: A Reinforcement Learning Perspective with Reward Rectification",
-      "category": "HDBSCAN Cluster: university, learning, sft, weak",
+      "category": "HDBSCAN Cluster: sft, university, generalization, learning",
       "key": "FOLDER00114_9fca02819c25",
       "sourceIndex": 113,
       "textBytes": 77099,
@@ -1165,7 +1165,7 @@
     {
       "slug": "2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning",
       "title": "Heterogeneous Agent Collaborative Reinforcement Learning",
-      "category": "HDBSCAN Cluster: optimization, policy, reinforcement, learning",
+      "category": "HDBSCAN Cluster: optimization, reinforcement, learning, policy",
       "key": "FOLDER00117_4a6dc9062d5e",
       "sourceIndex": 116,
       "textBytes": 76413,
@@ -1235,7 +1235,7 @@
     {
       "slug": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
       "title": "Helios: Real Real-Time Long Video Generation Model",
-      "category": "HDBSCAN Cluster: generation, figure, image, model",
+      "category": "HDBSCAN Cluster: generation, long, video, real-time",
       "key": "FOLDER00124_9ded09dfbc5b",
       "sourceIndex": 123,
       "textBytes": 142166,
@@ -1295,7 +1295,7 @@
     {
       "slug": "2310_LongVT_Incentivizing_Thinking_with_Long_Videos_via_Native_To",
       "title": "LongVT: Incentivizing \"Thinking with Long Videos\" via Native Tool Calling",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, sec, thinking, tstars-tryon",
       "key": "FOLDER00130_505c7434345a",
       "sourceIndex": 129,
       "textBytes": 98488,
@@ -1351,6 +1351,56 @@
       "textBytes": 66552,
       "figuresExtracted": 5,
       "excerpt": "## Utonia: Toward One Encoder for All Point Clouds [Figure 1] #### Yujia Zhang1, Xiaoyang Wu1†, Yunhan Yang1, Xianzhe Fan1, Han Li3, Yuechen Zhang2, Zehao Huang3, Naiyan Wang3, Hengshuang Zhao1‡ 1 The University of Hong Kong 2 The Chinese University of Hong Kong 3 Xiaomi † Project lead ‡ Corresponding author https://pointcept.github.io/Utonia # arXiv:2603.03283v1[cs.CV]3Mar2026 [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] Figure 1. One encoder for all point clouds. We visualize Utonia features by PCA. City-scale geometry with large coordinate ranges: the smooth, coherent features over terrain and building masses indicate robustness to an extreme extent; Outdoor LiDAR with sparse ring-like scan patterns: features remain organized by geometry rather than scanlines, suggesting reduced reliance on sampling-specific shortcuts. Indoor reconstruction in dense scans: features separate "
+    },
+    {
+      "slug": "2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe",
+      "title": "Beyond the 80/20 Rule: High-Entropy Minority Tokens Drive Effective Reinforcement Learning for LLM Reasoning",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00136_34c4cd38307d",
+      "sourceIndex": 135,
+      "textBytes": 88702,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] First version: June 2, 2025; last revised: November 13, 2025. ## Beyond the 80/20 Rule: High-Entropy Minority Tokens Drive Effective Reinforcement Learning for LLM Reasoning Shenzhi Wang1,2, Le Yu1, Chang Gao1, Chujie Zheng1, Shixuan Liu1, Rui Lu2, Kai Dang1, Xiong-Hui Chen1, Jianxin Yang1, Zhenru Zhang1, Yuqiong Liu1, An Yang1, Andrew Zhao2, Yang Yue2, Shiji Song2, Bowen Yu1, ,†, Gao Huang2, , Junyang Lin1 1 Qwen Team, Alibaba Inc. 2 LeapLab, Tsinghua University Project Page: https://shenzhi-wang.github.io/high-entropy-minority-tokens-rlvr #### Abstract Reinforcement Learning with Verifiable Rewards (RLVR) has emerged as a powerful approach to enhancing the reasoning capabilities of Large Language Models (LLMs), while its mechanisms are not yet well understood. In this work, we undertake a pioneering exploration of RLVR through the novel perspective of token entropy patterns,"
+    },
+    {
+      "slug": "2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen",
+      "title": "ClawKeeper: Comprehensive Safety Protection for OpenClaw Agents Through Skills, Plugins, and Watchers",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00137_220c9826a456",
+      "sourceIndex": 136,
+      "textBytes": 66055,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2603.24414v1[cs.CR]25Mar2026 2026-03-26 # ClawKeeper: Comprehensive Safety Protection for OpenClaw Agents Through Skills, Plugins, and Watchers ###### Songyang Liu1, Chaozhuo Li1†, Chenxu Wang1, Jinyu Hou1, Zejian Chen1, Litian Zhang1, Zheng Liu2, Qiwei Ye2†, Yiming Hei3, Xi Zhang1, Zhongyuan Wang2 1Beijing University of Posts and Telecommunications 2Beijing Academy of Artificial Intelligence 3China Academy of Information and Communications Technology Abstract OpenClaw has rapidly established itself as a leading open-source autonomous agent runtime, offering powerful capabilities including tool integration, local file access, and shell command execution. However, these broad operational privileges introduce critical security vulnerabilities, transforming model errors into tangible system-level threats such as sensitive data leakage, privilege escalation, and malicious third-part"
+    },
+    {
+      "slug": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
+      "title": "QeRL: Beyond Efficiency -- Quantization-enhanced Reinforcement Learning for LLMs",
+      "category": "HDBSCAN Cluster: optimization, reinforcement, learning, policy",
+      "key": "FOLDER00138_d82ee87bba02",
+      "sourceIndex": 137,
+      "textBytes": 78498,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2510.11696v1[cs.LG]13Oct2025 ## QERL: BEYOND EFFICIENCY – QUANTIZATIONENHANCED REINFORCEMENT LEARNING FOR LLMS Wei Huang1,3 Yi Ge2,4 Shuai Yang1 Yicheng Xiao4 Huizi Mao1 Yujun Lin1 Hanrong Ye1 Sifei Liu1 Ka Chun Cheung1 Hongxu Yin1 Yao Lu1 Xiaojuan Qi3 Song Han1,2 Yukang Chen1 1NVIDIA 2MIT 3HKU 4THU https://github.com/NVlabs/QeRL ABSTRACT We propose QeRL, a Quantization-enhanced Reinforcement Learning framework for large language models (LLMs). While RL is essential for LLMs’ reasoning capabilities, it is resource-intensive, requiring substantial GPU memory and long rollout durations. QeRL addresses these issues by combining NVFP4 quantization with Low-Rank Adaptation (LoRA), accelerating rollout phase of RL while reducing memory overhead. Beyond efficiency, our findings show that quantization noise increases policy entropy, enhancing exploration, and enabling the discovery of be"
+    },
+    {
+      "slug": "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
+      "title": "Idea2Story: An Automated Pipeline for Transforming Research Concepts into Complete Scientific Narratives",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00139_67529da800a5",
+      "sourceIndex": 138,
+      "textBytes": 50780,
+      "figuresExtracted": 4,
+      "excerpt": "# arXiv:2601.20833v1[cs.CE]28Jan2026 ## Idea2Story: An Automated Pipeline for Transforming Research Concepts into Complete Scientific Narratives Tengyue Xu*, Zhuoyang Qian*, Gaoge Liu*, Li Ling*, Zhentao Zhang*, Biao Wu*, Shuo Zhang, Ke Lu, Wei Shi, Ziqi Wang, Zheng Feng, Yan Luo, Shu Xu, Yongjin Chen, Zhibo Feng, Zhuo Chen, Bruce Yuan, Harry Wang†, Kris Chen† AgentAlpha Team †Corresponding author Autonomous scientific discovery with large language model (LLM)-based agents has recently made substantial progress, demonstrating the ability to automate end-to-end research workflows. However, existing systems largely rely on runtime-centric execution paradigms, repeatedly reading, summarizing, and reasoning over large volumes of scientific literature online. This on-the-spot computation strategy incurs high computational cost, suffers from context window limitations, and often leads to britt"
+    },
+    {
+      "slug": "2403_LongLive_Real-time_Interactive_Long_Video_Generation",
+      "title": "LongLive: Real-time Interactive Long Video Generation",
+      "category": "HDBSCAN Cluster: generation, long, video, real-time",
+      "key": "FOLDER00140_62c00ac6aa07",
+      "sourceIndex": 139,
+      "textBytes": 69742,
+      "figuresExtracted": 5,
+      "excerpt": "## LONGLIVE: REAL-TIME INTERACTIVE LONG VIDEO GENERATION Shuai Yang1,3 Wei Huang1,4 Ruihang Chu5 Yicheng Xiao5 Yuyang Zhao1 Xianbang Wang2 Muyang Li2 Enze Xie1 Yingcong Chen3 Yao Lu1 Song Han1,2 Yukang Chen1 1NVIDIA 2MIT 3HKUST(GZ) 4HKU 5THU ABSTRACT # arXiv:2509.22622v2[cs.CV]13Oct2025 We present LONGLIVE, a frame-level autoregressive (AR) framework for realtime and interactive long video generation. Long video generation presents challenges in both efficiency and quality. Diffusion and Diffusion-Forcing models can produce high-quality videos but suffer from low efficiency due to bidirectional attention. Causal attention AR models support KV caching for faster inference, but often degrade in quality on long videos due to memory challenges during long-video training. In addition, beyond static prompt-based generation, interactive capabilities, such as streaming prompt inputs, are critica"
     }
   ]
 }
