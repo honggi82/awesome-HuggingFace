@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-03T13:44:14.292019+00:00",
+  "generated": "2026-07-03T14:17:53.523300+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 100,
+  "sourceOffset": 105,
   "sourceLimit": 5,
-  "sourceEnd": 105,
+  "sourceEnd": 110,
   "batchTotal": 5,
-  "total": 105,
-  "ok": 105,
-  "textExtracted": 105,
-  "figureFiles": 482,
+  "total": 110,
+  "ok": 110,
+  "textExtracted": 110,
+  "figureFiles": 502,
   "sanityFailed": 0,
   "records": [
     {
@@ -1414,6 +1414,71 @@
       "textBytes": 97988,
       "sanityOk": true,
       "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "MiroThinker: Pushing the Performance Boundaries of Open-Source Research Agents via Model, Context, and Interactive Scaling",
+      "key": "FOLDER00106_2b8ab407a297",
+      "sourceIndex": 105,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00106_MiroThinker Pushing the Performance Boundaries of Open-Source Research Agents via Model, C.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2119_MiroThinker_Pushing_the_Performance_Boundaries_of_Open-Sourc",
+      "textBytes": 57348,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling",
+      "key": "FOLDER00107_4c4b048fabae",
+      "sourceIndex": 106,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00107_LoopCoder-v2 Only Loop Once for Efficient Test-Time Computation Scaling.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
+      "textBytes": 57470,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "STEP3-VL-10B Technical Report",
+      "key": "FOLDER00108_2bff0a0eb7a5",
+      "sourceIndex": 107,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00108_STEP3-VL-10B Technical Report.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 3,
+      "slug": "2121_STEP3-VL-10B_Technical_Report",
+      "textBytes": 126984,
+      "sanityOk": true,
+      "sanityReason": "ok (title 3/3 doi=T author=True)"
+    },
+    {
+      "title": "Differential Transformer",
+      "key": "FOLDER00109_cb0fec7db820",
+      "sourceIndex": 108,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00109_Differential Transformer.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2122_Differential_Transformer",
+      "textBytes": 71150,
+      "sanityOk": true,
+      "sanityReason": "ok (title 2/2 doi=T author=True)"
+    },
+    {
+      "title": "Why Language Models Hallucinate",
+      "key": "FOLDER00110_5b188716596b",
+      "sourceIndex": 109,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00110_Why Language Models Hallucinate.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 2,
+      "slug": "2123_Why_Language_Models_Hallucinate",
+      "textBytes": 104940,
+      "sanityOk": true,
+      "sanityReason": "ok (title 3/3 doi=T author=True)"
     }
   ]
 }
