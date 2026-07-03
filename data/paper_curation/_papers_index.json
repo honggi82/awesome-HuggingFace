@@ -55,7 +55,7 @@
     {
       "slug": "076_A_Very_Big_Video_Reasoning_Suite",
       "title": "A Very Big Video Reasoning Suite",
-      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00006_dd10def1d36c",
       "sourceIndex": 5,
       "textBytes": 144021,
@@ -65,7 +65,7 @@
     {
       "slug": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
       "title": "Adam's Law: Textual Frequency Law on Large Language Models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: data, textual, law, frequency",
       "key": "FOLDER00007_f1204ba044c3",
       "sourceIndex": 6,
       "textBytes": 101929,
@@ -115,7 +115,7 @@
     {
       "slug": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
       "title": "Gamma-World: Generative Multi-Agent World Modeling Beyond Two Players",
-      "category": "HDBSCAN Cluster: figure, agent, gamma-world, university",
+      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
       "key": "FOLDER00012_8f53e8798157",
       "sourceIndex": 11,
       "textBytes": 63526,
@@ -125,7 +125,7 @@
     {
       "slug": "083_Qwen25_Technical_Report",
       "title": "Qwen2.5 Technical Report",
-      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
+      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
       "key": "FOLDER00013_a400d0a3210e",
       "sourceIndex": 12,
       "textBytes": 96661,
@@ -195,7 +195,7 @@
     {
       "slug": "323_Qwen3_Technical_Report",
       "title": "Qwen3 Technical Report",
-      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
+      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
       "key": "FOLDER00020_81a86ff7c3c8",
       "sourceIndex": 19,
       "textBytes": 118269,
@@ -235,7 +235,7 @@
     {
       "slug": "327_Green-VLA_Staged_Vision-Language-Action_Model_for_Generalist",
       "title": "Green-VLA: Staged Vision-Language-Action Model for Generalist Robots",
-      "category": "HDBSCAN Cluster: multimodal, vision, kimi, glm-4",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00024_348a94e5f835",
       "sourceIndex": 23,
       "textBytes": 86005,
@@ -255,7 +255,7 @@
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
-      "category": "HDBSCAN Cluster: transformers, normalization, without, dyt",
+      "category": "HDBSCAN Cluster: transformer, transformers, attention, normalization",
       "key": "FOLDER00026_e94287efc152",
       "sourceIndex": 25,
       "textBytes": 79369,
@@ -285,7 +285,7 @@
     {
       "slug": "332_DINOv3",
       "title": "DINOv3",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Cluster: training, smollm2, small, language",
       "key": "FOLDER00029_a3328f5ae17b",
       "sourceIndex": 28,
       "textBytes": 237604,
@@ -335,7 +335,7 @@
     {
       "slug": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
-      "category": "HDBSCAN Cluster: systems, language, model, figure",
+      "category": "HDBSCAN Cluster: systems, university, agentic, memory",
       "key": "FOLDER00034_8bc56d204ac7",
       "sourceIndex": 33,
       "textBytes": 94309,
@@ -365,7 +365,7 @@
     {
       "slug": "340_Recursive_Multi-Agent_Systems",
       "title": "Recursive Multi-Agent Systems",
-      "category": "HDBSCAN Cluster: systems, language, model, figure",
+      "category": "HDBSCAN Cluster: systems, university, agentic, memory",
       "key": "FOLDER00037_f33e597ec366",
       "sourceIndex": 36,
       "textBytes": 105642,
@@ -405,7 +405,7 @@
     {
       "slug": "1725_Kimi_K25_Visual_Agentic_Intelligence",
       "title": "Kimi K2.5: Visual Agentic Intelligence",
-      "category": "HDBSCAN Cluster: multimodal, vision, kimi, glm-4",
+      "category": "HDBSCAN Cluster: multimodal, kimi, glm-4, agentic",
       "key": "FOLDER00041_386463f9a862",
       "sourceIndex": 40,
       "textBytes": 116467,
@@ -465,7 +465,7 @@
     {
       "slug": "1731_Phi-3_Technical_Report_A_Highly_Capable_Language_Model_Local",
       "title": "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
       "key": "FOLDER00047_6bf122ba377f",
       "sourceIndex": 46,
       "textBytes": 59469,
@@ -505,7 +505,7 @@
     {
       "slug": "1735_Does_Your_Reasoning_Model_Implicitly_Know_When_to_Stop_Think",
       "title": "Does Your Reasoning Model Implicitly Know When to Stop Thinking?",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
       "key": "FOLDER00051_0a6465c96316",
       "sourceIndex": 50,
       "textBytes": 124835,
@@ -545,7 +545,7 @@
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "title": "GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning",
-      "category": "HDBSCAN Cluster: multimodal, vision, kimi, glm-4",
+      "category": "HDBSCAN Cluster: multimodal, kimi, glm-4, agentic",
       "key": "FOLDER00055_9405fc3ded78",
       "sourceIndex": 54,
       "textBytes": 145376,
@@ -555,7 +555,7 @@
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "title": "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Cluster: training, smollm2, small, language",
       "key": "FOLDER00056_e1a299738b86",
       "sourceIndex": 55,
       "textBytes": 87381,
@@ -595,7 +595,7 @@
     {
       "slug": "1743_WildDet3D_Scaling_Promptable_3D_Detection_in_the_Wild",
       "title": "WildDet3D: Scaling Promptable 3D Detection in the Wild",
-      "category": "HDBSCAN Cluster: figure, university, wilddet3d, features",
+      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
       "key": "FOLDER00060_ef3c19fa0025",
       "sourceIndex": 59,
       "textBytes": 110894,
@@ -635,7 +635,7 @@
     {
       "slug": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
       "title": "Less is Enough: Synthesizing Diverse Data in Feature Space of LLMs",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: data, textual, law, frequency",
       "key": "FOLDER00064_292a7228313c",
       "sourceIndex": 63,
       "textBytes": 179027,
@@ -685,7 +685,7 @@
     {
       "slug": "1752_The_Landscape_of_Agentic_Reinforcement_Learning_for_LLMs_A_S",
       "title": "The Landscape of Agentic Reinforcement Learning for LLMs: A Survey",
-      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
+      "category": "HDBSCAN Cluster: figure, university, li1, agentic",
       "key": "FOLDER00069_243ca31a6792",
       "sourceIndex": 68,
       "textBytes": 388541,
@@ -815,7 +815,7 @@
     {
       "slug": "1700_Qwen25-VL_Technical_Report",
       "title": "Qwen2.5-VL Technical Report",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: qwen2, https, model, qwen",
       "key": "FOLDER00082_81c67876894a",
       "sourceIndex": 81,
       "textBytes": 92812,
@@ -825,7 +825,7 @@
     {
       "slug": "1887_Code_as_Agent_Harness",
       "title": "Code as Agent Harness",
-      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
+      "category": "HDBSCAN Cluster: figure, university, li1, agentic",
       "key": "FOLDER00083_c2eefb4863ea",
       "sourceIndex": 82,
       "textBytes": 370210,
@@ -865,7 +865,7 @@
     {
       "slug": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
       "title": "Heterogeneous Scientific Foundation Model Collaboration",
-      "category": "HDBSCAN Cluster: systems, language, model, figure",
+      "category": "HDBSCAN Cluster: systems, university, agentic, memory",
       "key": "FOLDER00087_4449a0ace106",
       "sourceIndex": 86,
       "textBytes": 184544,
@@ -905,7 +905,7 @@
     {
       "slug": "1977_Mutarjim_Advancing_Bidirectional_Arabic-English_Translation",
       "title": "Mutarjim: Advancing Bidirectional Arabic-English Translation with a Small Language Model",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00091_8b531206da8e",
       "sourceIndex": 90,
       "textBytes": 51767,
@@ -935,7 +935,7 @@
     {
       "slug": "1979_Agentic_Reasoning_for_Large_Language_Models",
       "title": "Agentic Reasoning for Large Language Models",
-      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
+      "category": "HDBSCAN Cluster: figure, university, li1, agentic",
       "key": "FOLDER00094_e659672f18a1",
       "sourceIndex": 93,
       "textBytes": 467076,
@@ -1085,7 +1085,7 @@
     {
       "slug": "2122_Differential_Transformer",
       "title": "Differential Transformer",
-      "category": "HDBSCAN Cluster: transformer, attention, language, differential",
+      "category": "HDBSCAN Cluster: transformer, transformers, attention, normalization",
       "key": "FOLDER00109_cb0fec7db820",
       "sourceIndex": 108,
       "textBytes": 71150,
@@ -1145,7 +1145,7 @@
     {
       "slug": "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
       "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
-      "category": "HDBSCAN Cluster: multimodal, vision, kimi, glm-4",
+      "category": "HDBSCAN Cluster: multimodal, kimi, glm-4, agentic",
       "key": "FOLDER00115_55c68b7aba0f",
       "sourceIndex": 114,
       "textBytes": 156278,
@@ -1185,7 +1185,7 @@
     {
       "slug": "2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi",
       "title": "The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies",
-      "category": "HDBSCAN Cluster: systems, language, model, figure",
+      "category": "HDBSCAN Cluster: systems, university, agentic, memory",
       "key": "FOLDER00119_1571671914a2",
       "sourceIndex": 118,
       "textBytes": 69135,
@@ -1315,7 +1315,7 @@
     {
       "slug": "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
       "title": "OmniSVG: A Unified Scalable Vector Graphics Generation Model",
-      "category": "HDBSCAN Cluster: figure, agent, gamma-world, university",
+      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
       "key": "FOLDER00132_bc3de160ac51",
       "sourceIndex": 131,
       "textBytes": 70794,
@@ -1345,7 +1345,7 @@
     {
       "slug": "2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds",
       "title": "Utonia: Toward One Encoder for All Point Clouds",
-      "category": "HDBSCAN Cluster: figure, university, wilddet3d, features",
+      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
       "key": "FOLDER00135_0f1a9376e7d9",
       "sourceIndex": 134,
       "textBytes": 66552,
@@ -1425,7 +1425,7 @@
     {
       "slug": "2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia",
       "title": "Concerto: Joint 2D-3D Self-Supervised Learning Emerges Spatial Representations",
-      "category": "HDBSCAN Cluster: figure, university, wilddet3d, features",
+      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
       "key": "FOLDER00143_ae3845a5eef9",
       "sourceIndex": 142,
       "textBytes": 70780,
@@ -1535,7 +1535,7 @@
     {
       "slug": "2544_Retentive_Network_A_Successor_to_Transformer_for_Large_Langu",
       "title": "Retentive Network: A Successor to Transformer for Large Language Models",
-      "category": "HDBSCAN Cluster: transformer, attention, language, differential",
+      "category": "HDBSCAN Cluster: transformer, transformers, attention, normalization",
       "key": "FOLDER00154_325e8d86e25f",
       "sourceIndex": 153,
       "textBytes": 42595,
@@ -1545,12 +1545,62 @@
     {
       "slug": "2545_Transformers_without_Normalization",
       "title": "Transformers without Normalization",
-      "category": "HDBSCAN Cluster: transformers, normalization, without, dyt",
+      "category": "HDBSCAN Cluster: transformer, transformers, attention, normalization",
       "key": "FOLDER00155_a10ab96ec28d",
       "sourceIndex": 154,
       "textBytes": 67154,
       "figuresExtracted": 5,
       "excerpt": "arXiv:2503.10622v2[cs.LG]14Jun2025 Transformers without Normalization Jiachen Zhu1,2, Xinlei Chen1, Kaiming He3, Yann LeCun1,2, Zhuang Liu1,4,† 1FAIR, Meta, 2New York University, 3MIT, 4Princeton University †Project lead Normalization layers are ubiquitous in modern neural networks and have long been considered essential. This work demonstrates that Transformers without normalization can achieve the same or better performance using a remarkably simple technique. We introduce Dynamic Tanh (DyT), an element-wise operation DyT(x) = tanh(αx), as a drop-in replacement for normalization layers in Transformers. DyT is inspired by the observation that layer normalization in Transformers often produces tanh-like, S-shaped input-output mappings. By incorporating DyT, Transformers without normalization can match or exceed the performance of their normalized counterparts, mostly without hyperparamet"
+    },
+    {
+      "slug": "2584_Self-Distilled_RLVR",
+      "title": "Self-Distilled RLVR",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00156_5100c3745fec",
+      "sourceIndex": 155,
+      "textBytes": 94668,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2604.03128v2[cs.LG]8Apr2026 [Figure 1] ## Self-Distilled RLVR Chenxu Yang1,2,∗, Chuanyu Qin1,2,∗, Qingyi Si3,∗, Minghui Chen1,2, Naibin Gu1,2, Dingyu Yao1,2, Zheng Lin1,2,†, Weiping Wang1, Jiaqi Wang3, Nan Duan3 1Institute of Information Engineering, Chinese Academy of Sciences, Beijing, China, 2School of Cyber Security, University of Chinese Academy of Sciences, Beijing, China, 3JD.COM ∗Equal contribution., †Corresponding author. ### Abstract On-policy distillation (OPD) has become a popular training paradigm in the LLM community. This paradigm selects a larger model as the teacher to provide dense, fine-grained signals for each sampled trajectory, in contrast to reinforcement learning with verifiable rewards (RLVR), which only obtains sparse signals from verifiable outcomes in the environment. Recently, the community has explored on-policy self-distillation (OPSD), where the sa"
+    },
+    {
+      "slug": "2585_Diffusion_Transformers_with_Representation_Autoencoders",
+      "title": "Diffusion Transformers with Representation Autoencoders",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00157_e3fba9bcebb7",
+      "sourceIndex": 156,
+      "textBytes": 95818,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2510.11690v1[cs.CV]13Oct2025 ### DIFFUSION TRANSFORMERS WITH REPRESENTATION AUTOENCODERS #### Boyang Zheng Nanye Ma Shengbang Tong Saining Xie New York University ABSTRACT Latent generative modeling, where a pretrained autoencoder maps pixels into a latent space for the diffusion process, has become the standard strategy for Diffusion Transformers (DiT); however, the autoencoder component has barely evolved. Most DiTs continue to rely on the original VAE encoder, which introduces several limitations: outdated backbones that compromise architectural simplicity, lowdimensional latent spaces that restrict information capacity, and weak representations that result from purely reconstruction-based training and ultimately limit generative quality. In this work, we explore replacing the VAE with pretrained representation encoders (e.g., DINO, SigLIP, MAE) paired with trained decoders, "
+    },
+    {
+      "slug": "2586_SmolDocling_An_ultra-compact_vision-language_model_for_end-t",
+      "title": "SmolDocling: An ultra-compact vision-language model for end-to-end multi-modal document conversion",
+      "category": "HDBSCAN Cluster: qwen2, https, model, qwen",
+      "key": "FOLDER00158_562b03e86a42",
+      "sourceIndex": 157,
+      "textBytes": 73527,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2503.11576v1[cs.CV]14Mar2025 ## SmolDocling: An ultra-compact vision-language model for end-to-end multi-modal document conversion Ahmed Nassar1, Andres Marafioti2, Matteo Omenetti1, Maksym Lysak1, Nikolaos Livathinos1, Christoph Auer1, Lucas Morin1, Rafael Teixeira de Lima1, Yusik Kim1, A. Said Gurbuz1, Michele Dolfi1, Miquel Farré2, Peter W. J. Staar1 IBM Research1, HuggingFace2 https://huggingface.co/ds4sd/SmolDocling-256M-preview Version 1.0, March 14th 2025 ### Abstract We introduce SmolDocling, an ultra-compact vision-language model targeting end-to-end document conversion. Our model comprehensively processes entire pages by generating DocTags, a new universal markup format that captures all page elements in their full context with location. Unlike existing approaches that rely on large foundational models, or ensemble solutions that rely on handcrafted pipelines of multipl"
+    },
+    {
+      "slug": "2587_General_Agentic_Memory_Via_Deep_Research",
+      "title": "General Agentic Memory Via Deep Research",
+      "category": "HDBSCAN Cluster: systems, university, agentic, memory",
+      "key": "FOLDER00159_4c43fdf369ac",
+      "sourceIndex": 158,
+      "textBytes": 49725,
+      "figuresExtracted": 2,
+      "excerpt": "# arXiv:2511.18423v1[cs.CL]23Nov2025 ## General Agentic Memory Via Deep Research ###### B.Y. Yan1, Chaofan Li1, Hongjin Qian1,3, Shuqi Lu1, Zheng Liu1,4∗ 1. Beijing Academy of Artificial Intelligence 2. Renmin University of China 3. Peking University 4. Hong Kong Polytechnic University {chienqhj,zhengliu1026}@gmail.com ### Abstract Memory is critical for AI agents, yet the widely-adopted static memory, aiming to create readily available memory in advance, is inevitably subject to severe information loss. To address this limitation, we propose a novel framework called general agentic memory (GAM). GAM follows the principle of “just-in time (JIT) compilation” where it focuses on creating optimized contexts for its client at runtime while keeping only simple but useful memory during the offline stage. To this end, GAM employs a duo-design with the following components. 1) Memorizer, which h"
+    },
+    {
+      "slug": "2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo",
+      "title": "Thinking with Map: Reinforced Parallel Map-Augmented Agent for Geolocalization",
+      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
+      "key": "FOLDER00160_29fc99ae0bc3",
+      "sourceIndex": 159,
+      "textBytes": 59089,
+      "figuresExtracted": 5,
+      "excerpt": "## Thinking with Map: Reinforced Parallel Map-Augmented Agent for Geolocalization [Figure 1] ### Yuxiang Ji1,2* Yong Wang2† Ziyu Ma2 Yiming Hu2 Hailang Huang2 Xuecai Hu2 Guanhua Chen3 Liaoni Wu1 Xiangxiang Chu2 1Xiamen University 2AMAP, Alibaba Group 3Southern University of Science and Technology [Figure 2] [Figure 3] https://amap-ml.github.io/Thinking-with-Map [Figure 4] |Clue 1<br><br>Directly Thinking<br><br>The image shows the 双⼦塔 in Xiamen, China.<br><br>[Figure 5]| |---| |Clue 1| |---| | | |---| Clue 2 [Figure 6] Image Zoom In Tool [Figure 7] # arXiv:2601.05432v1[cs.CV]8Jan2026 POI Input Tips [Figure 8] [Figure 9] 1. SAKE NOMI BAR，餐饮服务， 沙坡尾⼤学路xx号(蜂巢⼭路… POI Keyword Search |Clue 3<br><br>Image Zoom In Tool<br><br>[Figure 10]<br><br>POI Keyword Search 1. 六意便利店(中央第五街店)，<br><br>[Figure 11]<br><br>中央第五街xx号… 2.六意便利…<br><br>[Figure 12]| |---| [Figure 13] Localization |Clue 2| |---| Based o"
     }
   ]
 }

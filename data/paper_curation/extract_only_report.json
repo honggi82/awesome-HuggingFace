@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-03T22:02:58.632679+00:00",
+  "generated": "2026-07-03T22:45:16.651405+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 150,
+  "sourceOffset": 155,
   "sourceLimit": 5,
-  "sourceEnd": 155,
+  "sourceEnd": 160,
   "batchTotal": 5,
-  "total": 155,
-  "ok": 155,
-  "textExtracted": 155,
-  "figureFiles": 695,
+  "total": 160,
+  "ok": 160,
+  "textExtracted": 160,
+  "figureFiles": 717,
   "sanityFailed": 0,
   "records": [
     {
@@ -2064,6 +2064,71 @@
       "textBytes": 67154,
       "sanityOk": true,
       "sanityReason": "ok (title 3/3 doi=T author=True)"
+    },
+    {
+      "title": "Self-Distilled RLVR",
+      "key": "FOLDER00156_5100c3745fec",
+      "sourceIndex": 155,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00156_Self-Distilled RLVR.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2584_Self-Distilled_RLVR",
+      "textBytes": 94668,
+      "sanityOk": true,
+      "sanityReason": "ok (title 3/3 doi=T author=True)"
+    },
+    {
+      "title": "Diffusion Transformers with Representation Autoencoders",
+      "key": "FOLDER00157_e3fba9bcebb7",
+      "sourceIndex": 156,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00157_Diffusion Transformers with Representation Autoencoders.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2585_Diffusion_Transformers_with_Representation_Autoencoders",
+      "textBytes": 95818,
+      "sanityOk": true,
+      "sanityReason": "ok (title 5/5 doi=T author=True)"
+    },
+    {
+      "title": "SmolDocling: An ultra-compact vision-language model for end-to-end multi-modal document conversion",
+      "key": "FOLDER00158_562b03e86a42",
+      "sourceIndex": 157,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00158_SmolDocling An ultra-compact vision-language model for end-to-end multi-modal document con.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2586_SmolDocling_An_ultra-compact_vision-language_model_for_end-t",
+      "textBytes": 73527,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "General Agentic Memory Via Deep Research",
+      "key": "FOLDER00159_4c43fdf369ac",
+      "sourceIndex": 158,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00159_General Agentic Memory Via Deep Research.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 2,
+      "slug": "2587_General_Agentic_Memory_Via_Deep_Research",
+      "textBytes": 49725,
+      "sanityOk": true,
+      "sanityReason": "ok (title 5/5 doi=T author=True)"
+    },
+    {
+      "title": "Thinking with Map: Reinforced Parallel Map-Augmented Agent for Geolocalization",
+      "key": "FOLDER00160_29fc99ae0bc3",
+      "sourceIndex": 159,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00160_Thinking with Map Reinforced Parallel Map-Augmented Agent for Geolocalization.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo",
+      "textBytes": 59089,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
     }
   ]
 }

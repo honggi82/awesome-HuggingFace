@@ -8,6 +8,11 @@
       "count": 56
     },
     {
+      "id": "hdbscan-cluster-figure-agent-university-tokens",
+      "name": "HDBSCAN Cluster: figure, agent, university, tokens",
+      "count": 7
+    },
+    {
       "id": "hdbscan-cluster-university-figure-code-https",
       "name": "HDBSCAN Cluster: university, figure, code, https",
       "count": 6
@@ -23,18 +28,13 @@
       "count": 5
     },
     {
-      "id": "hdbscan-cluster-figure-university-li1-reasoning",
-      "name": "HDBSCAN Cluster: figure, university, li1, reasoning",
-      "count": 4
+      "id": "hdbscan-cluster-systems-university-agentic-memory",
+      "name": "HDBSCAN Cluster: systems, university, agentic, memory",
+      "count": 5
     },
     {
-      "id": "hdbscan-cluster-multimodal-vision-kimi-glm-4",
-      "name": "HDBSCAN Cluster: multimodal, vision, kimi, glm-4",
-      "count": 4
-    },
-    {
-      "id": "hdbscan-cluster-systems-language-model-figure",
-      "name": "HDBSCAN Cluster: systems, language, model, figure",
+      "id": "hdbscan-cluster-transformer-transformers-attention-normalization",
+      "name": "HDBSCAN Cluster: transformer, transformers, attention, normalization",
       "count": 4
     },
     {
@@ -48,13 +48,13 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-efficient-figure-language-loop",
-      "name": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "id": "hdbscan-cluster-qwen-models-report-qwen3",
+      "name": "HDBSCAN Cluster: qwen, models, report, qwen3",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-language-model-small-mutarjim",
-      "name": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "id": "hdbscan-cluster-efficient-figure-language-loop",
+      "name": "HDBSCAN Cluster: efficient, figure, language, loop",
       "count": 3
     },
     {
@@ -73,18 +73,23 @@
       "count": 3
     },
     {
+      "id": "hdbscan-cluster-multimodal-kimi-glm-4-agentic",
+      "name": "HDBSCAN Cluster: multimodal, kimi, glm-4, agentic",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-university-models-xiamen-large",
       "name": "HDBSCAN Cluster: university, models, xiamen, large",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-figure-university-wilddet3d-features",
-      "name": "HDBSCAN Cluster: figure, university, wilddet3d, features",
+      "id": "hdbscan-cluster-figure-generation-paperbanana-gui",
+      "name": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-figure-generation-paperbanana-gui",
-      "name": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
+      "id": "hdbscan-cluster-figure-university-li1-agentic",
+      "name": "HDBSCAN Cluster: figure, university, li1, agentic",
       "count": 3
     },
     {
@@ -98,13 +103,8 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-figure-agent-gamma-world-university",
-      "name": "HDBSCAN Cluster: figure, agent, gamma-world, university",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-qwen-qwen3-https-models",
-      "name": "HDBSCAN Cluster: qwen, qwen3, https, models",
+      "id": "hdbscan-cluster-data-textual-law-frequency",
+      "name": "HDBSCAN Cluster: data, textual, law, frequency",
       "count": 2
     },
     {
@@ -113,13 +113,13 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-transformers-normalization-without-dyt",
-      "name": "HDBSCAN Cluster: transformers, normalization, without, dyt",
+      "id": "hdbscan-cluster-zhang1-wang1-li1-wu1",
+      "name": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-zhang1-wang1-li1-wu1",
-      "name": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
+      "id": "hdbscan-cluster-training-smollm2-small-language",
+      "name": "HDBSCAN Cluster: training, smollm2, small, language",
       "count": 2
     },
     {
@@ -153,6 +153,11 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-qwen2-https-model-qwen",
+      "name": "HDBSCAN Cluster: qwen2, https, model, qwen",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-zhang-wang-yang-liu",
       "name": "HDBSCAN Cluster: zhang, wang, yang, liu",
       "count": 2
@@ -170,11 +175,6 @@
     {
       "id": "hdbscan-cluster-step3-vl-10b-https-multimodal-technical",
       "name": "HDBSCAN Cluster: step3-vl-10b, https, multimodal, technical",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-transformer-attention-language-differential",
-      "name": "HDBSCAN Cluster: transformer, attention, language, differential",
       "count": 2
     },
     {
