@@ -5,12 +5,12 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 53
+      "count": 48
     },
     {
-      "id": "hdbscan-cluster-reasoning-reinforcement-policy-rewards",
-      "name": "HDBSCAN Cluster: reasoning, reinforcement, policy, rewards",
-      "count": 5
+      "id": "hdbscan-cluster-university-models-chen1-zhang1",
+      "name": "HDBSCAN Cluster: university, models, chen1, zhang1",
+      "count": 11
     },
     {
       "id": "hdbscan-cluster-university-code-https-figure",
@@ -18,13 +18,13 @@
       "count": 5
     },
     {
-      "id": "hdbscan-cluster-report-https-technical-qwen",
-      "name": "HDBSCAN Cluster: report, https, technical, qwen",
+      "id": "hdbscan-cluster-reasoning-reinforcement-learning-deep",
+      "name": "HDBSCAN Cluster: reasoning, reinforcement, learning, deep",
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-figure-language-loop-opus",
-      "name": "HDBSCAN Cluster: figure, language, loop, opus",
+      "id": "hdbscan-cluster-skills-agent-agents-yang1",
+      "name": "HDBSCAN Cluster: skills, agent, agents, yang1",
       "count": 4
     },
     {
@@ -33,28 +33,33 @@
       "count": 4
     },
     {
+      "id": "hdbscan-cluster-https-qwen-report-qwen3",
+      "name": "HDBSCAN Cluster: https, qwen, report, qwen3",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-optimization-policy-training-group",
       "name": "HDBSCAN Cluster: optimization, policy, training, group",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-model-systems-figure-language",
-      "name": "HDBSCAN Cluster: model, systems, figure, language",
+      "id": "hdbscan-cluster-university-models-xiamen-large",
+      "name": "HDBSCAN Cluster: university, models, xiamen, large",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-glm-4-reasoning-deepseek-v3-models",
-      "name": "HDBSCAN Cluster: glm-4, reasoning, deepseek-v3, models",
+      "id": "hdbscan-cluster-figure-generation-paperbanana-gui",
+      "name": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-sharing-efficient-post-training-language",
-      "name": "HDBSCAN Cluster: sharing, efficient, post-training, language",
-      "count": 2
+      "id": "hdbscan-cluster-figure-university-li1-agentic",
+      "name": "HDBSCAN Cluster: figure, university, li1, agentic",
+      "count": 3
     },
     {
-      "id": "hdbscan-cluster-reasoning-data-textual-llms",
-      "name": "HDBSCAN Cluster: reasoning, data, textual, llms",
+      "id": "hdbscan-cluster-language-large-llm-memory",
+      "name": "HDBSCAN Cluster: language, large, llm, memory",
       "count": 2
     },
     {
@@ -63,13 +68,13 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-data-centric-shanghai-unified-framework",
-      "name": "HDBSCAN Cluster: data-centric, shanghai, unified, framework",
+      "id": "hdbscan-cluster-figure-transformer-attention-opus",
+      "name": "HDBSCAN Cluster: figure, transformer, attention, opus",
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-zhang1-advanced-models-li1",
-      "name": "HDBSCAN Cluster: zhang1, advanced, models, li1",
+      "id": "hdbscan-cluster-training-smollm2-small-language",
+      "name": "HDBSCAN Cluster: training, smollm2, small, language",
       "count": 2
     },
     {
@@ -78,28 +83,28 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-zhang1-chen1-advances-challenges",
-      "name": "HDBSCAN Cluster: zhang1, chen1, advances, challenges",
+      "id": "hdbscan-cluster-university-learning-sft-weak",
+      "name": "HDBSCAN Cluster: university, learning, sft, weak",
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-agents-learning-weak-li1",
-      "name": "HDBSCAN Cluster: agents, learning, weak, li1",
+      "id": "hdbscan-cluster-recursive-systems-model-multi-agent",
+      "name": "HDBSCAN Cluster: recursive, systems, model, multi-agent",
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-agent-skills-skillopt-university",
-      "name": "HDBSCAN Cluster: agent, skills, skillopt, university",
+      "id": "hdbscan-cluster-reinforcement-rewards-rpt-learning",
+      "name": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-university-xiamen-models-figure",
-      "name": "HDBSCAN Cluster: university, xiamen, models, figure",
+      "id": "hdbscan-cluster-deepseek-v3-reasoning-glm-4-models",
+      "name": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-figure-paperbanana-scientific-generation",
-      "name": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "id": "hdbscan-cluster-multimodal-glm-4-understanding-generation",
+      "name": "HDBSCAN Cluster: multimodal, glm-4, understanding, generation",
       "count": 2
     },
     {
@@ -108,8 +113,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-figure-li1-large-language",
-      "name": "HDBSCAN Cluster: figure, li1, large, language",
+      "id": "hdbscan-cluster-language-models-nonsense-hallucinations",
+      "name": "HDBSCAN Cluster: language, models, nonsense, hallucinations",
       "count": 2
     }
   ]

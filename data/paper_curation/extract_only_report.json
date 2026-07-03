@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-03T14:17:53.523300+00:00",
+  "generated": "2026-07-03T17:12:16.152488+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 105,
+  "sourceOffset": 110,
   "sourceLimit": 5,
-  "sourceEnd": 110,
+  "sourceEnd": 115,
   "batchTotal": 5,
-  "total": 110,
-  "ok": 110,
-  "textExtracted": 110,
-  "figureFiles": 502,
+  "total": 115,
+  "ok": 115,
+  "textExtracted": 115,
+  "figureFiles": 525,
   "sanityFailed": 0,
   "records": [
     {
@@ -1479,6 +1479,71 @@
       "textBytes": 104940,
       "sanityOk": true,
       "sanityReason": "ok (title 3/3 doi=T author=True)"
+    },
+    {
+      "title": "A Survey of Reinforcement Learning for Large Reasoning Models",
+      "key": "FOLDER00111_cd5a477d2124",
+      "sourceIndex": 110,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00111_A Survey of Reinforcement Learning for Large Reasoning Models.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2163_A_Survey_of_Reinforcement_Learning_for_Large_Reasoning_Model",
+      "textBytes": 424729,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "GaLore: Memory-Efficient LLM Training by Gradient Low-Rank Projection",
+      "key": "FOLDER00112_23c19fd1d00c",
+      "sourceIndex": 111,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00112_GaLore Memory-Efficient LLM Training by Gradient Low-Rank Projection.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2164_GaLore_Memory-Efficient_LLM_Training_by_Gradient_Low-Rank_Pr",
+      "textBytes": 77883,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "MLGym: A New Framework and Benchmark for Advancing AI Research Agents",
+      "key": "FOLDER00113_4ce221323548",
+      "sourceIndex": 112,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00113_MLGym A New Framework and Benchmark for Advancing AI Research Agents.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2165_MLGym_A_New_Framework_and_Benchmark_for_Advancing_AI_Researc",
+      "textBytes": 126213,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "On the Generalization of SFT: A Reinforcement Learning Perspective with Reward Rectification",
+      "key": "FOLDER00114_9fca02819c25",
+      "sourceIndex": 113,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00114_On the Generalization of SFT A Reinforcement Learning Perspective with Reward Rectificatio.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 3,
+      "slug": "2166_On_the_Generalization_of_SFT_A_Reinforcement_Learning_Perspe",
+      "textBytes": 77099,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
+      "key": "FOLDER00115_55c68b7aba0f",
+      "sourceIndex": 114,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00115_SenseNova-U1 Unifying Multimodal Understanding and Generation with NEO-unify Architecture.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
+      "textBytes": 156278,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
     }
   ]
 }
