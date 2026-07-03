@@ -5,7 +5,7 @@
     {
       "slug": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
       "title": "Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, models, deepseek-v3, glm-4",
       "key": "FOLDER00001_af26518a47dc",
       "sourceIndex": null,
       "textBytes": 44954,
@@ -55,7 +55,7 @@
     {
       "slug": "076_A_Very_Big_Video_Reasoning_Suite",
       "title": "A Very Big Video Reasoning Suite",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
       "key": "FOLDER00006_dd10def1d36c",
       "sourceIndex": 5,
       "textBytes": 144021,
@@ -105,7 +105,7 @@
     {
       "slug": "081_AI_Can_Learn_Scientific_Taste",
       "title": "AI Can Learn Scientific Taste",
-      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
+      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
       "key": "FOLDER00011_58c904a08eda",
       "sourceIndex": 10,
       "textBytes": 158305,
@@ -115,7 +115,7 @@
     {
       "slug": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
       "title": "Gamma-World: Generative Multi-Agent World Modeling Beyond Two Players",
-      "category": "HDBSCAN Cluster: figure, agent, tokens, reasoning",
+      "category": "HDBSCAN Cluster: figure, agent, gamma-world, university",
       "key": "FOLDER00012_8f53e8798157",
       "sourceIndex": 11,
       "textBytes": 63526,
@@ -145,7 +145,7 @@
     {
       "slug": "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini",
       "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
-      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
+      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
       "key": "FOLDER00015_27487e16e6cf",
       "sourceIndex": 14,
       "textBytes": 72155,
@@ -205,7 +205,7 @@
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
-      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "category": "HDBSCAN Cluster: efficient, figure, attention, language",
       "key": "FOLDER00021_8502bdaf4994",
       "sourceIndex": 20,
       "textBytes": 218340,
@@ -235,7 +235,7 @@
     {
       "slug": "327_Green-VLA_Staged_Vision-Language-Action_Model_for_Generalist",
       "title": "Green-VLA: Staged Vision-Language-Action Model for Generalist Robots",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: multimodal, vision, kimi, glm-4",
       "key": "FOLDER00024_348a94e5f835",
       "sourceIndex": 23,
       "textBytes": 86005,
@@ -255,7 +255,7 @@
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
-      "category": "HDBSCAN Cluster: data, transformer, attention, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00026_e94287efc152",
       "sourceIndex": 25,
       "textBytes": 79369,
@@ -275,7 +275,7 @@
     {
       "slug": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
       "title": "InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models",
-      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
+      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
       "key": "FOLDER00028_e5264c4b16b0",
       "sourceIndex": 27,
       "textBytes": 122653,
@@ -285,7 +285,7 @@
     {
       "slug": "332_DINOv3",
       "title": "DINOv3",
-      "category": "HDBSCAN Cluster: training, smollm2, small, language",
+      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
       "key": "FOLDER00029_a3328f5ae17b",
       "sourceIndex": 28,
       "textBytes": 237604,
@@ -315,7 +315,7 @@
     {
       "slug": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
       "title": "Advances and Challenges in Foundation Agents: From Brain-Inspired Intelligence to Evolutionary, Collaborative, and Safe Systems",
-      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
+      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
       "key": "FOLDER00032_042b1763276f",
       "sourceIndex": 31,
       "textBytes": 1411183,
@@ -355,7 +355,7 @@
     {
       "slug": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
       "title": "Weak-Driven Learning: How Weak Agents make Strong Agents Stronger",
-      "category": "HDBSCAN Cluster: university, learning, sft, weak",
+      "category": "HDBSCAN Cluster: learning, university, agents, sft",
       "key": "FOLDER00036_31e22fa1f189",
       "sourceIndex": 35,
       "textBytes": 96730,
@@ -405,7 +405,7 @@
     {
       "slug": "1725_Kimi_K25_Visual_Agentic_Intelligence",
       "title": "Kimi K2.5: Visual Agentic Intelligence",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: multimodal, vision, kimi, glm-4",
       "key": "FOLDER00041_386463f9a862",
       "sourceIndex": 40,
       "textBytes": 116467,
@@ -445,7 +445,7 @@
     {
       "slug": "1729_Agent_Learning_via_Early_Experience",
       "title": "Agent Learning via Early Experience",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: learning, university, agents, sft",
       "key": "FOLDER00045_ba69b71147e7",
       "sourceIndex": 44,
       "textBytes": 118639,
@@ -485,7 +485,7 @@
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
       "title": "DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models",
-      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
+      "category": "HDBSCAN Cluster: reasoning, models, deepseek-v3, glm-4",
       "key": "FOLDER00049_07cf0d16c82c",
       "sourceIndex": 48,
       "textBytes": 68593,
@@ -495,7 +495,7 @@
     {
       "slug": "1734_ERNIE_50_Technical_Report",
       "title": "ERNIE 5.0 Technical Report",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: attention, model, lightning, models",
       "key": "FOLDER00050_7562d1a3af33",
       "sourceIndex": 49,
       "textBytes": 147469,
@@ -505,7 +505,7 @@
     {
       "slug": "1735_Does_Your_Reasoning_Model_Implicitly_Know_When_to_Stop_Think",
       "title": "Does Your Reasoning Model Implicitly Know When to Stop Thinking?",
-      "category": "HDBSCAN Cluster: figure, agent, tokens, reasoning",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00051_0a6465c96316",
       "sourceIndex": 50,
       "textBytes": 124835,
@@ -545,7 +545,7 @@
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "title": "GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning",
-      "category": "HDBSCAN Cluster: multimodal, glm-4, understanding, generation",
+      "category": "HDBSCAN Cluster: multimodal, vision, kimi, glm-4",
       "key": "FOLDER00055_9405fc3ded78",
       "sourceIndex": 54,
       "textBytes": 145376,
@@ -555,7 +555,7 @@
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "title": "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model",
-      "category": "HDBSCAN Cluster: training, smollm2, small, language",
+      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
       "key": "FOLDER00056_e1a299738b86",
       "sourceIndex": 55,
       "textBytes": 87381,
@@ -625,7 +625,7 @@
     {
       "slug": "1746_Crafter_A_Multi-Agent_Harness_for_Editable_Scientific_Figure",
       "title": "Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs",
-      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
       "key": "FOLDER00063_0936ba6d5400",
       "sourceIndex": 62,
       "textBytes": 80050,
@@ -635,7 +635,7 @@
     {
       "slug": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
       "title": "Less is Enough: Synthesizing Diverse Data in Feature Space of LLMs",
-      "category": "HDBSCAN Cluster: data, transformer, attention, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00064_292a7228313c",
       "sourceIndex": 63,
       "textBytes": 179027,
@@ -645,7 +645,7 @@
     {
       "slug": "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation",
       "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: diffusion, model, wang, vibevoice",
       "key": "FOLDER00065_f953c8971cba",
       "sourceIndex": 64,
       "textBytes": 94565,
@@ -685,7 +685,7 @@
     {
       "slug": "1752_The_Landscape_of_Agentic_Reinforcement_Learning_for_LLMs_A_S",
       "title": "The Landscape of Agentic Reinforcement Learning for LLMs: A Survey",
-      "category": "HDBSCAN Cluster: figure, university, li1, agentic",
+      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
       "key": "FOLDER00069_243ca31a6792",
       "sourceIndex": 68,
       "textBytes": 388541,
@@ -725,7 +725,7 @@
     {
       "slug": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
       "title": "PaperBanana: Automating Academic Illustration for AI Scientists",
-      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
       "key": "FOLDER00073_6aee964fcc91",
       "sourceIndex": 72,
       "textBytes": 126607,
@@ -755,7 +755,7 @@
     {
       "slug": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
       "title": "Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond",
-      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
+      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
       "key": "FOLDER00076_8f66fe1850ac",
       "sourceIndex": 75,
       "textBytes": 384726,
@@ -765,7 +765,7 @@
     {
       "slug": "1760_Scaling_Latent_Reasoning_via_Looped_Language_Models",
       "title": "Scaling Latent Reasoning via Looped Language Models",
-      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00077_e466b12b1813",
       "sourceIndex": 76,
       "textBytes": 185444,
@@ -785,7 +785,7 @@
     {
       "slug": "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio",
       "title": "DataFlow: An LLM-Driven Framework for Unified Data Preparation and Workflow Automation in the Era of Data-Centric AI",
-      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
+      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
       "key": "FOLDER00079_064bbcad8b7d",
       "sourceIndex": 78,
       "textBytes": 134657,
@@ -825,7 +825,7 @@
     {
       "slug": "1887_Code_as_Agent_Harness",
       "title": "Code as Agent Harness",
-      "category": "HDBSCAN Cluster: figure, university, li1, agentic",
+      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
       "key": "FOLDER00083_c2eefb4863ea",
       "sourceIndex": 82,
       "textBytes": 370210,
@@ -845,7 +845,7 @@
     {
       "slug": "1889_InternVL35_Advancing_Open-Source_Multimodal_Models_in_Versat",
       "title": "InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency",
-      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
+      "category": "HDBSCAN Cluster: zhang, wang, yang, liu",
       "key": "FOLDER00085_d15d9f25155c",
       "sourceIndex": 84,
       "textBytes": 152420,
@@ -875,7 +875,7 @@
     {
       "slug": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
       "title": "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models",
-      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
+      "category": "HDBSCAN Cluster: reasoning, models, deepseek-v3, glm-4",
       "key": "FOLDER00088_ec7f05bf1eae",
       "sourceIndex": 87,
       "textBytes": 87726,
@@ -905,7 +905,7 @@
     {
       "slug": "1977_Mutarjim_Advancing_Bidirectional_Arabic-English_Translation",
       "title": "Mutarjim: Advancing Bidirectional Arabic-English Translation with a Small Language Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
       "key": "FOLDER00091_8b531206da8e",
       "sourceIndex": 90,
       "textBytes": 51767,
@@ -935,7 +935,7 @@
     {
       "slug": "1979_Agentic_Reasoning_for_Large_Language_Models",
       "title": "Agentic Reasoning for Large Language Models",
-      "category": "HDBSCAN Cluster: figure, university, li1, agentic",
+      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
       "key": "FOLDER00094_e659672f18a1",
       "sourceIndex": 93,
       "textBytes": 467076,
@@ -965,7 +965,7 @@
     {
       "slug": "2023_OpenWorldLib_A_Unified_Codebase_and_Definition_of_Advanced_W",
       "title": "OpenWorldLib: A Unified Codebase and Definition of Advanced World Models",
-      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
+      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
       "key": "FOLDER00097_06d313401545",
       "sourceIndex": 96,
       "textBytes": 91225,
@@ -985,7 +985,7 @@
     {
       "slug": "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
       "title": "SmolVLM: Redefining small and efficient multimodal models",
-      "category": "HDBSCAN Cluster: figure, models, ltx-2, efficient",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00099_ac2f7b1c354d",
       "sourceIndex": 98,
       "textBytes": 79008,
@@ -1035,7 +1035,7 @@
     {
       "slug": "2076_BabyVision_Visual_Reasoning_Beyond_Language",
       "title": "BabyVision: Visual Reasoning Beyond Language",
-      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00104_e4ddbcbed6ff",
       "sourceIndex": 103,
       "textBytes": 75250,
@@ -1045,7 +1045,7 @@
     {
       "slug": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
       "title": "Code2World: A GUI World Model via Renderable Code Generation",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
       "key": "FOLDER00105_f3af930e91a8",
       "sourceIndex": 104,
       "textBytes": 97988,
@@ -1055,7 +1055,7 @@
     {
       "slug": "2119_MiroThinker_Pushing_the_Performance_Boundaries_of_Open-Sourc",
       "title": "MiroThinker: Pushing the Performance Boundaries of Open-Source Research Agents via Model, Context, and Interactive Scaling",
-      "category": "HDBSCAN Cluster: model, performance, open-source, scaling",
+      "category": "HDBSCAN Cluster: reasoning, model, research, performance",
       "key": "FOLDER00106_2b8ab407a297",
       "sourceIndex": 105,
       "textBytes": 57348,
@@ -1065,7 +1065,7 @@
     {
       "slug": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
       "title": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling",
-      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "category": "HDBSCAN Cluster: efficient, figure, attention, language",
       "key": "FOLDER00107_4c4b048fabae",
       "sourceIndex": 106,
       "textBytes": 57470,
@@ -1085,7 +1085,7 @@
     {
       "slug": "2122_Differential_Transformer",
       "title": "Differential Transformer",
-      "category": "HDBSCAN Cluster: data, transformer, attention, language",
+      "category": "HDBSCAN Cluster: efficient, figure, attention, language",
       "key": "FOLDER00109_cb0fec7db820",
       "sourceIndex": 108,
       "textBytes": 71150,
@@ -1105,7 +1105,7 @@
     {
       "slug": "2163_A_Survey_of_Reinforcement_Learning_for_Large_Reasoning_Model",
       "title": "A Survey of Reinforcement Learning for Large Reasoning Models",
-      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
+      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
       "key": "FOLDER00111_cd5a477d2124",
       "sourceIndex": 110,
       "textBytes": 424729,
@@ -1135,7 +1135,7 @@
     {
       "slug": "2166_On_the_Generalization_of_SFT_A_Reinforcement_Learning_Perspe",
       "title": "On the Generalization of SFT: A Reinforcement Learning Perspective with Reward Rectification",
-      "category": "HDBSCAN Cluster: university, learning, sft, weak",
+      "category": "HDBSCAN Cluster: learning, university, agents, sft",
       "key": "FOLDER00114_9fca02819c25",
       "sourceIndex": 113,
       "textBytes": 77099,
@@ -1145,7 +1145,7 @@
     {
       "slug": "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
       "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
-      "category": "HDBSCAN Cluster: multimodal, glm-4, understanding, generation",
+      "category": "HDBSCAN Cluster: multimodal, vision, kimi, glm-4",
       "key": "FOLDER00115_55c68b7aba0f",
       "sourceIndex": 114,
       "textBytes": 156278,
@@ -1205,7 +1205,7 @@
     {
       "slug": "2255_AutoResearchClaw_Self-Reinforcing_Autonomous_Research_with_H",
       "title": "AutoResearchClaw: Self-Reinforcing Autonomous Research with Human-AI Collaboration",
-      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
+      "category": "HDBSCAN Cluster: university, zhang1, models, li1",
       "key": "FOLDER00121_00ec5d98ca85",
       "sourceIndex": 120,
       "textBytes": 83910,
@@ -1275,7 +1275,7 @@
     {
       "slug": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
       "title": "LlamaFactory: Unified Efficient Fine-Tuning of 100+ Language Models",
-      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "category": "HDBSCAN Cluster: efficient, figure, attention, language",
       "key": "FOLDER00128_088ef61f71e2",
       "sourceIndex": 127,
       "textBytes": 58891,
@@ -1315,7 +1315,7 @@
     {
       "slug": "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
       "title": "OmniSVG: A Unified Scalable Vector Graphics Generation Model",
-      "category": "HDBSCAN Cluster: figure, agent, tokens, reasoning",
+      "category": "HDBSCAN Cluster: figure, agent, gamma-world, university",
       "key": "FOLDER00132_bc3de160ac51",
       "sourceIndex": 131,
       "textBytes": 70794,
@@ -1325,7 +1325,7 @@
     {
       "slug": "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
       "title": "Perception, Reason, Think, and Plan: A Survey on Large Multimodal Reasoning Models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, large, zhang, wang",
       "key": "FOLDER00133_8e3c28fd1818",
       "sourceIndex": 132,
       "textBytes": 391537,
@@ -1335,7 +1335,7 @@
     {
       "slug": "2354_LTX-2_Efficient_Joint_Audio-Visual_Foundation_Model",
       "title": "LTX-2: Efficient Joint Audio-Visual Foundation Model",
-      "category": "HDBSCAN Cluster: figure, models, ltx-2, efficient",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00134_d15fe444ec5a",
       "sourceIndex": 133,
       "textBytes": 44273,
@@ -1385,7 +1385,7 @@
     {
       "slug": "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
       "title": "Idea2Story: An Automated Pipeline for Transforming Research Concepts into Complete Scientific Narratives",
-      "category": "HDBSCAN Cluster: mcp, scientific, research, chen",
+      "category": "HDBSCAN Cluster: reasoning, large, zhang, wang",
       "key": "FOLDER00139_67529da800a5",
       "sourceIndex": 138,
       "textBytes": 50780,
@@ -1415,7 +1415,7 @@
     {
       "slug": "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
       "title": "MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use",
-      "category": "HDBSCAN Cluster: mcp, scientific, research, chen",
+      "category": "HDBSCAN Cluster: reasoning, large, zhang, wang",
       "key": "FOLDER00142_a4d4189c9274",
       "sourceIndex": 141,
       "textBytes": 86861,
@@ -1435,7 +1435,7 @@
     {
       "slug": "2450_LongCat-Flash-Thinking-2601_Technical_Report",
       "title": "LongCat-Flash-Thinking-2601 Technical Report",
-      "category": "HDBSCAN Cluster: model, performance, open-source, scaling",
+      "category": "HDBSCAN Cluster: reasoning, model, research, performance",
       "key": "FOLDER00144_1c4747a81411",
       "sourceIndex": 143,
       "textBytes": 123778,
@@ -1451,6 +1451,56 @@
       "textBytes": 146453,
       "figuresExtracted": 5,
       "excerpt": "##### HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents Tencent Robotics X × HY Vision Team ###### Abstract We introduce HY-Embodied-0.5, a family of foundation models specifically designed for real-world embodied agents. To bridge the gap between general Vision-Language Models (VLMs) and the demands of embodied agents, our models are developed to enhance the core capabilities required by embodied intelligence: spatial and temporal visual perception, alongside advanced embodied reasoning for prediction, interaction, and planning. The HY-Embodied-0.5 suite comprises two primary variants: an efficient model with 2B activated parameters designed for edge deployment, and a powerful model with 32B activated parameters targeted for complex reasoning. To support the fine-grained visual perception essential for embodied tasks, we adopt a Mixture-of-Transformers (MoT) architecture"
+    },
+    {
+      "slug": "2494_MiroThinker-17__H1_Towards_Heavy-Duty_Research_Agents_via_Ve",
+      "title": "MiroThinker-1.7 & H1: Towards Heavy-Duty Research Agents via Verification",
+      "category": "HDBSCAN Cluster: reasoning, model, research, performance",
+      "key": "FOLDER00146_334d0fce3ea3",
+      "sourceIndex": 145,
+      "textBytes": 67569,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2603.15726v1[cs.CL]16Mar2026 # MiroThinker-1.7 & H1: Towards Heavy-Duty Research Agents via Verification ###### MiroMind Team We present MiroThinker-1.7, a new research agent designed for complex long-horizon reasoning tasks. Building on this foundation, we further introduce MiroThinker-H1, which extends the agent with heavy-duty reasoning capabilities for more reliable multi-step problem solving. In particular, MiroThinker-1.7 improves the reliability of each interaction step through an agentic mid-training stage that emphasizes structured planning, contextual reasoning, and tool interaction. This enables more effective multi-step interaction and sustained reasoning across complex tasks. MiroThinker-H1 further incorporates verification directly into the reasoning process at both local and global levels. Intermediate reasoning decisions can be evaluated and refined during infere"
+    },
+    {
+      "slug": "2495_Live_Avatar_Streaming_Real-time_Audio-Driven_Avatar_Generati",
+      "title": "Live Avatar: Streaming Real-time Audio-Driven Avatar Generation with Infinite Length",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00147_770fe89ff20e",
+      "sourceIndex": 146,
+      "textBytes": 84335,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2512.04677v5[cs.CV]20Apr2026 ## Live Avatar: Streaming Real-time Audio-Driven Avatar Generation with Infinite Length Yubo Huang1,2 Hailong Guo2,3 Fangtai Wu2,4 Weiqiang Wang5 Shifeng Zhang2 Shijie Huang2 Qijun Gan4 Lin Liu1 Sirui Zhao1,∗ Enhong Chen1,∗ Jiaming Liu2,‡ Steven Hoi2 1 University of Science and Technology of China 2 Alibaba Group 3 Beijing University of Posts and Telecommunications 4 Zhejiang University 5 Monash University snake1124@mail.ustc.edu.cn liujiaming.ljl@alibaba-inc.com ∗ Corresponding authors. ‡ Project Leader. [Figure 1] [Figure 2] [Figure 3] [Figure 4] Real-Time Streaming Inﬁnite-Length Generalizability Our 14B model supports 20 FPS on 5 H800 with 4-step sampling. Make the fire talk ! Support Block-wise Autoregressive even up to 10000+ seconds long [Figure 5] [Figure 6] [Figure 7] [Figure 8] [Figure 9] Text Description [Figure 10] [Figure 11] [Figure 12] "
+    },
+    {
+      "slug": "2496_VibeVoice_Technical_Report",
+      "title": "VibeVoice Technical Report",
+      "category": "HDBSCAN Cluster: diffusion, model, wang, vibevoice",
+      "key": "FOLDER00148_136af8a674d0",
+      "sourceIndex": 147,
+      "textBytes": 27704,
+      "figuresExtracted": 1,
+      "excerpt": "# arXiv:2508.19205v1[cs.CL]26Aug2025 ## VIBEVOICE Technical Report #### Zhiliang Peng∗, Jianwei Yu∗, Wenhui Wang∗, Yaoyao Chang∗, Yutao Sun∗, Li Dong∗ Yi Zhu, Weijiang Xu, Hangbo Bao, Zehua Wang, Shaohan Huang, Yan Xia, Furu Wei⋄ Microsoft Research https://aka.ms/GeneralAI This report presents VIBEVOICE, a novel model designed to synthesize long-form speech with multiple speakers by employing next-token diffusion [SBW+24], which is a unified method for modeling continuous data by autoregressively generating latent vectors via diffusion. To enable this, we introduce a novel continuous speech tokenizer that, when compared to the popular Encodec model, improves data compression by 80 times while maintaining comparable performance. The tokenizer effectively preserves audio fidelity while significantly boosting computational efficiency for processing long sequences. Thus, VIBEVOICE can synthe"
+    },
+    {
+      "slug": "2497_Qwen2_Technical_Report",
+      "title": "Qwen2 Technical Report",
+      "category": "HDBSCAN Cluster: zhang, wang, yang, liu",
+      "key": "FOLDER00149_15d47edddf97",
+      "sourceIndex": 148,
+      "textBytes": 86323,
+      "figuresExtracted": 1,
+      "excerpt": "# arXiv:2407.10671v4[cs.CL]10Sep2024 ## QWEN2 TECHNICAL REPORT An Yang, Baosong Yang, Binyuan Hui, Bo Zheng, Bowen Yu, Chang Zhou, Chengpeng Li, Chengyuan Li, Dayiheng Liu, Fei Huang, Guanting Dong, Haoran Wei, Huan Lin, Jialong Tang, Jialin Wang, Jian Yang, Jianhong Tu, Jianwei Zhang, Jianxin Ma, Jianxin Yang, Jin Xu, Jingren Zhou, Jinze Bai, Jinzheng He, Junyang Lin, Kai Dang, Keming Lu, Keqin Chen, Kexin Yang, Mei Li, Mingfeng Xue, Na Ni, Pei Zhang, Peng Wang, Ru Peng, Rui Men, Ruize Gao, Runji Lin, Shijie Wang, Shuai Bai, Sinan Tan, Tianhang Zhu, Tianhao Li, Tianyu Liu, Wenbin Ge, Xiaodong Deng, Xiaohuan Zhou, Xingzhang Ren, Xinyu Zhang, Xipin Wei, Xuancheng Ren, Xuejing Liu, Yang Fan, Yang Yao, Yichang Zhang, Yu Wan, Yunfei Chu, Yuqiong Liu, Zeyu Cui, Zhenru Zhang, Zhifang Guo, and Zhihao Fan #### Qwen Team, Alibaba Group∗ ABSTRACT This report introduces the Qwen2 series, the latest"
+    },
+    {
+      "slug": "2498_TransitLM_A_Large-Scale_Dataset_and_Benchmark_for_Map-Free_T",
+      "title": "TransitLM: A Large-Scale Dataset and Benchmark for Map-Free Transit Route Generation",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00150_dab1fd715401",
+      "sourceIndex": 149,
+      "textBytes": 89436,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.22355v1[cs.CL]21May2026 ## TransitLM: A Large-Scale Dataset and Benchmark for Map-Free Transit Route Generation Hanyu Guo∗ Jiedong Yang∗ Chao Chen Longfei Xu Kaikui Liu Xiangxiang Chu AMAP, Alibaba Group Beijing, China {guohanyu.ghy,jiedong.yjd,cc201598,longfei.xl,damon}@alibaba-inc.com cxxgtxy@gmail.com ### Abstract Public transit route planning traditionally depends on structured map infrastructure and complex routing engines, and no existing dataset supports training models to bypass this dependency. We present TransitLM, a large-scale dataset of over 13 million transit route planning records from four Chinese cities covering 120,845 stations and 13,666 lines, released as a continual pre-training corpus and benchmark data for three evaluation tasks with complementary metrics. Experiments show that an LLM trained on TransitLM produces structurally valid routes at high accu"
     }
   ]
 }

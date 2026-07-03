@@ -41,6 +41,7 @@ Generated on 2026-06-26 from the public Hugging Face Daily Papers API. This edit
 
 
 
+
 <!-- BEGIN CODEX PAPER CURATION -->
 
 ## Codex-Native Full Curation
@@ -49,7 +50,7 @@ Generated on 2026-06-26 from the public Hugging Face Daily Papers API. This edit
 - Local static entry: `docs/paper_curation/index.html`
 - Related Papers graph: `docs/paper_curation/huggingface/network.html`
 - PaperBanana-compatible timeline: `docs/paper_curation/huggingface/category_timeline_codex_native.png`
-- Processed PDF evidence in this staged run: 145 papers
+- Processed PDF evidence in this staged run: 150 papers
 - Modeling stack: `allenai/specter2_base` embeddings, `hdbscan.HDBSCAN` clustering, `umap.UMAP` projection
 
 <!-- END CODEX PAPER CURATION -->
