@@ -5,7 +5,7 @@
     {
       "slug": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
       "title": "Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing",
-      "category": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "category": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
       "key": "FOLDER00001_af26518a47dc",
       "sourceIndex": null,
       "textBytes": 44954,
@@ -25,7 +25,7 @@
     {
       "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
       "title": "GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "key": "FOLDER00003_07f36ae7acd9",
       "sourceIndex": null,
       "textBytes": 76254,
@@ -65,7 +65,7 @@
     {
       "slug": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
       "title": "Adam's Law: Textual Frequency Law on Large Language Models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
       "key": "FOLDER00007_f1204ba044c3",
       "sourceIndex": 6,
       "textBytes": 101929,
@@ -85,7 +85,7 @@
     {
       "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
       "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "key": "FOLDER00009_e247d7b4176f",
       "sourceIndex": 8,
       "textBytes": 238083,
@@ -145,7 +145,7 @@
     {
       "slug": "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini",
       "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
-      "category": "HDBSCAN Cluster: university, models, large, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00015_27487e16e6cf",
       "sourceIndex": 14,
       "textBytes": 72155,
@@ -175,7 +175,7 @@
     {
       "slug": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
       "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "key": "FOLDER00018_b37c28309d81",
       "sourceIndex": 17,
       "textBytes": 99957,
@@ -185,7 +185,7 @@
     {
       "slug": "322_ASE_A_Repository-Level_Benchmark_for_Evaluating_Security_in",
       "title": "A.S.E: A Repository-Level Benchmark for Evaluating Security in AI-Generated Code",
-      "category": "HDBSCAN Cluster: university, models, large, language",
+      "category": "HDBSCAN Cluster: university, code, engineering, https",
       "key": "FOLDER00019_f578c07c2033",
       "sourceIndex": 18,
       "textBytes": 84262,
@@ -205,7 +205,7 @@
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
-      "category": "HDBSCAN Cluster: figure, language, opus, data",
+      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
       "key": "FOLDER00021_8502bdaf4994",
       "sourceIndex": 20,
       "textBytes": 218340,
@@ -235,7 +235,7 @@
     {
       "slug": "327_Green-VLA_Staged_Vision-Language-Action_Model_for_Generalist",
       "title": "Green-VLA: Staged Vision-Language-Action Model for Generalist Robots",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: glm-4, green-vla, model, multimodal",
       "key": "FOLDER00024_348a94e5f835",
       "sourceIndex": 23,
       "textBytes": 86005,
@@ -255,7 +255,7 @@
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
-      "category": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "category": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
       "key": "FOLDER00026_e94287efc152",
       "sourceIndex": 25,
       "textBytes": 79369,
@@ -265,7 +265,7 @@
     {
       "slug": "330_Group_Sequence_Policy_Optimization",
       "title": "Group Sequence Policy Optimization",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "key": "FOLDER00027_94918922664a",
       "sourceIndex": 26,
       "textBytes": 23492,
@@ -285,7 +285,7 @@
     {
       "slug": "332_DINOv3",
       "title": "DINOv3",
-      "category": "HDBSCAN Cluster: figure, language, opus, data",
+      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
       "key": "FOLDER00029_a3328f5ae17b",
       "sourceIndex": 28,
       "textBytes": 237604,
@@ -295,7 +295,7 @@
     {
       "slug": "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios",
       "title": "InCoder-32B: Code Foundation Model for Industrial Scenarios",
-      "category": "HDBSCAN Cluster: university, models, large, language",
+      "category": "HDBSCAN Cluster: university, code, engineering, https",
       "key": "FOLDER00030_44a8848066c5",
       "sourceIndex": 29,
       "textBytes": 161304,
@@ -335,7 +335,7 @@
     {
       "slug": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, video, reasoning, university",
       "key": "FOLDER00034_8bc56d204ac7",
       "sourceIndex": 33,
       "textBytes": 94309,
@@ -345,7 +345,7 @@
     {
       "slug": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
       "title": "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "key": "FOLDER00035_fc3525c2b456",
       "sourceIndex": 34,
       "textBytes": 87188,
@@ -355,7 +355,7 @@
     {
       "slug": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
       "title": "Weak-Driven Learning: How Weak Agents make Strong Agents Stronger",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: agents, agent, learning, weak",
       "key": "FOLDER00036_31e22fa1f189",
       "sourceIndex": 35,
       "textBytes": 96730,
@@ -435,7 +435,7 @@
     {
       "slug": "1728_Reinforcement_Pre-Training",
       "title": "Reinforcement Pre-Training",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "key": "FOLDER00044_3dcd071cdafe",
       "sourceIndex": 43,
       "textBytes": 48294,
@@ -445,7 +445,7 @@
     {
       "slug": "1729_Agent_Learning_via_Early_Experience",
       "title": "Agent Learning via Early Experience",
-      "category": "HDBSCAN Cluster: agent, experience, yang1, which",
+      "category": "HDBSCAN Cluster: agents, agent, learning, weak",
       "key": "FOLDER00045_ba69b71147e7",
       "sourceIndex": 44,
       "textBytes": 118639,
@@ -455,7 +455,7 @@
     {
       "slug": "1730_A_Survey_of_Context_Engineering_for_Large_Language_Models",
       "title": "A Survey of Context Engineering for Large Language Models",
-      "category": "HDBSCAN Cluster: university, models, large, language",
+      "category": "HDBSCAN Cluster: university, code, engineering, https",
       "key": "FOLDER00046_3f2b33464bcb",
       "sourceIndex": 45,
       "textBytes": 551644,
@@ -475,7 +475,7 @@
     {
       "slug": "1732_ClawBench_Can_AI_Agents_Complete_Everyday_Online_Tasks",
       "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
-      "category": "HDBSCAN Cluster: university, models, large, language",
+      "category": "HDBSCAN Cluster: university, code, engineering, https",
       "key": "FOLDER00048_7d8b86a69b60",
       "sourceIndex": 47,
       "textBytes": 44311,
@@ -485,7 +485,7 @@
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
       "title": "DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
       "key": "FOLDER00049_07cf0d16c82c",
       "sourceIndex": 48,
       "textBytes": 68593,
@@ -525,7 +525,7 @@
     {
       "slug": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "title": "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model",
-      "category": "HDBSCAN Cluster: university, models, large, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00053_b501ac6425a5",
       "sourceIndex": 52,
       "textBytes": 99132,
@@ -545,7 +545,7 @@
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "title": "GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: glm-4, green-vla, model, multimodal",
       "key": "FOLDER00055_9405fc3ded78",
       "sourceIndex": 54,
       "textBytes": 145376,
@@ -555,7 +555,7 @@
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "title": "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model",
-      "category": "HDBSCAN Cluster: figure, language, opus, data",
+      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
       "key": "FOLDER00056_e1a299738b86",
       "sourceIndex": 55,
       "textBytes": 87381,
@@ -575,7 +575,7 @@
     {
       "slug": "1741_SkillOpt_Executive_Strategy_for_Self-Evolving_Agent_Skills",
       "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
-      "category": "HDBSCAN Cluster: agent, experience, yang1, which",
+      "category": "HDBSCAN Cluster: agents, agent, learning, weak",
       "key": "FOLDER00058_cb6c569830d7",
       "sourceIndex": 57,
       "textBytes": 95497,
@@ -601,6 +601,106 @@
       "textBytes": 110894,
       "figuresExtracted": 5,
       "excerpt": "# WildDet3D ### Scaling Promptable 3D Detection in the Wild Weikai Huang♥1,2 Jieyu Zhang♥1,2 Sijun Li2 Taoyang Jia2 Jiafei Duan1,2 Yunqian Cheng1 Jaemin Cho1,2,5 Matthew Wallingford1 Rustin Soraki1,2 Chris Dongjoo Kim1 Shuo Liu1,2 Donovan Clay1,2 Taira Anderson1 Winson Han1 Ali Farhadi1,2 Bharath Hariharan3 Zhongzheng Ren♥1,2,4 Ranjay Krishna♥1,2 ## arXiv:2604.08626v2[cs.CV]17Apr2026 1Allen Institute for AI, 2University of Washington, 3Cornell University, 4UNC-Chapel Hill, 5Johns Hopkins University ♥ marks core contributors. Models: WildDet3D Data: WildDet3D-Data WildDet3D-Bench WildDet3D-Stereo4D-Bench Code: https://github.com/allenai/WildDet3D Demo: https://huggingface.co/spaces/allenai/WildDet3D iPhone App: WildDet3D (App Store) Websites: Technical-Website Blog | | |---| #### Abstract [Figure 1] Understanding objects in 3D from a single image is a cornerstone of spatial intelligence. "
+    },
+    {
+      "slug": "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive",
+      "title": "Tstars-Tryon 1.0: Robust and Realistic Virtual Try-On for Diverse Fashion Items",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00061_1125d5a3a04d",
+      "sourceIndex": 60,
+      "textBytes": 79230,
+      "figuresExtracted": 5,
+      "excerpt": "Tstars-Tryon 1.0 May 12, 2026 [Figure 1] ## Tstars-Tryon 1.0: Robust and Realistic Virtual Try-On for Diverse Fashion Items Pailitao Team: authors are listed in alphabetical order Mengting Chen∗, Zhengrui Chen, Yongchao Du, Zuan Gao, Taihang Hu, Jinsong Lan, Chao Lin, Yefeng Shen, Xingjian Wang, Zhao Wang, Zhengtao Wu, Xiaoli Xu, Zhengze Xu, Hao Yan, Mingzhou Zhang, Jun Zheng, Qinye Zhou, Xiaoyong Zhu, Bo Zheng† #### Alibaba Group ∗Project Lead †Corresponding Author [Figure 2] Taobao App Tstars-VTON Bench (HuggingFace) Tstars-VTON Bench (ModelScope) [Figure 3] # arXiv:2604.19748v3[cs.CV]10May2026 ### Abstract Recent advances in image generation and editing have opened up new opportunities for virtual try-on applications. However, existing methods still struggle to meet the diverse and complex user demands in real-world scenarios. In this work, we present TstarsTryon 1.0, a commercial-sca"
+    },
+    {
+      "slug": "1745_SocialOmni_Benchmarking_Audio-Visual_Social_Interactivity_in",
+      "title": "SocialOmni: Benchmarking Audio-Visual Social Interactivity in Omni Models",
+      "category": "HDBSCAN Cluster: university, xiamen, models, figure",
+      "key": "FOLDER00062_02f4f420adf3",
+      "sourceIndex": 61,
+      "textBytes": 85252,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.16859v1[cs.AI]17Mar2026 [Figure 1] [Figure 2] [Figure 3] [Figure 4] ### SocialOmni: Benchmarking Audio-Visual Social Interactivity in Omni Models ##### Tianyu Xie1,2, Jinfa Huang5, Yuexiao Ma1,3, Rongfang Luo4 Yan Yang4, Wang Chen1,2, Yuhui Zeng1,2, Ruize Fang1,2 Yixuan Zou1,2, Xiawu Zheng1,2, , Jiebo Luo5, Rongrong Ji1,2,3 1Media Analytics and Computing Lab, Xiamen University, Xiamen, China 2Institute of Artificial Intelligence, Xiamen University, Xiamen, China 3School of Informatics, Xiamen University, Xiamen, China 4Sichuan Agricultural University, Yaan, China 5Department of Computer Science, University of Rochester, Rochester, NY, USA Corresponding Author ##### ABSTRACT Omni-modal large language models (OLMs) redefine human-machine interaction by natively integrating audio, vision, and text. However, existing OLM benchmarks remain anchored to static, accuracy-centric tas"
+    },
+    {
+      "slug": "1746_Crafter_A_Multi-Agent_Harness_for_Editable_Scientific_Figure",
+      "title": "Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00063_0936ba6d5400",
+      "sourceIndex": 62,
+      "textBytes": 80050,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.30611v1[cs.CV]28May2026 ## CRAFTER: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs #### Haozhe Zhao1∗ Shuzheng Si2∗ Zhenhailong Wang1 Zheng Wang1 Liang Chen3 Xiaotong Li3 Zhixiang Liang1 Maosong Sun2 Minjia Zhang1 1University of Illinois at Urbana-Champaign 2Tsinghua University 3Peking University haozhez6@illinois.edu ∗Equal contribution ### Abstract Scientific figures are among the most effective means of communicating complex research ideas, yet producing publication-quality illustrations remains one of the most labor-intensive parts of paper preparation. Existing automated systems each target a single figure type under text-only input, leaving the diversity of types and conditions researchers actually use unaddressed; their raster outputs further cannot be locally revised. Because scientific figures are structured compositions of discr"
+    },
+    {
+      "slug": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
+      "title": "Less is Enough: Synthesizing Diverse Data in Feature Space of LLMs",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00064_292a7228313c",
+      "sourceIndex": 63,
+      "textBytes": 179027,
+      "figuresExtracted": 5,
+      "excerpt": "### Less is Enough: Synthesizing Diverse Data in LLM Feature Space with Sparse Autoencoders Zhongzhi Li*1 Xuansheng Wu*1 Yijiang Li*2 Lijie Hu3 Ninghao Liu4 # arXiv:2602.10388v4[cs.CL]29May2026 #### Abstract The diversity of post-training data is critical for effective downstream performance in large language models (LLMs). Many existing approaches to constructing post-training data quantify diversity using text-based metrics that capture linguistic variation, but such metrics provide only weak signals for the task-relevant features that determine downstream performance. In this work, we introduce Feature Activation Coverage (FAC) which measures data diversity in an interpretable feature space. Building upon this metric, we further propose a diversity-driven data synthesis framework, named FAC Synthesis, that first uses a sparse autoencoder to identify missing features from a seed datase"
+    },
+    {
+      "slug": "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation",
+      "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00065_f953c8971cba",
+      "sourceIndex": 64,
+      "textBytes": 94565,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2604.20796v1[cs.CV]22Apr2026 [Figure 1] [Figure 2] [Figure 3] ## LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model Tiwei Bie, Haoxing Chen, Tieyuan Chen, Zhenglin Cheng, Long Cui, Kai Gan, Zhicheng Huang Zhenzhong Lan†, Haoquan Li, Jianguo Li†, Tao Lin†, Qi Qin, Hongjun Wang, Xiaomei Wang Haoyuan Wu, Yi Xin, Junbo Zhao AGI Research Center, Inclusion AI ##### Abstract We present LLaDA2.0-Uni, a unified discrete diffusion large language model (dLLM) that supports multimodal understanding and generation within a natively integrated framework. Its architecture combines a fully semantic discrete tokenizer, a MoE-based dLLM backbone, and a diffusion decoder. By discretizing continuous visual inputs via SigLIP-VQ, the model enables block-level masked diffusion for both text and vision inputs within the backbone, while the decoder reconstr"
+    },
+    {
+      "slug": "1749_SQuTR_A_Robustness_Benchmark_for_Spoken_Query_to_Text_Retrie",
+      "title": "SQuTR: A Robustness Benchmark for Spoken Query to Text Retrieval under Acoustic Noise",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00066_132a16455759",
+      "sourceIndex": 65,
+      "textBytes": 76352,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2602.12783v2[cs.IR]6May2026 ## SQuTR: A Robustness Benchmark for Spoken Query to Text Retrieval under Acoustic Noise Yuejie Li∗ Ke Yang∗ Yueying Hua∗ Huazhong University of Science and Technology Wuhan, China li_yuejie@alumni.hust.edu.cn The University of Hong Kong Hong Kong, China yangkeai@connect.hku.hk Soochow University Suzhou, China yyhua1224@outlook.com Berlin Chen∗ University of Science and Technology of China Hefei, China berlin@mail.ustc.edu.cn Jianhao Nie Wuhan University Wuhan, China 2017282110385@whu.edu.cn Yueping He Tsinghua University Beijing, China heyp21@mails.tsinghua.edu.cn Caixin Kang† The University of Tokyo Tokyo, Japan cxkang@iis.u-tokyo.ac.jp ### Abstract Spoken query retrieval is an important interaction mode in modern information retrieval. However, existing evaluation datasets are often limited to simple queries under constrained noise conditions, makin"
+    },
+    {
+      "slug": "1750_Thinking_with_Video_Video_Generation_as_a_Promising_Multimod",
+      "title": "Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm",
+      "category": "HDBSCAN Cluster: university, xiamen, models, figure",
+      "key": "FOLDER00067_ac95597a6878",
+      "sourceIndex": 66,
+      "textBytes": 100230,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2511.04570v2[cs.CV]7Apr2026 OpenMOSS [Figure 1] ## Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm Jingqi Tong2,4,5,*, Yurong Mou2,4,5,*, Hangcheng Li2,4,5,*, Mingzhe Li2,4,5,*, Yongzhuo Yang4,5,*, Ming Zhang4, Qiguang Chen7, Tianyi Liang2,5, Xiaomeng Hu6, Yining Zheng1,3,5, Xinchi Chen1,3,4,5,†, Jun Zhao4,†, Xuanjing Huang1,3,4, Xipeng Qiu1,2,3,4,5,† 1Institute of Trustworthy Embodied AI, Fudan University 2Shanghai Innovation Institute 3Shanghai Key Laboratory of Multimodal Embodied AI 4College of Computer Science and Artificial Intelligence, Fudan University 5OpenMOSS Team 6The Chinese University of Hong Kong 7Central South University #### Abstract The “Thinking with Text” and “Thinking with Images” paradigms significantly improve the reasoning abilities of large language models (LLMs) and vision-language models (VLMs). However, these paradigm"
+    },
+    {
+      "slug": "1751_Is_Chain-of-Thought_Reasoning_of_LLMs_a_Mirage_A_Data_Distri",
+      "title": "Is Chain-of-Thought Reasoning of LLMs a Mirage? A Data Distribution Lens",
+      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
+      "key": "FOLDER00068_7017db505186",
+      "sourceIndex": 67,
+      "textBytes": 107328,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] Data Mining and Machine Learning Lab # Is Chain-of-Thought Reasoning of LLMs a Mirage? A Data Distribution Lens ###### Chengshuai Zhao1, Zhen Tan1, Pingchuan Ma1, Dawei Li1, Bohan Jiang1, Yancheng Wang1, Yingzhen Yang1 and Huan Liu1 1Arizona State University, USA ## arXiv:2508.01191v6[cs.AI]8May2026 Chain-of-Thought (CoT) prompting has been shown to be effective in eliciting structured reasoning (i.e., CoT reasoning) from large language models (LLMs). Regardless of its popularity, recent studies expose its failures in some reasoning tasks, raising fundamental questions about the nature of CoT reasoning. In this work, we propose a data distribution lens to understand when and why CoT reasoning succeeds or fails. We hypothesize that CoT reasoning reflects a structured inductive bias learned from in-distribution data, enabling models to conditionally generate reasoning trajectori"
+    },
+    {
+      "slug": "1752_The_Landscape_of_Agentic_Reinforcement_Learning_for_LLMs_A_S",
+      "title": "The Landscape of Agentic Reinforcement Learning for LLMs: A Survey",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00069_243ca31a6792",
+      "sourceIndex": 68,
+      "textBytes": 388541,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2509.02547v5[cs.AI]17Apr2026 ## The Landscape of Agentic Reinforcement Learning for LLMs: A Survey Guibin Zhang3† Hejia Geng1† Xiaohang Yu8† Zhenfei Yin1∗ Zaibin Zhang9,1 Zelin Tan7,2 Heng Zhou7,2 Zhongzhi Li10 Xiangyuan Xue11,2 Yijiang Li13 Yifan Zhou12 Yang Chen2 Chen Zhang7 Yutao Fan2 Zihu Wang14 Songtao Huang6,2 Piedrahita-Velez, Francisco5 Yue Liao3 Hongru Wang11 Mengyue Yang15 Heng Ji4 Jun Wang6 Shuicheng Yan3 Philip Torr1 Lei Bai2∗ 1University of Oxford 2Shanghai AI Laboratory 3National University of Singapore 4University of Illinois Urbana-Champaign 5Brown University 6University College London 7University of Science and Technology of China 8Imperial College London 9Dalian University of Technology 10Chinese Academy of Sciences 11The Chinese University of Hong Kong 12University of Georgia 13University of California, San Diego 14University of California, Santa Barbara 15Univ"
+    },
+    {
+      "slug": "1753_Video-MME-v2_Towards_the_Next_Stage_in_Benchmarks_for_Compre",
+      "title": "Video-MME-v2: Towards the Next Stage in Benchmarks for Comprehensive Video Understanding",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00070_eb99a6598795",
+      "sourceIndex": 69,
+      "textBytes": 72929,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2604.05015v1[cs.CV]6Apr2026 [Figure 1] Technical Report ## Video-MME-v2: Towards the Next Stage in Benchmarks for Comprehensive Video Understanding Video-MME Team∗ https://video-mme-v2.netlify.app/ #### Abstract With the rapid advancement of video understanding, existing benchmarks are becoming increasingly saturated, exposing a critical discrepancy between inflated leaderboard scores and real-world model capabilities. To address this widening gap, we introduce Video-MME-v2, a comprehensive benchmark designed to rigorously evaluate the robustness and faithfulness of video understanding. To systematically evaluate model capabilities, we design a progressive tri-level hierarchy that incrementally increases the complexity of video comprehension, ranging from multi-point visual information aggregation, to temporal dynamics modeling, and ultimately to complex multimodal reasoning. Bes"
     }
   ]
 }

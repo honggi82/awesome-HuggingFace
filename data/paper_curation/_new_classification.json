@@ -3,17 +3,17 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 20
+      "count": 24
     },
     {
-      "id": "hdbscan-cluster-reasoning-reinforcement-learning-models",
-      "name": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
-      "count": 7
-    },
-    {
-      "id": "hdbscan-cluster-university-models-large-language",
-      "name": "HDBSCAN Cluster: university, models, large, language",
+      "id": "hdbscan-cluster-reasoning-reinforcement-policy-learning",
+      "name": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "count": 6
+    },
+    {
+      "id": "hdbscan-cluster-data-language-reasoning-figure",
+      "name": "HDBSCAN Cluster: data, language, reasoning, figure",
+      "count": 5
     },
     {
       "id": "hdbscan-cluster-zhang1-arxiv-li1-chen1",
@@ -21,13 +21,23 @@
       "count": 4
     },
     {
+      "id": "hdbscan-cluster-university-code-engineering-https",
+      "name": "HDBSCAN Cluster: university, code, engineering, https",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-deepseek-v3-efficient-language-sharing",
+      "name": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-qwen-models-report-qwen3",
       "name": "HDBSCAN Cluster: qwen, models, report, qwen3",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-figure-language-opus-data",
-      "name": "HDBSCAN Cluster: figure, language, opus, data",
+      "id": "hdbscan-cluster-figure-video-reasoning-university",
+      "name": "HDBSCAN Cluster: figure, video, reasoning, university",
       "count": 3
     },
     {
@@ -36,9 +46,9 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-sharing-efficient-post-training-language",
-      "name": "HDBSCAN Cluster: sharing, efficient, post-training, language",
-      "count": 2
+      "id": "hdbscan-cluster-agents-agent-learning-weak",
+      "name": "HDBSCAN Cluster: agents, agent, learning, weak",
+      "count": 3
     },
     {
       "id": "hdbscan-cluster-language-large-llm-memory",
@@ -51,8 +61,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-figure-video-reasoning-university",
-      "name": "HDBSCAN Cluster: figure, video, reasoning, university",
+      "id": "hdbscan-cluster-glm-4-green-vla-model-multimodal",
+      "name": "HDBSCAN Cluster: glm-4, green-vla, model, multimodal",
       "count": 2
     },
     {
@@ -66,15 +76,15 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-agent-experience-yang1-which",
-      "name": "HDBSCAN Cluster: agent, experience, yang1, which",
+      "id": "hdbscan-cluster-university-xiamen-models-figure",
+      "name": "HDBSCAN Cluster: university, xiamen, models, figure",
       "count": 2
     }
   ],
   "assignments": [
     {
       "slug": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
-      "category": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "category": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -86,7 +96,7 @@
     },
     {
       "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -110,7 +120,7 @@
     },
     {
       "slug": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -122,7 +132,7 @@
     },
     {
       "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -158,7 +168,7 @@
     },
     {
       "slug": "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini",
-      "category": "HDBSCAN Cluster: university, models, large, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -176,13 +186,13 @@
     },
     {
       "slug": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "322_ASE_A_Repository-Level_Benchmark_for_Evaluating_Security_in",
-      "category": "HDBSCAN Cluster: university, models, large, language",
+      "category": "HDBSCAN Cluster: university, code, engineering, https",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -194,7 +204,7 @@
     },
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
-      "category": "HDBSCAN Cluster: figure, language, opus, data",
+      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -212,7 +222,7 @@
     },
     {
       "slug": "327_Green-VLA_Staged_Vision-Language-Action_Model_for_Generalist",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: glm-4, green-vla, model, multimodal",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -224,13 +234,13 @@
     },
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
-      "category": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "category": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "330_Group_Sequence_Policy_Optimization",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -242,13 +252,13 @@
     },
     {
       "slug": "332_DINOv3",
-      "category": "HDBSCAN Cluster: figure, language, opus, data",
+      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios",
-      "category": "HDBSCAN Cluster: university, models, large, language",
+      "category": "HDBSCAN Cluster: university, code, engineering, https",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -272,19 +282,19 @@
     },
     {
       "slug": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, video, reasoning, university",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: agents, agent, learning, weak",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -332,19 +342,19 @@
     },
     {
       "slug": "1728_Reinforcement_Pre-Training",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "1729_Agent_Learning_via_Early_Experience",
-      "category": "HDBSCAN Cluster: agent, experience, yang1, which",
+      "category": "HDBSCAN Cluster: agents, agent, learning, weak",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "1730_A_Survey_of_Context_Engineering_for_Large_Language_Models",
-      "category": "HDBSCAN Cluster: university, models, large, language",
+      "category": "HDBSCAN Cluster: university, code, engineering, https",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -356,13 +366,13 @@
     },
     {
       "slug": "1732_ClawBench_Can_AI_Agents_Complete_Everyday_Online_Tasks",
-      "category": "HDBSCAN Cluster: university, models, large, language",
+      "category": "HDBSCAN Cluster: university, code, engineering, https",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -386,7 +396,7 @@
     },
     {
       "slug": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
-      "category": "HDBSCAN Cluster: university, models, large, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -398,13 +408,13 @@
     },
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: glm-4, green-vla, model, multimodal",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
-      "category": "HDBSCAN Cluster: figure, language, opus, data",
+      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -416,7 +426,7 @@
     },
     {
       "slug": "1741_SkillOpt_Executive_Strategy_for_Self-Evolving_Agent_Skills",
-      "category": "HDBSCAN Cluster: agent, experience, yang1, which",
+      "category": "HDBSCAN Cluster: agents, agent, learning, weak",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -428,6 +438,66 @@
     },
     {
       "slug": "1743_WildDet3D_Scaling_Promptable_3D_Detection_in_the_Wild",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "1745_SocialOmni_Benchmarking_Audio-Visual_Social_Interactivity_in",
+      "category": "HDBSCAN Cluster: university, xiamen, models, figure",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "1746_Crafter_A_Multi-Agent_Harness_for_Editable_Scientific_Figure",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "1749_SQuTR_A_Robustness_Benchmark_for_Spoken_Query_to_Text_Retrie",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "1750_Thinking_with_Video_Video_Generation_as_a_Promising_Multimod",
+      "category": "HDBSCAN Cluster: university, xiamen, models, figure",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "1751_Is_Chain-of-Thought_Reasoning_of_LLMs_a_Mirage_A_Data_Distri",
+      "category": "HDBSCAN Cluster: data, language, reasoning, figure",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "1752_The_Landscape_of_Agentic_Reinforcement_Learning_for_LLMs_A_S",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "1753_Video-MME-v2_Towards_the_Next_Stage_in_Benchmarks_for_Compre",
       "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"

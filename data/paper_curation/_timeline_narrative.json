@@ -5,17 +5,17 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 20
+      "count": 24
     },
     {
-      "id": "hdbscan-cluster-reasoning-reinforcement-learning-models",
-      "name": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
-      "count": 7
-    },
-    {
-      "id": "hdbscan-cluster-university-models-large-language",
-      "name": "HDBSCAN Cluster: university, models, large, language",
+      "id": "hdbscan-cluster-reasoning-reinforcement-policy-learning",
+      "name": "HDBSCAN Cluster: reasoning, reinforcement, policy, learning",
       "count": 6
+    },
+    {
+      "id": "hdbscan-cluster-data-language-reasoning-figure",
+      "name": "HDBSCAN Cluster: data, language, reasoning, figure",
+      "count": 5
     },
     {
       "id": "hdbscan-cluster-zhang1-arxiv-li1-chen1",
@@ -23,13 +23,23 @@
       "count": 4
     },
     {
+      "id": "hdbscan-cluster-university-code-engineering-https",
+      "name": "HDBSCAN Cluster: university, code, engineering, https",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-deepseek-v3-efficient-language-sharing",
+      "name": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-qwen-models-report-qwen3",
       "name": "HDBSCAN Cluster: qwen, models, report, qwen3",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-figure-language-opus-data",
-      "name": "HDBSCAN Cluster: figure, language, opus, data",
+      "id": "hdbscan-cluster-figure-video-reasoning-university",
+      "name": "HDBSCAN Cluster: figure, video, reasoning, university",
       "count": 3
     },
     {
@@ -38,9 +48,9 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-sharing-efficient-post-training-language",
-      "name": "HDBSCAN Cluster: sharing, efficient, post-training, language",
-      "count": 2
+      "id": "hdbscan-cluster-agents-agent-learning-weak",
+      "name": "HDBSCAN Cluster: agents, agent, learning, weak",
+      "count": 3
     },
     {
       "id": "hdbscan-cluster-language-large-llm-memory",
@@ -53,8 +63,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-figure-video-reasoning-university",
-      "name": "HDBSCAN Cluster: figure, video, reasoning, university",
+      "id": "hdbscan-cluster-glm-4-green-vla-model-multimodal",
+      "name": "HDBSCAN Cluster: glm-4, green-vla, model, multimodal",
       "count": 2
     },
     {
@@ -68,8 +78,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-agent-experience-yang1-which",
-      "name": "HDBSCAN Cluster: agent, experience, yang1, which",
+      "id": "hdbscan-cluster-university-xiamen-models-figure",
+      "name": "HDBSCAN Cluster: university, xiamen, models, figure",
       "count": 2
     }
   ]
