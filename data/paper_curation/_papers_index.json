@@ -5,7 +5,7 @@
     {
       "slug": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
       "title": "Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing",
-      "category": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00001_af26518a47dc",
       "sourceIndex": null,
       "textBytes": 44954,
@@ -15,7 +15,7 @@
     {
       "slug": "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
       "title": "The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: language, large, llm, memory",
       "key": "FOLDER00002_45fd74a4c976",
       "sourceIndex": null,
       "textBytes": 24724,
@@ -25,7 +25,7 @@
     {
       "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
       "title": "GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
       "key": "FOLDER00003_07f36ae7acd9",
       "sourceIndex": null,
       "textBytes": 76254,
@@ -45,7 +45,7 @@
     {
       "slug": "027_Less_is_More_Recursive_Reasoning_with_Tiny_Networks",
       "title": "Less is More: Recursive Reasoning with Tiny Networks",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: attention, model, lightning, models",
       "key": "FOLDER00005_2c9133cfdb16",
       "sourceIndex": null,
       "textBytes": 48364,
@@ -55,7 +55,7 @@
     {
       "slug": "076_A_Very_Big_Video_Reasoning_Suite",
       "title": "A Very Big Video Reasoning Suite",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
       "key": "FOLDER00006_dd10def1d36c",
       "sourceIndex": 5,
       "textBytes": 144021,
@@ -65,7 +65,7 @@
     {
       "slug": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
       "title": "Adam's Law: Textual Frequency Law on Large Language Models",
-      "category": "HDBSCAN Cluster: reasoning, data, textual, llms",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00007_f1204ba044c3",
       "sourceIndex": 6,
       "textBytes": 101929,
@@ -85,7 +85,7 @@
     {
       "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
       "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
       "key": "FOLDER00009_e247d7b4176f",
       "sourceIndex": 8,
       "textBytes": 238083,
@@ -105,7 +105,7 @@
     {
       "slug": "081_AI_Can_Learn_Scientific_Taste",
       "title": "AI Can Learn Scientific Taste",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
       "key": "FOLDER00011_58c904a08eda",
       "sourceIndex": 10,
       "textBytes": 158305,
@@ -125,7 +125,7 @@
     {
       "slug": "083_Qwen25_Technical_Report",
       "title": "Qwen2.5 Technical Report",
-      "category": "HDBSCAN Cluster: report, https, technical, qwen",
+      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
       "key": "FOLDER00013_a400d0a3210e",
       "sourceIndex": 12,
       "textBytes": 96661,
@@ -145,7 +145,7 @@
     {
       "slug": "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini",
       "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
-      "category": "HDBSCAN Cluster: data-centric, shanghai, unified, framework",
+      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
       "key": "FOLDER00015_27487e16e6cf",
       "sourceIndex": 14,
       "textBytes": 72155,
@@ -175,7 +175,7 @@
     {
       "slug": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
       "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
-      "category": "HDBSCAN Cluster: reinforcement, reasoning, rewards, figure",
+      "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
       "key": "FOLDER00018_b37c28309d81",
       "sourceIndex": 17,
       "textBytes": 99957,
@@ -185,7 +185,7 @@
     {
       "slug": "322_ASE_A_Repository-Level_Benchmark_for_Evaluating_Security_in",
       "title": "A.S.E: A Repository-Level Benchmark for Evaluating Security in AI-Generated Code",
-      "category": "HDBSCAN Cluster: university, code, https, figure",
+      "category": "HDBSCAN Cluster: university, figure, code, https",
       "key": "FOLDER00019_f578c07c2033",
       "sourceIndex": 18,
       "textBytes": 84262,
@@ -195,7 +195,7 @@
     {
       "slug": "323_Qwen3_Technical_Report",
       "title": "Qwen3 Technical Report",
-      "category": "HDBSCAN Cluster: report, https, technical, qwen",
+      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
       "key": "FOLDER00020_81a86ff7c3c8",
       "sourceIndex": 19,
       "textBytes": 118269,
@@ -205,7 +205,7 @@
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
-      "category": "HDBSCAN Cluster: figure, language, loop, opus",
+      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
       "key": "FOLDER00021_8502bdaf4994",
       "sourceIndex": 20,
       "textBytes": 218340,
@@ -225,7 +225,7 @@
     {
       "slug": "326_Rethinking_Generalization_in_Reasoning_SFT_A_Conditional_Ana",
       "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
-      "category": "HDBSCAN Cluster: reasoning, sft, edu, zero",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00023_6978f9941fd7",
       "sourceIndex": 22,
       "textBytes": 161148,
@@ -255,7 +255,7 @@
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
-      "category": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "category": "HDBSCAN Cluster: transformer, attention, hrm-text, pretraining",
       "key": "FOLDER00026_e94287efc152",
       "sourceIndex": 25,
       "textBytes": 79369,
@@ -275,7 +275,7 @@
     {
       "slug": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
       "title": "InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models",
-      "category": "HDBSCAN Cluster: zhang1, advanced, models, li1",
+      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
       "key": "FOLDER00028_e5264c4b16b0",
       "sourceIndex": 27,
       "textBytes": 122653,
@@ -285,7 +285,7 @@
     {
       "slug": "332_DINOv3",
       "title": "DINOv3",
-      "category": "HDBSCAN Cluster: figure, language, loop, opus",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00029_a3328f5ae17b",
       "sourceIndex": 28,
       "textBytes": 237604,
@@ -295,7 +295,7 @@
     {
       "slug": "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios",
       "title": "InCoder-32B: Code Foundation Model for Industrial Scenarios",
-      "category": "HDBSCAN Cluster: university, code, https, figure",
+      "category": "HDBSCAN Cluster: university, figure, code, https",
       "key": "FOLDER00030_44a8848066c5",
       "sourceIndex": 29,
       "textBytes": 161304,
@@ -305,7 +305,7 @@
     {
       "slug": "334_MiniMax-01_Scaling_Foundation_Models_with_Lightning_Attentio",
       "title": "MiniMax-01: Scaling Foundation Models with Lightning Attention",
-      "category": "HDBSCAN Cluster: lightning, attention, scaling, model",
+      "category": "HDBSCAN Cluster: attention, model, lightning, models",
       "key": "FOLDER00031_fa942766dee6",
       "sourceIndex": 30,
       "textBytes": 287301,
@@ -315,7 +315,7 @@
     {
       "slug": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
       "title": "Advances and Challenges in Foundation Agents: From Brain-Inspired Intelligence to Evolutionary, Collaborative, and Safe Systems",
-      "category": "HDBSCAN Cluster: zhang1, chen1, advances, challenges",
+      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
       "key": "FOLDER00032_042b1763276f",
       "sourceIndex": 31,
       "textBytes": 1411183,
@@ -345,7 +345,7 @@
     {
       "slug": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
       "title": "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
       "key": "FOLDER00035_fc3525c2b456",
       "sourceIndex": 34,
       "textBytes": 87188,
@@ -375,7 +375,7 @@
     {
       "slug": "341_MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightn",
       "title": "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention",
-      "category": "HDBSCAN Cluster: lightning, attention, scaling, model",
+      "category": "HDBSCAN Cluster: attention, model, lightning, models",
       "key": "FOLDER00038_c5daea06a99b",
       "sourceIndex": 37,
       "textBytes": 75471,
@@ -385,7 +385,7 @@
     {
       "slug": "342_Qwen-Image_Technical_Report",
       "title": "Qwen-Image Technical Report",
-      "category": "HDBSCAN Cluster: generation, image, model, figure",
+      "category": "HDBSCAN Cluster: generation, figure, image, model",
       "key": "FOLDER00039_67f3a3187f0a",
       "sourceIndex": 38,
       "textBytes": 141226,
@@ -435,7 +435,7 @@
     {
       "slug": "1728_Reinforcement_Pre-Training",
       "title": "Reinforcement Pre-Training",
-      "category": "HDBSCAN Cluster: reinforcement, reasoning, rewards, figure",
+      "category": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
       "key": "FOLDER00044_3dcd071cdafe",
       "sourceIndex": 43,
       "textBytes": 48294,
@@ -455,7 +455,7 @@
     {
       "slug": "1730_A_Survey_of_Context_Engineering_for_Large_Language_Models",
       "title": "A Survey of Context Engineering for Large Language Models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, models, xiamen, large",
       "key": "FOLDER00046_3f2b33464bcb",
       "sourceIndex": 45,
       "textBytes": 551644,
@@ -465,7 +465,7 @@
     {
       "slug": "1731_Phi-3_Technical_Report_A_Highly_Capable_Language_Model_Local",
       "title": "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone",
-      "category": "HDBSCAN Cluster: report, https, technical, qwen",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00047_6bf122ba377f",
       "sourceIndex": 46,
       "textBytes": 59469,
@@ -475,7 +475,7 @@
     {
       "slug": "1732_ClawBench_Can_AI_Agents_Complete_Everyday_Online_Tasks",
       "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
-      "category": "HDBSCAN Cluster: university, code, https, figure",
+      "category": "HDBSCAN Cluster: university, figure, code, https",
       "key": "FOLDER00048_7d8b86a69b60",
       "sourceIndex": 47,
       "textBytes": 44311,
@@ -485,7 +485,7 @@
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
       "title": "DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models",
-      "category": "HDBSCAN Cluster: glm-4, reasoning, models, multimodal",
+      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "key": "FOLDER00049_07cf0d16c82c",
       "sourceIndex": 48,
       "textBytes": 68593,
@@ -525,7 +525,7 @@
     {
       "slug": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "title": "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, figure, code, https",
       "key": "FOLDER00053_b501ac6425a5",
       "sourceIndex": 52,
       "textBytes": 99132,
@@ -535,7 +535,7 @@
     {
       "slug": "1737_LLM_in_a_flash_Efficient_Large_Language_Model_Inference_with",
       "title": "LLM in a flash: Efficient Large Language Model Inference with Limited Memory",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: language, large, llm, memory",
       "key": "FOLDER00054_1cf19c9e4b12",
       "sourceIndex": 53,
       "textBytes": 91659,
@@ -545,7 +545,7 @@
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "title": "GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning",
-      "category": "HDBSCAN Cluster: glm-4, reasoning, models, multimodal",
+      "category": "HDBSCAN Cluster: multimodal, glm-4, understanding, generation",
       "key": "FOLDER00055_9405fc3ded78",
       "sourceIndex": 54,
       "textBytes": 145376,
@@ -555,7 +555,7 @@
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "title": "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model",
-      "category": "HDBSCAN Cluster: figure, language, loop, opus",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00056_e1a299738b86",
       "sourceIndex": 55,
       "textBytes": 87381,
@@ -565,7 +565,7 @@
     {
       "slug": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
       "title": "Z-Image: An Efficient Image Generation Foundation Model with Single-Stream Diffusion Transformer",
-      "category": "HDBSCAN Cluster: generation, image, model, figure",
+      "category": "HDBSCAN Cluster: generation, figure, image, model",
       "key": "FOLDER00057_85f52b7d18cd",
       "sourceIndex": 56,
       "textBytes": 233804,
@@ -605,7 +605,7 @@
     {
       "slug": "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive",
       "title": "Tstars-Tryon 1.0: Robust and Realistic Virtual Try-On for Diverse Fashion Items",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: generation, figure, image, model",
       "key": "FOLDER00061_1125d5a3a04d",
       "sourceIndex": 60,
       "textBytes": 79230,
@@ -615,7 +615,7 @@
     {
       "slug": "1745_SocialOmni_Benchmarking_Audio-Visual_Social_Interactivity_in",
       "title": "SocialOmni: Benchmarking Audio-Visual Social Interactivity in Omni Models",
-      "category": "HDBSCAN Cluster: university, xiamen, models, figure",
+      "category": "HDBSCAN Cluster: university, models, xiamen, large",
       "key": "FOLDER00062_02f4f420adf3",
       "sourceIndex": 61,
       "textBytes": 85252,
@@ -645,7 +645,7 @@
     {
       "slug": "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation",
       "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
-      "category": "HDBSCAN Cluster: model, multimodal, language, understanding",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00065_f953c8971cba",
       "sourceIndex": 64,
       "textBytes": 94565,
@@ -665,7 +665,7 @@
     {
       "slug": "1750_Thinking_with_Video_Video_Generation_as_a_Promising_Multimod",
       "title": "Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm",
-      "category": "HDBSCAN Cluster: university, xiamen, models, figure",
+      "category": "HDBSCAN Cluster: university, models, xiamen, large",
       "key": "FOLDER00067_ac95597a6878",
       "sourceIndex": 66,
       "textBytes": 100230,
@@ -675,7 +675,7 @@
     {
       "slug": "1751_Is_Chain-of-Thought_Reasoning_of_LLMs_a_Mirage_A_Data_Distri",
       "title": "Is Chain-of-Thought Reasoning of LLMs a Mirage? A Data Distribution Lens",
-      "category": "HDBSCAN Cluster: reasoning, data, textual, llms",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00068_7017db505186",
       "sourceIndex": 67,
       "textBytes": 107328,
@@ -685,7 +685,7 @@
     {
       "slug": "1752_The_Landscape_of_Agentic_Reinforcement_Learning_for_LLMs_A_S",
       "title": "The Landscape of Agentic Reinforcement Learning for LLMs: A Survey",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
       "key": "FOLDER00069_243ca31a6792",
       "sourceIndex": 68,
       "textBytes": 388541,
@@ -705,7 +705,7 @@
     {
       "slug": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
       "title": "Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation",
-      "category": "HDBSCAN Cluster: generation, image, model, figure",
+      "category": "HDBSCAN Cluster: generation, figure, image, model",
       "key": "FOLDER00071_8339c62b1c6b",
       "sourceIndex": 70,
       "textBytes": 189067,
@@ -745,7 +745,7 @@
     {
       "slug": "1758_InCoder-32B-Thinking_Industrial_Code_World_Model_for_Thinkin",
       "title": "InCoder-32B-Thinking: Industrial Code World Model for Thinking",
-      "category": "HDBSCAN Cluster: university, code, https, figure",
+      "category": "HDBSCAN Cluster: university, figure, code, https",
       "key": "FOLDER00075_00c9387798d3",
       "sourceIndex": 74,
       "textBytes": 79388,
@@ -755,7 +755,7 @@
     {
       "slug": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
       "title": "Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond",
-      "category": "HDBSCAN Cluster: zhang1, chen1, advances, challenges",
+      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
       "key": "FOLDER00076_8f66fe1850ac",
       "sourceIndex": 75,
       "textBytes": 384726,
@@ -765,7 +765,7 @@
     {
       "slug": "1760_Scaling_Latent_Reasoning_via_Looped_Language_Models",
       "title": "Scaling Latent Reasoning via Looped Language Models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
       "key": "FOLDER00077_e466b12b1813",
       "sourceIndex": 76,
       "textBytes": 185444,
@@ -785,7 +785,7 @@
     {
       "slug": "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio",
       "title": "DataFlow: An LLM-Driven Framework for Unified Data Preparation and Workflow Automation in the Era of Data-Centric AI",
-      "category": "HDBSCAN Cluster: data-centric, shanghai, unified, framework",
+      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
       "key": "FOLDER00079_064bbcad8b7d",
       "sourceIndex": 78,
       "textBytes": 134657,
@@ -815,7 +815,7 @@
     {
       "slug": "1700_Qwen25-VL_Technical_Report",
       "title": "Qwen2.5-VL Technical Report",
-      "category": "HDBSCAN Cluster: generation, image, model, figure",
+      "category": "HDBSCAN Cluster: generation, figure, image, model",
       "key": "FOLDER00082_81c67876894a",
       "sourceIndex": 81,
       "textBytes": 92812,
@@ -825,7 +825,7 @@
     {
       "slug": "1887_Code_as_Agent_Harness",
       "title": "Code as Agent Harness",
-      "category": "HDBSCAN Cluster: figure, li1, large, language",
+      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
       "key": "FOLDER00083_c2eefb4863ea",
       "sourceIndex": 82,
       "textBytes": 370210,
@@ -845,7 +845,7 @@
     {
       "slug": "1889_InternVL35_Advancing_Open-Source_Multimodal_Models_in_Versat",
       "title": "InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
       "key": "FOLDER00085_d15d9f25155c",
       "sourceIndex": 84,
       "textBytes": 152420,
@@ -875,7 +875,7 @@
     {
       "slug": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
       "title": "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models",
-      "category": "HDBSCAN Cluster: glm-4, reasoning, models, multimodal",
+      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "key": "FOLDER00088_ec7f05bf1eae",
       "sourceIndex": 87,
       "textBytes": 87726,
@@ -895,7 +895,7 @@
     {
       "slug": "1935_Watching_Reasoning_and_Searching_A_Video_Deep_Research_Bench",
       "title": "Watching, Reasoning, and Searching: A Video Deep Research Benchmark on Open Web for Agentic Video Reasoning",
-      "category": "HDBSCAN Cluster: university, code, https, figure",
+      "category": "HDBSCAN Cluster: university, figure, code, https",
       "key": "FOLDER00090_32240190a210",
       "sourceIndex": 89,
       "textBytes": 57994,
@@ -915,7 +915,7 @@
     {
       "slug": "1978_Drivel-ology_Challenging_LLMs_with_Interpreting_Nonsense_wit",
       "title": "Drivel-ology: Challenging LLMs with Interpreting Nonsense with Depth",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: language, models, nonsense, hallucinations",
       "key": "FOLDER00092_00d472bdbcea",
       "sourceIndex": 91,
       "textBytes": 84540,
@@ -935,7 +935,7 @@
     {
       "slug": "1979_Agentic_Reasoning_for_Large_Language_Models",
       "title": "Agentic Reasoning for Large Language Models",
-      "category": "HDBSCAN Cluster: figure, li1, large, language",
+      "category": "HDBSCAN Cluster: figure, university, li1, reasoning",
       "key": "FOLDER00094_e659672f18a1",
       "sourceIndex": 93,
       "textBytes": 467076,
@@ -965,7 +965,7 @@
     {
       "slug": "2023_OpenWorldLib_A_Unified_Codebase_and_Definition_of_Advanced_W",
       "title": "OpenWorldLib: A Unified Codebase and Definition of Advanced World Models",
-      "category": "HDBSCAN Cluster: zhang1, advanced, models, li1",
+      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
       "key": "FOLDER00097_06d313401545",
       "sourceIndex": 96,
       "textBytes": 91225,
@@ -995,7 +995,7 @@
     {
       "slug": "2026_DelTA_Discriminative_Token_Credit_Assignment_for_Reinforceme",
       "title": "DelTA: Discriminative Token Credit Assignment for Reinforcement Learning from Verifiable Rewards",
-      "category": "HDBSCAN Cluster: reinforcement, reasoning, rewards, figure",
+      "category": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
       "key": "FOLDER00100_474146b29ef4",
       "sourceIndex": 99,
       "textBytes": 88739,
@@ -1015,7 +1015,7 @@
     {
       "slug": "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti",
       "title": "Step 3.5 Flash: Open Frontier-Level Intelligence with 11B Active Parameters",
-      "category": "HDBSCAN Cluster: reinforcement, reasoning, rewards, figure",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00102_2c700711e69c",
       "sourceIndex": 101,
       "textBytes": 205457,
@@ -1035,7 +1035,7 @@
     {
       "slug": "2076_BabyVision_Visual_Reasoning_Beyond_Language",
       "title": "BabyVision: Visual Reasoning Beyond Language",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
       "key": "FOLDER00104_e4ddbcbed6ff",
       "sourceIndex": 103,
       "textBytes": 75250,
@@ -1065,7 +1065,7 @@
     {
       "slug": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
       "title": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling",
-      "category": "HDBSCAN Cluster: figure, language, loop, opus",
+      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
       "key": "FOLDER00107_4c4b048fabae",
       "sourceIndex": 106,
       "textBytes": 57470,
@@ -1075,7 +1075,7 @@
     {
       "slug": "2121_STEP3-VL-10B_Technical_Report",
       "title": "STEP3-VL-10B Technical Report",
-      "category": "HDBSCAN Cluster: report, https, technical, qwen",
+      "category": "HDBSCAN Cluster: step3-vl-10b, https, multimodal, technical",
       "key": "FOLDER00108_2bff0a0eb7a5",
       "sourceIndex": 107,
       "textBytes": 126984,
@@ -1085,7 +1085,7 @@
     {
       "slug": "2122_Differential_Transformer",
       "title": "Differential Transformer",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: transformer, attention, hrm-text, pretraining",
       "key": "FOLDER00109_cb0fec7db820",
       "sourceIndex": 108,
       "textBytes": 71150,
@@ -1095,7 +1095,7 @@
     {
       "slug": "2123_Why_Language_Models_Hallucinate",
       "title": "Why Language Models Hallucinate",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: language, models, nonsense, hallucinations",
       "key": "FOLDER00110_5b188716596b",
       "sourceIndex": 109,
       "textBytes": 104940,
@@ -1105,7 +1105,7 @@
     {
       "slug": "2163_A_Survey_of_Reinforcement_Learning_for_Large_Reasoning_Model",
       "title": "A Survey of Reinforcement Learning for Large Reasoning Models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
       "key": "FOLDER00111_cd5a477d2124",
       "sourceIndex": 110,
       "textBytes": 424729,
@@ -1145,7 +1145,7 @@
     {
       "slug": "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
       "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
-      "category": "HDBSCAN Cluster: glm-4, reasoning, models, multimodal",
+      "category": "HDBSCAN Cluster: multimodal, glm-4, understanding, generation",
       "key": "FOLDER00115_55c68b7aba0f",
       "sourceIndex": 114,
       "textBytes": 156278,
@@ -1155,7 +1155,7 @@
     {
       "slug": "2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data",
       "title": "Absolute Zero: Reinforced Self-play Reasoning with Zero Data",
-      "category": "HDBSCAN Cluster: reasoning, sft, edu, zero",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00116_b33701a84519",
       "sourceIndex": 115,
       "textBytes": 207768,
@@ -1205,7 +1205,7 @@
     {
       "slug": "2255_AutoResearchClaw_Self-Reinforcing_Autonomous_Research_with_H",
       "title": "AutoResearchClaw: Self-Reinforcing Autonomous Research with Human-AI Collaboration",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, models, li1, zhang1",
       "key": "FOLDER00121_00ec5d98ca85",
       "sourceIndex": 120,
       "textBytes": 83910,
@@ -1215,7 +1215,7 @@
     {
       "slug": "2256_DocLLM_A_layout-aware_generative_language_model_for_multimod",
       "title": "DocLLM: A layout-aware generative language model for multimodal document understanding",
-      "category": "HDBSCAN Cluster: model, multimodal, language, understanding",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00122_db2ccb35564a",
       "sourceIndex": 121,
       "textBytes": 65218,
@@ -1235,7 +1235,7 @@
     {
       "slug": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
       "title": "Helios: Real Real-Time Long Video Generation Model",
-      "category": "HDBSCAN Cluster: generation, image, model, figure",
+      "category": "HDBSCAN Cluster: generation, figure, image, model",
       "key": "FOLDER00124_9ded09dfbc5b",
       "sourceIndex": 123,
       "textBytes": 142166,
@@ -1251,6 +1251,56 @@
       "textBytes": 81089,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2602.07085v3[q-fin.ST]18May2026 [Figure 1] 2026-05-19 [Figure 2] ## QuantaAlpha: An Evolutionary Framework for LLM-Driven Alpha Mining Jun Han1*, Shuo Zhang2*, Wei Li1*, Yifan Dong1, Tu Hu2, Yumo Zhu1, Xiaomin Yu2, Xin Guo1, Zhaowei Liu1, Kunyi Wang2, Jingping Liu3, Tianyi Jiang4, Ruichuan An4, Sen Hu2,4, Zhi Yang1†, Ronghao Chen2,4†, Huacan Wang2† 1SUFE, 2QuantaAlpha, 3SYSU, 4PKU *These authors contributed equally to this work. †Correspondence: yangzhi_sufe@outlook.com, chenronghao@alumni.pku.edu.cn, wanghuacan17@mails.ucas.ac.cn https://github.com/QuantaAlpha/QuantaAlpha ### Abstract Financial markets are noisy and non-stationary, making alpha mining highly sensitive to backtest noise and regime shifts. While recent agentic frameworks improve automation, they often lack controllable multi-round search and reliable reuse of validated experience. To address these challenges, we p"
+    },
+    {
+      "slug": "2306_Attention_Residuals",
+      "title": "Attention Residuals",
+      "category": "HDBSCAN Cluster: attention, model, lightning, models",
+      "key": "FOLDER00126_5cfd8b110a07",
+      "sourceIndex": 125,
+      "textBytes": 76619,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.15031v1[cs.CL]16Mar2026 ## ATTENTION RESIDUALS TECHNICAL REPORT OF ATTENTION RESIDUALS #### Kimi Team https://github.com/MoonshotAI/Attention-Residuals ### ABSTRACT Residual connections [12] with PreNorm [60] are standard in modern LLMs, yet they accumulate all layer outputs with fixed unit weights. This uniform aggregation causes uncontrolled hidden-state growth with depth, progressively diluting each layer’s contribution [27]. We propose Attention Residuals (AttnRes), which replaces this fixed accumulation with softmax attention over preceding layer outputs, allowing each layer to selectively aggregate earlier representations with learned, inputdependent weights. To address the memory and communication overhead of attending over all preceding layer outputs for large-scale model training, we introduce Block AttnRes, which partitions layers into blocks and attends over block"
+    },
+    {
+      "slug": "2307_The_Stochastic_Parrot_on_LLMs_Shoulder_A_Summative_Assessmen",
+      "title": "The Stochastic Parrot on LLM's Shoulder: A Summative Assessment of Physical Concept Understanding",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00127_f2922877a693",
+      "sourceIndex": 126,
+      "textBytes": 68709,
+      "figuresExtracted": 2,
+      "excerpt": "# arXiv:2502.08946v1[cs.CL]13Feb2025 ## The Stochastic Parrot on LLM’s Shoulder: A Summative Assessment of Physical Concept Understanding Mo Yu1* Lemao Liu1* Junjie Wu2* Tsz Ting Chung2* Shunchi Zhang3* Jiangnan Li1 Dit-Yan Yeung2 Jie Zhou1 1WeChat AI, Tencent 2HKUST 3JHU moyumyu@global.tencent.com redmondliu@tencent.com {junjie.wu,ttchungac}@connect.ust.hk szhan256@cs.jhu.edu https://physico-benchmark.github.io ### Abstract In a systematic way, we investigate a widely asked question: Do LLMs really understand what they say?, which relates to the more familiar term Stochastic Parrot. To this end, we propose a summative assessment over a carefully designed physical concept understanding task, PHYSICO. Our task alleviates the memorization issue via the usage of grid-format inputs that abstractly describe physical phenomena. The grids represents varying levels of understanding, from the cor"
+    },
+    {
+      "slug": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
+      "title": "LlamaFactory: Unified Efficient Fine-Tuning of 100+ Language Models",
+      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "key": "FOLDER00128_088ef61f71e2",
+      "sourceIndex": 127,
+      "textBytes": 58891,
+      "figuresExtracted": 1,
+      "excerpt": "# arXiv:2403.13372v4[cs.CL]27Jun2024 ## LLAMAFACTORY: Unified Efficient Fine-Tuning of 100+ Language Models Yaowei Zheng1, Richong Zhang1*, Junhao Zhang1, Yanhan Ye1, Zheyan Luo1, Zhangchi Feng1, Yongqiang Ma2 1School of Computer Science and Engineering, Beihang University, China 2School of Software and Microelectronics, Peking University, China {hiyouga,zhang.jh,yeyanhan,akamya,zcmuller}@buaa.edu.cn, zhangrc@act.buaa.edu.cn, codingma@pku.edu.cn Demonstration video: https://youtu.be/W29FgeZEpus ### Abstract Efficient fine-tuning is vital for adapting large language models (LLMs) to downstream tasks. However, it requires non-trivial efforts to implement these methods on different models. We present LLAMAFACTORY, a unified framework that integrates a suite of cutting-edge efficient training methods. It provides a solution for flexibly customizing the fine-tuning of 100+ LLMs without the ne"
+    },
+    {
+      "slug": "2309_Kwai_Keye-VL-20_Technical_Report",
+      "title": "Kwai Keye-VL-2.0 Technical Report",
+      "category": "HDBSCAN Cluster: step3-vl-10b, https, multimodal, technical",
+      "key": "FOLDER00129_a0927041c80d",
+      "sourceIndex": 128,
+      "textBytes": 110890,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2606.10651v1[cs.CV]9Jun2026 [Figure 1] June 10, 2026 ## Kwai Keye-VL-2.0 Technical Report [Figure 2] Keye Team, Kuaishou Group https://kwai-keye.github.io/ https://huggingface.co/Kwai-Keye https://github.com/Kwai-Keye/Keye #### Abstract We introduce Kwai Keye-VL-2.0-30B-A3B, an open-source Mixture-of-Experts (MoE) multimodal foundation model designed to advance long-video understanding and agentic intelligence. To address the challenges of ultra-long contexts, information redundancy, and prohibitive computational costs inherent in hour-level videos, Keye-VL-2.0 is the first to adapt DeepSeek Sparse Attention (DSA) to GQA-based multimodal architectures, enabling lossless 256K context processing while capturing critical frames and long-range temporal dependencies. This architecture is underpinned by a highly optimized training and inference infrastructure, including scalable video "
+    },
+    {
+      "slug": "2310_LongVT_Incentivizing_Thinking_with_Long_Videos_via_Native_To",
+      "title": "LongVT: Incentivizing \"Thinking with Long Videos\" via Native Tool Calling",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00130_505c7434345a",
+      "sourceIndex": 129,
+      "textBytes": 98488,
+      "figuresExtracted": 5,
+      "excerpt": "### LongVT: Incentivizing “Thinking with Long Videos” via Native Tool Calling # arXiv:2511.20785v3[cs.CV]21May2026 Zuhao Yang1,2,5,∗, Sudong Wang1,3,5,∗, Kaichen Zhang1,2,5,∗, Keming Wu1,4,5, Sicong Leng2, Yifan Zhang1, Bo Li2,5, Chengwei Qin3, Shijian Lu2, , Xingxuan Li1, , Lidong Bing1 1MiroMind, 2NTU, 3HKUST(GZ), 4THU, 5LMMs-Lab https://evolvinglmms-lab.github.io/LongVT/ 70 sec 141 sec 209 sec 347 sec 562 sec …… 1056 sec [Figure 1] Which foot did the French player use to execute the [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] [Figure 7] volley, equalizing the score? Thinking with Textual CoT Thinking with iMCoTT (Ours) [Begin of iMCoTT] The video is a comprehensive highlight reel of the … It begins with pre-match scenes, showing players in the tunnel and lining up… Then Argentina scores a second goal…The user is asking about the equalizing volley. Based on my skim, this hap"
     }
   ]
 }
