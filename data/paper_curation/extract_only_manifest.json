@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-03T20:25:43.148476+00:00",
+  "generated": "2026-07-03T21:00:56.302843+00:00",
   "mode": "extract-only",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "awesomeRepo": "E:\\조선대\\연구\\awesome-HuggingFace",
   "extractReport": "data/paper_curation/extract_only_report.json",
   "docsDir": "docs/paper_curation/extract_only",
   "paperDir": "paper/extract_only",
-  "recordCount": 140,
+  "recordCount": 145,
   "syncedPaperSlugs": [
     "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
     "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
@@ -147,13 +147,18 @@
     "2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen",
     "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
     "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
-    "2403_LongLive_Real-time_Interactive_Long_Video_Generation"
+    "2403_LongLive_Real-time_Interactive_Long_Video_Generation",
+    "2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ",
+    "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
+    "2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia",
+    "2450_LongCat-Flash-Thinking-2601_Technical_Report",
+    "2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age"
   ],
   "copied": [
     {
       "source": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\_folder_source_extract_report.json",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\data\\paper_curation\\extract_only_report.json",
-      "bytes": 85902
+      "bytes": 88926
     },
     {
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective\\text.md",
@@ -7914,6 +7919,276 @@
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig6.png",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2403_LongLive_Real-time_Interactive_Long_Video_Generation\\figures\\fig6.png",
       "bytes": 983944
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ\\text.md",
+      "bytes": 11720
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ\\figures\\fig1.png",
+      "bytes": 376484
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ\\figures\\fig2.png",
+      "bytes": 61051
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ\\text.md",
+      "bytes": 11720
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ\\figures\\fig1.png",
+      "bytes": 376484
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ\\figures\\fig2.png",
+      "bytes": 61051
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\text.md",
+      "bytes": 86861
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig1.png",
+      "bytes": 234269
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig2.png",
+      "bytes": 262035
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig3.png",
+      "bytes": 198460
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig4.png",
+      "bytes": 206803
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig5.png",
+      "bytes": 79356
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\text.md",
+      "bytes": 86861
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig1.png",
+      "bytes": 234269
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig2.png",
+      "bytes": 262035
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig3.png",
+      "bytes": 198460
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig4.png",
+      "bytes": 206803
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh\\figures\\fig5.png",
+      "bytes": 79356
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\text.md",
+      "bytes": 70780
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig1.png",
+      "bytes": 1970818
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig2.png",
+      "bytes": 118187
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig3.png",
+      "bytes": 98603
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig4.png",
+      "bytes": 1804716
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig5.png",
+      "bytes": 1673523
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\text.md",
+      "bytes": 70780
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig1.png",
+      "bytes": 1970818
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig2.png",
+      "bytes": 118187
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig3.png",
+      "bytes": 98603
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig4.png",
+      "bytes": 1804716
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia\\figures\\fig5.png",
+      "bytes": 1673523
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\text.md",
+      "bytes": 123778
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig1.png",
+      "bytes": 200635
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig2.png",
+      "bytes": 108057
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig3.png",
+      "bytes": 149031
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig4.png",
+      "bytes": 126791
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig5.png",
+      "bytes": 82023
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\text.md",
+      "bytes": 123778
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig1.png",
+      "bytes": 200635
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig2.png",
+      "bytes": 108057
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig3.png",
+      "bytes": 149031
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig4.png",
+      "bytes": 126791
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2450_LongCat-Flash-Thinking-2601_Technical_Report\\figures\\fig5.png",
+      "bytes": 82023
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\text.md",
+      "bytes": 146453
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig1.png",
+      "bytes": 197915
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig2.png",
+      "bytes": 196540
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig3.png",
+      "bytes": 47133
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig4.png",
+      "bytes": 105274
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig5.png",
+      "bytes": 30422
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\text.md",
+      "bytes": 146453
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig1.png",
+      "bytes": 197915
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig2.png",
+      "bytes": 196540
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig3.png",
+      "bytes": 47133
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig4.png",
+      "bytes": 105274
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age\\figures\\fig5.png",
+      "bytes": 30422
     }
   ],
   "missing": [],

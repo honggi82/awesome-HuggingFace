@@ -125,7 +125,7 @@
     {
       "slug": "083_Qwen25_Technical_Report",
       "title": "Qwen2.5 Technical Report",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
       "key": "FOLDER00013_a400d0a3210e",
       "sourceIndex": 12,
       "textBytes": 96661,
@@ -195,7 +195,7 @@
     {
       "slug": "323_Qwen3_Technical_Report",
       "title": "Qwen3 Technical Report",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
       "key": "FOLDER00020_81a86ff7c3c8",
       "sourceIndex": 19,
       "textBytes": 118269,
@@ -225,7 +225,7 @@
     {
       "slug": "326_Rethinking_Generalization_in_Reasoning_SFT_A_Conditional_Ana",
       "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
-      "category": "HDBSCAN Cluster: sft, university, generalization, learning",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00023_6978f9941fd7",
       "sourceIndex": 22,
       "textBytes": 161148,
@@ -255,7 +255,7 @@
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
-      "category": "HDBSCAN Cluster: transformer, attention, hrm-text, pretraining",
+      "category": "HDBSCAN Cluster: data, transformer, attention, language",
       "key": "FOLDER00026_e94287efc152",
       "sourceIndex": 25,
       "textBytes": 79369,
@@ -285,7 +285,7 @@
     {
       "slug": "332_DINOv3",
       "title": "DINOv3",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: training, smollm2, small, language",
       "key": "FOLDER00029_a3328f5ae17b",
       "sourceIndex": 28,
       "textBytes": 237604,
@@ -355,7 +355,7 @@
     {
       "slug": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
       "title": "Weak-Driven Learning: How Weak Agents make Strong Agents Stronger",
-      "category": "HDBSCAN Cluster: sft, university, generalization, learning",
+      "category": "HDBSCAN Cluster: university, learning, sft, weak",
       "key": "FOLDER00036_31e22fa1f189",
       "sourceIndex": 35,
       "textBytes": 96730,
@@ -465,7 +465,7 @@
     {
       "slug": "1731_Phi-3_Technical_Report_A_Highly_Capable_Language_Model_Local",
       "title": "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00047_6bf122ba377f",
       "sourceIndex": 46,
       "textBytes": 59469,
@@ -555,7 +555,7 @@
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "title": "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: training, smollm2, small, language",
       "key": "FOLDER00056_e1a299738b86",
       "sourceIndex": 55,
       "textBytes": 87381,
@@ -595,7 +595,7 @@
     {
       "slug": "1743_WildDet3D_Scaling_Promptable_3D_Detection_in_the_Wild",
       "title": "WildDet3D: Scaling Promptable 3D Detection in the Wild",
-      "category": "HDBSCAN Cluster: figure, wilddet3d, university, utonia",
+      "category": "HDBSCAN Cluster: figure, university, wilddet3d, features",
       "key": "FOLDER00060_ef3c19fa0025",
       "sourceIndex": 59,
       "textBytes": 110894,
@@ -635,7 +635,7 @@
     {
       "slug": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
       "title": "Less is Enough: Synthesizing Diverse Data in Feature Space of LLMs",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: data, transformer, attention, language",
       "key": "FOLDER00064_292a7228313c",
       "sourceIndex": 63,
       "textBytes": 179027,
@@ -885,7 +885,7 @@
     {
       "slug": "1934_Lumine_An_Open_Recipe_for_Building_Generalist_Agents_in_3D_O",
       "title": "Lumine: An Open Recipe for Building Generalist Agents in 3D Open Worlds",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: agents, embodied, lumine, open",
       "key": "FOLDER00089_5c877ea4a55a",
       "sourceIndex": 88,
       "textBytes": 201532,
@@ -1055,7 +1055,7 @@
     {
       "slug": "2119_MiroThinker_Pushing_the_Performance_Boundaries_of_Open-Sourc",
       "title": "MiroThinker: Pushing the Performance Boundaries of Open-Source Research Agents via Model, Context, and Interactive Scaling",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: model, performance, open-source, scaling",
       "key": "FOLDER00106_2b8ab407a297",
       "sourceIndex": 105,
       "textBytes": 57348,
@@ -1085,7 +1085,7 @@
     {
       "slug": "2122_Differential_Transformer",
       "title": "Differential Transformer",
-      "category": "HDBSCAN Cluster: transformer, attention, hrm-text, pretraining",
+      "category": "HDBSCAN Cluster: data, transformer, attention, language",
       "key": "FOLDER00109_cb0fec7db820",
       "sourceIndex": 108,
       "textBytes": 71150,
@@ -1135,7 +1135,7 @@
     {
       "slug": "2166_On_the_Generalization_of_SFT_A_Reinforcement_Learning_Perspe",
       "title": "On the Generalization of SFT: A Reinforcement Learning Perspective with Reward Rectification",
-      "category": "HDBSCAN Cluster: sft, university, generalization, learning",
+      "category": "HDBSCAN Cluster: university, learning, sft, weak",
       "key": "FOLDER00114_9fca02819c25",
       "sourceIndex": 113,
       "textBytes": 77099,
@@ -1345,7 +1345,7 @@
     {
       "slug": "2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds",
       "title": "Utonia: Toward One Encoder for All Point Clouds",
-      "category": "HDBSCAN Cluster: figure, wilddet3d, university, utonia",
+      "category": "HDBSCAN Cluster: figure, university, wilddet3d, features",
       "key": "FOLDER00135_0f1a9376e7d9",
       "sourceIndex": 134,
       "textBytes": 66552,
@@ -1385,7 +1385,7 @@
     {
       "slug": "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
       "title": "Idea2Story: An Automated Pipeline for Transforming Research Concepts into Complete Scientific Narratives",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: mcp, scientific, research, chen",
       "key": "FOLDER00139_67529da800a5",
       "sourceIndex": 138,
       "textBytes": 50780,
@@ -1401,6 +1401,56 @@
       "textBytes": 69742,
       "figuresExtracted": 5,
       "excerpt": "## LONGLIVE: REAL-TIME INTERACTIVE LONG VIDEO GENERATION Shuai Yang1,3 Wei Huang1,4 Ruihang Chu5 Yicheng Xiao5 Yuyang Zhao1 Xianbang Wang2 Muyang Li2 Enze Xie1 Yingcong Chen3 Yao Lu1 Song Han1,2 Yukang Chen1 1NVIDIA 2MIT 3HKUST(GZ) 4HKU 5THU ABSTRACT # arXiv:2509.22622v2[cs.CV]13Oct2025 We present LONGLIVE, a frame-level autoregressive (AR) framework for realtime and interactive long video generation. Long video generation presents challenges in both efficiency and quality. Diffusion and Diffusion-Forcing models can produce high-quality videos but suffer from low efficiency due to bidirectional attention. Causal attention AR models support KV caching for faster inference, but often degrade in quality on long videos due to memory challenges during long-video training. In addition, beyond static prompt-based generation, interactive capabilities, such as streaming prompt inputs, are critica"
+    },
+    {
+      "slug": "2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ",
+      "title": "Transformer Explainer: Interactive Learning of Text-Generative Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00141_6ac80a7b302e",
+      "sourceIndex": 140,
+      "textBytes": 11720,
+      "figuresExtracted": 2,
+      "excerpt": "## TRANSFORMER EXPLAINER: Interactive Learning of Text-Generative Models Aeree Cho*1, Grace C. Kim*1, Alexander Karpekov*1, Alec Helbling1, Zijie J. Wang1, Seongmin Lee1, Benjamin Hoover1,2, Duen Horng (Polo) Chau1 # arXiv:2408.04619v1[cs.LG]8Aug2024 [Figure 1] Figure 1: TRANSFORMER EXPLAINER helps users (A) visually examine how a text-generative Transformer model (GPT-2) transforms input text to predict next tokens, (B) interactively experiment in real time with key model parameters like temperature to understand prediction determinism, and (C) transition seamlessly between abstraction levels to visualize the interplay between low-level mathematical operations and high-level model structures. ### ABSTRACT Transformers have revolutionized machine learning, yet their inner workings remain opaque to many. We present TRANSFORMER EXPLAINER, an interactive visualization tool designed for non-"
+    },
+    {
+      "slug": "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
+      "title": "MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use",
+      "category": "HDBSCAN Cluster: mcp, scientific, research, chen",
+      "key": "FOLDER00142_a4d4189c9274",
+      "sourceIndex": 141,
+      "textBytes": 86861,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2509.24002v1[cs.CL]28Sep2025 ## MCPMARK: A BENCHMARK FOR STRESS-TESTING REALISTIC AND COMPREHENSIVE MCP USE Zijian Wu1,§,∗, Xiangyan Liu1,§,∗, Xinyuan Zhang2,∗, Lingjun Chen1,∗, Fanqing Meng4,∗, Lingxiao Du5,∗, Yiran Zhao1,∗, Fanshi Zhang2,3,∗, Yaoqi Ye1, Jiawei Wang2, Zirui Wang2, Jinjie Ni1, Yufan Yang2,3, Arvin Xu2,3,†, Michael Qizhe Shieh1,† ABSTRACT The MCP standardizes how LLMs interact with external systems, forming the foundation for general agents. However, existing MCP benchmarks remain narrow in scope: they focus on read-heavy tasks or tasks with limited interaction depth, and fail to capture the complexity and realism of real-world workflows. To address this gap, we propose MCPMark, a benchmark designed to evaluate MCP use in a more realistic and comprehensive manner. It consists of 127 high-quality tasks collaboratively created by domain experts and AI agents. Each t"
+    },
+    {
+      "slug": "2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia",
+      "title": "Concerto: Joint 2D-3D Self-Supervised Learning Emerges Spatial Representations",
+      "category": "HDBSCAN Cluster: figure, university, wilddet3d, features",
+      "key": "FOLDER00143_ae3845a5eef9",
+      "sourceIndex": 142,
+      "textBytes": 70780,
+      "figuresExtracted": 5,
+      "excerpt": "## Concerto: Joint 2D-3D Self-Supervised Learning Emerges Spatial Representations Yujia Zhang1 Xiaoyang Wu1† Yixing Lao1 Chengyao Wang2 Zhuotao Tian3 Naiyan Wang Hengshuang Zhao1‡ 1The University of Hong Kong 2The Chinese University of Hong Kong 3Harbin Institute of Technology (Shenzhen) †project lead ‡corresponding author https://pointcept.github.io/Concerto [Figure 1] # arXiv:2510.23607v2[cs.CV]28Feb2026 [Figure 2] [Figure 3] [Figure 4] [Figure 5] ###### RGB Raw [Figure 6] [Figure 7] - 2DImageSSL [Figure 8] [Figure 9] [Figure 10] Sonata - 3DPointSSL DINOv2 [Figure 11] [Figure 12] [Figure 13] [Figure 14] [Figure 15] [Figure 16] [Figure 17] [Figure 18] [Figure 19] [Figure 20] ✓ ###### Concerto(Ours) ✓ 2D-3DJointSSL ✓ ✓ ✓ ✓ ✓ ✓ Figure 1: We visualize the principal components of point features learned by 2D and 3D selfsupervised models [28, 49], mapped to RGB colors. DINOv2 lacks geometric"
+    },
+    {
+      "slug": "2450_LongCat-Flash-Thinking-2601_Technical_Report",
+      "title": "LongCat-Flash-Thinking-2601 Technical Report",
+      "category": "HDBSCAN Cluster: model, performance, open-source, scaling",
+      "key": "FOLDER00144_1c4747a81411",
+      "sourceIndex": 143,
+      "textBytes": 123778,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2601.16725v2[cs.AI]1Feb2026 ## LongCat-Flash-Thinking-2601 Technical Report Meituan LongCat Team longcat-team@meituan.com ### ABSTRACT We introduce LongCat-Flash-Thinking-2601, a 560-billion-parameter open-source Mixture-ofExperts (MoE) reasoning model with superior agentic reasoning capability. LongCat-Flash-Thinking2601 achieves state-of-the-art performance among open-source models on a wide range of agentic benchmarks, including agentic search, agentic tool use, and tool-integrated reasoning. Beyond benchmark performance, the model demonstrates strong generalization to complex tool interactions and robust behavior under noisy real-world environments. Its advanced capability stems from a unified training framework that combines domain-parallel expert training with subsequent fusion, together with an end-to-end co-design of data construction, environments, algorithms, and infras"
+    },
+    {
+      "slug": "2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age",
+      "title": "HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents",
+      "category": "HDBSCAN Cluster: agents, embodied, lumine, open",
+      "key": "FOLDER00145_6259f5e0c38f",
+      "sourceIndex": 144,
+      "textBytes": 146453,
+      "figuresExtracted": 5,
+      "excerpt": "##### HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents Tencent Robotics X × HY Vision Team ###### Abstract We introduce HY-Embodied-0.5, a family of foundation models specifically designed for real-world embodied agents. To bridge the gap between general Vision-Language Models (VLMs) and the demands of embodied agents, our models are developed to enhance the core capabilities required by embodied intelligence: spatial and temporal visual perception, alongside advanced embodied reasoning for prediction, interaction, and planning. The HY-Embodied-0.5 suite comprises two primary variants: an efficient model with 2B activated parameters designed for edge deployment, and a powerful model with 32B activated parameters targeted for complex reasoning. To support the fine-grained visual perception essential for embodied tasks, we adopt a Mixture-of-Transformers (MoT) architecture"
     }
   ]
 }

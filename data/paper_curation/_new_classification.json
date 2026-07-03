@@ -3,7 +3,7 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 53
+      "count": 50
     },
     {
       "id": "hdbscan-cluster-university-models-li1-zhang1",
@@ -41,18 +41,13 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-qwen-models-report-qwen3",
-      "name": "HDBSCAN Cluster: qwen, models, report, qwen3",
-      "count": 3
-    },
-    {
       "id": "hdbscan-cluster-efficient-figure-language-loop",
       "name": "HDBSCAN Cluster: efficient, figure, language, loop",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-sft-university-generalization-learning",
-      "name": "HDBSCAN Cluster: sft, university, generalization, learning",
+      "id": "hdbscan-cluster-data-transformer-attention-language",
+      "name": "HDBSCAN Cluster: data, transformer, attention, language",
       "count": 3
     },
     {
@@ -66,6 +61,11 @@
       "count": 3
     },
     {
+      "id": "hdbscan-cluster-figure-university-wilddet3d-features",
+      "name": "HDBSCAN Cluster: figure, university, wilddet3d, features",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-figure-university-li1-agentic",
       "name": "HDBSCAN Cluster: figure, university, li1, agentic",
       "count": 3
@@ -76,13 +76,23 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-qwen-qwen3-https-models",
+      "name": "HDBSCAN Cluster: qwen, qwen3, https, models",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-reasoning-policy-deep-rstar-math",
       "name": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-transformer-attention-hrm-text-pretraining",
-      "name": "HDBSCAN Cluster: transformer, attention, hrm-text, pretraining",
+      "id": "hdbscan-cluster-training-smollm2-small-language",
+      "name": "HDBSCAN Cluster: training, smollm2, small, language",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-university-learning-sft-weak",
+      "name": "HDBSCAN Cluster: university, learning, sft, weak",
       "count": 2
     },
     {
@@ -106,11 +116,6 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-figure-wilddet3d-university-utonia",
-      "name": "HDBSCAN Cluster: figure, wilddet3d, university, utonia",
-      "count": 2
-    },
-    {
       "id": "hdbscan-cluster-figure-sec-thinking-tstars-tryon",
       "name": "HDBSCAN Cluster: figure, sec, thinking, tstars-tryon",
       "count": 2
@@ -131,6 +136,11 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-agents-embodied-lumine-open",
+      "name": "HDBSCAN Cluster: agents, embodied, lumine, open",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-language-models-nonsense-hallucinations",
       "name": "HDBSCAN Cluster: language, models, nonsense, hallucinations",
       "count": 2
@@ -141,6 +151,11 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-model-performance-open-source-scaling",
+      "name": "HDBSCAN Cluster: model, performance, open-source, scaling",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-step3-vl-10b-https-multimodal-technical",
       "name": "HDBSCAN Cluster: step3-vl-10b, https, multimodal, technical",
       "count": 2
@@ -148,6 +163,11 @@
     {
       "id": "hdbscan-cluster-generation-long-video-real-time",
       "name": "HDBSCAN Cluster: generation, long, video, real-time",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-mcp-scientific-research-chen",
+      "name": "HDBSCAN Cluster: mcp, scientific, research, chen",
       "count": 2
     }
   ],
@@ -226,7 +246,7 @@
     },
     {
       "slug": "083_Qwen25_Technical_Report",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -268,7 +288,7 @@
     },
     {
       "slug": "323_Qwen3_Technical_Report",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -286,7 +306,7 @@
     },
     {
       "slug": "326_Rethinking_Generalization_in_Reasoning_SFT_A_Conditional_Ana",
-      "category": "HDBSCAN Cluster: sft, university, generalization, learning",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -304,7 +324,7 @@
     },
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
-      "category": "HDBSCAN Cluster: transformer, attention, hrm-text, pretraining",
+      "category": "HDBSCAN Cluster: data, transformer, attention, language",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -322,7 +342,7 @@
     },
     {
       "slug": "332_DINOv3",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: training, smollm2, small, language",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -364,7 +384,7 @@
     },
     {
       "slug": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
-      "category": "HDBSCAN Cluster: sft, university, generalization, learning",
+      "category": "HDBSCAN Cluster: university, learning, sft, weak",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -430,7 +450,7 @@
     },
     {
       "slug": "1731_Phi-3_Technical_Report_A_Highly_Capable_Language_Model_Local",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -484,7 +504,7 @@
     },
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: training, smollm2, small, language",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -508,7 +528,7 @@
     },
     {
       "slug": "1743_WildDet3D_Scaling_Promptable_3D_Detection_in_the_Wild",
-      "category": "HDBSCAN Cluster: figure, wilddet3d, university, utonia",
+      "category": "HDBSCAN Cluster: figure, university, wilddet3d, features",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -532,7 +552,7 @@
     },
     {
       "slug": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: data, transformer, attention, language",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -682,7 +702,7 @@
     },
     {
       "slug": "1934_Lumine_An_Open_Recipe_for_Building_Generalist_Agents_in_3D_O",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: agents, embodied, lumine, open",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -784,7 +804,7 @@
     },
     {
       "slug": "2119_MiroThinker_Pushing_the_Performance_Boundaries_of_Open-Sourc",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: model, performance, open-source, scaling",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -802,7 +822,7 @@
     },
     {
       "slug": "2122_Differential_Transformer",
-      "category": "HDBSCAN Cluster: transformer, attention, hrm-text, pretraining",
+      "category": "HDBSCAN Cluster: data, transformer, attention, language",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -832,7 +852,7 @@
     },
     {
       "slug": "2166_On_the_Generalization_of_SFT_A_Reinforcement_Learning_Perspe",
-      "category": "HDBSCAN Cluster: sft, university, generalization, learning",
+      "category": "HDBSCAN Cluster: university, learning, sft, weak",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -958,7 +978,7 @@
     },
     {
       "slug": "2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds",
-      "category": "HDBSCAN Cluster: figure, wilddet3d, university, utonia",
+      "category": "HDBSCAN Cluster: figure, university, wilddet3d, features",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -982,13 +1002,43 @@
     },
     {
       "slug": "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: mcp, scientific, research, chen",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "2403_LongLive_Real-time_Interactive_Long_Video_Generation",
       "category": "HDBSCAN Cluster: generation, long, video, real-time",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
+      "category": "HDBSCAN Cluster: mcp, scientific, research, chen",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia",
+      "category": "HDBSCAN Cluster: figure, university, wilddet3d, features",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2450_LongCat-Flash-Thinking-2601_Technical_Report",
+      "category": "HDBSCAN Cluster: model, performance, open-source, scaling",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age",
+      "category": "HDBSCAN Cluster: agents, embodied, lumine, open",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     }
