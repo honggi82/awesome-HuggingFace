@@ -610,13 +610,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1935_Watching_Reasoning_and_Searching_A_Video_Deep_Research_Bench",
-      "score": 0.9422,
+      "target": "2259_QuantaAlpha_An_Evolutionary_Framework_for_LLM-Driven_Alpha_M",
+      "score": 0.9428,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1729_Agent_Learning_via_Early_Experience",
-      "score": 0.94,
+      "target": "1935_Watching_Reasoning_and_Searching_A_Video_Deep_Research_Bench",
+      "score": 0.9422,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -664,13 +664,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "080_Looped_World_Models",
-      "score": 0.9238,
+      "target": "2257_Can_LLMs_Clean_Up_Your_Mess_A_Survey_of_Application-Ready_Da",
+      "score": 0.9259,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
-      "score": 0.9233,
+      "target": "080_Looped_World_Models",
+      "score": 0.9238,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -858,8 +858,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1889_InternVL35_Advancing_Open-Source_Multimodal_Models_in_Versat",
-      "score": 0.9554,
+      "target": "2255_AutoResearchClaw_Self-Reinforcing_Autonomous_Research_with_H",
+      "score": 0.9603,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1523,6 +1523,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
+      "score": 0.9466,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1734_ERNIE_50_Technical_Report",
       "score": 0.9368,
       "reason": "Codex local embedding similarity"
@@ -1530,11 +1535,6 @@
     {
       "target": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
       "score": 0.93,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
-      "score": 0.9298,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1621,6 +1621,11 @@
   ],
   "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive": [
     {
+      "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
+      "score": 0.9373,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "score": 0.933,
       "reason": "Codex local embedding similarity"
@@ -1638,11 +1643,6 @@
     {
       "target": "1886_OmniHuman-1_Rethinking_the_Scaling-Up_of_One-Stage_Condition",
       "score": 0.9218,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
-      "score": 0.9213,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1729,6 +1729,11 @@
   ],
   "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation": [
     {
+      "target": "2256_DocLLM_A_layout-aware_generative_language_model_for_multimod",
+      "score": 0.9392,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "score": 0.9381,
       "reason": "Codex local embedding similarity"
@@ -1746,11 +1751,6 @@
     {
       "target": "1730_A_Survey_of_Context_Engineering_for_Large_Language_Models",
       "score": 0.9306,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
-      "score": 0.9269,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1901,6 +1901,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
+      "score": 0.9513,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1734_ERNIE_50_Technical_Report",
       "score": 0.9398,
       "reason": "Codex local embedding similarity"
@@ -1908,11 +1913,6 @@
     {
       "target": "1700_Qwen25-VL_Technical_Report",
       "score": 0.9314,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
-      "score": 0.931,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2041,13 +2041,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1889_InternVL35_Advancing_Open-Source_Multimodal_Models_in_Versat",
-      "score": 0.958,
+      "target": "2255_AutoResearchClaw_Self-Reinforcing_Autonomous_Research_with_H",
+      "score": 0.962,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2163_A_Survey_of_Reinforcement_Learning_for_Large_Reasoning_Model",
-      "score": 0.9576,
+      "target": "1889_InternVL35_Advancing_Open-Source_Multimodal_Models_in_Versat",
+      "score": 0.958,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2166,6 +2166,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
+      "score": 0.9314,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
       "score": 0.9301,
       "reason": "Codex local embedding similarity"
@@ -2178,11 +2183,6 @@
     {
       "target": "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive",
       "score": 0.9218,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
-      "score": 0.9204,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2485,6 +2485,11 @@
   ],
   "738_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering": [
     {
+      "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
+      "score": 0.917,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
       "score": 0.9055,
       "reason": "Codex local embedding similarity"
@@ -2502,11 +2507,6 @@
     {
       "target": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
       "score": 0.8992,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
-      "score": 0.8968,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2792,6 +2792,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2255_AutoResearchClaw_Self-Reinforcing_Autonomous_Research_with_H",
+      "score": 0.9539,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "081_AI_Can_Learn_Scientific_Taste",
       "score": 0.9535,
       "reason": "Codex local embedding similarity"
@@ -2800,14 +2805,14 @@
       "target": "1750_Thinking_with_Video_Video_Generation_as_a_Promising_Multimod",
       "score": 0.9534,
       "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
-      "score": 0.9527,
-      "reason": "Codex local embedding similarity"
     }
   ],
   "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation": [
+    {
+      "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
+      "score": 0.9402,
+      "reason": "Codex local embedding similarity"
+    },
     {
       "target": "342_Qwen-Image_Technical_Report",
       "score": 0.9385,
@@ -2826,11 +2831,6 @@
     {
       "target": "2022_TermiGen_High-Fidelity_Environment_and_Robust_Trajectory_Syn",
       "score": 0.9339,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
-      "score": 0.9298,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3207,8 +3207,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
-      "score": 0.9298,
+      "target": "2259_QuantaAlpha_An_Evolutionary_Framework_for_LLM-Driven_Alpha_M",
+      "score": 0.9369,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3216,6 +3216,11 @@
     {
       "target": "1886_OmniHuman-1_Rethinking_the_Scaling-Up_of_One-Stage_Condition",
       "score": 0.9538,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
+      "score": 0.9128,
       "reason": "Codex local embedding similarity"
     },
     {
@@ -3232,10 +3237,140 @@
       "target": "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive",
       "score": 0.9112,
       "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2255_AutoResearchClaw_Self-Reinforcing_Autonomous_Research_with_H": [
+    {
+      "target": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
+      "score": 0.962,
+      "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
-      "score": 0.9101,
+      "target": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
+      "score": 0.9603,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2023_OpenWorldLib_A_Unified_Codebase_and_Definition_of_Advanced_W",
+      "score": 0.954,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2076_BabyVision_Visual_Reasoning_Beyond_Language",
+      "score": 0.9539,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
+      "score": 0.9507,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2256_DocLLM_A_layout-aware_generative_language_model_for_multimod": [
+    {
+      "target": "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation",
+      "score": 0.9392,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1700_Qwen25-VL_Technical_Report",
+      "score": 0.9264,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
+      "score": 0.9208,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1745_SocialOmni_Benchmarking_Audio-Visual_Social_Interactivity_in",
+      "score": 0.9165,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1737_LLM_in_a_flash_Efficient_Large_Language_Model_Inference_with",
+      "score": 0.9161,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2257_Can_LLMs_Clean_Up_Your_Mess_A_Survey_of_Application-Ready_Da": [
+    {
+      "target": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
+      "score": 0.9358,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "340_Recursive_Multi-Agent_Systems",
+      "score": 0.9342,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2259_QuantaAlpha_An_Evolutionary_Framework_for_LLM-Driven_Alpha_M",
+      "score": 0.9297,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
+      "score": 0.9281,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1745_SocialOmni_Benchmarking_Audio-Visual_Social_Interactivity_in",
+      "score": 0.9264,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2258_Helios_Real_Real-Time_Long_Video_Generation_Model": [
+    {
+      "target": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
+      "score": 0.9513,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
+      "score": 0.9466,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
+      "score": 0.9402,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "342_Qwen-Image_Technical_Report",
+      "score": 0.939,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive",
+      "score": 0.9373,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2259_QuantaAlpha_An_Evolutionary_Framework_for_LLM-Driven_Alpha_M": [
+    {
+      "target": "1729_Agent_Learning_via_Early_Experience",
+      "score": 0.9447,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "322_ASE_A_Repository-Level_Benchmark_for_Evaluating_Security_in",
+      "score": 0.9438,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1741_SkillOpt_Executive_Strategy_for_Self-Evolving_Agent_Skills",
+      "score": 0.9431,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "326_Rethinking_Generalization_in_Reasoning_SFT_A_Conditional_Ana",
+      "score": 0.9428,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
+      "score": 0.941,
       "reason": "Codex local embedding similarity"
     }
   ]

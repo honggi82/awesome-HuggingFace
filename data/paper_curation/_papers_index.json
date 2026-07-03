@@ -385,7 +385,7 @@
     {
       "slug": "342_Qwen-Image_Technical_Report",
       "title": "Qwen-Image Technical Report",
-      "category": "HDBSCAN Cluster: image, qwen, models, https",
+      "category": "HDBSCAN Cluster: generation, image, model, figure",
       "key": "FOLDER00039_67f3a3187f0a",
       "sourceIndex": 38,
       "textBytes": 141226,
@@ -565,7 +565,7 @@
     {
       "slug": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
       "title": "Z-Image: An Efficient Image Generation Foundation Model with Single-Stream Diffusion Transformer",
-      "category": "HDBSCAN Cluster: image, qwen, models, https",
+      "category": "HDBSCAN Cluster: generation, image, model, figure",
       "key": "FOLDER00057_85f52b7d18cd",
       "sourceIndex": 56,
       "textBytes": 233804,
@@ -645,7 +645,7 @@
     {
       "slug": "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation",
       "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: model, multimodal, language, understanding",
       "key": "FOLDER00065_f953c8971cba",
       "sourceIndex": 64,
       "textBytes": 94565,
@@ -705,7 +705,7 @@
     {
       "slug": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
       "title": "Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation",
-      "category": "HDBSCAN Cluster: image, qwen, models, https",
+      "category": "HDBSCAN Cluster: generation, image, model, figure",
       "key": "FOLDER00071_8339c62b1c6b",
       "sourceIndex": 70,
       "textBytes": 189067,
@@ -815,7 +815,7 @@
     {
       "slug": "1700_Qwen25-VL_Technical_Report",
       "title": "Qwen2.5-VL Technical Report",
-      "category": "HDBSCAN Cluster: image, qwen, models, https",
+      "category": "HDBSCAN Cluster: generation, image, model, figure",
       "key": "FOLDER00082_81c67876894a",
       "sourceIndex": 81,
       "textBytes": 92812,
@@ -1201,6 +1201,56 @@
       "textBytes": 53932,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2402.17485v3[cs.CV]8Aug2024 ## EMO: Emote Portrait Alive - Generating Expressive Portrait Videos with Audio2Video Diffusion Model under Weak Conditions ##### Linrui Tian , Qi Wang, Bang Zhang, and Liefeng Bo Institute for Intelligent Computing, Alibaba Group {tianlinrui.tlr, wilson.wq, zhangbang.zb, liefeng.bo}@alibaba-inc.com https://humanaigc.github.io/emote-portrait-alive/ [Figure 1] Fig. 1: We proposed EMO, an expressive audio-driven portrait-video generation framework. Input a single reference image and the vocal audio, e.g. talking and singing, our method can generate vocal avatar videos with expressive facial expressions, and various head poses, meanwhile, we can generate videos with any duration depending on the length of input audio. Abstract. In this work, we tackle the challenge of enhancing the realism and expressiveness in talking head video generation by focusing on"
+    },
+    {
+      "slug": "2255_AutoResearchClaw_Self-Reinforcing_Autonomous_Research_with_H",
+      "title": "AutoResearchClaw: Self-Reinforcing Autonomous Research with Human-AI Collaboration",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00121_00ec5d98ca85",
+      "sourceIndex": 120,
+      "textBytes": 83910,
+      "figuresExtracted": 2,
+      "excerpt": "### arXiv:2605.20025v2[cs.AI]23May2026 [Figure 1] # : Self-Reinforcing Autonomous Research with Human-AI Collaboration Jiaqi Liu∗1, Shi Qiu∗1, Mairui Li1, Bingzhou Li1, Haonian Ji1, Siwei Han1, Xinyu Ye1, Peng Xia1, Zihan Dong6, Meng Chen1, Congyu Zhang1, Letian Zhang2, Guiming Chen2, Haoqin Tu2, Xinyu Yang3, Lu Feng1, Xujiang Zhao7, Haifeng Chen7, Jiawei Zhou1, Xiao Wang8, Weitong Zhang1, Hongtu Zhu1, Yun Li1, Jieru Mei10, Hongliang Fei10, Jiaheng Zhang4, Linjie Li11, Linjun Zhang6, Yuyin Zhou2, Sheng Wang11, Caiming Xiong12, James Zou9, Zeyu Zheng5, Cihang Xie2, Mingyu Ding1, Huaxiu Yao1 1UNC-Chapel Hill, 2UC Santa Cruz, 3Carnegie Mellon University, 4NUS, 5UC Berkeley, 6Rutgers University, 7NEC Labs America, 8Meta, 9Stanford University, 10Google, 11University of Washington, 12Recrusive.com, ∗Equal contribution. Contact: {jqliu,shiqiu,huaxiu}@cs.unc.edu Automating scientific discovery r"
+    },
+    {
+      "slug": "2256_DocLLM_A_layout-aware_generative_language_model_for_multimod",
+      "title": "DocLLM: A layout-aware generative language model for multimodal document understanding",
+      "category": "HDBSCAN Cluster: model, multimodal, language, understanding",
+      "key": "FOLDER00122_db2ccb35564a",
+      "sourceIndex": 121,
+      "textBytes": 65218,
+      "figuresExtracted": 4,
+      "excerpt": "# arXiv:2401.00908v1[cs.CL]31Dec2023 ## DOCLLM: A LAYOUT-AWARE GENERATIVE LANGUAGE MODEL FOR MULTIMODAL DOCUMENT UNDERSTANDING Dongsheng Wang∗, Natraj Raman∗, Mathieu Sibue∗ Zhiqiang Ma, Petr Babkin, Simerjot Kaur, Yulong Pei, Armineh Nourbakhsh, Xiaomo Liu JPMorgan AI Research {first.last}@jpmchase.com ABSTRACT Enterprise documents such as forms, invoices, receipts, reports, contracts, and other similar records, often carry rich semantics at the intersection of textual and spatial modalities. The visual cues offered by their complex layouts play a crucial role in comprehending these documents effectively. In this paper, we present DocLLM, a lightweight extension to traditional large language models (LLMs) for reasoning over visual documents, taking into account both textual semantics and spatial layout. Our model differs from existing multimodal LLMs by avoiding expensive image encoders"
+    },
+    {
+      "slug": "2257_Can_LLMs_Clean_Up_Your_Mess_A_Survey_of_Application-Ready_Da",
+      "title": "Can LLMs Clean Up Your Mess? A Survey of Application-Ready Data Preparation with LLMs",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00123_6e2ebdc352d6",
+      "sourceIndex": 122,
+      "textBytes": 150253,
+      "figuresExtracted": 5,
+      "excerpt": "## Can LLMs Clean Up Your Mess? A Survey of Application-Ready Data Preparation with LLMs Wei Zhou, Jun Zhou, Haoyu Wang, Zhenghao Li, Qikang He, Shaokun Han, Guoliang Li Fellow, IEEE, Xuanhe Zhou, Yeye He, Chunwei Liu, Zirui Tang, Bin Wang, Shen Tang, Kai Zuo, Yuyu Luo, Zhenzhe Zheng, Conghui He, Jingren Zhou Fellow, IEEE, Fan Wu Awesome-Data-LLM: https://github.com/weAIDB/awesome-data-llm ### arXiv:2601.17058v1[cs.DB]22Jan2026 Abstract—Data preparation aims to denoise raw datasets, uncover cross-dataset relationships, and extract valuable insights from them, which is essential for a wide range of data-centric applications. Driven by (i) rising demands for application-ready data (e.g., for analytics, visualization, decision-making), (ii) increasingly powerful LLM techniques, and (iii) the emergence of infrastructures that facilitate flexible agent construction (e.g., using Databricks Uni"
+    },
+    {
+      "slug": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
+      "title": "Helios: Real Real-Time Long Video Generation Model",
+      "category": "HDBSCAN Cluster: generation, image, model, figure",
+      "key": "FOLDER00124_9ded09dfbc5b",
+      "sourceIndex": 123,
+      "textBytes": 142166,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.04379v1[cs.CV]4Mar2026 [Figure 1] [Figure 2] ## Helios: Real Real-Time Long Video Generation Model ### Shenghai Yuan1,2,◦, Yuanyang Yin2,4,◦, Zongjian Li1, Xinwei Huang2, Xiao Yang3,§, Li Yuan1,† 1Peking University, 2ByteDance China, 3Canva, 4Chengdu Anu Intelligence ◦Work done during internship at ByteDance, §Project Leader, †Corresponding Author ### Abstract We introduce Helios, the first 14B video generation model that runs at 19.5 FPS on a single NVIDIA H100 GPU and supports minute-scale generation while matching the quality of a strong baseline. We make breakthroughs along three key dimensions: (1) robustness to long-video drifting without commonly used anti-drifting heuristics such as self-forcing, error-banks, or keyframe sampling; (2) real-time generation without standard acceleration techniques such as KV-cache, sparse/linear attention, or quantization; and (3) trai"
+    },
+    {
+      "slug": "2259_QuantaAlpha_An_Evolutionary_Framework_for_LLM-Driven_Alpha_M",
+      "title": "QuantaAlpha: An Evolutionary Framework for LLM-Driven Alpha Mining",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00125_69b3c1180f90",
+      "sourceIndex": 124,
+      "textBytes": 81089,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2602.07085v3[q-fin.ST]18May2026 [Figure 1] 2026-05-19 [Figure 2] ## QuantaAlpha: An Evolutionary Framework for LLM-Driven Alpha Mining Jun Han1*, Shuo Zhang2*, Wei Li1*, Yifan Dong1, Tu Hu2, Yumo Zhu1, Xiaomin Yu2, Xin Guo1, Zhaowei Liu1, Kunyi Wang2, Jingping Liu3, Tianyi Jiang4, Ruichuan An4, Sen Hu2,4, Zhi Yang1†, Ronghao Chen2,4†, Huacan Wang2† 1SUFE, 2QuantaAlpha, 3SYSU, 4PKU *These authors contributed equally to this work. †Correspondence: yangzhi_sufe@outlook.com, chenronghao@alumni.pku.edu.cn, wanghuacan17@mails.ucas.ac.cn https://github.com/QuantaAlpha/QuantaAlpha ### Abstract Financial markets are noisy and non-stationary, making alpha mining highly sensitive to backtest noise and regime shifts. While recent agentic frameworks improve automation, they often lack controllable multi-round search and reliable reuse of validated experience. To address these challenges, we p"
     }
   ]
 }

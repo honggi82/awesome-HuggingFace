@@ -3,11 +3,16 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 57
+      "count": 59
     },
     {
       "id": "hdbscan-cluster-university-code-https-figure",
       "name": "HDBSCAN Cluster: university, code, https, figure",
+      "count": 5
+    },
+    {
+      "id": "hdbscan-cluster-generation-image-model-figure",
+      "name": "HDBSCAN Cluster: generation, image, model, figure",
       "count": 5
     },
     {
@@ -33,11 +38,6 @@
     {
       "id": "hdbscan-cluster-systems-language-model-figure",
       "name": "HDBSCAN Cluster: systems, language, model, figure",
-      "count": 4
-    },
-    {
-      "id": "hdbscan-cluster-image-qwen-models-https",
-      "name": "HDBSCAN Cluster: image, qwen, models, https",
       "count": 4
     },
     {
@@ -103,6 +103,11 @@
     {
       "id": "hdbscan-cluster-figure-paperbanana-scientific-generation",
       "name": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-model-multimodal-language-understanding",
+      "name": "HDBSCAN Cluster: model, multimodal, language, understanding",
       "count": 2
     },
     {
@@ -352,7 +357,7 @@
     },
     {
       "slug": "342_Qwen-Image_Technical_Report",
-      "category": "HDBSCAN Cluster: image, qwen, models, https",
+      "category": "HDBSCAN Cluster: generation, image, model, figure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -460,7 +465,7 @@
     },
     {
       "slug": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
-      "category": "HDBSCAN Cluster: image, qwen, models, https",
+      "category": "HDBSCAN Cluster: generation, image, model, figure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -508,7 +513,7 @@
     },
     {
       "slug": "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: model, multimodal, language, understanding",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -544,7 +549,7 @@
     },
     {
       "slug": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
-      "category": "HDBSCAN Cluster: image, qwen, models, https",
+      "category": "HDBSCAN Cluster: generation, image, model, figure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -610,7 +615,7 @@
     },
     {
       "slug": "1700_Qwen25-VL_Technical_Report",
-      "category": "HDBSCAN Cluster: image, qwen, models, https",
+      "category": "HDBSCAN Cluster: generation, image, model, figure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -839,6 +844,36 @@
     {
       "slug": "2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi",
       "category": "HDBSCAN Cluster: videos, human, audio, generation",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2255_AutoResearchClaw_Self-Reinforcing_Autonomous_Research_with_H",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2256_DocLLM_A_layout-aware_generative_language_model_for_multimod",
+      "category": "HDBSCAN Cluster: model, multimodal, language, understanding",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2257_Can_LLMs_Clean_Up_Your_Mess_A_Survey_of_Application-Ready_Da",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
+      "category": "HDBSCAN Cluster: generation, image, model, figure",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2259_QuantaAlpha_An_Evolutionary_Framework_for_LLM-Driven_Alpha_M",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     }

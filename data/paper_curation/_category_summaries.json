@@ -2,11 +2,16 @@
   "categories": [
     {
       "name": "HDBSCAN Bridge and Noise Papers",
-      "summary": "Codex-native cluster containing 57 processed papers.",
-      "count": 57
+      "summary": "Codex-native cluster containing 59 processed papers.",
+      "count": 59
     },
     {
       "name": "HDBSCAN Cluster: university, code, https, figure",
+      "summary": "Codex-native cluster containing 5 processed papers.",
+      "count": 5
+    },
+    {
+      "name": "HDBSCAN Cluster: generation, image, model, figure",
       "summary": "Codex-native cluster containing 5 processed papers.",
       "count": 5
     },
@@ -32,11 +37,6 @@
     },
     {
       "name": "HDBSCAN Cluster: systems, language, model, figure",
-      "summary": "Codex-native cluster containing 4 processed papers.",
-      "count": 4
-    },
-    {
-      "name": "HDBSCAN Cluster: image, qwen, models, https",
       "summary": "Codex-native cluster containing 4 processed papers.",
       "count": 4
     },
@@ -102,6 +102,11 @@
     },
     {
       "name": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
+    },
+    {
+      "name": "HDBSCAN Cluster: model, multimodal, language, understanding",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },

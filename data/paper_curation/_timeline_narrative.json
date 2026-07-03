@@ -5,11 +5,16 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 57
+      "count": 59
     },
     {
       "id": "hdbscan-cluster-university-code-https-figure",
       "name": "HDBSCAN Cluster: university, code, https, figure",
+      "count": 5
+    },
+    {
+      "id": "hdbscan-cluster-generation-image-model-figure",
+      "name": "HDBSCAN Cluster: generation, image, model, figure",
       "count": 5
     },
     {
@@ -35,11 +40,6 @@
     {
       "id": "hdbscan-cluster-systems-language-model-figure",
       "name": "HDBSCAN Cluster: systems, language, model, figure",
-      "count": 4
-    },
-    {
-      "id": "hdbscan-cluster-image-qwen-models-https",
-      "name": "HDBSCAN Cluster: image, qwen, models, https",
       "count": 4
     },
     {
@@ -105,6 +105,11 @@
     {
       "id": "hdbscan-cluster-figure-paperbanana-scientific-generation",
       "name": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-model-multimodal-language-understanding",
+      "name": "HDBSCAN Cluster: model, multimodal, language, understanding",
       "count": 2
     },
     {
