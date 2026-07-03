@@ -5,12 +5,12 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 34
+      "count": 36
     },
     {
-      "id": "hdbscan-cluster-university-zhang1-wang-zhang",
-      "name": "HDBSCAN Cluster: university, zhang1, wang, zhang",
-      "count": 6
+      "id": "hdbscan-cluster-university-models-zhang1-zhang",
+      "name": "HDBSCAN Cluster: university, models, zhang1, zhang",
+      "count": 9
     },
     {
       "id": "hdbscan-cluster-university-figure-code-https",
@@ -21,6 +21,11 @@
       "id": "hdbscan-cluster-image-qwen-models-https",
       "name": "HDBSCAN Cluster: image, qwen, models, https",
       "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-figure-language-opus-data",
+      "name": "HDBSCAN Cluster: figure, language, opus, data",
+      "count": 3
     },
     {
       "id": "hdbscan-cluster-optimization-policy-training-group",
@@ -35,6 +40,11 @@
     {
       "id": "hdbscan-cluster-model-systems-figure-language",
       "name": "HDBSCAN Cluster: model, systems, figure, language",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-agent-agents-experience-yang1",
+      "name": "HDBSCAN Cluster: agent, agents, experience, yang1",
       "count": 3
     },
     {
@@ -63,8 +73,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-data-textual-law-frequency",
-      "name": "HDBSCAN Cluster: data, textual, law, frequency",
+      "id": "hdbscan-cluster-reasoning-data-textual-llms",
+      "name": "HDBSCAN Cluster: reasoning, data, textual, llms",
       "count": 2
     },
     {
@@ -78,23 +88,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-data-centric-shanghai-unified-framework",
-      "name": "HDBSCAN Cluster: data-centric, shanghai, unified, framework",
-      "count": 2
-    },
-    {
       "id": "hdbscan-cluster-reasoning-policy-deep-rstar-math",
       "name": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-figure-language-opus-selection",
-      "name": "HDBSCAN Cluster: figure, language, opus, selection",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-kimi-glm-4-agentic-multimodal",
-      "name": "HDBSCAN Cluster: kimi, glm-4, agentic, multimodal",
       "count": 2
     },
     {
@@ -103,13 +98,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-reinforcement-language-feedback-rpt",
-      "name": "HDBSCAN Cluster: reinforcement, language, feedback, rpt",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-agent-experience-yang1-which",
-      "name": "HDBSCAN Cluster: agent, experience, yang1, which",
+      "id": "hdbscan-cluster-reinforcement-rewards-rpt-learning",
+      "name": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
       "count": 2
     },
     {
@@ -120,6 +110,11 @@
     {
       "id": "hdbscan-cluster-figure-paperbanana-scientific-generation",
       "name": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-text-artificial-airi-clear",
+      "name": "HDBSCAN Cluster: text, artificial, airi, clear",
       "count": 2
     }
   ]

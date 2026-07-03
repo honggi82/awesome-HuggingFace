@@ -2,13 +2,13 @@
   "categories": [
     {
       "name": "HDBSCAN Bridge and Noise Papers",
-      "summary": "Codex-native cluster containing 34 processed papers.",
-      "count": 34
+      "summary": "Codex-native cluster containing 36 processed papers.",
+      "count": 36
     },
     {
-      "name": "HDBSCAN Cluster: university, zhang1, wang, zhang",
-      "summary": "Codex-native cluster containing 6 processed papers.",
-      "count": 6
+      "name": "HDBSCAN Cluster: university, models, zhang1, zhang",
+      "summary": "Codex-native cluster containing 9 processed papers.",
+      "count": 9
     },
     {
       "name": "HDBSCAN Cluster: university, figure, code, https",
@@ -19,6 +19,11 @@
       "name": "HDBSCAN Cluster: image, qwen, models, https",
       "summary": "Codex-native cluster containing 4 processed papers.",
       "count": 4
+    },
+    {
+      "name": "HDBSCAN Cluster: figure, language, opus, data",
+      "summary": "Codex-native cluster containing 3 processed papers.",
+      "count": 3
     },
     {
       "name": "HDBSCAN Cluster: optimization, policy, training, group",
@@ -32,6 +37,11 @@
     },
     {
       "name": "HDBSCAN Cluster: model, systems, figure, language",
+      "summary": "Codex-native cluster containing 3 processed papers.",
+      "count": 3
+    },
+    {
+      "name": "HDBSCAN Cluster: agent, agents, experience, yang1",
       "summary": "Codex-native cluster containing 3 processed papers.",
       "count": 3
     },
@@ -61,7 +71,7 @@
       "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: data, textual, law, frequency",
+      "name": "HDBSCAN Cluster: reasoning, data, textual, llms",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
@@ -76,22 +86,7 @@
       "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: data-centric, shanghai, unified, framework",
-      "summary": "Codex-native cluster containing 2 processed papers.",
-      "count": 2
-    },
-    {
       "name": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
-      "summary": "Codex-native cluster containing 2 processed papers.",
-      "count": 2
-    },
-    {
-      "name": "HDBSCAN Cluster: figure, language, opus, selection",
-      "summary": "Codex-native cluster containing 2 processed papers.",
-      "count": 2
-    },
-    {
-      "name": "HDBSCAN Cluster: kimi, glm-4, agentic, multimodal",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
@@ -101,12 +96,7 @@
       "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: reinforcement, language, feedback, rpt",
-      "summary": "Codex-native cluster containing 2 processed papers.",
-      "count": 2
-    },
-    {
-      "name": "HDBSCAN Cluster: agent, experience, yang1, which",
+      "name": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
@@ -117,6 +107,11 @@
     },
     {
       "name": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
+    },
+    {
+      "name": "HDBSCAN Cluster: text, artificial, airi, clear",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     }

@@ -65,7 +65,7 @@
     {
       "slug": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
       "title": "Adam's Law: Textual Frequency Law on Large Language Models",
-      "category": "HDBSCAN Cluster: data, textual, law, frequency",
+      "category": "HDBSCAN Cluster: reasoning, data, textual, llms",
       "key": "FOLDER00007_f1204ba044c3",
       "sourceIndex": 6,
       "textBytes": 101929,
@@ -105,7 +105,7 @@
     {
       "slug": "081_AI_Can_Learn_Scientific_Taste",
       "title": "AI Can Learn Scientific Taste",
-      "category": "HDBSCAN Cluster: university, zhang1, wang, zhang",
+      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
       "key": "FOLDER00011_58c904a08eda",
       "sourceIndex": 10,
       "textBytes": 158305,
@@ -145,7 +145,7 @@
     {
       "slug": "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini",
       "title": "DataFlex: A Unified Framework for Data-Centric Dynamic Training of Large Language Models",
-      "category": "HDBSCAN Cluster: data-centric, shanghai, unified, framework",
+      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
       "key": "FOLDER00015_27487e16e6cf",
       "sourceIndex": 14,
       "textBytes": 72155,
@@ -205,7 +205,7 @@
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
-      "category": "HDBSCAN Cluster: figure, language, opus, selection",
+      "category": "HDBSCAN Cluster: figure, language, opus, data",
       "key": "FOLDER00021_8502bdaf4994",
       "sourceIndex": 20,
       "textBytes": 218340,
@@ -275,7 +275,7 @@
     {
       "slug": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
       "title": "InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models",
-      "category": "HDBSCAN Cluster: university, zhang1, wang, zhang",
+      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
       "key": "FOLDER00028_e5264c4b16b0",
       "sourceIndex": 27,
       "textBytes": 122653,
@@ -285,7 +285,7 @@
     {
       "slug": "332_DINOv3",
       "title": "DINOv3",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, language, opus, data",
       "key": "FOLDER00029_a3328f5ae17b",
       "sourceIndex": 28,
       "textBytes": 237604,
@@ -315,7 +315,7 @@
     {
       "slug": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
       "title": "Advances and Challenges in Foundation Agents: From Brain-Inspired Intelligence to Evolutionary, Collaborative, and Safe Systems",
-      "category": "HDBSCAN Cluster: university, zhang1, wang, zhang",
+      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
       "key": "FOLDER00032_042b1763276f",
       "sourceIndex": 31,
       "textBytes": 1411183,
@@ -405,7 +405,7 @@
     {
       "slug": "1725_Kimi_K25_Visual_Agentic_Intelligence",
       "title": "Kimi K2.5: Visual Agentic Intelligence",
-      "category": "HDBSCAN Cluster: kimi, glm-4, agentic, multimodal",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00041_386463f9a862",
       "sourceIndex": 40,
       "textBytes": 116467,
@@ -435,7 +435,7 @@
     {
       "slug": "1728_Reinforcement_Pre-Training",
       "title": "Reinforcement Pre-Training",
-      "category": "HDBSCAN Cluster: reinforcement, language, feedback, rpt",
+      "category": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
       "key": "FOLDER00044_3dcd071cdafe",
       "sourceIndex": 43,
       "textBytes": 48294,
@@ -445,7 +445,7 @@
     {
       "slug": "1729_Agent_Learning_via_Early_Experience",
       "title": "Agent Learning via Early Experience",
-      "category": "HDBSCAN Cluster: agent, experience, yang1, which",
+      "category": "HDBSCAN Cluster: agent, agents, experience, yang1",
       "key": "FOLDER00045_ba69b71147e7",
       "sourceIndex": 44,
       "textBytes": 118639,
@@ -545,7 +545,7 @@
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "title": "GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning",
-      "category": "HDBSCAN Cluster: kimi, glm-4, agentic, multimodal",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00055_9405fc3ded78",
       "sourceIndex": 54,
       "textBytes": 145376,
@@ -555,7 +555,7 @@
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "title": "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model",
-      "category": "HDBSCAN Cluster: figure, language, opus, selection",
+      "category": "HDBSCAN Cluster: figure, language, opus, data",
       "key": "FOLDER00056_e1a299738b86",
       "sourceIndex": 55,
       "textBytes": 87381,
@@ -575,7 +575,7 @@
     {
       "slug": "1741_SkillOpt_Executive_Strategy_for_Self-Evolving_Agent_Skills",
       "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
-      "category": "HDBSCAN Cluster: agent, experience, yang1, which",
+      "category": "HDBSCAN Cluster: agent, agents, experience, yang1",
       "key": "FOLDER00058_cb6c569830d7",
       "sourceIndex": 57,
       "textBytes": 95497,
@@ -635,7 +635,7 @@
     {
       "slug": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
       "title": "Less is Enough: Synthesizing Diverse Data in Feature Space of LLMs",
-      "category": "HDBSCAN Cluster: data, textual, law, frequency",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00064_292a7228313c",
       "sourceIndex": 63,
       "textBytes": 179027,
@@ -675,7 +675,7 @@
     {
       "slug": "1751_Is_Chain-of-Thought_Reasoning_of_LLMs_a_Mirage_A_Data_Distri",
       "title": "Is Chain-of-Thought Reasoning of LLMs a Mirage? A Data Distribution Lens",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, data, textual, llms",
       "key": "FOLDER00068_7017db505186",
       "sourceIndex": 67,
       "textBytes": 107328,
@@ -755,7 +755,7 @@
     {
       "slug": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
       "title": "Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond",
-      "category": "HDBSCAN Cluster: university, zhang1, wang, zhang",
+      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
       "key": "FOLDER00076_8f66fe1850ac",
       "sourceIndex": 75,
       "textBytes": 384726,
@@ -765,7 +765,7 @@
     {
       "slug": "1760_Scaling_Latent_Reasoning_via_Looped_Language_Models",
       "title": "Scaling Latent Reasoning via Looped Language Models",
-      "category": "HDBSCAN Cluster: university, zhang1, wang, zhang",
+      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
       "key": "FOLDER00077_e466b12b1813",
       "sourceIndex": 76,
       "textBytes": 185444,
@@ -775,7 +775,7 @@
     {
       "slug": "1841_Feature-Level_Insights_into_Artificial_Text_Detection_with_S",
       "title": "Feature-Level Insights into Artificial Text Detection with Sparse Autoencoders",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: text, artificial, airi, clear",
       "key": "FOLDER00078_fed29724b9ae",
       "sourceIndex": 77,
       "textBytes": 71941,
@@ -785,7 +785,7 @@
     {
       "slug": "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio",
       "title": "DataFlow: An LLM-Driven Framework for Unified Data Preparation and Workflow Automation in the Era of Data-Centric AI",
-      "category": "HDBSCAN Cluster: data-centric, shanghai, unified, framework",
+      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
       "key": "FOLDER00079_064bbcad8b7d",
       "sourceIndex": 78,
       "textBytes": 134657,
@@ -845,7 +845,7 @@
     {
       "slug": "1889_InternVL35_Advancing_Open-Source_Multimodal_Models_in_Versat",
       "title": "InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency",
-      "category": "HDBSCAN Cluster: university, zhang1, wang, zhang",
+      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
       "key": "FOLDER00085_d15d9f25155c",
       "sourceIndex": 84,
       "textBytes": 152420,
@@ -945,12 +945,62 @@
     {
       "slug": "1980_Bootstrapping_Exploration_with_Group-Level_Natural_Language",
       "title": "Bootstrapping Exploration with Group-Level Natural Language Feedback in Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reinforcement, language, feedback, rpt",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00095_946974fa004a",
       "sourceIndex": 94,
       "textBytes": 89363,
       "figuresExtracted": 5,
       "excerpt": "### Bootstrapping Exploration with Group-Level Natural Language Feedback in Reinforcement Learning Lei Huang12* Xiang Cheng2 Chenxiao Zhao2 Guobin Shen2 Junjie Yang2 Xiaocheng Feng1† Yuxuan Gu1 Xing Yu2† Bing Qin1 # arXiv:2603.04597v1[cs.CL]4Mar2026 ##### Abstract Large language models (LLMs) typically receive diverse natural language (NL) feedback through interaction with the environment. However, current reinforcement learning (RL) algorithms rely solely on scalar rewards, leaving the rich information in NL feedback underutilized and leading to inefficient exploration. In this work, we propose GOLF, an RL framework that explicitly exploits GrOup-level Language Feedback to guide targeted exploration through actionable refinements. GOLF aggregates two complementary feedback sources: (i) external critiques that pinpoint errors or propose targeted fixes, and (ii) intra-group attempts that "
+    },
+    {
+      "slug": "2022_TermiGen_High-Fidelity_Environment_and_Robust_Trajectory_Syn",
+      "title": "TermiGen: High-Fidelity Environment and Robust Trajectory Synthesis for Terminal Agents",
+      "category": "HDBSCAN Cluster: agent, agents, experience, yang1",
+      "key": "FOLDER00096_4f0822cdffc0",
+      "sourceIndex": 95,
+      "textBytes": 63945,
+      "figuresExtracted": 4,
+      "excerpt": "## TermiGen: High-Fidelity Environment and Robust Trajectory Synthesis for Terminal Agents Kaijie Zhu1 Yuzhou Nie1 Yijiang Li2 Yiming Huang2 Jialian Wu3 Jiang Liu3 Ximeng Sun3 Zhenfei Yin4 Lun Wang5 Zicheng Liu3 Emad Barsoum3 William Yang Wang1 Wenbo Guo1 # arXiv:2602.07274v1[cs.AI]6Feb2026 ### Abstract Executing complex terminal tasks remains a significant challenge for open-weight LLMs, constrained by two fundamental limitations. First, high-fidelity, executable training environments are scarce: environments synthesized from realworld repositories are not diverse and scalable, while trajectories synthesized by LLMs suffer from hallucinations. Second, standard instruction tuning uses expert trajectories that rarely exhibit simple mistakes common to smaller models. This creates a distributional mismatch, leaving student models ill-equipped to recover from their own runtime failures. To b"
+    },
+    {
+      "slug": "2023_OpenWorldLib_A_Unified_Codebase_and_Definition_of_Advanced_W",
+      "title": "OpenWorldLib: A Unified Codebase and Definition of Advanced World Models",
+      "category": "HDBSCAN Cluster: university, models, zhang1, zhang",
+      "key": "FOLDER00097_06d313401545",
+      "sourceIndex": 96,
+      "textBytes": 91225,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2604.04707v2[cs.CV]25May2026 [Figure 1] May 26, 2026 ### OpenWorldLib: A Unified Codebase and Definition of Advanced World Models DataFlow Team1, Bohan Zeng1,2†, Daili Hua1∗, Kaixin Zhu1∗, Yifan Dai7,2∗, Bozhou Li1,2∗, Yuran Wang1,2∗, Chengzhuo Tong1,2∗, Yifan Yang1∗, Mingkun Chang8∗, Jianbin Zhao1∗, Zhou Liu1, Hao Liang1, Xiaochen Ma4, Ruichuan An1, Junbo Niu1, Zimo Meng1, Tianyi Bai4, Meiyi Qiang1, Huanyao Zhang1, Zhiyou Xiao1, Tianyu Guo1, Qinhan Yu1, Runhao Zhao1, Zhengpin Li1, Xinyi Huang1, Yisheng Pan1, Yiwen Tang1, Juanxi Tian10, Yang Shi1,2, Yue Ding2, Xinlong Chen2, Hongcheng Gao5, Minglei Shi5, Jialong Wu5, Zekun Wang2, Yuanxing Zhang2, Xintao Wang2, Pengfei Wan2, Yiren Song6, Mike Zheng Shou6, Wentao Zhang1,3,9‡ 1Peking University, 2Kling Team, Kuaishou Technology, 3Zhongguancun Academy, 4HKUST, 5Tsinghua University, 6National University of Singapore, 7Shanghai Jiao T"
+    },
+    {
+      "slug": "2024_CLEAR_Character_Unlearning_in_Textual_and_Visual_Modalities",
+      "title": "CLEAR: Character Unlearning in Textual and Visual Modalities",
+      "category": "HDBSCAN Cluster: text, artificial, airi, clear",
+      "key": "FOLDER00098_964908fb8da8",
+      "sourceIndex": 97,
+      "textBytes": 85331,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2410.18057v4[cs.CV]31May2025 ## CLEAR: Character Unlearning in Textual and Visual Modalities ### Alexey Dontsov2,1, Dmitrii Korzh1,3, Alexey Zhavoronkin4,6, Boris Mikheev3, Denis Bobkov1,2, Aibek Alanov1,2, Oleg Y. Rogov1,3,5, Ivan Oseledets1,3, Elena Tutubalina1,4,7 1AIRI 2HSE University 3Skoltech 4Sber AI 5MTUCI 6MIPT 7ISP RAS Research Center for Trusted AI Correspondence: dontsov@airi.net; tutubalina@airi.net ### Abstract Machine Unlearning (MU) is critical for removing private or hazardous information from deep learning models. While MU has advanced significantly in unimodal (text or vision) settings, multimodal unlearning (MMU) remains underexplored due to the lack of open benchmarks for evaluating cross-modal data removal. To address this gap, we introduce CLEAR, the first open-source benchmark designed specifically for MMU. CLEAR contains 200 fictitious individuals and 3,7"
+    },
+    {
+      "slug": "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
+      "title": "SmolVLM: Redefining small and efficient multimodal models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00099_ac2f7b1c354d",
+      "sourceIndex": 98,
+      "textBytes": 79008,
+      "figuresExtracted": 5,
+      "excerpt": "# SmolVLM: Redefining small and efficient multimodal models Andrés Marafioti Orr Zohar Miquel Farré [Figure 1] [Figure 2] [Figure 3] [Figure 4] Merve Noyan Elie Bakouch Pedro Cuenca Cyril Zakka Loubna Ben Allal Anton Lozhkov Nouamane Tazi Vaibhav Srivastav Joshua Lochner Hugo Larcher Mathieu Morlon Lewis Tunstall Leandro von Werra Thomas Wolf [Figure 5] Hugging Face, Stanford University Equal Contribution [Figure 6] ## arXiv:2504.05299v1[cs.AI]7Apr2025 [Figure 7] Figure 1 ∣ Smol yet Mighty: comparison of SmolVLM with other state-of-the-art small VLM models. Image results are sourced from the OpenCompass OpenVLM leaderboard (Duan et al., 2024). [Figure 8] ### Abstract Large Vision-Language Models (VLMs) deliver exceptional performance but require significant computational resources, limiting their deployment on mobile and edge devices. Smaller VLMs typically mirror design choices of large"
+    },
+    {
+      "slug": "2026_DelTA_Discriminative_Token_Credit_Assignment_for_Reinforceme",
+      "title": "DelTA: Discriminative Token Credit Assignment for Reinforcement Learning from Verifiable Rewards",
+      "category": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
+      "key": "FOLDER00100_474146b29ef4",
+      "sourceIndex": 99,
+      "textBytes": 88739,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.21467v1[cs.LG]20May2026 ## DELTA: DISCRIMINATIVE TOKEN CREDIT ASSIGNMENT FOR REINFORCEMENT LEARNING FROM VERIFIABLE REWARDS Kaiyi Zhang1,2 , Wei Wu2†, Yankai Lin1† 1Gaoling School of Artificial Intelligence, Renmin University of China 2Ant International {kyzhang, yankailin}@ruc.edu.cn wuwei19850318@gmail.com Code: https://github.com/RUCBM/DelTA ABSTRACT Reinforcement learning from verifiable rewards (RLVR) has emerged as a central technique for improving the reasoning capabilities of large language models. Despite its effectiveness, how response-level rewards translate into token-level probability changes remains poorly understood. We introduce a discriminator view of RLVR updates, showing that the policy-gradient update direction implicitly acts as a linear discriminator over token-gradient vectors and thereby determines which token probabilities are increased or decreased "
     }
   ]
 }
