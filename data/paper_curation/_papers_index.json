@@ -25,7 +25,7 @@
     {
       "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
       "title": "GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
+      "category": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
       "key": "FOLDER00003_07f36ae7acd9",
       "sourceIndex": null,
       "textBytes": 76254,
@@ -85,7 +85,7 @@
     {
       "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
       "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
+      "category": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
       "key": "FOLDER00009_e247d7b4176f",
       "sourceIndex": 8,
       "textBytes": 238083,
@@ -595,7 +595,7 @@
     {
       "slug": "1743_WildDet3D_Scaling_Promptable_3D_Detection_in_the_Wild",
       "title": "WildDet3D: Scaling Promptable 3D Detection in the Wild",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, wilddet3d, university, utonia",
       "key": "FOLDER00060_ef3c19fa0025",
       "sourceIndex": 59,
       "textBytes": 110894,
@@ -985,7 +985,7 @@
     {
       "slug": "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
       "title": "SmolVLM: Redefining small and efficient multimodal models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, models, ltx-2, efficient",
       "key": "FOLDER00099_ac2f7b1c354d",
       "sourceIndex": 98,
       "textBytes": 79008,
@@ -1301,6 +1301,56 @@
       "textBytes": 98488,
       "figuresExtracted": 5,
       "excerpt": "### LongVT: Incentivizing “Thinking with Long Videos” via Native Tool Calling # arXiv:2511.20785v3[cs.CV]21May2026 Zuhao Yang1,2,5,∗, Sudong Wang1,3,5,∗, Kaichen Zhang1,2,5,∗, Keming Wu1,4,5, Sicong Leng2, Yifan Zhang1, Bo Li2,5, Chengwei Qin3, Shijian Lu2, , Xingxuan Li1, , Lidong Bing1 1MiroMind, 2NTU, 3HKUST(GZ), 4THU, 5LMMs-Lab https://evolvinglmms-lab.github.io/LongVT/ 70 sec 141 sec 209 sec 347 sec 562 sec …… 1056 sec [Figure 1] Which foot did the French player use to execute the [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] [Figure 7] volley, equalizing the score? Thinking with Textual CoT Thinking with iMCoTT (Ours) [Begin of iMCoTT] The video is a comprehensive highlight reel of the … It begins with pre-match scenes, showing players in the tunnel and lining up… Then Argentina scores a second goal…The user is asking about the equalizing volley. Based on my skim, this hap"
+    },
+    {
+      "slug": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
+      "title": "GLM-5: from Vibe Coding to Agentic Engineering",
+      "category": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
+      "key": "FOLDER00131_4b64db8dc365",
+      "sourceIndex": 130,
+      "textBytes": 140252,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2602.15763v2[cs.LG]24Feb2026 ## GLM-5: from Vibe Coding to Agentic Engineering GLM-5 Team Zhipu AI & Tsinghua University (For the complete list of authors, please refer to the Contribution section) ### Abstract We present GLM-5, a next-generation foundation model designed to transition the paradigm of vibe coding to agentic engineering. Building upon the agentic, reasoning, and coding (ARC) capabilities of its predecessor, GLM-5 adopts DSA to significantly reduce training and inference costs while maintaining longcontext fidelity. To advance model alignment and autonomy, we implement a new asynchronous reinforcement learning infrastructure that drastically improves post-training efficiency by decoupling generation from training. Furthermore, we propose novel asynchronous agent RL algorithms that further improve RL quality, enabling the model to learn from complex, long-horizon in"
+    },
+    {
+      "slug": "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
+      "title": "OmniSVG: A Unified Scalable Vector Graphics Generation Model",
+      "category": "HDBSCAN Cluster: figure, agent, tokens, reasoning",
+      "key": "FOLDER00132_bc3de160ac51",
+      "sourceIndex": 131,
+      "textBytes": 70794,
+      "figuresExtracted": 5,
+      "excerpt": "## OmniSVG: A Unified Scalable Vector Graphics Generation Model Yiying Yang1,2∗ Wei Cheng2∗ Sijin Chen1 Xianfang Zeng2 Fukun Yin1,2 Jiaxu Zhang2 Liao Wang2 Gang Yu2 ‡ Xingjun Ma1 ‡ Yu-Gang Jiang1 1 Fudan University 2 StepFun [Figure 1] [Figure 2] [Figure 3] [Figure 4] [Figure 5] ###### Project Page MMSVG-2M MMSVGBench Models Code # arXiv:2504.06263v3[cs.CV]1Dec2025 [Figure 6] [Figure 7] [Figure 8] [Figure 9] [Figure 10] Text-to-SVG [Figure 11] [Figure 12] [Figure 13] [Figure 14] [Figure 15] [Figure 16] [Figure 17] [Figure 18] [Figure 19] [Figure 20] [Figure 21] [Figure 22] Icon Illustration Character Acutecartoon character with a green and yellow mushroom hat, red capes. [Figure 23] [Figure 24] [Figure 25] [Figure 26] [Figure 27] [Figure 28] [Figure 29] [Figure 30] [Figure 31] [Figure 32] [Figure 33] [Figure 34] [Figure 35] [Figure 36] [Figure 37] [Figure 38] [Figure 39] [Figure 40] [Fig"
+    },
+    {
+      "slug": "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
+      "title": "Perception, Reason, Think, and Plan: A Survey on Large Multimodal Reasoning Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00133_8e3c28fd1818",
+      "sourceIndex": 132,
+      "textBytes": 391537,
+      "figuresExtracted": 5,
+      "excerpt": "arXiv:2505.04921v2[cs.CV]6Jul2025 # Perception, Reason, Think, and Plan: A Survey on Large Multimodal Reasoning Models Yunxin Li∗, Zhenyu Liu∗, Zitao Li∗, Xuanyu Zhang, Zhenran Xu, Xinyu Chen, Haoyuan Shi, Shenyuan Jiang Xintong Wang, Jifang Wang, Shouzheng Huang, Xinping Zhao, Borui Jiang, Lanqing Hong, Longyue Wang Zhuotao Tian, Baoxing Huai, Wenhan Luo, Weihua Luo, Zheng Zhang, Baotian Hu‡, Min Zhang Harbin Institute of Technology, Shenzhen Project: https://github.com/HITsz-TMG/Awesome-Large-Multimodal-Reasoning-Models ### Abstract Reasoning lies at the heart of intelligence, shaping the ability to make decisions, draw conclusions, and generalize across domains. In artificial intelligence, as systems increasingly operate in open, uncertain, and multimodal environments, reasoning becomes essential for enabling robust and adaptive behavior. Large Multimodal Reasoning Models (LMRMs) have"
+    },
+    {
+      "slug": "2354_LTX-2_Efficient_Joint_Audio-Visual_Foundation_Model",
+      "title": "LTX-2: Efficient Joint Audio-Visual Foundation Model",
+      "category": "HDBSCAN Cluster: figure, models, ltx-2, efficient",
+      "key": "FOLDER00134_d15fe444ec5a",
+      "sourceIndex": 133,
+      "textBytes": 44273,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2601.03233v1[cs.CV]6Jan2026 ## LTX-2: Efficient Joint Audio-Visual Foundation Model Yoav HaCohen∗ Benny Brazowski Nisan Chiprut Yaki Bitterman Andrew Kvochko Avishai Berkowitz Daniel Shalem Daphna Lifschitz Dudu Moshe Eitan Porat Eitan Richardson Guy Shiran Itay Chachy Jonathan Chetboun Michael Finkelson Michael Kupchick Nir Zabari Nitzan Guetta Noa Kotler Ofir Bibi Ori Gordon Poriya Panet Roi Benita Shahar Armon Victor Kulikov Yaron Inger Yonatan Shiftan Zeev Melumian Zeev Farbman Lightricks ltx-2@lightricks.com #### Abstract Recent text-to-video diffusion models can generate compelling video sequences, yet they remain silent—missing the semantic, emotional, and atmospheric cues that audio provides. We introduce LTX-2, an open-source foundational model capable of generating high-quality, temporally synchronized audiovisual content in a unified manner. LTX-2 consists of an asymme"
+    },
+    {
+      "slug": "2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds",
+      "title": "Utonia: Toward One Encoder for All Point Clouds",
+      "category": "HDBSCAN Cluster: figure, wilddet3d, university, utonia",
+      "key": "FOLDER00135_0f1a9376e7d9",
+      "sourceIndex": 134,
+      "textBytes": 66552,
+      "figuresExtracted": 5,
+      "excerpt": "## Utonia: Toward One Encoder for All Point Clouds [Figure 1] #### Yujia Zhang1, Xiaoyang Wu1†, Yunhan Yang1, Xianzhe Fan1, Han Li3, Yuechen Zhang2, Zehao Huang3, Naiyan Wang3, Hengshuang Zhao1‡ 1 The University of Hong Kong 2 The Chinese University of Hong Kong 3 Xiaomi † Project lead ‡ Corresponding author https://pointcept.github.io/Utonia # arXiv:2603.03283v1[cs.CV]3Mar2026 [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] Figure 1. One encoder for all point clouds. We visualize Utonia features by PCA. City-scale geometry with large coordinate ranges: the smooth, coherent features over terrain and building masses indicate robustness to an extreme extent; Outdoor LiDAR with sparse ring-like scan patterns: features remain organized by geometry rather than scanlines, suggesting reduced reliance on sampling-specific shortcuts. Indoor reconstruction in dense scans: features separate "
     }
   ]
 }

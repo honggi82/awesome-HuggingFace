@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-03T19:22:06.388410+00:00",
+  "generated": "2026-07-03T19:52:53.781175+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 125,
+  "sourceOffset": 130,
   "sourceLimit": 5,
-  "sourceEnd": 130,
+  "sourceEnd": 135,
   "batchTotal": 5,
-  "total": 130,
-  "ok": 130,
-  "textExtracted": 130,
-  "figureFiles": 587,
+  "total": 135,
+  "ok": 135,
+  "textExtracted": 135,
+  "figureFiles": 612,
   "sanityFailed": 0,
   "records": [
     {
@@ -1739,6 +1739,71 @@
       "textBytes": 98488,
       "sanityOk": true,
       "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "GLM-5: from Vibe Coding to Agentic Engineering",
+      "key": "FOLDER00131_4b64db8dc365",
+      "sourceIndex": 130,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00131_GLM-5 from Vibe Coding to Agentic Engineering.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
+      "textBytes": 140252,
+      "sanityOk": true,
+      "sanityReason": "ok (title 5/5 doi=T author=True)"
+    },
+    {
+      "title": "OmniSVG: A Unified Scalable Vector Graphics Generation Model",
+      "key": "FOLDER00132_bc3de160ac51",
+      "sourceIndex": 131,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00132_OmniSVG A Unified Scalable Vector Graphics Generation Model.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
+      "textBytes": 70794,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Perception, Reason, Think, and Plan: A Survey on Large Multimodal Reasoning Models",
+      "key": "FOLDER00133_8e3c28fd1818",
+      "sourceIndex": 132,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00133_Perception, Reason, Think, and Plan A Survey on Large Multimodal Reasoning Models.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
+      "textBytes": 391537,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "LTX-2: Efficient Joint Audio-Visual Foundation Model",
+      "key": "FOLDER00134_d15fe444ec5a",
+      "sourceIndex": 133,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00134_LTX-2 Efficient Joint Audio-Visual Foundation Model.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2354_LTX-2_Efficient_Joint_Audio-Visual_Foundation_Model",
+      "textBytes": 44273,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Utonia: Toward One Encoder for All Point Clouds",
+      "key": "FOLDER00135_0f1a9376e7d9",
+      "sourceIndex": 134,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00135_Utonia Toward One Encoder for All Point Clouds.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds",
+      "textBytes": 66552,
+      "sanityOk": true,
+      "sanityReason": "ok (title 5/5 doi=T author=True)"
     }
   ]
 }

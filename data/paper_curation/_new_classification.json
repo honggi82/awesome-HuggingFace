@@ -3,7 +3,7 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 52
+      "count": 51
     },
     {
       "id": "hdbscan-cluster-university-models-li1-zhang1",
@@ -41,6 +41,16 @@
       "count": 4
     },
     {
+      "id": "hdbscan-cluster-agentic-reasoning-reinforcement-learning",
+      "name": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-figure-agent-tokens-reasoning",
+      "name": "HDBSCAN Cluster: figure, agent, tokens, reasoning",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-efficient-figure-language-loop",
       "name": "HDBSCAN Cluster: efficient, figure, language, loop",
       "count": 3
@@ -53,16 +63,6 @@
     {
       "id": "hdbscan-cluster-language-large-llm-memory",
       "name": "HDBSCAN Cluster: language, large, llm, memory",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-reasoning-competitive-programming-reinforcement",
-      "name": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-figure-agent-tokens-reasoning",
-      "name": "HDBSCAN Cluster: figure, agent, tokens, reasoning",
       "count": 2
     },
     {
@@ -106,6 +106,11 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-figure-wilddet3d-university-utonia",
+      "name": "HDBSCAN Cluster: figure, wilddet3d, university, utonia",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-figure-paperbanana-scientific-generation",
       "name": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
       "count": 2
@@ -123,6 +128,11 @@
     {
       "id": "hdbscan-cluster-language-models-nonsense-hallucinations",
       "name": "HDBSCAN Cluster: language, models, nonsense, hallucinations",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-figure-models-ltx-2-efficient",
+      "name": "HDBSCAN Cluster: figure, models, ltx-2, efficient",
       "count": 2
     },
     {
@@ -146,7 +156,7 @@
     },
     {
       "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
-      "category": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
+      "category": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -182,7 +192,7 @@
     },
     {
       "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
-      "category": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
+      "category": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -488,7 +498,7 @@
     },
     {
       "slug": "1743_WildDet3D_Scaling_Promptable_3D_Detection_in_the_Wild",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, wilddet3d, university, utonia",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -722,7 +732,7 @@
     },
     {
       "slug": "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, models, ltx-2, efficient",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -909,6 +919,36 @@
     {
       "slug": "2310_LongVT_Incentivizing_Thinking_with_Long_Videos_via_Native_To",
       "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
+      "category": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
+      "category": "HDBSCAN Cluster: figure, agent, tokens, reasoning",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2354_LTX-2_Efficient_Joint_Audio-Visual_Foundation_Model",
+      "category": "HDBSCAN Cluster: figure, models, ltx-2, efficient",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds",
+      "category": "HDBSCAN Cluster: figure, wilddet3d, university, utonia",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     }

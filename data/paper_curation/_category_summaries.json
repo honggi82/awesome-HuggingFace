@@ -2,8 +2,8 @@
   "categories": [
     {
       "name": "HDBSCAN Bridge and Noise Papers",
-      "summary": "Codex-native cluster containing 52 processed papers.",
-      "count": 52
+      "summary": "Codex-native cluster containing 51 processed papers.",
+      "count": 51
     },
     {
       "name": "HDBSCAN Cluster: university, models, li1, zhang1",
@@ -41,6 +41,16 @@
       "count": 4
     },
     {
+      "name": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
+      "summary": "Codex-native cluster containing 3 processed papers.",
+      "count": 3
+    },
+    {
+      "name": "HDBSCAN Cluster: figure, agent, tokens, reasoning",
+      "summary": "Codex-native cluster containing 3 processed papers.",
+      "count": 3
+    },
+    {
       "name": "HDBSCAN Cluster: efficient, figure, language, loop",
       "summary": "Codex-native cluster containing 3 processed papers.",
       "count": 3
@@ -52,16 +62,6 @@
     },
     {
       "name": "HDBSCAN Cluster: language, large, llm, memory",
-      "summary": "Codex-native cluster containing 2 processed papers.",
-      "count": 2
-    },
-    {
-      "name": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
-      "summary": "Codex-native cluster containing 2 processed papers.",
-      "count": 2
-    },
-    {
-      "name": "HDBSCAN Cluster: figure, agent, tokens, reasoning",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
@@ -106,6 +106,11 @@
       "count": 2
     },
     {
+      "name": "HDBSCAN Cluster: figure, wilddet3d, university, utonia",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
+    },
+    {
       "name": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
@@ -122,6 +127,11 @@
     },
     {
       "name": "HDBSCAN Cluster: language, models, nonsense, hallucinations",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
+    },
+    {
+      "name": "HDBSCAN Cluster: figure, models, ltx-2, efficient",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
