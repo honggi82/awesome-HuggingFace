@@ -2,13 +2,8 @@
   "categories": [
     {
       "name": "HDBSCAN Bridge and Noise Papers",
-      "summary": "Codex-native cluster containing 48 processed papers.",
-      "count": 48
-    },
-    {
-      "name": "HDBSCAN Cluster: university, models, chen1, zhang1",
-      "summary": "Codex-native cluster containing 11 processed papers.",
-      "count": 11
+      "summary": "Codex-native cluster containing 57 processed papers.",
+      "count": 57
     },
     {
       "name": "HDBSCAN Cluster: university, code, https, figure",
@@ -16,12 +11,27 @@
       "count": 5
     },
     {
-      "name": "HDBSCAN Cluster: reasoning, reinforcement, learning, deep",
+      "name": "HDBSCAN Cluster: report, https, technical, qwen",
       "summary": "Codex-native cluster containing 4 processed papers.",
       "count": 4
     },
     {
-      "name": "HDBSCAN Cluster: skills, agent, agents, yang1",
+      "name": "HDBSCAN Cluster: reinforcement, reasoning, rewards, figure",
+      "summary": "Codex-native cluster containing 4 processed papers.",
+      "count": 4
+    },
+    {
+      "name": "HDBSCAN Cluster: figure, language, loop, opus",
+      "summary": "Codex-native cluster containing 4 processed papers.",
+      "count": 4
+    },
+    {
+      "name": "HDBSCAN Cluster: optimization, policy, reinforcement, learning",
+      "summary": "Codex-native cluster containing 4 processed papers.",
+      "count": 4
+    },
+    {
+      "name": "HDBSCAN Cluster: systems, language, model, figure",
       "summary": "Codex-native cluster containing 4 processed papers.",
       "count": 4
     },
@@ -31,32 +41,17 @@
       "count": 4
     },
     {
-      "name": "HDBSCAN Cluster: https, qwen, report, qwen3",
-      "summary": "Codex-native cluster containing 3 processed papers.",
-      "count": 3
+      "name": "HDBSCAN Cluster: glm-4, reasoning, models, multimodal",
+      "summary": "Codex-native cluster containing 4 processed papers.",
+      "count": 4
     },
     {
-      "name": "HDBSCAN Cluster: optimization, policy, training, group",
-      "summary": "Codex-native cluster containing 3 processed papers.",
-      "count": 3
+      "name": "HDBSCAN Cluster: sharing, efficient, post-training, language",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: university, models, xiamen, large",
-      "summary": "Codex-native cluster containing 3 processed papers.",
-      "count": 3
-    },
-    {
-      "name": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
-      "summary": "Codex-native cluster containing 3 processed papers.",
-      "count": 3
-    },
-    {
-      "name": "HDBSCAN Cluster: figure, university, li1, agentic",
-      "summary": "Codex-native cluster containing 3 processed papers.",
-      "count": 3
-    },
-    {
-      "name": "HDBSCAN Cluster: language, large, llm, memory",
+      "name": "HDBSCAN Cluster: reasoning, data, textual, llms",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
@@ -66,12 +61,17 @@
       "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: figure, transformer, attention, opus",
+      "name": "HDBSCAN Cluster: data-centric, shanghai, unified, framework",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: training, smollm2, small, language",
+      "name": "HDBSCAN Cluster: reasoning, sft, edu, zero",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
+    },
+    {
+      "name": "HDBSCAN Cluster: zhang1, advanced, models, li1",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
@@ -81,27 +81,27 @@
       "count": 2
     },
     {
+      "name": "HDBSCAN Cluster: zhang1, chen1, advances, challenges",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
+    },
+    {
       "name": "HDBSCAN Cluster: university, learning, sft, weak",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: recursive, systems, model, multi-agent",
+      "name": "HDBSCAN Cluster: agent, skills, skillopt, university",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
+      "name": "HDBSCAN Cluster: university, xiamen, models, figure",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
-      "summary": "Codex-native cluster containing 2 processed papers.",
-      "count": 2
-    },
-    {
-      "name": "HDBSCAN Cluster: multimodal, glm-4, understanding, generation",
+      "name": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
@@ -111,7 +111,12 @@
       "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: language, models, nonsense, hallucinations",
+      "name": "HDBSCAN Cluster: videos, human, audio, generation",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
+    },
+    {
+      "name": "HDBSCAN Cluster: figure, li1, large, language",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     }

@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-03T17:12:40.718590+00:00",
+  "generated": "2026-07-03T17:44:28.433895+00:00",
   "mode": "extract-only",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "awesomeRepo": "E:\\조선대\\연구\\awesome-HuggingFace",
   "extractReport": "data/paper_curation/extract_only_report.json",
   "docsDir": "docs/paper_curation/extract_only",
   "paperDir": "paper/extract_only",
-  "recordCount": 115,
+  "recordCount": 120,
   "syncedPaperSlugs": [
     "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
     "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
@@ -122,13 +122,18 @@
     "2164_GaLore_Memory-Efficient_LLM_Training_by_Gradient_Low-Rank_Pr",
     "2165_MLGym_A_New_Framework_and_Benchmark_for_Advancing_AI_Researc",
     "2166_On_the_Generalization_of_SFT_A_Reinforcement_Learning_Perspe",
-    "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio"
+    "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
+    "2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data",
+    "2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning",
+    "2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual",
+    "2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi",
+    "2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi"
   ],
   "copied": [
     {
       "source": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\_folder_source_extract_report.json",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\data\\paper_curation\\extract_only_report.json",
-      "bytes": 70642
+      "bytes": 73786
     },
     {
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective\\text.md",
@@ -6529,6 +6534,286 @@
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio\\figures\\fig5.png",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio\\figures\\fig5.png",
       "bytes": 148049
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\text.md",
+      "bytes": 207768
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig1.png",
+      "bytes": 422153
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig2.png",
+      "bytes": 333002
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig3.png",
+      "bytes": 50385
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig4.png",
+      "bytes": 125262
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig5.png",
+      "bytes": 32865
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\text.md",
+      "bytes": 207768
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig1.png",
+      "bytes": 422153
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig2.png",
+      "bytes": 333002
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig3.png",
+      "bytes": 50385
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig4.png",
+      "bytes": 125262
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data\\figures\\fig5.png",
+      "bytes": 32865
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\text.md",
+      "bytes": 76413
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\figures\\fig1.png",
+      "bytes": 354255
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\figures\\fig2.png",
+      "bytes": 213762
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\figures\\fig3.png",
+      "bytes": 69762
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\text.md",
+      "bytes": 76413
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\figures\\fig1.png",
+      "bytes": 354255
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\figures\\fig2.png",
+      "bytes": 213762
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning\\figures\\fig3.png",
+      "bytes": 69762
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\text.md",
+      "bytes": 67350
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig1.png",
+      "bytes": 235141
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig2.png",
+      "bytes": 216562
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig3.png",
+      "bytes": 93496
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig4.png",
+      "bytes": 209203
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig5.png",
+      "bytes": 218451
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\text.md",
+      "bytes": 67350
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig1.png",
+      "bytes": 235141
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig2.png",
+      "bytes": 216562
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig3.png",
+      "bytes": 93496
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig4.png",
+      "bytes": 209203
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2213_Anti-Self-Distillation_for_Reasoning_RL_via_Pointwise_Mutual\\figures\\fig5.png",
+      "bytes": 218451
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\text.md",
+      "bytes": 69135
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig1.png",
+      "bytes": 686122
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig2.png",
+      "bytes": 796305
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig3.png",
+      "bytes": 317468
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig4.png",
+      "bytes": 267369
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig5.png",
+      "bytes": 174507
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\text.md",
+      "bytes": 69135
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig1.png",
+      "bytes": 686122
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig2.png",
+      "bytes": 796305
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig3.png",
+      "bytes": 317468
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig4.png",
+      "bytes": 267369
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi\\figures\\fig5.png",
+      "bytes": 174507
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\text.md",
+      "bytes": 53932
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig1.png",
+      "bytes": 1053225
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig2.png",
+      "bytes": 444176
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig3.png",
+      "bytes": 1110809
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig4.png",
+      "bytes": 1435964
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig5.png",
+      "bytes": 739981
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\text.md",
+      "bytes": 53932
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig1.png",
+      "bytes": 1053225
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig2.png",
+      "bytes": 444176
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig3.png",
+      "bytes": 1110809
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig4.png",
+      "bytes": 1435964
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi\\figures\\fig5.png",
+      "bytes": 739981
     }
   ],
   "missing": [],
