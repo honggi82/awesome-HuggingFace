@@ -5,17 +5,22 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 27
+      "count": 25
     },
     {
-      "id": "hdbscan-cluster-language-data-figure-textual",
-      "name": "HDBSCAN Cluster: language, data, figure, textual",
-      "count": 4
+      "id": "hdbscan-cluster-reasoning-reinforcement-learning-deep",
+      "name": "HDBSCAN Cluster: reasoning, reinforcement, learning, deep",
+      "count": 5
     },
     {
-      "id": "hdbscan-cluster-zhang1-arxiv-li1-chen1",
-      "name": "HDBSCAN Cluster: zhang1, arxiv, li1, chen1",
-      "count": 4
+      "id": "hdbscan-cluster-data-language-large-figure",
+      "name": "HDBSCAN Cluster: data, language, large, figure",
+      "count": 5
+    },
+    {
+      "id": "hdbscan-cluster-university-zhang1-chen1-li1",
+      "name": "HDBSCAN Cluster: university, zhang1, chen1, li1",
+      "count": 5
     },
     {
       "id": "hdbscan-cluster-university-code-https-figure",
@@ -23,8 +28,18 @@
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-reasoning-policy-deep-reinforcement",
-      "name": "HDBSCAN Cluster: reasoning, policy, deep, reinforcement",
+      "id": "hdbscan-cluster-deepseek-v3-efficient-language-sharing",
+      "name": "HDBSCAN Cluster: deepseek-v3, efficient, language, sharing",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-qwen-models-report-qwen3",
+      "name": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-figure-video-reasoning-university",
+      "name": "HDBSCAN Cluster: figure, video, reasoning, university",
       "count": 3
     },
     {
@@ -43,18 +58,8 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-sharing-efficient-post-training-language",
-      "name": "HDBSCAN Cluster: sharing, efficient, post-training, language",
-      "count": 2
-    },
-    {
       "id": "hdbscan-cluster-language-large-llm-memory",
       "name": "HDBSCAN Cluster: language, large, llm, memory",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-reasoning-competitive-programming-reinforcement",
-      "name": "HDBSCAN Cluster: reasoning, competitive, programming, reinforcement",
       "count": 2
     },
     {
@@ -63,8 +68,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-qwen-qwen3-https-models",
-      "name": "HDBSCAN Cluster: qwen, qwen3, https, models",
+      "id": "hdbscan-cluster-data-centric-shanghai-unified-framework",
+      "name": "HDBSCAN Cluster: data-centric, shanghai, unified, framework",
       "count": 2
     },
     {
@@ -75,11 +80,6 @@
     {
       "id": "hdbscan-cluster-optimization-group-policy-sequence",
       "name": "HDBSCAN Cluster: optimization, group, policy, sequence",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-recursive-skills-systems-multi-agent",
-      "name": "HDBSCAN Cluster: recursive, skills, systems, multi-agent",
       "count": 2
     },
     {

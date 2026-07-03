@@ -97,13 +97,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
-      "score": 0.9086,
+      "target": "1841_Feature-Level_Insights_into_Artificial_Text_Detection_with_S",
+      "score": 0.9188,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1726_Intern-S1_A_Scientific_Multimodal_Foundation_Model",
-      "score": 0.9043,
+      "target": "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
+      "score": 0.9086,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -146,6 +146,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
+      "score": 0.9226,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
       "score": 0.9141,
       "reason": "Codex local embedding similarity"
@@ -153,11 +158,6 @@
     {
       "target": "1758_InCoder-32B-Thinking_Industrial_Code_World_Model_for_Thinkin",
       "score": 0.9139,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "319_Agents_Last_Exam",
-      "score": 0.9095,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -178,13 +178,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
-      "score": 0.9296,
+      "target": "1841_Feature-Level_Insights_into_Artificial_Text_Detection_with_S",
+      "score": 0.9324,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1728_Reinforcement_Pre-Training",
-      "score": 0.9281,
+      "target": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
+      "score": 0.9296,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -281,18 +281,18 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "1760_Scaling_Latent_Reasoning_via_Looped_Language_Models",
+      "score": 0.9468,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1750_Thinking_with_Video_Video_Generation_as_a_Promising_Multimod",
       "score": 0.9467,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "319_Agents_Last_Exam",
-      "score": 0.9371,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini",
-      "score": 0.9351,
+      "target": "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio",
+      "score": 0.945,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -379,6 +379,11 @@
   ],
   "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini": [
     {
+      "target": "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio",
+      "score": 0.9715,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1730_A_Survey_of_Context_Engineering_for_Large_Language_Models",
       "score": 0.9514,
       "reason": "Codex local embedding similarity"
@@ -397,17 +402,22 @@
       "target": "1758_InCoder-32B-Thinking_Industrial_Code_World_Model_for_Thinkin",
       "score": 0.9423,
       "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "322_ASE_A_Repository-Level_Benchmark_for_Evaluating_Security_in",
-      "score": 0.9413,
-      "reason": "Codex local embedding similarity"
     }
   ],
   "319_Agents_Last_Exam": [
     {
+      "target": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
+      "score": 0.9431,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
       "score": 0.9428,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio",
+      "score": 0.9398,
       "reason": "Codex local embedding similarity"
     },
     {
@@ -418,16 +428,6 @@
     {
       "target": "1732_ClawBench_Can_AI_Agents_Complete_Everyday_Online_Tasks",
       "score": 0.9343,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios",
-      "score": 0.9293,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
-      "score": 0.9277,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -735,23 +735,23 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
+      "score": 0.9735,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "081_AI_Can_Learn_Scientific_Taste",
       "score": 0.9533,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini",
-      "score": 0.9342,
+      "target": "1760_Scaling_Latent_Reasoning_via_Looped_Language_Models",
+      "score": 0.9528,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios",
-      "score": 0.9308,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "319_Agents_Last_Exam",
-      "score": 0.9277,
+      "target": "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio",
+      "score": 0.9496,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -838,6 +838,11 @@
   ],
   "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp": [
     {
+      "target": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
+      "score": 0.9814,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
       "score": 0.9746,
       "reason": "Codex local embedding similarity"
@@ -848,18 +853,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "319_Agents_Last_Exam",
-      "score": 0.9428,
+      "target": "1760_Scaling_Latent_Reasoning_via_Looped_Language_Models",
+      "score": 0.9522,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios",
-      "score": 0.9268,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1752_The_Landscape_of_Agentic_Reinforcement_Learning_for_LLMs_A_S",
-      "score": 0.9221,
+      "target": "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio",
+      "score": 0.9461,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1717,13 +1717,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "083_Qwen25_Technical_Report",
-      "score": 0.9263,
+      "target": "1841_Feature-Level_Insights_into_Artificial_Text_Detection_with_S",
+      "score": 0.9272,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
-      "score": 0.9233,
+      "target": "083_Qwen25_Technical_Report",
+      "score": 0.9263,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2021,6 +2021,141 @@
     {
       "target": "1730_A_Survey_of_Context_Engineering_for_Large_Language_Models",
       "score": 0.9427,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey": [
+    {
+      "target": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
+      "score": 0.9814,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
+      "score": 0.9735,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1760_Scaling_Latent_Reasoning_via_Looped_Language_Models",
+      "score": 0.9463,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "319_Agents_Last_Exam",
+      "score": 0.9431,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "081_AI_Can_Learn_Scientific_Taste",
+      "score": 0.9396,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "1760_Scaling_Latent_Reasoning_via_Looped_Language_Models": [
+    {
+      "target": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
+      "score": 0.9528,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
+      "score": 0.9522,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "081_AI_Can_Learn_Scientific_Taste",
+      "score": 0.9468,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
+      "score": 0.9463,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio",
+      "score": 0.9447,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "1841_Feature-Level_Insights_into_Artificial_Text_Detection_with_S": [
+    {
+      "target": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
+      "score": 0.9361,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
+      "score": 0.9324,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
+      "score": 0.9323,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
+      "score": 0.9305,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
+      "score": 0.9272,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "1842_DataFlow_An_LLM-Driven_Framework_for_Unified_Data_Preparatio": [
+    {
+      "target": "085_DataFlex_A_Unified_Framework_for_Data-Centric_Dynamic_Traini",
+      "score": 0.9715,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
+      "score": 0.9496,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
+      "score": 0.9461,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios",
+      "score": 0.9453,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "081_AI_Can_Learn_Scientific_Taste",
+      "score": 0.945,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "1843_On_the_Scaling_of_PEFT_Towards_Million_Personal_Models_of_Tr": [
+    {
+      "target": "323_Qwen3_Technical_Report",
+      "score": 0.9166,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
+      "score": 0.9115,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1726_Intern-S1_A_Scientific_Multimodal_Foundation_Model",
+      "score": 0.9082,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1742_GAIA_a_benchmark_for_General_AI_Assistants",
+      "score": 0.907,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
+      "score": 0.9038,
       "reason": "Codex local embedding similarity"
     }
   ]
