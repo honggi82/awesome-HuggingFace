@@ -175,7 +175,7 @@
     {
       "slug": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
       "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
-      "category": "HDBSCAN Cluster: reasoning, policy, models, deep",
+      "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
       "key": "FOLDER00018_b37c28309d81",
       "sourceIndex": 17,
       "textBytes": 99957,
@@ -205,7 +205,7 @@
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
-      "category": "HDBSCAN Cluster: figure, university, efficient, language",
+      "category": "HDBSCAN Cluster: figure, efficient, language, opus",
       "key": "FOLDER00021_8502bdaf4994",
       "sourceIndex": 20,
       "textBytes": 218340,
@@ -225,7 +225,7 @@
     {
       "slug": "326_Rethinking_Generalization_in_Reasoning_SFT_A_Conditional_Ana",
       "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, loop, generalization, sft",
       "key": "FOLDER00023_6978f9941fd7",
       "sourceIndex": 22,
       "textBytes": 161148,
@@ -345,7 +345,7 @@
     {
       "slug": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
       "title": "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking",
-      "category": "HDBSCAN Cluster: reasoning, policy, models, deep",
+      "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
       "key": "FOLDER00035_fc3525c2b456",
       "sourceIndex": 34,
       "textBytes": 87188,
@@ -385,7 +385,7 @@
     {
       "slug": "342_Qwen-Image_Technical_Report",
       "title": "Qwen-Image Technical Report",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: generation, video, image, models",
       "key": "FOLDER00039_67f3a3187f0a",
       "sourceIndex": 38,
       "textBytes": 141226,
@@ -435,7 +435,7 @@
     {
       "slug": "1728_Reinforcement_Pre-Training",
       "title": "Reinforcement Pre-Training",
-      "category": "HDBSCAN Cluster: reinforcement, language, learning, rewards",
+      "category": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
       "key": "FOLDER00044_3dcd071cdafe",
       "sourceIndex": 43,
       "textBytes": 48294,
@@ -565,7 +565,7 @@
     {
       "slug": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
       "title": "Z-Image: An Efficient Image Generation Foundation Model with Single-Stream Diffusion Transformer",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: generation, video, image, models",
       "key": "FOLDER00057_85f52b7d18cd",
       "sourceIndex": 56,
       "textBytes": 233804,
@@ -705,7 +705,7 @@
     {
       "slug": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
       "title": "Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: generation, video, image, models",
       "key": "FOLDER00071_8339c62b1c6b",
       "sourceIndex": 70,
       "textBytes": 189067,
@@ -735,7 +735,7 @@
     {
       "slug": "1757_Mean_Mode_Screaming_Mean--Variance_Split_Residuals_for_1000-",
       "title": "Mean Mode Screaming: Mean--Variance Split Residuals for 1000-Layer Diffusion Transformers",
-      "category": "HDBSCAN Cluster: diffusion, transformers, mean, mode",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00074_8ab1ffe1552b",
       "sourceIndex": 73,
       "textBytes": 96211,
@@ -945,7 +945,7 @@
     {
       "slug": "1980_Bootstrapping_Exploration_with_Group-Level_Natural_Language",
       "title": "Bootstrapping Exploration with Group-Level Natural Language Feedback in Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reinforcement, language, learning, rewards",
+      "category": "HDBSCAN Cluster: reinforcement, feedback, language, learning",
       "key": "FOLDER00095_946974fa004a",
       "sourceIndex": 94,
       "textBytes": 89363,
@@ -995,7 +995,7 @@
     {
       "slug": "2026_DelTA_Discriminative_Token_Credit_Assignment_for_Reinforceme",
       "title": "DelTA: Discriminative Token Credit Assignment for Reinforcement Learning from Verifiable Rewards",
-      "category": "HDBSCAN Cluster: reinforcement, language, learning, rewards",
+      "category": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
       "key": "FOLDER00100_474146b29ef4",
       "sourceIndex": 99,
       "textBytes": 88739,
@@ -1065,7 +1065,7 @@
     {
       "slug": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
       "title": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling",
-      "category": "HDBSCAN Cluster: figure, university, efficient, language",
+      "category": "HDBSCAN Cluster: university, loop, generalization, sft",
       "key": "FOLDER00107_4c4b048fabae",
       "sourceIndex": 106,
       "textBytes": 57470,
@@ -1145,7 +1145,7 @@
     {
       "slug": "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
       "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
       "key": "FOLDER00115_55c68b7aba0f",
       "sourceIndex": 114,
       "textBytes": 156278,
@@ -1225,7 +1225,7 @@
     {
       "slug": "2257_Can_LLMs_Clean_Up_Your_Mess_A_Survey_of_Application-Ready_Da",
       "title": "Can LLMs Clean Up Your Mess? A Survey of Application-Ready Data Preparation with LLMs",
-      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
+      "category": "HDBSCAN Cluster: data, llms, mcp, tasks",
       "key": "FOLDER00123_6e2ebdc352d6",
       "sourceIndex": 122,
       "textBytes": 150253,
@@ -1275,7 +1275,7 @@
     {
       "slug": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
       "title": "LlamaFactory: Unified Efficient Fine-Tuning of 100+ Language Models",
-      "category": "HDBSCAN Cluster: figure, university, efficient, language",
+      "category": "HDBSCAN Cluster: figure, efficient, language, opus",
       "key": "FOLDER00128_088ef61f71e2",
       "sourceIndex": 127,
       "textBytes": 58891,
@@ -1385,7 +1385,7 @@
     {
       "slug": "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
       "title": "Idea2Story: An Automated Pipeline for Transforming Research Concepts into Complete Scientific Narratives",
-      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00139_67529da800a5",
       "sourceIndex": 138,
       "textBytes": 50780,
@@ -1415,7 +1415,7 @@
     {
       "slug": "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
       "title": "MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use",
-      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
+      "category": "HDBSCAN Cluster: data, llms, mcp, tasks",
       "key": "FOLDER00142_a4d4189c9274",
       "sourceIndex": 141,
       "textBytes": 86861,
@@ -1565,7 +1565,7 @@
     {
       "slug": "2585_Diffusion_Transformers_with_Representation_Autoencoders",
       "title": "Diffusion Transformers with Representation Autoencoders",
-      "category": "HDBSCAN Cluster: diffusion, transformers, mean, mode",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00157_e3fba9bcebb7",
       "sourceIndex": 156,
       "textBytes": 95818,
@@ -1645,7 +1645,7 @@
     {
       "slug": "2633_Kling-Omni_Technical_Report",
       "title": "Kling-Omni Technical Report",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: generation, video, image, models",
       "key": "FOLDER00165_3ca77ea7131e",
       "sourceIndex": 164,
       "textBytes": 66971,
@@ -1775,7 +1775,7 @@
     {
       "slug": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
       "title": "Seedance 2.0: Advancing Video Generation for World Complexity",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: generation, video, image, models",
       "key": "FOLDER00178_2a5f3f6b73fb",
       "sourceIndex": 177,
       "textBytes": 85193,
@@ -1805,7 +1805,7 @@
     {
       "slug": "2814_MOVA_Towards_Scalable_and_Synchronized_Video-Audio_Generatio",
       "title": "MOVA: Towards Scalable and Synchronized Video-Audio Generation",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: generation, video, image, models",
       "key": "FOLDER00181_6adca3716aee",
       "sourceIndex": 180,
       "textBytes": 117014,
@@ -1825,7 +1825,7 @@
     {
       "slug": "2816_DAComp_Benchmarking_Data_Agents_across_the_Full_Data_Intelli",
       "title": "DAComp: Benchmarking Data Agents across the Full Data Intelligence Lifecycle",
-      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
+      "category": "HDBSCAN Cluster: data, llms, mcp, tasks",
       "key": "FOLDER00183_f9bffed4699f",
       "sourceIndex": 182,
       "textBytes": 140889,
@@ -1935,7 +1935,7 @@
     {
       "slug": "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
       "title": "Vision-DeepResearch: Incentivizing DeepResearch Capability in Multimodal Large Language Models",
-      "category": "HDBSCAN Cluster: figure, university, efficient, language",
+      "category": "HDBSCAN Cluster: university, loop, generalization, sft",
       "key": "FOLDER00194_40095c356e5a",
       "sourceIndex": 193,
       "textBytes": 51791,
@@ -2115,7 +2115,7 @@
     {
       "slug": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
       "title": "OpenSeeker: Democratizing Frontier Search Agents by Fully Open-Sourcing Training Data",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: data, search, agents, edu",
       "key": "FOLDER00212_5402ba8e115d",
       "sourceIndex": 211,
       "textBytes": 53202,
@@ -2235,7 +2235,7 @@
     {
       "slug": "3174_From_Blind_Spots_to_Gains_Diagnostic-Driven_Iterative_Traini",
       "title": "From Blind Spots to Gains: Diagnostic-Driven Iterative Training for Large Multimodal Models",
-      "category": "HDBSCAN Cluster: reasoning, policy, models, deep",
+      "category": "HDBSCAN Cluster: reinforcement, feedback, language, learning",
       "key": "FOLDER00224_a374f1299896",
       "sourceIndex": 223,
       "textBytes": 50362,
@@ -2251,6 +2251,56 @@
       "textBytes": 125992,
       "figuresExtracted": 3,
       "excerpt": "## arXiv:2605.09530v3[cs.CR]14May2026 [Figure 1] [Figure 2] ### MemPrivacy: Privacy-Preserving Personalized Memory Management for Edge-Cloud Agents Yining Chen∗,1, Jihao Zhao∗,1, Bo Tang1, Haofen Wang1,3, Yue Zhang2, Fei Huang2, Feiyu Xiong1, Zhiyu Li ,1 1MemTensor (Shanghai) Technology Co., Ltd. , 2HONOR Device Co., Ltd., 3Tongji University #### Abstract As LLM-powered agents are increasingly deployed in edge-cloud environments, personalized memory has become a key enabler of long-term adaptation and user-centric interaction. However, cloud-assisted memory management exposes sensitive user information, while existing privacy protection methods typically rely on aggressive masking that removes task-relevant semantics and consequently degrades memory utility and personalization quality. To address this challenge, We propose MemPrivacy, which identifies privacy-sensitive spans on edge devi"
+    },
+    {
+      "slug": "3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti",
+      "title": "NextStep-1: Toward Autoregressive Image Generation with Continuous Tokens at Scale",
+      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "key": "FOLDER00226_e71fb59a4d42",
+      "sourceIndex": 225,
+      "textBytes": 72911,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2508.10711v2[cs.CV]18Aug2025 [Figure 1] ## NextStep-1: Toward Autoregressive Image Generation with Continuous Tokens at Scale NextStep-Team, StepFun Homepage: https://stepfun.ai/research/en/nextstep1 Github: https://github.com/stepfun-ai/NextStep-1 Huggingface: NextStep-1 Collections ### Abstract Prevailing autoregressive (AR) models for text-to-image generation either rely on heavy, computationally-intensive diffusion models to process continuous image tokens, or employ vector quantization (VQ) to obtain discrete tokens with quantization loss. In this paper, we push the autoregressive paradigm forward with NextStep-1, a 14B autoregressive model paired with a 157M flow matching head, training on discrete text tokens and continuous image tokens with next-token prediction objectives. NextStep-1 achieves state-of-the-art performance for autoregressive models in text-to-image generat"
+    },
+    {
+      "slug": "3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis",
+      "title": "We-Math 2.0: A Versatile MathBook System for Incentivizing Visual Mathematical Reasoning",
+      "category": "HDBSCAN Cluster: data, search, agents, edu",
+      "key": "FOLDER00227_6c106376defc",
+      "sourceIndex": 226,
+      "textBytes": 126997,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2508.10433v1[cs.AI]14Aug2025 ## WE-MATH 2.0: A Versatile MathBook System for Incentivizing Visual Mathematical Reasoning Runqi Qiao1∗†, Qiuna Tan1∗†, Peiqing Yang1, Yanzi Wang3, Xiaowan Wang1, Enhui Wan1, Sitong Zhou1, Guanting Dong1, Yuchen Zeng1, Yida Xu1, Jie Wang1, Chong Sun2, Chen Li2‡, Honggang Zhang1‡ 1BUPT 2WeChat Vision, Tencent Inc. 3Tsinghua University qrq@bupt.edu.cn qiunatan@bupt.edu.cn chaselli@tencent.com https://we-math2.github.io/ ### Abstract Multimodal Large Language Models (MLLMs) have demonstrated impressive capabilities across various tasks, but still struggle with complex mathematical reasoning. Existing research primarily focuses on dataset construction and method optimization, often overlooking two critical aspects: comprehensive knowledgedriven design and model-centric data space modeling. In this paper, we introduce WE-MATH 2.0, a unified system that in"
+    },
+    {
+      "slug": "3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem",
+      "title": "Rewarding the Rare: Uniqueness-Aware RL for Creative Problem Solving in LLMs",
+      "category": "HDBSCAN Cluster: reinforcement, feedback, language, learning",
+      "key": "FOLDER00228_5aedae633426",
+      "sourceIndex": 227,
+      "textBytes": 89569,
+      "figuresExtracted": 4,
+      "excerpt": "## Rewarding the Rare: Uniqueness-Aware RL for Creative Problem Solving in LLMs Zhiyuan Hu1,2*† Yucheng Wang2* Yufei He2* Jiaying Wu2 Yilun Zhao3 See-Kiong Ng2 Cynthia Breazeal1 Anh Tuan Luu4 Hae Won Park1 Bryan Hooi2 1 MIT 2 NUS 3 Yale 4 NTU # arXiv:2601.08763v2[cs.LG]15Jan2026 Abstract Reinforcement learning (RL) has become a central paradigm for post-training large language models (LLMs), particularly for complex reasoning tasks, yet it often suffers from exploration collapse: policies prematurely concentrate on a small set of dominant reasoning patterns, improving pass@1 while limiting rolloutlevel diversity and gains in pass@k. We argue that this failure stems from regularizing local token behavior rather than diversity over sets of solutions. To address this, we propose Uniqueness-Aware Reinforcement Learning, a rollout-level objective that explicitly rewards correct solutions that"
+    },
+    {
+      "slug": "3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res",
+      "title": "WebWatcher: Breaking New Frontier of Vision-Language Deep Research Agent",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00229_0c1b13b88ba2",
+      "sourceIndex": 228,
+      "textBytes": 79087,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2508.05748v3[cs.IR]1Sep2025 [Figure 1] 2025-09-03 ## WebWatcher: Breaking New Frontiers of Vision-Language Deep Research Agent Xinyu Geng∗, Peng Xia∗, Zhen Zhang∗, Xinyu Wang( ), Qiuchen Wang, Ruixue Ding, Chenxi Wang, Jialong Wu, Yida Zhao, Kuan Li, Yong Jiang( ), Pengjun Xie, Fei Huang, Jingren Zhou [Figure 2] Tongyi Lab , Alibaba Group https://github.com/Alibaba-NLP/WebAgent #### Abstract Web agents such as Deep Research have demonstrated superhuman cognitive abilities, capable of solving highly challenging information-seeking problems. However, most research remains primarily text-centric, overlooking visual information in the real world. This makes multimodal Deep Research highly challenging, as such agents require much stronger reasoning abilities in perception, logic, knowledge, and the use of more sophisticated tools compared to text-based agents. To address this limitati"
+    },
+    {
+      "slug": "3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co",
+      "title": "Shifting AI Efficiency From Model-Centric to Data-Centric Compression",
+      "category": "HDBSCAN Cluster: university, loop, generalization, sft",
+      "key": "FOLDER00230_f5f5aa465108",
+      "sourceIndex": 229,
+      "textBytes": 95188,
+      "figuresExtracted": 3,
+      "excerpt": "# arXiv:2505.19147v3[cs.CL]12Oct2025 ## Shifting AI Efficiency From Model-Centric to Data-Centric Compression Xuyang Liu1,2* Zichen Wen1,3,4∗ Shaobo Wang1∗ Junjie Chen1 Zhishan Tao1 Yubo Wang1 Tailai Chen1 Xiangqi Jin1,3 Chang Zou1,3 Yiyu Wang1 Chenfei Liao6 Xu Zheng6 Honggang Chen2 Weijia Li4,5 Xuming Hu6 Conghui He4 Linfeng Zhang1 1EPIC Lab, Shanghai Jiao Tong University 2Sichuan University 3University of Electronic Science & Technology of China 4Shanghai AI Laboratory 5Sun Yat-sen University 6Hong Kong University of Science and Technology (Guangzhou) #### Project: Awesome-Token-level-Model-Compression Abstract model scale, with larger models consistently showing superior performance in reasoning, knowledge acquisition, and task generalization. The evolution from early models like BERT (117M) (Devlin et al., 2018) to today’s state-of-the-art LLMs such as DeepSeek-R1 (Guo et al., 2025a)"
     }
   ]
 }

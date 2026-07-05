@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-05T11:09:48.642800+00:00",
+  "generated": "2026-07-05T11:41:09.955917+00:00",
   "mode": "extract-only",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "awesomeRepo": "E:\\조선대\\연구\\awesome-HuggingFace",
   "extractReport": "data/paper_curation/extract_only_report.json",
   "docsDir": "docs/paper_curation/extract_only",
   "paperDir": "paper/extract_only",
-  "recordCount": 225,
+  "recordCount": 230,
   "syncedPaperSlugs": [
     "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
     "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
@@ -232,13 +232,18 @@
     "3173_EnterpriseOps-Gym_Environments_and_Evaluations_for_Stateful",
     "2689_DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Sca",
     "3174_From_Blind_Spots_to_Gains_Diagnostic-Driven_Iterative_Traini",
-    "3175_MemPrivacy_Privacy-Preserving_Personalized_Memory_Management"
+    "3175_MemPrivacy_Privacy-Preserving_Personalized_Memory_Management",
+    "3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti",
+    "3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis",
+    "3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem",
+    "3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res",
+    "3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co"
   ],
   "copied": [
     {
       "source": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\_folder_source_extract_report.json",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\data\\paper_curation\\extract_only_report.json",
-      "bytes": 135935
+      "bytes": 139085
     },
     {
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective\\text.md",
@@ -12659,6 +12664,276 @@
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3175_MemPrivacy_Privacy-Preserving_Personalized_Memory_Management\\figures\\fig3.png",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3175_MemPrivacy_Privacy-Preserving_Personalized_Memory_Management\\figures\\fig3.png",
       "bytes": 98856
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\text.md",
+      "bytes": 72911
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig1.png",
+      "bytes": 5098151
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig2.png",
+      "bytes": 183353
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig3.png",
+      "bytes": 210402
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig4.png",
+      "bytes": 737863
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig5.png",
+      "bytes": 516866
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\text.md",
+      "bytes": 72911
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig1.png",
+      "bytes": 5098151
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig2.png",
+      "bytes": 183353
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig3.png",
+      "bytes": 210402
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig4.png",
+      "bytes": 737863
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti\\figures\\fig5.png",
+      "bytes": 516866
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\text.md",
+      "bytes": 126997
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig1.png",
+      "bytes": 415083
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig2.png",
+      "bytes": 333730
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig3.png",
+      "bytes": 246819
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig4.png",
+      "bytes": 246130
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig5.png",
+      "bytes": 251853
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\text.md",
+      "bytes": 126997
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig1.png",
+      "bytes": 415083
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig2.png",
+      "bytes": 333730
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig3.png",
+      "bytes": 246819
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig4.png",
+      "bytes": 246130
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis\\figures\\fig5.png",
+      "bytes": 251853
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\text.md",
+      "bytes": 89569
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig1.png",
+      "bytes": 185306
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig2.png",
+      "bytes": 136816
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig3.png",
+      "bytes": 130827
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig4.png",
+      "bytes": 199344
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\text.md",
+      "bytes": 89569
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig1.png",
+      "bytes": 185306
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig2.png",
+      "bytes": 136816
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig3.png",
+      "bytes": 130827
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem\\figures\\fig4.png",
+      "bytes": 199344
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\text.md",
+      "bytes": 79087
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig1.png",
+      "bytes": 289092
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig2.png",
+      "bytes": 386893
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig3.png",
+      "bytes": 373843
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig4.png",
+      "bytes": 267411
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig5.png",
+      "bytes": 153321
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\text.md",
+      "bytes": 79087
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig1.png",
+      "bytes": 289092
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig2.png",
+      "bytes": 386893
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig3.png",
+      "bytes": 373843
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig4.png",
+      "bytes": 267411
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res\\figures\\fig5.png",
+      "bytes": 153321
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\text.md",
+      "bytes": 95188
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig1.png",
+      "bytes": 397231
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig2.png",
+      "bytes": 137368
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig3.png",
+      "bytes": 133271
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\text.md",
+      "bytes": 95188
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig1.png",
+      "bytes": 397231
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig2.png",
+      "bytes": 137368
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig3.png",
+      "bytes": 133271
     }
   ],
   "missing": [],

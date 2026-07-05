@@ -5,7 +5,7 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 88
+      "count": 89
     },
     {
       "id": "hdbscan-cluster-optimization-learning-reinforcement-training",
@@ -13,18 +13,18 @@
       "count": 7
     },
     {
-      "id": "hdbscan-cluster-agentic-reinforcement-learning-reasoning",
-      "name": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
-      "count": 6
-    },
-    {
-      "id": "hdbscan-cluster-generation-video-models-image",
-      "name": "HDBSCAN Cluster: generation, video, models, image",
-      "count": 6
+      "id": "hdbscan-cluster-generation-video-image-models",
+      "name": "HDBSCAN Cluster: generation, video, image, models",
+      "count": 7
     },
     {
       "id": "hdbscan-cluster-reasoning-glm-4-models-model",
       "name": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "count": 7
+    },
+    {
+      "id": "hdbscan-cluster-agentic-reinforcement-learning-reasoning",
+      "name": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
       "count": 6
     },
     {
@@ -43,8 +43,8 @@
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-figure-university-efficient-language",
-      "name": "HDBSCAN Cluster: figure, university, efficient, language",
+      "id": "hdbscan-cluster-university-loop-generalization-sft",
+      "name": "HDBSCAN Cluster: university, loop, generalization, sft",
       "count": 4
     },
     {
@@ -53,28 +53,13 @@
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-data-llms-agents-mcp",
-      "name": "HDBSCAN Cluster: data, llms, agents, mcp",
-      "count": 4
-    },
-    {
       "id": "hdbscan-cluster-qwen-models-report-qwen3",
       "name": "HDBSCAN Cluster: qwen, models, report, qwen3",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-reasoning-policy-models-deep",
-      "name": "HDBSCAN Cluster: reasoning, policy, models, deep",
-      "count": 3
-    },
-    {
       "id": "hdbscan-cluster-memory-recursive-systems-university",
       "name": "HDBSCAN Cluster: memory, recursive, systems, university",
-      "count": 3
-    },
-    {
-      "id": "hdbscan-cluster-reinforcement-language-learning-rewards",
-      "name": "HDBSCAN Cluster: reinforcement, language, learning, rewards",
       "count": 3
     },
     {
@@ -103,8 +88,18 @@
       "count": 3
     },
     {
+      "id": "hdbscan-cluster-reinforcement-feedback-language-learning",
+      "name": "HDBSCAN Cluster: reinforcement, feedback, language, learning",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-reasoning-model-research-performance",
       "name": "HDBSCAN Cluster: reasoning, model, research, performance",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-data-llms-mcp-tasks",
+      "name": "HDBSCAN Cluster: data, llms, mcp, tasks",
       "count": 3
     },
     {
@@ -133,6 +128,16 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-reasoning-policy-deep-rstar-math",
+      "name": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-figure-efficient-language-opus",
+      "name": "HDBSCAN Cluster: figure, efficient, language, opus",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-models-such-hrm-text-pretraining",
       "name": "HDBSCAN Cluster: models, such, hrm-text, pretraining",
       "count": 2
@@ -150,6 +155,11 @@
     {
       "id": "hdbscan-cluster-university-learning-sft-weak",
       "name": "HDBSCAN Cluster: university, learning, sft, weak",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-reinforcement-rewards-rpt-learning",
+      "name": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
       "count": 2
     },
     {
@@ -175,11 +185,6 @@
     {
       "id": "hdbscan-cluster-data-language-feature-dllm",
       "name": "HDBSCAN Cluster: data, language, feature, dllm",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-diffusion-transformers-mean-mode",
-      "name": "HDBSCAN Cluster: diffusion, transformers, mean, mode",
       "count": 2
     },
     {
@@ -235,6 +240,11 @@
     {
       "id": "hdbscan-cluster-language-context-tokens-token",
       "name": "HDBSCAN Cluster: language, context, tokens, token",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-data-search-agents-edu",
+      "name": "HDBSCAN Cluster: data, search, agents, edu",
       "count": 2
     },
     {
