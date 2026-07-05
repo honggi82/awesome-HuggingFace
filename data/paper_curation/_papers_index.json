@@ -185,7 +185,7 @@
     {
       "slug": "322_ASE_A_Repository-Level_Benchmark_for_Evaluating_Security_in",
       "title": "A.S.E: A Repository-Level Benchmark for Evaluating Security in AI-Generated Code",
-      "category": "HDBSCAN Cluster: university, figure, com, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00019_f578c07c2033",
       "sourceIndex": 18,
       "textBytes": 84262,
@@ -225,7 +225,7 @@
     {
       "slug": "326_Rethinking_Generalization_in_Reasoning_SFT_A_Conditional_Ana",
       "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: sft, university, learning, generalization",
       "key": "FOLDER00023_6978f9941fd7",
       "sourceIndex": 22,
       "textBytes": 161148,
@@ -235,7 +235,7 @@
     {
       "slug": "327_Green-VLA_Staged_Vision-Language-Action_Model_for_Generalist",
       "title": "Green-VLA: Staged Vision-Language-Action Model for Generalist Robots",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: kimi, agentic, green-vla, vision",
       "key": "FOLDER00024_348a94e5f835",
       "sourceIndex": 23,
       "textBytes": 86005,
@@ -295,7 +295,7 @@
     {
       "slug": "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios",
       "title": "InCoder-32B: Code Foundation Model for Industrial Scenarios",
-      "category": "HDBSCAN Cluster: university, figure, com, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00030_44a8848066c5",
       "sourceIndex": 29,
       "textBytes": 161304,
@@ -335,7 +335,7 @@
     {
       "slug": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
-      "category": "HDBSCAN Cluster: agentic, memory, model, systems",
+      "category": "HDBSCAN Cluster: university, systems, language, agentic",
       "key": "FOLDER00034_8bc56d204ac7",
       "sourceIndex": 33,
       "textBytes": 94309,
@@ -355,7 +355,7 @@
     {
       "slug": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
       "title": "Weak-Driven Learning: How Weak Agents make Strong Agents Stronger",
-      "category": "HDBSCAN Cluster: learning, university, agents, sft",
+      "category": "HDBSCAN Cluster: sft, university, learning, generalization",
       "key": "FOLDER00036_31e22fa1f189",
       "sourceIndex": 35,
       "textBytes": 96730,
@@ -365,7 +365,7 @@
     {
       "slug": "340_Recursive_Multi-Agent_Systems",
       "title": "Recursive Multi-Agent Systems",
-      "category": "HDBSCAN Cluster: agentic, memory, model, systems",
+      "category": "HDBSCAN Cluster: university, systems, language, agentic",
       "key": "FOLDER00037_f33e597ec366",
       "sourceIndex": 36,
       "textBytes": 105642,
@@ -405,7 +405,7 @@
     {
       "slug": "1725_Kimi_K25_Visual_Agentic_Intelligence",
       "title": "Kimi K2.5: Visual Agentic Intelligence",
-      "category": "HDBSCAN Cluster: multimodal, kimi, glm-4, agentic",
+      "category": "HDBSCAN Cluster: kimi, agentic, green-vla, vision",
       "key": "FOLDER00041_386463f9a862",
       "sourceIndex": 40,
       "textBytes": 116467,
@@ -445,7 +445,7 @@
     {
       "slug": "1729_Agent_Learning_via_Early_Experience",
       "title": "Agent Learning via Early Experience",
-      "category": "HDBSCAN Cluster: learning, university, agents, sft",
+      "category": "HDBSCAN Cluster: sft, university, learning, generalization",
       "key": "FOLDER00045_ba69b71147e7",
       "sourceIndex": 44,
       "textBytes": 118639,
@@ -475,7 +475,7 @@
     {
       "slug": "1732_ClawBench_Can_AI_Agents_Complete_Everyday_Online_Tasks",
       "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
-      "category": "HDBSCAN Cluster: university, figure, com, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00048_7d8b86a69b60",
       "sourceIndex": 47,
       "textBytes": 44311,
@@ -525,7 +525,7 @@
     {
       "slug": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "title": "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model",
-      "category": "HDBSCAN Cluster: university, figure, com, https",
+      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
       "key": "FOLDER00053_b501ac6425a5",
       "sourceIndex": 52,
       "textBytes": 99132,
@@ -545,7 +545,7 @@
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "title": "GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning",
-      "category": "HDBSCAN Cluster: multimodal, kimi, glm-4, agentic",
+      "category": "HDBSCAN Cluster: multimodal, glm-4, understanding, generation",
       "key": "FOLDER00055_9405fc3ded78",
       "sourceIndex": 54,
       "textBytes": 145376,
@@ -745,7 +745,7 @@
     {
       "slug": "1758_InCoder-32B-Thinking_Industrial_Code_World_Model_for_Thinkin",
       "title": "InCoder-32B-Thinking: Industrial Code World Model for Thinking",
-      "category": "HDBSCAN Cluster: university, figure, com, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00075_00c9387798d3",
       "sourceIndex": 74,
       "textBytes": 79388,
@@ -865,7 +865,7 @@
     {
       "slug": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
       "title": "Heterogeneous Scientific Foundation Model Collaboration",
-      "category": "HDBSCAN Cluster: agentic, memory, model, systems",
+      "category": "HDBSCAN Cluster: university, systems, language, agentic",
       "key": "FOLDER00087_4449a0ace106",
       "sourceIndex": 86,
       "textBytes": 184544,
@@ -895,7 +895,7 @@
     {
       "slug": "1935_Watching_Reasoning_and_Searching_A_Video_Deep_Research_Bench",
       "title": "Watching, Reasoning, and Searching: A Video Deep Research Benchmark on Open Web for Agentic Video Reasoning",
-      "category": "HDBSCAN Cluster: university, figure, com, https",
+      "category": "HDBSCAN Cluster: university, code, https, figure",
       "key": "FOLDER00090_32240190a210",
       "sourceIndex": 89,
       "textBytes": 57994,
@@ -1075,7 +1075,7 @@
     {
       "slug": "2121_STEP3-VL-10B_Technical_Report",
       "title": "STEP3-VL-10B Technical Report",
-      "category": "HDBSCAN Cluster: step3-vl-10b, https, multimodal, technical",
+      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
       "key": "FOLDER00108_2bff0a0eb7a5",
       "sourceIndex": 107,
       "textBytes": 126984,
@@ -1135,7 +1135,7 @@
     {
       "slug": "2166_On_the_Generalization_of_SFT_A_Reinforcement_Learning_Perspe",
       "title": "On the Generalization of SFT: A Reinforcement Learning Perspective with Reward Rectification",
-      "category": "HDBSCAN Cluster: learning, university, agents, sft",
+      "category": "HDBSCAN Cluster: sft, university, learning, generalization",
       "key": "FOLDER00114_9fca02819c25",
       "sourceIndex": 113,
       "textBytes": 77099,
@@ -1145,7 +1145,7 @@
     {
       "slug": "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
       "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
-      "category": "HDBSCAN Cluster: multimodal, kimi, glm-4, agentic",
+      "category": "HDBSCAN Cluster: multimodal, glm-4, understanding, generation",
       "key": "FOLDER00115_55c68b7aba0f",
       "sourceIndex": 114,
       "textBytes": 156278,
@@ -1185,7 +1185,7 @@
     {
       "slug": "2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi",
       "title": "The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, systems, language, agentic",
       "key": "FOLDER00119_1571671914a2",
       "sourceIndex": 118,
       "textBytes": 69135,
@@ -1225,7 +1225,7 @@
     {
       "slug": "2257_Can_LLMs_Clean_Up_Your_Mess_A_Survey_of_Application-Ready_Da",
       "title": "Can LLMs Clean Up Your Mess? A Survey of Application-Ready Data Preparation with LLMs",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
       "key": "FOLDER00123_6e2ebdc352d6",
       "sourceIndex": 122,
       "textBytes": 150253,
@@ -1245,7 +1245,7 @@
     {
       "slug": "2259_QuantaAlpha_An_Evolutionary_Framework_for_LLM-Driven_Alpha_M",
       "title": "QuantaAlpha: An Evolutionary Framework for LLM-Driven Alpha Mining",
-      "category": "HDBSCAN Cluster: university, figure, com, https",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00125_69b3c1180f90",
       "sourceIndex": 124,
       "textBytes": 81089,
@@ -1285,7 +1285,7 @@
     {
       "slug": "2309_Kwai_Keye-VL-20_Technical_Report",
       "title": "Kwai Keye-VL-2.0 Technical Report",
-      "category": "HDBSCAN Cluster: step3-vl-10b, https, multimodal, technical",
+      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
       "key": "FOLDER00129_a0927041c80d",
       "sourceIndex": 128,
       "textBytes": 110890,
@@ -1325,7 +1325,7 @@
     {
       "slug": "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
       "title": "Perception, Reason, Think, and Plan: A Survey on Large Multimodal Reasoning Models",
-      "category": "HDBSCAN Cluster: reasoning, large, zhang, wang",
+      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
       "key": "FOLDER00133_8e3c28fd1818",
       "sourceIndex": 132,
       "textBytes": 391537,
@@ -1385,7 +1385,7 @@
     {
       "slug": "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
       "title": "Idea2Story: An Automated Pipeline for Transforming Research Concepts into Complete Scientific Narratives",
-      "category": "HDBSCAN Cluster: reasoning, large, zhang, wang",
+      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
       "key": "FOLDER00139_67529da800a5",
       "sourceIndex": 138,
       "textBytes": 50780,
@@ -1415,7 +1415,7 @@
     {
       "slug": "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
       "title": "MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use",
-      "category": "HDBSCAN Cluster: reasoning, large, zhang, wang",
+      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
       "key": "FOLDER00142_a4d4189c9274",
       "sourceIndex": 141,
       "textBytes": 86861,
@@ -1525,7 +1525,7 @@
     {
       "slug": "2543_Qwen25-Omni_Technical_Report",
       "title": "Qwen2.5-Omni Technical Report",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
       "key": "FOLDER00153_643b6c9e51d9",
       "sourceIndex": 152,
       "textBytes": 72072,
@@ -1585,7 +1585,7 @@
     {
       "slug": "2587_General_Agentic_Memory_Via_Deep_Research",
       "title": "General Agentic Memory Via Deep Research",
-      "category": "HDBSCAN Cluster: agentic, memory, model, systems",
+      "category": "HDBSCAN Cluster: university, systems, language, agentic",
       "key": "FOLDER00159_4c43fdf369ac",
       "sourceIndex": 158,
       "textBytes": 49725,
@@ -1615,7 +1615,7 @@
     {
       "slug": "2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex",
       "title": "From Context to Skills: Can Language Models Learn from Context Skillfully?",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: context, models, skills, can",
       "key": "FOLDER00162_88947750b1a9",
       "sourceIndex": 161,
       "textBytes": 223430,
@@ -1651,6 +1651,56 @@
       "textBytes": 66971,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2512.16776v1[cs.CV]18Dec2025 [Figure 1] ## Kling-Omni Technical Report Kling Team, Kuaishou Technology We present Kling-Omni, a generalist generative framework designed to synthesize high-fidelity videos directly from multimodal visual language inputs. Adopting an end-to-end perspective, Kling-Omni bridges the functional separation among diverse video generation, editing, and intelligent reasoning tasks, integrating them into a holistic system. Unlike disjointed pipeline approaches, Kling-Omni supports a diverse range of user inputs, including text instructions, reference images, and video contexts, processing them into a unified multimodal representation to deliver cinematic-quality and highly-intelligent video content creation. To support these capabilities, we constructed a comprehensive data system that serves as the foundation for multimodal video creation. The framework is "
+    },
+    {
+      "slug": "2678_Perception_or_Prejudice_Can_MLLMs_Go_Beyond_First_Impression",
+      "title": "Perception or Prejudice: Can MLLMs Go Beyond First Impressions of Personality?",
+      "category": "HDBSCAN Cluster: context, models, skills, can",
+      "key": "FOLDER00166_6c59b00c9374",
+      "sourceIndex": 165,
+      "textBytes": 111407,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.22109v1[cs.AI]21May2026 ## Perception or Prejudice: Can MLLMs Go Beyond First Impressions of Personality? ##### Caixin Kang1,2 Tianyu Yan2,3 Sitong Gong2,3 Mingfang Zhang1 Liangyang Ouyang1,2 Ruicong Liu1,2 Bo Zheng2 Huchuan Lu3 Kaipeng Zhang2 Yoichi Sato1 Yifei Huang1,2 1The University of Tokyo 2Shanda AI Research Tokyo 3Dalian University of Technology {cxkang, ysato}@iis.u-tokyo.ac.jp hyf015@gmail.com Code Dataset [Figure 1] [Figure 2] ### Abstract Multimodal Large Language Models (MLLMs) are increasingly deployed in humanfacing roles where personality perception is critical, yet existing benchmarks evaluate this capability solely on numerical Big Five score prediction, leaving open whether models truly perceive personality through behavioral understanding or merely prejudge through superficial pattern matching. We address this gap with three contributions. (i) A new task:"
+    },
+    {
+      "slug": "2679_Qwen3-VL_Technical_Report",
+      "title": "Qwen3-VL Technical Report",
+      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
+      "key": "FOLDER00167_108f11ece30d",
+      "sourceIndex": 166,
+      "textBytes": 155705,
+      "figuresExtracted": 3,
+      "excerpt": "# arXiv:2511.21631v2[cs.CV]27Nov2025 [Figure 1] December 1, 2025 ## Qwen3-VL Technical Report [Figure 2] [Figure 3] Qwen Team https://chat.qwen.ai https://huggingface.co/Qwen https://modelscope.cn/organization/qwen https://github.com/QwenLM/Qwen3-VL ### Abstract We introduce Qwen3-VL, the most capable vision–language model in the Qwen series to date, achieving superior performance across a broad range of multimodal benchmarks. It natively supports interleaved contexts of up to 256K tokens, seamlessly integrating text, images, and video. The model family includes both dense (2B/4B/8B/32B) and mixture-of-experts (30B-A3B/235B-A22B) variants to accommodate diverse latency–quality trade-offs. Qwen3-VL delivers three core pillars: (i) markedly stronger pure-text understanding, surpassing comparable text-only backbones in several cases; (ii) robust long-context comprehension with a native 256K"
+    },
+    {
+      "slug": "2680_AgentSPEX_An_Agent_SPecification_and_EXecution_Language",
+      "title": "AgentSPEX: An Agent SPecification and EXecution Language",
+      "category": "HDBSCAN Cluster: university, systems, language, agentic",
+      "key": "FOLDER00168_da0ddd343924",
+      "sourceIndex": 167,
+      "textBytes": 52129,
+      "figuresExtracted": 3,
+      "excerpt": "# arXiv:2604.13346v1[cs.CL]14Apr2026 ## AgentSPEX: An Agent SPecification and EXecution Language Pengcheng Wang♠*, Jerry Huang♠*, Jiarui Yao♠*, Rui Pan♠, Peizhi Niu♠, Yaowenqi Liu♠, Ruida Wang♠, Renhao Lu♣, Yuwei Guo♡, Tong Zhang♠ ♠University of Illinois Urbana-Champaign ♡University of Wisconsin–Madison ♣Baylor College of Medicine *Equal contribution. {pw29, jerry8, jiarui14}@illinois.edu ### Abstract Language-model agent systems commonly rely on reactive prompting, in which a single instruction guides the model through an open-ended sequence of reasoning and tool-use steps, leaving control flow and intermediate state implicit and making agent behavior potentially difficult to control. Orchestration frameworks such as LangGraph, DSPy, and CrewAI impose greater structure through explicit workflow definitions, but tightly couple workflow logic with Python, making agents difficult to mainta"
+    },
+    {
+      "slug": "2681_Embodied-R15_Evolving_Physical_Intelligence_via_Embodied_Fou",
+      "title": "Embodied-R1.5: Evolving Physical Intelligence via Embodied Foundation Models",
+      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "key": "FOLDER00169_307877d74af7",
+      "sourceIndex": 168,
+      "textBytes": 159829,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2606.11324v1[cs.RO]9Jun2026 # Embodied-R1.5: Evolving Physical Intelligence via Embodied Foundation Models Yifu Yuan , 1, Yaoting Huang1, Xianze Yao1, Yutong Li1, Shuoheng Zhang1, Linqi Han1, Pengyi Li1, Jiangeng Sun1, Wenting Jia1, Zhao Zhang1, Yuhao Liu1, Ruihao Liao1, Yucheng Hu1, Qiyu Wu1, Yuxiao Li1, Zibin Dong1, Fei Ni1, Yan Zheng1, Shuyang Gu 2, Yi Ma , 1, Hongyao Tang , 1, Han Hu2, Jianye Hao 1 1Tianjin University, 2Tencent Hunyuan Project Leader, Corresponding Author (Contact: yuanyf@tju.edu.cn) We introduce Embodied-R1.5, a unified Embodied Foundation Model (EFM) that integrates comprehensive embodied reasoning capabilities, spanning embodied cognition, task planning, correction, and pointing, within a single architecture toward general physical intelligence. Leveraging three automated data construction pipelines to significantly expand the data coverage of critical ca"
+    },
+    {
+      "slug": "2682_Native_Sparse_Attention_Hardware-Aligned_and_Natively_Traina",
+      "title": "Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention",
+      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "key": "FOLDER00170_8dd22ea2eeca",
+      "sourceIndex": 169,
+      "textBytes": 67357,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2502.11089v2[cs.CL]27Feb2025 ## Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention Jingyang Yuan∗1,2, Huazuo Gao1, Damai Dai1, Junyu Luo2, Liang Zhao1, Zhengyan Zhang1, Zhenda Xie1, Y. X. Wei1, Lean Wang1, Zhiping Xiao3, Yuqing Wang1, Chong Ruan1, Ming Zhang2, Wenfeng Liang1, Wangding Zeng1 1DeepSeek-AI 2Key Laboratory for Multimedia Information Processing, School of Computer Science, Peking University, PKU-Anker LLM Lab 3University of Washington {yuanjy, mzhang_cs}@pku.edu.cn, {zengwangding, wenfeng.liang}@deepseek.com ### Abstract Long-context modeling is crucial for next-generation language models, yet the high computational cost of standard attention mechanisms poses significant computational challenges. Sparse attention offers a promising direction for improving efficiency while maintaining model capabilities. We present NSA, a Natively trainab"
     }
   ]
 }

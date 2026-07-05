@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-05T05:30:03.279194+00:00",
+  "generated": "2026-07-05T06:03:57.030292+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 160,
+  "sourceOffset": 165,
   "sourceLimit": 5,
-  "sourceEnd": 165,
+  "sourceEnd": 170,
   "batchTotal": 5,
-  "total": 165,
-  "ok": 165,
-  "textExtracted": 165,
-  "figureFiles": 742,
+  "total": 170,
+  "ok": 170,
+  "textExtracted": 170,
+  "figureFiles": 763,
   "sanityFailed": 0,
   "records": [
     {
@@ -2194,6 +2194,71 @@
       "textBytes": 66971,
       "sanityOk": true,
       "sanityReason": "ok (title 4/4 doi=T author=True)"
+    },
+    {
+      "title": "Perception or Prejudice: Can MLLMs Go Beyond First Impressions of Personality?",
+      "key": "FOLDER00166_6c59b00c9374",
+      "sourceIndex": 165,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00166_Perception or Prejudice Can MLLMs Go Beyond First Impressions of Personality.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2678_Perception_or_Prejudice_Can_MLLMs_Go_Beyond_First_Impression",
+      "textBytes": 111407,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Qwen3-VL Technical Report",
+      "key": "FOLDER00167_108f11ece30d",
+      "sourceIndex": 166,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00167_Qwen3-VL Technical Report.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 3,
+      "slug": "2679_Qwen3-VL_Technical_Report",
+      "textBytes": 155705,
+      "sanityOk": true,
+      "sanityReason": "ok (title 3/3 doi=T author=True)"
+    },
+    {
+      "title": "AgentSPEX: An Agent SPecification and EXecution Language",
+      "key": "FOLDER00168_da0ddd343924",
+      "sourceIndex": 167,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00168_AgentSPEX An Agent SPecification and EXecution Language.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 3,
+      "slug": "2680_AgentSPEX_An_Agent_SPecification_and_EXecution_Language",
+      "textBytes": 52129,
+      "sanityOk": true,
+      "sanityReason": "ok (title 5/5 doi=T author=True)"
+    },
+    {
+      "title": "Embodied-R1.5: Evolving Physical Intelligence via Embodied Foundation Models",
+      "key": "FOLDER00169_307877d74af7",
+      "sourceIndex": 168,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00169_Embodied-R1.5 Evolving Physical Intelligence via Embodied Foundation Models.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2681_Embodied-R15_Evolving_Physical_Intelligence_via_Embodied_Fou",
+      "textBytes": 159829,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention",
+      "key": "FOLDER00170_8dd22ea2eeca",
+      "sourceIndex": 169,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00170_Native Sparse Attention Hardware-Aligned and Natively Trainable Sparse Attention.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2682_Native_Sparse_Attention_Hardware-Aligned_and_Natively_Traina",
+      "textBytes": 67357,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
     }
   ]
 }
