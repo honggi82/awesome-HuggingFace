@@ -5,7 +5,7 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 74
+      "count": 78
     },
     {
       "id": "hdbscan-cluster-generation-video-figure-models",
@@ -16,11 +16,6 @@
       "id": "hdbscan-cluster-optimization-learning-reinforcement-training",
       "name": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
       "count": 7
-    },
-    {
-      "id": "hdbscan-cluster-models-figure-university-efficient",
-      "name": "HDBSCAN Cluster: models, figure, university, efficient",
-      "count": 6
     },
     {
       "id": "hdbscan-cluster-wang1-zhang1-university-li1",
@@ -38,13 +33,18 @@
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-zhang-wang-liu-yang",
-      "name": "HDBSCAN Cluster: zhang, wang, liu, yang",
+      "id": "hdbscan-cluster-model-attention-lightning-efficient",
+      "name": "HDBSCAN Cluster: model, attention, lightning, efficient",
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-data-llms-agents-mcp",
-      "name": "HDBSCAN Cluster: data, llms, agents, mcp",
+      "id": "hdbscan-cluster-agentic-memory-model-systems",
+      "name": "HDBSCAN Cluster: agentic, memory, model, systems",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-zhang-wang-liu-yang",
+      "name": "HDBSCAN Cluster: zhang, wang, liu, yang",
       "count": 4
     },
     {
@@ -60,11 +60,6 @@
     {
       "id": "hdbscan-cluster-qwen-models-report-qwen3",
       "name": "HDBSCAN Cluster: qwen, models, report, qwen3",
-      "count": 3
-    },
-    {
-      "id": "hdbscan-cluster-memory-recursive-systems-university",
-      "name": "HDBSCAN Cluster: memory, recursive, systems, university",
       "count": 3
     },
     {
@@ -93,11 +88,6 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-diffusion-model-generation-language",
-      "name": "HDBSCAN Cluster: diffusion, model, generation, language",
-      "count": 3
-    },
-    {
       "id": "hdbscan-cluster-figure-university-li1-agentic",
       "name": "HDBSCAN Cluster: figure, university, li1, agentic",
       "count": 3
@@ -105,6 +95,11 @@
     {
       "id": "hdbscan-cluster-reasoning-model-research-performance",
       "name": "HDBSCAN Cluster: reasoning, model, research, performance",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-university-loop-efficient-models",
+      "name": "HDBSCAN Cluster: university, loop, efficient, models",
       "count": 3
     },
     {
@@ -133,6 +128,11 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-figure-opus-selection-llm",
+      "name": "HDBSCAN Cluster: figure, opus, selection, llm",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-unified-air-ground-embodied-infrastructure",
       "name": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
       "count": 2
@@ -140,11 +140,6 @@
     {
       "id": "hdbscan-cluster-models-such-hrm-text-pretraining",
       "name": "HDBSCAN Cluster: models, such, hrm-text, pretraining",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-lightning-attention-scaling-model",
-      "name": "HDBSCAN Cluster: lightning, attention, scaling, model",
       "count": 2
     },
     {
@@ -228,6 +223,11 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-data-llms-zhou-application-ready",
+      "name": "HDBSCAN Cluster: data, llms, zhou, application-ready",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-generation-long-video-real-time",
       "name": "HDBSCAN Cluster: generation, long, video, real-time",
       "count": 2
@@ -235,6 +235,16 @@
     {
       "id": "hdbscan-cluster-reasoning-models-intelligence-embodied",
       "name": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-mcp-scientific-research-chen",
+      "name": "HDBSCAN Cluster: mcp, scientific, research, chen",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-vibevoice-music-report-model",
+      "name": "HDBSCAN Cluster: vibevoice, music, report, model",
       "count": 2
     },
     {

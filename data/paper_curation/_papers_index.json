@@ -205,7 +205,7 @@
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
-      "category": "HDBSCAN Cluster: models, figure, university, efficient",
+      "category": "HDBSCAN Cluster: figure, opus, selection, llm",
       "key": "FOLDER00021_8502bdaf4994",
       "sourceIndex": 20,
       "textBytes": 218340,
@@ -305,7 +305,7 @@
     {
       "slug": "334_MiniMax-01_Scaling_Foundation_Models_with_Lightning_Attentio",
       "title": "MiniMax-01: Scaling Foundation Models with Lightning Attention",
-      "category": "HDBSCAN Cluster: lightning, attention, scaling, model",
+      "category": "HDBSCAN Cluster: model, attention, lightning, efficient",
       "key": "FOLDER00031_fa942766dee6",
       "sourceIndex": 30,
       "textBytes": 287301,
@@ -335,7 +335,7 @@
     {
       "slug": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: agentic, memory, model, systems",
       "key": "FOLDER00034_8bc56d204ac7",
       "sourceIndex": 33,
       "textBytes": 94309,
@@ -365,7 +365,7 @@
     {
       "slug": "340_Recursive_Multi-Agent_Systems",
       "title": "Recursive Multi-Agent Systems",
-      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
+      "category": "HDBSCAN Cluster: agentic, memory, model, systems",
       "key": "FOLDER00037_f33e597ec366",
       "sourceIndex": 36,
       "textBytes": 105642,
@@ -375,7 +375,7 @@
     {
       "slug": "341_MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightn",
       "title": "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention",
-      "category": "HDBSCAN Cluster: lightning, attention, scaling, model",
+      "category": "HDBSCAN Cluster: model, attention, lightning, efficient",
       "key": "FOLDER00038_c5daea06a99b",
       "sourceIndex": 37,
       "textBytes": 75471,
@@ -535,7 +535,7 @@
     {
       "slug": "1737_LLM_in_a_flash_Efficient_Large_Language_Model_Inference_with",
       "title": "LLM in a flash: Efficient Large Language Model Inference with Limited Memory",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: model, attention, lightning, efficient",
       "key": "FOLDER00054_1cf19c9e4b12",
       "sourceIndex": 53,
       "textBytes": 91659,
@@ -645,7 +645,7 @@
     {
       "slug": "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation",
       "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
-      "category": "HDBSCAN Cluster: diffusion, model, generation, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00065_f953c8971cba",
       "sourceIndex": 64,
       "textBytes": 94565,
@@ -865,7 +865,7 @@
     {
       "slug": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
       "title": "Heterogeneous Scientific Foundation Model Collaboration",
-      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
+      "category": "HDBSCAN Cluster: agentic, memory, model, systems",
       "key": "FOLDER00087_4449a0ace106",
       "sourceIndex": 86,
       "textBytes": 184544,
@@ -1065,7 +1065,7 @@
     {
       "slug": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
       "title": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling",
-      "category": "HDBSCAN Cluster: models, figure, university, efficient",
+      "category": "HDBSCAN Cluster: university, loop, efficient, models",
       "key": "FOLDER00107_4c4b048fabae",
       "sourceIndex": 106,
       "textBytes": 57470,
@@ -1225,7 +1225,7 @@
     {
       "slug": "2257_Can_LLMs_Clean_Up_Your_Mess_A_Survey_of_Application-Ready_Da",
       "title": "Can LLMs Clean Up Your Mess? A Survey of Application-Ready Data Preparation with LLMs",
-      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
+      "category": "HDBSCAN Cluster: data, llms, zhou, application-ready",
       "key": "FOLDER00123_6e2ebdc352d6",
       "sourceIndex": 122,
       "textBytes": 150253,
@@ -1275,7 +1275,7 @@
     {
       "slug": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
       "title": "LlamaFactory: Unified Efficient Fine-Tuning of 100+ Language Models",
-      "category": "HDBSCAN Cluster: models, figure, university, efficient",
+      "category": "HDBSCAN Cluster: university, loop, efficient, models",
       "key": "FOLDER00128_088ef61f71e2",
       "sourceIndex": 127,
       "textBytes": 58891,
@@ -1385,7 +1385,7 @@
     {
       "slug": "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
       "title": "Idea2Story: An Automated Pipeline for Transforming Research Concepts into Complete Scientific Narratives",
-      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
+      "category": "HDBSCAN Cluster: mcp, scientific, research, chen",
       "key": "FOLDER00139_67529da800a5",
       "sourceIndex": 138,
       "textBytes": 50780,
@@ -1415,7 +1415,7 @@
     {
       "slug": "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
       "title": "MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use",
-      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
+      "category": "HDBSCAN Cluster: mcp, scientific, research, chen",
       "key": "FOLDER00142_a4d4189c9274",
       "sourceIndex": 141,
       "textBytes": 86861,
@@ -1475,7 +1475,7 @@
     {
       "slug": "2496_VibeVoice_Technical_Report",
       "title": "VibeVoice Technical Report",
-      "category": "HDBSCAN Cluster: diffusion, model, generation, language",
+      "category": "HDBSCAN Cluster: vibevoice, music, report, model",
       "key": "FOLDER00148_136af8a674d0",
       "sourceIndex": 147,
       "textBytes": 27704,
@@ -1505,7 +1505,7 @@
     {
       "slug": "2541_Simple_and_Controllable_Music_Generation",
       "title": "Simple and Controllable Music Generation",
-      "category": "HDBSCAN Cluster: diffusion, model, generation, language",
+      "category": "HDBSCAN Cluster: vibevoice, music, report, model",
       "key": "FOLDER00151_d3ee51dd9ac2",
       "sourceIndex": 150,
       "textBytes": 69040,
@@ -1585,7 +1585,7 @@
     {
       "slug": "2587_General_Agentic_Memory_Via_Deep_Research",
       "title": "General Agentic Memory Via Deep Research",
-      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
+      "category": "HDBSCAN Cluster: agentic, memory, model, systems",
       "key": "FOLDER00159_4c43fdf369ac",
       "sourceIndex": 158,
       "textBytes": 49725,
@@ -1825,7 +1825,7 @@
     {
       "slug": "2816_DAComp_Benchmarking_Data_Agents_across_the_Full_Data_Intelli",
       "title": "DAComp: Benchmarking Data Agents across the Full Data Intelligence Lifecycle",
-      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
+      "category": "HDBSCAN Cluster: data, llms, zhou, application-ready",
       "key": "FOLDER00183_f9bffed4699f",
       "sourceIndex": 182,
       "textBytes": 140889,
@@ -1935,7 +1935,7 @@
     {
       "slug": "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
       "title": "Vision-DeepResearch: Incentivizing DeepResearch Capability in Multimodal Large Language Models",
-      "category": "HDBSCAN Cluster: models, figure, university, efficient",
+      "category": "HDBSCAN Cluster: university, loop, efficient, models",
       "key": "FOLDER00194_40095c356e5a",
       "sourceIndex": 193,
       "textBytes": 51791,
@@ -2035,7 +2035,7 @@
     {
       "slug": "2994_Can_1B_LLM_Surpass_405B_LLM_Rethinking_Compute-Optimal_Test-",
       "title": "Can 1B LLM Surpass 405B LLM? Rethinking Compute-Optimal Test-Time Scaling",
-      "category": "HDBSCAN Cluster: models, figure, university, efficient",
+      "category": "HDBSCAN Cluster: figure, opus, selection, llm",
       "key": "FOLDER00204_1a7c96a7f165",
       "sourceIndex": 203,
       "textBytes": 109134,
@@ -2045,7 +2045,7 @@
     {
       "slug": "2995_Qwen25-Coder_Technical_Report",
       "title": "Qwen2.5-Coder Technical Report",
-      "category": "HDBSCAN Cluster: models, figure, university, efficient",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00205_020d0c5469cf",
       "sourceIndex": 204,
       "textBytes": 94975,
@@ -2101,6 +2101,56 @@
       "textBytes": 54412,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2603.15612v1[cs.CV]16Mar2026 ## HSImul3R: Physics-in-the-Loop Reconstruction of Simulation-Ready Human–Scene Interactions Yukang Cao1, Haozhe Xie1, Fangzhou Hong1, Long Zhuo3, Zhaoxi Chen1, Liang Pan2, and Ziwei Liu1, 1 S-Lab, Nanyang Technological University 2 ACE Robotics 3 Shanghai AI Laboratory Corresponding author https://yukangcao.github.io/HSImul3R/ [Figure 1] Fig. 1: Examples of real-world humanoid robotic deployment. Given casual captures, our approach achieves simulation-ready 3D reconstruction of human–scene interactions by refining the human motions and scene geometry via a physically-grounded bi-directional optimization pipeline. Our optimized human motions can be seamlessly transferred and deployed in humanoid robotics. Abstract. We present HSImul3R1, a unified framework for simulationready 3D reconstruction of human-scene interactions (HSI) from casual captures, in"
+    },
+    {
+      "slug": "3080_InfiniteHiP_Extending_Language_Model_Context_Up_to_3_Million",
+      "title": "InfiniteHiP: Extending Language Model Context Up to 3 Million Tokens on a Single GPU",
+      "category": "HDBSCAN Cluster: model, attention, lightning, efficient",
+      "key": "FOLDER00211_89b2c8a3d5b7",
+      "sourceIndex": 210,
+      "textBytes": 78779,
+      "figuresExtracted": 5,
+      "excerpt": "### Extending Language Model Context Up to 3 Million Tokens on a Single GPU Heejun Lee*12 Geon Park*12 Jaduk Suh1 Sung Ju Hwang12 ## arXiv:2502.08910v1[cs.CL]13Feb2025 #### Abstract In modern large language models (LLMs), handling very long context lengths presents significant challenges as it causes slower inference speeds and increased memory costs. Additionally, most existing pre-trained LLMs fail to generalize beyond their original training sequence lengths. To enable efficient and practical long-context utilization, we introduce InfiniteHiP, a novel and practical LLM inference framework that accelerates processing by dynamically eliminating irrelevant context tokens through a modular hierarchical token pruning algorithm. Our method also allows generalization to longer sequences by selectively applying various RoPE adjustment methods according to the internal attention patterns withi"
+    },
+    {
+      "slug": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
+      "title": "OpenSeeker: Democratizing Frontier Search Agents by Fully Open-Sourcing Training Data",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00212_5402ba8e115d",
+      "sourceIndex": 211,
+      "textBytes": 53202,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.15594v1[cs.AI]16Mar2026 ## OpenSeeker: Democratizing Frontier Search Agents by Fully Open-Sourcing Training Data Yuwen Du1,*, Rui Ye1,*,#,†, Shuo Tang1, Xinyu Zhu1, Yijun Lu1, Yuzhu Cai1, Siheng Chen1,† 1Shanghai Jiao Tong University, *Equal Core Contributions, #Project Lead †Corresponding Authors: yr991129@sjtu.edu.cn, sihengc@sjtu.edu.cn #### Abstract Deep search capabilities have become an indispensable competency for frontier Large Language Model (LLM) agents, yet the development of high-performance search agents remains dominated by industrial giants due to a lack of transparent, high-quality training data. This persistent data scarcity has fundamentally hindered the progress of the broader research community in developing and innovating within this domain. To bridge this gap, we introduce OpenSeeker, the first fully open-source search agent (i.e., model and data) that "
+    },
+    {
+      "slug": "3082_Efficient_Reasoning_with_Balanced_Thinking",
+      "title": "Efficient Reasoning with Balanced Thinking",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00213_b18618a13867",
+      "sourceIndex": 212,
+      "textBytes": 171902,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.12372v3[cs.AI]2Apr2026 ## EFFICIENT REASONING WITH BALANCED THINKING #### Yulin Li1∗ Tengyao Tu1,5∗ Li Ding1 Junjie Wang1 Huiling Zhen2 Yixin Chen4 Yong Li3,5 Zhuotao Tian1,6† 1Harbin Institute of Technology (Shenzhen) 2Huawei Noah’s Ark Lab 3Tsinghua University 4The Chinese University of Hong Kong 5Zhongguancun Academy 6Shenzhen Loop Area Institute ABSTRACT Large Reasoning Models (LRMs) have shown remarkable reasoning capabilities, yet they often suffer from overthinking, expending redundant computational steps on simple problems, or underthinking, failing to explore sufficient reasoning paths despite inherent capabilities. These issues lead to inefficiencies and potential inaccuracies, limiting practical deployment in resource-constrained settings. Existing methods to mitigate overthinking, such as suppressing reflective keywords or adjusting reasoning length, may inadvert"
+    },
+    {
+      "slug": "3083_Reverse-Engineered_Reasoning_for_Open-Ended_Generation",
+      "title": "Reverse-Engineered Reasoning for Open-Ended Generation",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00214_1906df5ba859",
+      "sourceIndex": 213,
+      "textBytes": 81244,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2509.06160v1[cs.AI]7Sep2025 [Figure 1] ### Reverse-Engineered Reasoning for Open-Ended Generation #### †Haozhe Wang+1,2,4, Haoran Que+1,3, Qixin Xu6, Minghao Liu4,5, Wangchunshu Zhou4, Jiazhan Feng1, Wanjun Zhong1, Wei Ye3, Tong Yang3, Wenhao Huang1, †Ge Zhang1,4, †Fangzhen Lin2 1ByteDance Seed, 2Hong Kong University of Science and Technology, 3Peking University, 4M-A-P, 52077AI, 6Tsinghua University +Work done at ByteDance Seed, †Corresponding authors #### Abstract While the \"deep reasoning\" paradigm has spurred significant advances in verifiable domains like mathematics, its application to open-ended, creative generation remains a critical challenge. The two dominant methods for instilling reasoning—reinforcement learning (RL) and instruction distillation – falter in this area; RL struggles with the absence of clear reward signals and highquality reward models, while distillati"
+    },
+    {
+      "slug": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "title": "ReCamMaster: Camera-Controlled Generative Rendering from A Single Video",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00215_7809968708b7",
+      "sourceIndex": 214,
+      "textBytes": 68060,
+      "figuresExtracted": 5,
+      "excerpt": "## ReCamMaster: Camera-Controlled Generative Rendering from A Single Video ### Jianhong Bai1∗, Menghan Xia2†, Xiao Fu3, Xintao Wang2, Lianrui Mu1, Jinwen Cao2, Zuozhu Liu1, Haoji Hu1†, Xiang Bai4, Pengfei Wan2, Di Zhang2 1Zhejiang University, 2Kling Team, Kuaishou Technology, 3CUHK, 4HUST Project webpage: https://jianhongbai.github.io/ReCamMaster/ [Figure 1] [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] Source Video Source Video Synthesized |[Figure 7]| |---| |[Figure 8]| |---| # arXiv:2503.11647v2[cs.CV]9Jul2025 [Figure 9] [Figure 10] [Figure 11] [Figure 12] [Figure 13] [Figure 14] Synthesized Video Video A close-up of a character with a furry, muscular face, displaying a range of intense and focused expressions. One man, dressed in a black leather jacket and jeans, is pointing a gun at the other man, who is wearing a dark suit and white shirt. [Figure 15] [Figure 16] [Figure 1"
     }
   ]
 }

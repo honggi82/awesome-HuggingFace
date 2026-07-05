@@ -38,6 +38,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3080_InfiniteHiP_Extending_Language_Model_Context_Up_to_3_Million",
+      "score": 0.9407,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2725_Smarter_Better_Faster_Longer_A_Modern_Bidirectional_Encoder",
       "score": 0.9368,
       "reason": "Codex local embedding similarity"
@@ -45,11 +50,6 @@
     {
       "target": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "score": 0.9363,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2994_Can_1B_LLM_Surpass_405B_LLM_Rethinking_Compute-Optimal_Test-",
-      "score": 0.9356,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -183,8 +183,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2678_Perception_or_Prejudice_Can_MLLMs_Go_Beyond_First_Impression",
-      "score": 0.9373,
+      "target": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
+      "score": 0.9374,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -561,8 +561,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2994_Can_1B_LLM_Surpass_405B_LLM_Rethinking_Compute-Optimal_Test-",
-      "score": 0.95,
+      "target": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
+      "score": 0.9508,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -816,6 +816,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3080_InfiniteHiP_Extending_Language_Model_Context_Up_to_3_Million",
+      "score": 0.9559,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2306_Attention_Residuals",
       "score": 0.9456,
       "reason": "Codex local embedding similarity"
@@ -828,11 +833,6 @@
     {
       "target": "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti",
       "score": 0.9445,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "083_Qwen25_Technical_Report",
-      "score": 0.9441,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1113,6 +1113,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
+      "score": 0.9427,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
       "score": 0.9398,
       "reason": "Codex local embedding similarity"
@@ -1125,11 +1130,6 @@
     {
       "target": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "score": 0.9342,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "323_Qwen3_Technical_Report",
-      "score": 0.9332,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1432,6 +1432,11 @@
   ],
   "1737_LLM_in_a_flash_Efficient_Large_Language_Model_Inference_with": [
     {
+      "target": "3080_InfiniteHiP_Extending_Language_Model_Context_Up_to_3_Million",
+      "score": 0.9453,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2994_Can_1B_LLM_Surpass_405B_LLM_Rethinking_Compute-Optimal_Test-",
       "score": 0.94,
       "reason": "Codex local embedding similarity"
@@ -1449,11 +1454,6 @@
     {
       "target": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "score": 0.9315,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in",
-      "score": 0.931,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1560,8 +1560,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2166_On_the_Generalization_of_SFT_A_Reinforcement_Learning_Perspe",
-      "score": 0.9483,
+      "target": "3083_Reverse-Engineered_Reasoning_for_Open-Ended_Generation",
+      "score": 0.9486,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1621,6 +1621,11 @@
   ],
   "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive": [
     {
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.9419,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2310_LongVT_Incentivizing_Thinking_with_Long_Videos_via_Native_To",
       "score": 0.9417,
       "reason": "Codex local embedding similarity"
@@ -1638,11 +1643,6 @@
     {
       "target": "2495_Live_Avatar_Streaming_Real-time_Audio-Driven_Avatar_Generati",
       "score": 0.9313,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1743_WildDet3D_Scaling_Promptable_3D_Detection_in_the_Wild",
-      "score": 0.9252,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1680,6 +1680,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3082_Efficient_Reasoning_with_Balanced_Thinking",
+      "score": 0.9355,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
       "score": 0.9352,
       "reason": "Codex local embedding similarity"
@@ -1690,13 +1695,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2022_TermiGen_High-Fidelity_Environment_and_Robust_Trajectory_Syn",
-      "score": 0.9311,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2816_DAComp_Benchmarking_Data_Agents_across_the_Full_Data_Intelli",
-      "score": 0.9292,
+      "target": "3083_Reverse-Engineered_Reasoning_for_Open-Ended_Generation",
+      "score": 0.9319,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1815,6 +1815,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3082_Efficient_Reasoning_with_Balanced_Thinking",
+      "score": 0.9426,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data",
       "score": 0.9406,
       "reason": "Codex local embedding similarity"
@@ -1827,11 +1832,6 @@
     {
       "target": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
       "score": 0.9367,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "340_Recursive_Multi-Agent_Systems",
-      "score": 0.9363,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2338,13 +2338,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
-      "score": 0.9461,
+      "target": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
+      "score": 0.9469,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2680_AgentSPEX_An_Agent_SPecification_and_EXecution_Language",
-      "score": 0.9454,
+      "target": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
+      "score": 0.9461,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2485,6 +2485,11 @@
   ],
   "738_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering": [
     {
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.9176,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
       "score": 0.917,
       "reason": "Codex local embedding similarity"
@@ -2502,11 +2507,6 @@
     {
       "target": "2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds",
       "score": 0.9034,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "342_Qwen-Image_Technical_Report",
-      "score": 0.9027,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2581,13 +2581,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
-      "score": 0.944,
+      "target": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
+      "score": 0.9441,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
-      "score": 0.9439,
+      "target": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
+      "score": 0.944,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3030,6 +3030,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3083_Reverse-Engineered_Reasoning_for_Open-Ended_Generation",
+      "score": 0.9417,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "340_Recursive_Multi-Agent_Systems",
       "score": 0.9389,
       "reason": "Codex local embedding similarity"
@@ -3042,11 +3047,6 @@
     {
       "target": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
       "score": 0.937,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data",
-      "score": 0.9356,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3170,6 +3170,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3083_Reverse-Engineered_Reasoning_for_Open-Ended_Generation",
+      "score": 0.9345,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
       "score": 0.9313,
       "reason": "Codex local embedding similarity"
@@ -3177,11 +3182,6 @@
     {
       "target": "1751_Is_Chain-of-Thought_Reasoning_of_LLMs_a_Mirage_A_Data_Distri",
       "score": 0.9311,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1728_Reinforcement_Pre-Training",
-      "score": 0.9302,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3310,13 +3310,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
-      "score": 0.9358,
+      "target": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
+      "score": 0.9361,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
-      "score": 0.9357,
+      "target": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
+      "score": 0.9358,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3440,6 +3440,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
+      "score": 0.951,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2995_Qwen25-Coder_Technical_Report",
       "score": 0.9493,
       "reason": "Codex local embedding similarity"
@@ -3447,11 +3452,6 @@
     {
       "target": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
       "score": 0.9489,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
-      "score": 0.9482,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3499,13 +3499,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
-      "score": 0.9361,
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.9368,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1732_ClawBench_Can_AI_Agents_Complete_Everyday_Online_Tasks",
-      "score": 0.9344,
+      "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
+      "score": 0.9361,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3558,8 +3558,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia",
-      "score": 0.9241,
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.9338,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3639,8 +3639,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive",
-      "score": 0.9105,
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.9112,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3656,6 +3656,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3083_Reverse-Engineered_Reasoning_for_Open-Ended_Generation",
+      "score": 0.9595,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data",
       "score": 0.9594,
       "reason": "Codex local embedding similarity"
@@ -3663,11 +3668,6 @@
     {
       "target": "2584_Self-Distilled_RLVR",
       "score": 0.9547,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
-      "score": 0.9516,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3855,8 +3855,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo",
-      "score": 0.9349,
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.935,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3943,6 +3943,11 @@
   ],
   "2495_Live_Avatar_Streaming_Real-time_Audio-Driven_Avatar_Generati": [
     {
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.9471,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2310_LongVT_Incentivizing_Thinking_with_Long_Videos_via_Native_To",
       "score": 0.9391,
       "reason": "Codex local embedding similarity"
@@ -3960,11 +3965,6 @@
     {
       "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
       "score": 0.9345,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2215_EMO_Emote_Portrait_Alive_-_Generating_Expressive_Portrait_Vi",
-      "score": 0.9339,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4024,6 +4024,11 @@
   ],
   "2498_TransitLM_A_Large-Scale_Dataset_and_Benchmark_for_Map-Free_T": [
     {
+      "target": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
+      "score": 0.9329,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "score": 0.9274,
       "reason": "Codex local embedding similarity"
@@ -4041,11 +4046,6 @@
     {
       "target": "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
       "score": 0.921,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
-      "score": 0.9195,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4147,13 +4147,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
-      "score": 0.9453,
+      "target": "3080_InfiniteHiP_Extending_Language_Model_Context_Up_to_3_Million",
+      "score": 0.9468,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
-      "score": 0.9449,
+      "target": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
+      "score": 0.9453,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4206,8 +4206,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
-      "score": 0.9439,
+      "target": "3083_Reverse-Engineered_Reasoning_for_Open-Ended_Generation",
+      "score": 0.9447,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4277,18 +4277,18 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3082_Efficient_Reasoning_with_Balanced_Thinking",
+      "score": 0.9471,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1741_SkillOpt_Executive_Strategy_for_Self-Evolving_Agent_Skills",
       "score": 0.9463,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2727_Agentic_Reinforced_Policy_Optimization",
-      "score": 0.9447,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
-      "score": 0.9421,
+      "target": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
+      "score": 0.945,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4309,13 +4309,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1743_WildDet3D_Scaling_Promptable_3D_Detection_in_the_Wild",
-      "score": 0.9227,
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.928,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1735_Does_Your_Reasoning_Model_Implicitly_Know_When_to_Stop_Think",
-      "score": 0.9203,
+      "target": "1743_WildDet3D_Scaling_Promptable_3D_Detection_in_the_Wild",
+      "score": 0.9227,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4849,13 +4849,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
-      "score": 0.9318,
+      "target": "3080_InfiniteHiP_Extending_Language_Model_Context_Up_to_3_Million",
+      "score": 0.937,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2725_Smarter_Better_Faster_Longer_A_Modern_Bidirectional_Encoder",
-      "score": 0.9303,
+      "target": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
+      "score": 0.9318,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5082,6 +5082,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.9479,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo",
       "score": 0.9394,
       "reason": "Codex local embedding similarity"
@@ -5094,11 +5099,6 @@
     {
       "target": "2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo",
       "score": 0.9381,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
-      "score": 0.9366,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5249,6 +5249,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.9126,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2902_Towards_Understanding_Camera_Motions_in_Any_Video",
       "score": 0.9101,
       "reason": "Codex local embedding similarity"
@@ -5256,11 +5261,6 @@
     {
       "target": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
       "score": 0.91,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "340_Recursive_Multi-Agent_Systems",
-      "score": 0.9083,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5384,6 +5384,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.9261,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
       "score": 0.9253,
       "reason": "Codex local embedding similarity"
@@ -5391,11 +5396,6 @@
     {
       "target": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
       "score": 0.9191,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2495_Live_Avatar_Streaming_Real-time_Audio-Driven_Avatar_Generati",
-      "score": 0.9092,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5470,13 +5470,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and",
-      "score": 0.944,
+      "target": "3083_Reverse-Engineered_Reasoning_for_Open-Ended_Generation",
+      "score": 0.9441,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2816_DAComp_Benchmarking_Data_Agents_across_the_Full_Data_Intelli",
-      "score": 0.9428,
+      "target": "2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and",
+      "score": 0.944,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5484,6 +5484,11 @@
     {
       "target": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "score": 0.95,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
+      "score": 0.946,
       "reason": "Codex local embedding similarity"
     },
     {
@@ -5499,11 +5504,6 @@
     {
       "target": "2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs",
       "score": 0.9425,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1728_Reinforcement_Pre-Training",
-      "score": 0.9417,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5610,8 +5610,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia",
-      "score": 0.9281,
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.938,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5666,6 +5666,141 @@
     {
       "target": "2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef",
       "score": 0.9214,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "3080_InfiniteHiP_Extending_Language_Model_Context_Up_to_3_Million": [
+    {
+      "target": "334_MiniMax-01_Scaling_Foundation_Models_with_Lightning_Attentio",
+      "score": 0.9559,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2544_Retentive_Network_A_Successor_to_Transformer_for_Large_Langu",
+      "score": 0.9468,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1737_LLM_in_a_flash_Efficient_Large_Language_Model_Inference_with",
+      "score": 0.9453,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
+      "score": 0.9407,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
+      "score": 0.9393,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope": [
+    {
+      "target": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
+      "score": 0.951,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
+      "score": 0.9508,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
+      "score": 0.9499,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
+      "score": 0.948,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
+      "score": 0.9469,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "3082_Efficient_Reasoning_with_Balanced_Thinking": [
+    {
+      "target": "3083_Reverse-Engineered_Reasoning_for_Open-Ended_Generation",
+      "score": 0.9558,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2587_General_Agentic_Memory_Via_Deep_Research",
+      "score": 0.9471,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2727_Agentic_Reinforced_Policy_Optimization",
+      "score": 0.9465,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
+      "score": 0.9454,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe",
+      "score": 0.9449,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "3083_Reverse-Engineered_Reasoning_for_Open-Ended_Generation": [
+    {
+      "target": "2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe",
+      "score": 0.9595,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "3082_Efficient_Reasoning_with_Balanced_Thinking",
+      "score": 0.9558,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data",
+      "score": 0.9551,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1741_SkillOpt_Executive_Strategy_for_Self-Evolving_Agent_Skills",
+      "score": 0.9486,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2727_Agentic_Reinforced_Policy_Optimization",
+      "score": 0.947,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si": [
+    {
+      "target": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
+      "score": 0.9479,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2495_Live_Avatar_Streaming_Real-time_Audio-Driven_Avatar_Generati",
+      "score": 0.9471,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive",
+      "score": 0.9419,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo",
+      "score": 0.938,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2310_LongVT_Incentivizing_Thinking_with_Long_Videos_via_Native_To",
+      "score": 0.9368,
       "reason": "Codex local embedding similarity"
     }
   ]
