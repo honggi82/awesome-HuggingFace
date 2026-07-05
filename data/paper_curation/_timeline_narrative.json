@@ -5,7 +5,7 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 60
+      "count": 64
     },
     {
       "id": "hdbscan-cluster-figure-agent-university-tokens",
@@ -23,6 +23,11 @@
       "count": 6
     },
     {
+      "id": "hdbscan-cluster-generation-video-models-image",
+      "name": "HDBSCAN Cluster: generation, video, models, image",
+      "count": 6
+    },
+    {
       "id": "hdbscan-cluster-transformer-language-transformers-attention",
       "name": "HDBSCAN Cluster: transformer, language, transformers, attention",
       "count": 5
@@ -30,11 +35,6 @@
     {
       "id": "hdbscan-cluster-university-code-https-figure",
       "name": "HDBSCAN Cluster: university, code, https, figure",
-      "count": 5
-    },
-    {
-      "id": "hdbscan-cluster-generation-video-image-models",
-      "name": "HDBSCAN Cluster: generation, video, image, models",
       "count": 5
     },
     {
@@ -50,6 +50,11 @@
     {
       "id": "hdbscan-cluster-https-multimodal-report-figure",
       "name": "HDBSCAN Cluster: https, multimodal, report, figure",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-data-llms-agents-mcp",
+      "name": "HDBSCAN Cluster: data, llms, agents, mcp",
       "count": 4
     },
     {
@@ -93,19 +98,14 @@
       "count": 3
     },
     {
+      "id": "hdbscan-cluster-zhang-wang-liu-yang",
+      "name": "HDBSCAN Cluster: zhang, wang, liu, yang",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-reasoning-model-research-performance",
       "name": "HDBSCAN Cluster: reasoning, model, research, performance",
       "count": 3
-    },
-    {
-      "id": "hdbscan-cluster-llms-mcp-data-zhou",
-      "name": "HDBSCAN Cluster: llms, mcp, data, zhou",
-      "count": 3
-    },
-    {
-      "id": "hdbscan-cluster-data-textual-law-frequency",
-      "name": "HDBSCAN Cluster: data, textual, law, frequency",
-      "count": 2
     },
     {
       "id": "hdbscan-cluster-university-li1-scientific-olympiad",
@@ -173,11 +173,6 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-zhang-wang-yang-liu",
-      "name": "HDBSCAN Cluster: zhang, wang, yang, liu",
-      "count": 2
-    },
-    {
       "id": "hdbscan-cluster-agents-embodied-lumine-open",
       "name": "HDBSCAN Cluster: agents, embodied, lumine, open",
       "count": 2
@@ -193,8 +188,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-figure-models-efficient-vlms",
-      "name": "HDBSCAN Cluster: figure, models, efficient, vlms",
+      "id": "hdbscan-cluster-figure-models-smolvlm-small",
+      "name": "HDBSCAN Cluster: figure, models, smolvlm, small",
       "count": 2
     },
     {

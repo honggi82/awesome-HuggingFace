@@ -65,7 +65,7 @@
     {
       "slug": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
       "title": "Adam's Law: Textual Frequency Law on Large Language Models",
-      "category": "HDBSCAN Cluster: data, textual, law, frequency",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00007_f1204ba044c3",
       "sourceIndex": 6,
       "textBytes": 101929,
@@ -385,7 +385,7 @@
     {
       "slug": "342_Qwen-Image_Technical_Report",
       "title": "Qwen-Image Technical Report",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: generation, video, models, image",
       "key": "FOLDER00039_67f3a3187f0a",
       "sourceIndex": 38,
       "textBytes": 141226,
@@ -565,7 +565,7 @@
     {
       "slug": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
       "title": "Z-Image: An Efficient Image Generation Foundation Model with Single-Stream Diffusion Transformer",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: generation, video, models, image",
       "key": "FOLDER00057_85f52b7d18cd",
       "sourceIndex": 56,
       "textBytes": 233804,
@@ -635,7 +635,7 @@
     {
       "slug": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
       "title": "Less is Enough: Synthesizing Diverse Data in Feature Space of LLMs",
-      "category": "HDBSCAN Cluster: data, textual, law, frequency",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00064_292a7228313c",
       "sourceIndex": 63,
       "textBytes": 179027,
@@ -705,7 +705,7 @@
     {
       "slug": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
       "title": "Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: generation, video, models, image",
       "key": "FOLDER00071_8339c62b1c6b",
       "sourceIndex": 70,
       "textBytes": 189067,
@@ -845,7 +845,7 @@
     {
       "slug": "1889_InternVL35_Advancing_Open-Source_Multimodal_Models_in_Versat",
       "title": "InternVL3.5: Advancing Open-Source Multimodal Models in Versatility, Reasoning, and Efficiency",
-      "category": "HDBSCAN Cluster: zhang, wang, yang, liu",
+      "category": "HDBSCAN Cluster: zhang, wang, liu, yang",
       "key": "FOLDER00085_d15d9f25155c",
       "sourceIndex": 84,
       "textBytes": 152420,
@@ -985,7 +985,7 @@
     {
       "slug": "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
       "title": "SmolVLM: Redefining small and efficient multimodal models",
-      "category": "HDBSCAN Cluster: figure, models, efficient, vlms",
+      "category": "HDBSCAN Cluster: figure, models, smolvlm, small",
       "key": "FOLDER00099_ac2f7b1c354d",
       "sourceIndex": 98,
       "textBytes": 79008,
@@ -1225,7 +1225,7 @@
     {
       "slug": "2257_Can_LLMs_Clean_Up_Your_Mess_A_Survey_of_Application-Ready_Da",
       "title": "Can LLMs Clean Up Your Mess? A Survey of Application-Ready Data Preparation with LLMs",
-      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
+      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
       "key": "FOLDER00123_6e2ebdc352d6",
       "sourceIndex": 122,
       "textBytes": 150253,
@@ -1385,7 +1385,7 @@
     {
       "slug": "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
       "title": "Idea2Story: An Automated Pipeline for Transforming Research Concepts into Complete Scientific Narratives",
-      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
+      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
       "key": "FOLDER00139_67529da800a5",
       "sourceIndex": 138,
       "textBytes": 50780,
@@ -1415,7 +1415,7 @@
     {
       "slug": "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
       "title": "MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use",
-      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
+      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
       "key": "FOLDER00142_a4d4189c9274",
       "sourceIndex": 141,
       "textBytes": 86861,
@@ -1485,7 +1485,7 @@
     {
       "slug": "2497_Qwen2_Technical_Report",
       "title": "Qwen2 Technical Report",
-      "category": "HDBSCAN Cluster: zhang, wang, yang, liu",
+      "category": "HDBSCAN Cluster: zhang, wang, liu, yang",
       "key": "FOLDER00149_15d47edddf97",
       "sourceIndex": 148,
       "textBytes": 86323,
@@ -1645,7 +1645,7 @@
     {
       "slug": "2633_Kling-Omni_Technical_Report",
       "title": "Kling-Omni Technical Report",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: generation, video, models, image",
       "key": "FOLDER00165_3ca77ea7131e",
       "sourceIndex": 164,
       "textBytes": 66971,
@@ -1715,7 +1715,7 @@
     {
       "slug": "2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef",
       "title": "SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics",
-      "category": "HDBSCAN Cluster: figure, models, efficient, vlms",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00172_04aa1b625ee3",
       "sourceIndex": 171,
       "textBytes": 99390,
@@ -1775,7 +1775,7 @@
     {
       "slug": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
       "title": "Seedance 2.0: Advancing Video Generation for World Complexity",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: generation, video, models, image",
       "key": "FOLDER00178_2a5f3f6b73fb",
       "sourceIndex": 177,
       "textBytes": 85193,
@@ -1801,6 +1801,56 @@
       "textBytes": 142183,
       "figuresExtracted": 5,
       "excerpt": "## Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach Jonas Geiping1 Sean McLeish2 Neel Jain2 John Kirchenbauer2 Siddharth Singh2 Brian R. Bartoldson3 Bhavya Kailkhura3 Abhinav Bhatele2 Tom Goldstein2 # arXiv:2502.05171v2[cs.LG]17Feb2025 #### Abstract We study a novel language model architecture that is capable of scaling test-time computation by implicitly reasoning in latent space. Our model works by iterating a recurrent block, thereby unrolling to arbitrary depth at test-time. This stands in contrast to mainstream reasoning models that scale up compute by producing more tokens. Unlike approaches based on chain-of-thought, our approach does not require any specialized training data, can work with small context windows, and can capture types of reasoning that are not easily represented in words. We scale a proof-ofconcept model to 3.5 billion parameters and "
+    },
+    {
+      "slug": "2814_MOVA_Towards_Scalable_and_Synchronized_Video-Audio_Generatio",
+      "title": "MOVA: Towards Scalable and Synchronized Video-Audio Generation",
+      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "key": "FOLDER00181_6adca3716aee",
+      "sourceIndex": 180,
+      "textBytes": 117014,
+      "figuresExtracted": 5,
+      "excerpt": "OpenMOSS [Figure 1] ## MOVA: Towards Scalable and Synchronized Video–Audio Generation SII-OpenMOSS Team* # arXiv:2602.08794v2[cs.CV]10Feb2026 Abstract Audio is indispensable for real-world video, yet generation models have largely overlooked audio components. Current approaches to producing audio-visual content often rely on cascaded pipelines, which increase cost, accumulate errors, and degrade overall quality. While systems such as Veo 3 and Sora 2 emphasize the value of simultaneous generation, joint multimodal modeling introduces unique challenges in architecture, data, and training. Moreover, the closed-source nature of existing systems limits progress in the field. In this work, we introduce MOVA (MOSS Video and Audio), an open-source model capable of generating high-quality, synchronized audio-visual content, including realistic lip-synced speech, environment-aware sound effects, "
+    },
+    {
+      "slug": "2815_Memory_in_the_Age_of_AI_Agents",
+      "title": "Memory in the Age of AI Agents",
+      "category": "HDBSCAN Cluster: zhang, wang, liu, yang",
+      "key": "FOLDER00182_adcdbba05512",
+      "sourceIndex": 181,
+      "textBytes": 467887,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2512.13564v2[cs.CL]13Jan2026 ## Memory in the Age of AI Agents: A Survey Forms, Functions and Dynamics Yuyang Hu†, Shichun Liu†, Yanwei Yue†, Guibin Zhang† , Boyang Liu, Fangyi Zhu, Jiahang Lin, Honglin Guo, Shihan Dou, Zhiheng Xi, Senjie Jin, Jiejun Tan, Yanbin Yin, Jiongnan Liu, Zeyu Zhang, Zhongxiang Sun, Yutao Zhu, Hao Sun, Boci Peng, Zhenrong Cheng, Xuanbo Fan, Jiaxin Guo, Xinlei Yu, Zhenhong Zhou, Zewen Hu, Jiahao Huo, Junhao Wang, Yuwei Niu, Yu Wang, Zhenfei Yin, Xiaobin Hu, Yue Liao, Qiankun Li, Kun Wang, Wangchunshu Zhou, Yixin Liu, Dawei Cheng, Qi Zhang, Tao Gui‡, Shirui Pan, Yan Zhang‡, Philip Torr, Zhicheng Dou‡, Ji-Rong Wen, Xuanjing Huang‡, Yu-Gang Jiang, Shuicheng Yan‡ †Core Contributors with Names Listed Alphabetically. Project Organizer. ‡Core Supervisors. Affiliations: National University of Singapore, Renmin University of China, Fudan University, Peking Univers"
+    },
+    {
+      "slug": "2816_DAComp_Benchmarking_Data_Agents_across_the_Full_Data_Intelli",
+      "title": "DAComp: Benchmarking Data Agents across the Full Data Intelligence Lifecycle",
+      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
+      "key": "FOLDER00183_f9bffed4699f",
+      "sourceIndex": 182,
+      "textBytes": 140889,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2512.04324v1[cs.CL]3Dec2025 [Figure 1] ## DAComp: Benchmarking Data Agents across the Full Data Intelligence Lifecycle #### Fangyu Lei1,2,3∗§, Jinxiang Meng1,2∗, Yiming Huang5, Junjie Zhao3, Yitong Zhang6, Jianwen Luo1,2, Xin Zou3, Ruiyi Yang3, Wenbo Shi3, Yan Gao3, Shizhu He1,2, Zuo Wang3, Qian Liu4, Yang Wang3, Ke Wang3,†, Jun Zhao1,2, Kang Liu1,2,† 1Institute of Automation, CAS 2University of Chinese Academy of Sciences, 3ByteDance Seed 4TikTok 5UC San Diego 6NUS ∗Equal Contribution, §Work done at ByteDance Seed, †Corresponding authors #### Abstract Real-world enterprise data intelligence workflows encompass data engineering that turns raw sources into analytical-ready tables and data analysis that convert those tables into decisionoriented insights. We introduce DAComp, a benchmark of 210 tasks that mirrors these complex workflows. Data engineering (DE) tasks require reposito"
+    },
+    {
+      "slug": "2817_Your_Transformer_is_Secretly_Linear",
+      "title": "Your Transformer is Secretly Linear",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00184_5bda085c9344",
+      "sourceIndex": 183,
+      "textBytes": 29420,
+      "figuresExtracted": 5,
+      "excerpt": "## Your Transformer is Secretly Linear Anton Razzhigaev1,2, Matvey Mikhalchuk1,5, Elizaveta Goncharova1,4, Nikolai Gerasimenko3,5, Ivan Oseledets1,2, Denis Dimitrov1,3, and Andrey Kuznetsov1,3 1AIRI, 2Skoltech, 3SberAI, 4HSE University, 5Lomonosov Moscow State University razzhigaev@skol.tech # arXiv:2405.12250v1[cs.LG]19May2024 Abstract This paper reveals a novel linear characteristic exclusive to transformer decoders, including models such as GPT, LLaMA, OPT, BLOOM and others. We analyze embedding transformations between sequential layers, uncovering a near-perfect linear relationship (Procrustes similarity score of 0.99). However, linearity decreases when the residual component is removed due to a consistently low output norm of the transformer layer. Our experiments show that removing or linearly approximating some of the most linear blocks of transformers does not affect significantl"
+    },
+    {
+      "slug": "2818_When_Vision_Speaks_for_Sound",
+      "title": "When Vision Speaks for Sound",
+      "category": "HDBSCAN Cluster: figure, models, smolvlm, small",
+      "key": "FOLDER00185_8db920c441be",
+      "sourceIndex": 184,
+      "textBytes": 90580,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.16403v1[cs.CV]13May2026 ## When Vision Speaks for Sound Xiaofei Wend Wenjie Jacky Mod Xingyu Fup Rui Caid Tinghui Zhud Wendi Liw Yanan Xieu Muhao Chend Peng Qiu dUniversity of California, Davis pPrinceton University wUniversity of Wisconsin–Madison uUniphore Website: when-vision-speaks-for-sound Code Model [Figure 1] [Figure 2] ### Abstract Despite rapid progress in video-capable MLLMs, we find that their apparent audio understanding in videos is often vision-driven: models rely on visual cues to infer or hallucinate acoustic information, rather than verifying the audio stream. This issue appears across both state-of-the-art open-source omni models and leading closed-source models from providers such as Google and OpenAI. We characterize this failure mode as an audio-visual Clever Hans effect, in which models appear (falsely) audio-grounded, but actually exploit visual-acous"
     }
   ]
 }

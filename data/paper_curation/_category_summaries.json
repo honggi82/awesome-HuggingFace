@@ -2,8 +2,8 @@
   "categories": [
     {
       "name": "HDBSCAN Bridge and Noise Papers",
-      "summary": "Codex-native cluster containing 60 processed papers.",
-      "count": 60
+      "summary": "Codex-native cluster containing 64 processed papers.",
+      "count": 64
     },
     {
       "name": "HDBSCAN Cluster: figure, agent, university, tokens",
@@ -21,17 +21,17 @@
       "count": 6
     },
     {
+      "name": "HDBSCAN Cluster: generation, video, models, image",
+      "summary": "Codex-native cluster containing 6 processed papers.",
+      "count": 6
+    },
+    {
       "name": "HDBSCAN Cluster: transformer, language, transformers, attention",
       "summary": "Codex-native cluster containing 5 processed papers.",
       "count": 5
     },
     {
       "name": "HDBSCAN Cluster: university, code, https, figure",
-      "summary": "Codex-native cluster containing 5 processed papers.",
-      "count": 5
-    },
-    {
-      "name": "HDBSCAN Cluster: generation, video, image, models",
       "summary": "Codex-native cluster containing 5 processed papers.",
       "count": 5
     },
@@ -47,6 +47,11 @@
     },
     {
       "name": "HDBSCAN Cluster: https, multimodal, report, figure",
+      "summary": "Codex-native cluster containing 4 processed papers.",
+      "count": 4
+    },
+    {
+      "name": "HDBSCAN Cluster: data, llms, agents, mcp",
       "summary": "Codex-native cluster containing 4 processed papers.",
       "count": 4
     },
@@ -91,19 +96,14 @@
       "count": 3
     },
     {
+      "name": "HDBSCAN Cluster: zhang, wang, liu, yang",
+      "summary": "Codex-native cluster containing 3 processed papers.",
+      "count": 3
+    },
+    {
       "name": "HDBSCAN Cluster: reasoning, model, research, performance",
       "summary": "Codex-native cluster containing 3 processed papers.",
       "count": 3
-    },
-    {
-      "name": "HDBSCAN Cluster: llms, mcp, data, zhou",
-      "summary": "Codex-native cluster containing 3 processed papers.",
-      "count": 3
-    },
-    {
-      "name": "HDBSCAN Cluster: data, textual, law, frequency",
-      "summary": "Codex-native cluster containing 2 processed papers.",
-      "count": 2
     },
     {
       "name": "HDBSCAN Cluster: university, li1, scientific, olympiad",
@@ -171,11 +171,6 @@
       "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: zhang, wang, yang, liu",
-      "summary": "Codex-native cluster containing 2 processed papers.",
-      "count": 2
-    },
-    {
       "name": "HDBSCAN Cluster: agents, embodied, lumine, open",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
@@ -191,7 +186,7 @@
       "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: figure, models, efficient, vlms",
+      "name": "HDBSCAN Cluster: figure, models, smolvlm, small",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },

@@ -3,7 +3,7 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 60
+      "count": 64
     },
     {
       "id": "hdbscan-cluster-figure-agent-university-tokens",
@@ -21,6 +21,11 @@
       "count": 6
     },
     {
+      "id": "hdbscan-cluster-generation-video-models-image",
+      "name": "HDBSCAN Cluster: generation, video, models, image",
+      "count": 6
+    },
+    {
       "id": "hdbscan-cluster-transformer-language-transformers-attention",
       "name": "HDBSCAN Cluster: transformer, language, transformers, attention",
       "count": 5
@@ -28,11 +33,6 @@
     {
       "id": "hdbscan-cluster-university-code-https-figure",
       "name": "HDBSCAN Cluster: university, code, https, figure",
-      "count": 5
-    },
-    {
-      "id": "hdbscan-cluster-generation-video-image-models",
-      "name": "HDBSCAN Cluster: generation, video, image, models",
       "count": 5
     },
     {
@@ -48,6 +48,11 @@
     {
       "id": "hdbscan-cluster-https-multimodal-report-figure",
       "name": "HDBSCAN Cluster: https, multimodal, report, figure",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-data-llms-agents-mcp",
+      "name": "HDBSCAN Cluster: data, llms, agents, mcp",
       "count": 4
     },
     {
@@ -91,19 +96,14 @@
       "count": 3
     },
     {
+      "id": "hdbscan-cluster-zhang-wang-liu-yang",
+      "name": "HDBSCAN Cluster: zhang, wang, liu, yang",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-reasoning-model-research-performance",
       "name": "HDBSCAN Cluster: reasoning, model, research, performance",
       "count": 3
-    },
-    {
-      "id": "hdbscan-cluster-llms-mcp-data-zhou",
-      "name": "HDBSCAN Cluster: llms, mcp, data, zhou",
-      "count": 3
-    },
-    {
-      "id": "hdbscan-cluster-data-textual-law-frequency",
-      "name": "HDBSCAN Cluster: data, textual, law, frequency",
-      "count": 2
     },
     {
       "id": "hdbscan-cluster-university-li1-scientific-olympiad",
@@ -171,11 +171,6 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-zhang-wang-yang-liu",
-      "name": "HDBSCAN Cluster: zhang, wang, yang, liu",
-      "count": 2
-    },
-    {
       "id": "hdbscan-cluster-agents-embodied-lumine-open",
       "name": "HDBSCAN Cluster: agents, embodied, lumine, open",
       "count": 2
@@ -191,8 +186,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-figure-models-efficient-vlms",
-      "name": "HDBSCAN Cluster: figure, models, efficient, vlms",
+      "id": "hdbscan-cluster-figure-models-smolvlm-small",
+      "name": "HDBSCAN Cluster: figure, models, smolvlm, small",
       "count": 2
     },
     {
@@ -250,7 +245,7 @@
     },
     {
       "slug": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
-      "category": "HDBSCAN Cluster: data, textual, law, frequency",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -442,7 +437,7 @@
     },
     {
       "slug": "342_Qwen-Image_Technical_Report",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: generation, video, models, image",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -550,7 +545,7 @@
     },
     {
       "slug": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: generation, video, models, image",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -592,7 +587,7 @@
     },
     {
       "slug": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
-      "category": "HDBSCAN Cluster: data, textual, law, frequency",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -634,7 +629,7 @@
     },
     {
       "slug": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: generation, video, models, image",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -718,7 +713,7 @@
     },
     {
       "slug": "1889_InternVL35_Advancing_Open-Source_Multimodal_Models_in_Versat",
-      "category": "HDBSCAN Cluster: zhang, wang, yang, liu",
+      "category": "HDBSCAN Cluster: zhang, wang, liu, yang",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -802,7 +797,7 @@
     },
     {
       "slug": "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
-      "category": "HDBSCAN Cluster: figure, models, efficient, vlms",
+      "category": "HDBSCAN Cluster: figure, models, smolvlm, small",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -946,7 +941,7 @@
     },
     {
       "slug": "2257_Can_LLMs_Clean_Up_Your_Mess_A_Survey_of_Application-Ready_Da",
-      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
+      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1042,7 +1037,7 @@
     },
     {
       "slug": "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
-      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
+      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1060,7 +1055,7 @@
     },
     {
       "slug": "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
-      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
+      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1102,7 +1097,7 @@
     },
     {
       "slug": "2497_Qwen2_Technical_Report",
-      "category": "HDBSCAN Cluster: zhang, wang, yang, liu",
+      "category": "HDBSCAN Cluster: zhang, wang, liu, yang",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1198,7 +1193,7 @@
     },
     {
       "slug": "2633_Kling-Omni_Technical_Report",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: generation, video, models, image",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1240,7 +1235,7 @@
     },
     {
       "slug": "2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef",
-      "category": "HDBSCAN Cluster: figure, models, efficient, vlms",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1276,7 +1271,7 @@
     },
     {
       "slug": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: generation, video, models, image",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1289,6 +1284,36 @@
     {
       "slug": "2773_Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurre",
       "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2814_MOVA_Towards_Scalable_and_Synchronized_Video-Audio_Generatio",
+      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2815_Memory_in_the_Age_of_AI_Agents",
+      "category": "HDBSCAN Cluster: zhang, wang, liu, yang",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2816_DAComp_Benchmarking_Data_Agents_across_the_Full_Data_Intelli",
+      "category": "HDBSCAN Cluster: data, llms, agents, mcp",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2817_Your_Transformer_is_Secretly_Linear",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2818_When_Vision_Speaks_for_Sound",
+      "category": "HDBSCAN Cluster: figure, models, smolvlm, small",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     }

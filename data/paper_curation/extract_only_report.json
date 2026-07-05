@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-05T06:57:07.222208+00:00",
+  "generated": "2026-07-05T07:26:39.087031+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 175,
+  "sourceOffset": 180,
   "sourceLimit": 5,
-  "sourceEnd": 180,
+  "sourceEnd": 185,
   "batchTotal": 5,
-  "total": 180,
-  "ok": 180,
-  "textExtracted": 180,
-  "figureFiles": 806,
+  "total": 185,
+  "ok": 185,
+  "textExtracted": 185,
+  "figureFiles": 831,
   "sanityFailed": 0,
   "records": [
     {
@@ -2389,6 +2389,71 @@
       "textBytes": 142183,
       "sanityOk": true,
       "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "MOVA: Towards Scalable and Synchronized Video-Audio Generation",
+      "key": "FOLDER00181_6adca3716aee",
+      "sourceIndex": 180,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00181_MOVA Towards Scalable and Synchronized Video-Audio Generation.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2814_MOVA_Towards_Scalable_and_Synchronized_Video-Audio_Generatio",
+      "textBytes": 117014,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Memory in the Age of AI Agents",
+      "key": "FOLDER00182_adcdbba05512",
+      "sourceIndex": 181,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00182_Memory in the Age of AI Agents.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2815_Memory_in_the_Age_of_AI_Agents",
+      "textBytes": 467887,
+      "sanityOk": true,
+      "sanityReason": "ok (title 2/2 doi=T author=True)"
+    },
+    {
+      "title": "DAComp: Benchmarking Data Agents across the Full Data Intelligence Lifecycle",
+      "key": "FOLDER00183_f9bffed4699f",
+      "sourceIndex": 182,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00183_DAComp Benchmarking Data Agents across the Full Data Intelligence Lifecycle.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2816_DAComp_Benchmarking_Data_Agents_across_the_Full_Data_Intelli",
+      "textBytes": 140889,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Your Transformer is Secretly Linear",
+      "key": "FOLDER00184_5bda085c9344",
+      "sourceIndex": 183,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00184_Your Transformer is Secretly Linear.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2817_Your_Transformer_is_Secretly_Linear",
+      "textBytes": 29420,
+      "sanityOk": true,
+      "sanityReason": "ok (title 4/4 doi=T author=True)"
+    },
+    {
+      "title": "When Vision Speaks for Sound",
+      "key": "FOLDER00185_8db920c441be",
+      "sourceIndex": 184,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00185_When Vision Speaks for Sound.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2818_When_Vision_Speaks_for_Sound",
+      "textBytes": 90580,
+      "sanityOk": true,
+      "sanityReason": "ok (title 4/4 doi=T author=True)"
     }
   ]
 }
