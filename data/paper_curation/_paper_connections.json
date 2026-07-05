@@ -173,6 +173,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2951_dLLM_Simple_Diffusion_Language_Modeling",
+      "score": 0.9414,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2678_Perception_or_Prejudice_Can_MLLMs_Go_Beyond_First_Impression",
       "score": 0.9373,
       "reason": "Codex local embedding similarity"
@@ -180,11 +185,6 @@
     {
       "target": "2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex",
       "score": 0.9358,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2122_Differential_Transformer",
-      "score": 0.9346,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -529,13 +529,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2121_STEP3-VL-10B_Technical_Report",
-      "score": 0.9434,
+      "target": "2951_dLLM_Simple_Diffusion_Language_Modeling",
+      "score": 0.9459,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1700_Qwen25-VL_Technical_Report",
-      "score": 0.9429,
+      "target": "2121_STEP3-VL-10B_Technical_Report",
+      "score": 0.9434,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -691,13 +691,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
-      "score": 0.9457,
+      "target": "2951_dLLM_Simple_Diffusion_Language_Modeling",
+      "score": 0.9458,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs",
-      "score": 0.9454,
+      "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
+      "score": 0.9457,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -939,8 +939,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
-      "score": 0.9497,
+      "target": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
+      "score": 0.9511,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1010,6 +1010,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
+      "score": 0.9468,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
       "score": 0.9449,
       "reason": "Codex local embedding similarity"
@@ -1017,11 +1022,6 @@
     {
       "target": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
       "score": 0.9444,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
-      "score": 0.9433,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1263,8 +1263,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "334_MiniMax-01_Scaling_Foundation_Models_with_Lightning_Attentio",
-      "score": 0.9292,
+      "target": "2948_Qwen3-Omni_Technical_Report",
+      "score": 0.9307,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1297,6 +1297,11 @@
   ],
   "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod": [
     {
+      "target": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
+      "score": 0.9641,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
       "score": 0.9539,
       "reason": "Codex local embedding similarity"
@@ -1314,11 +1319,6 @@
     {
       "target": "083_Qwen25_Technical_Report",
       "score": 0.9465,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
-      "score": 0.9463,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1469,6 +1469,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
+      "score": 0.9574,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
       "score": 0.9562,
       "reason": "Codex local embedding similarity"
@@ -1476,11 +1481,6 @@
     {
       "target": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
       "score": 0.9519,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
-      "score": 0.9513,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1722,8 +1722,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1841_Feature-Level_Insights_into_Artificial_Text_Detection_with_S",
-      "score": 0.9272,
+      "target": "2951_dLLM_Simple_Diffusion_Language_Modeling",
+      "score": 0.9322,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2203,13 +2203,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2543_Qwen25-Omni_Technical_Report",
-      "score": 0.9431,
+      "target": "2950_Qianfan-OCR_A_Unified_End-to-End_Model_for_Document_Intellig",
+      "score": 0.9443,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "323_Qwen3_Technical_Report",
-      "score": 0.9429,
+      "target": "2543_Qwen25-Omni_Technical_Report",
+      "score": 0.9431,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2333,6 +2333,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2951_dLLM_Simple_Diffusion_Language_Modeling",
+      "score": 0.9472,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
       "score": 0.9461,
       "reason": "Codex local embedding similarity"
@@ -2340,11 +2345,6 @@
     {
       "target": "2680_AgentSPEX_An_Agent_SPecification_and_EXecution_Language",
       "score": 0.9454,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi",
-      "score": 0.9438,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2365,13 +2365,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
-      "score": 0.9522,
+      "target": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
+      "score": 0.9534,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
-      "score": 0.9514,
+      "target": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
+      "score": 0.9522,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2728,6 +2728,11 @@
   ],
   "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti": [
     {
+      "target": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
+      "score": 0.9607,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
       "score": 0.9583,
       "reason": "Codex local embedding similarity"
@@ -2745,11 +2750,6 @@
     {
       "target": "341_MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightn",
       "score": 0.9477,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
-      "score": 0.9468,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3089,6 +3089,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
+      "score": 0.9487,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2121_STEP3-VL-10B_Technical_Report",
       "score": 0.9462,
       "reason": "Codex local embedding similarity"
@@ -3096,11 +3101,6 @@
     {
       "target": "2679_Qwen3-VL_Technical_Report",
       "score": 0.9426,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2633_Kling-Omni_Technical_Report",
-      "score": 0.942,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3283,13 +3283,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
-      "score": 0.9208,
+      "target": "2950_Qianfan-OCR_A_Unified_End-to-End_Model_for_Document_Intellig",
+      "score": 0.9221,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ",
-      "score": 0.9186,
+      "target": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
+      "score": 0.9208,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3391,13 +3391,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2122_Differential_Transformer",
-      "score": 0.9336,
+      "target": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
+      "score": 0.9337,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti",
-      "score": 0.9322,
+      "target": "2122_Differential_Transformer",
+      "score": 0.9336,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3472,13 +3472,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2770_Scaling_RL_to_Long_Videos",
-      "score": 0.9467,
+      "target": "2948_Qwen3-Omni_Technical_Report",
+      "score": 0.9505,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2859_UI-Venus-15_Technical_Report",
-      "score": 0.9442,
+      "target": "2770_Scaling_RL_to_Long_Videos",
+      "score": 0.9467,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3526,17 +3526,22 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
-      "score": 0.9524,
+      "target": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
+      "score": 0.9528,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
-      "score": 0.9522,
+      "target": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
+      "score": 0.9524,
       "reason": "Codex local embedding similarity"
     }
   ],
   "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model": [
+    {
+      "target": "2952_ShotStream_Streaming_Multi-Shot_Video_Generation_for_Interac",
+      "score": 0.9652,
+      "reason": "Codex local embedding similarity"
+    },
     {
       "target": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
       "score": 0.9397,
@@ -3555,11 +3560,6 @@
     {
       "target": "2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo",
       "score": 0.9169,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2495_Live_Avatar_Streaming_Real-time_Audio-Driven_Avatar_Generati",
-      "score": 0.9071,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4110,6 +4110,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2948_Qwen3-Omni_Technical_Report",
+      "score": 0.9529,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1700_Qwen25-VL_Technical_Report",
       "score": 0.9431,
       "reason": "Codex local embedding similarity"
@@ -4122,11 +4127,6 @@
     {
       "target": "2818_When_Vision_Speaks_for_Sound",
       "score": 0.9422,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2309_Kwai_Keye-VL-20_Technical_Report",
-      "score": 0.9407,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4250,6 +4250,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2950_Qianfan-OCR_A_Unified_End-to-End_Model_for_Document_Intellig",
+      "score": 0.943,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
       "score": 0.9418,
       "reason": "Codex local embedding similarity"
@@ -4257,11 +4262,6 @@
     {
       "target": "323_Qwen3_Technical_Report",
       "score": 0.9405,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
-      "score": 0.9381,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4488,6 +4488,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2948_Qwen3-Omni_Technical_Report",
+      "score": 0.9632,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2309_Kwai_Keye-VL-20_Technical_Report",
       "score": 0.9621,
       "reason": "Codex local embedding similarity"
@@ -4500,11 +4505,6 @@
     {
       "target": "1700_Qwen25-VL_Technical_Report",
       "score": 0.9604,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "323_Qwen3_Technical_Report",
-      "score": 0.9565,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5109,6 +5109,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
+      "score": 0.9501,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "027_Less_is_More_Recursive_Reasoning_with_Tiny_Networks",
       "score": 0.9438,
       "reason": "Codex local embedding similarity"
@@ -5121,11 +5126,6 @@
     {
       "target": "2306_Attention_Residuals",
       "score": 0.9421,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
-      "score": 0.9394,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5261,6 +5261,141 @@
     {
       "target": "340_Recursive_Multi-Agent_Systems",
       "score": 0.9083,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2948_Qwen3-Omni_Technical_Report": [
+    {
+      "target": "2679_Qwen3-VL_Technical_Report",
+      "score": 0.9632,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2543_Qwen25-Omni_Technical_Report",
+      "score": 0.9529,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2309_Kwai_Keye-VL-20_Technical_Report",
+      "score": 0.9505,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2121_STEP3-VL-10B_Technical_Report",
+      "score": 0.9475,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "083_Qwen25_Technical_Report",
+      "score": 0.9448,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe": [
+    {
+      "target": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
+      "score": 0.9641,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti",
+      "score": 0.9607,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
+      "score": 0.9574,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
+      "score": 0.9534,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
+      "score": 0.9528,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2950_Qianfan-OCR_A_Unified_End-to-End_Model_for_Document_Intellig": [
+    {
+      "target": "1700_Qwen25-VL_Technical_Report",
+      "score": 0.9443,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2586_SmolDocling_An_ultra-compact_vision-language_model_for_end-t",
+      "score": 0.943,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2679_Qwen3-VL_Technical_Report",
+      "score": 0.9252,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "342_Qwen-Image_Technical_Report",
+      "score": 0.925,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2256_DocLLM_A_layout-aware_generative_language_model_for_multimod",
+      "score": 0.9221,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2951_dLLM_Simple_Diffusion_Language_Modeling": [
+    {
+      "target": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
+      "score": 0.9472,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "323_Qwen3_Technical_Report",
+      "score": 0.9459,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
+      "score": 0.9458,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
+      "score": 0.9415,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
+      "score": 0.9414,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2952_ShotStream_Streaming_Multi-Shot_Video_Generation_for_Interac": [
+    {
+      "target": "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
+      "score": 0.9652,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
+      "score": 0.9253,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
+      "score": 0.9191,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2495_Live_Avatar_Streaming_Real-time_Audio-Driven_Avatar_Generati",
+      "score": 0.9092,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia",
+      "score": 0.9029,
       "reason": "Codex local embedding similarity"
     }
   ]
