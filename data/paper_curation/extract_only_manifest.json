@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-05T07:51:17.170116+00:00",
+  "generated": "2026-07-05T08:18:04.037862+00:00",
   "mode": "extract-only",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "awesomeRepo": "E:\\조선대\\연구\\awesome-HuggingFace",
   "extractReport": "data/paper_curation/extract_only_report.json",
   "docsDir": "docs/paper_curation/extract_only",
   "paperDir": "paper/extract_only",
-  "recordCount": 190,
+  "recordCount": 195,
   "syncedPaperSlugs": [
     "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
     "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
@@ -197,13 +197,18 @@
     "2860_Mixtral_of_Experts",
     "2861_Seed15-VL_Technical_Report",
     "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
-    "764_Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spa"
+    "764_Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spa",
+    "2902_Towards_Understanding_Camera_Motions_in_Any_Video",
+    "2903_Self-Rewarding_Language_Models",
+    "2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M",
+    "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
+    "2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis"
   ],
   "copied": [
     {
       "source": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\_folder_source_extract_report.json",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\data\\paper_curation\\extract_only_report.json",
-      "bytes": 114887
+      "bytes": 117885
     },
     {
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective\\text.md",
@@ -10664,6 +10669,296 @@
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\764_Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spa\\figures\\fig6.png",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\764_Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spa\\figures\\fig6.png",
       "bytes": 52320
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\text.md",
+      "bytes": 126987
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig1.png",
+      "bytes": 528536
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig2.png",
+      "bytes": 332812
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig3.png",
+      "bytes": 302223
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig4.png",
+      "bytes": 86474
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig5.png",
+      "bytes": 657283
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\text.md",
+      "bytes": 126987
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig1.png",
+      "bytes": 528536
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig2.png",
+      "bytes": 332812
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig3.png",
+      "bytes": 302223
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig4.png",
+      "bytes": 86474
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2902_Towards_Understanding_Camera_Motions_in_Any_Video\\figures\\fig5.png",
+      "bytes": 657283
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2903_Self-Rewarding_Language_Models\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2903_Self-Rewarding_Language_Models\\text.md",
+      "bytes": 70056
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig1.png",
+      "bytes": 85067
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig2.png",
+      "bytes": 214483
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig3.png",
+      "bytes": 104320
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig4.png",
+      "bytes": 123245
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig5.png",
+      "bytes": 66268
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2903_Self-Rewarding_Language_Models\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2903_Self-Rewarding_Language_Models\\text.md",
+      "bytes": 70056
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig1.png",
+      "bytes": 85067
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig2.png",
+      "bytes": 214483
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig3.png",
+      "bytes": 104320
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig4.png",
+      "bytes": 123245
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2903_Self-Rewarding_Language_Models\\figures\\fig5.png",
+      "bytes": 66268
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\text.md",
+      "bytes": 208494
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig1.png",
+      "bytes": 219743
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig2.png",
+      "bytes": 432282
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig3.png",
+      "bytes": 86542
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig4.png",
+      "bytes": 149008
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig5.png",
+      "bytes": 77100
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\text.md",
+      "bytes": 208494
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig1.png",
+      "bytes": 219743
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig2.png",
+      "bytes": 432282
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig3.png",
+      "bytes": 86542
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig4.png",
+      "bytes": 149008
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M\\figures\\fig5.png",
+      "bytes": 77100
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\text.md",
+      "bytes": 51791
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig1.png",
+      "bytes": 440499
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig2.png",
+      "bytes": 691377
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig3.png",
+      "bytes": 97013
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig4.png",
+      "bytes": 361934
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\text.md",
+      "bytes": 51791
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig1.png",
+      "bytes": 440499
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig2.png",
+      "bytes": 691377
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig3.png",
+      "bytes": 97013
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in\\figures\\fig4.png",
+      "bytes": 361934
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\text.md",
+      "bytes": 82468
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig1.png",
+      "bytes": 1257433
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig2.png",
+      "bytes": 914799
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig3.png",
+      "bytes": 81295
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig4.png",
+      "bytes": 202941
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig5.png",
+      "bytes": 76246
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\text.md",
+      "bytes": 82468
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig1.png",
+      "bytes": 1257433
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig2.png",
+      "bytes": 914799
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig3.png",
+      "bytes": 81295
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig4.png",
+      "bytes": 202941
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis\\figures\\fig5.png",
+      "bytes": 76246
     }
   ],
   "missing": [],

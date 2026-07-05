@@ -3,12 +3,12 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 71
+      "count": 72
     },
     {
       "id": "hdbscan-cluster-figure-agent-university-arxiv",
       "name": "HDBSCAN Cluster: figure, agent, university, arxiv",
-      "count": 8
+      "count": 7
     },
     {
       "id": "hdbscan-cluster-optimization-learning-reinforcement-policy",
@@ -26,18 +26,28 @@
       "count": 5
     },
     {
+      "id": "hdbscan-cluster-wang1-zhang1-university-li1",
+      "name": "HDBSCAN Cluster: wang1, zhang1, university, li1",
+      "count": 5
+    },
+    {
       "id": "hdbscan-cluster-agentic-reasoning-reinforcement-learning",
       "name": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-university-memory-systems-language",
-      "name": "HDBSCAN Cluster: university, memory, systems, language",
+      "id": "hdbscan-cluster-figure-university-efficient-language",
+      "name": "HDBSCAN Cluster: figure, university, efficient, language",
       "count": 4
     },
     {
       "id": "hdbscan-cluster-model-diffusion-generation-ltx-2",
       "name": "HDBSCAN Cluster: model, diffusion, generation, ltx-2",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-https-multimodal-report-figure",
+      "name": "HDBSCAN Cluster: https, multimodal, report, figure",
       "count": 4
     },
     {
@@ -51,18 +61,13 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-efficient-figure-language-loop",
-      "name": "HDBSCAN Cluster: efficient, figure, language, loop",
-      "count": 3
-    },
-    {
       "id": "hdbscan-cluster-attention-lightning-scaling-model",
       "name": "HDBSCAN Cluster: attention, lightning, scaling, model",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-chen1-university-wang1-arxiv",
-      "name": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
+      "id": "hdbscan-cluster-memory-recursive-systems-university",
+      "name": "HDBSCAN Cluster: memory, recursive, systems, university",
       "count": 3
     },
     {
@@ -101,11 +106,6 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-https-figure-step3-vl-10b-technical",
-      "name": "HDBSCAN Cluster: https, figure, step3-vl-10b, technical",
-      "count": 3
-    },
-    {
       "id": "hdbscan-cluster-university-li1-scientific-olympiad",
       "name": "HDBSCAN Cluster: university, li1, scientific, olympiad",
       "count": 2
@@ -121,13 +121,18 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-zhang1-wang1-li1-wu1",
-      "name": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
+      "id": "hdbscan-cluster-zhang1-chen1-advances-challenges",
+      "name": "HDBSCAN Cluster: zhang1, chen1, advances, challenges",
       "count": 2
     },
     {
       "id": "hdbscan-cluster-university-learning-sft-weak",
       "name": "HDBSCAN Cluster: university, learning, sft, weak",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-models-language-model-reward",
+      "name": "HDBSCAN Cluster: models, language, model, reward",
       "count": 2
     },
     {
@@ -334,7 +339,7 @@
     },
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
-      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "category": "HDBSCAN Cluster: figure, university, efficient, language",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -376,7 +381,7 @@
     },
     {
       "slug": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
-      "category": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
+      "category": "HDBSCAN Cluster: wang1, zhang1, university, li1",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -400,7 +405,7 @@
     },
     {
       "slug": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
-      "category": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
+      "category": "HDBSCAN Cluster: zhang1, chen1, advances, challenges",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -430,7 +435,7 @@
     },
     {
       "slug": "340_Recursive_Multi-Agent_Systems",
-      "category": "HDBSCAN Cluster: university, memory, systems, language",
+      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -448,7 +453,7 @@
     },
     {
       "slug": "343_Reflect_Retry_Reward_Self-Improving_LLMs_via_Reinforcement_L",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: models, language, model, reward",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -514,7 +519,7 @@
     },
     {
       "slug": "1735_Does_Your_Reasoning_Model_Implicitly_Know_When_to_Stop_Think",
-      "category": "HDBSCAN Cluster: figure, agent, university, arxiv",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -664,7 +669,7 @@
     },
     {
       "slug": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
-      "category": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
+      "category": "HDBSCAN Cluster: zhang1, chen1, advances, challenges",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -730,7 +735,7 @@
     },
     {
       "slug": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
-      "category": "HDBSCAN Cluster: university, memory, systems, language",
+      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -790,7 +795,7 @@
     },
     {
       "slug": "2023_OpenWorldLib_A_Unified_Codebase_and_Definition_of_Advanced_W",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: wang1, zhang1, university, li1",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -850,13 +855,13 @@
     },
     {
       "slug": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
-      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "category": "HDBSCAN Cluster: figure, university, efficient, language",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "2121_STEP3-VL-10B_Technical_Report",
-      "category": "HDBSCAN Cluster: https, figure, step3-vl-10b, technical",
+      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -976,13 +981,13 @@
     },
     {
       "slug": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
-      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "category": "HDBSCAN Cluster: figure, university, efficient, language",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "2309_Kwai_Keye-VL-20_Technical_Report",
-      "category": "HDBSCAN Cluster: https, figure, step3-vl-10b, technical",
+      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1120,13 +1125,13 @@
     },
     {
       "slug": "2542_MinerU25_A_Decoupled_Vision-Language_Model_for_Efficient_Hig",
-      "category": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
+      "category": "HDBSCAN Cluster: wang1, zhang1, university, li1",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "2543_Qwen25-Omni_Technical_Report",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1162,7 +1167,7 @@
     },
     {
       "slug": "2587_General_Agentic_Memory_Via_Deep_Research",
-      "category": "HDBSCAN Cluster: university, memory, systems, language",
+      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1174,7 +1179,7 @@
     },
     {
       "slug": "2629_MemOS_A_Memory_OS_for_AI_System",
-      "category": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
+      "category": "HDBSCAN Cluster: wang1, zhang1, university, li1",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1210,13 +1215,13 @@
     },
     {
       "slug": "2679_Qwen3-VL_Technical_Report",
-      "category": "HDBSCAN Cluster: https, figure, step3-vl-10b, technical",
+      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "2680_AgentSPEX_An_Agent_SPecification_and_EXecution_Language",
-      "category": "HDBSCAN Cluster: university, memory, systems, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1349,6 +1354,36 @@
     {
       "slug": "764_Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spa",
       "category": "HDBSCAN Cluster: models, such, hrm-text, pretraining",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2902_Towards_Understanding_Camera_Motions_in_Any_Video",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2903_Self-Rewarding_Language_Models",
+      "category": "HDBSCAN Cluster: models, language, model, reward",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M",
+      "category": "HDBSCAN Cluster: wang1, zhang1, university, li1",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
+      "category": "HDBSCAN Cluster: figure, university, efficient, language",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     }

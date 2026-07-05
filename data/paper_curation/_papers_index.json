@@ -205,7 +205,7 @@
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
-      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "category": "HDBSCAN Cluster: figure, university, efficient, language",
       "key": "FOLDER00021_8502bdaf4994",
       "sourceIndex": 20,
       "textBytes": 218340,
@@ -275,7 +275,7 @@
     {
       "slug": "331_InternVL3_Exploring_Advanced_Training_and_Test-Time_Recipes",
       "title": "InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models",
-      "category": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
+      "category": "HDBSCAN Cluster: wang1, zhang1, university, li1",
       "key": "FOLDER00028_e5264c4b16b0",
       "sourceIndex": 27,
       "textBytes": 122653,
@@ -315,7 +315,7 @@
     {
       "slug": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
       "title": "Advances and Challenges in Foundation Agents: From Brain-Inspired Intelligence to Evolutionary, Collaborative, and Safe Systems",
-      "category": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
+      "category": "HDBSCAN Cluster: zhang1, chen1, advances, challenges",
       "key": "FOLDER00032_042b1763276f",
       "sourceIndex": 31,
       "textBytes": 1411183,
@@ -365,7 +365,7 @@
     {
       "slug": "340_Recursive_Multi-Agent_Systems",
       "title": "Recursive Multi-Agent Systems",
-      "category": "HDBSCAN Cluster: university, memory, systems, language",
+      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
       "key": "FOLDER00037_f33e597ec366",
       "sourceIndex": 36,
       "textBytes": 105642,
@@ -395,7 +395,7 @@
     {
       "slug": "343_Reflect_Retry_Reward_Self-Improving_LLMs_via_Reinforcement_L",
       "title": "Reflect, Retry, Reward: Self-Improving LLMs via Reinforcement Learning",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: models, language, model, reward",
       "key": "FOLDER00040_95d719d8c56a",
       "sourceIndex": 39,
       "textBytes": 50448,
@@ -505,7 +505,7 @@
     {
       "slug": "1735_Does_Your_Reasoning_Model_Implicitly_Know_When_to_Stop_Think",
       "title": "Does Your Reasoning Model Implicitly Know When to Stop Thinking?",
-      "category": "HDBSCAN Cluster: figure, agent, university, arxiv",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00051_0a6465c96316",
       "sourceIndex": 50,
       "textBytes": 124835,
@@ -755,7 +755,7 @@
     {
       "slug": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
       "title": "Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond",
-      "category": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
+      "category": "HDBSCAN Cluster: zhang1, chen1, advances, challenges",
       "key": "FOLDER00076_8f66fe1850ac",
       "sourceIndex": 75,
       "textBytes": 384726,
@@ -865,7 +865,7 @@
     {
       "slug": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
       "title": "Heterogeneous Scientific Foundation Model Collaboration",
-      "category": "HDBSCAN Cluster: university, memory, systems, language",
+      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
       "key": "FOLDER00087_4449a0ace106",
       "sourceIndex": 86,
       "textBytes": 184544,
@@ -965,7 +965,7 @@
     {
       "slug": "2023_OpenWorldLib_A_Unified_Codebase_and_Definition_of_Advanced_W",
       "title": "OpenWorldLib: A Unified Codebase and Definition of Advanced World Models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: wang1, zhang1, university, li1",
       "key": "FOLDER00097_06d313401545",
       "sourceIndex": 96,
       "textBytes": 91225,
@@ -1065,7 +1065,7 @@
     {
       "slug": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
       "title": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling",
-      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "category": "HDBSCAN Cluster: figure, university, efficient, language",
       "key": "FOLDER00107_4c4b048fabae",
       "sourceIndex": 106,
       "textBytes": 57470,
@@ -1075,7 +1075,7 @@
     {
       "slug": "2121_STEP3-VL-10B_Technical_Report",
       "title": "STEP3-VL-10B Technical Report",
-      "category": "HDBSCAN Cluster: https, figure, step3-vl-10b, technical",
+      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
       "key": "FOLDER00108_2bff0a0eb7a5",
       "sourceIndex": 107,
       "textBytes": 126984,
@@ -1275,7 +1275,7 @@
     {
       "slug": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
       "title": "LlamaFactory: Unified Efficient Fine-Tuning of 100+ Language Models",
-      "category": "HDBSCAN Cluster: efficient, figure, language, loop",
+      "category": "HDBSCAN Cluster: figure, university, efficient, language",
       "key": "FOLDER00128_088ef61f71e2",
       "sourceIndex": 127,
       "textBytes": 58891,
@@ -1285,7 +1285,7 @@
     {
       "slug": "2309_Kwai_Keye-VL-20_Technical_Report",
       "title": "Kwai Keye-VL-2.0 Technical Report",
-      "category": "HDBSCAN Cluster: https, figure, step3-vl-10b, technical",
+      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
       "key": "FOLDER00129_a0927041c80d",
       "sourceIndex": 128,
       "textBytes": 110890,
@@ -1515,7 +1515,7 @@
     {
       "slug": "2542_MinerU25_A_Decoupled_Vision-Language_Model_for_Efficient_Hig",
       "title": "MinerU2.5: A Decoupled Vision-Language Model for Efficient High-Resolution Document Parsing",
-      "category": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
+      "category": "HDBSCAN Cluster: wang1, zhang1, university, li1",
       "key": "FOLDER00152_a5863764f8de",
       "sourceIndex": 151,
       "textBytes": 114299,
@@ -1525,7 +1525,7 @@
     {
       "slug": "2543_Qwen25-Omni_Technical_Report",
       "title": "Qwen2.5-Omni Technical Report",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
       "key": "FOLDER00153_643b6c9e51d9",
       "sourceIndex": 152,
       "textBytes": 72072,
@@ -1585,7 +1585,7 @@
     {
       "slug": "2587_General_Agentic_Memory_Via_Deep_Research",
       "title": "General Agentic Memory Via Deep Research",
-      "category": "HDBSCAN Cluster: university, memory, systems, language",
+      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
       "key": "FOLDER00159_4c43fdf369ac",
       "sourceIndex": 158,
       "textBytes": 49725,
@@ -1605,7 +1605,7 @@
     {
       "slug": "2629_MemOS_A_Memory_OS_for_AI_System",
       "title": "MemOS: A Memory OS for AI System",
-      "category": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
+      "category": "HDBSCAN Cluster: wang1, zhang1, university, li1",
       "key": "FOLDER00161_bd3edef5013a",
       "sourceIndex": 160,
       "textBytes": 145691,
@@ -1665,7 +1665,7 @@
     {
       "slug": "2679_Qwen3-VL_Technical_Report",
       "title": "Qwen3-VL Technical Report",
-      "category": "HDBSCAN Cluster: https, figure, step3-vl-10b, technical",
+      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
       "key": "FOLDER00167_108f11ece30d",
       "sourceIndex": 166,
       "textBytes": 155705,
@@ -1675,7 +1675,7 @@
     {
       "slug": "2680_AgentSPEX_An_Agent_SPecification_and_EXecution_Language",
       "title": "AgentSPEX: An Agent SPecification and EXecution Language",
-      "category": "HDBSCAN Cluster: university, memory, systems, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00168_da0ddd343924",
       "sourceIndex": 167,
       "textBytes": 52129,
@@ -1901,6 +1901,56 @@
       "textBytes": 139193,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2312.00752v2[cs.LG]31May2024 ## Mamba: Linear-Time Sequence Modeling with Selective State Spaces Albert Gu∗1 and Tri Dao∗2 1Machine Learning Department, Carnegie Mellon University 2Department of Computer Science, Princeton University agu@cs.cmu.edu, tri@tridao.me Abstract Foundation models, now powering most of the exciting applications in deep learning, are almost universally based on the Transformer architecture and its core attention module. Many subquadratic-time architectures such as linear attention, gated convolution and recurrent models, and structured state space models (SSMs) have been developed to address Transformers’ computational inefficiency on long sequences, but they have not performed as well as attention on important modalities such as language. We identify that a key weakness of such models is their inability to perform content-based reasoning, and make severa"
+    },
+    {
+      "slug": "2902_Towards_Understanding_Camera_Motions_in_Any_Video",
+      "title": "Towards Understanding Camera Motions in Any Video",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00191_a08752b24156",
+      "sourceIndex": 190,
+      "textBytes": 126987,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2504.15376v2[cs.CV]29Aug2025 ## Towards Understanding Camera Motions in Any Video ##### Zhiqiu Lin1∗ Siyuan Cen2∗ Daniel Jiang1 Jay Karhade1 Hewei Wang1 Chancharik Mitra1 Tiffany Ling1 Yuhan Huang1 Sifan Liu6 Mingyu Chen7 Rushikesh Zawar3 Xue Bai3 Yilun Du4 Chuang Gan5 Deva Ramanan1 1CMU 2UMass Amherst 3Adobe 4Harvard 5MIT-IBM 6USC 7Emerson #### Abstract We introduce CameraBench, a large-scale dataset and benchmark designed to assess and improve camera motion understanding. CameraBench consists of ∼3,000 diverse internet videos, annotated by experts through a rigorous multi-stage quality control process. One of our core contributions is a taxonomy or “language” of camera motion primitives, designed in collaboration with cinematographers. We find, for example, that some primitives like “follow” (or tracking) require understanding scene content like moving subjects. We conduct a la"
+    },
+    {
+      "slug": "2903_Self-Rewarding_Language_Models",
+      "title": "Self-Rewarding Language Models",
+      "category": "HDBSCAN Cluster: models, language, model, reward",
+      "key": "FOLDER00192_970fe86287a1",
+      "sourceIndex": 191,
+      "textBytes": 70056,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2401.10020v3[cs.CL]28Mar2025 ## Self-Rewarding Language Models Weizhe Yuan1,2 Richard Yuanzhe Pang1,2 Kyunghyun Cho2 Xian Li1 Sainbayar Sukhbaatar1 Jing Xu1 Jason Weston1,2 1 Meta 2 NYU ### Abstract We posit that to achieve superhuman agents, future models require superhuman feedback in order to provide an adequate training signal. Current approaches commonly train reward models from human preferences, which may then be bottlenecked by human performance level, and secondly these separate frozen reward models cannot then learn to improve during LLM training. In this work, we study Self-Rewarding Language Models, where the language model itself is used via LLM-as-a-Judge prompting to provide its own rewards during training. We show that during Iterative DPO training that not only does instruction following ability improve, but also the ability to provide high-quality rewards to its"
+    },
+    {
+      "slug": "2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M",
+      "title": "Expanding Performance Boundaries of Open-Source Multimodal Models with Model, Data, and Test-Time Scaling",
+      "category": "HDBSCAN Cluster: wang1, zhang1, university, li1",
+      "key": "FOLDER00193_2d1550fd6334",
+      "sourceIndex": 192,
+      "textBytes": 208494,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2412.05271v5[cs.CV]26Sep2025 ## Expanding Performance Boundaries of Open-Source Multimodal Models with Model, Data, and Test-Time Scaling Zhe Chen4,1∗†, Weiyun Wang5,1∗†, Yue Cao4,1∗†, Yangzhou Liu4,1∗†, Zhangwei Gao7,1∗†, Erfei Cui7,1∗†, Jinguo Zhu1∗, Shenglong Ye1∗, Hao Tian2∗, Zhaoyang Liu1∗†, Lixin Gu1, Xuehui Wang1†, Qingyun Li1†, Yimin Reng3,1†, Zixuan Chen2, Jiapeng Luo2, Jiahao Wang2, Tan Jiang2, Bo Wang2, Conghui He1, Botian Shi1, Xingcheng Zhang1, Han Lv1, Yi Wang1, Wenqi Shao1, Pei Chu1, Zhongying Tu1, Tong He1, Zhiyong Wu1, Huipeng Deng1, Jiaye Ge1, Kai Chen1, Kaipeng Zhang1, Limin Wang4,1, Min Dou1, Lewei Lu2, Xizhou Zhu3,1, Tong Lu4, Dahua Lin6,1, Yu Qiao1, Jifeng Dai3,1 , Wenhai Wang6,1 1Shanghai AI Laboratory 2SenseTime Research 3Tsinghua University 4Nanjing University 5Fudan University 6The Chinese University of Hong Kong 7Shanghai Jiao Tong University Code: http"
+    },
+    {
+      "slug": "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
+      "title": "Vision-DeepResearch: Incentivizing DeepResearch Capability in Multimodal Large Language Models",
+      "category": "HDBSCAN Cluster: figure, university, efficient, language",
+      "key": "FOLDER00194_40095c356e5a",
+      "sourceIndex": 193,
+      "textBytes": 51791,
+      "figuresExtracted": 4,
+      "excerpt": "# arXiv:2601.22060v3[cs.CV]23Mar2026 ## Vision-DeepResearch: Incentivizing DeepResearch Capability in Multimodal Large Language Models Wenxuan Huang1,2∗† Yu Zeng3∗ Qiuchen Wang3∗ Zhen Fang3 Shaosheng Cao4 Zheng Chu5 Qingyu Yin6 Shuang Chen7 Zhenfei Yin8 Lin Chen3 Zehui Chen3 Xu Tang4 Yao Hu4 Shaohui Lin2 Philip Torr8 Feng Zhao3 Wanli Ouyang1,9 1CUHK MMLab 2East China Normal University 3University of Science and Technology of China 4Xiaohongshu Inc. 5Harbin Institute of Technology 6Zhejiang University 7University of California, Los Angeles 8University of Oxford 9Shenzhen Loop Area Institute wxhuang0616@gmail.com (Wenxuan Huang) *: Equal Contribution †: Project Leader : Corresponding Author ###### (B) Our Vision-Deep Research Paradigm ###### (A) Hit-Rate Problem & Limited Reasoning Depth and Search Breadth Highly Automated Data Pipeline ###### 1. Hit-Rate Problem [Figure 1] [Figure 2] [Fig"
+    },
+    {
+      "slug": "2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis",
+      "title": "Grounding World Simulation Models in a Real-World Metropolis",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00195_595526550435",
+      "sourceIndex": 194,
+      "textBytes": 82468,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.15583v1[cs.CV]16Mar2026 ## Grounding World Simulation Models in a Real-World Metropolis Junyoung Seo∗1, Hyunwook Choi∗1, Minkyung Kwon1, Jinhyeok Choi1, Siyoon Jin1, Gayoung Lee2, Junho Kim2, JoungBin Lee1, Geonmo Gu2, Dongyoon Han2,1, Sangdoo Yun2,3, Seungryong Kim†1, and Jin-Hwa Kim†2,3 1KAIST AI 2NAVER AI Lab 3SNU AIIS https://seoul-world-model.github.io Abstract. What if a world simulation model could render not an imagined environment but a city that actually exists? Prior generative world models synthesize visually plausible yet artificial environments by imagining all content. We present Seoul World Model (SWM), a cityscale world model grounded in the real city of Seoul. SWM anchors autoregressive video generation through retrieval-augmented conditioning on nearby street-view images. However, this design introduces several challenges, including temporal misalignment b"
     }
   ]
 }

@@ -5,12 +5,12 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 71
+      "count": 72
     },
     {
       "id": "hdbscan-cluster-figure-agent-university-arxiv",
       "name": "HDBSCAN Cluster: figure, agent, university, arxiv",
-      "count": 8
+      "count": 7
     },
     {
       "id": "hdbscan-cluster-optimization-learning-reinforcement-policy",
@@ -28,18 +28,28 @@
       "count": 5
     },
     {
+      "id": "hdbscan-cluster-wang1-zhang1-university-li1",
+      "name": "HDBSCAN Cluster: wang1, zhang1, university, li1",
+      "count": 5
+    },
+    {
       "id": "hdbscan-cluster-agentic-reasoning-reinforcement-learning",
       "name": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
       "count": 4
     },
     {
-      "id": "hdbscan-cluster-university-memory-systems-language",
-      "name": "HDBSCAN Cluster: university, memory, systems, language",
+      "id": "hdbscan-cluster-figure-university-efficient-language",
+      "name": "HDBSCAN Cluster: figure, university, efficient, language",
       "count": 4
     },
     {
       "id": "hdbscan-cluster-model-diffusion-generation-ltx-2",
       "name": "HDBSCAN Cluster: model, diffusion, generation, ltx-2",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-https-multimodal-report-figure",
+      "name": "HDBSCAN Cluster: https, multimodal, report, figure",
       "count": 4
     },
     {
@@ -53,18 +63,13 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-efficient-figure-language-loop",
-      "name": "HDBSCAN Cluster: efficient, figure, language, loop",
-      "count": 3
-    },
-    {
       "id": "hdbscan-cluster-attention-lightning-scaling-model",
       "name": "HDBSCAN Cluster: attention, lightning, scaling, model",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-chen1-university-wang1-arxiv",
-      "name": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
+      "id": "hdbscan-cluster-memory-recursive-systems-university",
+      "name": "HDBSCAN Cluster: memory, recursive, systems, university",
       "count": 3
     },
     {
@@ -103,11 +108,6 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-https-figure-step3-vl-10b-technical",
-      "name": "HDBSCAN Cluster: https, figure, step3-vl-10b, technical",
-      "count": 3
-    },
-    {
       "id": "hdbscan-cluster-university-li1-scientific-olympiad",
       "name": "HDBSCAN Cluster: university, li1, scientific, olympiad",
       "count": 2
@@ -123,13 +123,18 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-zhang1-wang1-li1-wu1",
-      "name": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
+      "id": "hdbscan-cluster-zhang1-chen1-advances-challenges",
+      "name": "HDBSCAN Cluster: zhang1, chen1, advances, challenges",
       "count": 2
     },
     {
       "id": "hdbscan-cluster-university-learning-sft-weak",
       "name": "HDBSCAN Cluster: university, learning, sft, weak",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-models-language-model-reward",
+      "name": "HDBSCAN Cluster: models, language, model, reward",
       "count": 2
     },
     {

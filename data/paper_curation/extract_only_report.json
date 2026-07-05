@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-05T07:50:54.519648+00:00",
+  "generated": "2026-07-05T08:17:45.213632+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 185,
+  "sourceOffset": 190,
   "sourceLimit": 5,
-  "sourceEnd": 190,
+  "sourceEnd": 195,
   "batchTotal": 5,
-  "total": 190,
-  "ok": 190,
-  "textExtracted": 190,
-  "figureFiles": 856,
+  "total": 195,
+  "ok": 195,
+  "textExtracted": 195,
+  "figureFiles": 880,
   "sanityFailed": 0,
   "records": [
     {
@@ -2521,6 +2521,71 @@
       "sanityOk": true,
       "sanityReason": "ok (title 6/6 doi=T author=True)",
       "figuresSkippedExisting": true
+    },
+    {
+      "title": "Towards Understanding Camera Motions in Any Video",
+      "key": "FOLDER00191_a08752b24156",
+      "sourceIndex": 190,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00191_Towards Understanding Camera Motions in Any Video.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2902_Towards_Understanding_Camera_Motions_in_Any_Video",
+      "textBytes": 126987,
+      "sanityOk": true,
+      "sanityReason": "ok (title 5/5 doi=T author=True)"
+    },
+    {
+      "title": "Self-Rewarding Language Models",
+      "key": "FOLDER00192_970fe86287a1",
+      "sourceIndex": 191,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00192_Self-Rewarding Language Models.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2903_Self-Rewarding_Language_Models",
+      "textBytes": 70056,
+      "sanityOk": true,
+      "sanityReason": "ok (title 4/4 doi=T author=True)"
+    },
+    {
+      "title": "Expanding Performance Boundaries of Open-Source Multimodal Models with Model, Data, and Test-Time Scaling",
+      "key": "FOLDER00193_2d1550fd6334",
+      "sourceIndex": 192,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00193_Expanding Performance Boundaries of Open-Source Multimodal Models with Model, Data, and Te.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2904_Expanding_Performance_Boundaries_of_Open-Source_Multimodal_M",
+      "textBytes": 208494,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Vision-DeepResearch: Incentivizing DeepResearch Capability in Multimodal Large Language Models",
+      "key": "FOLDER00194_40095c356e5a",
+      "sourceIndex": 193,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00194_Vision-DeepResearch Incentivizing DeepResearch Capability in Multimodal Large Language Mod.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 4,
+      "slug": "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
+      "textBytes": 51791,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Grounding World Simulation Models in a Real-World Metropolis",
+      "key": "FOLDER00195_595526550435",
+      "sourceIndex": 194,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00195_Grounding World Simulation Models in a Real-World Metropolis.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2906_Grounding_World_Simulation_Models_in_a_Real-World_Metropolis",
+      "textBytes": 82468,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
     }
   ]
 }
