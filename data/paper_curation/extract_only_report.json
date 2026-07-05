@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-05T09:12:06.545610+00:00",
+  "generated": "2026-07-05T09:44:52.571072+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 200,
+  "sourceOffset": 205,
   "sourceLimit": 5,
-  "sourceEnd": 205,
+  "sourceEnd": 210,
   "batchTotal": 5,
-  "total": 205,
-  "ok": 205,
-  "textExtracted": 205,
-  "figureFiles": 924,
+  "total": 210,
+  "ok": 210,
+  "textExtracted": 210,
+  "figureFiles": 946,
   "sanityFailed": 0,
   "records": [
     {
@@ -2716,6 +2716,71 @@
       "textBytes": 94975,
       "sanityOk": true,
       "sanityReason": "ok (title 4/4 doi=T author=True)"
+    },
+    {
+      "title": "Your Group-Relative Advantage Is Biased",
+      "key": "FOLDER00206_ad69e4ab70a2",
+      "sourceIndex": 205,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00206_Your Group-Relative Advantage Is Biased.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "3036_Your_Group-Relative_Advantage_Is_Biased",
+      "textBytes": 84478,
+      "sanityOk": true,
+      "sanityReason": "ok (title 5/5 doi=T author=True)"
+    },
+    {
+      "title": "The Latent Space: Foundation, Evolution, Mechanism, Ability, and Outlook",
+      "key": "FOLDER00207_a938ae1d6b26",
+      "sourceIndex": 206,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00207_The Latent Space Foundation, Evolution, Mechanism, Ability, and Outlook.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and",
+      "textBytes": 328152,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "OmniLottie: Generating Vector Animations via Parameterized Lottie Tokens",
+      "key": "FOLDER00208_d6508c1f49fc",
+      "sourceIndex": 207,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00208_OmniLottie Generating Vector Animations via Parameterized Lottie Tokens.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo",
+      "textBytes": 150168,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "StarCoder 2 and The Stack v2: The Next Generation",
+      "key": "FOLDER00209_d2eb39e1568e",
+      "sourceIndex": 208,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00209_StarCoder 2 and The Stack v2 The Next Generation.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 2,
+      "slug": "3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation",
+      "textBytes": 202808,
+      "sanityOk": true,
+      "sanityReason": "ok (title 4/4 doi=T author=True)"
+    },
+    {
+      "title": "HSImul3R: Physics-in-the-Loop Reconstruction of Simulation-Ready Human-Scene Interactions",
+      "key": "FOLDER00210_0d7e8cc379ba",
+      "sourceIndex": 209,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00210_HSImul3R Physics-in-the-Loop Reconstruction of Simulation-Ready Human-Scene Interactions.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re",
+      "textBytes": 54412,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
     }
   ]
 }

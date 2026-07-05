@@ -215,7 +215,7 @@
     {
       "slug": "325_CARLA-Air_Fly_Drones_Inside_a_CARLA_World_--_A_Unified_Infra",
       "title": "CARLA-Air: Fly Drones Inside a CARLA World -- A Unified Infrastructure for Air-Ground Embodied Intelligence",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
       "key": "FOLDER00022_bafb5974ff85",
       "sourceIndex": 21,
       "textBytes": 62875,
@@ -255,7 +255,7 @@
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
-      "category": "HDBSCAN Cluster: attention, transformer, models, language",
+      "category": "HDBSCAN Cluster: models, such, hrm-text, pretraining",
       "key": "FOLDER00026_e94287efc152",
       "sourceIndex": 25,
       "textBytes": 79369,
@@ -265,7 +265,7 @@
     {
       "slug": "330_Group_Sequence_Policy_Optimization",
       "title": "Group Sequence Policy Optimization",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
       "key": "FOLDER00027_94918922664a",
       "sourceIndex": 26,
       "textBytes": 23492,
@@ -365,7 +365,7 @@
     {
       "slug": "340_Recursive_Multi-Agent_Systems",
       "title": "Recursive Multi-Agent Systems",
-      "category": "HDBSCAN Cluster: university, memory, systems, language",
+      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
       "key": "FOLDER00037_f33e597ec366",
       "sourceIndex": 36,
       "textBytes": 105642,
@@ -385,7 +385,7 @@
     {
       "slug": "342_Qwen-Image_Technical_Report",
       "title": "Qwen-Image Technical Report",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: generation, video, figure, models",
       "key": "FOLDER00039_67f3a3187f0a",
       "sourceIndex": 38,
       "textBytes": 141226,
@@ -395,7 +395,7 @@
     {
       "slug": "343_Reflect_Retry_Reward_Self-Improving_LLMs_via_Reinforcement_L",
       "title": "Reflect, Retry, Reward: Self-Improving LLMs via Reinforcement Learning",
-      "category": "HDBSCAN Cluster: models, language, model, reward",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00040_95d719d8c56a",
       "sourceIndex": 39,
       "textBytes": 50448,
@@ -485,7 +485,7 @@
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
       "title": "DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models",
-      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
+      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "key": "FOLDER00049_07cf0d16c82c",
       "sourceIndex": 48,
       "textBytes": 68593,
@@ -515,7 +515,7 @@
     {
       "slug": "174_Llama_2_Open_Foundation_and_Fine-Tuned_Chat_Models",
       "title": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: llama, open, foundation, fine-tuned",
       "key": "FOLDER00052_c4488612ca51",
       "sourceIndex": 51,
       "textBytes": 271951,
@@ -545,7 +545,7 @@
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "title": "GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning",
-      "category": "HDBSCAN Cluster: glm-4, multimodal, reasoning, seed1",
+      "category": "HDBSCAN Cluster: reasoning, glm-4, youtu-llm, multimodal",
       "key": "FOLDER00055_9405fc3ded78",
       "sourceIndex": 54,
       "textBytes": 145376,
@@ -565,7 +565,7 @@
     {
       "slug": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
       "title": "Z-Image: An Efficient Image Generation Foundation Model with Single-Stream Diffusion Transformer",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: generation, video, figure, models",
       "key": "FOLDER00057_85f52b7d18cd",
       "sourceIndex": 56,
       "textBytes": 233804,
@@ -625,7 +625,7 @@
     {
       "slug": "1746_Crafter_A_Multi-Agent_Harness_for_Editable_Scientific_Figure",
       "title": "Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs",
-      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "category": "HDBSCAN Cluster: generation, video, figure, models",
       "key": "FOLDER00063_0936ba6d5400",
       "sourceIndex": 62,
       "textBytes": 80050,
@@ -705,7 +705,7 @@
     {
       "slug": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
       "title": "Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: generation, video, figure, models",
       "key": "FOLDER00071_8339c62b1c6b",
       "sourceIndex": 70,
       "textBytes": 189067,
@@ -715,7 +715,7 @@
     {
       "slug": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
       "title": "GDPO: Group reward-Decoupled Normalization Policy Optimization for Multi-reward RL Optimization",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
       "key": "FOLDER00072_98f3b1b6fec2",
       "sourceIndex": 71,
       "textBytes": 77232,
@@ -725,7 +725,7 @@
     {
       "slug": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
       "title": "PaperBanana: Automating Academic Illustration for AI Scientists",
-      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "category": "HDBSCAN Cluster: generation, video, figure, models",
       "key": "FOLDER00073_6aee964fcc91",
       "sourceIndex": 72,
       "textBytes": 126607,
@@ -855,7 +855,7 @@
     {
       "slug": "1931_VESPO_Variational_Sequence-Level_Soft_Policy_Optimization_fo",
       "title": "VESPO: Variational Sequence-Level Soft Policy Optimization for Stable Off-Policy LLM Training",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
       "key": "FOLDER00086_1edc3aea10c9",
       "sourceIndex": 85,
       "textBytes": 80404,
@@ -865,7 +865,7 @@
     {
       "slug": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
       "title": "Heterogeneous Scientific Foundation Model Collaboration",
-      "category": "HDBSCAN Cluster: university, memory, systems, language",
+      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
       "key": "FOLDER00087_4449a0ace106",
       "sourceIndex": 86,
       "textBytes": 184544,
@@ -875,7 +875,7 @@
     {
       "slug": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
       "title": "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models",
-      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
+      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "key": "FOLDER00088_ec7f05bf1eae",
       "sourceIndex": 87,
       "textBytes": 87726,
@@ -1045,7 +1045,7 @@
     {
       "slug": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
       "title": "Code2World: A GUI World Model via Renderable Code Generation",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: generation, video, figure, models",
       "key": "FOLDER00105_f3af930e91a8",
       "sourceIndex": 104,
       "textBytes": 97988,
@@ -1085,7 +1085,7 @@
     {
       "slug": "2122_Differential_Transformer",
       "title": "Differential Transformer",
-      "category": "HDBSCAN Cluster: attention, transformer, models, language",
+      "category": "HDBSCAN Cluster: transformer, attention, language, differential",
       "key": "FOLDER00109_cb0fec7db820",
       "sourceIndex": 108,
       "textBytes": 71150,
@@ -1165,7 +1165,7 @@
     {
       "slug": "2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning",
       "title": "Heterogeneous Agent Collaborative Reinforcement Learning",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
       "key": "FOLDER00117_4a6dc9062d5e",
       "sourceIndex": 116,
       "textBytes": 76413,
@@ -1315,7 +1315,7 @@
     {
       "slug": "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
       "title": "OmniSVG: A Unified Scalable Vector Graphics Generation Model",
-      "category": "HDBSCAN Cluster: figure, generation, shotstream, cuhk",
+      "category": "HDBSCAN Cluster: figure, vector, generation, university",
       "key": "FOLDER00132_bc3de160ac51",
       "sourceIndex": 131,
       "textBytes": 70794,
@@ -1355,7 +1355,7 @@
     {
       "slug": "2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe",
       "title": "Beyond the 80/20 Rule: High-Entropy Minority Tokens Drive Effective Reinforcement Learning for LLM Reasoning",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: rlvr, reinforcement, learning, university",
       "key": "FOLDER00136_34c4cd38307d",
       "sourceIndex": 135,
       "textBytes": 88702,
@@ -1375,7 +1375,7 @@
     {
       "slug": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
       "title": "QeRL: Beyond Efficiency -- Quantization-enhanced Reinforcement Learning for LLMs",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
       "key": "FOLDER00138_d82ee87bba02",
       "sourceIndex": 137,
       "textBytes": 78498,
@@ -1535,7 +1535,7 @@
     {
       "slug": "2544_Retentive_Network_A_Successor_to_Transformer_for_Large_Langu",
       "title": "Retentive Network: A Successor to Transformer for Large Language Models",
-      "category": "HDBSCAN Cluster: attention, transformer, models, language",
+      "category": "HDBSCAN Cluster: transformer, attention, language, differential",
       "key": "FOLDER00154_325e8d86e25f",
       "sourceIndex": 153,
       "textBytes": 42595,
@@ -1555,7 +1555,7 @@
     {
       "slug": "2584_Self-Distilled_RLVR",
       "title": "Self-Distilled RLVR",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: rlvr, reinforcement, learning, university",
       "key": "FOLDER00156_5100c3745fec",
       "sourceIndex": 155,
       "textBytes": 94668,
@@ -1585,7 +1585,7 @@
     {
       "slug": "2587_General_Agentic_Memory_Via_Deep_Research",
       "title": "General Agentic Memory Via Deep Research",
-      "category": "HDBSCAN Cluster: university, memory, systems, language",
+      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
       "key": "FOLDER00159_4c43fdf369ac",
       "sourceIndex": 158,
       "textBytes": 49725,
@@ -1645,7 +1645,7 @@
     {
       "slug": "2633_Kling-Omni_Technical_Report",
       "title": "Kling-Omni Technical Report",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: generation, video, figure, models",
       "key": "FOLDER00165_3ca77ea7131e",
       "sourceIndex": 164,
       "textBytes": 66971,
@@ -1675,7 +1675,7 @@
     {
       "slug": "2680_AgentSPEX_An_Agent_SPecification_and_EXecution_Language",
       "title": "AgentSPEX: An Agent SPecification and EXecution Language",
-      "category": "HDBSCAN Cluster: university, memory, systems, language",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00168_da0ddd343924",
       "sourceIndex": 167,
       "textBytes": 52129,
@@ -1705,7 +1705,7 @@
     {
       "slug": "2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs",
       "title": "AgentFly: Fine-tuning LLM Agents without Fine-tuning LLMs",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
       "key": "FOLDER00171_120f29e1bc0e",
       "sourceIndex": 170,
       "textBytes": 91552,
@@ -1775,7 +1775,7 @@
     {
       "slug": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
       "title": "Seedance 2.0: Advancing Video Generation for World Complexity",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: generation, video, figure, models",
       "key": "FOLDER00178_2a5f3f6b73fb",
       "sourceIndex": 177,
       "textBytes": 85193,
@@ -1805,7 +1805,7 @@
     {
       "slug": "2814_MOVA_Towards_Scalable_and_Synchronized_Video-Audio_Generatio",
       "title": "MOVA: Towards Scalable and Synchronized Video-Audio Generation",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: generation, video, figure, models",
       "key": "FOLDER00181_6adca3716aee",
       "sourceIndex": 180,
       "textBytes": 117014,
@@ -1875,7 +1875,7 @@
     {
       "slug": "2861_Seed15-VL_Technical_Report",
       "title": "Seed1.5-VL Technical Report",
-      "category": "HDBSCAN Cluster: glm-4, multimodal, reasoning, seed1",
+      "category": "HDBSCAN Cluster: reasoning, glm-4, youtu-llm, multimodal",
       "key": "FOLDER00188_b88bb2ab4c68",
       "sourceIndex": 187,
       "textBytes": 226376,
@@ -1895,7 +1895,7 @@
     {
       "slug": "764_Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spa",
       "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
-      "category": "HDBSCAN Cluster: attention, transformer, models, language",
+      "category": "HDBSCAN Cluster: models, such, hrm-text, pretraining",
       "key": "FOLDER00190_a2f5cd6f706c",
       "sourceIndex": 189,
       "textBytes": 139193,
@@ -1915,7 +1915,7 @@
     {
       "slug": "2903_Self-Rewarding_Language_Models",
       "title": "Self-Rewarding Language Models",
-      "category": "HDBSCAN Cluster: models, language, model, reward",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
       "key": "FOLDER00192_970fe86287a1",
       "sourceIndex": 191,
       "textBytes": 70056,
@@ -1965,7 +1965,7 @@
     {
       "slug": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
       "title": "Youtu-LLM: Unlocking the Native Agentic Potential for Lightweight Large Language Models",
-      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
+      "category": "HDBSCAN Cluster: reasoning, glm-4, youtu-llm, multimodal",
       "key": "FOLDER00197_0a34f5facf01",
       "sourceIndex": 196,
       "textBytes": 176835,
@@ -1995,7 +1995,7 @@
     {
       "slug": "2952_ShotStream_Streaming_Multi-Shot_Video_Generation_for_Interac",
       "title": "ShotStream: Streaming Multi-Shot Video Generation for Interactive Storytelling",
-      "category": "HDBSCAN Cluster: figure, generation, shotstream, cuhk",
+      "category": "HDBSCAN Cluster: figure, vector, generation, university",
       "key": "FOLDER00200_b6fad3f07f67",
       "sourceIndex": 199,
       "textBytes": 61582,
@@ -2051,6 +2051,56 @@
       "textBytes": 94975,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2409.12186v3[cs.CL]12Nov2024 ## Qwen2.5-Coder Technical Report Binyuan Hui* Jian Yang* Zeyu Cui* Jiaxi Yang* Dayiheng Liu Lei Zhang Tianyu Liu Jiajun Zhang Bowen Yu Keming Lu Kai Dang Yang Fan Yichang Zhang An Yang Rui Men Fei Huang Bo Zheng Yibo Miao Shanghaoran Quan Yunlong Feng Xingzhang Ren Xuancheng Ren Jingren Zhou Junyang Lin† Qwen Team Alibaba Group https://hf.co/Qwen/Qwen2.5-Coder-32B-Instruct https://github.com/QwenLM/Qwen2.5-Coder ### Abstract In this report, we introduce the Qwen2.5-Coder series, a significant upgrade from its predecessor, CodeQwen1.5. This series includes six models: Qwen2.5-Coder-(0.5B/1.5B/3B/7B/14B/32B). As a code-specific model, Qwen2.5-Coder is built upon the Qwen2.5 architecture and continues pretrained on a vast corpus of over 5.5 trillion tokens. Through meticulous data cleaning, scalable synthetic data generation, and balanced data mixing, Q"
+    },
+    {
+      "slug": "3036_Your_Group-Relative_Advantage_Is_Biased",
+      "title": "Your Group-Relative Advantage Is Biased",
+      "category": "HDBSCAN Cluster: rlvr, reinforcement, learning, university",
+      "key": "FOLDER00206_ad69e4ab70a2",
+      "sourceIndex": 205,
+      "textBytes": 84478,
+      "figuresExtracted": 5,
+      "excerpt": "### Your Group-Relative Advantage Is Biased Fengkai Yang1,3,4, Zherui Chen2, Xiaohan Wang4, Xiaodong Lu1,4, Jiajun Chai4, Guojun Yin4, Wei Lin4, Shuai Ma1, Fuzhen Zhuang1, Deqing Wang1, Yaodong Yang3, Jianxin Li1, Yikun Ban1* 1Beihang University 2University of California, Berkeley 3Peking University 4Meituan # arXiv:2601.08521v2[cs.LG]22Jan2026 #### Abstract Reinforcement Learning from Verifier Rewards (RLVR) has emerged as a widely used approach for post-training large language models on reasoning tasks, with group-based methods such as GRPO and its variants gaining broad adoption. These methods rely on group-relative advantage estimation to avoid learned critics, yet its theoretical properties remain poorly understood. In this work, we uncover a fundamental issue of group-based RL: the group-relative advantage estimator is inherently biased relative to the true (expected) advantage. We"
+    },
+    {
+      "slug": "3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and",
+      "title": "The Latent Space: Foundation, Evolution, Mechanism, Ability, and Outlook",
+      "category": "HDBSCAN Cluster: zhang, wang, liu, yang",
+      "key": "FOLDER00207_a938ae1d6b26",
+      "sourceIndex": 206,
+      "textBytes": 328152,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2604.02029v2[cs.AI]5Jun2026 [Figure 1] ## The Latent Space: Foundation, Evolution, Mechanism, Ability, and Outlook Xinlei Yu∗,⋆, Zhangquan Chen∗, Yongbo He∗, Tianyu Fu∗, Guanting Dong∗, Cheng Yang∗, Chengming Xu∗, Yue Ma∗, Xiaobin Hu∗,†, Zhe Cao, Jie Xu, Guibin Zhang, Jiale Tao, Jiayi Zhang, Siyuan Ma, Kaituo Feng, Haojie Huang, Youxing Li, Ronghao Chen, Huacan Wang, Chenglin Wu, Zikun Su, Xiaogang Xu, Kelu Yao, Kun Wang, Chen Gao, Yue Liao, Ruqi Huang, Tao Jin, Zhucun Xue, Cheng Tan†, Jiangning Zhang†, Wenqi Ren, Yanwei Fu, Yong Liu, Yu Wang, Xiangyu Yue†, Yu-Gang Jiang†, Shuicheng Yan† ∗ Core Contributors † Core Supervisors ⋆ Organizer National University of Singapore, Fudan University, Tsinghua University, Zhejiang University, Shanghai Artificial Intelligence Laboratory, Renmin University of China, The Chinese University of Hong Kong, The Hong Kong University of Science and Te"
+    },
+    {
+      "slug": "3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo",
+      "title": "OmniLottie: Generating Vector Animations via Parameterized Lottie Tokens",
+      "category": "HDBSCAN Cluster: figure, vector, generation, university",
+      "key": "FOLDER00208_d6508c1f49fc",
+      "sourceIndex": 207,
+      "textBytes": 150168,
+      "figuresExtracted": 5,
+      "excerpt": "### OmniLottie: Generating Vector Animations via Parameterized Lottie Tokens Yiying Yang1,2 Wei Cheng2† Sijin Chen3 Honghao Fu2,4 Xianfang Zeng2 Yujun Cai4 Gang Yu2‡ Xingjun Ma1‡ 1 Fudan University 2 StepFun 3 HKU MMLab 4 University of Queensland [Figure 1] [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] ###### Project Page MMLottie-2M MMLottieBench Weights Demo Code # arXiv:2603.02138v1[cs.CV]2Mar2026 Text-to-Lottie [Figure 7] [Figure 8] [Figure 9] [Figure 10] [Figure 11] [Figure 12] [Figure 13] [Figure 14] [Figure 15] [Figure 16] [Figure 17] [Figure 18] [Figure 19] [Figure 20] [Figure 21] [Figure 22] [Figure 23] [Figure 24] [Figure 25] [Figure 26] [Figure 27] A character holding a smartphone with a rating interface. [Figure 28] [Figure 29] [Figure 30] [Figure 31] [Figure 32] [Figure 33] [Figure 34] [Figure 35] [Figure 36] [Figure 37] [Figure 38] [Figure 39] [Figure 40] [Figure 4"
+    },
+    {
+      "slug": "3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation",
+      "title": "StarCoder 2 and The Stack v2: The Next Generation",
+      "category": "HDBSCAN Cluster: llama, open, foundation, fine-tuned",
+      "key": "FOLDER00209_d2eb39e1568e",
+      "sourceIndex": 208,
+      "textBytes": 202808,
+      "figuresExtracted": 2,
+      "excerpt": "# arXiv:2402.19173v1[cs.SE]29Feb2024 [Figure 1] ## StarCoder 2 and The Stack v2: The Next Generation Anton Lozhkov1 Raymond Li2 Loubna Ben Allal1 Federico Cassano4 Joel Lamy-Poirier2 Nouamane Tazi1 Ao Tang3 Dmytro Pykhtar3 Jiawei Liu7 Yuxiang Wei7 Tianyang Liu25 Max Tian2 Denis Kocetkov2 Arthur Zucker1 Younes Belkada1 Zijian Wang5 Qian Liu12 Dmitry Abulkhanov5 Indraneil Paul32 Zhuang Li14 Wen-Ding Li26 Megan Risdal24 Jia Li5 Jian Zhu16 Terry Yue Zhuo14,15 Evgenii Zheltonozhskii13 Nii Osae Osae Dade28 Wenhao Yu20 Lucas Krauß5 Naman Jain27 Yixuan Su30 Xuanli He23 Manan Dey31 Edoardo Abati5 Yekun Chai33 Niklas Muennighoff29 Xiangru Tang34 Muhtasham Oblokulov18 Christopher Akiki9,10 Marc Marone8 Chenghao Mou5 Mayank Mishra19 Alex Gu17 Binyuan Hui5 Tri Dao21 Armel Zebaze1 Olivier Dehaene1 Nicolas Patry1 Canwen Xu25 Julian McAuley25 Han Hu14 Torsten Scholak2 Sebastien Paquet2 Jennifer Robinson"
+    },
+    {
+      "slug": "3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re",
+      "title": "HSImul3R: Physics-in-the-Loop Reconstruction of Simulation-Ready Human-Scene Interactions",
+      "category": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
+      "key": "FOLDER00210_0d7e8cc379ba",
+      "sourceIndex": 209,
+      "textBytes": 54412,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.15612v1[cs.CV]16Mar2026 ## HSImul3R: Physics-in-the-Loop Reconstruction of Simulation-Ready Human–Scene Interactions Yukang Cao1, Haozhe Xie1, Fangzhou Hong1, Long Zhuo3, Zhaoxi Chen1, Liang Pan2, and Ziwei Liu1, 1 S-Lab, Nanyang Technological University 2 ACE Robotics 3 Shanghai AI Laboratory Corresponding author https://yukangcao.github.io/HSImul3R/ [Figure 1] Fig. 1: Examples of real-world humanoid robotic deployment. Given casual captures, our approach achieves simulation-ready 3D reconstruction of human–scene interactions by refining the human motions and scene geometry via a physically-grounded bi-directional optimization pipeline. Our optimized human motions can be seamlessly transferred and deployed in humanoid robotics. Abstract. We present HSImul3R1, a unified framework for simulationready 3D reconstruction of human-scene interactions (HSI) from casual captures, in"
     }
   ]
 }

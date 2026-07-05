@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-05T09:12:22.844623+00:00",
+  "generated": "2026-07-05T09:45:12.471200+00:00",
   "mode": "extract-only",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "awesomeRepo": "E:\\조선대\\연구\\awesome-HuggingFace",
   "extractReport": "data/paper_curation/extract_only_report.json",
   "docsDir": "docs/paper_curation/extract_only",
   "paperDir": "paper/extract_only",
-  "recordCount": 205,
+  "recordCount": 210,
   "syncedPaperSlugs": [
     "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
     "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
@@ -212,13 +212,18 @@
     "2992_Urban_Socio-Semantic_Segmentation_with_Vision-Language_Reaso",
     "2993_RWKV-7_Goose_with_Expressive_Dynamic_State_Evolution",
     "2994_Can_1B_LLM_Surpass_405B_LLM_Rethinking_Compute-Optimal_Test-",
-    "2995_Qwen25-Coder_Technical_Report"
+    "2995_Qwen25-Coder_Technical_Report",
+    "3036_Your_Group-Relative_Advantage_Is_Biased",
+    "3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and",
+    "3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo",
+    "3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation",
+    "3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re"
   ],
   "copied": [
     {
       "source": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\_folder_source_extract_report.json",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\data\\paper_curation\\extract_only_report.json",
-      "bytes": 123604
+      "bytes": 126591
     },
     {
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective\\text.md",
@@ -11519,6 +11524,276 @@
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2995_Qwen25-Coder_Technical_Report\\figures\\fig6.png",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2995_Qwen25-Coder_Technical_Report\\figures\\fig6.png",
       "bytes": 59986
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\text.md",
+      "bytes": 84478
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig1.png",
+      "bytes": 361527
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig2.png",
+      "bytes": 257033
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig3.png",
+      "bytes": 98856
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig4.png",
+      "bytes": 251261
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig5.png",
+      "bytes": 62280
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\text.md",
+      "bytes": 84478
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig1.png",
+      "bytes": 361527
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig2.png",
+      "bytes": 257033
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig3.png",
+      "bytes": 98856
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig4.png",
+      "bytes": 251261
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3036_Your_Group-Relative_Advantage_Is_Biased\\figures\\fig5.png",
+      "bytes": 62280
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\text.md",
+      "bytes": 328152
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig1.png",
+      "bytes": 617375
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig2.png",
+      "bytes": 492736
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig3.png",
+      "bytes": 200954
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig4.png",
+      "bytes": 164003
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig5.png",
+      "bytes": 698183
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\text.md",
+      "bytes": 328152
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig1.png",
+      "bytes": 617375
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig2.png",
+      "bytes": 492736
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig3.png",
+      "bytes": 200954
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig4.png",
+      "bytes": 164003
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3037_The_Latent_Space_Foundation_Evolution_Mechanism_Ability_and\\figures\\fig5.png",
+      "bytes": 698183
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\text.md",
+      "bytes": 150168
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig1.png",
+      "bytes": 303020
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig2.png",
+      "bytes": 304068
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig3.png",
+      "bytes": 311695
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig4.png",
+      "bytes": 505182
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig5.png",
+      "bytes": 513537
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\text.md",
+      "bytes": 150168
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig1.png",
+      "bytes": 303020
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig2.png",
+      "bytes": 304068
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig3.png",
+      "bytes": 311695
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig4.png",
+      "bytes": 505182
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo\\figures\\fig5.png",
+      "bytes": 513537
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation\\text.md",
+      "bytes": 202808
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation\\figures\\fig1.png",
+      "bytes": 68795
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation\\figures\\fig2.png",
+      "bytes": 54523
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation\\text.md",
+      "bytes": 202808
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation\\figures\\fig1.png",
+      "bytes": 68795
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3039_StarCoder_2_and_The_Stack_v2_The_Next_Generation\\figures\\fig2.png",
+      "bytes": 54523
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\text.md",
+      "bytes": 54412
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig1.png",
+      "bytes": 387926
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig2.png",
+      "bytes": 999958
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig3.png",
+      "bytes": 445728
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig4.png",
+      "bytes": 313674
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig5.png",
+      "bytes": 364456
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\text.md",
+      "bytes": 54412
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig1.png",
+      "bytes": 387926
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig2.png",
+      "bytes": 999958
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig3.png",
+      "bytes": 445728
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig4.png",
+      "bytes": 313674
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re\\figures\\fig5.png",
+      "bytes": 364456
     }
   ],
   "missing": [],
