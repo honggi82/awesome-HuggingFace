@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-03T22:45:16.651405+00:00",
+  "generated": "2026-07-05T05:30:03.279194+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 155,
+  "sourceOffset": 160,
   "sourceLimit": 5,
-  "sourceEnd": 160,
+  "sourceEnd": 165,
   "batchTotal": 5,
-  "total": 160,
-  "ok": 160,
-  "textExtracted": 160,
-  "figureFiles": 717,
+  "total": 165,
+  "ok": 165,
+  "textExtracted": 165,
+  "figureFiles": 742,
   "sanityFailed": 0,
   "records": [
     {
@@ -2129,6 +2129,71 @@
       "textBytes": 59089,
       "sanityOk": true,
       "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "MemOS: A Memory OS for AI System",
+      "key": "FOLDER00161_bd3edef5013a",
+      "sourceIndex": 160,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00161_MemOS A Memory OS for AI System.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2629_MemOS_A_Memory_OS_for_AI_System",
+      "textBytes": 145691,
+      "sanityOk": true,
+      "sanityReason": "ok (title 3/3 doi=T author=True)"
+    },
+    {
+      "title": "From Context to Skills: Can Language Models Learn from Context Skillfully?",
+      "key": "FOLDER00162_88947750b1a9",
+      "sourceIndex": 161,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00162_From Context to Skills Can Language Models Learn from Context Skillfully.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex",
+      "textBytes": 223430,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "SigLIP 2: Multilingual Vision-Language Encoders with Improved Semantic Understanding, Localization, and Dense Features",
+      "key": "FOLDER00163_e610eccb2c79",
+      "sourceIndex": 162,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00163_SigLIP 2 Multilingual Vision-Language Encoders with Improved Semantic Understanding, Local.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved",
+      "textBytes": 65194,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "LLM-Microscope: Uncovering the Hidden Role of Punctuation in Context Memory of Transformers",
+      "key": "FOLDER00164_4e9f21baeb77",
+      "sourceIndex": 163,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00164_LLM-Microscope Uncovering the Hidden Role of Punctuation in Context Memory of Transformers.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in",
+      "textBytes": 35634,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Kling-Omni Technical Report",
+      "key": "FOLDER00165_3ca77ea7131e",
+      "sourceIndex": 164,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00165_Kling-Omni Technical Report.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2633_Kling-Omni_Technical_Report",
+      "textBytes": 66971,
+      "sanityOk": true,
+      "sanityReason": "ok (title 4/4 doi=T author=True)"
     }
   ]
 }

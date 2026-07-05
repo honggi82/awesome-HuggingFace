@@ -13,9 +13,9 @@
       "count": 7
     },
     {
-      "id": "hdbscan-cluster-university-figure-code-https",
-      "name": "HDBSCAN Cluster: university, figure, code, https",
-      "count": 6
+      "id": "hdbscan-cluster-university-figure-com-https",
+      "name": "HDBSCAN Cluster: university, figure, com, https",
+      "count": 7
     },
     {
       "id": "hdbscan-cluster-attention-model-lightning-models",
@@ -28,13 +28,18 @@
       "count": 5
     },
     {
-      "id": "hdbscan-cluster-systems-university-agentic-memory",
-      "name": "HDBSCAN Cluster: systems, university, agentic, memory",
-      "count": 5
-    },
-    {
       "id": "hdbscan-cluster-transformer-transformers-attention-normalization",
       "name": "HDBSCAN Cluster: transformer, transformers, attention, normalization",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-agentic-memory-model-systems",
+      "name": "HDBSCAN Cluster: agentic, memory, model, systems",
+      "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-image-video-models-generation",
+      "name": "HDBSCAN Cluster: image, video, models, generation",
       "count": 4
     },
     {
@@ -58,8 +63,13 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-zhang1-wang2-world-university",
-      "name": "HDBSCAN Cluster: zhang1, wang2, world, university",
+      "id": "hdbscan-cluster-language-model-small-mutarjim",
+      "name": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-chen1-university-wang1-arxiv",
+      "name": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
       "count": 3
     },
     {
@@ -68,13 +78,13 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-image-models-generation-qwen-image",
-      "name": "HDBSCAN Cluster: image, models, generation, qwen-image",
+      "id": "hdbscan-cluster-multimodal-kimi-glm-4-agentic",
+      "name": "HDBSCAN Cluster: multimodal, kimi, glm-4, agentic",
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-multimodal-kimi-glm-4-agentic",
-      "name": "HDBSCAN Cluster: multimodal, kimi, glm-4, agentic",
+      "id": "hdbscan-cluster-reinforcement-language-learning-rewards",
+      "name": "HDBSCAN Cluster: reinforcement, language, learning, rewards",
       "count": 3
     },
     {
@@ -118,16 +128,6 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-training-smollm2-small-language",
-      "name": "HDBSCAN Cluster: training, smollm2, small, language",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-reinforcement-rewards-rpt-learning",
-      "name": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
-      "count": 2
-    },
-    {
       "id": "hdbscan-cluster-deepseek-v3-reasoning-glm-4-models",
       "name": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
       "count": 2
@@ -143,8 +143,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-text-artificial-airi-clear",
-      "name": "HDBSCAN Cluster: text, artificial, airi, clear",
+      "id": "hdbscan-cluster-artificial-text-detection-institute",
+      "name": "HDBSCAN Cluster: artificial, text, detection, institute",
       "count": 2
     },
     {
@@ -170,6 +170,11 @@
     {
       "id": "hdbscan-cluster-language-models-nonsense-hallucinations",
       "name": "HDBSCAN Cluster: language, models, nonsense, hallucinations",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-clear-unlearning-siglip-alexey",
+      "name": "HDBSCAN Cluster: clear, unlearning, siglip, alexey",
       "count": 2
     },
     {

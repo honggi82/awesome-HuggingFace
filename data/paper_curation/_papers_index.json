@@ -185,7 +185,7 @@
     {
       "slug": "322_ASE_A_Repository-Level_Benchmark_for_Evaluating_Security_in",
       "title": "A.S.E: A Repository-Level Benchmark for Evaluating Security in AI-Generated Code",
-      "category": "HDBSCAN Cluster: university, figure, code, https",
+      "category": "HDBSCAN Cluster: university, figure, com, https",
       "key": "FOLDER00019_f578c07c2033",
       "sourceIndex": 18,
       "textBytes": 84262,
@@ -285,7 +285,7 @@
     {
       "slug": "332_DINOv3",
       "title": "DINOv3",
-      "category": "HDBSCAN Cluster: training, smollm2, small, language",
+      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
       "key": "FOLDER00029_a3328f5ae17b",
       "sourceIndex": 28,
       "textBytes": 237604,
@@ -295,7 +295,7 @@
     {
       "slug": "333_InCoder-32B_Code_Foundation_Model_for_Industrial_Scenarios",
       "title": "InCoder-32B: Code Foundation Model for Industrial Scenarios",
-      "category": "HDBSCAN Cluster: university, figure, code, https",
+      "category": "HDBSCAN Cluster: university, figure, com, https",
       "key": "FOLDER00030_44a8848066c5",
       "sourceIndex": 29,
       "textBytes": 161304,
@@ -315,7 +315,7 @@
     {
       "slug": "335_Advances_and_Challenges_in_Foundation_Agents_From_Brain-Insp",
       "title": "Advances and Challenges in Foundation Agents: From Brain-Inspired Intelligence to Evolutionary, Collaborative, and Safe Systems",
-      "category": "HDBSCAN Cluster: zhang1, wang2, world, university",
+      "category": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
       "key": "FOLDER00032_042b1763276f",
       "sourceIndex": 31,
       "textBytes": 1411183,
@@ -335,7 +335,7 @@
     {
       "slug": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
-      "category": "HDBSCAN Cluster: systems, university, agentic, memory",
+      "category": "HDBSCAN Cluster: agentic, memory, model, systems",
       "key": "FOLDER00034_8bc56d204ac7",
       "sourceIndex": 33,
       "textBytes": 94309,
@@ -365,7 +365,7 @@
     {
       "slug": "340_Recursive_Multi-Agent_Systems",
       "title": "Recursive Multi-Agent Systems",
-      "category": "HDBSCAN Cluster: systems, university, agentic, memory",
+      "category": "HDBSCAN Cluster: agentic, memory, model, systems",
       "key": "FOLDER00037_f33e597ec366",
       "sourceIndex": 36,
       "textBytes": 105642,
@@ -385,7 +385,7 @@
     {
       "slug": "342_Qwen-Image_Technical_Report",
       "title": "Qwen-Image Technical Report",
-      "category": "HDBSCAN Cluster: image, models, generation, qwen-image",
+      "category": "HDBSCAN Cluster: image, video, models, generation",
       "key": "FOLDER00039_67f3a3187f0a",
       "sourceIndex": 38,
       "textBytes": 141226,
@@ -435,7 +435,7 @@
     {
       "slug": "1728_Reinforcement_Pre-Training",
       "title": "Reinforcement Pre-Training",
-      "category": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
+      "category": "HDBSCAN Cluster: reinforcement, language, learning, rewards",
       "key": "FOLDER00044_3dcd071cdafe",
       "sourceIndex": 43,
       "textBytes": 48294,
@@ -475,7 +475,7 @@
     {
       "slug": "1732_ClawBench_Can_AI_Agents_Complete_Everyday_Online_Tasks",
       "title": "ClawBench: Can AI Agents Complete Everyday Online Tasks?",
-      "category": "HDBSCAN Cluster: university, figure, code, https",
+      "category": "HDBSCAN Cluster: university, figure, com, https",
       "key": "FOLDER00048_7d8b86a69b60",
       "sourceIndex": 47,
       "textBytes": 44311,
@@ -525,7 +525,7 @@
     {
       "slug": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "title": "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model",
-      "category": "HDBSCAN Cluster: university, figure, code, https",
+      "category": "HDBSCAN Cluster: university, figure, com, https",
       "key": "FOLDER00053_b501ac6425a5",
       "sourceIndex": 52,
       "textBytes": 99132,
@@ -555,7 +555,7 @@
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "title": "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model",
-      "category": "HDBSCAN Cluster: training, smollm2, small, language",
+      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
       "key": "FOLDER00056_e1a299738b86",
       "sourceIndex": 55,
       "textBytes": 87381,
@@ -565,7 +565,7 @@
     {
       "slug": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
       "title": "Z-Image: An Efficient Image Generation Foundation Model with Single-Stream Diffusion Transformer",
-      "category": "HDBSCAN Cluster: image, models, generation, qwen-image",
+      "category": "HDBSCAN Cluster: image, video, models, generation",
       "key": "FOLDER00057_85f52b7d18cd",
       "sourceIndex": 56,
       "textBytes": 233804,
@@ -705,7 +705,7 @@
     {
       "slug": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
       "title": "Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation",
-      "category": "HDBSCAN Cluster: image, models, generation, qwen-image",
+      "category": "HDBSCAN Cluster: image, video, models, generation",
       "key": "FOLDER00071_8339c62b1c6b",
       "sourceIndex": 70,
       "textBytes": 189067,
@@ -745,7 +745,7 @@
     {
       "slug": "1758_InCoder-32B-Thinking_Industrial_Code_World_Model_for_Thinkin",
       "title": "InCoder-32B-Thinking: Industrial Code World Model for Thinking",
-      "category": "HDBSCAN Cluster: university, figure, code, https",
+      "category": "HDBSCAN Cluster: university, figure, com, https",
       "key": "FOLDER00075_00c9387798d3",
       "sourceIndex": 74,
       "textBytes": 79388,
@@ -755,7 +755,7 @@
     {
       "slug": "1759_Agentic_World_Modeling_Foundations_Capabilities_Laws_and_Bey",
       "title": "Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond",
-      "category": "HDBSCAN Cluster: zhang1, wang2, world, university",
+      "category": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
       "key": "FOLDER00076_8f66fe1850ac",
       "sourceIndex": 75,
       "textBytes": 384726,
@@ -775,7 +775,7 @@
     {
       "slug": "1841_Feature-Level_Insights_into_Artificial_Text_Detection_with_S",
       "title": "Feature-Level Insights into Artificial Text Detection with Sparse Autoencoders",
-      "category": "HDBSCAN Cluster: text, artificial, airi, clear",
+      "category": "HDBSCAN Cluster: artificial, text, detection, institute",
       "key": "FOLDER00078_fed29724b9ae",
       "sourceIndex": 77,
       "textBytes": 71941,
@@ -865,7 +865,7 @@
     {
       "slug": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
       "title": "Heterogeneous Scientific Foundation Model Collaboration",
-      "category": "HDBSCAN Cluster: systems, university, agentic, memory",
+      "category": "HDBSCAN Cluster: agentic, memory, model, systems",
       "key": "FOLDER00087_4449a0ace106",
       "sourceIndex": 86,
       "textBytes": 184544,
@@ -895,7 +895,7 @@
     {
       "slug": "1935_Watching_Reasoning_and_Searching_A_Video_Deep_Research_Bench",
       "title": "Watching, Reasoning, and Searching: A Video Deep Research Benchmark on Open Web for Agentic Video Reasoning",
-      "category": "HDBSCAN Cluster: university, figure, code, https",
+      "category": "HDBSCAN Cluster: university, figure, com, https",
       "key": "FOLDER00090_32240190a210",
       "sourceIndex": 89,
       "textBytes": 57994,
@@ -905,7 +905,7 @@
     {
       "slug": "1977_Mutarjim_Advancing_Bidirectional_Arabic-English_Translation",
       "title": "Mutarjim: Advancing Bidirectional Arabic-English Translation with a Small Language Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
       "key": "FOLDER00091_8b531206da8e",
       "sourceIndex": 90,
       "textBytes": 51767,
@@ -945,7 +945,7 @@
     {
       "slug": "1980_Bootstrapping_Exploration_with_Group-Level_Natural_Language",
       "title": "Bootstrapping Exploration with Group-Level Natural Language Feedback in Reinforcement Learning",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reinforcement, language, learning, rewards",
       "key": "FOLDER00095_946974fa004a",
       "sourceIndex": 94,
       "textBytes": 89363,
@@ -965,7 +965,7 @@
     {
       "slug": "2023_OpenWorldLib_A_Unified_Codebase_and_Definition_of_Advanced_W",
       "title": "OpenWorldLib: A Unified Codebase and Definition of Advanced World Models",
-      "category": "HDBSCAN Cluster: zhang1, wang2, world, university",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00097_06d313401545",
       "sourceIndex": 96,
       "textBytes": 91225,
@@ -975,7 +975,7 @@
     {
       "slug": "2024_CLEAR_Character_Unlearning_in_Textual_and_Visual_Modalities",
       "title": "CLEAR: Character Unlearning in Textual and Visual Modalities",
-      "category": "HDBSCAN Cluster: text, artificial, airi, clear",
+      "category": "HDBSCAN Cluster: clear, unlearning, siglip, alexey",
       "key": "FOLDER00098_964908fb8da8",
       "sourceIndex": 97,
       "textBytes": 85331,
@@ -995,7 +995,7 @@
     {
       "slug": "2026_DelTA_Discriminative_Token_Credit_Assignment_for_Reinforceme",
       "title": "DelTA: Discriminative Token Credit Assignment for Reinforcement Learning from Verifiable Rewards",
-      "category": "HDBSCAN Cluster: reinforcement, rewards, rpt, learning",
+      "category": "HDBSCAN Cluster: reinforcement, language, learning, rewards",
       "key": "FOLDER00100_474146b29ef4",
       "sourceIndex": 99,
       "textBytes": 88739,
@@ -1185,7 +1185,7 @@
     {
       "slug": "2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi",
       "title": "The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies",
-      "category": "HDBSCAN Cluster: systems, university, agentic, memory",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00119_1571671914a2",
       "sourceIndex": 118,
       "textBytes": 69135,
@@ -1245,7 +1245,7 @@
     {
       "slug": "2259_QuantaAlpha_An_Evolutionary_Framework_for_LLM-Driven_Alpha_M",
       "title": "QuantaAlpha: An Evolutionary Framework for LLM-Driven Alpha Mining",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, figure, com, https",
       "key": "FOLDER00125_69b3c1180f90",
       "sourceIndex": 124,
       "textBytes": 81089,
@@ -1585,7 +1585,7 @@
     {
       "slug": "2587_General_Agentic_Memory_Via_Deep_Research",
       "title": "General Agentic Memory Via Deep Research",
-      "category": "HDBSCAN Cluster: systems, university, agentic, memory",
+      "category": "HDBSCAN Cluster: agentic, memory, model, systems",
       "key": "FOLDER00159_4c43fdf369ac",
       "sourceIndex": 158,
       "textBytes": 49725,
@@ -1601,6 +1601,56 @@
       "textBytes": 59089,
       "figuresExtracted": 5,
       "excerpt": "## Thinking with Map: Reinforced Parallel Map-Augmented Agent for Geolocalization [Figure 1] ### Yuxiang Ji1,2* Yong Wang2† Ziyu Ma2 Yiming Hu2 Hailang Huang2 Xuecai Hu2 Guanhua Chen3 Liaoni Wu1 Xiangxiang Chu2 1Xiamen University 2AMAP, Alibaba Group 3Southern University of Science and Technology [Figure 2] [Figure 3] https://amap-ml.github.io/Thinking-with-Map [Figure 4] |Clue 1<br><br>Directly Thinking<br><br>The image shows the 双⼦塔 in Xiamen, China.<br><br>[Figure 5]| |---| |Clue 1| |---| | | |---| Clue 2 [Figure 6] Image Zoom In Tool [Figure 7] # arXiv:2601.05432v1[cs.CV]8Jan2026 POI Input Tips [Figure 8] [Figure 9] 1. SAKE NOMI BAR，餐饮服务， 沙坡尾⼤学路xx号(蜂巢⼭路… POI Keyword Search |Clue 3<br><br>Image Zoom In Tool<br><br>[Figure 10]<br><br>POI Keyword Search 1. 六意便利店(中央第五街店)，<br><br>[Figure 11]<br><br>中央第五街xx号… 2.六意便利…<br><br>[Figure 12]| |---| [Figure 13] Localization |Clue 2| |---| Based o"
+    },
+    {
+      "slug": "2629_MemOS_A_Memory_OS_for_AI_System",
+      "title": "MemOS: A Memory OS for AI System",
+      "category": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
+      "key": "FOLDER00161_bd3edef5013a",
+      "sourceIndex": 160,
+      "textBytes": 145691,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] # MemOS: A Memory OS for AI System ## arXiv:2507.03724v4[cs.CL]3Dec2025 Zhiyu Li1,2, Chenyang Xi1, Chunyu Li1, Ding Chen3, Boyu Chen1, Shichao Song1,8, Simin Niu1,8, Hanyu Wang1,8, Jiawei Yang1,8, Chen Tang1, Qingchen Yu1,9, Jihao Zhao1,8, Yezhaohui Wang1, Peng Liu8, Zehao Lin1, Pengyuan Wang1, Jiahao Huo1, Tianyi Chen1,10, Kai Chen1,2, Kehang Li1,3, Zhen Tao8, Huayi Lai1, Hao Wu1, Bo Tang1, Zhengren Wang7,2, Zhaoxin Fan9, Ningyu Zhang5, Linfeng Zhang10, Junchi Yan10, Mingchuan Yang3, Tong Xu6, Wei Xu8, Huajun Chen5, Haofen Wang4, Hongkang Yang1,2, Wentao Zhang7,†, Zhi-Qin John Xu10,†, Siheng Chen10,†, Feiyu Xiong1,2,† 1MemTensor (Shanghai) Technology Co., Ltd., 2Institute for Advanced Algorithms Research, Shanghai, 3Research Institute of China Telecom, 4Tongji University, 5Zhejiang University, 6University of Science and Technology of China, 7Peking University, 8Renmin Univers"
+    },
+    {
+      "slug": "2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex",
+      "title": "From Context to Skills: Can Language Models Learn from Context Skillfully?",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00162_88947750b1a9",
+      "sourceIndex": 161,
+      "textBytes": 223430,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2604.27660v3[cs.AI]2Jun2026 ## From Context to Skills: Can Language Models Learn from Context Skillfully? #### Shuzheng Si˚♠♢, Haozhe Zhao˚♣, Yu Lei˚♢, Qingyi Wang˚‹, Dingwei Chen♡ Zhitong Wang♠, Zhenhailong Wang♣, Kangyang Luo♠, Zheng Wang♣ Gang Chen♢, Fanchao Qi♢, Minjia Zhang♣, and Maosong Sun♠ ♠THU ♢DeepLang AI ♣UIUC ‹FDU ♡CUHK S1s-Z/Ctx2Skill ˚ Equal Contribution. ### Abstract Many real-world tasks require language models (LMs) to reason over complex contexts that exceed their parametric knowledge. This calls for context learning, where LMs directly learn relevant knowledge from the given context. An intuitive solution is inference-time skill augmentation: extracting the corresponding rules and procedures from context into explicit, natural-language skills. However, constructing such skills for context learning scenarios faces two fundamental challenges: the prohibitive cost"
+    },
+    {
+      "slug": "2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved",
+      "title": "SigLIP 2: Multilingual Vision-Language Encoders with Improved Semantic Understanding, Localization, and Dense Features",
+      "category": "HDBSCAN Cluster: clear, unlearning, siglip, alexey",
+      "key": "FOLDER00163_e610eccb2c79",
+      "sourceIndex": 162,
+      "textBytes": 65194,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2502.14786v1[cs.CV]20Feb2025 [Figure 1] February 2025 # SigLIP 2: Multilingual Vision-Language Encoders with Improved Semantic Understanding, Localization, and Dense Features ##### Michael Tschannen*,†, Alexey Gritsenko*, Xiao Wang*, Muhammad Ferjad Naeem*, Ibrahim Alabdulmohsin*, Nikhil Parthasarathy*, Talfan Evans*,◦, Lucas Beyer*,◦, Ye Xia, Basil Mustafa, Olivier Hénaff◦, Jeremiah Harmsen, Andreas Steiner and Xiaohua Zhai*,◦,† Google DeepMind, *Core contributor, †Project lead, ◦Work done while at Google DeepMind We introduce SigLIP 2, a family of new multilingual vision-language encoders that build on the success of the original SigLIP. In this second iteration, we extend the original image-text training objective with several prior, independently developed techniques into a unified recipe—this includes captioningbased pretraining, self-supervised losses (self-distillation, m"
+    },
+    {
+      "slug": "2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in",
+      "title": "LLM-Microscope: Uncovering the Hidden Role of Punctuation in Context Memory of Transformers",
+      "category": "HDBSCAN Cluster: artificial, text, detection, institute",
+      "key": "FOLDER00164_4e9f21baeb77",
+      "sourceIndex": 163,
+      "textBytes": 35634,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2502.15007v1[cs.CL]20Feb2025 ## LLM-Microscope: Uncovering the Hidden Role of Punctuation in Context Memory of Transformers Anton Razzhigaev1,2, Matvey Mikhalchuk1,4, Temurbek Rahmatullaev1,3,4, Elizaveta Goncharova1,3, Polina Druzhinina1,2, Ivan Oseledets1,2, and Andrey Kuznetsov1 1AIRI, 2Skoltech, 3HSE University, 4Lomonosov Moscow State University razzhigaev@skol.tech Abstract We introduce methods to quantify how Large Language Models (LLMs) encode and store contextual information, revealing that tokens often seen as minor (e.g., determiners, punctuation) carry surprisingly high context. Notably, removing these tokens — especially stopwords, articles, and commas — consistently degrades performance on MMLU and BABILong-4k, even if removing only irrelevant tokens. Our analysis also shows a strong correlation between contextualization and linearity, where linearity measures how c"
+    },
+    {
+      "slug": "2633_Kling-Omni_Technical_Report",
+      "title": "Kling-Omni Technical Report",
+      "category": "HDBSCAN Cluster: image, video, models, generation",
+      "key": "FOLDER00165_3ca77ea7131e",
+      "sourceIndex": 164,
+      "textBytes": 66971,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2512.16776v1[cs.CV]18Dec2025 [Figure 1] ## Kling-Omni Technical Report Kling Team, Kuaishou Technology We present Kling-Omni, a generalist generative framework designed to synthesize high-fidelity videos directly from multimodal visual language inputs. Adopting an end-to-end perspective, Kling-Omni bridges the functional separation among diverse video generation, editing, and intelligent reasoning tasks, integrating them into a holistic system. Unlike disjointed pipeline approaches, Kling-Omni supports a diverse range of user inputs, including text instructions, reference images, and video contexts, processing them into a unified multimodal representation to deliver cinematic-quality and highly-intelligent video content creation. To support these capabilities, we constructed a comprehensive data system that serves as the foundation for multimodal video creation. The framework is "
     }
   ]
 }

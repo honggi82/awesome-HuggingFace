@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-03T22:47:42.599944+00:00",
+  "generated": "2026-07-05T05:30:28.164026+00:00",
   "mode": "extract-only",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "awesomeRepo": "E:\\조선대\\연구\\awesome-HuggingFace",
   "extractReport": "data/paper_curation/extract_only_report.json",
   "docsDir": "docs/paper_curation/extract_only",
   "paperDir": "paper/extract_only",
-  "recordCount": 160,
+  "recordCount": 165,
   "syncedPaperSlugs": [
     "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
     "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
@@ -167,13 +167,18 @@
     "2585_Diffusion_Transformers_with_Representation_Autoencoders",
     "2586_SmolDocling_An_ultra-compact_vision-language_model_for_end-t",
     "2587_General_Agentic_Memory_Via_Deep_Research",
-    "2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo"
+    "2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo",
+    "2629_MemOS_A_Memory_OS_for_AI_System",
+    "2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex",
+    "2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved",
+    "2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in",
+    "2633_Kling-Omni_Technical_Report"
   ],
   "copied": [
     {
       "source": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\_folder_source_extract_report.json",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\data\\paper_curation\\extract_only_report.json",
-      "bytes": 97525
+      "bytes": 100496
     },
     {
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective\\text.md",
@@ -8944,6 +8949,306 @@
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo\\figures\\fig5.png",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo\\figures\\fig5.png",
       "bytes": 142922
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\text.md",
+      "bytes": 145691
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig1.png",
+      "bytes": 154673
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig2.png",
+      "bytes": 94957
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig3.png",
+      "bytes": 321968
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig4.png",
+      "bytes": 76363
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig5.png",
+      "bytes": 131331
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\text.md",
+      "bytes": 145691
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig1.png",
+      "bytes": 154673
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig2.png",
+      "bytes": 94957
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig3.png",
+      "bytes": 321968
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig4.png",
+      "bytes": 76363
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2629_MemOS_A_Memory_OS_for_AI_System\\figures\\fig5.png",
+      "bytes": 131331
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\text.md",
+      "bytes": 223430
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig1.png",
+      "bytes": 244494
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig2.png",
+      "bytes": 271562
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig3.png",
+      "bytes": 130877
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig4.png",
+      "bytes": 74178
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig5.png",
+      "bytes": 304194
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\text.md",
+      "bytes": 223430
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig1.png",
+      "bytes": 244494
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig2.png",
+      "bytes": 271562
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig3.png",
+      "bytes": 130877
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig4.png",
+      "bytes": 74178
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex\\figures\\fig5.png",
+      "bytes": 304194
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\text.md",
+      "bytes": 65194
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig1.png",
+      "bytes": 66146
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig2.png",
+      "bytes": 113209
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig3.png",
+      "bytes": 259918
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig4.png",
+      "bytes": 247582
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig5.png",
+      "bytes": 53910
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\text.md",
+      "bytes": 65194
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig1.png",
+      "bytes": 66146
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig2.png",
+      "bytes": 113209
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig3.png",
+      "bytes": 259918
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig4.png",
+      "bytes": 247582
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved\\figures\\fig5.png",
+      "bytes": 53910
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\text.md",
+      "bytes": 35634
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig1.png",
+      "bytes": 217538
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig2.png",
+      "bytes": 732567
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig3.png",
+      "bytes": 69780
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig4.png",
+      "bytes": 205149
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig5.png",
+      "bytes": 125237
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\text.md",
+      "bytes": 35634
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig1.png",
+      "bytes": 217538
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig2.png",
+      "bytes": 732567
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig3.png",
+      "bytes": 69780
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig4.png",
+      "bytes": 205149
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in\\figures\\fig5.png",
+      "bytes": 125237
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2633_Kling-Omni_Technical_Report\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2633_Kling-Omni_Technical_Report\\text.md",
+      "bytes": 66971
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig1.png",
+      "bytes": 352504
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig2.png",
+      "bytes": 92927
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig3.png",
+      "bytes": 58942
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig4.png",
+      "bytes": 161340
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig5.png",
+      "bytes": 1326419
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2633_Kling-Omni_Technical_Report\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2633_Kling-Omni_Technical_Report\\text.md",
+      "bytes": 66971
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig1.png",
+      "bytes": 352504
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig2.png",
+      "bytes": 92927
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig3.png",
+      "bytes": 58942
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig4.png",
+      "bytes": 161340
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2633_Kling-Omni_Technical_Report\\figures\\fig5.png",
+      "bytes": 1326419
     }
   ],
   "missing": [],
