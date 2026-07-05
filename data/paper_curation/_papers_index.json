@@ -105,7 +105,7 @@
     {
       "slug": "081_AI_Can_Learn_Scientific_Taste",
       "title": "AI Can Learn Scientific Taste",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, li1, scientific, olympiad",
       "key": "FOLDER00011_58c904a08eda",
       "sourceIndex": 10,
       "textBytes": 158305,
@@ -225,7 +225,7 @@
     {
       "slug": "326_Rethinking_Generalization_in_Reasoning_SFT_A_Conditional_Ana",
       "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
-      "category": "HDBSCAN Cluster: sft, university, learning, generalization",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00023_6978f9941fd7",
       "sourceIndex": 22,
       "textBytes": 161148,
@@ -235,7 +235,7 @@
     {
       "slug": "327_Green-VLA_Staged_Vision-Language-Action_Model_for_Generalist",
       "title": "Green-VLA: Staged Vision-Language-Action Model for Generalist Robots",
-      "category": "HDBSCAN Cluster: kimi, agentic, green-vla, vision",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00024_348a94e5f835",
       "sourceIndex": 23,
       "textBytes": 86005,
@@ -265,7 +265,7 @@
     {
       "slug": "330_Group_Sequence_Policy_Optimization",
       "title": "Group Sequence Policy Optimization",
-      "category": "HDBSCAN Cluster: optimization, reinforcement, learning, policy",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "key": "FOLDER00027_94918922664a",
       "sourceIndex": 26,
       "textBytes": 23492,
@@ -285,7 +285,7 @@
     {
       "slug": "332_DINOv3",
       "title": "DINOv3",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00029_a3328f5ae17b",
       "sourceIndex": 28,
       "textBytes": 237604,
@@ -335,7 +335,7 @@
     {
       "slug": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
-      "category": "HDBSCAN Cluster: university, systems, language, agentic",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00034_8bc56d204ac7",
       "sourceIndex": 33,
       "textBytes": 94309,
@@ -355,7 +355,7 @@
     {
       "slug": "339_Weak-Driven_Learning_How_Weak_Agents_make_Strong_Agents_Stro",
       "title": "Weak-Driven Learning: How Weak Agents make Strong Agents Stronger",
-      "category": "HDBSCAN Cluster: sft, university, learning, generalization",
+      "category": "HDBSCAN Cluster: university, learning, sft, weak",
       "key": "FOLDER00036_31e22fa1f189",
       "sourceIndex": 35,
       "textBytes": 96730,
@@ -365,7 +365,7 @@
     {
       "slug": "340_Recursive_Multi-Agent_Systems",
       "title": "Recursive Multi-Agent Systems",
-      "category": "HDBSCAN Cluster: university, systems, language, agentic",
+      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
       "key": "FOLDER00037_f33e597ec366",
       "sourceIndex": 36,
       "textBytes": 105642,
@@ -405,7 +405,7 @@
     {
       "slug": "1725_Kimi_K25_Visual_Agentic_Intelligence",
       "title": "Kimi K2.5: Visual Agentic Intelligence",
-      "category": "HDBSCAN Cluster: kimi, agentic, green-vla, vision",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00041_386463f9a862",
       "sourceIndex": 40,
       "textBytes": 116467,
@@ -445,7 +445,7 @@
     {
       "slug": "1729_Agent_Learning_via_Early_Experience",
       "title": "Agent Learning via Early Experience",
-      "category": "HDBSCAN Cluster: sft, university, learning, generalization",
+      "category": "HDBSCAN Cluster: reasoning, learning, zero, experience",
       "key": "FOLDER00045_ba69b71147e7",
       "sourceIndex": 44,
       "textBytes": 118639,
@@ -575,7 +575,7 @@
     {
       "slug": "1741_SkillOpt_Executive_Strategy_for_Self-Evolving_Agent_Skills",
       "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
-      "category": "HDBSCAN Cluster: agent, skills, skillopt, university",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00058_cb6c569830d7",
       "sourceIndex": 57,
       "textBytes": 95497,
@@ -715,7 +715,7 @@
     {
       "slug": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
       "title": "GDPO: Group reward-Decoupled Normalization Policy Optimization for Multi-reward RL Optimization",
-      "category": "HDBSCAN Cluster: optimization, reinforcement, learning, policy",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "key": "FOLDER00072_98f3b1b6fec2",
       "sourceIndex": 71,
       "textBytes": 77232,
@@ -855,7 +855,7 @@
     {
       "slug": "1931_VESPO_Variational_Sequence-Level_Soft_Policy_Optimization_fo",
       "title": "VESPO: Variational Sequence-Level Soft Policy Optimization for Stable Off-Policy LLM Training",
-      "category": "HDBSCAN Cluster: optimization, reinforcement, learning, policy",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "key": "FOLDER00086_1edc3aea10c9",
       "sourceIndex": 85,
       "textBytes": 80404,
@@ -865,7 +865,7 @@
     {
       "slug": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
       "title": "Heterogeneous Scientific Foundation Model Collaboration",
-      "category": "HDBSCAN Cluster: university, systems, language, agentic",
+      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
       "key": "FOLDER00087_4449a0ace106",
       "sourceIndex": 86,
       "textBytes": 184544,
@@ -955,7 +955,7 @@
     {
       "slug": "2022_TermiGen_High-Fidelity_Environment_and_Robust_Trajectory_Syn",
       "title": "TermiGen: High-Fidelity Environment and Robust Trajectory Synthesis for Terminal Agents",
-      "category": "HDBSCAN Cluster: agent, skills, skillopt, university",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00096_4f0822cdffc0",
       "sourceIndex": 95,
       "textBytes": 63945,
@@ -985,7 +985,7 @@
     {
       "slug": "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
       "title": "SmolVLM: Redefining small and efficient multimodal models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, models, efficient, vlms",
       "key": "FOLDER00099_ac2f7b1c354d",
       "sourceIndex": 98,
       "textBytes": 79008,
@@ -1135,7 +1135,7 @@
     {
       "slug": "2166_On_the_Generalization_of_SFT_A_Reinforcement_Learning_Perspe",
       "title": "On the Generalization of SFT: A Reinforcement Learning Perspective with Reward Rectification",
-      "category": "HDBSCAN Cluster: sft, university, learning, generalization",
+      "category": "HDBSCAN Cluster: university, learning, sft, weak",
       "key": "FOLDER00114_9fca02819c25",
       "sourceIndex": 113,
       "textBytes": 77099,
@@ -1155,7 +1155,7 @@
     {
       "slug": "2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data",
       "title": "Absolute Zero: Reinforced Self-play Reasoning with Zero Data",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, learning, zero, experience",
       "key": "FOLDER00116_b33701a84519",
       "sourceIndex": 115,
       "textBytes": 207768,
@@ -1165,7 +1165,7 @@
     {
       "slug": "2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning",
       "title": "Heterogeneous Agent Collaborative Reinforcement Learning",
-      "category": "HDBSCAN Cluster: optimization, reinforcement, learning, policy",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "key": "FOLDER00117_4a6dc9062d5e",
       "sourceIndex": 116,
       "textBytes": 76413,
@@ -1185,7 +1185,7 @@
     {
       "slug": "2214_The_Devil_Behind_Moltbook_Anthropic_Safety_is_Always_Vanishi",
       "title": "The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies",
-      "category": "HDBSCAN Cluster: university, systems, language, agentic",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00119_1571671914a2",
       "sourceIndex": 118,
       "textBytes": 69135,
@@ -1225,7 +1225,7 @@
     {
       "slug": "2257_Can_LLMs_Clean_Up_Your_Mess_A_Survey_of_Application-Ready_Da",
       "title": "Can LLMs Clean Up Your Mess? A Survey of Application-Ready Data Preparation with LLMs",
-      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00123_6e2ebdc352d6",
       "sourceIndex": 122,
       "textBytes": 150253,
@@ -1375,7 +1375,7 @@
     {
       "slug": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
       "title": "QeRL: Beyond Efficiency -- Quantization-enhanced Reinforcement Learning for LLMs",
-      "category": "HDBSCAN Cluster: optimization, reinforcement, learning, policy",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "key": "FOLDER00138_d82ee87bba02",
       "sourceIndex": 137,
       "textBytes": 78498,
@@ -1385,7 +1385,7 @@
     {
       "slug": "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
       "title": "Idea2Story: An Automated Pipeline for Transforming Research Concepts into Complete Scientific Narratives",
-      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
+      "category": "HDBSCAN Cluster: mcp, scientific, research, chen",
       "key": "FOLDER00139_67529da800a5",
       "sourceIndex": 138,
       "textBytes": 50780,
@@ -1415,7 +1415,7 @@
     {
       "slug": "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
       "title": "MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use",
-      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
+      "category": "HDBSCAN Cluster: mcp, scientific, research, chen",
       "key": "FOLDER00142_a4d4189c9274",
       "sourceIndex": 141,
       "textBytes": 86861,
@@ -1585,7 +1585,7 @@
     {
       "slug": "2587_General_Agentic_Memory_Via_Deep_Research",
       "title": "General Agentic Memory Via Deep Research",
-      "category": "HDBSCAN Cluster: university, systems, language, agentic",
+      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
       "key": "FOLDER00159_4c43fdf369ac",
       "sourceIndex": 158,
       "textBytes": 49725,
@@ -1675,7 +1675,7 @@
     {
       "slug": "2680_AgentSPEX_An_Agent_SPecification_and_EXecution_Language",
       "title": "AgentSPEX: An Agent SPecification and EXecution Language",
-      "category": "HDBSCAN Cluster: university, systems, language, agentic",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00168_da0ddd343924",
       "sourceIndex": 167,
       "textBytes": 52129,
@@ -1701,6 +1701,56 @@
       "textBytes": 67357,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2502.11089v2[cs.CL]27Feb2025 ## Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention Jingyang Yuan∗1,2, Huazuo Gao1, Damai Dai1, Junyu Luo2, Liang Zhao1, Zhengyan Zhang1, Zhenda Xie1, Y. X. Wei1, Lean Wang1, Zhiping Xiao3, Yuqing Wang1, Chong Ruan1, Ming Zhang2, Wenfeng Liang1, Wangding Zeng1 1DeepSeek-AI 2Key Laboratory for Multimedia Information Processing, School of Computer Science, Peking University, PKU-Anker LLM Lab 3University of Washington {yuanjy, mzhang_cs}@pku.edu.cn, {zengwangding, wenfeng.liang}@deepseek.com ### Abstract Long-context modeling is crucial for next-generation language models, yet the high computational cost of standard attention mechanisms poses significant computational challenges. Sparse attention offers a promising direction for improving efficiency while maintaining model capabilities. We present NSA, a Natively trainab"
+    },
+    {
+      "slug": "2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs",
+      "title": "AgentFly: Fine-tuning LLM Agents without Fine-tuning LLMs",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "key": "FOLDER00171_120f29e1bc0e",
+      "sourceIndex": 170,
+      "textBytes": 91552,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2508.16153v2[cs.LG]25Aug2025 # Memento: Fine-tuning LLM Agents without Fine-tuning LLMs Huichi Zhou*1,2, Yihang Chen*2, Siyuan Guo3, Xue Yan4, Kin Hei Lee , Zihan Wang , Ka Yiu Lee2, Guchun Zhang2, Kun Shao2, Linyi Yang†2, and Jun Wang†1 1AI Centre, UCL, 2Huawei Noah’s Ark Lab, UK, 3Jilin University, 4Institute of Automation, CAS ### Abstract In this paper, we introduce a novel learning paradigm for Adaptive Large Language Model (LLM) agents that eliminates the need for fine-tuning the underlying LLMs. Existing approaches are often either rigid, relying on static, handcrafted reflection workflows, or computationally intensive, requiring gradient updates of LLM model parameters. In contrast, our method enables low-cost continual adaptation via memory-based online reinforcement learning. We formalise this as a Memory-augmented Markov Decision Process (M-MDP), equipped with a neura"
+    },
+    {
+      "slug": "2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef",
+      "title": "SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics",
+      "category": "HDBSCAN Cluster: figure, models, efficient, vlms",
+      "key": "FOLDER00172_04aa1b625ee3",
+      "sourceIndex": 171,
+      "textBytes": 99390,
+      "figuresExtracted": 4,
+      "excerpt": "# SmolVLA: A vision-language-action model for affordable and efficient robotics #### Mustafa Shukor∗ Dana Aubakirova∗ Francesco Capuano∗ Pepijn Kooijmans Steven Palma Adil Zouitine Michel Aractingi Caroline Pascal Martino Russi Andres Marafioti Simon Alibert Matthieu Cord v Thomas Wolf Remi Cadene∗ [Figure 1] [Figure 2] [Figure 3] Hugging Face, Sorbonne University, v valeo.ai, École Normale Supérieure Paris-Saclay ∗ Core team [Figure 4] [Figure 5] [Figure 6] ## Abstract arXiv:2506.01844v1[cs.LG]2Jun2025 Vision-language models (VLMs) pretrained on large-scale multimodal datasets encode rich visual and linguistic knowledge, making them a strong foundation for robotics. Rather than training robotic policies from scratch, recent approaches adapt VLMs into vision-language-action (VLA) models that enable natural language-driven perception and control. However, existing VLAs are typically massi"
+    },
+    {
+      "slug": "2725_Smarter_Better_Faster_Longer_A_Modern_Bidirectional_Encoder",
+      "title": "Smarter, Better, Faster, Longer: A Modern Bidirectional Encoder for Fast, Memory Efficient, and Long Context Finetuning and Inference",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00173_279fd53e50f0",
+      "sourceIndex": 172,
+      "textBytes": 85003,
+      "figuresExtracted": 0,
+      "excerpt": "# arXiv:2412.13663v2[cs.CL]19Dec2024 ## Smarter, Better, Faster, Longer: A Modern Bidirectional Encoder for Fast, Memory Efficient, and Long Context Finetuning and Inference ### Benjamin Warner1† Antoine Chaffin2† Benjamin Clavié1† Orion Weller3 Oskar Hallström2 Said Taghadouini2 Alexis Gallagher1 Raja Biswas1 Faisal Ladhak4* Tom Aarsen5 Nathan Cooper1 Griffin Adams1 Jeremy Howard1 Iacopo Poli2 1Answer.AI 2LightOn 3Johns Hopkins University 4NVIDIA 5HuggingFace †: core authors, *: work done while at Answer.AI Correspondence: {bw,bc}@answer.ai, antoine.chaffin@lighton.ai ### Abstract Encoder-only transformer models such as BERT offer a great performance-size tradeoff for retrieval and classification tasks with respect to larger decoder-only models. Despite being the workhorse of numerous production pipelines, there have been limited Pareto improvements to BERT since its release. In this pa"
+    },
+    {
+      "slug": "2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and",
+      "title": "Achieving Gold-Medal-Level Olympiad Reasoning via Simple and Unified Scaling",
+      "category": "HDBSCAN Cluster: university, li1, scientific, olympiad",
+      "key": "FOLDER00174_8520d8eec041",
+      "sourceIndex": 173,
+      "textBytes": 216001,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.13301v1[cs.AI]13May2026 ## Achieving Gold-Medal-Level Olympiad Reasoning via Simple and Unified Scaling Yafu Li1,2∗ , Runzhe Zhan1∗, Haoran Zhang1,4∗, Shunkai Zhang1,5∗, Yizhuo Li1∗, Zhilin Wang1, Jiacheng Chen2, Futing Wang1, Xuyang Hu1, Yuchen Fan1, Bangjie Xu3, Yucheng Su3, Xinmiao Han3, Chenxi Li1, Haodi Lei1, Yufeng Zhao1, Zejin Lin3, Qianjia Cheng1, Tong Zhu1, Xiaoye Qu1, Ganqu Cui1, Peng Ye1 , Yun Luo1 , Zhouchen Lin5, Yu Qiao1, Bowen Zhou1,3 , Ning Ding3,1 , Yu Cheng2,1 1Shanghai AI Laboratory 2The Chinese University of Hong Kong 3Tsinghua University 4Shanghai Jiao Tong University 5Peking University ABSTRACT Recent progress in reasoning models has substantially advanced long-horizon mathematical and scientific problem solving, with several systems now reaching gold-medal-level performance on International Mathematical Olympiad (IMO) and International Physics Olympiad"
+    },
+    {
+      "slug": "2727_Agentic_Reinforced_Policy_Optimization",
+      "title": "Agentic Reinforced Policy Optimization",
+      "category": "HDBSCAN Cluster: reasoning, learning, zero, experience",
+      "key": "FOLDER00175_c0bcab0b24ac",
+      "sourceIndex": 174,
+      "textBytes": 131626,
+      "figuresExtracted": 5,
+      "excerpt": "## AGENTIC REINFORCED POLICY OPTIMIZATION Guanting Dong1∗, Hangyu Mao2, Kai Ma2, Licheng Bao2∗, Yifei Chen1, Zhongyuan Wang2∗ Zhongxia Chen2, Jiazhen Du2, Huiyang Wang2∗, Fuzheng Zhang2, Guorui Zhou2† Yutao Zhu1, Ji-Rong Wen1, Zhicheng Dou1† 1Renmin University of China, 2Kuaishou Technology {dongguanting, dou}@ruc.edu.cn GitHub: https://github.com/dongguanting/ARPO ABSTRACT # arXiv:2507.19849v1[cs.LG]26Jul2025 Large-scale reinforcement learning with verifiable rewards (RLVR) has demonstrated its effectiveness in harnessing the potential of large language models (LLMs) for single-turn reasoning tasks. In realistic reasoning scenarios, LLMs can often utilize external tools to assist in task-solving processes. However, current RL algorithms inadequately balance the models’ intrinsic long-horizon reasoning capabilities and their proficiency in multi-turn tool interactions. To bridge this gap"
     }
   ]
 }

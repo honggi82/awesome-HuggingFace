@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-05T06:04:14.264355+00:00",
+  "generated": "2026-07-05T06:31:15.859546+00:00",
   "mode": "extract-only",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "awesomeRepo": "E:\\조선대\\연구\\awesome-HuggingFace",
   "extractReport": "data/paper_curation/extract_only_report.json",
   "docsDir": "docs/paper_curation/extract_only",
   "paperDir": "paper/extract_only",
-  "recordCount": 170,
+  "recordCount": 175,
   "syncedPaperSlugs": [
     "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
     "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
@@ -177,13 +177,18 @@
     "2679_Qwen3-VL_Technical_Report",
     "2680_AgentSPEX_An_Agent_SPecification_and_EXecution_Language",
     "2681_Embodied-R15_Evolving_Physical_Intelligence_via_Embodied_Fou",
-    "2682_Native_Sparse_Attention_Hardware-Aligned_and_Natively_Traina"
+    "2682_Native_Sparse_Attention_Hardware-Aligned_and_Natively_Traina",
+    "2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs",
+    "2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef",
+    "2725_Smarter_Better_Faster_Longer_A_Modern_Bidirectional_Encoder",
+    "2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and",
+    "2727_Agentic_Reinforced_Policy_Optimization"
   ],
   "copied": [
     {
       "source": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\_folder_source_extract_report.json",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\data\\paper_curation\\extract_only_report.json",
-      "bytes": 103466
+      "bytes": 106538
     },
     {
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective\\text.md",
@@ -9514,6 +9519,246 @@
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2682_Native_Sparse_Attention_Hardware-Aligned_and_Natively_Traina\\figures\\fig5.png",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2682_Native_Sparse_Attention_Hardware-Aligned_and_Natively_Traina\\figures\\fig5.png",
       "bytes": 60498
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\text.md",
+      "bytes": 91552
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig1.png",
+      "bytes": 409926
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig2.png",
+      "bytes": 104714
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig3.png",
+      "bytes": 263839
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig4.png",
+      "bytes": 88517
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig5.png",
+      "bytes": 74285
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\text.md",
+      "bytes": 91552
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig1.png",
+      "bytes": 409926
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig2.png",
+      "bytes": 104714
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig3.png",
+      "bytes": 263839
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig4.png",
+      "bytes": 88517
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs\\figures\\fig5.png",
+      "bytes": 74285
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\text.md",
+      "bytes": 99390
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig1.png",
+      "bytes": 651831
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig2.png",
+      "bytes": 147171
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig3.png",
+      "bytes": 197255
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig4.png",
+      "bytes": 995009
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\text.md",
+      "bytes": 99390
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig1.png",
+      "bytes": 651831
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig2.png",
+      "bytes": 147171
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig3.png",
+      "bytes": 197255
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef\\figures\\fig4.png",
+      "bytes": 995009
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2725_Smarter_Better_Faster_Longer_A_Modern_Bidirectional_Encoder\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2725_Smarter_Better_Faster_Longer_A_Modern_Bidirectional_Encoder\\text.md",
+      "bytes": 85003
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2725_Smarter_Better_Faster_Longer_A_Modern_Bidirectional_Encoder\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2725_Smarter_Better_Faster_Longer_A_Modern_Bidirectional_Encoder\\text.md",
+      "bytes": 85003
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\text.md",
+      "bytes": 216001
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig1.png",
+      "bytes": 104858
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig2.png",
+      "bytes": 179444
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig3.png",
+      "bytes": 43423
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig4.png",
+      "bytes": 78204
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig5.png",
+      "bytes": 83870
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\text.md",
+      "bytes": 216001
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig1.png",
+      "bytes": 104858
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig2.png",
+      "bytes": 179444
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig3.png",
+      "bytes": 43423
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig4.png",
+      "bytes": 78204
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and\\figures\\fig5.png",
+      "bytes": 83870
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\text.md",
+      "bytes": 131626
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig1.png",
+      "bytes": 189300
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig2.png",
+      "bytes": 786262
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig3.png",
+      "bytes": 77018
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig4.png",
+      "bytes": 99613
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig5.png",
+      "bytes": 70167
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\text.md",
+      "bytes": 131626
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig1.png",
+      "bytes": 189300
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig2.png",
+      "bytes": 786262
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig3.png",
+      "bytes": 77018
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig4.png",
+      "bytes": 99613
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\2727_Agentic_Reinforced_Policy_Optimization\\figures\\fig5.png",
+      "bytes": 70167
     }
   ],
   "missing": [],

@@ -5,7 +5,7 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 51
+      "count": 59
     },
     {
       "id": "hdbscan-cluster-figure-agent-university-tokens",
@@ -13,8 +13,8 @@
       "count": 7
     },
     {
-      "id": "hdbscan-cluster-university-systems-language-agentic",
-      "name": "HDBSCAN Cluster: university, systems, language, agentic",
+      "id": "hdbscan-cluster-optimization-learning-reinforcement-policy",
+      "name": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "count": 6
     },
     {
@@ -26,16 +26,6 @@
       "id": "hdbscan-cluster-university-code-https-figure",
       "name": "HDBSCAN Cluster: university, code, https, figure",
       "count": 5
-    },
-    {
-      "id": "hdbscan-cluster-optimization-reinforcement-learning-policy",
-      "name": "HDBSCAN Cluster: optimization, reinforcement, learning, policy",
-      "count": 5
-    },
-    {
-      "id": "hdbscan-cluster-sft-university-learning-generalization",
-      "name": "HDBSCAN Cluster: sft, university, learning, generalization",
-      "count": 4
     },
     {
       "id": "hdbscan-cluster-transformer-transformers-attention-normalization",
@@ -78,18 +68,23 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-language-model-small-mutarjim",
-      "name": "HDBSCAN Cluster: language, model, small, mutarjim",
-      "count": 3
-    },
-    {
       "id": "hdbscan-cluster-chen1-university-wang1-arxiv",
       "name": "HDBSCAN Cluster: chen1, university, wang1, arxiv",
       "count": 3
     },
     {
+      "id": "hdbscan-cluster-memory-recursive-systems-university",
+      "name": "HDBSCAN Cluster: memory, recursive, systems, university",
+      "count": 3
+    },
+    {
       "id": "hdbscan-cluster-reinforcement-language-learning-rewards",
       "name": "HDBSCAN Cluster: reinforcement, language, learning, rewards",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-reasoning-learning-zero-experience",
+      "name": "HDBSCAN Cluster: reasoning, learning, zero, experience",
       "count": 3
     },
     {
@@ -113,13 +108,13 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-llms-mcp-data-zhou",
-      "name": "HDBSCAN Cluster: llms, mcp, data, zhou",
-      "count": 3
-    },
-    {
       "id": "hdbscan-cluster-data-textual-law-frequency",
       "name": "HDBSCAN Cluster: data, textual, law, frequency",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-university-li1-scientific-olympiad",
+      "name": "HDBSCAN Cluster: university, li1, scientific, olympiad",
       "count": 2
     },
     {
@@ -128,13 +123,13 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-kimi-agentic-green-vla-vision",
-      "name": "HDBSCAN Cluster: kimi, agentic, green-vla, vision",
+      "id": "hdbscan-cluster-zhang1-wang1-li1-wu1",
+      "name": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-zhang1-wang1-li1-wu1",
-      "name": "HDBSCAN Cluster: zhang1, wang1, li1, wu1",
+      "id": "hdbscan-cluster-university-learning-sft-weak",
+      "name": "HDBSCAN Cluster: university, learning, sft, weak",
       "count": 2
     },
     {
@@ -148,8 +143,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-agent-skills-skillopt-university",
-      "name": "HDBSCAN Cluster: agent, skills, skillopt, university",
+      "id": "hdbscan-cluster-language-model-small-mutarjim",
+      "name": "HDBSCAN Cluster: language, model, small, mutarjim",
       "count": 2
     },
     {
@@ -193,8 +188,18 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-figure-models-efficient-vlms",
+      "name": "HDBSCAN Cluster: figure, models, efficient, vlms",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-generation-long-video-real-time",
       "name": "HDBSCAN Cluster: generation, long, video, real-time",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-mcp-scientific-research-chen",
+      "name": "HDBSCAN Cluster: mcp, scientific, research, chen",
       "count": 2
     },
     {

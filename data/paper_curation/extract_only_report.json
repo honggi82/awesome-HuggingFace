@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-05T06:03:57.030292+00:00",
+  "generated": "2026-07-05T06:30:57.766845+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 165,
+  "sourceOffset": 170,
   "sourceLimit": 5,
-  "sourceEnd": 170,
+  "sourceEnd": 175,
   "batchTotal": 5,
-  "total": 170,
-  "ok": 170,
-  "textExtracted": 170,
-  "figureFiles": 763,
+  "total": 175,
+  "ok": 175,
+  "textExtracted": 175,
+  "figureFiles": 782,
   "sanityFailed": 0,
   "records": [
     {
@@ -2259,6 +2259,71 @@
       "textBytes": 67357,
       "sanityOk": true,
       "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "AgentFly: Fine-tuning LLM Agents without Fine-tuning LLMs",
+      "key": "FOLDER00171_120f29e1bc0e",
+      "sourceIndex": 170,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00171_AgentFly Fine-tuning LLM Agents without Fine-tuning LLMs.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs",
+      "textBytes": 91552,
+      "sanityOk": true,
+      "sanityReason": "ok (title 5/6 doi=T author=True)"
+    },
+    {
+      "title": "SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics",
+      "key": "FOLDER00172_04aa1b625ee3",
+      "sourceIndex": 171,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00172_SmolVLA A Vision-Language-Action Model for Affordable and Efficient Robotics.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 4,
+      "slug": "2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef",
+      "textBytes": 99390,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Smarter, Better, Faster, Longer: A Modern Bidirectional Encoder for Fast, Memory Efficient, and Long Context Finetuning and Inference",
+      "key": "FOLDER00173_279fd53e50f0",
+      "sourceIndex": 172,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00173_Smarter, Better, Faster, Longer A Modern Bidirectional Encoder for Fast, Memory Efficient,.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 0,
+      "slug": "2725_Smarter_Better_Faster_Longer_A_Modern_Bidirectional_Encoder",
+      "textBytes": 85003,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Achieving Gold-Medal-Level Olympiad Reasoning via Simple and Unified Scaling",
+      "key": "FOLDER00174_8520d8eec041",
+      "sourceIndex": 173,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00174_Achieving Gold-Medal-Level Olympiad Reasoning via Simple and Unified Scaling.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2726_Achieving_Gold-Medal-Level_Olympiad_Reasoning_via_Simple_and",
+      "textBytes": 216001,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Agentic Reinforced Policy Optimization",
+      "key": "FOLDER00175_c0bcab0b24ac",
+      "sourceIndex": 174,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00175_Agentic Reinforced Policy Optimization.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2727_Agentic_Reinforced_Policy_Optimization",
+      "textBytes": 131626,
+      "sanityOk": true,
+      "sanityReason": "ok (title 4/4 doi=T author=True)"
     }
   ]
 }
