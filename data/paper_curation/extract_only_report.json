@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-05T08:47:22.437973+00:00",
+  "generated": "2026-07-05T09:12:06.545610+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 195,
+  "sourceOffset": 200,
   "sourceLimit": 5,
-  "sourceEnd": 200,
+  "sourceEnd": 205,
   "batchTotal": 5,
-  "total": 200,
-  "ok": 200,
-  "textExtracted": 200,
-  "figureFiles": 902,
+  "total": 205,
+  "ok": 205,
+  "textExtracted": 205,
+  "figureFiles": 924,
   "sanityFailed": 0,
   "records": [
     {
@@ -2651,6 +2651,71 @@
       "textBytes": 61582,
       "sanityOk": true,
       "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Textbooks Are All You Need",
+      "key": "FOLDER00201_26ed92aa939c",
+      "sourceIndex": 200,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00201_Textbooks Are All You Need.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 2,
+      "slug": "2991_Textbooks_Are_All_You_Need",
+      "textBytes": 77693,
+      "sanityOk": true,
+      "sanityReason": "ok (title 2/2 doi=T author=True)"
+    },
+    {
+      "title": "Urban Socio-Semantic Segmentation with Vision-Language Reasoning",
+      "key": "FOLDER00202_f2bc1d466fa9",
+      "sourceIndex": 201,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00202_Urban Socio-Semantic Segmentation with Vision-Language Reasoning.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2992_Urban_Socio-Semantic_Segmentation_with_Vision-Language_Reaso",
+      "textBytes": 96956,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "RWKV-7 \"Goose\" with Expressive Dynamic State Evolution",
+      "key": "FOLDER00203_f9ec4b6aa7fc",
+      "sourceIndex": 202,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00203_RWKV-7 Goose with Expressive Dynamic State Evolution.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2993_RWKV-7_Goose_with_Expressive_Dynamic_State_Evolution",
+      "textBytes": 168162,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Can 1B LLM Surpass 405B LLM? Rethinking Compute-Optimal Test-Time Scaling",
+      "key": "FOLDER00204_1a7c96a7f165",
+      "sourceIndex": 203,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00204_Can 1B LLM Surpass 405B LLM Rethinking Compute-Optimal Test-Time Scaling.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2994_Can_1B_LLM_Surpass_405B_LLM_Rethinking_Compute-Optimal_Test-",
+      "textBytes": 109134,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Qwen2.5-Coder Technical Report",
+      "key": "FOLDER00205_020d0c5469cf",
+      "sourceIndex": 204,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00205_Qwen2.5-Coder Technical Report.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2995_Qwen25-Coder_Technical_Report",
+      "textBytes": 94975,
+      "sanityOk": true,
+      "sanityReason": "ok (title 4/4 doi=T author=True)"
     }
   ]
 }

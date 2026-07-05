@@ -165,7 +165,7 @@
     {
       "slug": "320_MolmoAct2_Action_Reasoning_Models_for_Real-world_Deployment",
       "title": "MolmoAct2: Action Reasoning Models for Real-world Deployment",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, molmoact2, rwkv-7, state",
       "key": "FOLDER00017_cfd9a664c2c0",
       "sourceIndex": 16,
       "textBytes": 184062,
@@ -205,7 +205,7 @@
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
-      "category": "HDBSCAN Cluster: figure, university, efficient, language",
+      "category": "HDBSCAN Cluster: models, figure, university, efficient",
       "key": "FOLDER00021_8502bdaf4994",
       "sourceIndex": 20,
       "textBytes": 218340,
@@ -305,7 +305,7 @@
     {
       "slug": "334_MiniMax-01_Scaling_Foundation_Models_with_Lightning_Attentio",
       "title": "MiniMax-01: Scaling Foundation Models with Lightning Attention",
-      "category": "HDBSCAN Cluster: attention, lightning, scaling, model",
+      "category": "HDBSCAN Cluster: lightning, attention, scaling, model",
       "key": "FOLDER00031_fa942766dee6",
       "sourceIndex": 30,
       "textBytes": 287301,
@@ -375,7 +375,7 @@
     {
       "slug": "341_MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightn",
       "title": "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention",
-      "category": "HDBSCAN Cluster: attention, lightning, scaling, model",
+      "category": "HDBSCAN Cluster: lightning, attention, scaling, model",
       "key": "FOLDER00038_c5daea06a99b",
       "sourceIndex": 37,
       "textBytes": 75471,
@@ -485,7 +485,7 @@
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
       "title": "DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models",
-      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
+      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
       "key": "FOLDER00049_07cf0d16c82c",
       "sourceIndex": 48,
       "textBytes": 68593,
@@ -545,7 +545,7 @@
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "title": "GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, youtu-llm, multimodal",
+      "category": "HDBSCAN Cluster: glm-4, multimodal, reasoning, seed1",
       "key": "FOLDER00055_9405fc3ded78",
       "sourceIndex": 54,
       "textBytes": 145376,
@@ -625,7 +625,7 @@
     {
       "slug": "1746_Crafter_A_Multi-Agent_Harness_for_Editable_Scientific_Figure",
       "title": "Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
       "key": "FOLDER00063_0936ba6d5400",
       "sourceIndex": 62,
       "textBytes": 80050,
@@ -725,7 +725,7 @@
     {
       "slug": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
       "title": "PaperBanana: Automating Academic Illustration for AI Scientists",
-      "category": "HDBSCAN Cluster: generation, video, models, image",
+      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
       "key": "FOLDER00073_6aee964fcc91",
       "sourceIndex": 72,
       "textBytes": 126607,
@@ -875,7 +875,7 @@
     {
       "slug": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
       "title": "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models",
-      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
+      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
       "key": "FOLDER00088_ec7f05bf1eae",
       "sourceIndex": 87,
       "textBytes": 87726,
@@ -895,7 +895,7 @@
     {
       "slug": "1935_Watching_Reasoning_and_Searching_A_Video_Deep_Research_Bench",
       "title": "Watching, Reasoning, and Searching: A Video Deep Research Benchmark on Open Web for Agentic Video Reasoning",
-      "category": "HDBSCAN Cluster: university, code, https, figure",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00090_32240190a210",
       "sourceIndex": 89,
       "textBytes": 57994,
@@ -1065,7 +1065,7 @@
     {
       "slug": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
       "title": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling",
-      "category": "HDBSCAN Cluster: figure, university, efficient, language",
+      "category": "HDBSCAN Cluster: models, figure, university, efficient",
       "key": "FOLDER00107_4c4b048fabae",
       "sourceIndex": 106,
       "textBytes": 57470,
@@ -1255,7 +1255,7 @@
     {
       "slug": "2306_Attention_Residuals",
       "title": "Attention Residuals",
-      "category": "HDBSCAN Cluster: attention, lightning, scaling, model",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00126_5cfd8b110a07",
       "sourceIndex": 125,
       "textBytes": 76619,
@@ -1275,7 +1275,7 @@
     {
       "slug": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
       "title": "LlamaFactory: Unified Efficient Fine-Tuning of 100+ Language Models",
-      "category": "HDBSCAN Cluster: figure, university, efficient, language",
+      "category": "HDBSCAN Cluster: models, figure, university, efficient",
       "key": "FOLDER00128_088ef61f71e2",
       "sourceIndex": 127,
       "textBytes": 58891,
@@ -1875,7 +1875,7 @@
     {
       "slug": "2861_Seed15-VL_Technical_Report",
       "title": "Seed1.5-VL Technical Report",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, youtu-llm, multimodal",
+      "category": "HDBSCAN Cluster: glm-4, multimodal, reasoning, seed1",
       "key": "FOLDER00188_b88bb2ab4c68",
       "sourceIndex": 187,
       "textBytes": 226376,
@@ -1935,7 +1935,7 @@
     {
       "slug": "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
       "title": "Vision-DeepResearch: Incentivizing DeepResearch Capability in Multimodal Large Language Models",
-      "category": "HDBSCAN Cluster: figure, university, efficient, language",
+      "category": "HDBSCAN Cluster: models, figure, university, efficient",
       "key": "FOLDER00194_40095c356e5a",
       "sourceIndex": 193,
       "textBytes": 51791,
@@ -1965,7 +1965,7 @@
     {
       "slug": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
       "title": "Youtu-LLM: Unlocking the Native Agentic Potential for Lightweight Large Language Models",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, youtu-llm, multimodal",
+      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
       "key": "FOLDER00197_0a34f5facf01",
       "sourceIndex": 196,
       "textBytes": 176835,
@@ -2001,6 +2001,56 @@
       "textBytes": 61582,
       "figuresExtracted": 4,
       "excerpt": "## ShotStream: Streaming Multi-Shot Video Generation for Interactive Storytelling # arXiv:2603.25746v1[cs.CV]26Mar2026 Yawen Luo1,† Xiaoyu Shi2, Junhao Zhuang1 Yutian Chen1 Quande Liu2 Xintao Wang2 Pengfei Wan2 Tianfan Xue1,3, 1MMLab, CUHK 2Kuaishou Technology 3CPII under InnoHK Corresponding author {luoyw0207@gmail.com, xiaoyushi@link.cuhk.edu.hk, tfxue@ie.cuhk.edu.hk} https://luo0207.github.io/ShotStream/ [Figure 1] [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] [Figure 7] [Figure 8] [Figure 9] [Figure 10] [Figure 11] [Figure 12] [Figure 13] [Figure 14] [Figure 15] [Figure 16] [Figure 17] [Figure 18] [Figure 19] [Figure 20] [Figure 21] [Figure 22] [Figure 23] [Figure 24] [Figure 25] [Figure 26] [Figure 27] [Figure 28] [Figure 29] [Figure 30] [Figure 31] [Figure 32] [Figure 33] [Figure 34] [Figure 35] [Figure 36] [Figure 37] [Figure 38] [Figure 39] [Figure 40] [Figure 41] [Figur"
+    },
+    {
+      "slug": "2991_Textbooks_Are_All_You_Need",
+      "title": "Textbooks Are All You Need",
+      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "key": "FOLDER00201_26ed92aa939c",
+      "sourceIndex": 200,
+      "textBytes": 77693,
+      "figuresExtracted": 2,
+      "excerpt": "# arXiv:2306.11644v2[cs.CL]2Oct2023 ## Textbooks Are All You Need Suriya Gunasekar Yi Zhang Jyoti Aneja Caio Ce´sar Teodoro Mendes Allie Del Giorno Sivakanth Gopi Mojan Javaheripi Piero Kauffmann Gustavo de Rosa Olli Saarikivi Adil Salim Shital Shah Harkirat Singh Behl Xin Wang S´ebastien Bubeck Ronen Eldan Adam Tauman Kalai Yin Tat Lee Yuanzhi Li Microsoft Research Abstract We introduce phi-1, a new large language model for code, with significantly smaller size than competing models: phi-1 is a Transformer-based model with 1.3B parameters, trained for 4 days on 8 A100s, using a selection of “textbook quality” data from the web (6B tokens) and synthetically generated textbooks and exercises with GPT-3.5 (1B tokens). Despite this small scale, phi-1 attains pass@1 accuracy 50.6% on HumanEval and 55.5% on MBPP. It also displays surprising emergent properties compared to phi-1-base, our mode"
+    },
+    {
+      "slug": "2992_Urban_Socio-Semantic_Segmentation_with_Vision-Language_Reaso",
+      "title": "Urban Socio-Semantic Segmentation with Vision-Language Reasoning",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00202_f2bc1d466fa9",
+      "sourceIndex": 201,
+      "textBytes": 96956,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2601.10477v2[cs.CV]17Mar2026 ## URBAN SOCIO-SEMANTIC SEGMENTATION WITH VISION-LANGUAGE REASONING Yu Wang1,2∗, Yi Wang2, Rui Dai2†, Yujie Wang1, Kaikui Liu2, Xiangxiang Chu2, Yansheng Li1‡ 1Wuhan University 2Amap, Alibaba Group ABSTRACT As hubs of human activity, urban surfaces consist of a wealth of semantic entities. Segmenting these various entities from satellite imagery is crucial for a range of downstream applications. Current advanced segmentation models can reliably segment entities defined by physical attributes (e.g., buildings, water bodies) but still struggle with socially defined categories (e.g., schools, parks). In this work, we achieve socio-semantic segmentation by vision-language model reasoning. To facilitate this, we introduce the Urban Socio-Semantic Segmentation dataset named SocioSeg, a new resource comprising satellite imagery, digital maps, and pixel-level"
+    },
+    {
+      "slug": "2993_RWKV-7_Goose_with_Expressive_Dynamic_State_Evolution",
+      "title": "RWKV-7 \"Goose\" with Expressive Dynamic State Evolution",
+      "category": "HDBSCAN Cluster: university, molmoact2, rwkv-7, state",
+      "key": "FOLDER00203_f9ec4b6aa7fc",
+      "sourceIndex": 202,
+      "textBytes": 168162,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2503.14456v2[cs.CL]30Mar2025 #### RWKV-7 \"Goose\" with Expressive Dynamic State Evolution Bo Peng1,2,∗, Ruichong Zhang3,*, Daniel Goldstein2,4,*, Eric Alcaide2,5, Xingjian Du6, Haowen Hou7, Jiaju Lin8, Jiaxing Liu9, Janna Lu4,10, William Merrill11, Guangyu Song2,12, Kaifeng Tan13, Saiteja Utpala2, Nathan Wilce2,4, Johan S. Wind14, Tianyi Wu15, Daniel Wuttke2,16, and Christian Zhou-Zheng2 1RWKV Project (under Linux Foundation AI & Data), 2EleutherAI, 3Tsinghua University, 4Recursal AI, 5Dalle Molle Institute for Artificial Intelligence USI-SUPSI, 6University of Rochester, 7Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ), 8Pennsylvania State University, 9Zhejiang University, 10George Mason University, 11New York University, 12Tano Labs, 13Shenzhen University, 14University of Oslo, 15Beijing Normal University, 16Denigma ###### Abstract We present RWKV-7 \"Goo"
+    },
+    {
+      "slug": "2994_Can_1B_LLM_Surpass_405B_LLM_Rethinking_Compute-Optimal_Test-",
+      "title": "Can 1B LLM Surpass 405B LLM? Rethinking Compute-Optimal Test-Time Scaling",
+      "category": "HDBSCAN Cluster: models, figure, university, efficient",
+      "key": "FOLDER00204_1a7c96a7f165",
+      "sourceIndex": 203,
+      "textBytes": 109134,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2502.06703v1[cs.CL]10Feb2025 2025-2-11 # Can 1B LLM Surpass 405B LLM? Rethinking Compute-Optimal Test-Time Scaling ###### Runze Liu1,2,*, Junqi Gao1,3, Jian Zhao4, Kaiyan Zhang2, Xiu Li2, Biqing Qi1,†, Wanli Ouyang1 and Bowen Zhou1,2,† 1Shanghai AI Laboratory, 2Tsinghua University, 3Harbin Institute of Technology, 4BUPT Test-Time Scaling (TTS) is an important method for improving the performance of Large Language Models (LLMs) by using additional computation during the inference phase. However, current studies do not systematically analyze how policy models, Process Reward Models (PRMs), and problem difficulty influence TTS. This lack of analysis limits the understanding and practical use of TTS methods. In this paper, we focus on two core questions: (1) What is the optimal approach to scale test-time computation across different policy models, PRMs, and problem difficulty level"
+    },
+    {
+      "slug": "2995_Qwen25-Coder_Technical_Report",
+      "title": "Qwen2.5-Coder Technical Report",
+      "category": "HDBSCAN Cluster: models, figure, university, efficient",
+      "key": "FOLDER00205_020d0c5469cf",
+      "sourceIndex": 204,
+      "textBytes": 94975,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2409.12186v3[cs.CL]12Nov2024 ## Qwen2.5-Coder Technical Report Binyuan Hui* Jian Yang* Zeyu Cui* Jiaxi Yang* Dayiheng Liu Lei Zhang Tianyu Liu Jiajun Zhang Bowen Yu Keming Lu Kai Dang Yang Fan Yichang Zhang An Yang Rui Men Fei Huang Bo Zheng Yibo Miao Shanghaoran Quan Yunlong Feng Xingzhang Ren Xuancheng Ren Jingren Zhou Junyang Lin† Qwen Team Alibaba Group https://hf.co/Qwen/Qwen2.5-Coder-32B-Instruct https://github.com/QwenLM/Qwen2.5-Coder ### Abstract In this report, we introduce the Qwen2.5-Coder series, a significant upgrade from its predecessor, CodeQwen1.5. This series includes six models: Qwen2.5-Coder-(0.5B/1.5B/3B/7B/14B/32B). As a code-specific model, Qwen2.5-Coder is built upon the Qwen2.5 architecture and continues pretrained on a vast corpus of over 5.5 trillion tokens. Through meticulous data cleaning, scalable synthetic data generation, and balanced data mixing, Q"
     }
   ]
 }
