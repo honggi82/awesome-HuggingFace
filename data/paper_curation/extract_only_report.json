@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-05T07:26:39.087031+00:00",
+  "generated": "2026-07-05T07:50:54.519648+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 180,
+  "sourceOffset": 185,
   "sourceLimit": 5,
-  "sourceEnd": 185,
+  "sourceEnd": 190,
   "batchTotal": 5,
-  "total": 185,
-  "ok": 185,
-  "textExtracted": 185,
-  "figureFiles": 831,
+  "total": 190,
+  "ok": 190,
+  "textExtracted": 190,
+  "figureFiles": 856,
   "sanityFailed": 0,
   "records": [
     {
@@ -2454,6 +2454,73 @@
       "textBytes": 90580,
       "sanityOk": true,
       "sanityReason": "ok (title 4/4 doi=T author=True)"
+    },
+    {
+      "title": "UI-Venus-1.5 Technical Report",
+      "key": "FOLDER00186_5f5800014002",
+      "sourceIndex": 185,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00186_UI-Venus-1.5 Technical Report.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2859_UI-Venus-15_Technical_Report",
+      "textBytes": 112011,
+      "sanityOk": true,
+      "sanityReason": "ok (title 3/3 doi=T author=True)"
+    },
+    {
+      "title": "Mixtral of Experts",
+      "key": "FOLDER00187_2f90f46334c9",
+      "sourceIndex": 186,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00187_Mixtral of Experts.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2860_Mixtral_of_Experts",
+      "textBytes": 33372,
+      "sanityOk": true,
+      "sanityReason": "ok (title 2/2 doi=T author=True)"
+    },
+    {
+      "title": "Seed1.5-VL Technical Report",
+      "key": "FOLDER00188_b88bb2ab4c68",
+      "sourceIndex": 187,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00188_Seed1.5-VL Technical Report.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2861_Seed15-VL_Technical_Report",
+      "textBytes": 226376,
+      "sanityOk": true,
+      "sanityReason": "ok (title 3/3 doi=T author=True)"
+    },
+    {
+      "title": "Out of Sight but Not Out of Mind: Hybrid Memory for Dynamic Video World Models",
+      "key": "FOLDER00189_effbe6a1f48b",
+      "sourceIndex": 188,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00189_Out of Sight but Not Out of Mind Hybrid Memory for Dynamic Video World Models.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
+      "textBytes": 58447,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+      "key": "FOLDER00190_a2f5cd6f706c",
+      "sourceIndex": 189,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00190_Mamba Linear-Time Sequence Modeling with Selective State Spaces.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "764_Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spa",
+      "textSkippedExisting": true,
+      "textBytes": 139193,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)",
+      "figuresSkippedExisting": true
     }
   ]
 }

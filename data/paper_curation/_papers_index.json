@@ -5,7 +5,7 @@
     {
       "slug": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
       "title": "Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing",
-      "category": "HDBSCAN Cluster: transformer, language, transformers, attention",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00001_af26518a47dc",
       "sourceIndex": null,
       "textBytes": 44954,
@@ -45,7 +45,7 @@
     {
       "slug": "027_Less_is_More_Recursive_Reasoning_with_Tiny_Networks",
       "title": "Less is More: Recursive Reasoning with Tiny Networks",
-      "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00005_2c9133cfdb16",
       "sourceIndex": null,
       "textBytes": 48364,
@@ -115,7 +115,7 @@
     {
       "slug": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
       "title": "Gamma-World: Generative Multi-Agent World Modeling Beyond Two Players",
-      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
+      "category": "HDBSCAN Cluster: figure, agent, university, arxiv",
       "key": "FOLDER00012_8f53e8798157",
       "sourceIndex": 11,
       "textBytes": 63526,
@@ -255,7 +255,7 @@
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
-      "category": "HDBSCAN Cluster: transformer, language, transformers, attention",
+      "category": "HDBSCAN Cluster: models, such, hrm-text, pretraining",
       "key": "FOLDER00026_e94287efc152",
       "sourceIndex": 25,
       "textBytes": 79369,
@@ -305,7 +305,7 @@
     {
       "slug": "334_MiniMax-01_Scaling_Foundation_Models_with_Lightning_Attentio",
       "title": "MiniMax-01: Scaling Foundation Models with Lightning Attention",
-      "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
+      "category": "HDBSCAN Cluster: attention, lightning, scaling, model",
       "key": "FOLDER00031_fa942766dee6",
       "sourceIndex": 30,
       "textBytes": 287301,
@@ -365,7 +365,7 @@
     {
       "slug": "340_Recursive_Multi-Agent_Systems",
       "title": "Recursive Multi-Agent Systems",
-      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
+      "category": "HDBSCAN Cluster: university, memory, systems, language",
       "key": "FOLDER00037_f33e597ec366",
       "sourceIndex": 36,
       "textBytes": 105642,
@@ -375,7 +375,7 @@
     {
       "slug": "341_MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightn",
       "title": "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention",
-      "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
+      "category": "HDBSCAN Cluster: attention, lightning, scaling, model",
       "key": "FOLDER00038_c5daea06a99b",
       "sourceIndex": 37,
       "textBytes": 75471,
@@ -405,7 +405,7 @@
     {
       "slug": "1725_Kimi_K25_Visual_Agentic_Intelligence",
       "title": "Kimi K2.5: Visual Agentic Intelligence",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: kimi, agentic, technical, report",
       "key": "FOLDER00041_386463f9a862",
       "sourceIndex": 40,
       "textBytes": 116467,
@@ -495,7 +495,7 @@
     {
       "slug": "1734_ERNIE_50_Technical_Report",
       "title": "ERNIE 5.0 Technical Report",
-      "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00050_7562d1a3af33",
       "sourceIndex": 49,
       "textBytes": 147469,
@@ -505,7 +505,7 @@
     {
       "slug": "1735_Does_Your_Reasoning_Model_Implicitly_Know_When_to_Stop_Think",
       "title": "Does Your Reasoning Model Implicitly Know When to Stop Thinking?",
-      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
+      "category": "HDBSCAN Cluster: figure, agent, university, arxiv",
       "key": "FOLDER00051_0a6465c96316",
       "sourceIndex": 50,
       "textBytes": 124835,
@@ -545,7 +545,7 @@
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "title": "GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning",
-      "category": "HDBSCAN Cluster: multimodal, glm-4, understanding, generation",
+      "category": "HDBSCAN Cluster: multimodal, understanding, glm-4, reasoning",
       "key": "FOLDER00055_9405fc3ded78",
       "sourceIndex": 54,
       "textBytes": 145376,
@@ -595,7 +595,7 @@
     {
       "slug": "1743_WildDet3D_Scaling_Promptable_3D_Detection_in_the_Wild",
       "title": "WildDet3D: Scaling Promptable 3D Detection in the Wild",
-      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
+      "category": "HDBSCAN Cluster: figure, agent, university, arxiv",
       "key": "FOLDER00060_ef3c19fa0025",
       "sourceIndex": 59,
       "textBytes": 110894,
@@ -815,7 +815,7 @@
     {
       "slug": "1700_Qwen25-VL_Technical_Report",
       "title": "Qwen2.5-VL Technical Report",
-      "category": "HDBSCAN Cluster: qwen2, https, model, qwen",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00082_81c67876894a",
       "sourceIndex": 81,
       "textBytes": 92812,
@@ -865,7 +865,7 @@
     {
       "slug": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
       "title": "Heterogeneous Scientific Foundation Model Collaboration",
-      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
+      "category": "HDBSCAN Cluster: university, memory, systems, language",
       "key": "FOLDER00087_4449a0ace106",
       "sourceIndex": 86,
       "textBytes": 184544,
@@ -1075,7 +1075,7 @@
     {
       "slug": "2121_STEP3-VL-10B_Technical_Report",
       "title": "STEP3-VL-10B Technical Report",
-      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
+      "category": "HDBSCAN Cluster: https, figure, step3-vl-10b, technical",
       "key": "FOLDER00108_2bff0a0eb7a5",
       "sourceIndex": 107,
       "textBytes": 126984,
@@ -1085,7 +1085,7 @@
     {
       "slug": "2122_Differential_Transformer",
       "title": "Differential Transformer",
-      "category": "HDBSCAN Cluster: transformer, language, transformers, attention",
+      "category": "HDBSCAN Cluster: transformer, attention, language, differential",
       "key": "FOLDER00109_cb0fec7db820",
       "sourceIndex": 108,
       "textBytes": 71150,
@@ -1145,7 +1145,7 @@
     {
       "slug": "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
       "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
-      "category": "HDBSCAN Cluster: multimodal, glm-4, understanding, generation",
+      "category": "HDBSCAN Cluster: multimodal, understanding, glm-4, reasoning",
       "key": "FOLDER00115_55c68b7aba0f",
       "sourceIndex": 114,
       "textBytes": 156278,
@@ -1255,7 +1255,7 @@
     {
       "slug": "2306_Attention_Residuals",
       "title": "Attention Residuals",
-      "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
+      "category": "HDBSCAN Cluster: attention, lightning, scaling, model",
       "key": "FOLDER00126_5cfd8b110a07",
       "sourceIndex": 125,
       "textBytes": 76619,
@@ -1285,7 +1285,7 @@
     {
       "slug": "2309_Kwai_Keye-VL-20_Technical_Report",
       "title": "Kwai Keye-VL-2.0 Technical Report",
-      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
+      "category": "HDBSCAN Cluster: https, figure, step3-vl-10b, technical",
       "key": "FOLDER00129_a0927041c80d",
       "sourceIndex": 128,
       "textBytes": 110890,
@@ -1315,7 +1315,7 @@
     {
       "slug": "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
       "title": "OmniSVG: A Unified Scalable Vector Graphics Generation Model",
-      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
+      "category": "HDBSCAN Cluster: figure, agent, university, arxiv",
       "key": "FOLDER00132_bc3de160ac51",
       "sourceIndex": 131,
       "textBytes": 70794,
@@ -1345,7 +1345,7 @@
     {
       "slug": "2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds",
       "title": "Utonia: Toward One Encoder for All Point Clouds",
-      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
+      "category": "HDBSCAN Cluster: figure, agent, university, arxiv",
       "key": "FOLDER00135_0f1a9376e7d9",
       "sourceIndex": 134,
       "textBytes": 66552,
@@ -1425,7 +1425,7 @@
     {
       "slug": "2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia",
       "title": "Concerto: Joint 2D-3D Self-Supervised Learning Emerges Spatial Representations",
-      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
+      "category": "HDBSCAN Cluster: figure, agent, university, arxiv",
       "key": "FOLDER00143_ae3845a5eef9",
       "sourceIndex": 142,
       "textBytes": 70780,
@@ -1525,7 +1525,7 @@
     {
       "slug": "2543_Qwen25-Omni_Technical_Report",
       "title": "Qwen2.5-Omni Technical Report",
-      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00153_643b6c9e51d9",
       "sourceIndex": 152,
       "textBytes": 72072,
@@ -1535,7 +1535,7 @@
     {
       "slug": "2544_Retentive_Network_A_Successor_to_Transformer_for_Large_Langu",
       "title": "Retentive Network: A Successor to Transformer for Large Language Models",
-      "category": "HDBSCAN Cluster: transformer, language, transformers, attention",
+      "category": "HDBSCAN Cluster: transformer, attention, language, differential",
       "key": "FOLDER00154_325e8d86e25f",
       "sourceIndex": 153,
       "textBytes": 42595,
@@ -1545,7 +1545,7 @@
     {
       "slug": "2545_Transformers_without_Normalization",
       "title": "Transformers without Normalization",
-      "category": "HDBSCAN Cluster: transformer, language, transformers, attention",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00155_a10ab96ec28d",
       "sourceIndex": 154,
       "textBytes": 67154,
@@ -1575,7 +1575,7 @@
     {
       "slug": "2586_SmolDocling_An_ultra-compact_vision-language_model_for_end-t",
       "title": "SmolDocling: An ultra-compact vision-language model for end-to-end multi-modal document conversion",
-      "category": "HDBSCAN Cluster: qwen2, https, model, qwen",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00158_562b03e86a42",
       "sourceIndex": 157,
       "textBytes": 73527,
@@ -1585,7 +1585,7 @@
     {
       "slug": "2587_General_Agentic_Memory_Via_Deep_Research",
       "title": "General Agentic Memory Via Deep Research",
-      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
+      "category": "HDBSCAN Cluster: university, memory, systems, language",
       "key": "FOLDER00159_4c43fdf369ac",
       "sourceIndex": 158,
       "textBytes": 49725,
@@ -1595,7 +1595,7 @@
     {
       "slug": "2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo",
       "title": "Thinking with Map: Reinforced Parallel Map-Augmented Agent for Geolocalization",
-      "category": "HDBSCAN Cluster: figure, agent, university, tokens",
+      "category": "HDBSCAN Cluster: figure, agent, university, arxiv",
       "key": "FOLDER00160_29fc99ae0bc3",
       "sourceIndex": 159,
       "textBytes": 59089,
@@ -1665,7 +1665,7 @@
     {
       "slug": "2679_Qwen3-VL_Technical_Report",
       "title": "Qwen3-VL Technical Report",
-      "category": "HDBSCAN Cluster: https, multimodal, report, figure",
+      "category": "HDBSCAN Cluster: https, figure, step3-vl-10b, technical",
       "key": "FOLDER00167_108f11ece30d",
       "sourceIndex": 166,
       "textBytes": 155705,
@@ -1675,7 +1675,7 @@
     {
       "slug": "2680_AgentSPEX_An_Agent_SPecification_and_EXecution_Language",
       "title": "AgentSPEX: An Agent SPecification and EXecution Language",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: university, memory, systems, language",
       "key": "FOLDER00168_da0ddd343924",
       "sourceIndex": 167,
       "textBytes": 52129,
@@ -1795,7 +1795,7 @@
     {
       "slug": "2773_Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurre",
       "title": "Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach",
-      "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00180_e288d1fddbcb",
       "sourceIndex": 179,
       "textBytes": 142183,
@@ -1851,6 +1851,56 @@
       "textBytes": 90580,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2605.16403v1[cs.CV]13May2026 ## When Vision Speaks for Sound Xiaofei Wend Wenjie Jacky Mod Xingyu Fup Rui Caid Tinghui Zhud Wendi Liw Yanan Xieu Muhao Chend Peng Qiu dUniversity of California, Davis pPrinceton University wUniversity of Wisconsin–Madison uUniphore Website: when-vision-speaks-for-sound Code Model [Figure 1] [Figure 2] ### Abstract Despite rapid progress in video-capable MLLMs, we find that their apparent audio understanding in videos is often vision-driven: models rely on visual cues to infer or hallucinate acoustic information, rather than verifying the audio stream. This issue appears across both state-of-the-art open-source omni models and leading closed-source models from providers such as Google and OpenAI. We characterize this failure mode as an audio-visual Clever Hans effect, in which models appear (falsely) audio-grounded, but actually exploit visual-acous"
+    },
+    {
+      "slug": "2859_UI-Venus-15_Technical_Report",
+      "title": "UI-Venus-1.5 Technical Report",
+      "category": "HDBSCAN Cluster: kimi, agentic, technical, report",
+      "key": "FOLDER00186_5f5800014002",
+      "sourceIndex": 185,
+      "textBytes": 112011,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2602.09082v2[cs.CV]24Feb2026 [Figure 1] # UI-Venus-1.5 Technical Report Venus Team, Ant Group GUI agents have emerged as a powerful paradigm for automating interactions in digital environments, yet achieving both broad generality and consistently strong task performance remains challenging. In this report, we present UI-Venus-1.5, a unified, end-to-end GUI Agent designed for robust real-world applications. The proposed model family comprises two dense variants (2B and 8B) and one mixture-of-experts variant (30B-A3B) to meet various downstream application scenarios. Compared to our previous version, UI-Venus-1.5 introduces three key technical advances: (1) a comprehensive Mid-Training stage leveraging 10 billion tokens across 30+ datasets to establish foundational GUI semantics; (2) Online Reinforcement Learning with full-trajectory rollouts, aligning training objectives with lon"
+    },
+    {
+      "slug": "2860_Mixtral_of_Experts",
+      "title": "Mixtral of Experts",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00187_2f90f46334c9",
+      "sourceIndex": 186,
+      "textBytes": 33372,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2401.04088v1[cs.LG]8Jan2024 ## Mixtral of Experts Albert Q. Jiang, Alexandre Sablayrolles, Antoine Roux, Arthur Mensch, Blanche Savary, Chris Bamford, Devendra Singh Chaplot, Diego de las Casas, Emma Bou Hanna, Florian Bressand, Gianna Lengyel, Guillaume Bour, Guillaume Lample, Lélio Renard Lavaud, Lucile Saulnier, Marie-Anne Lachaux, Pierre Stock, Sandeep Subramanian, Sophia Yang, Szymon Antoniak, Teven Le Scao, Théophile Gervet, Thibaut Lavril, Thomas Wang, Timothée Lacroix, William El Sayed [Figure 1] ### Abstract We introduce Mixtral 8x7B, a Sparse Mixture of Experts (SMoE) language model. Mixtral has the same architecture as Mistral 7B, with the difference that each layer is composed of 8 feedforward blocks (i.e. experts). For every token, at each layer, a router network selects two experts to process the current state and combine their outputs. Even though each token only s"
+    },
+    {
+      "slug": "2861_Seed15-VL_Technical_Report",
+      "title": "Seed1.5-VL Technical Report",
+      "category": "HDBSCAN Cluster: multimodal, understanding, glm-4, reasoning",
+      "key": "FOLDER00188_b88bb2ab4c68",
+      "sourceIndex": 187,
+      "textBytes": 226376,
+      "figuresExtracted": 5,
+      "excerpt": "arXiv:2505.07062v1[cs.CV]11May2025 [Figure 1] # Seed1.5-VL Technical Report ### ByteDance Seed See Contributions and Acknowledgments section for a full author list. ### Abstract We present Seed1.5-VL, a vision-language foundation model designed to advance general-purpose multimodal understanding and reasoning. Seed1.5-VL is composed with a 532M-parameter vision encoder and a Mixture-of-Experts (MoE) LLM of 20B active parameters. Despite its relatively compact architecture, it delivers strong performance across a wide spectrum of public VLM benchmarks and internal evaluation suites, achieving the state-of-the-art performance on 38 out of 60 public benchmarks. Moreover, in agent-centric tasks such as GUI control and gameplay, Seed1.5-VL outperforms leading multimodal systems, including OpenAI CUA and Claude 3.7. Beyond visual and video understanding, it also demonstrates strong reasoning a"
+    },
+    {
+      "slug": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
+      "title": "Out of Sight but Not Out of Mind: Hybrid Memory for Dynamic Video World Models",
+      "category": "HDBSCAN Cluster: figure, agent, university, arxiv",
+      "key": "FOLDER00189_effbe6a1f48b",
+      "sourceIndex": 188,
+      "textBytes": 58447,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] ## Out of Sight but Not Out of Mind: Hybrid Memory for Dynamic Video World Models Kaijin Chen1, Dingkang Liang1, Xin Zhou1, Yikang Ding2, Xiaoqiang Liu2, Pengfei Wan2, and Xiang Bai1 1 Huazhong University of Science and Technology 2 Kling Team, Kuaishou Technology {kjchen, dkliang}@hust.edu.cn Project Page: Hybrid-Memory-in-Video-World-Models # arXiv:2603.25716v2[cs.CV]28Mar2026 [Figure 2] [Figure 3] [Figure 4] [Figure 5] Static Consistency | | |---| T1 Appearance Consistency [Figure 6] T2 [Figure 7] T3 [Figure 8] [Figure 9] T4 [Figure 10] [Figure 11] [Figure 12] [Figure 13] In Sight Out of Sight T5 Subject Re-entering Subject Exiting the Frame T1 T2 T3 the Frame T4 T5 [Figure 14] [Figure 15] [Figure 16] [Figure 17] [Figure 18] [Figure 19] [Figure 20] [Figure 21] [Figure 22] [Figure 23] Motion Consistency Fig. 1: Hybrid Memory demands the model to maintain static consistency i"
+    },
+    {
+      "slug": "764_Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spa",
+      "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+      "category": "HDBSCAN Cluster: models, such, hrm-text, pretraining",
+      "key": "FOLDER00190_a2f5cd6f706c",
+      "sourceIndex": 189,
+      "textBytes": 139193,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2312.00752v2[cs.LG]31May2024 ## Mamba: Linear-Time Sequence Modeling with Selective State Spaces Albert Gu∗1 and Tri Dao∗2 1Machine Learning Department, Carnegie Mellon University 2Department of Computer Science, Princeton University agu@cs.cmu.edu, tri@tridao.me Abstract Foundation models, now powering most of the exciting applications in deep learning, are almost universally based on the Transformer architecture and its core attention module. Many subquadratic-time architectures such as linear attention, gated convolution and recurrent models, and structured state space models (SSMs) have been developed to address Transformers’ computational inefficiency on long sequences, but they have not performed as well as attention on important modalities such as language. We identify that a key weakness of such models is their inability to perform content-based reasoning, and make severa"
     }
   ]
 }
