@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-05T11:41:09.955917+00:00",
+  "generated": "2026-07-05T12:20:03.818218+00:00",
   "mode": "extract-only",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "awesomeRepo": "E:\\조선대\\연구\\awesome-HuggingFace",
   "extractReport": "data/paper_curation/extract_only_report.json",
   "docsDir": "docs/paper_curation/extract_only",
   "paperDir": "paper/extract_only",
-  "recordCount": 230,
+  "recordCount": 235,
   "syncedPaperSlugs": [
     "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
     "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
@@ -237,13 +237,18 @@
     "3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis",
     "3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem",
     "3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res",
-    "3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co"
+    "3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co",
+    "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
+    "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+    "3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti",
+    "3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr",
+    "3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact"
   ],
   "copied": [
     {
       "source": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\_folder_source_extract_report.json",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\data\\paper_curation\\extract_only_report.json",
-      "bytes": 139085
+      "bytes": 142337
     },
     {
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective\\text.md",
@@ -12934,6 +12939,296 @@
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig3.png",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co\\figures\\fig3.png",
       "bytes": 133271
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\text.md",
+      "bytes": 84534
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig1.png",
+      "bytes": 1095595
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig2.png",
+      "bytes": 548963
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig3.png",
+      "bytes": 335178
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig4.png",
+      "bytes": 413090
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig5.png",
+      "bytes": 573708
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\text.md",
+      "bytes": 84534
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig1.png",
+      "bytes": 1095595
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig2.png",
+      "bytes": 548963
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig3.png",
+      "bytes": 335178
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig4.png",
+      "bytes": 413090
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis\\figures\\fig5.png",
+      "bytes": 573708
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\text.md",
+      "bytes": 104651
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig1.png",
+      "bytes": 168674
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig2.png",
+      "bytes": 274834
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig3.png",
+      "bytes": 44441
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig4.png",
+      "bytes": 361143
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig5.png",
+      "bytes": 31780
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\text.md",
+      "bytes": 104651
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig1.png",
+      "bytes": 168674
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig2.png",
+      "bytes": 274834
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig3.png",
+      "bytes": 44441
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig4.png",
+      "bytes": 361143
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap\\figures\\fig5.png",
+      "bytes": 31780
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\text.md",
+      "bytes": 45867
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig1.png",
+      "bytes": 42123
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig2.png",
+      "bytes": 67871
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig3.png",
+      "bytes": 149836
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig4.png",
+      "bytes": 67476
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\text.md",
+      "bytes": 45867
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig1.png",
+      "bytes": 42123
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig2.png",
+      "bytes": 67871
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig3.png",
+      "bytes": 149836
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti\\figures\\fig4.png",
+      "bytes": 67476
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\text.md",
+      "bytes": 99285
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig1.png",
+      "bytes": 591625
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig2.png",
+      "bytes": 151038
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig3.png",
+      "bytes": 39050
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig4.png",
+      "bytes": 107781
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig5.png",
+      "bytes": 68151
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\text.md",
+      "bytes": 99285
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig1.png",
+      "bytes": 591625
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig2.png",
+      "bytes": 151038
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig3.png",
+      "bytes": 39050
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig4.png",
+      "bytes": 107781
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr\\figures\\fig5.png",
+      "bytes": 68151
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\text.md",
+      "bytes": 71895
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig1.png",
+      "bytes": 3388933
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig2.png",
+      "bytes": 632834
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig3.png",
+      "bytes": 116043
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig4.png",
+      "bytes": 1697567
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig5.png",
+      "bytes": 1272562
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\text.md",
+      "bytes": 71895
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig1.png",
+      "bytes": 3388933
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig2.png",
+      "bytes": 632834
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig3.png",
+      "bytes": 116043
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig4.png",
+      "bytes": 1697567
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig5.png",
+      "bytes": 1272562
     }
   ],
   "missing": [],

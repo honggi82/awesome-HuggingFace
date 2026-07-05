@@ -25,7 +25,7 @@
     {
       "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
       "title": "GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning",
-      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "key": "FOLDER00003_07f36ae7acd9",
       "sourceIndex": null,
       "textBytes": 76254,
@@ -85,7 +85,7 @@
     {
       "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
       "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
-      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "key": "FOLDER00009_e247d7b4176f",
       "sourceIndex": 8,
       "textBytes": 238083,
@@ -175,7 +175,7 @@
     {
       "slug": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
       "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
-      "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "key": "FOLDER00018_b37c28309d81",
       "sourceIndex": 17,
       "textBytes": 99957,
@@ -215,7 +215,7 @@
     {
       "slug": "325_CARLA-Air_Fly_Drones_Inside_a_CARLA_World_--_A_Unified_Infra",
       "title": "CARLA-Air: Fly Drones Inside a CARLA World -- A Unified Infrastructure for Air-Ground Embodied Intelligence",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
       "key": "FOLDER00022_bafb5974ff85",
       "sourceIndex": 21,
       "textBytes": 62875,
@@ -265,7 +265,7 @@
     {
       "slug": "330_Group_Sequence_Policy_Optimization",
       "title": "Group Sequence Policy Optimization",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "key": "FOLDER00027_94918922664a",
       "sourceIndex": 26,
       "textBytes": 23492,
@@ -345,7 +345,7 @@
     {
       "slug": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
       "title": "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking",
-      "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "key": "FOLDER00035_fc3525c2b456",
       "sourceIndex": 34,
       "textBytes": 87188,
@@ -405,7 +405,7 @@
     {
       "slug": "1725_Kimi_K25_Visual_Agentic_Intelligence",
       "title": "Kimi K2.5: Visual Agentic Intelligence",
-      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "key": "FOLDER00041_386463f9a862",
       "sourceIndex": 40,
       "textBytes": 116467,
@@ -485,7 +485,7 @@
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
       "title": "DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
       "key": "FOLDER00049_07cf0d16c82c",
       "sourceIndex": 48,
       "textBytes": 68593,
@@ -525,7 +525,7 @@
     {
       "slug": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "title": "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model",
-      "category": "HDBSCAN Cluster: university, attention, sparse, wang1",
+      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
       "key": "FOLDER00053_b501ac6425a5",
       "sourceIndex": 52,
       "textBytes": 99132,
@@ -545,7 +545,7 @@
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "title": "GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Cluster: glm-4, multimodal, reasoning, seed1",
       "key": "FOLDER00055_9405fc3ded78",
       "sourceIndex": 54,
       "textBytes": 145376,
@@ -555,7 +555,7 @@
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "title": "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Cluster: small, language, model, smollm2",
       "key": "FOLDER00056_e1a299738b86",
       "sourceIndex": 55,
       "textBytes": 87381,
@@ -715,7 +715,7 @@
     {
       "slug": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
       "title": "GDPO: Group reward-Decoupled Normalization Policy Optimization for Multi-reward RL Optimization",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "key": "FOLDER00072_98f3b1b6fec2",
       "sourceIndex": 71,
       "textBytes": 77232,
@@ -855,7 +855,7 @@
     {
       "slug": "1931_VESPO_Variational_Sequence-Level_Soft_Policy_Optimization_fo",
       "title": "VESPO: Variational Sequence-Level Soft Policy Optimization for Stable Off-Policy LLM Training",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "key": "FOLDER00086_1edc3aea10c9",
       "sourceIndex": 85,
       "textBytes": 80404,
@@ -875,7 +875,7 @@
     {
       "slug": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
       "title": "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
       "key": "FOLDER00088_ec7f05bf1eae",
       "sourceIndex": 87,
       "textBytes": 87726,
@@ -885,7 +885,7 @@
     {
       "slug": "1934_Lumine_An_Open_Recipe_for_Building_Generalist_Agents_in_3D_O",
       "title": "Lumine: An Open Recipe for Building Generalist Agents in 3D Open Worlds",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: agents, embodied, lumine, open",
       "key": "FOLDER00089_5c877ea4a55a",
       "sourceIndex": 88,
       "textBytes": 201532,
@@ -905,7 +905,7 @@
     {
       "slug": "1977_Mutarjim_Advancing_Bidirectional_Arabic-English_Translation",
       "title": "Mutarjim: Advancing Bidirectional Arabic-English Translation with a Small Language Model",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00091_8b531206da8e",
       "sourceIndex": 90,
       "textBytes": 51767,
@@ -945,7 +945,7 @@
     {
       "slug": "1980_Bootstrapping_Exploration_with_Group-Level_Natural_Language",
       "title": "Bootstrapping Exploration with Group-Level Natural Language Feedback in Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reinforcement, feedback, language, learning",
+      "category": "HDBSCAN Cluster: language, feedback, exploration, reinforcement",
       "key": "FOLDER00095_946974fa004a",
       "sourceIndex": 94,
       "textBytes": 89363,
@@ -1015,7 +1015,7 @@
     {
       "slug": "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti",
       "title": "Step 3.5 Flash: Open Frontier-Level Intelligence with 11B Active Parameters",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00102_2c700711e69c",
       "sourceIndex": 101,
       "textBytes": 205457,
@@ -1145,7 +1145,7 @@
     {
       "slug": "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
       "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00115_55c68b7aba0f",
       "sourceIndex": 114,
       "textBytes": 156278,
@@ -1165,7 +1165,7 @@
     {
       "slug": "2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning",
       "title": "Heterogeneous Agent Collaborative Reinforcement Learning",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "key": "FOLDER00117_4a6dc9062d5e",
       "sourceIndex": 116,
       "textBytes": 76413,
@@ -1305,7 +1305,7 @@
     {
       "slug": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
       "title": "GLM-5: from Vibe Coding to Agentic Engineering",
-      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "key": "FOLDER00131_4b64db8dc365",
       "sourceIndex": 130,
       "textBytes": 140252,
@@ -1325,7 +1325,7 @@
     {
       "slug": "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
       "title": "Perception, Reason, Think, and Plan: A Survey on Large Multimodal Reasoning Models",
-      "category": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
+      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
       "key": "FOLDER00133_8e3c28fd1818",
       "sourceIndex": 132,
       "textBytes": 391537,
@@ -1375,7 +1375,7 @@
     {
       "slug": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
       "title": "QeRL: Beyond Efficiency -- Quantization-enhanced Reinforcement Learning for LLMs",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "key": "FOLDER00138_d82ee87bba02",
       "sourceIndex": 137,
       "textBytes": 78498,
@@ -1445,7 +1445,7 @@
     {
       "slug": "2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age",
       "title": "HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: agents, embodied, lumine, open",
       "key": "FOLDER00145_6259f5e0c38f",
       "sourceIndex": 144,
       "textBytes": 146453,
@@ -1465,7 +1465,7 @@
     {
       "slug": "2495_Live_Avatar_Streaming_Real-time_Audio-Driven_Avatar_Generati",
       "title": "Live Avatar: Streaming Real-time Audio-Driven Avatar Generation with Infinite Length",
-      "category": "HDBSCAN Cluster: figure, video, university, avatar",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00147_770fe89ff20e",
       "sourceIndex": 146,
       "textBytes": 84335,
@@ -1685,7 +1685,7 @@
     {
       "slug": "2681_Embodied-R15_Evolving_Physical_Intelligence_via_Embodied_Fou",
       "title": "Embodied-R1.5: Evolving Physical Intelligence via Embodied Foundation Models",
-      "category": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
+      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
       "key": "FOLDER00169_307877d74af7",
       "sourceIndex": 168,
       "textBytes": 159829,
@@ -1695,7 +1695,7 @@
     {
       "slug": "2682_Native_Sparse_Attention_Hardware-Aligned_and_Natively_Traina",
       "title": "Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention",
-      "category": "HDBSCAN Cluster: university, attention, sparse, wang1",
+      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
       "key": "FOLDER00170_8dd22ea2eeca",
       "sourceIndex": 169,
       "textBytes": 67357,
@@ -1705,7 +1705,7 @@
     {
       "slug": "2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs",
       "title": "AgentFly: Fine-tuning LLM Agents without Fine-tuning LLMs",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "key": "FOLDER00171_120f29e1bc0e",
       "sourceIndex": 170,
       "textBytes": 91552,
@@ -1855,7 +1855,7 @@
     {
       "slug": "2859_UI-Venus-15_Technical_Report",
       "title": "UI-Venus-1.5 Technical Report",
-      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "key": "FOLDER00186_5f5800014002",
       "sourceIndex": 185,
       "textBytes": 112011,
@@ -1875,7 +1875,7 @@
     {
       "slug": "2861_Seed15-VL_Technical_Report",
       "title": "Seed1.5-VL Technical Report",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Cluster: glm-4, multimodal, reasoning, seed1",
       "key": "FOLDER00188_b88bb2ab4c68",
       "sourceIndex": 187,
       "textBytes": 226376,
@@ -1915,7 +1915,7 @@
     {
       "slug": "2903_Self-Rewarding_Language_Models",
       "title": "Self-Rewarding Language Models",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00192_970fe86287a1",
       "sourceIndex": 191,
       "textBytes": 70056,
@@ -1965,7 +1965,7 @@
     {
       "slug": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
       "title": "Youtu-LLM: Unlocking the Native Agentic Potential for Lightweight Large Language Models",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
       "key": "FOLDER00197_0a34f5facf01",
       "sourceIndex": 196,
       "textBytes": 176835,
@@ -2005,7 +2005,7 @@
     {
       "slug": "2991_Textbooks_Are_All_You_Need",
       "title": "Textbooks Are All You Need",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Cluster: small, language, model, smollm2",
       "key": "FOLDER00201_26ed92aa939c",
       "sourceIndex": 200,
       "textBytes": 77693,
@@ -2095,7 +2095,7 @@
     {
       "slug": "3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re",
       "title": "HSImul3R: Physics-in-the-Loop Reconstruction of Simulation-Ready Human-Scene Interactions",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
       "key": "FOLDER00210_0d7e8cc379ba",
       "sourceIndex": 209,
       "textBytes": 54412,
@@ -2145,7 +2145,7 @@
     {
       "slug": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
       "title": "ReCamMaster: Camera-Controlled Generative Rendering from A Single Video",
-      "category": "HDBSCAN Cluster: figure, video, university, avatar",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00215_7809968708b7",
       "sourceIndex": 214,
       "textBytes": 68060,
@@ -2225,7 +2225,7 @@
     {
       "slug": "2689_DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Sca",
       "title": "DAPO: An Open-Source LLM Reinforcement Learning System at Scale",
-      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "key": "FOLDER00223_a1709f07b6c9",
       "sourceIndex": 222,
       "textBytes": 42677,
@@ -2235,7 +2235,7 @@
     {
       "slug": "3174_From_Blind_Spots_to_Gains_Diagnostic-Driven_Iterative_Traini",
       "title": "From Blind Spots to Gains: Diagnostic-Driven Iterative Training for Large Multimodal Models",
-      "category": "HDBSCAN Cluster: reinforcement, feedback, language, learning",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00224_a374f1299896",
       "sourceIndex": 223,
       "textBytes": 50362,
@@ -2275,7 +2275,7 @@
     {
       "slug": "3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem",
       "title": "Rewarding the Rare: Uniqueness-Aware RL for Creative Problem Solving in LLMs",
-      "category": "HDBSCAN Cluster: reinforcement, feedback, language, learning",
+      "category": "HDBSCAN Cluster: language, feedback, exploration, reinforcement",
       "key": "FOLDER00228_5aedae633426",
       "sourceIndex": 227,
       "textBytes": 89569,
@@ -2301,6 +2301,56 @@
       "textBytes": 95188,
       "figuresExtracted": 3,
       "excerpt": "# arXiv:2505.19147v3[cs.CL]12Oct2025 ## Shifting AI Efficiency From Model-Centric to Data-Centric Compression Xuyang Liu1,2* Zichen Wen1,3,4∗ Shaobo Wang1∗ Junjie Chen1 Zhishan Tao1 Yubo Wang1 Tailai Chen1 Xiangqi Jin1,3 Chang Zou1,3 Yiyu Wang1 Chenfei Liao6 Xu Zheng6 Honggang Chen2 Weijia Li4,5 Xuming Hu6 Conghui He4 Linfeng Zhang1 1EPIC Lab, Shanghai Jiao Tong University 2Sichuan University 3University of Electronic Science & Technology of China 4Shanghai AI Laboratory 5Sun Yat-sen University 6Hong Kong University of Science and Technology (Guangzhou) #### Project: Awesome-Token-level-Model-Compression Abstract model scale, with larger models consistently showing superior performance in reasoning, knowledge acquisition, and task generalization. The evolution from early models like BERT (117M) (Devlin et al., 2018) to today’s state-of-the-art LLMs such as DeepSeek-R1 (Guo et al., 2025a)"
+    },
+    {
+      "slug": "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
+      "title": "Geometry-Guided Reinforcement Learning for Multi-view Consistent 3D Scene Editing",
+      "category": "HDBSCAN Cluster: figure, agent, out, world",
+      "key": "FOLDER00231_b92843e35a52",
+      "sourceIndex": 230,
+      "textBytes": 84534,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.03143v2[cs.CV]28Jun2026 ## Edit in 2D, Verify in 3D: Reinforcement Learning for Multi-view Consistent Scene Editing [Figure 1] Jiyuan Wang1,2,3, Chunyu Lin1, , Lei Sun2,✱, Zhi Cao1, Yuyang Yin1, Lang Nie4, Zhenlong Yuan2, Xiangxiang Chu2, Yunchao Wei1, Kang Liao3, and Guosheng Lin3, [Figure 2] [Figure 3] [Figure 4] 1BJTU, 2AMap Alibaba Group, 3NTU, 4CQUPT {wangjiyuan,cylin}@bjtu.edu.cn [Figure 5] [Figure 6] [Figure 7] [Figure 8] [Figure 9] [Figure 10] [Figure 11] [Figure 12] [Figure 13] ①Motion ③Style ②Replacement [Figure 14] [Figure 15] [Figure 16] | | |---| [Figure 17] [Figure 18] [Figure 19] |[Figure 20]| |---| [Figure 21] | | |---| | | |---| |[Figure 22]| |---| | | |---| [Figure 23] [Figure 24] [Figure 25] ④Background ⑤Addition | | |---| | | |---| |[Figure 26]| |---| | | |---| Fig. 1: We propose RL3DEdit, a novel RL-based model for single-pass 3D editing. Our method achi"
+    },
+    {
+      "slug": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00232_2b8898d9bc79",
+      "sourceIndex": 231,
+      "textBytes": 104651,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] November 25, 2025 # arXiv:2504.13837v5[cs.AI]24Nov2025 ## Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model? Yang Yue1∗ † , Zhiqi Chen1∗, Rui Lu1 , Andrew Zhao1 , Zhaokai Wang2 , Yang Yue1 , Shiji Song1 , and Gao Huang1 1 LeapLab, Tsinghua University 2 Shanghai Jiao Tong University ∗ Equal Contribution † Project Lead Corresponding Author Reinforcement Learning with Verifiable Rewards (RLVR) has recently demonstrated notable success in enhancing the reasoning performance of large language models (LLMs), particularly in mathematics and programming tasks. It is widely believed that, similar to how traditional RL helps agents to explore and learn new strategies, RLVR enables LLMs to continuously selfimprove, thus acquiring novel reasoning abilities that exceed the capacity of the corresponding base models. In this study, we take a crit"
+    },
+    {
+      "slug": "3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti",
+      "title": "Domino: Decoupling Causal Modeling from Autoregressive Drafting in Speculative Decoding",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00233_5acdf02f90c1",
+      "sourceIndex": 232,
+      "textBytes": 45867,
+      "figuresExtracted": 4,
+      "excerpt": "# arXiv:2605.29707v1[cs.CL]28May2026 ##### Domino: Decoupling Causal Modeling from Autoregressive Drafting in Speculative Decoding Jianuo Huang1,2* Yaojie Zhang1,3* Qituan Zhang4 Hao Lin2 Hanlin Xu5 Linfeng Zhang1† 1EPIC Lab, Shanghai Jiao Tong University 2School of Software Engineering, HUST 3UESTC 4Fudan University 5Huawei *Equal contribution. †Corresponding author. ###### Abstract Speculative decoding accelerates LLM inference by drafting multiple tokens and verifying - them in parallel with the target model. However, its practical speedup is constrained by the trade-off between draft quality and drafting cost: autoregressive drafters model causal dependencies among draft tokens but incur sequential overhead, while parallel drafters reduce drafting cost but weaken intra-block dependency modeling. In this paper, we propose Domino, a speculative decoding framework that decouples causal "
+    },
+    {
+      "slug": "3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr",
+      "title": "D2E: Scaling Vision-Action Pretraining on Desktop Data for Transfer to Embodied AI",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00234_58ad86184b58",
+      "sourceIndex": 233,
+      "textBytes": 99285,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2510.05684v3[cs.AI]3Mar2026 ## D2E: SCALING VISION-ACTION PRETRAINING ON DESKTOP DATA FOR TRANSFER TO EMBODIED AI Suhwan Choi∗ MAUM.AI Jaeyoon Jung∗ MAUM.AI Minyeong Kim Stanford University Youngjae Yu† Seoul National University Yongjun Cho MAUM.AI Haebin Seong∗ MAUM.AI Yoonshik Kim MAUM.AI Yunsung Lee† MAUM.AI Minchan Kim MAUM.AI Yubeen Park MAUM.AI ABSTRACT Large language models leverage internet-scale text data, yet embodied AI remains constrained by the prohibitive costs of physical trajectory collection. Desktop environments—particularly gaming—offer a compelling alternative: they provide rich sensorimotor interactions at scale while maintaining the structured observation-action coupling essential for embodied learning. We present D2E (Desktop to Embodied AI), a framework that demonstrates desktop interactions can serve as an effective pretraining substrate for robotics embo"
+    },
+    {
+      "slug": "3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact",
+      "title": "HunyuanWorld 1.0: Generating Immersive, Explorable, and Interactive 3D Worlds from Words or Pixels",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00235_55abe89dfa8a",
+      "sourceIndex": 234,
+      "textBytes": 71895,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2507.21809v2[cs.CV]13Aug2025 [Figure 1] Tencent Hunyuan ### HunyuanWorld 1.0: Generating Immersive, Explorable, and Interactive 3D Worlds from Words or Pixels [Figure 2] ##### Tencent Hunyuan* https://3d.hunyuan.tencent.com/sceneTo3D https://github.com/Tencent-Hunyuan/HunyuanWorld-1.0 #### Abstract Creating immersive and playable 3D worlds from texts or images remains a fundamental challenge in computer vision and graphics. Existing world generation approaches typically fall into two categories: video-based methods that offer rich diversity but lack 3D consistency and rendering efficiency, and 3D-based methods that provide geometric consistency but struggle with limited training data and memory-inefficient representations. To address these limitations, we present HunyuanWorld 1.0, a novel framework that combines the best of both worlds for generating immersive, explorable, and in"
     }
   ]
 }

@@ -75,8 +75,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
-      "score": 0.9497,
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.95,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -190,6 +190,11 @@
   ],
   "078_ABot-Earth_05_Generative_3D_Earth_Model": [
     {
+      "target": "3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact",
+      "score": 0.9267,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2633_Kling-Omni_Technical_Report",
       "score": 0.9196,
       "reason": "Codex local embedding similarity"
@@ -208,17 +213,17 @@
       "target": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
       "score": 0.9099,
       "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
-      "score": 0.9078,
-      "reason": "Codex local embedding similarity"
     }
   ],
   "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R": [
     {
       "target": "2689_DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Sca",
       "score": 0.9644,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9627,
       "reason": "Codex local embedding similarity"
     },
     {
@@ -234,11 +239,6 @@
     {
       "target": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
       "score": 0.9524,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
-      "score": 0.9521,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -298,6 +298,11 @@
   ],
   "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two": [
     {
+      "target": "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
+      "score": 0.9528,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo",
       "score": 0.9497,
       "reason": "Codex local embedding similarity"
@@ -315,11 +320,6 @@
     {
       "target": "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
       "score": 0.9397,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia",
-      "score": 0.9378,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -912,12 +912,17 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2903_Self-Rewarding_Language_Models",
-      "score": 0.939,
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9396,
       "reason": "Codex local embedding similarity"
     }
   ],
   "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev": [
+    {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9598,
+      "reason": "Codex local embedding similarity"
+    },
     {
       "target": "2689_DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Sca",
       "score": 0.9567,
@@ -936,11 +941,6 @@
     {
       "target": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
       "score": 0.9541,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
-      "score": 0.9521,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1064,6 +1064,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9521,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1728_Reinforcement_Pre-Training",
       "score": 0.9513,
       "reason": "Codex local embedding similarity"
@@ -1071,11 +1076,6 @@
     {
       "target": "2026_DelTA_Discriminative_Token_Credit_Assignment_for_Reinforceme",
       "score": 0.95,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
-      "score": 0.9468,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1167,6 +1167,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9614,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem",
       "score": 0.9584,
       "reason": "Codex local embedding similarity"
@@ -1179,11 +1184,6 @@
     {
       "target": "2689_DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Sca",
       "score": 0.9569,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
-      "score": 0.9556,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1366,13 +1366,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
-      "score": 0.8925,
+      "target": "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
+      "score": 0.8963,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo",
-      "score": 0.8915,
+      "target": "2352_OmniSVG_A_Unified_Scalable_Vector_Graphics_Generation_Model",
+      "score": 0.8925,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1560,8 +1560,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "3083_Reverse-Engineered_Reasoning_for_Open-Ended_Generation",
-      "score": 0.9486,
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9508,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1820,6 +1820,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9433,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "3082_Efficient_Reasoning_with_Balanced_Thinking",
       "score": 0.9426,
       "reason": "Codex local embedding similarity"
@@ -1827,11 +1832,6 @@
     {
       "target": "2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data",
       "score": 0.9406,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
-      "score": 0.9394,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2500,13 +2500,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
-      "score": 0.9055,
+      "target": "3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact",
+      "score": 0.91,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds",
-      "score": 0.9034,
+      "target": "2025_SmolVLM_Redefining_small_and_efficient_multimodal_models",
+      "score": 0.9055,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2544,6 +2544,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9577,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1728_Reinforcement_Pre-Training",
       "score": 0.9537,
       "reason": "Codex local embedding similarity"
@@ -2556,11 +2561,6 @@
     {
       "target": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
       "score": 0.9512,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "3174_From_Blind_Spots_to_Gains_Diagnostic-Driven_Iterative_Traini",
-      "score": 0.9504,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2684,6 +2684,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9575,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data",
       "score": 0.955,
       "reason": "Codex local embedding similarity"
@@ -2691,11 +2696,6 @@
     {
       "target": "3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem",
       "score": 0.9506,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "343_Reflect_Retry_Reward_Self-Improving_LLMs_via_Reinforcement_L",
-      "score": 0.95,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -2819,6 +2819,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact",
+      "score": 0.9373,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1934_Lumine_An_Open_Recipe_for_Building_Generalist_Agents_in_3D_O",
       "score": 0.9368,
       "reason": "Codex local embedding similarity"
@@ -2826,11 +2831,6 @@
     {
       "target": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
       "score": 0.9358,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2022_TermiGen_High-Fidelity_Environment_and_Robust_Trajectory_Syn",
-      "score": 0.9339,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3040,13 +3040,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "332_DINOv3",
-      "score": 0.9373,
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9375,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
-      "score": 0.937,
+      "target": "332_DINOv3",
+      "score": 0.9373,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3111,6 +3111,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.96,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe",
       "score": 0.9594,
       "reason": "Codex local embedding similarity"
@@ -3123,11 +3128,6 @@
     {
       "target": "1728_Reinforcement_Pre-Training",
       "score": 0.958,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "3036_Your_Group-Relative_Advantage_Is_Biased",
-      "score": 0.9576,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3165,6 +3165,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9402,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data",
       "score": 0.9382,
       "reason": "Codex local embedding similarity"
@@ -3177,11 +3182,6 @@
     {
       "target": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
       "score": 0.9313,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1751_Is_Chain-of-Thought_Reasoning_of_LLMs_a_Mirage_A_Data_Distri",
-      "score": 0.9311,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3548,6 +3548,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
+      "score": 0.9462,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
       "score": 0.9397,
       "reason": "Codex local embedding similarity"
@@ -3555,11 +3560,6 @@
     {
       "target": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
       "score": 0.9366,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
-      "score": 0.9338,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3666,8 +3666,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2584_Self-Distilled_RLVR",
-      "score": 0.9547,
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9589,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3835,6 +3835,11 @@
   ],
   "2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia": [
     {
+      "target": "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
+      "score": 0.948,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2355_Utonia_Toward_One_Encoder_for_All_Point_Clouds",
       "score": 0.9438,
       "reason": "Codex local embedding similarity"
@@ -3852,11 +3857,6 @@
     {
       "target": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
       "score": 0.9364,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
-      "score": 0.935,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4299,6 +4299,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
+      "score": 0.9424,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
       "score": 0.9381,
       "reason": "Codex local embedding similarity"
@@ -4311,11 +4316,6 @@
     {
       "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
       "score": 0.928,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1743_WildDet3D_Scaling_Promptable_3D_Detection_in_the_Wild",
-      "score": 0.9227,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4348,6 +4348,11 @@
   ],
   "2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex": [
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9396,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1728_Reinforcement_Pre-Training",
       "score": 0.9376,
       "reason": "Codex local embedding similarity"
@@ -4365,11 +4370,6 @@
     {
       "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
       "score": 0.9347,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2022_TermiGen_High-Fidelity_Environment_and_Robust_Trajectory_Syn",
-      "score": 0.9345,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4606,13 +4606,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "340_Recursive_Multi-Agent_Systems",
-      "score": 0.9516,
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9551,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
-      "score": 0.9509,
+      "target": "340_Recursive_Multi-Agent_Systems",
+      "score": 0.9516,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4719,8 +4719,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2166_On_the_Generalization_of_SFT_A_Reinforcement_Learning_Perspe",
-      "score": 0.9579,
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9588,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5087,6 +5087,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
+      "score": 0.9463,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo",
       "score": 0.9394,
       "reason": "Codex local embedding similarity"
@@ -5094,11 +5099,6 @@
     {
       "target": "084_Demystifing_Video_Reasoning",
       "score": 0.9387,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo",
-      "score": 0.9381,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5158,6 +5158,11 @@
   ],
   "2903_Self-Rewarding_Language_Models": [
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9589,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
       "score": 0.9585,
       "reason": "Codex local embedding similarity"
@@ -5175,11 +5180,6 @@
     {
       "target": "3174_From_Blind_Spots_to_Gains_Diagnostic-Driven_Iterative_Traini",
       "score": 0.9506,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
-      "score": 0.9488,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5259,8 +5259,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2902_Towards_Understanding_Camera_Motions_in_Any_Video",
-      "score": 0.9101,
+      "target": "3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact",
+      "score": 0.9108,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5384,6 +5384,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
+      "score": 0.9415,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
       "score": 0.9261,
       "reason": "Codex local embedding similarity"
@@ -5391,11 +5396,6 @@
     {
       "target": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
       "score": 0.9253,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
-      "score": 0.9191,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5492,6 +5492,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9474,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
       "score": 0.946,
       "reason": "Codex local embedding similarity"
@@ -5499,11 +5504,6 @@
     {
       "target": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
       "score": 0.9437,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "077_Adams_Law_Textual_Frequency_Law_on_Large_Language_Models",
-      "score": 0.9432,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5600,6 +5600,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
+      "score": 0.9478,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
       "score": 0.9436,
       "reason": "Codex local embedding similarity"
@@ -5607,11 +5612,6 @@
     {
       "target": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
       "score": 0.9394,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
-      "score": 0.938,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -5735,6 +5735,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9489,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2587_General_Agentic_Memory_Via_Deep_Research",
       "score": 0.9471,
       "reason": "Codex local embedding similarity"
@@ -5743,17 +5748,17 @@
       "target": "2727_Agentic_Reinforced_Policy_Optimization",
       "score": 0.9465,
       "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
-      "score": 0.9454,
-      "reason": "Codex local embedding similarity"
     }
   ],
   "3083_Reverse-Engineered_Reasoning_for_Open-Ended_Generation": [
     {
       "target": "2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe",
       "score": 0.9595,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9588,
       "reason": "Codex local embedding similarity"
     },
     {
@@ -5770,14 +5775,14 @@
       "target": "3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co",
       "score": 0.9487,
       "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1741_SkillOpt_Executive_Strategy_for_Self-Evolving_Agent_Skills",
-      "score": 0.9486,
-      "reason": "Codex local embedding similarity"
     }
   ],
   "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si": [
+    {
+      "target": "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
+      "score": 0.9518,
+      "reason": "Codex local embedding similarity"
+    },
     {
       "target": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
       "score": 0.9479,
@@ -5796,11 +5801,6 @@
     {
       "target": "3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo",
       "score": 0.938,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2310_LongVT_Incentivizing_Thinking_with_Long_Videos_via_Native_To",
-      "score": 0.9368,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -6022,6 +6022,11 @@
   ],
   "3174_From_Blind_Spots_to_Gains_Diagnostic-Driven_Iterative_Traini": [
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9535,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
       "score": 0.9511,
       "reason": "Codex local embedding similarity"
@@ -6039,11 +6044,6 @@
     {
       "target": "3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem",
       "score": 0.9501,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
-      "score": 0.9479,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -6135,6 +6135,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "score": 0.9589,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1728_Reinforcement_Pre-Training",
       "score": 0.9584,
       "reason": "Codex local embedding similarity"
@@ -6147,11 +6152,6 @@
     {
       "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
       "score": 0.955,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "343_Reflect_Retry_Reward_Self-Improving_LLMs_via_Reinforcement_L",
-      "score": 0.9546,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -6206,6 +6206,141 @@
     {
       "target": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "score": 0.9503,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis": [
+    {
+      "target": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
+      "score": 0.9528,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
+      "score": 0.9518,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2449_Concerto_Joint_2D-3D_Self-Supervised_Learning_Emerges_Spatia",
+      "score": 0.948,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "3038_OmniLottie_Generating_Vector_Animations_via_Parameterized_Lo",
+      "score": 0.9478,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
+      "score": 0.9463,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap": [
+    {
+      "target": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
+      "score": 0.9627,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1728_Reinforcement_Pre-Training",
+      "score": 0.9614,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data",
+      "score": 0.96,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
+      "score": 0.9598,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe",
+      "score": 0.9589,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti": [
+    {
+      "target": "3127_A_Theoretical_Study_on_Bridging_Internal_Probability_and_Sel",
+      "score": 0.9406,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2994_Can_1B_LLM_Surpass_405B_LLM_Rethinking_Compute-Optimal_Test-",
+      "score": 0.9402,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2544_Retentive_Network_A_Successor_to_Transformer_for_Large_Langu",
+      "score": 0.9355,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "3082_Efficient_Reasoning_with_Balanced_Thinking",
+      "score": 0.9333,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
+      "score": 0.9332,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr": [
+    {
+      "target": "3128_Spatial_Forcing_Implicit_Spatial_Representation_Alignment_fo",
+      "score": 0.9298,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2724_SmolVLA_A_Vision-Language-Action_Model_for_Affordable_and_Ef",
+      "score": 0.9273,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "327_Green-VLA_Staged_Vision-Language-Action_Model_for_Generalist",
+      "score": 0.927,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res",
+      "score": 0.9194,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
+      "score": 0.9187,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact": [
+    {
+      "target": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
+      "score": 0.9373,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "342_Qwen-Image_Technical_Report",
+      "score": 0.9354,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2633_Kling-Omni_Technical_Report",
+      "score": 0.9271,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "078_ABot-Earth_05_Generative_3D_Earth_Model",
+      "score": 0.9267,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1886_OmniHuman-1_Rethinking_the_Scaling-Up_of_One-Stage_Condition",
+      "score": 0.9264,
       "reason": "Codex local embedding similarity"
     }
   ]

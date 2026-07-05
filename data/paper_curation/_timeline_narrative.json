@@ -5,12 +5,12 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 89
+      "count": 96
     },
     {
-      "id": "hdbscan-cluster-optimization-learning-reinforcement-training",
-      "name": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
-      "count": 7
+      "id": "hdbscan-cluster-reasoning-agentic-reinforcement-learning",
+      "name": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
+      "count": 8
     },
     {
       "id": "hdbscan-cluster-generation-video-image-models",
@@ -18,13 +18,8 @@
       "count": 7
     },
     {
-      "id": "hdbscan-cluster-reasoning-glm-4-models-model",
-      "name": "HDBSCAN Cluster: reasoning, glm-4, models, model",
-      "count": 7
-    },
-    {
-      "id": "hdbscan-cluster-agentic-reinforcement-learning-reasoning",
-      "name": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "id": "hdbscan-cluster-optimization-learning-reinforcement-policy",
+      "name": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "count": 6
     },
     {
@@ -48,9 +43,19 @@
       "count": 4
     },
     {
+      "id": "hdbscan-cluster-university-models-reasoning-attention",
+      "name": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "count": 4
+    },
+    {
       "id": "hdbscan-cluster-zhang-wang-liu-yang",
       "name": "HDBSCAN Cluster: zhang, wang, liu, yang",
       "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-figure-agent-out-world",
+      "name": "HDBSCAN Cluster: figure, agent, out, world",
+      "count": 3
     },
     {
       "id": "hdbscan-cluster-qwen-models-report-qwen3",
@@ -73,8 +78,8 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-language-model-small-mutarjim",
-      "name": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "id": "hdbscan-cluster-reasoning-models-agentic-deepseek-v3",
+      "name": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
       "count": 3
     },
     {
@@ -85,11 +90,6 @@
     {
       "id": "hdbscan-cluster-figure-university-li1-agentic",
       "name": "HDBSCAN Cluster: figure, university, li1, agentic",
-      "count": 3
-    },
-    {
-      "id": "hdbscan-cluster-reinforcement-feedback-language-learning",
-      "name": "HDBSCAN Cluster: reinforcement, feedback, language, learning",
       "count": 3
     },
     {
@@ -118,23 +118,18 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-figure-agent-out-world",
-      "name": "HDBSCAN Cluster: figure, agent, out, world",
-      "count": 2
-    },
-    {
       "id": "hdbscan-cluster-university-molmoact2-rwkv-7-state",
       "name": "HDBSCAN Cluster: university, molmoact2, rwkv-7, state",
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-reasoning-policy-deep-rstar-math",
-      "name": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
+      "id": "hdbscan-cluster-figure-efficient-language-opus",
+      "name": "HDBSCAN Cluster: figure, efficient, language, opus",
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-figure-efficient-language-opus",
-      "name": "HDBSCAN Cluster: figure, efficient, language, opus",
+      "id": "hdbscan-cluster-unified-air-ground-embodied-infrastructure",
+      "name": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
       "count": 2
     },
     {
@@ -168,8 +163,13 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-university-attention-sparse-wang1",
-      "name": "HDBSCAN Cluster: university, attention, sparse, wang1",
+      "id": "hdbscan-cluster-glm-4-multimodal-reasoning-seed1",
+      "name": "HDBSCAN Cluster: glm-4, multimodal, reasoning, seed1",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-small-language-model-smollm2",
+      "name": "HDBSCAN Cluster: small, language, model, smollm2",
       "count": 2
     },
     {
@@ -203,8 +203,18 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-agents-embodied-lumine-open",
+      "name": "HDBSCAN Cluster: agents, embodied, lumine, open",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-language-models-nonsense-hallucinations",
       "name": "HDBSCAN Cluster: language, models, nonsense, hallucinations",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-language-feedback-exploration-reinforcement",
+      "name": "HDBSCAN Cluster: language, feedback, exploration, reinforcement",
       "count": 2
     },
     {
@@ -220,16 +230,6 @@
     {
       "id": "hdbscan-cluster-generation-long-video-real-time",
       "name": "HDBSCAN Cluster: generation, long, video, real-time",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-reasoning-models-intelligence-embodied",
-      "name": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-figure-video-university-avatar",
-      "name": "HDBSCAN Cluster: figure, video, university, avatar",
       "count": 2
     },
     {

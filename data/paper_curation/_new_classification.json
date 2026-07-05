@@ -3,12 +3,12 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 89
+      "count": 96
     },
     {
-      "id": "hdbscan-cluster-optimization-learning-reinforcement-training",
-      "name": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
-      "count": 7
+      "id": "hdbscan-cluster-reasoning-agentic-reinforcement-learning",
+      "name": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
+      "count": 8
     },
     {
       "id": "hdbscan-cluster-generation-video-image-models",
@@ -16,13 +16,8 @@
       "count": 7
     },
     {
-      "id": "hdbscan-cluster-reasoning-glm-4-models-model",
-      "name": "HDBSCAN Cluster: reasoning, glm-4, models, model",
-      "count": 7
-    },
-    {
-      "id": "hdbscan-cluster-agentic-reinforcement-learning-reasoning",
-      "name": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "id": "hdbscan-cluster-optimization-learning-reinforcement-policy",
+      "name": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "count": 6
     },
     {
@@ -46,9 +41,19 @@
       "count": 4
     },
     {
+      "id": "hdbscan-cluster-university-models-reasoning-attention",
+      "name": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "count": 4
+    },
+    {
       "id": "hdbscan-cluster-zhang-wang-liu-yang",
       "name": "HDBSCAN Cluster: zhang, wang, liu, yang",
       "count": 4
+    },
+    {
+      "id": "hdbscan-cluster-figure-agent-out-world",
+      "name": "HDBSCAN Cluster: figure, agent, out, world",
+      "count": 3
     },
     {
       "id": "hdbscan-cluster-qwen-models-report-qwen3",
@@ -71,8 +76,8 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-language-model-small-mutarjim",
-      "name": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "id": "hdbscan-cluster-reasoning-models-agentic-deepseek-v3",
+      "name": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
       "count": 3
     },
     {
@@ -83,11 +88,6 @@
     {
       "id": "hdbscan-cluster-figure-university-li1-agentic",
       "name": "HDBSCAN Cluster: figure, university, li1, agentic",
-      "count": 3
-    },
-    {
-      "id": "hdbscan-cluster-reinforcement-feedback-language-learning",
-      "name": "HDBSCAN Cluster: reinforcement, feedback, language, learning",
       "count": 3
     },
     {
@@ -116,23 +116,18 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-figure-agent-out-world",
-      "name": "HDBSCAN Cluster: figure, agent, out, world",
-      "count": 2
-    },
-    {
       "id": "hdbscan-cluster-university-molmoact2-rwkv-7-state",
       "name": "HDBSCAN Cluster: university, molmoact2, rwkv-7, state",
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-reasoning-policy-deep-rstar-math",
-      "name": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
+      "id": "hdbscan-cluster-figure-efficient-language-opus",
+      "name": "HDBSCAN Cluster: figure, efficient, language, opus",
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-figure-efficient-language-opus",
-      "name": "HDBSCAN Cluster: figure, efficient, language, opus",
+      "id": "hdbscan-cluster-unified-air-ground-embodied-infrastructure",
+      "name": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
       "count": 2
     },
     {
@@ -166,8 +161,13 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-university-attention-sparse-wang1",
-      "name": "HDBSCAN Cluster: university, attention, sparse, wang1",
+      "id": "hdbscan-cluster-glm-4-multimodal-reasoning-seed1",
+      "name": "HDBSCAN Cluster: glm-4, multimodal, reasoning, seed1",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-small-language-model-smollm2",
+      "name": "HDBSCAN Cluster: small, language, model, smollm2",
       "count": 2
     },
     {
@@ -201,8 +201,18 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-agents-embodied-lumine-open",
+      "name": "HDBSCAN Cluster: agents, embodied, lumine, open",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-language-models-nonsense-hallucinations",
       "name": "HDBSCAN Cluster: language, models, nonsense, hallucinations",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-language-feedback-exploration-reinforcement",
+      "name": "HDBSCAN Cluster: language, feedback, exploration, reinforcement",
       "count": 2
     },
     {
@@ -218,16 +228,6 @@
     {
       "id": "hdbscan-cluster-generation-long-video-real-time",
       "name": "HDBSCAN Cluster: generation, long, video, real-time",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-reasoning-models-intelligence-embodied",
-      "name": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
-      "count": 2
-    },
-    {
-      "id": "hdbscan-cluster-figure-video-university-avatar",
-      "name": "HDBSCAN Cluster: figure, video, university, avatar",
       "count": 2
     },
     {
@@ -266,7 +266,7 @@
     },
     {
       "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
-      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -302,7 +302,7 @@
     },
     {
       "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
-      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -356,7 +356,7 @@
     },
     {
       "slug": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
-      "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -380,7 +380,7 @@
     },
     {
       "slug": "325_CARLA-Air_Fly_Drones_Inside_a_CARLA_World_--_A_Unified_Infra",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -410,7 +410,7 @@
     },
     {
       "slug": "330_Group_Sequence_Policy_Optimization",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -458,7 +458,7 @@
     },
     {
       "slug": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
-      "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -494,7 +494,7 @@
     },
     {
       "slug": "1725_Kimi_K25_Visual_Agentic_Intelligence",
-      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -542,7 +542,7 @@
     },
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -566,7 +566,7 @@
     },
     {
       "slug": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
-      "category": "HDBSCAN Cluster: university, attention, sparse, wang1",
+      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -578,13 +578,13 @@
     },
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Cluster: glm-4, multimodal, reasoning, seed1",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Cluster: small, language, model, smollm2",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -680,7 +680,7 @@
     },
     {
       "slug": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -764,7 +764,7 @@
     },
     {
       "slug": "1931_VESPO_Variational_Sequence-Level_Soft_Policy_Optimization_fo",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -776,13 +776,13 @@
     },
     {
       "slug": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "1934_Lumine_An_Open_Recipe_for_Building_Generalist_Agents_in_3D_O",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: agents, embodied, lumine, open",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -794,7 +794,7 @@
     },
     {
       "slug": "1977_Mutarjim_Advancing_Bidirectional_Arabic-English_Translation",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -818,7 +818,7 @@
     },
     {
       "slug": "1980_Bootstrapping_Exploration_with_Group-Level_Natural_Language",
-      "category": "HDBSCAN Cluster: reinforcement, feedback, language, learning",
+      "category": "HDBSCAN Cluster: language, feedback, exploration, reinforcement",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -860,7 +860,7 @@
     },
     {
       "slug": "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -938,7 +938,7 @@
     },
     {
       "slug": "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -950,7 +950,7 @@
     },
     {
       "slug": "2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1034,7 +1034,7 @@
     },
     {
       "slug": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
-      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1046,7 +1046,7 @@
     },
     {
       "slug": "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
-      "category": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
+      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1076,7 +1076,7 @@
     },
     {
       "slug": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1118,7 +1118,7 @@
     },
     {
       "slug": "2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: agents, embodied, lumine, open",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1130,7 +1130,7 @@
     },
     {
       "slug": "2495_Live_Avatar_Streaming_Real-time_Audio-Driven_Avatar_Generati",
-      "category": "HDBSCAN Cluster: figure, video, university, avatar",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1262,19 +1262,19 @@
     },
     {
       "slug": "2681_Embodied-R15_Evolving_Physical_Intelligence_via_Embodied_Fou",
-      "category": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
+      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "2682_Native_Sparse_Attention_Hardware-Aligned_and_Natively_Traina",
-      "category": "HDBSCAN Cluster: university, attention, sparse, wang1",
+      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1364,7 +1364,7 @@
     },
     {
       "slug": "2859_UI-Venus-15_Technical_Report",
-      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1376,7 +1376,7 @@
     },
     {
       "slug": "2861_Seed15-VL_Technical_Report",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Cluster: glm-4, multimodal, reasoning, seed1",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1400,7 +1400,7 @@
     },
     {
       "slug": "2903_Self-Rewarding_Language_Models",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, training",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1430,7 +1430,7 @@
     },
     {
       "slug": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
+      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1454,7 +1454,7 @@
     },
     {
       "slug": "2991_Textbooks_Are_All_You_Need",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Cluster: small, language, model, smollm2",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1508,7 +1508,7 @@
     },
     {
       "slug": "3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1538,7 +1538,7 @@
     },
     {
       "slug": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
-      "category": "HDBSCAN Cluster: figure, video, university, avatar",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1586,13 +1586,13 @@
     },
     {
       "slug": "2689_DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Sca",
-      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
     {
       "slug": "3174_From_Blind_Spots_to_Gains_Diagnostic-Driven_Iterative_Traini",
-      "category": "HDBSCAN Cluster: reinforcement, feedback, language, learning",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1616,7 +1616,7 @@
     },
     {
       "slug": "3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem",
-      "category": "HDBSCAN Cluster: reinforcement, feedback, language, learning",
+      "category": "HDBSCAN Cluster: language, feedback, exploration, reinforcement",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     },
@@ -1629,6 +1629,36 @@
     {
       "slug": "3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co",
       "category": "HDBSCAN Cluster: university, loop, generalization, sft",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
+      "category": "HDBSCAN Cluster: figure, agent, out, world",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "confidence": 0.74,
+      "source": "codex-native-hdbscan"
+    },
+    {
+      "slug": "3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "confidence": 0.74,
       "source": "codex-native-hdbscan"
     }
