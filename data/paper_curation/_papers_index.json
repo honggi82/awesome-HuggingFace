@@ -5,7 +5,7 @@
     {
       "slug": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
       "title": "Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: transformer, language, transformers, attention",
       "key": "FOLDER00001_af26518a47dc",
       "sourceIndex": null,
       "textBytes": 44954,
@@ -45,7 +45,7 @@
     {
       "slug": "027_Less_is_More_Recursive_Reasoning_with_Tiny_Networks",
       "title": "Less is More: Recursive Reasoning with Tiny Networks",
-      "category": "HDBSCAN Cluster: attention, model, lightning, models",
+      "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
       "key": "FOLDER00005_2c9133cfdb16",
       "sourceIndex": null,
       "textBytes": 48364,
@@ -255,7 +255,7 @@
     {
       "slug": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
-      "category": "HDBSCAN Cluster: transformer, transformers, attention, normalization",
+      "category": "HDBSCAN Cluster: transformer, language, transformers, attention",
       "key": "FOLDER00026_e94287efc152",
       "sourceIndex": 25,
       "textBytes": 79369,
@@ -305,7 +305,7 @@
     {
       "slug": "334_MiniMax-01_Scaling_Foundation_Models_with_Lightning_Attentio",
       "title": "MiniMax-01: Scaling Foundation Models with Lightning Attention",
-      "category": "HDBSCAN Cluster: attention, model, lightning, models",
+      "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
       "key": "FOLDER00031_fa942766dee6",
       "sourceIndex": 30,
       "textBytes": 287301,
@@ -375,7 +375,7 @@
     {
       "slug": "341_MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightn",
       "title": "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention",
-      "category": "HDBSCAN Cluster: attention, model, lightning, models",
+      "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
       "key": "FOLDER00038_c5daea06a99b",
       "sourceIndex": 37,
       "textBytes": 75471,
@@ -385,7 +385,7 @@
     {
       "slug": "342_Qwen-Image_Technical_Report",
       "title": "Qwen-Image Technical Report",
-      "category": "HDBSCAN Cluster: image, video, models, generation",
+      "category": "HDBSCAN Cluster: generation, video, image, models",
       "key": "FOLDER00039_67f3a3187f0a",
       "sourceIndex": 38,
       "textBytes": 141226,
@@ -495,7 +495,7 @@
     {
       "slug": "1734_ERNIE_50_Technical_Report",
       "title": "ERNIE 5.0 Technical Report",
-      "category": "HDBSCAN Cluster: attention, model, lightning, models",
+      "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
       "key": "FOLDER00050_7562d1a3af33",
       "sourceIndex": 49,
       "textBytes": 147469,
@@ -525,7 +525,7 @@
     {
       "slug": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "title": "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model",
-      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "category": "HDBSCAN Cluster: university, attention, sparse, wang1",
       "key": "FOLDER00053_b501ac6425a5",
       "sourceIndex": 52,
       "textBytes": 99132,
@@ -565,7 +565,7 @@
     {
       "slug": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
       "title": "Z-Image: An Efficient Image Generation Foundation Model with Single-Stream Diffusion Transformer",
-      "category": "HDBSCAN Cluster: image, video, models, generation",
+      "category": "HDBSCAN Cluster: generation, video, image, models",
       "key": "FOLDER00057_85f52b7d18cd",
       "sourceIndex": 56,
       "textBytes": 233804,
@@ -625,7 +625,7 @@
     {
       "slug": "1746_Crafter_A_Multi-Agent_Harness_for_Editable_Scientific_Figure",
       "title": "Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs",
-      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
+      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
       "key": "FOLDER00063_0936ba6d5400",
       "sourceIndex": 62,
       "textBytes": 80050,
@@ -705,7 +705,7 @@
     {
       "slug": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
       "title": "Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation",
-      "category": "HDBSCAN Cluster: image, video, models, generation",
+      "category": "HDBSCAN Cluster: generation, video, image, models",
       "key": "FOLDER00071_8339c62b1c6b",
       "sourceIndex": 70,
       "textBytes": 189067,
@@ -725,7 +725,7 @@
     {
       "slug": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
       "title": "PaperBanana: Automating Academic Illustration for AI Scientists",
-      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
+      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
       "key": "FOLDER00073_6aee964fcc91",
       "sourceIndex": 72,
       "textBytes": 126607,
@@ -1015,7 +1015,7 @@
     {
       "slug": "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti",
       "title": "Step 3.5 Flash: Open Frontier-Level Intelligence with 11B Active Parameters",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
       "key": "FOLDER00102_2c700711e69c",
       "sourceIndex": 101,
       "textBytes": 205457,
@@ -1045,7 +1045,7 @@
     {
       "slug": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
       "title": "Code2World: A GUI World Model via Renderable Code Generation",
-      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00105_f3af930e91a8",
       "sourceIndex": 104,
       "textBytes": 97988,
@@ -1085,7 +1085,7 @@
     {
       "slug": "2122_Differential_Transformer",
       "title": "Differential Transformer",
-      "category": "HDBSCAN Cluster: transformer, transformers, attention, normalization",
+      "category": "HDBSCAN Cluster: transformer, language, transformers, attention",
       "key": "FOLDER00109_cb0fec7db820",
       "sourceIndex": 108,
       "textBytes": 71150,
@@ -1225,7 +1225,7 @@
     {
       "slug": "2257_Can_LLMs_Clean_Up_Your_Mess_A_Survey_of_Application-Ready_Da",
       "title": "Can LLMs Clean Up Your Mess? A Survey of Application-Ready Data Preparation with LLMs",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
       "key": "FOLDER00123_6e2ebdc352d6",
       "sourceIndex": 122,
       "textBytes": 150253,
@@ -1255,7 +1255,7 @@
     {
       "slug": "2306_Attention_Residuals",
       "title": "Attention Residuals",
-      "category": "HDBSCAN Cluster: attention, model, lightning, models",
+      "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
       "key": "FOLDER00126_5cfd8b110a07",
       "sourceIndex": 125,
       "textBytes": 76619,
@@ -1325,7 +1325,7 @@
     {
       "slug": "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
       "title": "Perception, Reason, Think, and Plan: A Survey on Large Multimodal Reasoning Models",
-      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "category": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
       "key": "FOLDER00133_8e3c28fd1818",
       "sourceIndex": 132,
       "textBytes": 391537,
@@ -1385,7 +1385,7 @@
     {
       "slug": "2402_Idea2Story_An_Automated_Pipeline_for_Transforming_Research_C",
       "title": "Idea2Story: An Automated Pipeline for Transforming Research Concepts into Complete Scientific Narratives",
-      "category": "HDBSCAN Cluster: mcp, scientific, research, chen",
+      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
       "key": "FOLDER00139_67529da800a5",
       "sourceIndex": 138,
       "textBytes": 50780,
@@ -1415,7 +1415,7 @@
     {
       "slug": "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
       "title": "MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use",
-      "category": "HDBSCAN Cluster: mcp, scientific, research, chen",
+      "category": "HDBSCAN Cluster: llms, mcp, data, zhou",
       "key": "FOLDER00142_a4d4189c9274",
       "sourceIndex": 141,
       "textBytes": 86861,
@@ -1535,7 +1535,7 @@
     {
       "slug": "2544_Retentive_Network_A_Successor_to_Transformer_for_Large_Langu",
       "title": "Retentive Network: A Successor to Transformer for Large Language Models",
-      "category": "HDBSCAN Cluster: transformer, transformers, attention, normalization",
+      "category": "HDBSCAN Cluster: transformer, language, transformers, attention",
       "key": "FOLDER00154_325e8d86e25f",
       "sourceIndex": 153,
       "textBytes": 42595,
@@ -1545,7 +1545,7 @@
     {
       "slug": "2545_Transformers_without_Normalization",
       "title": "Transformers without Normalization",
-      "category": "HDBSCAN Cluster: transformer, transformers, attention, normalization",
+      "category": "HDBSCAN Cluster: transformer, language, transformers, attention",
       "key": "FOLDER00155_a10ab96ec28d",
       "sourceIndex": 154,
       "textBytes": 67154,
@@ -1645,7 +1645,7 @@
     {
       "slug": "2633_Kling-Omni_Technical_Report",
       "title": "Kling-Omni Technical Report",
-      "category": "HDBSCAN Cluster: image, video, models, generation",
+      "category": "HDBSCAN Cluster: generation, video, image, models",
       "key": "FOLDER00165_3ca77ea7131e",
       "sourceIndex": 164,
       "textBytes": 66971,
@@ -1685,7 +1685,7 @@
     {
       "slug": "2681_Embodied-R15_Evolving_Physical_Intelligence_via_Embodied_Fou",
       "title": "Embodied-R1.5: Evolving Physical Intelligence via Embodied Foundation Models",
-      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "category": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
       "key": "FOLDER00169_307877d74af7",
       "sourceIndex": 168,
       "textBytes": 159829,
@@ -1695,7 +1695,7 @@
     {
       "slug": "2682_Native_Sparse_Attention_Hardware-Aligned_and_Natively_Traina",
       "title": "Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention",
-      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "category": "HDBSCAN Cluster: university, attention, sparse, wang1",
       "key": "FOLDER00170_8dd22ea2eeca",
       "sourceIndex": 169,
       "textBytes": 67357,
@@ -1751,6 +1751,56 @@
       "textBytes": 131626,
       "figuresExtracted": 5,
       "excerpt": "## AGENTIC REINFORCED POLICY OPTIMIZATION Guanting Dong1∗, Hangyu Mao2, Kai Ma2, Licheng Bao2∗, Yifei Chen1, Zhongyuan Wang2∗ Zhongxia Chen2, Jiazhen Du2, Huiyang Wang2∗, Fuzheng Zhang2, Guorui Zhou2† Yutao Zhu1, Ji-Rong Wen1, Zhicheng Dou1† 1Renmin University of China, 2Kuaishou Technology {dongguanting, dou}@ruc.edu.cn GitHub: https://github.com/dongguanting/ARPO ABSTRACT # arXiv:2507.19849v1[cs.LG]26Jul2025 Large-scale reinforcement learning with verifiable rewards (RLVR) has demonstrated its effectiveness in harnessing the potential of large language models (LLMs) for single-turn reasoning tasks. In realistic reasoning scenarios, LLMs can often utilize external tools to assist in task-solving processes. However, current RL algorithms inadequately balance the models’ intrinsic long-horizon reasoning capabilities and their proficiency in multi-turn tool interactions. To bridge this gap"
+    },
+    {
+      "slug": "2769_VeriGUI_Verifiable_Long-Chain_GUI_Dataset",
+      "title": "VeriGUI: Verifiable Long-Chain GUI Dataset",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00176_b7065248bff1",
+      "sourceIndex": 175,
+      "textBytes": 120816,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2508.04026v2[cs.HC]27Feb2026 ### VERIWEB: VERIFIABLE LONG-CHAIN WEB BENCHMARK FOR AGENTIC INFORMATION-SEEKING ##### VeriGUI Team ABSTRACT Recent advances have showcased the extraordinary capabilities of Large Language Model (LLM) agents in tackling web-based information-seeking tasks. However, existing efforts mainly focus on single-fact retrieval and rely on outcome-only verification, thereby limiting their scalability in realistic knowledge-intensive scenarios that involve long-horizon web tasks requiring large-scale retrieval and synthesis of information from diverse sources. In this work, we introduce VeriWeb, a novel verifiable long-chain web benchmark designed to facilitate the evaluation and development of web agents within realistic web environments. Our benchmark emphasizes two critical dimensions: (1) long-chain complexity, encompassing both breadth- and depth-oriented"
+    },
+    {
+      "slug": "2770_Scaling_RL_to_Long_Videos",
+      "title": "Scaling RL to Long Videos",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00177_3a4ca13cdb92",
+      "sourceIndex": 176,
+      "textBytes": 121625,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2507.07966v4[cs.CV]30Sep2025 ## Scaling RL to Long Videos Yukang Chen1∗ Wei Huang1,3∗ Baifeng Shi1,4† Qinghao Hu2† Hanrong Ye1† Ligeng Zhu1 Zhijian Liu1 Pavlo Molchanov1 Jan Kautz1 Xiaojuan Qi3 Sifei Liu1 Hongxu Yin1 Yao Lu1 Song Han1,2 1NVIDIA 2MIT 3HKU 4UC Berkeley ###### Abstract We introduce a full-stack framework that scales up reasoning in vision-language models (VLMs) to long videos, leveraging reinforcement learning. We address the unique challenges of long video reasoning by integrating three critical components: (1) a large-scale dataset, LongVideo-Reason, comprising 104K long video QA pairs with high-quality reasoning annotations across diverse domains such as sports, games, and vlogs; (2) a two-stage training pipeline that extends VLMs with chainof-thought supervised fine-tuning (CoT-SFT) and reinforcement learning (RL); and (3) a training infrastructure for long vide"
+    },
+    {
+      "slug": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
+      "title": "Seedance 2.0: Advancing Video Generation for World Complexity",
+      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "key": "FOLDER00178_2a5f3f6b73fb",
+      "sourceIndex": 177,
+      "textBytes": 85193,
+      "figuresExtracted": 4,
+      "excerpt": "# arXiv:2604.14148v1[cs.CV]15Apr2026 [Figure 1] ## Seedance 2.0: Advancing Video Generation for World Complexity ### ByteDance Seed 1 Introduction Video generation models have become a core technology for modern digital content infrastructure and generative AI ecosystems, with rapid, widespread adoption across professional content production and consumer-facing creative scenarios. Through years of iterative research and engineering optimization, the ByteDance Seed team has built full-stack generative media technologies — including previous Seedance video generation series [6, 15, 16, 23], Seedream image generation and editing series [5, 7, 13, 17, 19, 20], Seed-VL multimodal vision-language models [3, 4, 9] for cross-modal semantic understanding, and other key components [21, 22], which are now widely integrated into our large-scale product ecosystem, supporting video generation services"
+    },
+    {
+      "slug": "2772_OpenClaw-RL_Train_Any_Agent_Simply_by_Talking",
+      "title": "OpenClaw-RL: Train Any Agent Simply by Talking",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00179_5083aac1cc93",
+      "sourceIndex": 178,
+      "textBytes": 101272,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] [Figure 2] ## OpenClaw-RL: Train Any Agent Simply by Talking ###### Yinjie Wang*, Xuyang Chen*, Xiaolong Jin*, Mengdi Wang†, Ling Yang† #### https://github.com/Gen-Verse/OpenClaw-RL [Figure 3] Every agent interaction generates a next-state signal, namely the user reply, tool output, terminal or GUI state change that follows each action, yet no existing agentic RL system recovers it as a live, online learning source. We present OpenClaw-RL, a framework that employs next-state signals to optimize personal agents online through infrastructure and methodology innovations. On the infrastructure side, we extend existing RL systems to a server–client architecture where the RL server hosts the policy behind an inference API and user terminals stream interaction data back over HTTP. From each observed next state, the system extracts two complementary training signals, evaluative and di"
+    },
+    {
+      "slug": "2773_Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurre",
+      "title": "Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach",
+      "category": "HDBSCAN Cluster: model, attention, reasoning, scaling",
+      "key": "FOLDER00180_e288d1fddbcb",
+      "sourceIndex": 179,
+      "textBytes": 142183,
+      "figuresExtracted": 5,
+      "excerpt": "## Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach Jonas Geiping1 Sean McLeish2 Neel Jain2 John Kirchenbauer2 Siddharth Singh2 Brian R. Bartoldson3 Bhavya Kailkhura3 Abhinav Bhatele2 Tom Goldstein2 # arXiv:2502.05171v2[cs.LG]17Feb2025 #### Abstract We study a novel language model architecture that is capable of scaling test-time computation by implicitly reasoning in latent space. Our model works by iterating a recurrent block, thereby unrolling to arbitrary depth at test-time. This stands in contrast to mainstream reasoning models that scale up compute by producing more tokens. Unlike approaches based on chain-of-thought, our approach does not require any specialized training data, can work with small context windows, and can capture types of reasoning that are not easily represented in words. We scale a proof-ofconcept model to 3.5 billion parameters and "
     }
   ]
 }

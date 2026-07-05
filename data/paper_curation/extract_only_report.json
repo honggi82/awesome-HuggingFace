@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-05T06:30:57.766845+00:00",
+  "generated": "2026-07-05T06:57:07.222208+00:00",
   "mode": "extract-only",
   "topic": "huggingface",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "sourceTotal": 16212,
-  "sourceOffset": 170,
+  "sourceOffset": 175,
   "sourceLimit": 5,
-  "sourceEnd": 175,
+  "sourceEnd": 180,
   "batchTotal": 5,
-  "total": 175,
-  "ok": 175,
-  "textExtracted": 175,
-  "figureFiles": 782,
+  "total": 180,
+  "ok": 180,
+  "textExtracted": 180,
+  "figureFiles": 806,
   "sanityFailed": 0,
   "records": [
     {
@@ -2324,6 +2324,71 @@
       "textBytes": 131626,
       "sanityOk": true,
       "sanityReason": "ok (title 4/4 doi=T author=True)"
+    },
+    {
+      "title": "VeriGUI: Verifiable Long-Chain GUI Dataset",
+      "key": "FOLDER00176_b7065248bff1",
+      "sourceIndex": 175,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00176_VeriGUI Verifiable Long-Chain GUI Dataset.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2769_VeriGUI_Verifiable_Long-Chain_GUI_Dataset",
+      "textBytes": 120816,
+      "sanityOk": true,
+      "sanityReason": "ok (title 5/5 doi=T author=True)"
+    },
+    {
+      "title": "Scaling RL to Long Videos",
+      "key": "FOLDER00177_3a4ca13cdb92",
+      "sourceIndex": 176,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00177_Scaling RL to Long Videos.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2770_Scaling_RL_to_Long_Videos",
+      "textBytes": 121625,
+      "sanityOk": true,
+      "sanityReason": "ok (title 3/3 doi=T author=True)"
+    },
+    {
+      "title": "Seedance 2.0: Advancing Video Generation for World Complexity",
+      "key": "FOLDER00178_2a5f3f6b73fb",
+      "sourceIndex": 177,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00178_Seedance 2.0 Advancing Video Generation for World Complexity.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 4,
+      "slug": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
+      "textBytes": 85193,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
+    },
+    {
+      "title": "OpenClaw-RL: Train Any Agent Simply by Talking",
+      "key": "FOLDER00179_5083aac1cc93",
+      "sourceIndex": 178,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00179_OpenClaw-RL Train Any Agent Simply by Talking.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2772_OpenClaw-RL_Train_Any_Agent_Simply_by_Talking",
+      "textBytes": 101272,
+      "sanityOk": true,
+      "sanityReason": "ok (title 5/5 doi=T author=True)"
+    },
+    {
+      "title": "Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach",
+      "key": "FOLDER00180_e288d1fddbcb",
+      "sourceIndex": 179,
+      "pdfPath": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\00180_Scaling up Test-Time Compute with Latent Reasoning A Recurrent Depth Approach.pdf",
+      "ok": true,
+      "textExtracted": true,
+      "figuresExtracted": 5,
+      "slug": "2773_Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurre",
+      "textBytes": 142183,
+      "sanityOk": true,
+      "sanityReason": "ok (title 6/6 doi=T author=True)"
     }
   ]
 }

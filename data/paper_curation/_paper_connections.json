@@ -119,6 +119,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2773_Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurre",
+      "score": 0.9436,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "341_MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightn",
       "score": 0.9402,
       "reason": "Codex local embedding similarity"
@@ -126,11 +131,6 @@
     {
       "target": "329_HRM-Text_Efficient_Pretraining_Beyond_Scaling",
       "score": 0.9378,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
-      "score": 0.9336,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -210,8 +210,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2447_Transformer_Explainer_Interactive_Learning_of_Text-Generativ",
-      "score": 0.9052,
+      "target": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
+      "score": 0.9078,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1177,12 +1177,12 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
-      "score": 0.9537,
+      "target": "2770_Scaling_RL_to_Long_Videos",
+      "score": 0.9545,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
+      "target": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
       "score": 0.9537,
       "reason": "Codex local embedding similarity"
     }
@@ -1518,6 +1518,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
+      "score": 0.9487,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "342_Qwen-Image_Technical_Report",
       "score": 0.947,
       "reason": "Codex local embedding similarity"
@@ -1530,11 +1535,6 @@
     {
       "target": "1734_ERNIE_50_Technical_Report",
       "score": 0.9368,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2585_Diffusion_Transformers_with_Representation_Autoencoders",
-      "score": 0.9331,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1582,13 +1582,13 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2119_MiroThinker_Pushing_the_Performance_Boundaries_of_Open-Sourc",
-      "score": 0.9313,
+      "target": "2769_VeriGUI_Verifiable_Long-Chain_GUI_Dataset",
+      "score": 0.9334,
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "2494_MiroThinker-17__H1_Towards_Heavy-Duty_Research_Agents_via_Ve",
-      "score": 0.9283,
+      "target": "2119_MiroThinker_Pushing_the_Performance_Boundaries_of_Open-Sourc",
+      "score": 0.9313,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1874,6 +1874,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
+      "score": 0.9352,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2633_Kling-Omni_Technical_Report",
       "score": 0.9348,
       "reason": "Codex local embedding similarity"
@@ -1881,11 +1886,6 @@
     {
       "target": "2679_Qwen3-VL_Technical_Report",
       "score": 0.9337,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2309_Kwai_Keye-VL-20_Technical_Report",
-      "score": 0.9331,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1901,6 +1901,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
+      "score": 0.9573,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "342_Qwen-Image_Technical_Report",
       "score": 0.9571,
       "reason": "Codex local embedding similarity"
@@ -1908,11 +1913,6 @@
     {
       "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
       "score": 0.9513,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2403_LongLive_Real-time_Interactive_Long_Video_Generation",
-      "score": 0.9399,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -1950,6 +1950,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
+      "score": 0.9425,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
       "score": 0.9394,
       "reason": "Codex local embedding similarity"
@@ -1962,11 +1967,6 @@
     {
       "target": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
       "score": 0.9358,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2633_Kling-Omni_Technical_Report",
-      "score": 0.9345,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3099,8 +3099,8 @@
       "reason": "Codex local embedding similarity"
     },
     {
-      "target": "1753_Video-MME-v2_Towards_the_Next_Stage_in_Benchmarks_for_Compre",
-      "score": 0.941,
+      "target": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
+      "score": 0.9419,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3332,6 +3332,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2770_Scaling_RL_to_Long_Videos",
+      "score": 0.95,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
       "score": 0.9466,
       "reason": "Codex local embedding similarity"
@@ -3339,11 +3344,6 @@
     {
       "target": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
       "score": 0.9437,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
-      "score": 0.9402,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3467,6 +3467,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2770_Scaling_RL_to_Long_Videos",
+      "score": 0.9467,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1734_ERNIE_50_Technical_Report",
       "score": 0.9438,
       "reason": "Codex local embedding similarity"
@@ -3474,11 +3479,6 @@
     {
       "target": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
       "score": 0.9412,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2543_Qwen25-Omni_Technical_Report",
-      "score": 0.9407,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3700,6 +3700,11 @@
   ],
   "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen": [
     {
+      "target": "2770_Scaling_RL_to_Long_Videos",
+      "score": 0.9619,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
       "score": 0.9601,
       "reason": "Codex local embedding similarity"
@@ -3717,11 +3722,6 @@
     {
       "target": "1728_Reinforcement_Pre-Training",
       "score": 0.9528,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2727_Agentic_Reinforced_Policy_Optimization",
-      "score": 0.9502,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -3759,6 +3759,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2770_Scaling_RL_to_Long_Videos",
+      "score": 0.9481,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
       "score": 0.9448,
       "reason": "Codex local embedding similarity"
@@ -3771,11 +3776,6 @@
     {
       "target": "2496_VibeVoice_Technical_Report",
       "score": 0.9398,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "2495_Live_Avatar_Streaming_Real-time_Audio-Driven_Avatar_Generati",
-      "score": 0.938,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4380,6 +4380,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2770_Scaling_RL_to_Long_Videos",
+      "score": 0.9432,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
       "score": 0.9397,
       "reason": "Codex local embedding similarity"
@@ -4392,11 +4397,6 @@
     {
       "target": "2309_Kwai_Keye-VL-20_Technical_Report",
       "score": 0.9354,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "083_Qwen25_Technical_Report",
-      "score": 0.9346,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4429,6 +4429,11 @@
   ],
   "2633_Kling-Omni_Technical_Report": [
     {
+      "target": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
+      "score": 0.9618,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
       "score": 0.958,
       "reason": "Codex local embedding similarity"
@@ -4446,11 +4451,6 @@
     {
       "target": "342_Qwen-Image_Technical_Report",
       "score": 0.9406,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "1753_Video-MME-v2_Towards_the_Next_Stage_in_Benchmarks_for_Compre",
-      "score": 0.9348,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4628,6 +4628,11 @@
       "reason": "Codex local embedding similarity"
     },
     {
+      "target": "2770_Scaling_RL_to_Long_Videos",
+      "score": 0.9384,
+      "reason": "Codex local embedding similarity"
+    },
+    {
       "target": "2121_STEP3-VL-10B_Technical_Report",
       "score": 0.9335,
       "reason": "Codex local embedding similarity"
@@ -4635,11 +4640,6 @@
     {
       "target": "332_DINOv3",
       "score": 0.9327,
-      "reason": "Codex local embedding similarity"
-    },
-    {
-      "target": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
-      "score": 0.9311,
       "reason": "Codex local embedding similarity"
     }
   ],
@@ -4721,6 +4721,141 @@
     {
       "target": "2166_On_the_Generalization_of_SFT_A_Reinforcement_Learning_Perspe",
       "score": 0.9579,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2769_VeriGUI_Verifiable_Long-Chain_GUI_Dataset": [
+    {
+      "target": "2119_MiroThinker_Pushing_the_Performance_Boundaries_of_Open-Sourc",
+      "score": 0.9375,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
+      "score": 0.9365,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2450_LongCat-Flash-Thinking-2601_Technical_Report",
+      "score": 0.935,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1742_GAIA_a_benchmark_for_General_AI_Assistants",
+      "score": 0.9334,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2494_MiroThinker-17__H1_Towards_Heavy-Duty_Research_Agents_via_Ve",
+      "score": 0.9323,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2770_Scaling_RL_to_Long_Videos": [
+    {
+      "target": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
+      "score": 0.9619,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1728_Reinforcement_Pre-Training",
+      "score": 0.9545,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
+      "score": 0.95,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
+      "score": 0.9493,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2403_LongLive_Real-time_Interactive_Long_Video_Generation",
+      "score": 0.9481,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity": [
+    {
+      "target": "2633_Kling-Omni_Technical_Report",
+      "score": 0.9618,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
+      "score": 0.9573,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
+      "score": 0.9487,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
+      "score": 0.9425,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
+      "score": 0.9419,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2772_OpenClaw-RL_Train_Any_Agent_Simply_by_Talking": [
+    {
+      "target": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
+      "score": 0.931,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs",
+      "score": 0.9277,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
+      "score": 0.9274,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "1728_Reinforcement_Pre-Training",
+      "score": 0.9271,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "330_Group_Sequence_Policy_Optimization",
+      "score": 0.9242,
+      "reason": "Codex local embedding similarity"
+    }
+  ],
+  "2773_Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurre": [
+    {
+      "target": "027_Less_is_More_Recursive_Reasoning_with_Tiny_Networks",
+      "score": 0.9436,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
+      "score": 0.9427,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "341_MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightn",
+      "score": 0.9424,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
+      "score": 0.9318,
+      "reason": "Codex local embedding similarity"
+    },
+    {
+      "target": "2725_Smarter_Better_Faster_Longer_A_Modern_Bidirectional_Encoder",
+      "score": 0.9303,
       "reason": "Codex local embedding similarity"
     }
   ]

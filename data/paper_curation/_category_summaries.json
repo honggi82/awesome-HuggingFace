@@ -2,8 +2,8 @@
   "categories": [
     {
       "name": "HDBSCAN Bridge and Noise Papers",
-      "summary": "Codex-native cluster containing 59 processed papers.",
-      "count": 59
+      "summary": "Codex-native cluster containing 60 processed papers.",
+      "count": 60
     },
     {
       "name": "HDBSCAN Cluster: figure, agent, university, tokens",
@@ -11,12 +11,17 @@
       "count": 7
     },
     {
+      "name": "HDBSCAN Cluster: model, attention, reasoning, scaling",
+      "summary": "Codex-native cluster containing 6 processed papers.",
+      "count": 6
+    },
+    {
       "name": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "summary": "Codex-native cluster containing 6 processed papers.",
       "count": 6
     },
     {
-      "name": "HDBSCAN Cluster: attention, model, lightning, models",
+      "name": "HDBSCAN Cluster: transformer, language, transformers, attention",
       "summary": "Codex-native cluster containing 5 processed papers.",
       "count": 5
     },
@@ -26,17 +31,12 @@
       "count": 5
     },
     {
-      "name": "HDBSCAN Cluster: transformer, transformers, attention, normalization",
-      "summary": "Codex-native cluster containing 4 processed papers.",
-      "count": 4
+      "name": "HDBSCAN Cluster: generation, video, image, models",
+      "summary": "Codex-native cluster containing 5 processed papers.",
+      "count": 5
     },
     {
-      "name": "HDBSCAN Cluster: image, video, models, generation",
-      "summary": "Codex-native cluster containing 4 processed papers.",
-      "count": 4
-    },
-    {
-      "name": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "name": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
       "summary": "Codex-native cluster containing 4 processed papers.",
       "count": 4
     },
@@ -49,11 +49,6 @@
       "name": "HDBSCAN Cluster: https, multimodal, report, figure",
       "summary": "Codex-native cluster containing 4 processed papers.",
       "count": 4
-    },
-    {
-      "name": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
-      "summary": "Codex-native cluster containing 3 processed papers.",
-      "count": 3
     },
     {
       "name": "HDBSCAN Cluster: qwen, models, report, qwen3",
@@ -91,17 +86,17 @@
       "count": 3
     },
     {
-      "name": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
-      "summary": "Codex-native cluster containing 3 processed papers.",
-      "count": 3
-    },
-    {
       "name": "HDBSCAN Cluster: figure, university, li1, agentic",
       "summary": "Codex-native cluster containing 3 processed papers.",
       "count": 3
     },
     {
       "name": "HDBSCAN Cluster: reasoning, model, research, performance",
+      "summary": "Codex-native cluster containing 3 processed papers.",
+      "count": 3
+    },
+    {
+      "name": "HDBSCAN Cluster: llms, mcp, data, zhou",
       "summary": "Codex-native cluster containing 3 processed papers.",
       "count": 3
     },
@@ -136,6 +131,11 @@
       "count": 2
     },
     {
+      "name": "HDBSCAN Cluster: university, attention, sparse, wang1",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
+    },
+    {
       "name": "HDBSCAN Cluster: multimodal, glm-4, understanding, generation",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
@@ -147,6 +147,11 @@
     },
     {
       "name": "HDBSCAN Cluster: figure, sec, thinking, tstars-tryon",
+      "summary": "Codex-native cluster containing 2 processed papers.",
+      "count": 2
+    },
+    {
+      "name": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },
@@ -196,7 +201,7 @@
       "count": 2
     },
     {
-      "name": "HDBSCAN Cluster: mcp, scientific, research, chen",
+      "name": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
       "summary": "Codex-native cluster containing 2 processed papers.",
       "count": 2
     },

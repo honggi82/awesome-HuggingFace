@@ -5,7 +5,7 @@
     {
       "id": "hdbscan-bridge-and-noise-papers",
       "name": "HDBSCAN Bridge and Noise Papers",
-      "count": 59
+      "count": 60
     },
     {
       "id": "hdbscan-cluster-figure-agent-university-tokens",
@@ -13,13 +13,18 @@
       "count": 7
     },
     {
+      "id": "hdbscan-cluster-model-attention-reasoning-scaling",
+      "name": "HDBSCAN Cluster: model, attention, reasoning, scaling",
+      "count": 6
+    },
+    {
       "id": "hdbscan-cluster-optimization-learning-reinforcement-policy",
       "name": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
       "count": 6
     },
     {
-      "id": "hdbscan-cluster-attention-model-lightning-models",
-      "name": "HDBSCAN Cluster: attention, model, lightning, models",
+      "id": "hdbscan-cluster-transformer-language-transformers-attention",
+      "name": "HDBSCAN Cluster: transformer, language, transformers, attention",
       "count": 5
     },
     {
@@ -28,18 +33,13 @@
       "count": 5
     },
     {
-      "id": "hdbscan-cluster-transformer-transformers-attention-normalization",
-      "name": "HDBSCAN Cluster: transformer, transformers, attention, normalization",
-      "count": 4
+      "id": "hdbscan-cluster-generation-video-image-models",
+      "name": "HDBSCAN Cluster: generation, video, image, models",
+      "count": 5
     },
     {
-      "id": "hdbscan-cluster-image-video-models-generation",
-      "name": "HDBSCAN Cluster: image, video, models, generation",
-      "count": 4
-    },
-    {
-      "id": "hdbscan-cluster-university-models-reasoning-attention",
-      "name": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "id": "hdbscan-cluster-agentic-reasoning-reinforcement-learning",
+      "name": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
       "count": 4
     },
     {
@@ -51,11 +51,6 @@
       "id": "hdbscan-cluster-https-multimodal-report-figure",
       "name": "HDBSCAN Cluster: https, multimodal, report, figure",
       "count": 4
-    },
-    {
-      "id": "hdbscan-cluster-agentic-reasoning-reinforcement-learning",
-      "name": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
-      "count": 3
     },
     {
       "id": "hdbscan-cluster-qwen-models-report-qwen3",
@@ -93,11 +88,6 @@
       "count": 3
     },
     {
-      "id": "hdbscan-cluster-figure-generation-paperbanana-gui",
-      "name": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
-      "count": 3
-    },
-    {
       "id": "hdbscan-cluster-figure-university-li1-agentic",
       "name": "HDBSCAN Cluster: figure, university, li1, agentic",
       "count": 3
@@ -105,6 +95,11 @@
     {
       "id": "hdbscan-cluster-reasoning-model-research-performance",
       "name": "HDBSCAN Cluster: reasoning, model, research, performance",
+      "count": 3
+    },
+    {
+      "id": "hdbscan-cluster-llms-mcp-data-zhou",
+      "name": "HDBSCAN Cluster: llms, mcp, data, zhou",
       "count": 3
     },
     {
@@ -138,6 +133,11 @@
       "count": 2
     },
     {
+      "id": "hdbscan-cluster-university-attention-sparse-wang1",
+      "name": "HDBSCAN Cluster: university, attention, sparse, wang1",
+      "count": 2
+    },
+    {
       "id": "hdbscan-cluster-multimodal-glm-4-understanding-generation",
       "name": "HDBSCAN Cluster: multimodal, glm-4, understanding, generation",
       "count": 2
@@ -150,6 +150,11 @@
     {
       "id": "hdbscan-cluster-figure-sec-thinking-tstars-tryon",
       "name": "HDBSCAN Cluster: figure, sec, thinking, tstars-tryon",
+      "count": 2
+    },
+    {
+      "id": "hdbscan-cluster-figure-paperbanana-scientific-generation",
+      "name": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
       "count": 2
     },
     {
@@ -198,8 +203,8 @@
       "count": 2
     },
     {
-      "id": "hdbscan-cluster-mcp-scientific-research-chen",
-      "name": "HDBSCAN Cluster: mcp, scientific, research, chen",
+      "id": "hdbscan-cluster-reasoning-models-intelligence-embodied",
+      "name": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
       "count": 2
     },
     {
