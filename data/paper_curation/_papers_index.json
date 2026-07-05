@@ -25,7 +25,7 @@
     {
       "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
       "title": "GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning",
-      "category": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
+      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
       "key": "FOLDER00003_07f36ae7acd9",
       "sourceIndex": null,
       "textBytes": 76254,
@@ -85,7 +85,7 @@
     {
       "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
       "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
-      "category": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
+      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
       "key": "FOLDER00009_e247d7b4176f",
       "sourceIndex": 8,
       "textBytes": 238083,
@@ -115,7 +115,7 @@
     {
       "slug": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
       "title": "Gamma-World: Generative Multi-Agent World Modeling Beyond Two Players",
-      "category": "HDBSCAN Cluster: figure, agent, university, clue",
+      "category": "HDBSCAN Cluster: figure, agent, out, world",
       "key": "FOLDER00012_8f53e8798157",
       "sourceIndex": 11,
       "textBytes": 63526,
@@ -175,7 +175,7 @@
     {
       "slug": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
       "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
-      "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
+      "category": "HDBSCAN Cluster: reasoning, policy, models, deep",
       "key": "FOLDER00018_b37c28309d81",
       "sourceIndex": 17,
       "textBytes": 99957,
@@ -205,7 +205,7 @@
     {
       "slug": "324_OPUS_Towards_Efficient_and_Principled_Data_Selection_in_Larg",
       "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, university, efficient, language",
       "key": "FOLDER00021_8502bdaf4994",
       "sourceIndex": 20,
       "textBytes": 218340,
@@ -215,7 +215,7 @@
     {
       "slug": "325_CARLA-Air_Fly_Drones_Inside_a_CARLA_World_--_A_Unified_Infra",
       "title": "CARLA-Air: Fly Drones Inside a CARLA World -- A Unified Infrastructure for Air-Ground Embodied Intelligence",
-      "category": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00022_bafb5974ff85",
       "sourceIndex": 21,
       "textBytes": 62875,
@@ -345,7 +345,7 @@
     {
       "slug": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
       "title": "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking",
-      "category": "HDBSCAN Cluster: reasoning, policy, deep, rstar-math",
+      "category": "HDBSCAN Cluster: reasoning, policy, models, deep",
       "key": "FOLDER00035_fc3525c2b456",
       "sourceIndex": 34,
       "textBytes": 87188,
@@ -405,7 +405,7 @@
     {
       "slug": "1725_Kimi_K25_Visual_Agentic_Intelligence",
       "title": "Kimi K2.5: Visual Agentic Intelligence",
-      "category": "HDBSCAN Cluster: kimi, agentic, technical, report",
+      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
       "key": "FOLDER00041_386463f9a862",
       "sourceIndex": 40,
       "textBytes": 116467,
@@ -485,7 +485,7 @@
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
       "title": "DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models",
-      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
+      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
       "key": "FOLDER00049_07cf0d16c82c",
       "sourceIndex": 48,
       "textBytes": 68593,
@@ -545,7 +545,7 @@
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "title": "GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, youtu-llm, multimodal",
+      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
       "key": "FOLDER00055_9405fc3ded78",
       "sourceIndex": 54,
       "textBytes": 145376,
@@ -625,7 +625,7 @@
     {
       "slug": "1746_Crafter_A_Multi-Agent_Harness_for_Editable_Scientific_Figure",
       "title": "Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs",
-      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
       "key": "FOLDER00063_0936ba6d5400",
       "sourceIndex": 62,
       "textBytes": 80050,
@@ -725,7 +725,7 @@
     {
       "slug": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
       "title": "PaperBanana: Automating Academic Illustration for AI Scientists",
-      "category": "HDBSCAN Cluster: figure, paperbanana, scientific, generation",
+      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
       "key": "FOLDER00073_6aee964fcc91",
       "sourceIndex": 72,
       "textBytes": 126607,
@@ -875,7 +875,7 @@
     {
       "slug": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
       "title": "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models",
-      "category": "HDBSCAN Cluster: deepseek-v3, reasoning, glm-4, models",
+      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
       "key": "FOLDER00088_ec7f05bf1eae",
       "sourceIndex": 87,
       "textBytes": 87726,
@@ -885,7 +885,7 @@
     {
       "slug": "1934_Lumine_An_Open_Recipe_for_Building_Generalist_Agents_in_3D_O",
       "title": "Lumine: An Open Recipe for Building Generalist Agents in 3D Open Worlds",
-      "category": "HDBSCAN Cluster: agents, embodied, lumine, open",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00089_5c877ea4a55a",
       "sourceIndex": 88,
       "textBytes": 201532,
@@ -1015,7 +1015,7 @@
     {
       "slug": "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti",
       "title": "Step 3.5 Flash: Open Frontier-Level Intelligence with 11B Active Parameters",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
       "key": "FOLDER00102_2c700711e69c",
       "sourceIndex": 101,
       "textBytes": 205457,
@@ -1045,7 +1045,7 @@
     {
       "slug": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
       "title": "Code2World: A GUI World Model via Renderable Code Generation",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
       "key": "FOLDER00105_f3af930e91a8",
       "sourceIndex": 104,
       "textBytes": 97988,
@@ -1065,7 +1065,7 @@
     {
       "slug": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
       "title": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling",
-      "category": "HDBSCAN Cluster: university, loop, efficient, models",
+      "category": "HDBSCAN Cluster: figure, university, efficient, language",
       "key": "FOLDER00107_4c4b048fabae",
       "sourceIndex": 106,
       "textBytes": 57470,
@@ -1275,7 +1275,7 @@
     {
       "slug": "2308_LlamaFactory_Unified_Efficient_Fine-Tuning_of_100_Language_M",
       "title": "LlamaFactory: Unified Efficient Fine-Tuning of 100+ Language Models",
-      "category": "HDBSCAN Cluster: university, loop, efficient, models",
+      "category": "HDBSCAN Cluster: figure, university, efficient, language",
       "key": "FOLDER00128_088ef61f71e2",
       "sourceIndex": 127,
       "textBytes": 58891,
@@ -1305,7 +1305,7 @@
     {
       "slug": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
       "title": "GLM-5: from Vibe Coding to Agentic Engineering",
-      "category": "HDBSCAN Cluster: agentic, reasoning, reinforcement, learning",
+      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
       "key": "FOLDER00131_4b64db8dc365",
       "sourceIndex": 130,
       "textBytes": 140252,
@@ -1445,7 +1445,7 @@
     {
       "slug": "2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age",
       "title": "HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents",
-      "category": "HDBSCAN Cluster: agents, embodied, lumine, open",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00145_6259f5e0c38f",
       "sourceIndex": 144,
       "textBytes": 146453,
@@ -1465,7 +1465,7 @@
     {
       "slug": "2495_Live_Avatar_Streaming_Real-time_Audio-Driven_Avatar_Generati",
       "title": "Live Avatar: Streaming Real-time Audio-Driven Avatar Generation with Infinite Length",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, video, university, avatar",
       "key": "FOLDER00147_770fe89ff20e",
       "sourceIndex": 146,
       "textBytes": 84335,
@@ -1595,7 +1595,7 @@
     {
       "slug": "2588_Thinking_with_Map_Reinforced_Parallel_Map-Augmented_Agent_fo",
       "title": "Thinking with Map: Reinforced Parallel Map-Augmented Agent for Geolocalization",
-      "category": "HDBSCAN Cluster: figure, agent, university, clue",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00160_29fc99ae0bc3",
       "sourceIndex": 159,
       "textBytes": 59089,
@@ -1615,7 +1615,7 @@
     {
       "slug": "2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex",
       "title": "From Context to Skills: Can Language Models Learn from Context Skillfully?",
-      "category": "HDBSCAN Cluster: context, models, skills, can",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00162_88947750b1a9",
       "sourceIndex": 161,
       "textBytes": 223430,
@@ -1655,7 +1655,7 @@
     {
       "slug": "2678_Perception_or_Prejudice_Can_MLLMs_Go_Beyond_First_Impression",
       "title": "Perception or Prejudice: Can MLLMs Go Beyond First Impressions of Personality?",
-      "category": "HDBSCAN Cluster: context, models, skills, can",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00166_6c59b00c9374",
       "sourceIndex": 165,
       "textBytes": 111407,
@@ -1855,7 +1855,7 @@
     {
       "slug": "2859_UI-Venus-15_Technical_Report",
       "title": "UI-Venus-1.5 Technical Report",
-      "category": "HDBSCAN Cluster: kimi, agentic, technical, report",
+      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
       "key": "FOLDER00186_5f5800014002",
       "sourceIndex": 185,
       "textBytes": 112011,
@@ -1875,7 +1875,7 @@
     {
       "slug": "2861_Seed15-VL_Technical_Report",
       "title": "Seed1.5-VL Technical Report",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, youtu-llm, multimodal",
+      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
       "key": "FOLDER00188_b88bb2ab4c68",
       "sourceIndex": 187,
       "textBytes": 226376,
@@ -1885,7 +1885,7 @@
     {
       "slug": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
       "title": "Out of Sight but Not Out of Mind: Hybrid Memory for Dynamic Video World Models",
-      "category": "HDBSCAN Cluster: figure, agent, university, clue",
+      "category": "HDBSCAN Cluster: figure, agent, out, world",
       "key": "FOLDER00189_effbe6a1f48b",
       "sourceIndex": 188,
       "textBytes": 58447,
@@ -1935,7 +1935,7 @@
     {
       "slug": "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
       "title": "Vision-DeepResearch: Incentivizing DeepResearch Capability in Multimodal Large Language Models",
-      "category": "HDBSCAN Cluster: university, loop, efficient, models",
+      "category": "HDBSCAN Cluster: figure, university, efficient, language",
       "key": "FOLDER00194_40095c356e5a",
       "sourceIndex": 193,
       "textBytes": 51791,
@@ -1965,7 +1965,7 @@
     {
       "slug": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
       "title": "Youtu-LLM: Unlocking the Native Agentic Potential for Lightweight Large Language Models",
-      "category": "HDBSCAN Cluster: reasoning, glm-4, youtu-llm, multimodal",
+      "category": "HDBSCAN Cluster: reasoning, glm-4, models, model",
       "key": "FOLDER00197_0a34f5facf01",
       "sourceIndex": 196,
       "textBytes": 176835,
@@ -2095,7 +2095,7 @@
     {
       "slug": "3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re",
       "title": "HSImul3R: Physics-in-the-Loop Reconstruction of Simulation-Ready Human-Scene Interactions",
-      "category": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00210_0d7e8cc379ba",
       "sourceIndex": 209,
       "textBytes": 54412,
@@ -2145,7 +2145,7 @@
     {
       "slug": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
       "title": "ReCamMaster: Camera-Controlled Generative Rendering from A Single Video",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, video, university, avatar",
       "key": "FOLDER00215_7809968708b7",
       "sourceIndex": 214,
       "textBytes": 68060,
@@ -2201,6 +2201,56 @@
       "textBytes": 184949,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2603.27538v1[cs.CV]29Mar2026 ## LongCat-Next: Lexicalizing Modalities as Discrete Tokens ##### Meituan LongCat Team #### ABSTRACT The prevailing Next-Token Prediction (NTP) paradigm has driven the success of large language models through discrete autoregressive modeling. However, contemporary multimodal systems remain language-centric, often treating non-linguistic modalities as external attachments, leading to fragmented architectures and suboptimal integration. To transcend this limitation, we introduce Discrete Native Autoregressive (DiNA), a unified framework that represents multimodal information within a shared discrete space, enabling a consistent and principled autoregressive modeling across modalities. A key innovation is the Discrete Native Any-resolution Visual Transformer (dNaViT), which performs tokenization and de-tokenization at arbitrary resolutions, transforming "
+    },
+    {
+      "slug": "3172_Addition_is_All_You_Need_for_Energy-efficient_Language_Model",
+      "title": "Addition is All You Need for Energy-efficient Language Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00221_d9269a8943d0",
+      "sourceIndex": 220,
+      "textBytes": 46852,
+      "figuresExtracted": 2,
+      "excerpt": "# arXiv:2410.00907v2[cs.CL]2Oct2024 ## ADDITION IS ALL YOU NEED FOR ENERGY-EFFICIENT LANGUAGE MODELS Hongyin Luo & Wei Sun BitEnergy AI, Inc. Cambridge, MA 02142, USA {hongyin,wei}@bitenergy.ai ABSTRACT Large neural networks spend most computation on floating point tensor multiplications. In this work, we find that a floating point multiplier can be approximated by one integer adder with high precision. We propose the linear-complexity multiplication (L-Mul) algorithm that approximates floating point number multiplication with integer addition operations. The new algorithm costs significantly less computation resource than 8-bit floating point multiplication but achieves higher precision. Compared to 8-bit floating point multiplications, the proposed method achieves higher precision but consumes significantly less bit-level computation. Since multiplying floating point numbers requires s"
+    },
+    {
+      "slug": "3173_EnterpriseOps-Gym_Environments_and_Evaluations_for_Stateful",
+      "title": "EnterpriseOps-Gym: Environments and Evaluations for Stateful Agentic Planning and Tool Use in Enterprise Settings",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00222_22c6e624c80b",
+      "sourceIndex": 221,
+      "textBytes": 130056,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] ### ENTERPRISEOPS-GYM: Environments and Evaluations for Stateful Agentic Planning and Tool Use in Enterprise Settings Shiva Krishna Reddy Malay*1 Shravan Nayak*123 Jishnu Nair1 Sagar Davasam1 Aman Tiwari1 Sathwik Tejaswi1 Sridhar Krishna Nemala1 Srinivas Sunkara1 Sai Rajeswar123 # arXiv:2603.13594v1[cs.AI]13Mar2026 #### Abstract Large language models are shifting from passive information providers to active agents intended for complex workflows. However, their deployment as reliable AI workers in enterprise is stalled by benchmarks that fail to capture the intricacies of professional environments, specifically, the need for long-horizon planning amidst persistent state changes and strict access protocols. In this work, we introduce ENTERPRISEOPS-GYM, a benchmark designed to evaluate agentic planning in realistic enterprise settings. Specifically, ENTERPRISEOPS-GYM features a c"
+    },
+    {
+      "slug": "2689_DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Sca",
+      "title": "DAPO: An Open-Source LLM Reinforcement Learning System at Scale",
+      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, reasoning",
+      "key": "FOLDER00223_a1709f07b6c9",
+      "sourceIndex": 222,
+      "textBytes": 42677,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2503.14476v2[cs.LG]20May2025 [Figure 1] [Figure 2] ## DAPO: An Open-Source LLM Reinforcement Learning System at Scale 1ByteDance Seed 2Institute for AI Industry Research (AIR), Tsinghua University 3The University of Hong Kong 4SIA-Lab of Tsinghua AIR and ByteDance Seed Full author list in Contributions ### Abstract Inference scaling empowers LLMs with unprecedented reasoning ability, with reinforcement learning as the core technique to elicit complex reasoning. However, key technical details of state-of-the-art reasoning LLMs are concealed (such as in OpenAI o1 blog and DeepSeek R1 technical report), thus the community still struggles to reproduce their RL training results. We propose the Decoupled Clip and Dynamic sAmpling Policy Optimization (DAPO) algorithm, and fully open-source a state-of-the-art large-scale RL system that achieves 50 points on AIME 2024 using Qwen2.5-32B ba"
+    },
+    {
+      "slug": "3174_From_Blind_Spots_to_Gains_Diagnostic-Driven_Iterative_Traini",
+      "title": "From Blind Spots to Gains: Diagnostic-Driven Iterative Training for Large Multimodal Models",
+      "category": "HDBSCAN Cluster: reasoning, policy, models, deep",
+      "key": "FOLDER00224_a374f1299896",
+      "sourceIndex": 223,
+      "textBytes": 50362,
+      "figuresExtracted": 5,
+      "excerpt": "## From Blind Spots to Gains: Diagnostic-Driven Iterative Training for Large Multimodal Models Hongrui Jia1* Chaoya Jiang2* † Yongrui Heng1 Shikun Zhang1 Wei Ye1 † # arXiv:2602.22859v2[cs.CV]7May2026 ### Abstract As Large Multimodal Models (LMMs) scale up and reinforcement learning (RL) methods mature, LMMs have made notable progress in complex reasoning and decision making. Yet training still relies on static data and fixed recipes, making it difficult to diagnose capability blind spots or provide dynamic, targeted reinforcement. Motivated by findings that test driven error exposure and feedback based correction outperform repetitive practice, we propose Diagnostic-driven Progressive Evolution (DPE), a spiral loop where diagnosis steers data generation and reinforcement, and each iteration re-diagnoses the updated model to drive the next round of targeted improvement. DPE has two key co"
+    },
+    {
+      "slug": "3175_MemPrivacy_Privacy-Preserving_Personalized_Memory_Management",
+      "title": "MemPrivacy: Privacy-Preserving Personalized Memory Management for Edge-Cloud Agents",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00225_0173c5367e6d",
+      "sourceIndex": 224,
+      "textBytes": 125992,
+      "figuresExtracted": 3,
+      "excerpt": "## arXiv:2605.09530v3[cs.CR]14May2026 [Figure 1] [Figure 2] ### MemPrivacy: Privacy-Preserving Personalized Memory Management for Edge-Cloud Agents Yining Chen∗,1, Jihao Zhao∗,1, Bo Tang1, Haofen Wang1,3, Yue Zhang2, Fei Huang2, Feiyu Xiong1, Zhiyu Li ,1 1MemTensor (Shanghai) Technology Co., Ltd. , 2HONOR Device Co., Ltd., 3Tongji University #### Abstract As LLM-powered agents are increasingly deployed in edge-cloud environments, personalized memory has become a key enabler of long-term adaptation and user-centric interaction. However, cloud-assisted memory management exposes sensitive user information, while existing privacy protection methods typically rely on aggressive masking that removes task-relevant semantics and consequently degrades memory utility and personalization quality. To address this challenge, We propose MemPrivacy, which identifies privacy-sensitive spans on edge devi"
     }
   ]
 }
