@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-05T12:20:03.818218+00:00",
+  "generated": "2026-07-06T08:38:12.990772+00:00",
   "mode": "extract-only",
   "paperCurationDir": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect",
   "awesomeRepo": "E:\\조선대\\연구\\awesome-HuggingFace",
   "extractReport": "data/paper_curation/extract_only_report.json",
   "docsDir": "docs/paper_curation/extract_only",
   "paperDir": "paper/extract_only",
-  "recordCount": 235,
+  "recordCount": 240,
   "syncedPaperSlugs": [
     "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
     "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
@@ -242,13 +242,18 @@
     "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
     "3268_Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafti",
     "3269_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr",
-    "3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact"
+    "3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact",
+    "3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn",
+    "3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con",
+    "3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl",
+    "3314_MiniMax_Sparse_Attention",
+    "3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning"
   ],
   "copied": [
     {
       "source": "E:\\조선대\\연구\\paper-curation\\paper\\awesome-HuggingFace\\_folder_source_extract_report.json",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\data\\paper_curation\\extract_only_report.json",
-      "bytes": 142337
+      "bytes": 145365
     },
     {
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective\\text.md",
@@ -13229,6 +13234,266 @@
       "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig5.png",
       "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact\\figures\\fig5.png",
       "bytes": 1272562
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\text.md",
+      "bytes": 78248
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig1.png",
+      "bytes": 113548
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig2.png",
+      "bytes": 133053
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig3.png",
+      "bytes": 165295
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig4.png",
+      "bytes": 85209
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig5.png",
+      "bytes": 197292
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\text.md",
+      "bytes": 78248
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig1.png",
+      "bytes": 113548
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig2.png",
+      "bytes": 133053
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig3.png",
+      "bytes": 165295
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig4.png",
+      "bytes": 85209
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn\\figures\\fig5.png",
+      "bytes": 197292
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\text.md",
+      "bytes": 58481
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig1.png",
+      "bytes": 170373
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig2.png",
+      "bytes": 65751
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig3.png",
+      "bytes": 83170
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig4.png",
+      "bytes": 150705
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig5.png",
+      "bytes": 122664
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\text.md",
+      "bytes": 58481
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig1.png",
+      "bytes": 170373
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig2.png",
+      "bytes": 65751
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig3.png",
+      "bytes": 83170
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig4.png",
+      "bytes": 150705
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con\\figures\\fig5.png",
+      "bytes": 122664
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\text.md",
+      "bytes": 67907
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig1.png",
+      "bytes": 410965
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig2.png",
+      "bytes": 266922
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig3.png",
+      "bytes": 565357
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig4.png",
+      "bytes": 629976
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\text.md",
+      "bytes": 67907
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig1.png",
+      "bytes": 410965
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig2.png",
+      "bytes": 266922
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig3.png",
+      "bytes": 565357
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl\\figures\\fig4.png",
+      "bytes": 629976
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3314_MiniMax_Sparse_Attention\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3314_MiniMax_Sparse_Attention\\text.md",
+      "bytes": 91914
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig1.png",
+      "bytes": 144625
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig2.png",
+      "bytes": 85946
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig3.png",
+      "bytes": 61643
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig4.png",
+      "bytes": 90849
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig5.png",
+      "bytes": 551240
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3314_MiniMax_Sparse_Attention\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3314_MiniMax_Sparse_Attention\\text.md",
+      "bytes": 91914
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig1.png",
+      "bytes": 144625
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig2.png",
+      "bytes": 85946
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig3.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig3.png",
+      "bytes": 61643
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig4.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig4.png",
+      "bytes": 90849
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig5.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3314_MiniMax_Sparse_Attention\\figures\\fig5.png",
+      "bytes": 551240
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning\\text.md",
+      "bytes": 90662
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning\\figures\\fig1.png",
+      "bytes": 198561
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\docs\\paper_curation\\extract_only\\papers\\3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning\\figures\\fig2.png",
+      "bytes": 83108
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning\\text.md",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning\\text.md",
+      "bytes": 90662
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning\\figures\\fig1.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning\\figures\\fig1.png",
+      "bytes": 198561
+    },
+    {
+      "source": "C:\\Users\\user\\AppData\\Local\\Temp\\paper-curation-inspect\\docs\\papers\\3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning\\figures\\fig2.png",
+      "target": "E:\\조선대\\연구\\awesome-HuggingFace\\paper\\extract_only\\papers\\3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning\\figures\\fig2.png",
+      "bytes": 83108
     }
   ],
   "missing": [],

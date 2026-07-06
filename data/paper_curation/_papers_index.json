@@ -25,7 +25,7 @@
     {
       "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
       "title": "GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
+      "category": "HDBSCAN Cluster: reinforcement, learning, reasoning, agentic",
       "key": "FOLDER00003_07f36ae7acd9",
       "sourceIndex": null,
       "textBytes": 76254,
@@ -85,7 +85,7 @@
     {
       "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
       "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
+      "category": "HDBSCAN Cluster: reinforcement, learning, reasoning, agentic",
       "key": "FOLDER00009_e247d7b4176f",
       "sourceIndex": 8,
       "textBytes": 238083,
@@ -175,7 +175,7 @@
     {
       "slug": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
       "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
-      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
       "key": "FOLDER00018_b37c28309d81",
       "sourceIndex": 17,
       "textBytes": 99957,
@@ -225,7 +225,7 @@
     {
       "slug": "326_Rethinking_Generalization_in_Reasoning_SFT_A_Conditional_Ana",
       "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
-      "category": "HDBSCAN Cluster: university, loop, generalization, sft",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00023_6978f9941fd7",
       "sourceIndex": 22,
       "textBytes": 161148,
@@ -245,7 +245,7 @@
     {
       "slug": "328_mHC_Manifold-Constrained_Hyper-Connections",
       "title": "mHC: Manifold-Constrained Hyper-Connections",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: attention, sparse, university, liang",
       "key": "FOLDER00025_d536b93915d7",
       "sourceIndex": 24,
       "textBytes": 59174,
@@ -265,7 +265,7 @@
     {
       "slug": "330_Group_Sequence_Policy_Optimization",
       "title": "Group Sequence Policy Optimization",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "category": "HDBSCAN Cluster: optimization, policy, learning, llms",
       "key": "FOLDER00027_94918922664a",
       "sourceIndex": 26,
       "textBytes": 23492,
@@ -345,7 +345,7 @@
     {
       "slug": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
       "title": "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking",
-      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
       "key": "FOLDER00035_fc3525c2b456",
       "sourceIndex": 34,
       "textBytes": 87188,
@@ -405,7 +405,7 @@
     {
       "slug": "1725_Kimi_K25_Visual_Agentic_Intelligence",
       "title": "Kimi K2.5: Visual Agentic Intelligence",
-      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00041_386463f9a862",
       "sourceIndex": 40,
       "textBytes": 116467,
@@ -525,7 +525,7 @@
     {
       "slug": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "title": "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model",
-      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "category": "HDBSCAN Cluster: university, models, reasoning, intelligence",
       "key": "FOLDER00053_b501ac6425a5",
       "sourceIndex": 52,
       "textBytes": 99132,
@@ -555,7 +555,7 @@
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "title": "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model",
-      "category": "HDBSCAN Cluster: small, language, model, smollm2",
+      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
       "key": "FOLDER00056_e1a299738b86",
       "sourceIndex": 55,
       "textBytes": 87381,
@@ -625,7 +625,7 @@
     {
       "slug": "1746_Crafter_A_Multi-Agent_Harness_for_Editable_Scientific_Figure",
       "title": "Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs",
-      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00063_0936ba6d5400",
       "sourceIndex": 62,
       "textBytes": 80050,
@@ -715,7 +715,7 @@
     {
       "slug": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
       "title": "GDPO: Group reward-Decoupled Normalization Policy Optimization for Multi-reward RL Optimization",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "category": "HDBSCAN Cluster: optimization, policy, learning, llms",
       "key": "FOLDER00072_98f3b1b6fec2",
       "sourceIndex": 71,
       "textBytes": 77232,
@@ -725,7 +725,7 @@
     {
       "slug": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
       "title": "PaperBanana: Automating Academic Illustration for AI Scientists",
-      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
+      "category": "HDBSCAN Cluster: paperbanana, generation, gui, figure",
       "key": "FOLDER00073_6aee964fcc91",
       "sourceIndex": 72,
       "textBytes": 126607,
@@ -855,7 +855,7 @@
     {
       "slug": "1931_VESPO_Variational_Sequence-Level_Soft_Policy_Optimization_fo",
       "title": "VESPO: Variational Sequence-Level Soft Policy Optimization for Stable Off-Policy LLM Training",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "category": "HDBSCAN Cluster: optimization, policy, learning, llms",
       "key": "FOLDER00086_1edc3aea10c9",
       "sourceIndex": 85,
       "textBytes": 80404,
@@ -905,7 +905,7 @@
     {
       "slug": "1977_Mutarjim_Advancing_Bidirectional_Arabic-English_Translation",
       "title": "Mutarjim: Advancing Bidirectional Arabic-English Translation with a Small Language Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
       "key": "FOLDER00091_8b531206da8e",
       "sourceIndex": 90,
       "textBytes": 51767,
@@ -1045,7 +1045,7 @@
     {
       "slug": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
       "title": "Code2World: A GUI World Model via Renderable Code Generation",
-      "category": "HDBSCAN Cluster: figure, generation, paperbanana, gui",
+      "category": "HDBSCAN Cluster: paperbanana, generation, gui, figure",
       "key": "FOLDER00105_f3af930e91a8",
       "sourceIndex": 104,
       "textBytes": 97988,
@@ -1065,7 +1065,7 @@
     {
       "slug": "2120_LoopCoder-v2_Only_Loop_Once_for_Efficient_Test-Time_Computat",
       "title": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling",
-      "category": "HDBSCAN Cluster: university, loop, generalization, sft",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00107_4c4b048fabae",
       "sourceIndex": 106,
       "textBytes": 57470,
@@ -1165,7 +1165,7 @@
     {
       "slug": "2212_Heterogeneous_Agent_Collaborative_Reinforcement_Learning",
       "title": "Heterogeneous Agent Collaborative Reinforcement Learning",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00117_4a6dc9062d5e",
       "sourceIndex": 116,
       "textBytes": 76413,
@@ -1305,7 +1305,7 @@
     {
       "slug": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
       "title": "GLM-5: from Vibe Coding to Agentic Engineering",
-      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
+      "category": "HDBSCAN Cluster: reinforcement, learning, reasoning, agentic",
       "key": "FOLDER00131_4b64db8dc365",
       "sourceIndex": 130,
       "textBytes": 140252,
@@ -1325,7 +1325,7 @@
     {
       "slug": "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
       "title": "Perception, Reason, Think, and Plan: A Survey on Large Multimodal Reasoning Models",
-      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "category": "HDBSCAN Cluster: university, models, reasoning, intelligence",
       "key": "FOLDER00133_8e3c28fd1818",
       "sourceIndex": 132,
       "textBytes": 391537,
@@ -1365,7 +1365,7 @@
     {
       "slug": "2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen",
       "title": "ClawKeeper: Comprehensive Safety Protection for OpenClaw Agents Through Skills, Plugins, and Watchers",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: agent, through, openclaw, agents",
       "key": "FOLDER00137_220c9826a456",
       "sourceIndex": 136,
       "textBytes": 66055,
@@ -1375,7 +1375,7 @@
     {
       "slug": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
       "title": "QeRL: Beyond Efficiency -- Quantization-enhanced Reinforcement Learning for LLMs",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "category": "HDBSCAN Cluster: optimization, policy, learning, llms",
       "key": "FOLDER00138_d82ee87bba02",
       "sourceIndex": 137,
       "textBytes": 78498,
@@ -1675,7 +1675,7 @@
     {
       "slug": "2680_AgentSPEX_An_Agent_SPecification_and_EXecution_Language",
       "title": "AgentSPEX: An Agent SPecification and EXecution Language",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: agent, through, openclaw, agents",
       "key": "FOLDER00168_da0ddd343924",
       "sourceIndex": 167,
       "textBytes": 52129,
@@ -1685,7 +1685,7 @@
     {
       "slug": "2681_Embodied-R15_Evolving_Physical_Intelligence_via_Embodied_Fou",
       "title": "Embodied-R1.5: Evolving Physical Intelligence via Embodied Foundation Models",
-      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "category": "HDBSCAN Cluster: university, models, reasoning, intelligence",
       "key": "FOLDER00169_307877d74af7",
       "sourceIndex": 168,
       "textBytes": 159829,
@@ -1695,7 +1695,7 @@
     {
       "slug": "2682_Native_Sparse_Attention_Hardware-Aligned_and_Natively_Traina",
       "title": "Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention",
-      "category": "HDBSCAN Cluster: university, models, reasoning, attention",
+      "category": "HDBSCAN Cluster: attention, sparse, university, liang",
       "key": "FOLDER00170_8dd22ea2eeca",
       "sourceIndex": 169,
       "textBytes": 67357,
@@ -1705,7 +1705,7 @@
     {
       "slug": "2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs",
       "title": "AgentFly: Fine-tuning LLM Agents without Fine-tuning LLMs",
-      "category": "HDBSCAN Cluster: optimization, learning, reinforcement, policy",
+      "category": "HDBSCAN Cluster: optimization, policy, learning, llms",
       "key": "FOLDER00171_120f29e1bc0e",
       "sourceIndex": 170,
       "textBytes": 91552,
@@ -1855,7 +1855,7 @@
     {
       "slug": "2859_UI-Venus-15_Technical_Report",
       "title": "UI-Venus-1.5 Technical Report",
-      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
+      "category": "HDBSCAN Cluster: reinforcement, learning, reasoning, agentic",
       "key": "FOLDER00186_5f5800014002",
       "sourceIndex": 185,
       "textBytes": 112011,
@@ -1935,7 +1935,7 @@
     {
       "slug": "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
       "title": "Vision-DeepResearch: Incentivizing DeepResearch Capability in Multimodal Large Language Models",
-      "category": "HDBSCAN Cluster: university, loop, generalization, sft",
+      "category": "HDBSCAN Cluster: university, models, technology, china",
       "key": "FOLDER00194_40095c356e5a",
       "sourceIndex": 193,
       "textBytes": 51791,
@@ -2005,7 +2005,7 @@
     {
       "slug": "2991_Textbooks_Are_All_You_Need",
       "title": "Textbooks Are All You Need",
-      "category": "HDBSCAN Cluster: small, language, model, smollm2",
+      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
       "key": "FOLDER00201_26ed92aa939c",
       "sourceIndex": 200,
       "textBytes": 77693,
@@ -2105,7 +2105,7 @@
     {
       "slug": "3080_InfiniteHiP_Extending_Language_Model_Context_Up_to_3_Million",
       "title": "InfiniteHiP: Extending Language Model Context Up to 3 Million Tokens on a Single GPU",
-      "category": "HDBSCAN Cluster: language, context, tokens, token",
+      "category": "HDBSCAN Cluster: context, inference, language, tokens",
       "key": "FOLDER00211_89b2c8a3d5b7",
       "sourceIndex": 210,
       "textBytes": 78779,
@@ -2165,7 +2165,7 @@
     {
       "slug": "3126_FASA_Frequency-aware_Sparse_Attention",
       "title": "FASA: Frequency-aware Sparse Attention",
-      "category": "HDBSCAN Cluster: language, context, tokens, token",
+      "category": "HDBSCAN Cluster: context, inference, language, tokens",
       "key": "FOLDER00217_43261035478b",
       "sourceIndex": 216,
       "textBytes": 177609,
@@ -2225,7 +2225,7 @@
     {
       "slug": "2689_DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Sca",
       "title": "DAPO: An Open-Source LLM Reinforcement Learning System at Scale",
-      "category": "HDBSCAN Cluster: reasoning, agentic, reinforcement, learning",
+      "category": "HDBSCAN Cluster: reinforcement, learning, reasoning, agentic",
       "key": "FOLDER00223_a1709f07b6c9",
       "sourceIndex": 222,
       "textBytes": 42677,
@@ -2295,7 +2295,7 @@
     {
       "slug": "3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co",
       "title": "Shifting AI Efficiency From Model-Centric to Data-Centric Compression",
-      "category": "HDBSCAN Cluster: university, loop, generalization, sft",
+      "category": "HDBSCAN Cluster: university, models, technology, china",
       "key": "FOLDER00230_f5f5aa465108",
       "sourceIndex": 229,
       "textBytes": 95188,
@@ -2315,7 +2315,7 @@
     {
       "slug": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
       "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
       "key": "FOLDER00232_2b8898d9bc79",
       "sourceIndex": 231,
       "textBytes": 104651,
@@ -2351,6 +2351,56 @@
       "textBytes": 71895,
       "figuresExtracted": 5,
       "excerpt": "# arXiv:2507.21809v2[cs.CV]13Aug2025 [Figure 1] Tencent Hunyuan ### HunyuanWorld 1.0: Generating Immersive, Explorable, and Interactive 3D Worlds from Words or Pixels [Figure 2] ##### Tencent Hunyuan* https://3d.hunyuan.tencent.com/sceneTo3D https://github.com/Tencent-Hunyuan/HunyuanWorld-1.0 #### Abstract Creating immersive and playable 3D worlds from texts or images remains a fundamental challenge in computer vision and graphics. Existing world generation approaches typically fall into two categories: video-based methods that offer rich diversity but lack 3D consistency and rendering efficiency, and 3D-based methods that provide geometric consistency but struggle with limited training data and memory-inefficient representations. To address these limitations, we present HunyuanWorld 1.0, a novel framework that combines the best of both worlds for generating immersive, explorable, and in"
+    },
+    {
+      "slug": "3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn",
+      "title": "Agent Lightning: Train ANY AI Agents with Reinforcement Learning",
+      "category": "HDBSCAN Cluster: agents, agent, training, lightning",
+      "key": "FOLDER00236_505cf42b7253",
+      "sourceIndex": 235,
+      "textBytes": 78248,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2508.03680v1[cs.AI]5Aug2025 ## Agent Lightning: Train ANY AI Agents with Reinforcement Learning ##### Xufang Luo,∗Yuge Zhang∗, Zhiyuan He∗, Zilong Wang, Siyun Zhao, Dongsheng Li, Luna K. Qiu, Yuqing Yang Microsoft Research agent-lightning@microsoft.com https://github.com/microsoft/agent-lightning #### Abstract We present Agent Lightning, a flexible and extensible framework that enables Reinforcement Learning (RL)-based training of Large Language Models (LLMs) for any AI agent. Unlike existing methods that tightly couple RL training with agent or rely on sequence concatenation with masking, Agent Lightning achieves complete decoupling between agent execution and training, allowing seamless integration with existing agents developed via diverse ways (e.g., using frameworks like LangChain, OpenAI Agents SDK, AutoGen, and building from scratch) with almost ZERO code modifications. By"
+    },
+    {
+      "slug": "3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con",
+      "title": "Writing in the Margins: Better Inference Pattern for Long Context Retrieval",
+      "category": "HDBSCAN Cluster: context, inference, language, tokens",
+      "key": "FOLDER00237_d16d3571c89e",
+      "sourceIndex": 236,
+      "textBytes": 58481,
+      "figuresExtracted": 5,
+      "excerpt": "## Writing in the Margins: Better Inference Pattern for Long Context Retrieval # arXiv:2408.14906v1[cs.CL]27Aug2024 Melisa Russak Umar Jamil Christopher Bryant Kiran Kamble Axel Magnuson Mateusz Russak Waseem AlShikh Writer, Inc. {melisa,...,waseem}@writer.com ### Abstract In this paper, we introduce Writing in the Margins (WiM), a new inference pattern for Large Language Models designed to optimize the handling of long input sequences in retrieval-oriented tasks. This approach leverages the chunked prefill of the key-value cache to perform segment-wise inference, which enables efficient processing of extensive contexts along with the generation and classification of intermediate information (“margins”) that guide the model towards specific tasks. This method increases computational overhead marginally while significantly enhancing the performance of off-the-shelf models without the need"
+    },
+    {
+      "slug": "3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl",
+      "title": "ClawGUI: A Unified Framework for Training, Evaluating, and Deploying GUI Agents",
+      "category": "HDBSCAN Cluster: agents, agent, training, lightning",
+      "key": "FOLDER00238_ecdf6406afb8",
+      "sourceIndex": 237,
+      "textBytes": 67907,
+      "figuresExtracted": 4,
+      "excerpt": "[Figure 1] [Figure 2] ## ClawGUI: A Unified Framework for Training, Evaluating, and Deploying GUI Agents Fei Tang∗, Zhiqiong Lu∗, Boxuan Zhang, Weiming Lu, Jun Xiao, Yueting Zhuang, Yongliang Shen† Zhejiang University {flysugar, syl}@zju.edu.cn https://github.com/zju-real/ClawGUI https://zju-real.github.io/ClawGUI-Page Abstract. GUI agents drive applications through their visual interfaces instead of programmatic APIs, interacting with arbitrary software via taps, swipes, and keystrokes, reaching a long tail of applications that CLI-based agents cannot. Yet progress in this area is bottlenecked less by modeling capacity than by the absence of a coherent full-stack infrastructure: online RL training suffers from environment instability and closed pipelines, evaluation protocols drift silently across works, and trained agents rarely reach real users on real devices. We present ClawGUI, an "
+    },
+    {
+      "slug": "3314_MiniMax_Sparse_Attention",
+      "title": "MiniMax Sparse Attention",
+      "category": "HDBSCAN Cluster: attention, sparse, university, liang",
+      "key": "FOLDER00239_e78ebd46316a",
+      "sourceIndex": 238,
+      "textBytes": 91914,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2606.13392v2[cs.AI]12Jun2026 [Figure 1] # MiniMax Sparse Attention ###### Xunhao Lai1,2, Weiqi Xu1, Yufeng Yang1, Qiaorui Chen3, Yang Xu1,4, Lunbin Zeng1,5, Xiaolong Li1,4, Haohai Sun1, Haichao Zhu1, Vito Zhang1,2, Jinkai Hu1, Jiayao Li1, Rui Gao1,6, Zekun Li1, Songquan Zhu1, Jingkai Zhou1,7 and Pengyu Zhao1 1MiniMax, 2Peking University, 3NVIDIA, 4Zhejiang University, 5Huazhong University of Science and Technology, 6Nanjing University, 7Hangzhou Dianzi University Ultra-long-context capability is becoming indispensable for frontier LLMs: agentic workflows, repositoryscale code reasoning, and persistent memory all require the model to jointly attend over hundreds of thousands to millions of tokens—yet the quadratic cost of softmax attention makes this untenable at deployment scale. We introduce MiniMax Sparse Attention (MSA), a blockwise sparse attention built upon Grouped Query A"
+    },
+    {
+      "slug": "3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning",
+      "title": "DeepSearch: Overcome the Bottleneck of Reinforcement Learning with Verifiable Rewards via Monte Carlo Tree Search",
+      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "key": "FOLDER00240_6b6d94886872",
+      "sourceIndex": 239,
+      "textBytes": 90662,
+      "figuresExtracted": 2,
+      "excerpt": "# arXiv:2509.25454v4[cs.AI]6Apr2026 DEEPSEARCH: OVERCOME THE BOTTLENECK OF REINFORCEMENT LEARNING WITH VERIFIABLE REWARDS VIA TREE-BASED SEARCH Fang Wu♡∗ Weihao Xuan∇,△∗ Heli Qi△∗ Aaron Tu♠ Ximing Lu♢ Li Erran Li♣ Yejin Choi♡† ♡Stanford University ∇University of Tokyo △RIKEN AIP ♠UC Berkeley ♢University of Washington ♣Amazon AWS ABSTRACT Although Reinforcement Learning with Verifiable Rewards (RLVR) has become an essential component for developing advanced reasoning skills in language models, contemporary studies have documented training plateaus after thousands of optimization steps, i.e., notable decreases in performance gains despite increased computational investment. This limitation stems from the sparse exploration patterns inherent in current RLVR practices, where models rely on limited rollouts that often miss critical reasoning paths and fail to provide systematic coverage of th"
     }
   ]
 }
