@@ -1,6 +1,6 @@
 # Extract-Only Paper-Curation Provenance
 
-Generated: 2026-07-06T08:38:12.990772+00:00
+Generated: 2026-07-06T10:41:14.800724+00:00
 
 This repository contains no-cost `paper-curation` extract-only artifacts.
 
@@ -9,6 +9,6 @@ This repository contains no-cost `paper-curation` extract-only artifacts.
 - Extract report: `data/paper_curation/extract_only_report.json`
 - Review/text mirror: `docs/paper_curation/extract_only`
 - Paper archive mirror: `paper/extract_only`
-- Synced paper folders: 240
+- Synced paper folders: 340
 
 This stage validates PDF parseability and local figure extraction with Gemini disabled. It does not produce Claude Korean 6-section reviews, SPECTER2/HDBSCAN/UMAP classifications, Related Papers graphs, or PaperBanana timeline diagrams.

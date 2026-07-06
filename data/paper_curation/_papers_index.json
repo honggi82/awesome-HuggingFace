@@ -5,7 +5,7 @@
     {
       "slug": "005_Sharing_is_Caring_Efficient_LM_Post-Training_with_Collective",
       "title": "Sharing is Caring: Efficient LM Post-Training with Collective RL Experience Sharing",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: sharing, post-training, models, performance",
       "key": "FOLDER00001_af26518a47dc",
       "sourceIndex": null,
       "textBytes": 44954,
@@ -15,7 +15,7 @@
     {
       "slug": "024_The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_158_B",
       "title": "The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: bit, floating, point, language",
       "key": "FOLDER00002_45fd74a4c976",
       "sourceIndex": null,
       "textBytes": 24724,
@@ -25,7 +25,7 @@
     {
       "slug": "025_GrandCode_Achieving_Grandmaster_Level_in_Competitive_Program",
       "title": "GrandCode: Achieving Grandmaster Level in Competitive Programming via Agentic Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reinforcement, learning, reasoning, agentic",
+      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, competitive",
       "key": "FOLDER00003_07f36ae7acd9",
       "sourceIndex": null,
       "textBytes": 76254,
@@ -55,7 +55,7 @@
     {
       "slug": "076_A_Very_Big_Video_Reasoning_Suite",
       "title": "A Very Big Video Reasoning Suite",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: wu1, wang1, tang1, figure",
       "key": "FOLDER00006_dd10def1d36c",
       "sourceIndex": 5,
       "textBytes": 144021,
@@ -75,7 +75,7 @@
     {
       "slug": "078_ABot-Earth_05_Generative_3D_Earth_Model",
       "title": "ABot-Earth 0.5: Generative 3D Earth Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: model, world, figure, worlds",
       "key": "FOLDER00008_1f2a0a11302a",
       "sourceIndex": 7,
       "textBytes": 56337,
@@ -85,7 +85,7 @@
     {
       "slug": "079_DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_R",
       "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
-      "category": "HDBSCAN Cluster: reinforcement, learning, reasoning, agentic",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00009_e247d7b4176f",
       "sourceIndex": 8,
       "textBytes": 238083,
@@ -115,7 +115,7 @@
     {
       "slug": "082_Gamma-World_Generative_Multi-Agent_World_Modeling_Beyond_Two",
       "title": "Gamma-World: Generative Multi-Agent World Modeling Beyond Two Players",
-      "category": "HDBSCAN Cluster: figure, agent, out, world",
+      "category": "HDBSCAN Cluster: figure, agent, university, out",
       "key": "FOLDER00012_8f53e8798157",
       "sourceIndex": 11,
       "textBytes": 63526,
@@ -125,7 +125,7 @@
     {
       "slug": "083_Qwen25_Technical_Report",
       "title": "Qwen2.5 Technical Report",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
       "key": "FOLDER00013_a400d0a3210e",
       "sourceIndex": 12,
       "textBytes": 96661,
@@ -135,7 +135,7 @@
     {
       "slug": "084_Demystifing_Video_Reasoning",
       "title": "Demystifing Video Reasoning",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, video, university, models",
       "key": "FOLDER00014_50cd36f9e215",
       "sourceIndex": 13,
       "textBytes": 73866,
@@ -155,7 +155,7 @@
     {
       "slug": "319_Agents_Last_Exam",
       "title": "Agents' Last Exam",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: zhang, wang, sun, liu",
       "key": "FOLDER00016_4754adcaab2e",
       "sourceIndex": 15,
       "textBytes": 144650,
@@ -175,7 +175,7 @@
     {
       "slug": "321_FIPO_Eliciting_Deep_Reasoning_with_Future-KL_Influenced_Poli",
       "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00018_b37c28309d81",
       "sourceIndex": 17,
       "textBytes": 99957,
@@ -195,7 +195,7 @@
     {
       "slug": "323_Qwen3_Technical_Report",
       "title": "Qwen3 Technical Report",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Cluster: qwen, qwen3, https, models",
       "key": "FOLDER00020_81a86ff7c3c8",
       "sourceIndex": 19,
       "textBytes": 118269,
@@ -215,7 +215,7 @@
     {
       "slug": "325_CARLA-Air_Fly_Drones_Inside_a_CARLA_World_--_A_Unified_Infra",
       "title": "CARLA-Air: Fly Drones Inside a CARLA World -- A Unified Infrastructure for Air-Ground Embodied Intelligence",
-      "category": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
+      "category": "HDBSCAN Cluster: world, air-ground, embodied, unified",
       "key": "FOLDER00022_bafb5974ff85",
       "sourceIndex": 21,
       "textBytes": 62875,
@@ -235,7 +235,7 @@
     {
       "slug": "327_Green-VLA_Staged_Vision-Language-Action_Model_for_Generalist",
       "title": "Green-VLA: Staged Vision-Language-Action Model for Generalist Robots",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: physbrain, green-vla, robot, physical",
       "key": "FOLDER00024_348a94e5f835",
       "sourceIndex": 23,
       "textBytes": 86005,
@@ -265,7 +265,7 @@
     {
       "slug": "330_Group_Sequence_Policy_Optimization",
       "title": "Group Sequence Policy Optimization",
-      "category": "HDBSCAN Cluster: optimization, policy, learning, llms",
+      "category": "HDBSCAN Cluster: optimization, policy, learning, reinforcement",
       "key": "FOLDER00027_94918922664a",
       "sourceIndex": 26,
       "textBytes": 23492,
@@ -335,7 +335,7 @@
     {
       "slug": "337_SkillClaw_Let_Skills_Evolve_Collectively_with_Agentic_Evolve",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: skills, agents, skill, agent",
       "key": "FOLDER00034_8bc56d204ac7",
       "sourceIndex": 33,
       "textBytes": 94309,
@@ -345,7 +345,7 @@
     {
       "slug": "338_rStar-Math_Small_LLMs_Can_Master_Math_Reasoning_with_Self-Ev",
       "title": "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, rstar-math, math, models",
       "key": "FOLDER00035_fc3525c2b456",
       "sourceIndex": 34,
       "textBytes": 87188,
@@ -365,7 +365,7 @@
     {
       "slug": "340_Recursive_Multi-Agent_Systems",
       "title": "Recursive Multi-Agent Systems",
-      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
+      "category": "HDBSCAN Cluster: language, model, models, systems",
       "key": "FOLDER00037_f33e597ec366",
       "sourceIndex": 36,
       "textBytes": 105642,
@@ -385,7 +385,7 @@
     {
       "slug": "342_Qwen-Image_Technical_Report",
       "title": "Qwen-Image Technical Report",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00039_67f3a3187f0a",
       "sourceIndex": 38,
       "textBytes": 141226,
@@ -415,7 +415,7 @@
     {
       "slug": "1726_Intern-S1_A_Scientific_Multimodal_Foundation_Model",
       "title": "Intern-S1: A Scientific Multimodal Foundation Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: scientific, foundation, model, models",
       "key": "FOLDER00042_b8506af60032",
       "sourceIndex": 41,
       "textBytes": 105983,
@@ -445,7 +445,7 @@
     {
       "slug": "1729_Agent_Learning_via_Early_Experience",
       "title": "Agent Learning via Early Experience",
-      "category": "HDBSCAN Cluster: reasoning, learning, zero, experience",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00045_ba69b71147e7",
       "sourceIndex": 44,
       "textBytes": 118639,
@@ -455,7 +455,7 @@
     {
       "slug": "1730_A_Survey_of_Context_Engineering_for_Large_Language_Models",
       "title": "A Survey of Context Engineering for Large Language Models",
-      "category": "HDBSCAN Cluster: university, models, xiamen, large",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00046_3f2b33464bcb",
       "sourceIndex": 45,
       "textBytes": 551644,
@@ -465,7 +465,7 @@
     {
       "slug": "1731_Phi-3_Technical_Report_A_Highly_Capable_Language_Model_Local",
       "title": "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone",
-      "category": "HDBSCAN Cluster: qwen, models, report, qwen3",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00047_6bf122ba377f",
       "sourceIndex": 46,
       "textBytes": 59469,
@@ -485,7 +485,7 @@
     {
       "slug": "1733_DeepSeek-V32_Pushing_the_Frontier_of_Open_Large_Language_Mod",
       "title": "DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models",
-      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
+      "category": "HDBSCAN Cluster: reasoning, agentic, models, deepseek-v3",
       "key": "FOLDER00049_07cf0d16c82c",
       "sourceIndex": 48,
       "textBytes": 68593,
@@ -525,7 +525,7 @@
     {
       "slug": "1736_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang",
       "title": "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model",
-      "category": "HDBSCAN Cluster: university, models, reasoning, intelligence",
+      "category": "HDBSCAN Cluster: university, models, xiamen, figure",
       "key": "FOLDER00053_b501ac6425a5",
       "sourceIndex": 52,
       "textBytes": 99132,
@@ -535,7 +535,7 @@
     {
       "slug": "1737_LLM_in_a_flash_Efficient_Large_Language_Model_Inference_with",
       "title": "LLM in a flash: Efficient Large Language Model Inference with Limited Memory",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: language, model, models, inference",
       "key": "FOLDER00054_1cf19c9e4b12",
       "sourceIndex": 53,
       "textBytes": 91659,
@@ -545,7 +545,7 @@
     {
       "slug": "1738_GLM-41V-Thinking_Towards_Versatile_Multimodal_Reasoning_with",
       "title": "GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning",
-      "category": "HDBSCAN Cluster: glm-4, multimodal, reasoning, seed1",
+      "category": "HDBSCAN Cluster: reasoning, models, glm-4, multimodal",
       "key": "FOLDER00055_9405fc3ded78",
       "sourceIndex": 54,
       "textBytes": 145376,
@@ -555,7 +555,7 @@
     {
       "slug": "1739_SmolLM2_When_Smol_Goes_Big_--_Data-Centric_Training_of_a_Sma",
       "title": "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Cluster: model, reasoning, small, test-time",
       "key": "FOLDER00056_e1a299738b86",
       "sourceIndex": 55,
       "textBytes": 87381,
@@ -565,7 +565,7 @@
     {
       "slug": "1740_Z-Image_An_Efficient_Image_Generation_Foundation_Model_with",
       "title": "Z-Image: An Efficient Image Generation Foundation Model with Single-Stream Diffusion Transformer",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: model, generation, foundation, seaweed-7b",
       "key": "FOLDER00057_85f52b7d18cd",
       "sourceIndex": 56,
       "textBytes": 233804,
@@ -575,7 +575,7 @@
     {
       "slug": "1741_SkillOpt_Executive_Strategy_for_Self-Evolving_Agent_Skills",
       "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
-      "category": "HDBSCAN Cluster: agent, skills, skillopt, university",
+      "category": "HDBSCAN Cluster: agent, university, self-evolving, figure",
       "key": "FOLDER00058_cb6c569830d7",
       "sourceIndex": 57,
       "textBytes": 95497,
@@ -605,7 +605,7 @@
     {
       "slug": "1744_Tstars-Tryon_10_Robust_and_Realistic_Virtual_Try-On_for_Dive",
       "title": "Tstars-Tryon 1.0: Robust and Realistic Virtual Try-On for Diverse Fashion Items",
-      "category": "HDBSCAN Cluster: figure, sec, thinking, tstars-tryon",
+      "category": "HDBSCAN Cluster: generation, video, figure, tstars-tryon",
       "key": "FOLDER00061_1125d5a3a04d",
       "sourceIndex": 60,
       "textBytes": 79230,
@@ -615,7 +615,7 @@
     {
       "slug": "1745_SocialOmni_Benchmarking_Audio-Visual_Social_Interactivity_in",
       "title": "SocialOmni: Benchmarking Audio-Visual Social Interactivity in Omni Models",
-      "category": "HDBSCAN Cluster: university, models, xiamen, large",
+      "category": "HDBSCAN Cluster: university, models, xiamen, figure",
       "key": "FOLDER00062_02f4f420adf3",
       "sourceIndex": 61,
       "textBytes": 85252,
@@ -625,7 +625,7 @@
     {
       "slug": "1746_Crafter_A_Multi-Agent_Harness_for_Editable_Scientific_Figure",
       "title": "Crafter: A Multi-Agent Harness for Editable Scientific Figure Generation from Diverse Inputs",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, university, image, scientific",
       "key": "FOLDER00063_0936ba6d5400",
       "sourceIndex": 62,
       "textBytes": 80050,
@@ -635,7 +635,7 @@
     {
       "slug": "1747_Less_is_Enough_Synthesizing_Diverse_Data_in_Feature_Space_of",
       "title": "Less is Enough: Synthesizing Diverse Data in Feature Space of LLMs",
-      "category": "HDBSCAN Cluster: data, language, feature, dllm",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00064_292a7228313c",
       "sourceIndex": 63,
       "textBytes": 179027,
@@ -645,7 +645,7 @@
     {
       "slug": "1748_LLaDA20-Uni_Unifying_Multimodal_Understanding_and_Generation",
       "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, multimodal, model, understanding",
       "key": "FOLDER00065_f953c8971cba",
       "sourceIndex": 64,
       "textBytes": 94565,
@@ -665,7 +665,7 @@
     {
       "slug": "1750_Thinking_with_Video_Video_Generation_as_a_Promising_Multimod",
       "title": "Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm",
-      "category": "HDBSCAN Cluster: university, models, xiamen, large",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00067_ac95597a6878",
       "sourceIndex": 66,
       "textBytes": 100230,
@@ -705,7 +705,7 @@
     {
       "slug": "1754_Kandinsky_50_A_Family_of_Foundation_Models_for_Image_and_Vid",
       "title": "Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: video, generation, models, kandinsky",
       "key": "FOLDER00071_8339c62b1c6b",
       "sourceIndex": 70,
       "textBytes": 189067,
@@ -715,7 +715,7 @@
     {
       "slug": "1755_GDPO_Group_reward-Decoupled_Normalization_Policy_Optimizatio",
       "title": "GDPO: Group reward-Decoupled Normalization Policy Optimization for Multi-reward RL Optimization",
-      "category": "HDBSCAN Cluster: optimization, policy, learning, llms",
+      "category": "HDBSCAN Cluster: optimization, policy, learning, reinforcement",
       "key": "FOLDER00072_98f3b1b6fec2",
       "sourceIndex": 71,
       "textBytes": 77232,
@@ -725,7 +725,7 @@
     {
       "slug": "1756_PaperBanana_Automating_Academic_Illustration_for_AI_Scientis",
       "title": "PaperBanana: Automating Academic Illustration for AI Scientists",
-      "category": "HDBSCAN Cluster: paperbanana, generation, gui, figure",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00073_6aee964fcc91",
       "sourceIndex": 72,
       "textBytes": 126607,
@@ -775,7 +775,7 @@
     {
       "slug": "1841_Feature-Level_Insights_into_Artificial_Text_Detection_with_S",
       "title": "Feature-Level Insights into Artificial Text Detection with Sparse Autoencoders",
-      "category": "HDBSCAN Cluster: artificial, text, detection, institute",
+      "category": "HDBSCAN Cluster: llms, university, artificial, text",
       "key": "FOLDER00078_fed29724b9ae",
       "sourceIndex": 77,
       "textBytes": 71941,
@@ -855,7 +855,7 @@
     {
       "slug": "1931_VESPO_Variational_Sequence-Level_Soft_Policy_Optimization_fo",
       "title": "VESPO: Variational Sequence-Level Soft Policy Optimization for Stable Off-Policy LLM Training",
-      "category": "HDBSCAN Cluster: optimization, policy, learning, llms",
+      "category": "HDBSCAN Cluster: optimization, policy, learning, reinforcement",
       "key": "FOLDER00086_1edc3aea10c9",
       "sourceIndex": 85,
       "textBytes": 80404,
@@ -865,7 +865,7 @@
     {
       "slug": "1932_Heterogeneous_Scientific_Foundation_Model_Collaboration",
       "title": "Heterogeneous Scientific Foundation Model Collaboration",
-      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
+      "category": "HDBSCAN Cluster: language, model, models, systems",
       "key": "FOLDER00087_4449a0ace106",
       "sourceIndex": 86,
       "textBytes": 184544,
@@ -875,7 +875,7 @@
     {
       "slug": "1933_GLM-45_Agentic_Reasoning_and_Coding_ARC_Foundation_Models",
       "title": "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models",
-      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
+      "category": "HDBSCAN Cluster: reasoning, agentic, models, deepseek-v3",
       "key": "FOLDER00088_ec7f05bf1eae",
       "sourceIndex": 87,
       "textBytes": 87726,
@@ -885,7 +885,7 @@
     {
       "slug": "1934_Lumine_An_Open_Recipe_for_Building_Generalist_Agents_in_3D_O",
       "title": "Lumine: An Open Recipe for Building Generalist Agents in 3D Open Worlds",
-      "category": "HDBSCAN Cluster: agents, embodied, lumine, open",
+      "category": "HDBSCAN Cluster: lumine, open, environments, qwen-vla",
       "key": "FOLDER00089_5c877ea4a55a",
       "sourceIndex": 88,
       "textBytes": 201532,
@@ -905,7 +905,7 @@
     {
       "slug": "1977_Mutarjim_Advancing_Bidirectional_Arabic-English_Translation",
       "title": "Mutarjim: Advancing Bidirectional Arabic-English Translation with a Small Language Model",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00091_8b531206da8e",
       "sourceIndex": 90,
       "textBytes": 51767,
@@ -945,7 +945,7 @@
     {
       "slug": "1980_Bootstrapping_Exploration_with_Group-Level_Natural_Language",
       "title": "Bootstrapping Exploration with Group-Level Natural Language Feedback in Reinforcement Learning",
-      "category": "HDBSCAN Cluster: language, feedback, exploration, reinforcement",
+      "category": "HDBSCAN Cluster: language, reinforcement, learning, reasoning",
       "key": "FOLDER00095_946974fa004a",
       "sourceIndex": 94,
       "textBytes": 89363,
@@ -955,7 +955,7 @@
     {
       "slug": "2022_TermiGen_High-Fidelity_Environment_and_Robust_Trajectory_Syn",
       "title": "TermiGen: High-Fidelity Environment and Robust Trajectory Synthesis for Terminal Agents",
-      "category": "HDBSCAN Cluster: agent, skills, skillopt, university",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00096_4f0822cdffc0",
       "sourceIndex": 95,
       "textBytes": 63945,
@@ -975,7 +975,7 @@
     {
       "slug": "2024_CLEAR_Character_Unlearning_in_Textual_and_Visual_Modalities",
       "title": "CLEAR: Character Unlearning in Textual and Visual Modalities",
-      "category": "HDBSCAN Cluster: clear, unlearning, siglip, alexey",
+      "category": "HDBSCAN Cluster: clear, unlearning, learning, text",
       "key": "FOLDER00098_964908fb8da8",
       "sourceIndex": 97,
       "textBytes": 85331,
@@ -1015,7 +1015,7 @@
     {
       "slug": "2074_Step_35_Flash_Open_Frontier-Level_Intelligence_with_11B_Acti",
       "title": "Step 3.5 Flash: Open Frontier-Level Intelligence with 11B Active Parameters",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, agentic, models, deepseek-v3",
       "key": "FOLDER00102_2c700711e69c",
       "sourceIndex": 101,
       "textBytes": 205457,
@@ -1045,7 +1045,7 @@
     {
       "slug": "2077_Code2World_A_GUI_World_Model_via_Renderable_Code_Generation",
       "title": "Code2World: A GUI World Model via Renderable Code Generation",
-      "category": "HDBSCAN Cluster: paperbanana, generation, gui, figure",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00105_f3af930e91a8",
       "sourceIndex": 104,
       "textBytes": 97988,
@@ -1055,7 +1055,7 @@
     {
       "slug": "2119_MiroThinker_Pushing_the_Performance_Boundaries_of_Open-Sourc",
       "title": "MiroThinker: Pushing the Performance Boundaries of Open-Source Research Agents via Model, Context, and Interactive Scaling",
-      "category": "HDBSCAN Cluster: reasoning, model, research, performance",
+      "category": "HDBSCAN Cluster: reasoning, model, agent, research",
       "key": "FOLDER00106_2b8ab407a297",
       "sourceIndex": 105,
       "textBytes": 57348,
@@ -1075,7 +1075,7 @@
     {
       "slug": "2121_STEP3-VL-10B_Technical_Report",
       "title": "STEP3-VL-10B Technical Report",
-      "category": "HDBSCAN Cluster: https, qwen, report, figure",
+      "category": "HDBSCAN Cluster: https, figure, technical, report",
       "key": "FOLDER00108_2bff0a0eb7a5",
       "sourceIndex": 107,
       "textBytes": 126984,
@@ -1085,7 +1085,7 @@
     {
       "slug": "2122_Differential_Transformer",
       "title": "Differential Transformer",
-      "category": "HDBSCAN Cluster: transformer, attention, language, differential",
+      "category": "HDBSCAN Cluster: transformer, attention, models, language",
       "key": "FOLDER00109_cb0fec7db820",
       "sourceIndex": 108,
       "textBytes": 71150,
@@ -1145,7 +1145,7 @@
     {
       "slug": "2167_SenseNova-U1_Unifying_Multimodal_Understanding_and_Generatio",
       "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: models, cosmos, understanding, generation",
       "key": "FOLDER00115_55c68b7aba0f",
       "sourceIndex": 114,
       "textBytes": 156278,
@@ -1155,7 +1155,7 @@
     {
       "slug": "2211_Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data",
       "title": "Absolute Zero: Reinforced Self-play Reasoning with Zero Data",
-      "category": "HDBSCAN Cluster: reasoning, learning, zero, experience",
+      "category": "HDBSCAN Cluster: reasoning, university, learning, reinforcement",
       "key": "FOLDER00116_b33701a84519",
       "sourceIndex": 115,
       "textBytes": 207768,
@@ -1225,7 +1225,7 @@
     {
       "slug": "2257_Can_LLMs_Clean_Up_Your_Mess_A_Survey_of_Application-Ready_Da",
       "title": "Can LLMs Clean Up Your Mess? A Survey of Application-Ready Data Preparation with LLMs",
-      "category": "HDBSCAN Cluster: data, llms, mcp, tasks",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00123_6e2ebdc352d6",
       "sourceIndex": 122,
       "textBytes": 150253,
@@ -1235,7 +1235,7 @@
     {
       "slug": "2258_Helios_Real_Real-Time_Long_Video_Generation_Model",
       "title": "Helios: Real Real-Time Long Video Generation Model",
-      "category": "HDBSCAN Cluster: generation, long, video, real-time",
+      "category": "HDBSCAN Cluster: video, generation, long, real-time",
       "key": "FOLDER00124_9ded09dfbc5b",
       "sourceIndex": 123,
       "textBytes": 142166,
@@ -1255,7 +1255,7 @@
     {
       "slug": "2306_Attention_Residuals",
       "title": "Attention Residuals",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: attention, kimi, linear, layer",
       "key": "FOLDER00126_5cfd8b110a07",
       "sourceIndex": 125,
       "textBytes": 76619,
@@ -1285,7 +1285,7 @@
     {
       "slug": "2309_Kwai_Keye-VL-20_Technical_Report",
       "title": "Kwai Keye-VL-2.0 Technical Report",
-      "category": "HDBSCAN Cluster: https, qwen, report, figure",
+      "category": "HDBSCAN Cluster: https, figure, technical, report",
       "key": "FOLDER00129_a0927041c80d",
       "sourceIndex": 128,
       "textBytes": 110890,
@@ -1295,7 +1295,7 @@
     {
       "slug": "2310_LongVT_Incentivizing_Thinking_with_Long_Videos_via_Native_To",
       "title": "LongVT: Incentivizing \"Thinking with Long Videos\" via Native Tool Calling",
-      "category": "HDBSCAN Cluster: figure, sec, thinking, tstars-tryon",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00130_505c7434345a",
       "sourceIndex": 129,
       "textBytes": 98488,
@@ -1305,7 +1305,7 @@
     {
       "slug": "2351_GLM-5_from_Vibe_Coding_to_Agentic_Engineering",
       "title": "GLM-5: from Vibe Coding to Agentic Engineering",
-      "category": "HDBSCAN Cluster: reinforcement, learning, reasoning, agentic",
+      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, competitive",
       "key": "FOLDER00131_4b64db8dc365",
       "sourceIndex": 130,
       "textBytes": 140252,
@@ -1325,7 +1325,7 @@
     {
       "slug": "2353_Perception_Reason_Think_and_Plan_A_Survey_on_Large_Multimoda",
       "title": "Perception, Reason, Think, and Plan: A Survey on Large Multimodal Reasoning Models",
-      "category": "HDBSCAN Cluster: university, models, reasoning, intelligence",
+      "category": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
       "key": "FOLDER00133_8e3c28fd1818",
       "sourceIndex": 132,
       "textBytes": 391537,
@@ -1355,7 +1355,7 @@
     {
       "slug": "2399_Beyond_the_8020_Rule_High-Entropy_Minority_Tokens_Drive_Effe",
       "title": "Beyond the 80/20 Rule: High-Entropy Minority Tokens Drive Effective Reinforcement Learning for LLM Reasoning",
-      "category": "HDBSCAN Cluster: rlvr, reinforcement, learning, university",
+      "category": "HDBSCAN Cluster: reasoning, university, learning, reinforcement",
       "key": "FOLDER00136_34c4cd38307d",
       "sourceIndex": 135,
       "textBytes": 88702,
@@ -1365,7 +1365,7 @@
     {
       "slug": "2400_ClawKeeper_Comprehensive_Safety_Protection_for_OpenClaw_Agen",
       "title": "ClawKeeper: Comprehensive Safety Protection for OpenClaw Agents Through Skills, Plugins, and Watchers",
-      "category": "HDBSCAN Cluster: agent, through, openclaw, agents",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00137_220c9826a456",
       "sourceIndex": 136,
       "textBytes": 66055,
@@ -1375,7 +1375,7 @@
     {
       "slug": "2401_QeRL_Beyond_Efficiency_--_Quantization-enhanced_Reinforcemen",
       "title": "QeRL: Beyond Efficiency -- Quantization-enhanced Reinforcement Learning for LLMs",
-      "category": "HDBSCAN Cluster: optimization, policy, learning, llms",
+      "category": "HDBSCAN Cluster: optimization, policy, learning, reinforcement",
       "key": "FOLDER00138_d82ee87bba02",
       "sourceIndex": 137,
       "textBytes": 78498,
@@ -1395,7 +1395,7 @@
     {
       "slug": "2403_LongLive_Real-time_Interactive_Long_Video_Generation",
       "title": "LongLive: Real-time Interactive Long Video Generation",
-      "category": "HDBSCAN Cluster: generation, long, video, real-time",
+      "category": "HDBSCAN Cluster: video, generation, long, real-time",
       "key": "FOLDER00140_62c00ac6aa07",
       "sourceIndex": 139,
       "textBytes": 69742,
@@ -1415,7 +1415,7 @@
     {
       "slug": "2448_MCPMark_A_Benchmark_for_Stress-Testing_Realistic_and_Compreh",
       "title": "MCPMark: A Benchmark for Stress-Testing Realistic and Comprehensive MCP Use",
-      "category": "HDBSCAN Cluster: data, llms, mcp, tasks",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00142_a4d4189c9274",
       "sourceIndex": 141,
       "textBytes": 86861,
@@ -1435,7 +1435,7 @@
     {
       "slug": "2450_LongCat-Flash-Thinking-2601_Technical_Report",
       "title": "LongCat-Flash-Thinking-2601 Technical Report",
-      "category": "HDBSCAN Cluster: reasoning, model, research, performance",
+      "category": "HDBSCAN Cluster: reasoning, model, agent, research",
       "key": "FOLDER00144_1c4747a81411",
       "sourceIndex": 143,
       "textBytes": 123778,
@@ -1445,7 +1445,7 @@
     {
       "slug": "2451_HY-Embodied-05_Embodied_Foundation_Models_for_Real-World_Age",
       "title": "HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents",
-      "category": "HDBSCAN Cluster: agents, embodied, lumine, open",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00145_6259f5e0c38f",
       "sourceIndex": 144,
       "textBytes": 146453,
@@ -1455,7 +1455,7 @@
     {
       "slug": "2494_MiroThinker-17__H1_Towards_Heavy-Duty_Research_Agents_via_Ve",
       "title": "MiroThinker-1.7 & H1: Towards Heavy-Duty Research Agents via Verification",
-      "category": "HDBSCAN Cluster: reasoning, model, research, performance",
+      "category": "HDBSCAN Cluster: reasoning, model, agent, research",
       "key": "FOLDER00146_334d0fce3ea3",
       "sourceIndex": 145,
       "textBytes": 67569,
@@ -1465,7 +1465,7 @@
     {
       "slug": "2495_Live_Avatar_Streaming_Real-time_Audio-Driven_Avatar_Generati",
       "title": "Live Avatar: Streaming Real-time Audio-Driven Avatar Generation with Infinite Length",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, video, university, generation",
       "key": "FOLDER00147_770fe89ff20e",
       "sourceIndex": 146,
       "textBytes": 84335,
@@ -1475,7 +1475,7 @@
     {
       "slug": "2496_VibeVoice_Technical_Report",
       "title": "VibeVoice Technical Report",
-      "category": "HDBSCAN Cluster: vibevoice, music, report, model",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00148_136af8a674d0",
       "sourceIndex": 147,
       "textBytes": 27704,
@@ -1505,7 +1505,7 @@
     {
       "slug": "2541_Simple_and_Controllable_Music_Generation",
       "title": "Simple and Controllable Music Generation",
-      "category": "HDBSCAN Cluster: vibevoice, music, report, model",
+      "category": "HDBSCAN Cluster: generation, model, audio, video",
       "key": "FOLDER00151_d3ee51dd9ac2",
       "sourceIndex": 150,
       "textBytes": 69040,
@@ -1525,7 +1525,7 @@
     {
       "slug": "2543_Qwen25-Omni_Technical_Report",
       "title": "Qwen2.5-Omni Technical Report",
-      "category": "HDBSCAN Cluster: https, qwen, report, figure",
+      "category": "HDBSCAN Cluster: omni, qwen2, figure, multimodal",
       "key": "FOLDER00153_643b6c9e51d9",
       "sourceIndex": 152,
       "textBytes": 72072,
@@ -1535,7 +1535,7 @@
     {
       "slug": "2544_Retentive_Network_A_Successor_to_Transformer_for_Large_Langu",
       "title": "Retentive Network: A Successor to Transformer for Large Language Models",
-      "category": "HDBSCAN Cluster: transformer, attention, language, differential",
+      "category": "HDBSCAN Cluster: memory, university, large, language",
       "key": "FOLDER00154_325e8d86e25f",
       "sourceIndex": 153,
       "textBytes": 42595,
@@ -1555,7 +1555,7 @@
     {
       "slug": "2584_Self-Distilled_RLVR",
       "title": "Self-Distilled RLVR",
-      "category": "HDBSCAN Cluster: rlvr, reinforcement, learning, university",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00156_5100c3745fec",
       "sourceIndex": 155,
       "textBytes": 94668,
@@ -1585,7 +1585,7 @@
     {
       "slug": "2587_General_Agentic_Memory_Via_Deep_Research",
       "title": "General Agentic Memory Via Deep Research",
-      "category": "HDBSCAN Cluster: memory, recursive, systems, university",
+      "category": "HDBSCAN Cluster: memory, university, large, language",
       "key": "FOLDER00159_4c43fdf369ac",
       "sourceIndex": 158,
       "textBytes": 49725,
@@ -1615,7 +1615,7 @@
     {
       "slug": "2630_From_Context_to_Skills_Can_Language_Models_Learn_from_Contex",
       "title": "From Context to Skills: Can Language Models Learn from Context Skillfully?",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: context, models, skills, can",
       "key": "FOLDER00162_88947750b1a9",
       "sourceIndex": 161,
       "textBytes": 223430,
@@ -1625,7 +1625,7 @@
     {
       "slug": "2631_SigLIP_2_Multilingual_Vision-Language_Encoders_with_Improved",
       "title": "SigLIP 2: Multilingual Vision-Language Encoders with Improved Semantic Understanding, Localization, and Dense Features",
-      "category": "HDBSCAN Cluster: clear, unlearning, siglip, alexey",
+      "category": "HDBSCAN Cluster: paligemma, siglip, vision-language, family",
       "key": "FOLDER00163_e610eccb2c79",
       "sourceIndex": 162,
       "textBytes": 65194,
@@ -1635,7 +1635,7 @@
     {
       "slug": "2632_LLM-Microscope_Uncovering_the_Hidden_Role_of_Punctuation_in",
       "title": "LLM-Microscope: Uncovering the Hidden Role of Punctuation in Context Memory of Transformers",
-      "category": "HDBSCAN Cluster: artificial, text, detection, institute",
+      "category": "HDBSCAN Cluster: llms, university, artificial, text",
       "key": "FOLDER00164_4e9f21baeb77",
       "sourceIndex": 163,
       "textBytes": 35634,
@@ -1645,7 +1645,7 @@
     {
       "slug": "2633_Kling-Omni_Technical_Report",
       "title": "Kling-Omni Technical Report",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: video, generation, models, kandinsky",
       "key": "FOLDER00165_3ca77ea7131e",
       "sourceIndex": 164,
       "textBytes": 66971,
@@ -1655,7 +1655,7 @@
     {
       "slug": "2678_Perception_or_Prejudice_Can_MLLMs_Go_Beyond_First_Impression",
       "title": "Perception or Prejudice: Can MLLMs Go Beyond First Impressions of Personality?",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: context, models, skills, can",
       "key": "FOLDER00166_6c59b00c9374",
       "sourceIndex": 165,
       "textBytes": 111407,
@@ -1665,7 +1665,7 @@
     {
       "slug": "2679_Qwen3-VL_Technical_Report",
       "title": "Qwen3-VL Technical Report",
-      "category": "HDBSCAN Cluster: https, qwen, report, figure",
+      "category": "HDBSCAN Cluster: https, figure, technical, report",
       "key": "FOLDER00167_108f11ece30d",
       "sourceIndex": 166,
       "textBytes": 155705,
@@ -1675,7 +1675,7 @@
     {
       "slug": "2680_AgentSPEX_An_Agent_SPecification_and_EXecution_Language",
       "title": "AgentSPEX: An Agent SPecification and EXecution Language",
-      "category": "HDBSCAN Cluster: agent, through, openclaw, agents",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00168_da0ddd343924",
       "sourceIndex": 167,
       "textBytes": 52129,
@@ -1685,7 +1685,7 @@
     {
       "slug": "2681_Embodied-R15_Evolving_Physical_Intelligence_via_Embodied_Fou",
       "title": "Embodied-R1.5: Evolving Physical Intelligence via Embodied Foundation Models",
-      "category": "HDBSCAN Cluster: university, models, reasoning, intelligence",
+      "category": "HDBSCAN Cluster: reasoning, models, intelligence, embodied",
       "key": "FOLDER00169_307877d74af7",
       "sourceIndex": 168,
       "textBytes": 159829,
@@ -1705,7 +1705,7 @@
     {
       "slug": "2723_AgentFly_Fine-tuning_LLM_Agents_without_Fine-tuning_LLMs",
       "title": "AgentFly: Fine-tuning LLM Agents without Fine-tuning LLMs",
-      "category": "HDBSCAN Cluster: optimization, policy, learning, llms",
+      "category": "HDBSCAN Cluster: optimization, policy, learning, reinforcement",
       "key": "FOLDER00171_120f29e1bc0e",
       "sourceIndex": 170,
       "textBytes": 91552,
@@ -1745,7 +1745,7 @@
     {
       "slug": "2727_Agentic_Reinforced_Policy_Optimization",
       "title": "Agentic Reinforced Policy Optimization",
-      "category": "HDBSCAN Cluster: reasoning, learning, zero, experience",
+      "category": "HDBSCAN Cluster: reasoning, university, learning, reinforcement",
       "key": "FOLDER00175_c0bcab0b24ac",
       "sourceIndex": 174,
       "textBytes": 131626,
@@ -1775,7 +1775,7 @@
     {
       "slug": "2771_Seedance_20_Advancing_Video_Generation_for_World_Complexity",
       "title": "Seedance 2.0: Advancing Video Generation for World Complexity",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: video, generation, models, kandinsky",
       "key": "FOLDER00178_2a5f3f6b73fb",
       "sourceIndex": 177,
       "textBytes": 85193,
@@ -1795,7 +1795,7 @@
     {
       "slug": "2773_Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurre",
       "title": "Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: reasoning, language, model, context",
       "key": "FOLDER00180_e288d1fddbcb",
       "sourceIndex": 179,
       "textBytes": 142183,
@@ -1805,7 +1805,7 @@
     {
       "slug": "2814_MOVA_Towards_Scalable_and_Synchronized_Video-Audio_Generatio",
       "title": "MOVA: Towards Scalable and Synchronized Video-Audio Generation",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Cluster: generation, model, audio, video",
       "key": "FOLDER00181_6adca3716aee",
       "sourceIndex": 180,
       "textBytes": 117014,
@@ -1825,7 +1825,7 @@
     {
       "slug": "2816_DAComp_Benchmarking_Data_Agents_across_the_Full_Data_Intelli",
       "title": "DAComp: Benchmarking Data Agents across the Full Data Intelligence Lifecycle",
-      "category": "HDBSCAN Cluster: data, llms, mcp, tasks",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00183_f9bffed4699f",
       "sourceIndex": 182,
       "textBytes": 140889,
@@ -1845,7 +1845,7 @@
     {
       "slug": "2818_When_Vision_Speaks_for_Sound",
       "title": "When Vision Speaks for Sound",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: omni, qwen2, figure, multimodal",
       "key": "FOLDER00185_8db920c441be",
       "sourceIndex": 184,
       "textBytes": 90580,
@@ -1855,7 +1855,7 @@
     {
       "slug": "2859_UI-Venus-15_Technical_Report",
       "title": "UI-Venus-1.5 Technical Report",
-      "category": "HDBSCAN Cluster: reinforcement, learning, reasoning, agentic",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00186_5f5800014002",
       "sourceIndex": 185,
       "textBytes": 112011,
@@ -1875,7 +1875,7 @@
     {
       "slug": "2861_Seed15-VL_Technical_Report",
       "title": "Seed1.5-VL Technical Report",
-      "category": "HDBSCAN Cluster: glm-4, multimodal, reasoning, seed1",
+      "category": "HDBSCAN Cluster: reasoning, models, glm-4, multimodal",
       "key": "FOLDER00188_b88bb2ab4c68",
       "sourceIndex": 187,
       "textBytes": 226376,
@@ -1885,7 +1885,7 @@
     {
       "slug": "2862_Out_of_Sight_but_Not_Out_of_Mind_Hybrid_Memory_for_Dynamic_V",
       "title": "Out of Sight but Not Out of Mind: Hybrid Memory for Dynamic Video World Models",
-      "category": "HDBSCAN Cluster: figure, agent, out, world",
+      "category": "HDBSCAN Cluster: figure, agent, university, out",
       "key": "FOLDER00189_effbe6a1f48b",
       "sourceIndex": 188,
       "textBytes": 58447,
@@ -1935,7 +1935,7 @@
     {
       "slug": "2905_Vision-DeepResearch_Incentivizing_DeepResearch_Capability_in",
       "title": "Vision-DeepResearch: Incentivizing DeepResearch Capability in Multimodal Large Language Models",
-      "category": "HDBSCAN Cluster: university, models, technology, china",
+      "category": "HDBSCAN Cluster: university, models, technology, large",
       "key": "FOLDER00194_40095c356e5a",
       "sourceIndex": 193,
       "textBytes": 51791,
@@ -1955,7 +1955,7 @@
     {
       "slug": "2948_Qwen3-Omni_Technical_Report",
       "title": "Qwen3-Omni Technical Report",
-      "category": "HDBSCAN Cluster: https, qwen, report, figure",
+      "category": "HDBSCAN Cluster: https, figure, technical, report",
       "key": "FOLDER00196_2a47fab69b0e",
       "sourceIndex": 195,
       "textBytes": 94598,
@@ -1965,7 +1965,7 @@
     {
       "slug": "2949_Youtu-LLM_Unlocking_the_Native_Agentic_Potential_for_Lightwe",
       "title": "Youtu-LLM: Unlocking the Native Agentic Potential for Lightweight Large Language Models",
-      "category": "HDBSCAN Cluster: reasoning, models, agentic, deepseek-v3",
+      "category": "HDBSCAN Cluster: reasoning, agentic, models, deepseek-v3",
       "key": "FOLDER00197_0a34f5facf01",
       "sourceIndex": 196,
       "textBytes": 176835,
@@ -1985,7 +1985,7 @@
     {
       "slug": "2951_dLLM_Simple_Diffusion_Language_Modeling",
       "title": "dLLM: Simple Diffusion Language Modeling",
-      "category": "HDBSCAN Cluster: data, language, feature, dllm",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00199_2b041a3854b6",
       "sourceIndex": 198,
       "textBytes": 53352,
@@ -2005,7 +2005,7 @@
     {
       "slug": "2991_Textbooks_Are_All_You_Need",
       "title": "Textbooks Are All You Need",
-      "category": "HDBSCAN Cluster: language, model, small, mutarjim",
+      "category": "HDBSCAN Cluster: model, reasoning, small, test-time",
       "key": "FOLDER00201_26ed92aa939c",
       "sourceIndex": 200,
       "textBytes": 77693,
@@ -2055,7 +2055,7 @@
     {
       "slug": "3036_Your_Group-Relative_Advantage_Is_Biased",
       "title": "Your Group-Relative Advantage Is Biased",
-      "category": "HDBSCAN Cluster: rlvr, reinforcement, learning, university",
+      "category": "HDBSCAN Cluster: reasoning, university, learning, reinforcement",
       "key": "FOLDER00206_ad69e4ab70a2",
       "sourceIndex": 205,
       "textBytes": 84478,
@@ -2095,7 +2095,7 @@
     {
       "slug": "3040_HSImul3R_Physics-in-the-Loop_Reconstruction_of_Simulation-Re",
       "title": "HSImul3R: Physics-in-the-Loop Reconstruction of Simulation-Ready Human-Scene Interactions",
-      "category": "HDBSCAN Cluster: unified, air-ground, embodied, infrastructure",
+      "category": "HDBSCAN Cluster: model, world, figure, worlds",
       "key": "FOLDER00210_0d7e8cc379ba",
       "sourceIndex": 209,
       "textBytes": 54412,
@@ -2105,7 +2105,7 @@
     {
       "slug": "3080_InfiniteHiP_Extending_Language_Model_Context_Up_to_3_Million",
       "title": "InfiniteHiP: Extending Language Model Context Up to 3 Million Tokens on a Single GPU",
-      "category": "HDBSCAN Cluster: context, inference, language, tokens",
+      "category": "HDBSCAN Cluster: language, model, models, inference",
       "key": "FOLDER00211_89b2c8a3d5b7",
       "sourceIndex": 210,
       "textBytes": 78779,
@@ -2115,7 +2115,7 @@
     {
       "slug": "3081_OpenSeeker_Democratizing_Frontier_Search_Agents_by_Fully_Ope",
       "title": "OpenSeeker: Democratizing Frontier Search Agents by Fully Open-Sourcing Training Data",
-      "category": "HDBSCAN Cluster: data, search, agents, edu",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00212_5402ba8e115d",
       "sourceIndex": 211,
       "textBytes": 53202,
@@ -2145,7 +2145,7 @@
     {
       "slug": "3084_ReCamMaster_Camera-Controlled_Generative_Rendering_from_A_Si",
       "title": "ReCamMaster: Camera-Controlled Generative Rendering from A Single Video",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: figure, video, university, generation",
       "key": "FOLDER00215_7809968708b7",
       "sourceIndex": 214,
       "textBytes": 68060,
@@ -2165,7 +2165,7 @@
     {
       "slug": "3126_FASA_Frequency-aware_Sparse_Attention",
       "title": "FASA: Frequency-aware Sparse Attention",
-      "category": "HDBSCAN Cluster: context, inference, language, tokens",
+      "category": "HDBSCAN Cluster: language, model, models, inference",
       "key": "FOLDER00217_43261035478b",
       "sourceIndex": 216,
       "textBytes": 177609,
@@ -2205,7 +2205,7 @@
     {
       "slug": "3172_Addition_is_All_You_Need_for_Energy-efficient_Language_Model",
       "title": "Addition is All You Need for Energy-efficient Language Models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: bit, floating, point, language",
       "key": "FOLDER00221_d9269a8943d0",
       "sourceIndex": 220,
       "textBytes": 46852,
@@ -2225,7 +2225,7 @@
     {
       "slug": "2689_DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Sca",
       "title": "DAPO: An Open-Source LLM Reinforcement Learning System at Scale",
-      "category": "HDBSCAN Cluster: reinforcement, learning, reasoning, agentic",
+      "category": "HDBSCAN Cluster: agentic, reinforcement, learning, competitive",
       "key": "FOLDER00223_a1709f07b6c9",
       "sourceIndex": 222,
       "textBytes": 42677,
@@ -2235,7 +2235,7 @@
     {
       "slug": "3174_From_Blind_Spots_to_Gains_Diagnostic-Driven_Iterative_Traini",
       "title": "From Blind Spots to Gains: Diagnostic-Driven Iterative Training for Large Multimodal Models",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: models, sft, reinforcement, reasoning",
       "key": "FOLDER00224_a374f1299896",
       "sourceIndex": 223,
       "textBytes": 50362,
@@ -2255,7 +2255,7 @@
     {
       "slug": "3217_NextStep-1_Toward_Autoregressive_Image_Generation_with_Conti",
       "title": "NextStep-1: Toward Autoregressive Image Generation with Continuous Tokens at Scale",
-      "category": "HDBSCAN Cluster: generation, video, image, models",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00226_e71fb59a4d42",
       "sourceIndex": 225,
       "textBytes": 72911,
@@ -2265,7 +2265,7 @@
     {
       "slug": "3218_We-Math_20_A_Versatile_MathBook_System_for_Incentivizing_Vis",
       "title": "We-Math 2.0: A Versatile MathBook System for Incentivizing Visual Mathematical Reasoning",
-      "category": "HDBSCAN Cluster: data, search, agents, edu",
+      "category": "HDBSCAN Cluster: reasoning, mathematical, https, research",
       "key": "FOLDER00227_6c106376defc",
       "sourceIndex": 226,
       "textBytes": 126997,
@@ -2275,7 +2275,7 @@
     {
       "slug": "3219_Rewarding_the_Rare_Uniqueness-Aware_RL_for_Creative_Problem",
       "title": "Rewarding the Rare: Uniqueness-Aware RL for Creative Problem Solving in LLMs",
-      "category": "HDBSCAN Cluster: language, feedback, exploration, reinforcement",
+      "category": "HDBSCAN Cluster: language, reinforcement, learning, reasoning",
       "key": "FOLDER00228_5aedae633426",
       "sourceIndex": 227,
       "textBytes": 89569,
@@ -2285,7 +2285,7 @@
     {
       "slug": "3220_WebWatcher_Breaking_New_Frontier_of_Vision-Language_Deep_Res",
       "title": "WebWatcher: Breaking New Frontier of Vision-Language Deep Research Agent",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: research, deep, reasoning, models",
       "key": "FOLDER00229_0c1b13b88ba2",
       "sourceIndex": 228,
       "textBytes": 79087,
@@ -2295,7 +2295,7 @@
     {
       "slug": "3221_Shifting_AI_Efficiency_From_Model-Centric_to_Data-Centric_Co",
       "title": "Shifting AI Efficiency From Model-Centric to Data-Centric Compression",
-      "category": "HDBSCAN Cluster: university, models, technology, china",
+      "category": "HDBSCAN Cluster: university, models, technology, large",
       "key": "FOLDER00230_f5f5aa465108",
       "sourceIndex": 229,
       "textBytes": 95188,
@@ -2305,7 +2305,7 @@
     {
       "slug": "3266_Geometry-Guided_Reinforcement_Learning_for_Multi-view_Consis",
       "title": "Geometry-Guided Reinforcement Learning for Multi-view Consistent 3D Scene Editing",
-      "category": "HDBSCAN Cluster: figure, agent, out, world",
+      "category": "HDBSCAN Cluster: figure, agent, university, out",
       "key": "FOLDER00231_b92843e35a52",
       "sourceIndex": 230,
       "textBytes": 84534,
@@ -2315,7 +2315,7 @@
     {
       "slug": "3267_Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Cap",
       "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00232_2b8898d9bc79",
       "sourceIndex": 231,
       "textBytes": 104651,
@@ -2345,7 +2345,7 @@
     {
       "slug": "3270_HunyuanWorld_10_Generating_Immersive_Explorable_and_Interact",
       "title": "HunyuanWorld 1.0: Generating Immersive, Explorable, and Interactive 3D Worlds from Words or Pixels",
-      "category": "HDBSCAN Bridge and Noise Papers",
+      "category": "HDBSCAN Cluster: model, world, figure, worlds",
       "key": "FOLDER00235_55abe89dfa8a",
       "sourceIndex": 234,
       "textBytes": 71895,
@@ -2355,7 +2355,7 @@
     {
       "slug": "3311_Agent_Lightning_Train_ANY_AI_Agents_with_Reinforcement_Learn",
       "title": "Agent Lightning: Train ANY AI Agents with Reinforcement Learning",
-      "category": "HDBSCAN Cluster: agents, agent, training, lightning",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00236_505cf42b7253",
       "sourceIndex": 235,
       "textBytes": 78248,
@@ -2365,7 +2365,7 @@
     {
       "slug": "3312_Writing_in_the_Margins_Better_Inference_Pattern_for_Long_Con",
       "title": "Writing in the Margins: Better Inference Pattern for Long Context Retrieval",
-      "category": "HDBSCAN Cluster: context, inference, language, tokens",
+      "category": "HDBSCAN Cluster: language, model, models, inference",
       "key": "FOLDER00237_d16d3571c89e",
       "sourceIndex": 236,
       "textBytes": 58481,
@@ -2375,7 +2375,7 @@
     {
       "slug": "3313_ClawGUI_A_Unified_Framework_for_Training_Evaluating_and_Depl",
       "title": "ClawGUI: A Unified Framework for Training, Evaluating, and Deploying GUI Agents",
-      "category": "HDBSCAN Cluster: agents, agent, training, lightning",
+      "category": "HDBSCAN Bridge and Noise Papers",
       "key": "FOLDER00238_ecdf6406afb8",
       "sourceIndex": 237,
       "textBytes": 67907,
@@ -2395,12 +2395,1012 @@
     {
       "slug": "3315_DeepSearch_Overcome_the_Bottleneck_of_Reinforcement_Learning",
       "title": "DeepSearch: Overcome the Bottleneck of Reinforcement Learning with Verifiable Rewards via Monte Carlo Tree Search",
-      "category": "HDBSCAN Cluster: reasoning, reinforcement, learning, models",
+      "category": "HDBSCAN Cluster: reasoning, rstar-math, math, models",
       "key": "FOLDER00240_6b6d94886872",
       "sourceIndex": 239,
       "textBytes": 90662,
       "figuresExtracted": 2,
       "excerpt": "# arXiv:2509.25454v4[cs.AI]6Apr2026 DEEPSEARCH: OVERCOME THE BOTTLENECK OF REINFORCEMENT LEARNING WITH VERIFIABLE REWARDS VIA TREE-BASED SEARCH Fang Wu♡∗ Weihao Xuan∇,△∗ Heli Qi△∗ Aaron Tu♠ Ximing Lu♢ Li Erran Li♣ Yejin Choi♡† ♡Stanford University ∇University of Tokyo △RIKEN AIP ♠UC Berkeley ♢University of Washington ♣Amazon AWS ABSTRACT Although Reinforcement Learning with Verifiable Rewards (RLVR) has become an essential component for developing advanced reasoning skills in language models, contemporary studies have documented training plateaus after thousands of optimization steps, i.e., notable decreases in performance gains despite increased computational investment. This limitation stems from the sparse exploration patterns inherent in current RLVR practices, where models rely on limited rollouts that often miss critical reasoning paths and fail to provide systematic coverage of th"
+    },
+    {
+      "slug": "3515_Video2GUI_Synthesizing_Large-Scale_Interaction_Trajectories",
+      "title": "Video2GUI: Synthesizing Large-Scale Interaction Trajectories for Generalized GUI Agent Pretraining",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00241_c59cd2fe7fa7",
+      "sourceIndex": 240,
+      "textBytes": 96813,
+      "figuresExtracted": 5,
+      "excerpt": "### Video2GUI: Synthesizing Large-Scale Interaction Trajectories for Generalized GUI Agent Pretraining Weimin Xiong12† Shuhao Gu2 Bowen Ye2 Zihao Yue23 Lei Li24 Feifan Song1 Sujian Li1‡ Hao Tian2‡ # arXiv:2605.14747v1[cs.CL]14May2026 #### Abstract Recent advances in multimodal large language models have driven growing interest in graphical user interface (GUI) agents, yet their generalization remains constrained by the scarcity of large-scale training data spanning diverse real-world applications. Existing datasets rely heavily on costly manual annotations and are typically confined to narrow domains. To address this challenge, we propose Video2GUI, a fully automated framework that extracts grounded GUI interaction trajectories directly from unlabeled Internet videos. Video2GUI employs a coarse-to-fine filtering strategy to identify highquality GUI tutorial videos and convert them into s"
+    },
+    {
+      "slug": "3516_ARIS_Autonomous_Research_via_Adversarial_Multi-Agent_Collabo",
+      "title": "ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration",
+      "category": "HDBSCAN Cluster: figure, university, multi-agent, collaboration",
+      "key": "FOLDER00242_de28caf93f33",
+      "sourceIndex": 241,
+      "textBytes": 71314,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.03042v1[cs.SE]4May2026 ## ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration Ruofeng Yang1†, Yongcan Li1, Shuai Li1,2∗ 1Shanghai Jiao Tong University 2Shanghai Innovation Institute {wanshuiyin, joseph_y, shuaili8}@sjtu.edu.cn †Project Leader ∗Corresponding Author Project page: https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep ###### Claude Code ###### Claude Code GPT-5.4 xhigh model.py Your_Server ~ 4x A100 📚 DLLMs post training classDenoiser (nn.Module): def forward (self, x, t): h = self.backbone(x, t) logits = self.head(h) returnlogits $ ssh Your_Server $ conda activate env $ screen -dmS exp0 $ python train.py 📚 12 ideas ranked 📚 3 passed novelty check GPU 0-3: 📚📚📚📚📚 78% Loss: 2.341 📚 1.872 ... 📚📚 Idea 1 wins review 📚 Pilots on GPU 0,1,2 📚 Results collected: 📚 Eval CE: 2.798 📚 2.651 (📚5.3%) 📚 TC: 108.4 📚 112.7 (📚4.0%) 📚 IDEA_REPORT.md ready"
+    },
+    {
+      "slug": "3517_Apollo_An_Exploration_of_Video_Understanding_in_Large_Multim",
+      "title": "Apollo: An Exploration of Video Understanding in Large Multimodal Models",
+      "category": "HDBSCAN Cluster: figure, video, university, models",
+      "key": "FOLDER00243_69ab8464987e",
+      "sourceIndex": 242,
+      "textBytes": 129628,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2412.10360v1[cs.CV]13Dec2024 ## Apollo: An Exploration of Video Understanding in Large Multimodal Models [Figure 1] [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] Orr Zohar , ,ω, Xiaohan Wang , Yann Dubois , Nikhil Mehta , Tong Xiao , Philippe Hansen-Estruch , Licheng Yu , Xiaofang Wang , Felix Juefei-Xu , Ning Zhang , Serena Yeung-Levy , Xide Xia [Figure 7] [Figure 8] [Figure 9] [Figure 10] [Figure 11] [Figure 12] [Figure 13] [Figure 14] Meta GenAI, Stanford University ωWork done at Meta Despite the rapid integration of video perception capabilities into Large Multimodal Models (LMMs), the underlying mechanisms driving their video understanding remain poorly understood. Consequently, many design decisions in this domain are made without proper justification or analysis. The high computational cost of training and evaluating such models, coupled with limited open research"
+    },
+    {
+      "slug": "3518_Kimi-VL_Technical_Report",
+      "title": "Kimi-VL Technical Report",
+      "category": "HDBSCAN Cluster: reasoning, models, glm-4, multimodal",
+      "key": "FOLDER00244_d3fb16411ad3",
+      "sourceIndex": 243,
+      "textBytes": 118373,
+      "figuresExtracted": 5,
+      "excerpt": "arXiv:2504.07491v3[cs.CV]23Jun2025 KIMI-VL TECHNICAL REPORT [Figure 1] Kimi Team ABSTRACT We present Kimi-VL, an efficient open-source Mixture-of-Experts (MoE) vision-language model (VLM) that offers advanced multimodal reasoning, long-context understanding, and strong agent capabilities—all while activating only 2.8B parameters in its language decoder (Kimi-VL-A3B). Kimi-VL demonstrates strong performance across challenging domains: as a general-purpose VLM, Kimi-VL excels in multi-turn agent tasks (e.g., OSWorld), matching flagship models. Furthermore, it exhibits remarkable capabilities across diverse challenging vision language tasks, including collegelevel image and video comprehension, OCR, mathematical reasoning, multi-image understanding. In comparative evaluations, it effectively competes with cutting-edge efficient VLMs such as GPT-4omini, Qwen2.5-VL-7B, and Gemma-3-12B-IT, whi"
+    },
+    {
+      "slug": "3519_MoCha_Towards_Movie-Grade_Talking_Character_Synthesis",
+      "title": "MoCha: Towards Movie-Grade Talking Character Synthesis",
+      "category": "HDBSCAN Cluster: figure, video, university, generation",
+      "key": "FOLDER00245_64538de22ef2",
+      "sourceIndex": 244,
+      "textBytes": 53034,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2503.23307v1[cs.CV]30Mar2025 ## MoCha: Towards Movie-Grade Talking Character Synthesis Cong Wei1,2, Bo Sun2, Haoyu Ma2, Ji Hou2, Felix Juefei-Xu2, Zecheng He2, Xiaoliang Dai2, Luxin Zhang2, Kunpeng Li2, Tingbo Hou2, Animesh Sinha2, Peter Vajda2, Wenhu Chen1 1University of Waterloo, 2GenAI, Meta https://congwei1230.github.io/MoCha Talking Character [Figure 11] [Figure 12] [Figure 13] [Figure 14] [Figure 15] “Close-up shot of a doctor in a white lab coat over blue scrubs, speaking…” Scene Control [Figure 16] [Figure 17] [Figure 18] [Figure 19] [Figure 20] “Close-up shot of a young woman sitting in the driver's seat of a car with the window rolled down…” Emotion Control [Figure 21] [Figure 22] [Figure 23] [Figure 24] [Figure 25] “A woman standing in a modern house. Two distinct streams of tears trail down her cheeks as she speaks with an angry expression…” ###### Action Control [Fig"
+    },
+    {
+      "slug": "3520_PhysBrain_10_Technical_Report",
+      "title": "PhysBrain 1.0 Technical Report",
+      "category": "HDBSCAN Cluster: physbrain, green-vla, robot, physical",
+      "key": "FOLDER00246_f9333291796d",
+      "sourceIndex": 245,
+      "textBytes": 85419,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.15298v1[cs.RO]14May2026 [Figure 1] ## PhysBrain 1.0 Technical Report ### PhysBrain Team See Contributions section for a full author list. ### Abstract Vision-language-action models have advanced rapidly, but robot trajectories alone provide limited coverage for learning broad physical understanding. PhysBrain 1.0 studies a complementary route: converting large-scale human egocentric video into structured physical commonsense supervision before robot adaptation. Our data engine extracts scene elements, spatial dynamics, action execution, and depth-aware relations, then turns them into question-answer supervision for training PhysBrain VLMs. The resulting physical priors are further transferred to VLA policies through a capability-preserving and language-sensitive adaptation design. Across multimodal QA benchmarks and embodied control benchmarks, including ERQA, PhysBench, Sim"
+    },
+    {
+      "slug": "3521_A_Survey_of_Scientific_Large_Language_Models_From_Data_Found",
+      "title": "A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers",
+      "category": "HDBSCAN Cluster: wu1, wang1, tang1, figure",
+      "key": "FOLDER00247_35cc5c974a28",
+      "sourceIndex": 246,
+      "textBytes": 682845,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 2] [Figure 3] [Figure 4] # A Survey of Scientific Large Language Models: From Data Foundations to Agent Frontiers ## arXiv:2508.21148v2[cs.CL]18Oct2025 Ming Hu1,2 Chenglong Ma1,3 Wei Li1,4 Wanghan Xu1,4 Jiamin Wu1,5 Jucheng Hu1,6 Tianbin Li1 Guohang Zhuang1 Jiaqi Liu1,7 Yingzhou Lu8 Ying Chen1 Chaoyang Zhang1 Cheng Tan1 Jie Ying1 Guocheng Wu1 Shujian Gao1 Pengcheng Chen1 Jiashi Lin1 Haitao Wu1 Lulu Chen9 Fengxiang Wang1 Yuanyuan Zhang10 Xiangyu Zhao1 Feilong Tang1,2 Encheng Su1 Junzhi Ning1 Xinyao Liu1 Ye Du1 Changkai Ji1 Pengfei Jiang1 Cheng Tang1 Ziyan Huang1 Jiyao Liu1,3 Jiaqi Wei1 Yuejin Yang1 Xiang Zhang1 Guangshuai Wang1 Yue Yang1 Huihui Xu1 Ziyang Chen1 Yizhou Wang1 Chen Tang1 Jianyu Wu1 Yuchen Ren1 Siyuan Yan2 Zhonghua Wang2 Zhongxing Xu2 Shiyan Su2 Shangquan Sun1 Runkai Zhao1 Zhisheng Zhang11 Dingkang Yang3 Jinjie Wei3 Jiaqi Wang1 Jiahao Xu1 Jiangtao Yan1 Wenhao Tang1 Ho"
+    },
+    {
+      "slug": "3522_MetaClaw_Just_Talk_--_An_Agent_That_Meta-Learns_and_Evolves",
+      "title": "MetaClaw: Just Talk -- An Agent That Meta-Learns and Evolves in the Wild",
+      "category": "HDBSCAN Cluster: agent, university, self-evolving, figure",
+      "key": "FOLDER00248_5c0a118966dd",
+      "sourceIndex": 247,
+      "textBytes": 65434,
+      "figuresExtracted": 3,
+      "excerpt": "### arXiv:2603.17187v1[cs.LG]17Mar2026 [Figure 1] # : Just Talk – An Agent That Meta-Learns and Evolves in the Wild Peng Xia1∗, Jianwen Chen1∗, Xinyu Yang2∗, Haoqin Tu3∗, Jiaqi Liu1∗, Kaiwen Xiong1∗, Siwei Han1, Shi Qiu1, Haonian Ji1, Yuyin Zhou3, Zeyu Zheng4, Cihang Xie3, Huaxiu Yao1∗ [Figure 2] 1 UNC-Chapel Hill, 2 Carnegie Mellon University, 3 UC Santa Cruz, 4 UC Berkeley, ∗Core Contributors [Figure 3] [Figure 4] [Figure 5] Large language model (LLM) agents have rapidly emerged as powerful assistants for complex, multi-step tasks, yet agents deployed in the wild remain largely static, trained once and served unchanged regardless of how user needs evolve. This creates a fundamental tension: they must serve users continuously without interruption, yet their capabilities grow stale as the task distribution drifts with real-world usage. On platforms such as OpenClaw, where a single agent "
+    },
+    {
+      "slug": "3523_Will_It_Still_Be_True_Tomorrow_Multilingual_Evergreen_Questi",
+      "title": "Will It Still Be True Tomorrow? Multilingual Evergreen Question Classification to Improve Trustworthy QA",
+      "category": "HDBSCAN Cluster: llms, university, artificial, text",
+      "key": "FOLDER00249_ee313279fb82",
+      "sourceIndex": 248,
+      "textBytes": 66207,
+      "figuresExtracted": 1,
+      "excerpt": "# arXiv:2505.21115v1[cs.CL]27May2025 ## Will It Still Be True Tomorrow? Multilingual Evergreen Question Classification to Improve Trustworthy QA Sergey Pletenev*,2,1, Maria Marina*,2,1, Nikolay Ivanov1, Daria Galimzianova4, Nikita Krayko4, Mikhail Salnikov2,1, Vasily Konovalov2,5, Alexander Panchenko1,2, Viktor Moskvoretskii1,3 1Skoltech, 2AIRI, 3HSE University, 4MTS AI, 5MIPT {Maria.Marina, A.Panchenko, V.Moskvoretskii}@skol.tech Abstract Large Language Models (LLMs) often hallucinate in question answering (QA) tasks. A key yet underexplored factor contributing to this is the temporality of questions – whether they are evergreen (answers remain stable over time) or mutable (answers change). In this work, we introduce EverGreenQA, the first multilingual QA dataset with evergreen labels, supporting both evaluation and training. Using EverGreenQA, we benchmark 12 modern LLMs to assess whet"
+    },
+    {
+      "slug": "3524_The_Past_Is_Not_Past_Memory-Enhanced_Dynamic_Reward_Shaping",
+      "title": "The Past Is Not Past: Memory-Enhanced Dynamic Reward Shaping",
+      "category": "HDBSCAN Cluster: reasoning, university, learning, reinforcement",
+      "key": "FOLDER00250_3c8a9739894c",
+      "sourceIndex": 249,
+      "textBytes": 85150,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2604.11297v1[cs.LG]13Apr2026 OpenMOSS [Figure 1] ## The Past Is Not Past: Memory-Enhanced Dynamic Reward Shaping ### Yang Liu1,2,∗, Enxi Wang1,∗, Yufei Gao1,∗, Weixin Zhang1,∗, Bo Wang1, Zhiyuan Zeng1, Yikai Zhang1, Yining Zheng1,2,†, Xipeng Qiu1,2,† 1Fudan University 2Shanghai Innovation Institute ### Abstract Despite the success of reinforcement learning for large language models, a common failure mode is reduced sampling diversity, where the policy repeatedly generates similar erroneous behaviors. Classical entropy regularization encourages randomness under the current policy, but does not explicitly discourage recurrent failure patterns across rollouts. We propose MEDS, a MemoryEnhanced Dynamic reward Shaping framework that incorporates historical behavioral signals into reward design. By storing and leveraging intermediate model representations, we capture features of past r"
+    },
+    {
+      "slug": "3525_TAPS_Task_Aware_Proposal_Distributions_for_Speculative_Sampl",
+      "title": "TAPS: Task Aware Proposal Distributions for Speculative Sampling",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00251_ea0bc01593bd",
+      "sourceIndex": 250,
+      "textBytes": 49662,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2603.27027v1[cs.CL]27Mar2026 # TAPS: Task Aware Proposal Distributions for Speculative Sampling Mohamad Zbib1,2, Mohamad Bazzi2, Ammar Mohanna2, Hasan Abed Al Kader Hammoud1,‡, Bernard Ghanem1,‡ 1King Abdullah University of Science and Technology (KAUST) 2American University of Beirut (AUB) ‡Equal advising authors Speculative decoding accelerates autoregressive generation by letting a lightweight draft model propose future tokens that a larger target model then verifies in parallel. In practice, however, draft models are usually trained on broad generic corpora, which leaves it unclear how much speculative decoding quality depends on the draft training distribution. We study this question with lightweight HASS and EAGLE-2 drafters trained on MathInstruct, ShareGPT, and mixed-data variants, evaluated on MT-Bench, GSM8K, MATH-500, and SVAMP. Measured by acceptance length, task-spe"
+    },
+    {
+      "slug": "3526_SpreadsheetLLM_Encoding_Spreadsheets_for_Large_Language_Mode",
+      "title": "SpreadsheetLLM: Encoding Spreadsheets for Large Language Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00252_6765f9b2ada5",
+      "sourceIndex": 251,
+      "textBytes": 73390,
+      "figuresExtracted": 5,
+      "excerpt": "## SPREADSHEETLLM: Encoding Spreadsheets for Large Language Models Haoyu Dong*†, Jianbo Zhao†‡, Yuzhang Tian†‡, Junyu Xiong†‡, Shiyu Xia‡, Mengyu Zhou, Yun Lin‡, José Cambronero, Yeye He, Shi Han, Dongmei Zhang Microsoft Corporation # arXiv:2407.09025v2[cs.AI]2Apr2025 Abstract Spreadsheets are characterized by their extensive two-dimensional grids, flexible layouts, and varied formatting options, which pose significant challenges for large language models (LLMs). In response, we introduce SPREADSHEETLLM, pioneering an efficient encoding method designed to unleash and optimize LLMs’ powerful understanding and reasoning capability on spreadsheets. Initially, we propose a vanilla serialization approach that incorporates cell addresses, values, and formats. However, this approach was limited by LLMs’ token constraints, making it impractical for most applications. To tackle this challenge, we"
+    },
+    {
+      "slug": "3527_ProRL_Prolonged_Reinforcement_Learning_Expands_Reasoning_Bou",
+      "title": "ProRL: Prolonged Reinforcement Learning Expands Reasoning Boundaries in Large Language Models",
+      "category": "HDBSCAN Cluster: language, reinforcement, learning, reasoning",
+      "key": "FOLDER00253_7d9db1a6abc4",
+      "sourceIndex": 252,
+      "textBytes": 112018,
+      "figuresExtracted": 5,
+      "excerpt": "arXiv:2505.24864v1[cs.CL]30May2025 # ProRL: Prolonged Reinforcement Learning Expands Reasoning Boundaries in Large Language Models Mingjie Liu Shizhe Diao Ximing Lu Jian Hu Xin Dong Yejin Choi Jan Kautz Yi Dong NVIDIA {mingjiel, sdiao, ximingl, jianh, xind, yejinc, jkautz, yidong}@nvidia.com ## Abstract Recent advances in reasoning-centric language models have highlighted reinforcement learning (RL) as a promising method for aligning models with verifiable rewards. However, it remains contentious whether RL truly expands a model’s reasoning capabilities or merely amplifies high-reward outputs already latent in the base model’s distribution, and whether continually scaling up RL compute reliably leads to improved reasoning performance. In this work, we challenge prevailing assumptions by demonstrating that prolonged RL (ProRL) training can uncover novel reasoning strategies that are inacc"
+    },
+    {
+      "slug": "3528_SAM_3_Segment_Anything_with_Concepts",
+      "title": "SAM 3: Segment Anything with Concepts",
+      "category": "HDBSCAN Cluster: zhang, wang, sun, liu",
+      "key": "FOLDER00254_4ee97dd3a725",
+      "sourceIndex": 253,
+      "textBytes": 288550,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2511.16719v2[cs.CV]28Mar2026 ## SAM 3: Segment Anything with Concepts Nicolas Carion∗, Laura Gustafson∗, Yuan-Ting Hu∗, Shoubhik Debnath∗, Ronghang Hu∗, Didac Suris∗, Chaitanya Ryali∗, Kalyan Vasudev Alwala∗, Haitham Khedr∗, Andrew Huang, Jie Lei, Tengyu Ma, Baishan Guo, Arpit Kalla, Markus Marks, Joseph Greer, Meng Wang, Peize Sun, Roman Rädle, Triantafyllos Afouras, Effrosyni Mavroudi, Katherine Xu◦, Tsung-Han Wu◦, Yu Zhou◦, Liliane Momeni◦, Rishi Hazra◦, Shuangrui Ding◦, Sagar Vaze◦, Francois Porcher◦, Feng Li◦, Siyuan Li◦, Aishwarya Kamath◦, Ho Kei Cheng◦, Piotr Dollár†, Nikhila Ravi†, Kate Saenko†, Pengchuan Zhang†, Christoph Feichtenhofer† Meta Superintelligence Labs ∗core contributor, ◦intern, †project lead, order is random within groups We present Segment Anything Model (SAM) 3, a unified model that detects, segments, and tracks objects in images and videos based on conce"
+    },
+    {
+      "slug": "3529_Training_Language_Models_to_Self-Correct_via_Reinforcement_L",
+      "title": "Training Language Models to Self-Correct via Reinforcement Learning",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00255_d8ab7bd977ab",
+      "sourceIndex": 254,
+      "textBytes": 79928,
+      "figuresExtracted": 5,
+      "excerpt": "### arXiv:2409.12917v2[cs.LG]4Oct2024 [Figure 1] 2024-10-7 # Training Language Models to Self-Correct via Reinforcement Learning ###### Aviral Kumar*+,1, Vincent Zhuang*+,1, Rishabh Agarwal*,1, Yi Su*,1, JD Co-Reyes1, Avi Singh1, Kate Baumli1, Shariq Iqbal1, Colton Bishop1, Rebecca Roelofs1, Lei M Zhang1, Kay McKinney1, Disha Shrivastava1, Cosmin Paduraru1, George Tucker1, Doina Precup1, Feryal Behbahani†,1 and Aleksandra Faust†,1 1Google DeepMind, *Equal Contribution, +Randomly ordered via coin flip, †Jointly supervised. Self-correction is a highly desirable capability of large language models (LLMs), yet it has consistently been found to be largely ineffective in modern LLMs. Current methods for training self-correction typically depend on either multiple models, a more advanced model, or additional forms of supervision. To address these shortcomings, we develop a multi-turn online rei"
+    },
+    {
+      "slug": "3530_Qwen-VLA_Unifying_Vision-Language-Action_Modeling_across_Tas",
+      "title": "Qwen-VLA: Unifying Vision-Language-Action Modeling across Tasks, Environments, and Robot Embodiments",
+      "category": "HDBSCAN Cluster: lumine, open, environments, qwen-vla",
+      "key": "FOLDER00256_dfdf050a4c56",
+      "sourceIndex": 255,
+      "textBytes": 149414,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.30280v2[cs.RO]1Jun2026 [Figure 1] June 2, 2026 ### Qwen-VLA: Unifying Vision-Language-Action Modeling across Tasks, Environments, and Robot Embodiments [Figure 2] ###### Qwen Team https://qwen.ai/blog?id=qwenvla https://github.com/QwenLM/Qwen-VLA ###### Abstract Embodied intelligence is often studied through specialized models, each designed for a single scenario or task, such as manipulation and navigation, leading to fragmented capabilities and limited generalization across diverse tasks, environments, and robot embodiments. In this work, we investigate whether these heterogeneous embodied decision-making problems can be unified within a single vision-language-action model. We present Qwen-VLA, a unified embodied foundation model that extends Qwen’s vision-language modeling stack from perception, understanding and reasoning to continuous action and trajectory generation th"
+    },
+    {
+      "slug": "3531_Vision-Zero_Scalable_VLM_Self-Improvement_via_Strategic_Gami",
+      "title": "Vision-Zero: Scalable VLM Self-Improvement via Strategic Gamified Self-Play",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00257_ee91a5a7a6f3",
+      "sourceIndex": 256,
+      "textBytes": 113708,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2509.25541v2[cs.CV]4Mar2026 ## VISION-ZERO: SCALABLE VLM SELF-EVOLUTION VIA MULTI-AGENT SELF-PLAY Qinsi Wang1, Bo Liu2, Tianyi Zhou3, Jing Shi4, Yueqian Lin1, Yiran Chen1, Hai Helen Li1, Kun Wan4∗, Wentian Zhao4* 1Duke University 2National University of Singapore 3University of Maryland 4Adobe Inc. https://github.com/wangqinsi1/Vision-Zero ABSTRACT Although reinforcement learning (RL) has emerged as a promising approach for improving vision-language models (VLMs) and multimodal large language models (MLLMs), current methods rely heavily on manually curated datasets and costly human verification, which limits scalable self-improvement in multimodal systems. To address this challenge, we propose Vision-Zero, a label-free, domain-agnostic multi-agent self-play framework for self-evolving VLMs through competitive visual games generated from arbitrary image inputs. Specifically, Visio"
+    },
+    {
+      "slug": "3532_Modality_Gap-Driven_Subspace_Alignment_Training_Paradigm_For",
+      "title": "Modality Gap-Driven Subspace Alignment Training Paradigm For Multimodal Large Language Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00258_2c0ba36d9600",
+      "sourceIndex": 257,
+      "textBytes": 118722,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2602.07026v3[cs.CV]5Jun2026 [Figure 1] [Figure 2] ## Modality Gap–Driven Subspace Alignment Training Paradigm For Multimodal Large Language Models ### Xiaomin Yu1,2, Yi Xin3,4, Yuhui Zhang5, Wenjie Zhang1, Chonghan Liu6 Hanzhen Zhao2, Chen Liu7, Xiaoxing Hu8, Ziyue Qiao9, Hao Tang10 Xiaobin Hu2, Chengwei Qin1, Hui Xiong1, Yu Qiao4, Shuicheng YAN2 1HKUST(GZ), 2NUS, 3sh AILab, 4SII, 5Stanford, 6UCLA, 7Yale, 8SJTU, 9GBU, 10PKU ### Abstract Despite the success of multimodal contrastive learning in aligning visual and linguistic representations, a persistent geometric anomaly, the Modality Gap, remains: embeddings of distinct modalities expressing identical semantics occupy systematically offset regions. Prior approaches to bridge this gap are largely limited by oversimplified isotropic assumptions, hindering their application in large-scale scenarios. In this paper, we address these "
+    },
+    {
+      "slug": "3533_Robot_Learning_A_Tutorial",
+      "title": "Robot Learning: A Tutorial",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00259_fc81cbf7c49a",
+      "sourceIndex": 258,
+      "textBytes": 265135,
+      "figuresExtracted": 5,
+      "excerpt": "# Robot Learning: A Tutorial [Figure 1] ###### Francesco Capuano Caroline Pascal Adil Zouitine Thomas Wolf Michel Aractingi [Figure 2] University of Oxford, Hugging Face [Figure 3] ### Abstract Robot learning is at an inflection point, driven by rapid advancements in machine learning and the growing availability of large-scale robotics data. This shift from classical, model-based methods to data-driven, learning-based paradigms is unlocking unprecedented capabilities in autonomous systems. This tutorial navigates the landscape of modern robot learning, charting a course from the foundational principles of Reinforcement Learning and Behavioral Cloning to generalist, language-conditioned models capable of operating across diverse tasks and even robot embodiments. This work is intended as a guide for researchers and practitioners, and our goal is to equip the reader with the conceptual unde"
+    },
+    {
+      "slug": "3534_LocateAnything_Fast_and_High-Quality_Vision-Language_Groundi",
+      "title": "LocateAnything: Fast and High-Quality Vision-Language Grounding with Parallel Box Decoding",
+      "category": "HDBSCAN Cluster: model, vision-language, decoding, box",
+      "key": "FOLDER00260_e1dfdf940030",
+      "sourceIndex": 259,
+      "textBytes": 133487,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.27365v2[cs.CV]27May2026 [Figure 1] ## LocateAnything: Fast and High-Quality Vision-Language Grounding with Parallel Box Decoding Shihao Wang1*, Shilong Liu2*, Yuanguo Kuang1, Xinyu Wei1, Yangzhou Liu3, Zhiqi Li, Yunze Man4*, Guo Chen3*, Andrew Tao, Guilin Liu, Jan Kautz, Lei Zhang1, Zhiding Yu† Links: GitHub | HF Model | HF Demo | Project Page [Figure 2] Figure 1: Versatile tasks of LocateAnything with parallel box decoding. Top: LocateAnything supports diverse localization tasks under a unified vision-language model. Bottom: Textual digit decoding spells coordinates digit by digit, and quantized coordinate decoding predicts coordinate tokens sequentially. In contrast, Parallel Box Decoding predicts each geometric unit (e.g., a bounding box) in a single forward pass. ###### Abstract Vision-language models (VLMs) commonly formulate visual grounding and detection as a coordina"
+    },
+    {
+      "slug": "3535_Souper-Model_How_Simple_Arithmetic_Unlocks_State-of-the-Art",
+      "title": "Souper-Model: How Simple Arithmetic Unlocks State-of-the-Art LLM Performance",
+      "category": "HDBSCAN Cluster: sharing, post-training, models, performance",
+      "key": "FOLDER00261_e669a4138ec5",
+      "sourceIndex": 260,
+      "textBytes": 56878,
+      "figuresExtracted": 5,
+      "excerpt": "### arXiv:2511.13254v1[cs.CL]17Nov2025 # Souper-Model: How Simple Arithmetic Unlocks State-of-the-Art LLM Performance Shalini Maiti1,3†, Amar Budhiraja2†, Bhavul Gauri2, Gaurav Chaurasia2, Anton Protopopov2, Alexis Audran-Reiss2, Michael Slater2, Despoina Magka2, Tatiana Shavrina2, Roberta Raileanu2,3∗, Yoram Bachrach2 1Meta SuperIntelligence Labs, 2FAIR at Meta, 3University College London †Equal contribution, ∗Work done while working at Meta Large Language Models (LLMs) have demonstrated remarkable capabilities across diverse domains, but their training remains resource- and time-intensive, requiring massive compute power and careful orchestration of training procedures. Model souping—the practice of averaging weights from multiple models of the same architecture—has emerged as a promising pre- and post-training technique that can enhance performance without expensive retraining. In thi"
+    },
+    {
+      "slug": "3536_MinerU-Diffusion_Rethinking_Document_OCR_as_Inverse_Renderin",
+      "title": "MinerU-Diffusion: Rethinking Document OCR as Inverse Rendering via Diffusion Decoding",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00262_4ce4d7caae7e",
+      "sourceIndex": 261,
+      "textBytes": 77062,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.22458v1[cs.CV]23Mar2026 [Figure 1] ###### MinerU-Diffusion: Rethinking Document OCR as Inverse Rendering via Diffusion Decoding Hejun Dong1∗, Junbo Niu2∗, Bin Wang1 ‡, Weijun Zeng2, Wentao Zhang2 , Conghui He1 1Shanghai Artificial Intelligence Laboratory, OpenDataLab, 2Peking University Optical character recognition (OCR) has evolved from line-level transcription to structured document parsing, requiring models to recover long-form sequences containing layout, tables, and formulas. Despite recent advances in vision-language models, most existing systems rely on autoregressive decoding, which introduces sequential latency and amplifies error propagation in long documents. In this work, we revisit document OCR from an inverse rendering perspective, arguing that left-to-right causal generation is an artifact of serialization rather than an intrinsic property of the task. Motiva"
+    },
+    {
+      "slug": "3351_Chameleon_Mixed-Modal_Early-Fusion_Foundation_Models",
+      "title": "Chameleon: Mixed-Modal Early-Fusion Foundation Models",
+      "category": "HDBSCAN Cluster: reasoning, models, glm-4, multimodal",
+      "key": "FOLDER00263_a168d8b513e3",
+      "sourceIndex": 262,
+      "textBytes": 84907,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2405.09818v2[cs.CL]21Mar2025 ## Chameleon: Mixed-Modal Early-Fusion Foundation Models Chameleon Team1,∗ 1FAIR at Meta ∗See Contributions section for full author list. We present Chameleon, a family of early-fusion token-based mixed-modal models capable of understanding and generating images and text in any arbitrary sequence. We outline a stable training approach from inception, an alignment recipe, and an architectural parameterization tailored for the early-fusion, token-based, mixed-modal setting. The models are evaluated on a comprehensive range of tasks, including visual question answering, image captioning, text generation, image generation, and long-form mixed modal generation. Chameleon demonstrates broad and general capabilities, including state-of-the-art performance in image captioning tasks, outperforms Llama-2 in text-only tasks while being competitive with models su"
+    },
+    {
+      "slug": "3537_MobileLLM_Optimizing_Sub-billion_Parameter_Language_Models_f",
+      "title": "MobileLLM: Optimizing Sub-billion Parameter Language Models for On-Device Use Cases",
+      "category": "HDBSCAN Cluster: language, model, models, inference",
+      "key": "FOLDER00264_74d6fce41eac",
+      "sourceIndex": 263,
+      "textBytes": 94893,
+      "figuresExtracted": 5,
+      "excerpt": "## MobileLLM: Optimizing Sub-billion Parameter Language Models for On-Device Use Cases # arXiv:2402.14905v2[cs.LG]27Jun2024 Zechun Liu1 Changsheng Zhao1 Forrest Iandola1 Chen Lai1 Yuandong Tian1 Igor Fedorov1 Yunyang Xiong1 Ernie Chang1 Yangyang Shi1 Raghuraman Krishnamoorthi1 Liangzhen Lai1 Vikas Chandra1 ### Abstract 52 This paper addresses the growing need for efficient large language models (LLMs) on mobile devices, driven by increasing cloud costs and latency concerns. We focus on designing top-quality LLMs with fewer than a billion parameters, a practical choice for mobile deployment. Contrary to prevailing belief emphasizing the pivotal role of data and parameter quantity in determining model quality, our investigation underscores the significance of model architecture for sub-billion scale LLMs. Leveraging deep and thin architectures, coupled with embedding sharing and grouped-qu"
+    },
+    {
+      "slug": "3538_AgentDoG_15_A_Lightweight_and_Scalable_Alignment_Framework_f",
+      "title": "AgentDoG 1.5: A Lightweight and Scalable Alignment Framework for AI Agent Safety and Security",
+      "category": "HDBSCAN Cluster: agentdog, safety, agent, figure",
+      "key": "FOLDER00265_ba98fb04215f",
+      "sourceIndex": 264,
+      "textBytes": 166252,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.29801v1[cs.AI]28May2026 [Figure 1] -:=-.==.. ShanghaiArtificialIntelligenceLaboratory AgentDoG 上海人工智能实验室 [Figure 2] ## AgentDoG 1.5: A Lightweight and Scalable Alignment Framework for AI Agent Safety and Security Shanghai Artificial Intelligence Laboratory ### https://github.com/AI45Lab/AgentDoG https://huggingface.co/collections/AI45Research/agentdog1.5 [Figure 3] Abstract Modern open-world agents such as OpenClaw exhibit powerful cross-environment execution capabilities yet introduce broad new safety risk sources. Meanwhile, advanced frontier AI models drastically lower attack barriers, rendering current agent alignment frameworks inadequate for real-world deployment. To tackle these emerging threats, we propose a lightweight and scalable agent safety alignment framework. Specifically, we update the agent safety taxonomy to accommodate emergent risks from Codex and OpenCla"
+    },
+    {
+      "slug": "3539_Drag-and-Drop_LLMs_Zero-Shot_Prompt-to-Weights",
+      "title": "Drag-and-Drop LLMs: Zero-Shot Prompt-to-Weights",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00266_03dfdae2c4da",
+      "sourceIndex": 265,
+      "textBytes": 66102,
+      "figuresExtracted": 5,
+      "excerpt": "arXiv:2506.16406v1[cs.LG]19Jun2025 # Drag-and-Drop LLMs: Zero-Shot Prompt-to-Weights Zhiyuan Liang1∗ Dongwen Tang1 Yuhao Zhou1 Xuanlei Zhao1 Mingjia Shi1 Wangbo Zhao1 Zekai Li1 Peihao Wang2 Konstantin Schürholt3 Damian Borth3 Michael M. Bronstein4 Yang You1 Zhangyang Wang2∗ Kai Wang1∗ 1National University of Singapore, 2UT Austin, 3University of St. Gallen, 4Oxford University ## Abstract Modern Parameter-Efficient Fine-Tuning (PEFT) methods such as low-rank adaptation (LoRA) reduce the cost of customizing large language models (LLMs), yet still require a separate optimization run for every downstream dataset. We introduce Drag-and-Drop LLMs (DnD), a prompt-conditioned parameter generator that eliminates per-task training by mapping a handful of unlabeled task prompts directly to LoRA weight updates. A lightweight text encoder distills each prompt batch into condition embeddings, which ar"
+    },
+    {
+      "slug": "3540_PRIMACPP_Speeding_Up_70B-Scale_LLM_Inference_on_Low-Resource",
+      "title": "PRIMA.CPP: Speeding Up 70B-Scale LLM Inference on Low-Resource Everyday Home Clusters",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00267_e697f877a719",
+      "sourceIndex": 266,
+      "textBytes": 91607,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2504.08791v2[cs.DC]26Sep2025 ## PRIMA.CPP: FAST 30-70B LLM INFERENCE ON HETEROGENEOUS AND LOW-RESOURCE HOME CLUSTERS ### Zonghang Li1 Tao Li2 Wenjiao Feng2 Rongxing Xiao2 Jianshu She1 Hong Huang3 Mohsen Guizani1 Hongfang Yu2 Qirong Ho1 Wei Xiang4 Steve Liu1 1MBZUAI 2UESTC 3City University of Hong Kong 4La Trobe University ABSTRACT On-device inference offers privacy, offline use, and instant response, but consumer hardware restricts large language models (LLMs) to low throughput and capability. To overcome this challenge, we present prima.cpp, a distributed on-device inference system that runs 30-70B LLMs on consumer home clusters with mixed CPUs/GPUs, insufficient RAM/VRAM, slow disks, Wi-Fi links, and heterogeneous OSs. We introduce pipelined-ring parallelism (PRP) to overlap disk I/O with compute and communication, and address the prefetch-release conflict in mmap-based offload"
+    },
+    {
+      "slug": "3541_Mega-ASR_Towards_In-the-wild2_Speech_Recognition_via_Scaling",
+      "title": "Mega-ASR: Towards In-the-wild^2 Speech Recognition via Scaling up Real-world Acoustic Simulation",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00268_ceede3dc56eb",
+      "sourceIndex": 267,
+      "textBytes": 117436,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.19833v1[cs.SD]19May2026 [Figure 1] ### Mega-ASR: Towards In-the-wild2 Speech Recognition via Scaling Up Real-world Acoustic Simulation Zhifei Xie1*, Kaiyu Pang3*, Haobin Zhang2*, Deheng Ye1†, Xiaobin Hu2† Shuicheng Yan2†, Chunyan Miao1† 1NTU 2NUS 3Shanghai AI Lab Zhifei001@e.ntu.edu.sg Project page: https://xzf-thu.github.io/Mega-ASR/ Data: huggingface.co/datasets/zhifeixie/Voices-in-the-Wild-2M Bench: github.com/xzf-thu/Voices-in-the-Wild-Bench [Figure 2] [Figure 3] [Figure 4] ###### Abstract Despite rapid advances in automatic speech recognition (ASR) and large audiolanguage models, robust recognition in real-world environments remains limited by an “acoustic robustness bottleneck”: models often lose acoustic grounding and produce omissions or hallucinations under severe, compositional distortions. We propose MEGA-ASR, a unified ASR-in-the-wild framework that combines scal"
+    },
+    {
+      "slug": "3542_EvoArena_Tracking_Memory_Evolution_for_Robust_LLM_Agents_in",
+      "title": "EvoArena: Tracking Memory Evolution for Robust LLM Agents in Dynamic Environments",
+      "category": "HDBSCAN Cluster: figure, university, multi-agent, collaboration",
+      "key": "FOLDER00269_05a7df23cf8d",
+      "sourceIndex": 268,
+      "textBytes": 179079,
+      "figuresExtracted": 5,
+      "excerpt": "## EvoArena: Tracking Memory Evolution for Robust LLM Agents in Dynamic Environments Jundong Xu1∗ Qingchuan Li1∗ Jiaying Wu1 Yihuai Lan2 Shuyue Stella Li3 Huichi Zhou4 Bowen Jiang5 Lei Wang2 Jun Wang4 Anh Tuan Luu6 Caiming Xiong7 † Hae Won Park8 Bryan Hooi1 Zhiyuan Hu1,8 1National University of Singapore 2Singapore Management University 3University of Washington 4University College London 5University of Pennsylvania 6Nanyang Technological University 7Recursive 8Massachusetts Institute of Technology # arXiv:2606.13681v2[cs.CL]17Jun2026 [Figure 1] [Figure 2] C#: Chain-level Ranking S#: Step-level Ranking ###### Step-level Acc. Solves individual evolved tasks one step at a time; tests local adaptation C#1 S#5 C#2 S#2 ###### GLM-5.1 Gemini-3.1-Pro 28.9% Chain, 45.7% Step 29.2% Chain, 40.2% Step C#6 S#6 C#7 S#7 ###### GPT-5.5 DeepSeek-V4-Pro Qwen-3.6-27B 27.2% Chain, 50.8% Step 20.7% Chain, 3"
+    },
+    {
+      "slug": "3543_Seed_Diffusion_A_Large-Scale_Diffusion_Language_Model_with_H",
+      "title": "Seed Diffusion: A Large-Scale Diffusion Language Model with High-Speed Inference",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00270_90c53ed86da6",
+      "sourceIndex": 269,
+      "textBytes": 34134,
+      "figuresExtracted": 2,
+      "excerpt": "# arXiv:2508.02193v1[cs.CL]4Aug2025 [Figure 1] [Figure 2] ## Seed Diffusion: A Large-Scale Diffusion Language Model with High-Speed Inference 1ByteDance Seed 2Institute for AI Industry Research (AIR), Tsinghua University 3SIA-Lab of Tsinghua AIR and ByteDance Seed ### Abstract We present Seed Diffusion Preview, a large-scale language model based on discrete-state diffusion, offering remarkably fast inference speed. Thanks to non-sequential, parallel generation, discrete diffusion models provide a notable speedup to mitigate the inherent latency of token-by-token decoding, as demonstrated recently (e.g., Mercury Coder [1], Gemini Diffusion [2]). Seed Diffusion Preview achieves an inference speed of 2,146 token/s over H20 GPUs while maintaining competitive performance across a sweep of standard code evaluation benchmarks, significantly faster than contemporary Mercury and Gemini, establish"
+    },
+    {
+      "slug": "3544_Cosmos_3_Omnimodal_World_Models_for_Physical_AI",
+      "title": "Cosmos 3: Omnimodal World Models for Physical AI",
+      "category": "HDBSCAN Cluster: models, cosmos, understanding, generation",
+      "key": "FOLDER00271_c0f106708edd",
+      "sourceIndex": 270,
+      "textBytes": 512164,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2606.02800v4[cs.CV]23Jun2026 [Figure 1] 2026-6-24 ## Cosmos 3: Omnimodal World Models for Physical AI NVIDIA1 ### Abstract We introduce Cosmos 3, a family of omnimodal world models designed to jointly process and generate language, image, video, audio, and action sequences within a unified mixture-of-transformers architecture. By supporting highly flexible input-output configurations, Cosmos 3 seamlessly unifies critical modalities for Physical AI—effectively subsuming vision-language models, video generators, world simulators, and world-action models into a single framework. Our evaluation demonstrates that Cosmos 3 establishes a new state-of-the-art across a diverse suite of understanding and generation tasks, demonstrating omnimodal world models as scalable, general-purpose backbones for embodied agents. Our post-trained Cosmos 3 models were ranked as the best open-source Text"
+    },
+    {
+      "slug": "3545_Tiny_Model_Big_Logic_Diversity-Driven_Optimization_Elicits_L",
+      "title": "Tiny Model, Big Logic: Diversity-Driven Optimization Elicits Large-Model Reasoning Ability in VibeThinker-1.5B",
+      "category": "HDBSCAN Cluster: model, reasoning, small, test-time",
+      "key": "FOLDER00272_abd2ae9afb19",
+      "sourceIndex": 271,
+      "textBytes": 52736,
+      "figuresExtracted": 3,
+      "excerpt": "# arXiv:2511.06221v1[cs.AI]9Nov2025 |Tiny Model, Big Logic: Diversity-Driven Optimization Elicits Large-Model Reasoning Ability in VibeThinker-1.5B<br><br>Sen Xu, Yi Zhou, Wei Wang, Jixin Min, Zhibin Yin, Yingwei Dai, Shixi Liu, Lianyu Pang, Yirong Chen, Junlin Zhang<br><br>Sina Weibo Inc.<br><br>OpenAI’s o1 model has established a new reasoning paradigm through Long Chain-of-Thought, marking significant progress in reasoning technology. The prevailing approach continues to rely on scaling model parameters to enhance capabilities—for example, DeepSeek R1 reaches 671B parameters, and Kimi k2 exceeds 1T. A mainstream consensus holds that small models inherently lack robust reasoning capabilities. This technical report challenges that notion, demonstrating that this assumption may be incorrect. We introduce VibeThinker1.5B, a 1.5B-parameter dense model developed using an innovative post-tra"
+    },
+    {
+      "slug": "3546_Advancing_Open-source_World_Models",
+      "title": "Advancing Open-source World Models",
+      "category": "HDBSCAN Cluster: world, air-ground, embodied, unified",
+      "key": "FOLDER00273_d7f3f5b6b73b",
+      "sourceIndex": 272,
+      "textBytes": 94371,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2601.20540v1[cs.CV]28Jan2026 [Figure 1] # Advancing Open-source World Models ##### Robbyant Team We present LingBot-World, an open-sourced world simulator stemming from video generation. Positioned as a top-tier world model, LingBot-World offers the following features. (1) It maintains high fidelity and robust dynamics in a broad spectrum of environments, including realism, scientific contexts, cartoon styles, and beyond. (2) It enables a minute-level horizon while preserving contextual consistency over time, which is also known as “long-term memory”. (3) It supports real-time interactivity, achieving a latency of under 1 second when producing 16 frames per second. We provide public access to the code and model in an effort to narrow the divide between open-source and closed-source technologies. We believe our release will empower the community with practical applications across"
+    },
+    {
+      "slug": "3547_Moebius_02B_Lightweight_Image_Inpainting_Framework_with_10B-",
+      "title": "Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance",
+      "category": "HDBSCAN Cluster: video, generation, long, real-time",
+      "key": "FOLDER00274_3318bebd9bc5",
+      "sourceIndex": 273,
+      "textBytes": 79396,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2606.19195v1[cs.CV]17Jun2026 ## Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance Kangsheng Duan1,∗ Ziyang Xu1,∗,† Wenyu Liu1 Xiaohu Ruan2 Xiaoxin Chen2 Xinggang Wang1, 1 Huazhong University of Science and Technology 2 VIVO AI Lab Abstract. While 10B-level industrial foundation models have pushed the boundaries of image inpainting, their prohibitive computational costs severely hinder practical deployment. Constructing a highly optimized task-specific specialist offers a promising solution; however, extreme structural compression inevitably triggers a severe representation bottleneck. To conquer this, we propose Moebius, a highly efficient lightweight inpainting framework. We systematically reconstruct the diffusion backbone by introducing the Local-λ Mix Interaction (LλMI) block. Comprising Local-λ and Interactive-λ modules, it elegantly summarizes "
+    },
+    {
+      "slug": "3548_MiroMind-M1_An_Open-Source_Advancement_in_Mathematical_Reaso",
+      "title": "MiroMind-M1: An Open-Source Advancement in Mathematical Reasoning via Context-Aware Multi-Stage Policy Optimization",
+      "category": "HDBSCAN Cluster: reasoning, mathematical, https, research",
+      "key": "FOLDER00275_1a4d9f3967d6",
+      "sourceIndex": 274,
+      "textBytes": 79917,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2507.14683v1[cs.CL]19Jul2025 MIROMIND-M1: AN OPEN-SOURCE ADVANCEMENT IN MATHEMATICAL REASONING VIA CONTEXT-AWARE MULTISTAGE POLICY OPTIMIZATION Xingxuan Li∗, Yao Xiao∗, Dianwen Ng∗, Hai Ye∗, Yue Deng∗, Xiang Lin∗, Bin Wang∗ Zhanfeng Mo, Chong Zhang, Yueyi Zhang, Zonglin Yang, Ruilin Li, Lei Lei Shihao Xu, Han Zhao, Weiling Chen, Feng Ji, Lidong Bing† MiroMind AI [Figure 1] https://github.com/MiroMindAsia/MiroMind-M1 https://huggingface.co/miromind-ai/MiroMind-M1-RL-7B https://huggingface.co/datasets/miromind-ai/MiroMind-M1-RL-62K https://miromind.ai/ [Figure 2] [Figure 3] [Figure 4] ABSTRACT Large language models have recently evolved from fluent text generation to advanced reasoning across diverse domains, giving rise to reasoning language models (RLMs). Among these domains, mathematical reasoning serves as a representative benchmark as it requires precise multi-step logic and a"
+    },
+    {
+      "slug": "3549_GUI-G2_Gaussian_Reward_Modeling_for_GUI_Grounding",
+      "title": "GUI-G^2: Gaussian Reward Modeling for GUI Grounding",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00276_177386bd6bf9",
+      "sourceIndex": 275,
+      "textBytes": 62414,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] ## GUI-G2: GAUSSIAN REWARD MODELING FOR GUI GROUNDING Fei Tang1,2∗, Zhangxuan Gu2, Zhengxi Lu1, Xuyang Liu2 Shuheng Shen2, Changhua Meng2, Wen Wang1, Wenqi Zhang1 Yongliang Shen1†, Weiming Lu1, Jun Xiao1, Yueting Zhuang1 1Zhejiang University, 2Ant Group {flysugar, syl}@zju.edu.cn shuheng.ssh@antgroup.com GitHub: https://github.com/zju-real/GUI-G2 Project: https://zju-real.github.io/GUI-G2 # arXiv:2507.15846v3[cs.LG]28Jul2025 50 SS-Mobile | |[Figure 2]| | | |Cl|osed Source| |---|---|---|---|---|---|---| | |GUI-G2-7|B| | | | | | |[Figure 3]| | |[Figure 4]| |[Figure 5]| | |UI-TARS-|7B| |Qwen2.5-VL-3|2B|UI-TARS-72B<br><br>| |[Figure 6]<br><br>| | | | |Ug|round-v1-72B| |UI-TARS-2B<br><br>[Figure 7]|[Figure 8]<br><br>| | | | | | |Qwen2.5|-VL-3B<br><br>Qwen2.5-V<br><br>|L-7B|Cl|aude| | | | | | | | | | | |ShowUI-2B| | | | | | | | | |SeeClick-9.6B| | | |[Figure 9]| | |[Figure 10]|Cog|A"
+    },
+    {
+      "slug": "3550_LLaVA-CoT_Let_Vision_Language_Models_Reason_Step-by-Step",
+      "title": "LLaVA-CoT: Let Vision Language Models Reason Step-by-Step",
+      "category": "HDBSCAN Cluster: research, deep, reasoning, models",
+      "key": "FOLDER00277_764dd36c6515",
+      "sourceIndex": 276,
+      "textBytes": 80571,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2411.10440v6[cs.CV]21Jul2025 ## LLaVA-CoT: Let Vision Language Models Reason Step-by-Step Guowei Xu♣* Peng Jin♠,♦∗ Ziang Wu♠∗ Hao Li♠ Yibing Song▲ Lichao Sun■ Li Yuan♠,♦ ♠Shenzhen Graduate School, Peking University ♣Institute for Interdisciplinary Information Sciences, Tsinghua University ♦Rabbitpre AI & PKU Shenzhen AIGC Joint Lab ▲DAMO Academy, Alibaba Group ■Computer Science and Engineering, Lehigh University xgw23@mails.tsinghua.edu.cn yibingsong.cv@gmail.com yuanli-ece@pku.edu.cn ### Abstract [Figure 1] #### 6 Multimodal Reasoning Benchmarks LLaVA-CoT (11B) Large language models have demonstrated substantial advancements in reasoning capabilities. However, current Vision-Language Models (VLMs) often struggle to perform systematic and structured reasoning, especially when handling complex visual question-answering tasks. In this work, we introduce LLaVA-CoT1, a large VLM desi"
+    },
+    {
+      "slug": "3551_DropletVideo_A_Dataset_and_Approach_to_Explore_Integral_Spat",
+      "title": "DropletVideo: A Dataset and Approach to Explore Integral Spatio-Temporal Consistent Video Generation",
+      "category": "HDBSCAN Cluster: generation, video, figure, tstars-tryon",
+      "key": "FOLDER00278_1e935add0821",
+      "sourceIndex": 277,
+      "textBytes": 114006,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2503.06053v1[cs.CV]8Mar2025 ## DropletVideo: A Dataset and Approach to Explore Integral Spatio-Temporal Consistent Video Generation Runze Zhang1,∗, Guoguang Du1,∗, Xiaochuan Li1,∗, Qi Jia1,∗, Liang Jin1,∗ Lu Liu1, Jingjing Wang1, Cong Xu1, Zhenhua Guo1, Yaqian Zhao1, Xiaoli Gong2 Rengang Li1,3,†, Baoyu Fan1,2,† 1 IEIT System Co., Ltd. 2 Nankai University 3 Tsinghua University https://dropletx.github.io ### Abstract Spatio-temporal consistency is a critical research topic in video generation. A qualified generated video segment must ensure plot plausibility and coherence while maintaining visual consistency of objects and scenes across varying viewpoints. Prior research, especially in open-source projects, primarily focuses on either temporal or spatial consistency, or their basic combination, such as appending a description of a camera movement after a prompt without constraining"
+    },
+    {
+      "slug": "3552_Diffusion_Language_Models_are_Super_Data_Learners",
+      "title": "Diffusion Language Models are Super Data Learners",
+      "category": "HDBSCAN Cluster: transformer, attention, models, language",
+      "key": "FOLDER00279_46f7564593f4",
+      "sourceIndex": 278,
+      "textBytes": 68215,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2511.03276v1[cs.LG]5Nov2025 [Figure 1] ## Diffusion Language Models are Super Data Learners ###### Jinjie Ni1†, Qian Liu, Longxu Dou2, Chao Du2, Zili Wang3, Hang Yan4, Tianyu Pang2, Michael Qizhe Shieh1 1National University of Singapore, 2Sea AI Lab, 3StepFun, 4Shanghai Qiji Zhifeng Co., Ltd. GitHub | Training Backend | Resources | Blog More from MDGA: Quokka | OpenMoE 2 Under strictly controlled pre-training settings, we observe a Crossover: when unique data is limited, diffusion language models (DLMs) consistently surpass autoregressive (AR) models by training for more epochs. The crossover shifts later with more or higher-quality data, earlier with larger models, and persists across dense and sparse architectures. We attribute the gains to three compounding factors: (1) any-order modeling, (2) super-dense compute from iterative bidirectional denoising, and (3) built-in Monte C"
+    },
+    {
+      "slug": "3553_Agentic_Context_Engineering_Evolving_Contexts_for_Self-Impro",
+      "title": "Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models",
+      "category": "HDBSCAN Cluster: language, model, models, systems",
+      "key": "FOLDER00280_c3f557ce81a7",
+      "sourceIndex": 279,
+      "textBytes": 113114,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2510.04618v3[cs.LG]29Mar2026 ## AGENTIC CONTEXT ENGINEERING: EVOLVING CONTEXTS FOR SELF-IMPROVING LANGUAGE MODELS ##### Qizheng Zhang1∗, Changran Hu2∗, Shubhangi Upasani2, Boyuan Ma2, Fenglu Hong2, Vamsidhar Kamanuru2, Jay Rainton2, Chen Wu2, Mengmeng Ji2, Hanchen Li3, Urmish Thakker2, James Zou1, Kunle Olukotun1 1Stanford University 2SambaNova Systems, Inc. 3UC Berkeley {qizhengz,kunle}@stanford.edu changran_hu@berkeley.edu ace-agent/ace ace-agent.github.io ∗Equal contribution. ABSTRACT Large language model (LLM) applications such as agents and domain-specific reasoning increasingly rely on context adaptation: modifying inputs with instructions, strategies, or evidence, rather than weight updates. Prior approaches improve usability but often suffer from brevity bias, which drops domain insights for concise summaries, and from context collapse, where iterative rewriting erodes de"
+    },
+    {
+      "slug": "3554_Step-GUI_Technical_Report",
+      "title": "Step-GUI Technical Report",
+      "category": "HDBSCAN Cluster: https, figure, technical, report",
+      "key": "FOLDER00281_00811ee6e0eb",
+      "sourceIndex": 280,
+      "textBytes": 103563,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2512.15431v2[cs.CV]19Dec2025 [Figure 1] [Figure 2] ## Step-GUI Technical Report GELab-Team, StepFun Homepage: https://opengelab.github.io/ Github: https://github.com/stepfun-ai/gelab-zero Huggingface: Step-GUI Collections ### Abstract Recent advances in multimodal large language models unlock unprecedented opportunities for GUI automation. However, a fundamental challenge remains: how to efficiently acquire highquality training data while maintaining annotation reliability? We introduce a self-evolving training pipeline powered by the Calibrated Step Reward System, which converts modelgenerated trajectories into reliable training signals through trajectory-level calibration, achieving >90% annotation accuracy with 10~100× lower cost. Leveraging this pipeline, we introduce Step-GUI, a family of models (4B/8B) that achieves state-of-the-art GUI performance (8B: 80.2% AndroidWorld, "
+    },
+    {
+      "slug": "3555_MulTaBench_Benchmarking_Multimodal_Tabular_Learning_with_Tex",
+      "title": "MulTaBench: Benchmarking Multimodal Tabular Learning with Text and Image",
+      "category": "HDBSCAN Cluster: clear, unlearning, learning, text",
+      "key": "FOLDER00282_85159f1074a1",
+      "sourceIndex": 281,
+      "textBytes": 143754,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.10616v1[cs.LG]11May2026 ## MulTaBench: Benchmarking Multimodal Tabular Learning with Text and Image Alan Arazi∗,1,2 Eilam Shapira∗,1 Shoham Grunblat1 Mor Ventura1 Elad Hoffer3 Gioia Blayer4 David Holzmüller4 Lennart Purucker2,5 Gaël Varoquaux4,6 Frank Hutter2,7,5 Roi Reichart1 ∗Equal contribution 1Technion – Israel Institute of Technology 2Prior Labs 3NVIDIA 4SODA Team, INRIA Saclay, Palaiseau 5University of Freiburg 6Probabl 7ELLIS Institute Tübingen {alanarazi7, eilam.shapira, roireichart}@gmail.com ### Abstract Tabular Foundation Models have recently established the state of the art in supervised tabular learning, by leveraging pretraining to learn generalizable representations of numerical and categorical structured data. However, they lack native support for unstructured modalities such as text and image, and rely on frozen, pretrained embeddings to process them. On est"
+    },
+    {
+      "slug": "3556_Wan-Move_Motion-controllable_Video_Generation_via_Latent_Tra",
+      "title": "Wan-Move: Motion-controllable Video Generation via Latent Trajectory Guidance",
+      "category": "HDBSCAN Cluster: video, generation, long, real-time",
+      "key": "FOLDER00283_d5e1fcf5d015",
+      "sourceIndex": 282,
+      "textBytes": 80397,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2512.08765v1[cs.CV]9Dec2025 ## Wan-Move: Motion-controllable Video Generation via Latent Trajectory Guidance Ruihang Chu1,2∗† ‡ Yefei He1∗ Zhekai Chen3∗ Shiwei Zhang1† Xiaogang Xu4 Bin Xia4 Dingdong Wang4 Hongwei Yi Xihui Liu3 Hengshuang Zhao3 Yu Liu1 Yingya Zhang1 Yujiu Yang2† 1 Tongyi Lab, Alibaba Group 2Tsinghua University 3HKU 4CUHK [Figure 1] Github: https://github.com/ali-vilab/Wan-Move ### Abstract We present Wan-Move, a simple and scalable framework that brings motion control to video generative models. Existing motion-controllable methods typically suffer from coarse control granularity and limited scalability, leaving their outputs insufficient for practical use. We narrow this gap by achieving precise and high-quality motion control. Our core idea is to directly make the original condition features motion-aware for guiding video synthesis. To this end, we first represe"
+    },
+    {
+      "slug": "3557_P1_Mastering_Physics_Olympiads_with_Reinforcement_Learning",
+      "title": "P1: Mastering Physics Olympiads with Reinforcement Learning",
+      "category": "HDBSCAN Cluster: university, models, technology, large",
+      "key": "FOLDER00284_3c57dad8ffc3",
+      "sourceIndex": 283,
+      "textBytes": 81026,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2511.13612v1[cs.LG]17Nov2025 P1 Technical Report 2025-11-18 # P1: Mastering Physics Olympiads with Reinforcement Learning Jiacheng Chen∗, Qianjia Cheng∗, Fangchen Yu∗, Haiyuan Wan, Yuchen Zhang, Shenghe Zheng, Junchi Yao, Qingyang Zhang, Haonan He, Yun Luo, Yufeng Zhao, Futing Wang, Li Sheng, Chengxing Xie, Yuxin Zuo, Yizhuo Li, Wenxuan Zeng, Yulun Wu, Rui Huang, Dongzhan Zhou, Kai Chen, Yu Qiao, Lei Bai , Yu Cheng , Ning Ding , Bowen Zhou , Peng Ye †, Ganqu Cui † P1 Team, Shanghai AI Laboratory ∗ Equal Contribution Corresponding Authors † Technical Leads cuiganqu@pjlab.org.cn, yepeng@pjlab.org.cn P1 Tech Blog Abstract | Recent progress in large language models (LLMs) has moved the frontier from puzzle-solving to science-grade reasoning—the kind needed to tackle problems whose answers must stand against nature, not merely fit a rubric. Physics is the sharpest test of this shift,"
+    },
+    {
+      "slug": "3558_EPO_Entropy-regularized_Policy_Optimization_for_LLM_Agents_R",
+      "title": "EPO: Entropy-regularized Policy Optimization for LLM Agents Reinforcement Learning",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00285_3ad7c7c75d92",
+      "sourceIndex": 284,
+      "textBytes": 96541,
+      "figuresExtracted": 5,
+      "excerpt": "## EPO: Entropy-regularized Policy Optimization for LLM Agents Reinforcement Learning Wujiang Xu1 Wentian Zhao2 Zhenting Wang1 Yu-Jhe Li2 Can Jin1 Mingyu Jin1 Kai Mei1 Kun Wan2 Dimitris N. Metaxas1 # arXiv:2509.22576v2[cs.LG]10Feb2026 ### Abstract Reinforcement learning has enabled LLMs to acquire reasoning through single-turn verified rewards, yet extending this paradigm to multi-turn agents—where tasks span 30+ turns with only terminal rewards—introduces fundamental challenges. We identify a critical failure mode in this setting: the exploration-exploitation cascade failure. Unlike single-turn training, multi-turn agents share policy parameters across all turns, meaning entropy adjustments cannot independently control early-turn exploration and late-turn exploitation. Combined with sparse rewards that provide no intermediate correction, this coupling causes severe entropy oscillations "
+    },
+    {
+      "slug": "3559_Confidence_Is_All_You_Need_Few-Shot_RL_Fine-Tuning_of_Langua",
+      "title": "Confidence Is All You Need: Few-Shot RL Fine-Tuning of Language Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00286_b735c7875826",
+      "sourceIndex": 285,
+      "textBytes": 33095,
+      "figuresExtracted": 1,
+      "excerpt": "arXiv:2506.06395v3[cs.CL]11Jun2025 CONFIDENCE IS ALL YOU NEED: FEW-SHOT RL FINE-TUNING OF LANGUAGE MODELS A PREPRINT Pengyi Li AIRI, Skoltech Moscow li.Pengyi@airi.net Alexander Zubrey Skotech Moscow Alexander.Zubrey@Skoltech.ru Matvey Skripkin AIRI, Skoltech Moscow skripkin@airi.net Andrey Kuznetsov AIRI, Skoltech Moscow Kuznetsov@airi.net Ivan Oseledets AIRI, Skoltech Moscow Oseledets@airi.net # ABSTRACT Large language models (LLMs) excel at reasoning, yet post-training remains critical for aligning their behavior with task goals. Existing reinforcement learning (RL) methods often depend on costly human annotations or external reward models. We propose Reinforcement Learning via Self-Confidence (RLSC), which uses the model’s own confidence as reward signals-eliminating the need for labels, preference models, or reward engineering. Applied to Qwen2.5-Math-7B with only 16 samples per que"
+    },
+    {
+      "slug": "3560_MiniMax-Speech_Intrinsic_Zero-Shot_Text-to-Speech_with_a_Lea",
+      "title": "MiniMax-Speech: Intrinsic Zero-Shot Text-to-Speech with a Learnable Speaker Encoder",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00287_ceadcd50ded4",
+      "sourceIndex": 286,
+      "textBytes": 61178,
+      "figuresExtracted": 4,
+      "excerpt": "arXiv:2505.07916v1[eess.AS]12May2025 [Figure 1] MiniMax1 We introduce MiniMax-Speech, an autoregressive Transformer-based Text-to-Speech (TTS) model that generates high-quality speech. A key innovation is our learnable speaker encoder, which extracts timbre features from a reference audio without requiring its transcription. This enables MiniMax-Speech to produce highly expressive speech with timbre consistent with the reference in a zero-shot manner, while also supporting one-shot voice cloning with exceptionally high similarity to the reference voice. In addition, the overall quality of the synthesized audio is enhanced through the proposed Flow-VAE. Our model supports 32 languages and demonstrates excellent performance across multiple objective and subjective evaluations metrics. Notably, it achieves state-of-the-art (SOTA) results on objective voice cloning metrics (Word Error Rate a"
+    },
+    {
+      "slug": "3561_NeoVerse_Enhancing_4D_World_Model_with_in-the-wild_Monocular",
+      "title": "NeoVerse: Enhancing 4D World Model with in-the-wild Monocular Videos",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00288_63bb524d96ef",
+      "sourceIndex": 287,
+      "textBytes": 68810,
+      "figuresExtracted": 5,
+      "excerpt": "## NeoVerse: Enhancing 4D World Model with in-the-wild Monocular Videos ### Yuxue Yang1,2 Lue Fan1 † Ziqi Shi1 Junran Peng1 Feng Wang2 Zhaoxiang Zhang1 1NLPR & MAIS, CASIA 2CreateAI {yangyuxue2023, lue.fan}@ia.ac.cn https://neoverse-4d.github.io Input Video Dynamic 4D Gaussians Degraded Renderings Novel Video # arXiv:2601.00393v2[cs.CV]26Mar2026 [Figure 1] [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] [Figure 7] [Figure 8] Plücker [Figure 9] [Figure 10] Mask [Figure 11] [Figure 12] NovelViewpoints [Figure 13] [Figure 14] [Figure 15] Depth [Figure 16] [Figure 17] Feed-Forward Reconstruction Novel View Rendering Video Generation [Figure 18] [Figure 19] RGB [Figure 20] [Figure 21] [Figure 22] |[Figure 23]| |---| [Figure 24] [Figure 25] [Figure 26] Camera Render Depth Motion [Figure 27] [Figure 28] [Figure 29] [Figure 30] [Figure 31] [Figure 32] [Figure 33] [Figure 34] [Figure 35] I"
+    },
+    {
+      "slug": "3562_Kimi_Linear_An_Expressive_Efficient_Attention_Architecture",
+      "title": "Kimi Linear: An Expressive, Efficient Attention Architecture",
+      "category": "HDBSCAN Cluster: attention, kimi, linear, layer",
+      "key": "FOLDER00289_c17ad9c65b6c",
+      "sourceIndex": 288,
+      "textBytes": 97834,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2510.26692v2[cs.CL]1Nov2025 ## KIMI LINEAR: AN EXPRESSIVE, EFFICIENT ATTENTION ARCHITECTURE TECHNICAL REPORT OF KIMI LINEAR ##### Kimi Team https://github.com/MoonshotAI/Kimi-Linear ### ABSTRACT We introduce Kimi Linear, a hybrid linear attention architecture that, for the first time, outperforms full attention under fair comparisons across various scenarios—including short-context, long-context, and reinforcement learning (RL) scaling regimes. At its core lies Kimi Delta Attention (KDA), an expressive linear attention module that extends Gated DeltaNet [111] with a finer-grained gating mechanism, enabling more effective use of limited finite-state RNN memory. Our bespoke chunkwise algorithm achieves high hardware efficiency through a specialized variant of the Diagonal-Plus-LowRank (DPLR) transition matrices, which substantially reduces computation compared to the general DPLR f"
+    },
+    {
+      "slug": "3563_R-Zero_Self-Evolving_Reasoning_LLM_from_Zero_Data",
+      "title": "R-Zero: Self-Evolving Reasoning LLM from Zero Data",
+      "category": "HDBSCAN Cluster: agent, university, self-evolving, figure",
+      "key": "FOLDER00290_52450b30b57e",
+      "sourceIndex": 289,
+      "textBytes": 66834,
+      "figuresExtracted": 4,
+      "excerpt": "# arXiv:2508.05004v4[cs.LG]13Feb2026 ## R-Zero: SELF-EVOLVING REASONING LLM FROM ZERO DATA Chengsong Huang1,2†,Wenhao Yu1†, Xiaoyang Wang1,Hongming Zhang1, Zongxia Li1,3, Ruosen Li1,4, Jiaxin Huang2, Haitao Mi1, Dong Yu1 1Tencent AI Seattle Lab, 2Washington University in St. Louis, 3University of Maryland, College Park, 4The University of Texas at Dallas † Core contributors chengsong@wustl.edu; wenhaowyu@global.tencent.com ABSTRACT Self-evolving Large Language Models (LLMs) offer a scalable path toward superintelligence by autonomously generating, refining, and learning from their own experiences. However, existing methods for training such models still rely heavily on vast human curated tasks and labels, typically via fine-tuning or reinforcement learning, which poses a fundamental bottleneck to advancing AI systems toward capabilities beyond human intelligence. To overcome this limitat"
+    },
+    {
+      "slug": "3325_Kimi_k15_Scaling_Reinforcement_Learning_with_LLMs",
+      "title": "Kimi k1.5: Scaling Reinforcement Learning with LLMs",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00291_9cef57d45b23",
+      "sourceIndex": 290,
+      "textBytes": 102589,
+      "figuresExtracted": 5,
+      "excerpt": "KIMI K1.5: SCALING REINFORCEMENT LEARNING WITH LLMS [Figure 1] TECHNICAL REPORT OF KIMI K1.5 ## Kimi Team arXiv:2501.12599v4[cs.AI]3Jun2025 # ABSTRACT Language model pretraining with next token prediction has proved effective for scaling compute but is limited to the amount of available training data. Scaling reinforcement learning (RL) unlocks a new axis for the continued improvement of artificial intelligence, with the promise that large language models (LLMs) can scale their training data by learning to explore with rewards. However, prior published work has not produced competitive results. In light of this, we report on the training practice of Kimi k1.5, our latest multi-modal LLM trained with RL, including its RL training techniques, multi-modal data recipes, and infrastructure optimization. Long context scaling and improved policy optimization methods are key ingredients of our a"
+    },
+    {
+      "slug": "3352_The_AI_Scientist_Towards_Fully_Automated_Open-Ended_Scientif",
+      "title": "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00292_5afe5bcf38b5",
+      "sourceIndex": 291,
+      "textBytes": 502645,
+      "figuresExtracted": 4,
+      "excerpt": "### arXiv:2408.06292v3[cs.AI]1Sep2024 2024-9-4 ## The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery ###### Chris Lu1,2,*, Cong Lu3,4,*, Robert Tjarko Lange1,*, Jakob Foerster2, , Jeff Clune3,4,5, and David Ha1, *Equal Contribution, 1Sakana AI, 2FLAIR, University of Oxford, 3University of British Columbia, 4Vector Institute, 5Canada CIFAR AI Chair, Equal Advising One of the grand challenges of artificial general intelligence is developing agents capable of conducting scientific research and discovering new knowledge. While frontier models have already been used as aides to human scientists, e.g. for brainstorming ideas, writing code, or prediction tasks, they still conduct only a small part of the scientific process. This paper presents the first comprehensive framework for fully automatic scientific discovery, enabling frontier large language models (LLMs) to perf"
+    },
+    {
+      "slug": "3564_From_Scale_to_Speed_Adaptive_Test-Time_Scaling_for_Image_Edi",
+      "title": "From Scale to Speed: Adaptive Test-Time Scaling for Image Editing",
+      "category": "HDBSCAN Cluster: figure, university, image, scientific",
+      "key": "FOLDER00293_a12ea9af3779",
+      "sourceIndex": 292,
+      "textBytes": 139222,
+      "figuresExtracted": 5,
+      "excerpt": "## From Scale to Speed: Adaptive Test-Time Scaling for Image Editing ### Xiangyan Qu12∗,†Zhenlong Yuan3∗, Jing Tang3‡, Rui Chen3, Datao Tang3, Meng Yu3, Lei Sun3, Yancheng Bai3, Xiangxiang Chu3, Gaopeng Gou12§, Gang Xiong12, Yujun Cai4, 1Institute of Information Engineering, Chinese Academy of Sciences 2School of Cyber Security, University of Chinese Academy of Sciences 3AMAP, Alibaba Group 4University of Queensland ∗ Equal contribution. ‡ Project lead. § Corresponding author. # arXiv:2603.00141v3[cs.CV]26Mar2026 ### Abstract - (a) Text-to-Image Generation - (b) Image Editing Diverse plausibleoutputs |[Figure 1]<br><br>[Figure 2]<br><br>…<br><br>[Figure 3]<br><br>[Figure 4]| |---| Image-CoT A cat running on the ground. Image Chain-of-Thought (Image-CoT) is a test-time scaling paradigm that improves image generation by extending inference time. Most Image-CoT methods focus on text-toimage"
+    },
+    {
+      "slug": "3409_Large_Language_Diffusion_Models",
+      "title": "Large Language Diffusion Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00294_a41ad48a055a",
+      "sourceIndex": 293,
+      "textBytes": 109152,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2502.09992v3[cs.CL]18Oct2025 ## Large Language Diffusion Models #### Shen Nie1,2,3∗† Fengqi Zhu1,2,3∗† Zebin You1,2,3† Xiaolu Zhang4‡ Jingyang Ou1,2,3 Jun Hu4‡ Jun Zhou4 Yankai Lin1,2,3‡ Ji-Rong Wen1,2,3 Chongxuan Li1,2,3‡ § 1 Gaoling School of Artificial Intelligence, Renmin University of China 2 Beijing Key Laboratory of Research on Large Models and Intelligent Governance 3 Engineering Research Center of Next-Generation Intelligent Search and Recommendation, MOE 4 Ant Group {nieshen,fengqizhu,chongxuanli}@ruc.edu.cn ### Abstract The capabilities of large language models (LLMs) are widely regarded as relying on autoregressive models (ARMs). We challenge this notion by introducing LLaDA, a diffusion model trained from scratch under the pre-training and supervised finetuning (SFT) paradigm. LLaDA employs a forward data masking process and a reverse generation process, parameterize"
+    },
+    {
+      "slug": "3565_DVAO_Dynamic_Variance-adaptive_Advantage_Optimization_for_Mu",
+      "title": "DVAO: Dynamic Variance-adaptive Advantage Optimization for Multi-reward Reinforcement Learning",
+      "category": "HDBSCAN Cluster: optimization, policy, learning, reinforcement",
+      "key": "FOLDER00295_5d7458fd197a",
+      "sourceIndex": 294,
+      "textBytes": 59024,
+      "figuresExtracted": 3,
+      "excerpt": "# arXiv:2605.25604v1[cs.CL]25May2026 ## DVAO: Dynamic Variance-adaptive Advantage Optimization for Multi-reward Reinforcement Learning Guochao Jiang∗, Jingyi Song, Guofeng Quan, Chuzhan Hao, Guohua Liu, Yuewei Zhang Alibaba Cloud Computing anyue.jgc@alibaba-inc.com ### Abstract Reinforcement Learning has become a standard paradigm for aligning Large Language Models with human intent and task requirements. While Group Relative Policy Optimization offers an efficient, value-model-free alternative to Proximal Policy Optimization, adapting it to real-world multi-reward settings remains challenging. Standard scalarization practices, such as Reward Combination and Advantage Combination, suffer from significant drawbacks: Reward Combination frequently generates advantages with excessively large squared magnitudes that lead to training instability, while Advantage Combination relies on static hy"
+    },
+    {
+      "slug": "3566_The_Entropy_Mechanism_of_Reinforcement_Learning_for_Reasonin",
+      "title": "The Entropy Mechanism of Reinforcement Learning for Reasoning Language Models",
+      "category": "HDBSCAN Cluster: reasoning, university, learning, reinforcement",
+      "key": "FOLDER00296_ba14882707d5",
+      "sourceIndex": 295,
+      "textBytes": 77589,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2505.22617v1[cs.LG]28May2025 ## The Entropy Mechanism of Reinforcement Learning for Reasoning Language Models Ganqu Cui1∗, Yuchen Zhang1,4∗, Jiacheng Chen1∗, Lifan Yuan3, Zhi Wang5, Yuxin Zuo2, Haozhan Li2, Yuchen Fan1, Huayu Chen2, Weize Chen2, Zhiyuan Liu2, Hao Peng3, Lei Bai1, Wanli Ouyang1, Yu Cheng1,6†, Bowen Zhou1,2†, Ning Ding2,1† 1 Shanghai AI Laboratory 2 Tsinghua University 3 UIUC 4 Peking University 5 Nanjing University 6 CUHK Code: https://github.com/PRIME-RL/Entropy-Mechanism-of-RL ### Abstract This paper aims to overcome a major obstacle in scaling reinforcement learning (RL) for reasoning with large language models (LLMs), namely the collapse of policy entropy. Such phenomenon is consistently observed across vast RL runs without entropy intervention, where the policy entropy dropped sharply at the early training stage, leading to an overly confident policy model. A"
+    },
+    {
+      "slug": "3567_HuMo_Human-Centric_Video_Generation_via_Collaborative_Multi-",
+      "title": "HuMo: Human-Centric Video Generation via Collaborative Multi-Modal Conditioning",
+      "category": "HDBSCAN Cluster: generation, video, figure, tstars-tryon",
+      "key": "FOLDER00297_9752e74f6b05",
+      "sourceIndex": 296,
+      "textBytes": 53139,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2509.08519v1[cs.CV]10Sep2025 [Figure 1] [Figure 2] ## HuMo: Human-Centric Video Generation via Collaborative Multi-Modal Conditioning ### Liyang Chen1,⋆, Tianxiang Ma2,⋆, Jiawei Liu2, Bingchuan Li2,†, Zhuowei Chen2, Lijie Liu2, Xu He1, Gen Li2, Qian He2, Zhiyong Wu1,§ 1Tsinghua University, 2Intelligent Creation Lab, ByteDance ⋆Equal contribution, †Project lead, §Corresponding author ### Abstract Human-Centric Video Generation (HCVG) methods seek to synthesize human videos from multimodal inputs, including text, image, and audio. Existing methods struggle to effectively coordinate these heterogeneous modalities due to two challenges: the scarcity of training data with paired triplet conditions and the difficulty of collaborating the sub-tasks of subject preservation and audio-visual sync with multimodal inputs. In this work, we present HuMo, a unified HCVG framework for collaborat"
+    },
+    {
+      "slug": "3568_Baseer_A_Vision-Language_Model_for_Arabic_Document-to-Markdo",
+      "title": "Baseer: A Vision-Language Model for Arabic Document-to-Markdown OCR",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00298_d7a793e6b296",
+      "sourceIndex": 297,
+      "textBytes": 45515,
+      "figuresExtracted": 2,
+      "excerpt": "## arXiv:2509.18174v1[cs.CV]17Sep2025 [Figure 1] # Baseer: A Vision-Language Model for Arabic Document-to-Markdown OCR ##### Khalil Hennara, Muhammad Hreden, Mohamed Motasim Hamed, Ahmad Bastati, Zeina Aldallal, Sara Chrouf, and Safwan AlModhayan [Figure 2] Khobar, Saudi Arabia hennara,hreden,hamed,bastati,aldallal,chrouf,safwan@misraj.ai ##### Abstract Arabic document OCR remains a challenging task due to the language’s cursive script, diverse fonts, diacritics, and right-to-left orientation. While modern Multimodal Large Language Models (MLLMs) have advanced document understanding for high-resource languages, their performance on Arabic remains limited. In this work, we introduce Baseer, a vision-language model finetuned specifically for Arabic document OCR. Leveraging a large-scale dataset combining synthetic and real-world documents, Baseer is trained using a decoder-only fine-tuning"
+    },
+    {
+      "slug": "3569_Chain-of-Agents_End-to-End_Agent_Foundation_Models_via_Multi",
+      "title": "Chain-of-Agents: End-to-End Agent Foundation Models via Multi-Agent Distillation and Agentic RL",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00299_d07aa60cf769",
+      "sourceIndex": 298,
+      "textBytes": 205731,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2508.13167v1[cs.AI]6Aug2025 ### Chain-of-Agents: End-to-End Agent Foundation Models via Multi-Agent Distillation and Agentic RL OPPO AI Agent Team #### Abstract Recent advances in large language models (LLMs) and multi-agent systems have demonstrated remarkable capabilities in complex problem-solving tasks such as deep research, vibe coding, and mathematical reasoning. However, most existing multi-agent systems are built upon manual prompt/workflow engineering with sophisticated agent frameworks, making them computationally inefficient, less capable, and can not benefit from data-centric learning. In this work, we introduce Chain-of-Agents (CoA), a novel paradigm of LLM reasoning that enables native end-to-end complex problem-solving in the same way as a multi-agent system (i.e., multi-turn problem solving with multiple tools and multiple agents) within one model. In chain-of-age"
+    },
+    {
+      "slug": "3570_UI-TARS-2_Technical_Report_Advancing_GUI_Agent_with_Multi-Tu",
+      "title": "UI-TARS-2 Technical Report: Advancing GUI Agent with Multi-Turn Reinforcement Learning",
+      "category": "HDBSCAN Cluster: reasoning, model, agent, research",
+      "key": "FOLDER00300_1d8d1b20c614",
+      "sourceIndex": 299,
+      "textBytes": 105449,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2509.02544v2[cs.AI]5Sep2025 [Figure 1] ## UI-TARS-2 Technical Report: Advancing GUI Agent with Multi-Turn Reinforcement Learning ### ByteDance Seed See Contributions section for a full author list. ### Abstract The development of autonomous agents for graphical user interfaces (GUIs) presents major challenges in artificial intelligence. While recent advances in native agent models have shown promise by unifying perception, reasoning, action, and memory through end-to-end learning, open problems remain in data scalability, multi-turn reinforcement learning (RL), the limitations of GUI-only operation, and environment stability. In this technical report, we present UI-TARS-2, a native GUI-centered agent model that addresses these challenges through a systematic training methodology: a data flywheel for scalable data generation, a stabilized multi-turn RL framework, a hybrid GUI envi"
+    },
+    {
+      "slug": "3571_Latent_Collaboration_in_Multi-Agent_Systems",
+      "title": "Latent Collaboration in Multi-Agent Systems",
+      "category": "HDBSCAN Cluster: figure, university, multi-agent, collaboration",
+      "key": "FOLDER00301_6e4335387944",
+      "sourceIndex": 300,
+      "textBytes": 118898,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2511.20639v3[cs.CL]1Jun2026 ## Latent Collaboration in Multi-Agent Systems ###### Jiaru Zou12*† Ruizhong Qiu3† Gaotang Li3† Xiyuan Yang3† Katherine Tieu3† Pan Lu2† Ke Shen Hanghang Tong3 Yejin Choi2 Jingrui He3 James Zou2 Mengdi Wang1 Ling Yang1 Project Page: https://github.com/Gen-Verse/LatentMAS [Figure 1] [Figure 2] [Figure 3] [Figure 4] [Figure 5] x7.0 End-to-End Speed-up [Figure 6] x5.7 ###### Avg. x4.3 Faster Inference x4.7 x4.1 x3.7 97.9 x3.4 x3.4 x3.2 x3.1 93.7 50.0 Avg. +13.3% Accuracy [Figure 7] 89.8 58.4 ↓ 83.4% ↓ 82.7% ↓ 84.7% # of Tokens 63.3 74.2 72.2 Avg. 83.7% Fewer Tokens 81.3 ↓ 83.5% ↓ 85.9% ↓ 81.7% Figure 1. Performance of LatentMAS across (i) task accuracy (%), (ii) inference speed (time(s) / run), and (iii) token usage (per token) over 9 benchmarks and 3 LLM model scales under the Hierarchical MAS setting. LatentMAS consistently improves system-level reasonin"
+    },
+    {
+      "slug": "3572_PaliGemma_2_A_Family_of_Versatile_VLMs_for_Transfer",
+      "title": "PaliGemma 2: A Family of Versatile VLMs for Transfer",
+      "category": "HDBSCAN Cluster: paligemma, siglip, vision-language, family",
+      "key": "FOLDER00302_7b4990459df3",
+      "sourceIndex": 301,
+      "textBytes": 89939,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2412.03555v1[cs.CV]4Dec2024 [Figure 1] December 2024 # PaliGemma 2: A Family of Versatile VLMs for Transfer ###### Andreas Steiner*,†, André Susano Pinto*, Michael Tschannen*, Daniel Keysers, Xiao Wang, Yonatan Bitton, Alexey Gritsenko, Matthias Minderer, Anthony Sherbondy, Shangbang Long, Siyang Qin, Reeve Ingle, Emanuele Bugliarello, Sahar Kazemzadeh, Thomas Mesnard, Ibrahim Alabdulmohsin, Lucas Beyer and Xiaohua Zhai Google DeepMind, *Core team, †Project lead PaliGemma 2 is an upgrade of the PaliGemma open Vision-Language Model (VLM) based on the Gemma 2 family of language models. We combine the SigLIP-So400m vision encoder that was also used by PaliGemma with the whole range of Gemma 2 models, from the 2B one all the way up to the 27B model. We train these models at three resolutions (224px2, 448px2 and 896px2) in multiple stages to equip them with broad knowledge for transf"
+    },
+    {
+      "slug": "3573_One_Small_Step_in_Latent_One_Giant_Leap_for_Pixels_Fast_Late",
+      "title": "One Small Step in Latent, One Giant Leap for Pixels: Fast Latent Upscale Adapter for Your Diffusion Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00303_0cbd4ccccc6e",
+      "sourceIndex": 302,
+      "textBytes": 72115,
+      "figuresExtracted": 5,
+      "excerpt": "## One Small Step in Latent, One Giant Leap for Pixels: Fast Latent Upscale Adapter for Your Diffusion Models [Figure 1] Aleksandr Razin∗ razin.ad@edu.spbstu.ru Kazantsev Danil∗ 311495@niuitmo.ru Ilya Makarov iamakarov@hse.ru # arXiv:2511.10629v2[cs.CV]21Nov2025 ### Abstract Diffusion models struggle to scale beyond their training resolutions, as direct high-resolution sampling is slow and costly, while post-hoc image super-resolution (ISR) introduces artifacts and additional latency by operating after decoding. We present the Latent Upscaler Adapter (LUA), a lightweight module that performs super-resolution directly on the generator’s latent code before the final VAE decoding step. LUA integrates as a drop-in component, requiring no modifications to the base model or additional diffusion stages, and enables high-resolution synthesis through a single feed-forward pass in latent space. A "
+    },
+    {
+      "slug": "3574_Emerging_Properties_in_Unified_Multimodal_Pretraining",
+      "title": "Emerging Properties in Unified Multimodal Pretraining",
+      "category": "HDBSCAN Cluster: figure, multimodal, model, understanding",
+      "key": "FOLDER00304_6690500e938f",
+      "sourceIndex": 303,
+      "textBytes": 142967,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2505.14683v3[cs.CV]27Jul2025 [Figure 1] [Figure 2] [Figure 3] [Figure 4] [Figure 5] ## Emerging Properties in Unified Multimodal Pretraining ### Chaorui Deng∗1, Deyao Zhu∗1, Kunchang Li∗2‡, Chenhui Gou∗3‡, Feng Li∗4‡ Zeyu Wang5‡, Shu Zhong1, Weihao Yu1,Xiaonan Nie1, Ziang Song1, Guang Shi1§ Haoqi Fan∗† 1ByteDance Seed, 2Shenzhen Institutes of Advanced Technology, 3Monash University 4Hong Kong University of Science and Technology, 5UC Santa Cruz ∗Equal contribution, §Corresponding Author, †Project lead ### Abstract Unifying multimodal understanding and generation has shown impressive capabilities in cutting-edge proprietary systems. In this work, we introduce BAGEL, an open-source foundational model that natively supports multimodal understanding and generation. BAGEL is a unified, decoder-only model pretrained on trillions of tokens curated from large-scale interleaved text, imag"
+    },
+    {
+      "slug": "3575_δ-mem_Efficient_Online_Memory_for_Large_Language_Models",
+      "title": "δ-mem: Efficient Online Memory for Large Language Models",
+      "category": "HDBSCAN Cluster: memory, university, large, language",
+      "key": "FOLDER00305_39ed188896d6",
+      "sourceIndex": 304,
+      "textBytes": 52187,
+      "figuresExtracted": 4,
+      "excerpt": "## arXiv:2605.12357v1[cs.AI]12May2026 [Figure 1] [Figure 2] [Figure 3] # δ-mem: Efficient Online Memory for Large Language Models Jingdi Lei†1,3, Di Zhang†2,3, Junxian Li4, Weida Wang2, Kaixuan Fan5,3, Xiang Liu6,3, Qihan Liu3, Xiaoteng Ma3, Baian Chen3, Soujanya Poria1 1Nanyang Technological University, 2Fudan University, 3Mind Lab, 4Shanghai Jiao Tong University, 5The Chinese University of Hong Kong, 6The Hong Kong University of Science and Technology (Guangzhou) Large language models increasingly need to accumulate and reuse historical information in long-term assistants and agent systems. Simply expanding the context window is costly and often fails to ensure effective context utilization. We propose δ-mem, a lightweight memory mechanism that augments a frozen full-attention backbone with a compact online state of associative memory. δ-mem compresses past information into a fixed-siz"
+    },
+    {
+      "slug": "3576_Expect_the_Unexpected_FailSafe_Long_Context_QA_for_Finance",
+      "title": "Expect the Unexpected: FailSafe Long Context QA for Finance",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00306_9e0c56a46e7b",
+      "sourceIndex": 305,
+      "textBytes": 68511,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2502.06329v1[cs.CL]10Feb2025 ## Expect the Unexpected: FailSafe Long Context QA for Finance Kiran Kamble†, Melisa Russak†, Dmytro Mozolevskyi, Muayad Ali, Mateusz Russak Waseem AlShikh Writer, Inc {kiran, melisa, ... waseem}@writer.com Abstract We propose a new long-context financial benchmark, FailSafeQA, designed to test the robustness and context-awareness of LLMs against six variations in human-interface interactions in LLM-based query-answer systems within finance. We concentrate on two case studies: Query Failure and Context Failure. In the Query Failure scenario, we perturb the original query to vary in domain expertise, completeness, and linguistic accuracy. In the Context Failure case, we simulate the uploads of degraded, irrelevant, and empty documents. We employ the LLM-as-a-Judge methodology with Qwen2.5-72B-Instruct and use fine-grained rating criteria to define and "
+    },
+    {
+      "slug": "3577_s1_Simple_test-time_scaling",
+      "title": "s1: Simple test-time scaling",
+      "category": "HDBSCAN Cluster: model, reasoning, small, test-time",
+      "key": "FOLDER00307_d8c4c747e96e",
+      "sourceIndex": 306,
+      "textBytes": 160415,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2501.19393v3[cs.CL]1Mar2025 ## s1: Simple test-time scaling Niklas Muennighoff* 1 3 4 Zitong Yang* 1 Weijia Shi* 2 3 Xiang Lisa Li* 1 Li Fei-Fei1 Hannaneh Hajishirzi2 3 Luke Zettlemoyer2 Percy Liang1 Emmanuel Candès1 Tatsunori Hashimoto1 ### Abstract Test-time scaling is a promising new approach to language modeling that uses extra test-time compute to improve performance. Recently, OpenAI’s - o1 model showed this capability but did not publicly share its methodology, leading to many replication efforts. We seek the simplest approach to achieve test-time scaling and strong reasoning performance. First, we curate a small dataset s1K - of 1,000 questions paired with reasoning traces relying on three criteria we validate through ablations: difficulty, diversity, and quality. Second, we develop budget forcing to control test-time compute by forcefully terminating the model’s thinking"
+    },
+    {
+      "slug": "3578_SkillsVote_Lifecycle_Governance_of_Agent_Skills_from_Collect",
+      "title": "SkillsVote: Lifecycle Governance of Agent Skills from Collection, Recommendation to Evolution",
+      "category": "HDBSCAN Cluster: skills, agents, skill, agent",
+      "key": "FOLDER00308_131ef3ca0448",
+      "sourceIndex": 307,
+      "textBytes": 206446,
+      "figuresExtracted": 5,
+      "excerpt": "arXiv:2605.18401v2[cs.CL]14Jun2026 [Figure 1] # SkillsVote: Lifecycle Governance of Agent Skills from Collection, Recommendation to Evolution Hongyi Liu1,2∗, Haoyan Yang1,2∗, Tao Jiang1,3∗, Bo Tang1, Feiyu Xiong1, Yuyu Luo4†, Zhiyu Li1† 1MemTensor (Shanghai) Technology, 2Harbin Institute of Technology, 3Soochow University, 4The Hong Kong University of Science and Technology (Guangzhou) ∗Co-first authors, †Corresponding author ## Abstract Long-horizon LLM agents generate traces that could become reusable experience, but raw trajectories are noisy, local, and hard to govern. Agent Skills offer a structured artifact for combining procedural guidance, executable resources, and applicability boundaries. Yet open skill ecosystems contain redundant, uneven, environment-sensitive artifacts, and indiscriminate updates can pollute future context. We present SkillsVote, a lifecycle-governance frame"
+    },
+    {
+      "slug": "3579_Intern-S1-Pro_Scientific_Multimodal_Foundation_Model_at_Tril",
+      "title": "Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale",
+      "category": "HDBSCAN Cluster: scientific, foundation, model, models",
+      "key": "FOLDER00309_d07547cc0750",
+      "sourceIndex": 308,
+      "textBytes": 71293,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2603.25040v2[cs.LG]2Apr2026 [Figure 1] 2026-4-3 # Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale #### Intern-S1-Pro Team, Shanghai AI Laboratory We introduce Intern-S1-Pro, the first one-trillion-parameter scientific multimodal foundation model. Scaling to this unprecedented size, the model delivers a comprehensive enhancement across both general and scientific domains. Beyond stronger reasoning and image-text understanding capabilities, its intelligence is augmented with advanced agent capabilities. Simultaneously, its scientific expertise has been vastly expanded to master over 100 specialized tasks across critical science fields, including chemistry, materials, life sciences, and earth sciences. Achieving this massive scale is made possible by the robust infrastructure support of XTuner and LMDeploy, which facilitates highly efficient Reinforcement Le"
+    },
+    {
+      "slug": "3580_ToolOrchestra_Elevating_Intelligence_via_Efficient_Model_and",
+      "title": "ToolOrchestra: Elevating Intelligence via Efficient Model and Tool Orchestration",
+      "category": "HDBSCAN Cluster: language, model, models, systems",
+      "key": "FOLDER00310_d2607a7abc2c",
+      "sourceIndex": 309,
+      "textBytes": 71781,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2511.21689v1[cs.CL]26Nov2025 [Figure 1] 2025-11-27 ### ToolOrchestra: Elevating Intelligence via Efficient Model and Tool Orchestration Hongjin Su*1,2 Shizhe Diao*1 Ximing Lu1 Mingjie Liu1 Jiacheng Xu1 Xin Dong1 Yonggan Fu1 Peter Belcak1 Hanrong Ye1 Hongxu Yin1 Yi Dong1 Evelina Bakhturina1 Tao Yu2 Yejin Choi1 Jan Kautz1 Pavlo Molchanov1 1NVIDIA, 2University of Hong Kong Abstract: Large language models are powerful generalists, yet solving deep and complex problems such as those of the Humanity’s Last Exam (HLE) remains both conceptually challenging and computationally expensive. We show that small orchestrators managing other models and a variety of tools can both push the upper bound of intelligence and improve efficiency in solving difficult agentic tasks. We introduce ToolOrchestra, a method for training small orchestrators that coordinate intelligent tools. ToolOrchestra exp"
+    },
+    {
+      "slug": "3581_HY-World_20_A_Multi-Modal_World_Model_for_Reconstructing_Gen",
+      "title": "HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds",
+      "category": "HDBSCAN Cluster: model, world, figure, worlds",
+      "key": "FOLDER00311_1d2a2d02a601",
+      "sourceIndex": 310,
+      "textBytes": 150057,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2604.14268v1[cs.CV]15Apr2026 [Figure 1] Tencent Hunyuan ## HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds [Figure 2] ###### Tencent Hunyuan* https://3d.hunyuan.tencent.com/sceneTo3D https://github.com/Tencent-Hunyuan/HY-World-2.0 ### Abstract We introduce HY-World 2.0, a multi-modal world model framework that advances our prior project HY-World 1.0. HY-World 2.0 accommodates diverse input modalities, including text prompts, single-view images, multi-view images, and videos, and produces 3D world representations. With text or single-view image inputs, the model performs world generation, synthesizing high-fidelity, navigable 3D Gaussian Splatting (3DGS) scenes. This is achieved through a four-stage method: a) Panorama Generation with HY-Pano 2.0, b) Trajectory Planning with WorldNav, c) World Expansion with WorldStereo 2.0, and d) "
+    },
+    {
+      "slug": "3582_RuCCoD_Towards_Automated_ICD_Coding_in_Russian",
+      "title": "RuCCoD: Towards Automated ICD Coding in Russian",
+      "category": "HDBSCAN Cluster: llms, university, artificial, text",
+      "key": "FOLDER00312_c112780f5122",
+      "sourceIndex": 311,
+      "textBytes": 100435,
+      "figuresExtracted": 5,
+      "excerpt": "## RuCCoD: Towards Automated ICD Coding in Russian Aleksandr Nesterov1*, Andrey Sakhovskiy2,3∗, Ivan Sviridov4∗, Airat Valiev5 Vladimir Makharev1,6, Petr Anokhin1, Galina Zubkova4, Elena Tutubalina1,2,7 1 AIRI 2 Sber AI 3 Skoltech 4 Sber AI Lab 5 HSE University 6 Innopolis University 7 ISP RAS Research Center for Trusted AI # arXiv:2502.21263v2[cs.CL]26Sep2025 Abstract This study investigates the feasibility of automating clinical coding in Russian, a language with limited biomedical resources. We present a new dataset for ICD coding, which includes diagnosis fields from electronic health records (EHRs) annotated with over 10,000 entities and more than 1,500 unique ICD codes. This dataset serves as a benchmark for several stateof-the-art models, including BERT, LLaMA with LoRA, and RAG, with additional experiments examining transfer learning across domains (from PubMed abstracts to medic"
+    },
+    {
+      "slug": "3583_RPG_A_Repository_Planning_Graph_for_Unified_and_Scalable_Cod",
+      "title": "RPG: A Repository Planning Graph for Unified and Scalable Codebase Generation",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00313_9da7cb834eca",
+      "sourceIndex": 312,
+      "textBytes": 167507,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2509.16198v6[cs.CL]13Feb2026 ## RPG: A REPOSITORY PLANNING GRAPH FOR UNIFIED AND SCALABLE CODEBASE GENERATION Jane Luo1,∗,‡ Xin Zhang1,∗,† Steven Liu1,‡ Jie Wu2,‡ Jianfeng Liu1 Yiming Huang3 Yangyu Huang1 Chengyu Yin4,‡ Ying Xin1 Yuefeng Zhan1 Hao Sun1 Qi Chen1 Scarlett Li1 Mao Yang1 1Microsoft, 2Tsinghua University 3University of California, San Diego 4Beijing Jiaotong University ABSTRACT Large language models excel at generating individual functions or single files of code, yet generating complete repositories from scratch remains a fundamental challenge. This capability is key to building coherent software systems from highlevel specifications and realizing the full potential of automated code generation. The process requires planning at two levels: deciding what features and modules to build (proposal stage) and defining their implementation details (implementation stage). Cu"
+    },
+    {
+      "slug": "3584_Building_and_better_understanding_vision-language_models_ins",
+      "title": "Building and better understanding vision-language models: insights and future directions",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00314_da3b9fce94bb",
+      "sourceIndex": 313,
+      "textBytes": 120498,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2408.12637v1[cs.CV]22Aug2024 ## Building and better understanding vision-language models: insights and future directions Hugo Laurençon∗ Andrés Marafioti Victor Sanh Léo Tronchon∗ Hugging Face ### Abstract The field of vision-language models (VLMs), which take images and texts as inputs and output texts, is rapidly evolving and has yet to reach consensus on several key aspects of the development pipeline, including data, architecture, and training methods. This paper can be seen as a tutorial for building a VLM. We begin by providing a comprehensive overview of the current state-of-the-art approaches, highlighting the strengths and weaknesses of each, addressing the major challenges in the field, and suggesting promising research directions for underexplored areas. We then walk through the practical steps to build Idefics3-8B, a powerful VLM that significantly outperforms its pre"
+    },
+    {
+      "slug": "3585_Thinking_with_Camera_A_Unified_Multimodal_Model_for_Camera-C",
+      "title": "Thinking with Camera: A Unified Multimodal Model for Camera-Centric Understanding and Generation",
+      "category": "HDBSCAN Cluster: figure, agent, university, out",
+      "key": "FOLDER00315_b8e0ab2993ca",
+      "sourceIndex": 314,
+      "textBytes": 131186,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2510.08673v2[cs.CV]30Mar2026 [Figure 1] THINKING WITH CAMERA: A UNIFIED MULTIMODAL MODEL FOR CAMERA-CENTRIC UNDERSTANDING AND GENERATION Kang Liao1 Size Wu1 Zhonghua Wu2 Linyi Jin3 Chao Wang4 Yikai Wang1 Fei Wang2 Wei Li1 † Chen Change Loy1 † 1S-Lab, Nanyang Technological University 2SenseTime Research 3University of Michigan 4Max-Planck Institute for Informatics [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] [Figure 7] ###### (a)CameraControllableGeneration(b)CameraUnderstanding [Figure 8] [Figure 9] [Figure 10] [Figure 11] [Figure 12] [Figure 13] [Figure 14] [Figure 15] [Figure 16] [Figure 17] [Figure 18] [Figure 19] [Figure 20] [Figure 21] [Figure 22] [Figure 23] [Figure 24] [Figure 25] [Figure 26] [Figure 27] [Figure 28] [Figure 29] [Figure 30] [Figure 31] |Horizon Lines: Ground Truth UVP GeoCalib Puffin (Ours)<br><br>| |---| [Figure 32] Prompt: Given a scene descript"
+    },
+    {
+      "slug": "3586_Omni-WorldBench_Towards_a_Comprehensive_Interaction-Centric",
+      "title": "Omni-WorldBench: Towards a Comprehensive Interaction-Centric Evaluation for World Models",
+      "category": "HDBSCAN Cluster: university, models, xiamen, figure",
+      "key": "FOLDER00316_558916e12fa4",
+      "sourceIndex": 315,
+      "textBytes": 80655,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2603.22212v1[cs.CV]23Mar2026 ## Omni-WorldBench: Towards a Comprehensive Interaction-Centric Evaluation for World Models Meiqi Wu‡1,2,5, Zhixin Cai‡3,5, Fufangchen Zhao‡4,5, Xiaokun Feng2, Rujing Dang5, Bingze Song5, Ruitian Tian5, Jiashu Zhu5, Jiachen Lei5, Hao Dou5, Jing Tang5, Lei Sun5, Jiahong Wu∗5, Xiangxiang Chu5, Zeming Liu3, Kaiqi Huang∗2 1School of Computer Science and Technology, UCAS 2The Key Laboratory of Cognition and Decision Intelligence for Complex Systems, CASIA - 3School of Computer Science and Engineering, Beihang University - 4State Key Laboratory of Networking and Switching Technology, BUPT 5AMAP, Alibaba Group ### Abstract Video-based world models have emerged along two dominant paradigms: video generation and 3D reconstruction. However, existing evaluation benchmarks either focus narrowly on visual fidelity and text–video alignment for generative models, or"
+    },
+    {
+      "slug": "3587_Speed_by_Simplicity_A_Single-Stream_Architecture_for_Fast_Au",
+      "title": "Speed by Simplicity: A Single-Stream Architecture for Fast Audio-Video Generative Foundation Model",
+      "category": "HDBSCAN Cluster: generation, model, audio, video",
+      "key": "FOLDER00317_d512f9375c64",
+      "sourceIndex": 316,
+      "textBytes": 22416,
+      "figuresExtracted": 3,
+      "excerpt": "# arXiv:2603.21986v1[cs.CV]23Mar2026 [Figure 1] ## Speed by Simplicity: A Single-Stream Architecture for Fast Audio-Video Generative Foundation Model #### SII-GAIR* & Sand.ai† Open Source: Code Models Demo [Figure 2] ### Abstract We present daVinci-MagiHuman, an open-source audio-video generative foundation model for humancentric generation. daVinci-MagiHuman jointly generates synchronized video and audio using a singlestream Transformer that processes text, video, and audio within a unified token sequence via self-attention only. This single-stream design avoids the complexity of multi-stream or cross-attention architectures while remaining easy to optimize with standard training and inference infrastructure. The model is particularly strong in human-centric scenarios, producing expressive facial performance, natural speech-expression coordination, realistic body motion, and precise aud"
+    },
+    {
+      "slug": "3588_DeepResearchEval_An_Automated_Framework_for_Deep_Research_Ta",
+      "title": "DeepResearchEval: An Automated Framework for Deep Research Task Construction and Agentic Evaluation",
+      "category": "HDBSCAN Cluster: reasoning, mathematical, https, research",
+      "key": "FOLDER00318_39ed387f02e9",
+      "sourceIndex": 317,
+      "textBytes": 89428,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2601.09688v1[cs.CL]14Jan2026 ## DeepResearchEval: An Automated Framework for Deep Research Task Construction and Agentic Evaluation #### Yibo Wang1,2, Lei Wang1†, Yue Deng1, Keming Wu1, Yao Xiao1, Huanjin Yao2 Liwei Kang1, Hai Ye1, Yongcheng Jing2, Lidong Bing1 1Infinity Lab, Shanda Group 2Nanyang Technological University yibowang0021@gmail.com, {lei.wang, lidong.bing}@shanda.com Code: https://github.com/Infinity-AILab/DeepResearchEval [Figure 1] #### Abstract Deep research systems are widely used for multistep web research, analysis, and cross-source synthesis, yet their evaluation remains challenging. Existing benchmarks often require annotationintensive task construction, rely on static evaluation dimensions, or fail to reliably verify facts when citations are missing. To bridge these gaps, we introduce DeepResearchEval, an automated framework for deep research task constructi"
+    },
+    {
+      "slug": "3589_Kwai_Keye-VL_Technical_Report",
+      "title": "Kwai Keye-VL Technical Report",
+      "category": "HDBSCAN Cluster: https, figure, technical, report",
+      "key": "FOLDER00319_0e3d5e8c2e66",
+      "sourceIndex": 318,
+      "textBytes": 144470,
+      "figuresExtracted": 4,
+      "excerpt": "arXiv:2507.01949v1[cs.CV]2Jul2025 [Figure 1] July 3, 2025 # Kwai Keye-VL Technical Report [Figure 2] Keye Team, Kuaishou Group https://kwai-keye.github.io/ https://huggingface.co/Kwai-Keye https://github.com/Kwai-Keye/Keye ### Abstract While Multimodal Large Language Models (MLLMs) demonstrate remarkable capabilities on static images, they often fall short in comprehending dynamic, information-dense short-form videos, a dominant medium in today’s digital landscape. To bridge this gap, we introduce Kwai Keye-VL, an 8-billion-parameter multimodal foundation model engineered for leading-edge performance in short-video understanding while maintaining robust general-purpose vision-language abilities. The development of Keye-VL rests on two core pillars: a massive, high-quality dataset exceeding 600 billion tokens with a strong emphasis on video, and an innovative training recipe. This recipe "
+    },
+    {
+      "slug": "3590_Stream-R1_Reliability-Perplexity_Aware_Reward_Distillation_f",
+      "title": "Stream-R1: Reliability-Perplexity Aware Reward Distillation for Streaming Video Generation",
+      "category": "HDBSCAN Cluster: video, generation, long, real-time",
+      "key": "FOLDER00320_ba8fea9356e2",
+      "sourceIndex": 319,
+      "textBytes": 53078,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.03849v1[cs.CV]5May2026 [Figure 1] [Figure 2] ## Stream-R1: Reliability-Perplexity Aware Reward Distillation for Streaming Video Generation ### Bin Wu1 Mengqi Huang1,†,‡ Shaojin Wu3,‡ Weinan Jia1 Yuxin Wang2 Zhendong Mao1 Yongdong Zhang1 1University of Science and Technology of China 2FrameX.AI 3Independent Researcher †Corresponding author ‡Project lead ### Abstract Distillation-based acceleration has become the foundational technique for making autoregressive streaming video diffusion models practical, with distribution matching distillation as the de facto choice. However, existing methods train the student to match the teacher’s output in an indiscriminative manner, treating every rollout, every frame, and every pixel as equally reliable supervision. We argue that this indiscriminative treatment caps the upper bound of distilled quality because it overlooks two complementa"
+    },
+    {
+      "slug": "3591_AgentDoG_A_Diagnostic_Guardrail_Framework_for_AI_Agent_Safet",
+      "title": "AgentDoG: A Diagnostic Guardrail Framework for AI Agent Safety and Security",
+      "category": "HDBSCAN Cluster: agentdog, safety, agent, figure",
+      "key": "FOLDER00321_18cd6db72fb5",
+      "sourceIndex": 320,
+      "textBytes": 131056,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] -:=-.==.. ShanghaiArtificialIntelligenceLaboratory AgentDoG 上海人工智能实验室 [Figure 2] ## AgentDoG: A Diagnostic Guardrail Framework for AI Agent Safety and Security # arXiv:2601.18491v2[cs.AI]23Apr2026 Shanghai Artificial Intelligence Laboratory ### https://github.com/AI45Lab/AgentDoG https://huggingface.co/collections/AI45Research/agentdog [Figure 3] Abstract The rise of AI agents introduces complex safety and security challenges arising from autonomous tool use and environmental interactions. Current guardrail models lack agentic risk awareness and transparency in risk diagnosis. To introduce an agentic guardrail that covers complex and numerous risky behaviors, we use a unified three-dimensional taxonomy that orthogonally categorizes agentic risks by their source (where), failure mode (how), and consequence (what). Guided by this structured and hierarchical taxonomy, we use a ne"
+    },
+    {
+      "slug": "3592_Seaweed-7B_Cost-Effective_Training_of_Video_Generation_Found",
+      "title": "Seaweed-7B: Cost-Effective Training of Video Generation Foundation Model",
+      "category": "HDBSCAN Cluster: model, generation, foundation, seaweed-7b",
+      "key": "FOLDER00322_2bd42b728478",
+      "sourceIndex": 321,
+      "textBytes": 90602,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2504.08685v2[cs.CV]5May2025 [Figure 1] ## Seaweed-7B: Cost-Effective Training of Video Generation Foundation Model ### ByteDance Seed ByteDance ### Abstract This technical report presents a cost-efficient strategy for training a video generation foundation model. We present a mid-sized research model with approximately 7 billion parameters (7B) called Seaweed-7B trained from scratch using 665,000 H100 GPU hours. Despite being trained with moderate computational resources, Seaweed-7B demonstrates highly competitive performance compared to contemporary video generation models of much larger size. Design choices are especially crucial in a resource-constrained setting. This technical report highlights the key design decisions that enhance the performance of the medium-sized diffusion model. Empirically, we make two observations: (1) Seaweed-7B achieves performance comparable to, or "
+    },
+    {
+      "slug": "3593_SFT_Memorizes_RL_Generalizes_A_Comparative_Study_of_Foundati",
+      "title": "SFT Memorizes, RL Generalizes: A Comparative Study of Foundation Model Post-training",
+      "category": "HDBSCAN Cluster: models, sft, reinforcement, reasoning",
+      "key": "FOLDER00323_4b04f60adf15",
+      "sourceIndex": 322,
+      "textBytes": 79187,
+      "figuresExtracted": 5,
+      "excerpt": "## SFT Memorizes, RL Generalizes: A Comparative Study of Foundation Model Post-training Tianzhe Chu♠* Yuexiang Zhai♥♣* Jihan Yang♦ Shengbang Tong♦ Saining Xie♣♦ Dale Schuurmans♣ Quoc V. Le♣ Sergey Levine♥ Yi Ma♠♥ [Figure 1] # arXiv:2501.17161v2[cs.AI]26May2025 ### Abstract Supervised fine-tuning (SFT) and reinforcement learning (RL) are widely used post-training techniques for foundation models. However, their respective role in enhancing model generalization in rule-based reasoning tasks remains unclear. This paper studies the comparative effect of SFT and RL on generalization and memorization, focusing on text-based and visual reasoning tasks. We introduce GeneralPoints, an arithmetic reasoning card game, and also consider V-IRL, a real-world navigation environment, to assess how models trained with SFT and RL generalize to unseen variants in both novel textual rules and visual domains"
+    },
+    {
+      "slug": "3594_Beyond_Context_Limits_Subconscious_Threads_for_Long-Horizon",
+      "title": "Beyond Context Limits: Subconscious Threads for Long-Horizon Reasoning",
+      "category": "HDBSCAN Cluster: reasoning, language, model, context",
+      "key": "FOLDER00324_6f511eb27faf",
+      "sourceIndex": 323,
+      "textBytes": 48360,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2507.16784v1[cs.CL]22Jul2025 ## BEYOND CONTEXT LIMITS: SUBCONSCIOUS THREADS FOR LONG-HORIZON REASONING Hongyin Luo1,2, Nathaniel Morgan1∗, Tina Li1, Derek Zhao1, Ai Vy Ngo1, Philip Schroeder1, Lijie Yang3, Assaf Ben-Kish4†, Jack O’Brien2, James Glass1 1 MIT CSAIL 2 Subconscious Systems Technologies, Inc. 3 Princeton University 4 Tel Aviv University hyluo@mit.edu, {hongyin,jack}@subconscious.dev ABSTRACT To break the context limits of large language models (LLMs) that bottleneck reasoning accuracy and efficiency, we propose the Thread Inference Model (TIM1), a family of LLMs trained for recursive and decompositional problem solving, and TIMRUN, an inference runtime enabling long-horizon structured reasoning beyond context limits. Together, TIM hosted on TIMRUN2 supports virtually unlimited working memory and multi-hop tool calls within a single language model inference, overcoming"
+    },
+    {
+      "slug": "3595_Paper2Code_Automating_Code_Generation_from_Scientific_Papers",
+      "title": "Paper2Code: Automating Code Generation from Scientific Papers in Machine Learning",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00325_29b56e572a65",
+      "sourceIndex": 324,
+      "textBytes": 219588,
+      "figuresExtracted": 5,
+      "excerpt": "## arXiv:2504.17192v5[cs.CL]27Feb2026 ### PAPER2CODE: AUTOMATING CODE GENERATION FROM SCIENTIFIC PAPERS IN MACHINE LEARNING Minju Seo1,3, Jinheon Baek†1, Seongyun Lee1, Sung Ju Hwang†1,2 1KAIST, 2DeepAuto.ai, 3LG AI Research {minjuseo, jinheon.baek, seongyun, sungju.hwang}@kaist.ac.kr ABSTRACT Despite the rapid growth of machine learning research, corresponding code implementations are often unavailable, making it slow and labor-intensive for researchers to reproduce results and build upon prior work. In the meantime, recent Large Language Models (LLMs) excel at understanding scientific documents and generating high-quality code. Inspired by this, we introduce PaperCoder, a multi-agent LLM framework that transforms machine learning papers into operational code repositories. PaperCoder operates in three stages: planning, where it constructs a high-level roadmap, designs the system archite"
+    },
+    {
+      "slug": "3596_MM1_Methods_Analysis__Insights_from_Multimodal_LLM_Pre-train",
+      "title": "MM1: Methods, Analysis & Insights from Multimodal LLM Pre-training",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00326_d4f08a8ca139",
+      "sourceIndex": 325,
+      "textBytes": 116347,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2403.09611v4[cs.CV]18Apr2024 ## MM1: Methods, Analysis & Insights from Multimodal LLM Pre-training Brandon McKinzie◦, Zhe Gan◦, Jean-Philippe Fauconnier⋆, Sam Dodge⋆, Bowen Zhang⋆, Philipp Dufter⋆, Dhruti Shah⋆, Xianzhi Du⋆, Futang Peng, Floris Weers, Anton Belyi, Haotian Zhang, Karanjeet Singh, Doug Kang, Ankur Jain, Hongyu Hè, Max Schwarzer, Tom Gunter, Xiang Kong, Aonan Zhang, Jianyu Wang, Chong Wang, Nan Du, Tao Lei, Sam Wiseman, Guoli Yin, Mark Lee, Zirui Wang, Ruoming Pang, Peter Grasch⋆, Alexander Toshev†, and Yinfei Yang† Apple bmckinzie@apple.com, zhe.gan@apple.com ◦First authors; ⋆Core authors; †Senior authors Abstract. In this work, we discuss building performant Multimodal Large Language Models (MLLMs). In particular, we study the importance of various architecture components and data choices. Through careful and comprehensive ablations of the image encoder, the visio"
+    },
+    {
+      "slug": "3597_Data_Journalist_Agent_Transforming_Data_into_Verifiable_Mult",
+      "title": "Data Journalist Agent: Transforming Data into Verifiable Multimodal Stories",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00327_b72edbf1ea69",
+      "sourceIndex": 326,
+      "textBytes": 87450,
+      "figuresExtracted": 5,
+      "excerpt": "### arXiv:2606.11176v1[cs.CV]9Jun2026 [Figure 1] [Figure 2] # Data Journalist Agent: Transforming Data into Verifiable Multimodal Stories [Figure 3] ###### Kevin Qinghong Lin♥, Batu EI♠, Yuhong Shi♥, Pan Lu♠, Philip Torr ♥, James Zou ♠ ♥University of Oxford, ♠Stanford University Website: https://data2story.github.io Code: https://github.com/QinghongLin/data2story-skill Correspondence: philip.torr@eng.ox.ac.uk, jamesz@stanford.edu Data tells stories that shape society, and the data journalist’s job is to turn raw information into a story that non-expert audiences can understand and trust through to the end. A high-quality news feature routinely takes a newsroom team weeks, including hunting for context, running statistics, choosing an angle, and designing visuals. Recent agents are capable at individual steps: automated data-science agents close the analysis loop, while design agents can "
+    },
+    {
+      "slug": "3598_RLDX-1_Technical_Report",
+      "title": "RLDX-1 Technical Report",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00328_e975ce1fbb9a",
+      "sourceIndex": 327,
+      "textBytes": 198735,
+      "figuresExtracted": 5,
+      "excerpt": "2026-5-7 ## RLDX-1 Technical Report Dongyoung Kim1,2†§ Huiwon Jang1,2†§ Myungkyu Koo1,2† Suhyeok Jang1,2† Taeyoung Kim1,2† Beomjun Kim2 Byungjun Yoon2 Changsung Jang1 Daewon Choi2 Dongsu Han2 Donguk Lee1 Heeseung Kwon1 Hojin Jeon2 Jaehyun Kang1 Jaekyoung Bae1 Jihyuk Lee2 Jimin Lee2 John Won2 Joonwoo Ahn1 Junhyeong Park2 Junyoung Sung2 Kyungmin Lee2 Minseong Han1 Minsung Yoon1 Sejune Joo1 Seonil Son1 Seungcheol Park1 Seunggeun Cho2 Seungjun Moon1 Seungku Kim2 Yonghoon Dong2 Yongjin Cho1 Youngchan Kim2 Jinwoo Shin1,2§ 1RLWRLD 2KAIST †Project Leads §Research Leads [Figure 1] rlwrld.ai/rldx-1 # arXiv:2605.03269v2[cs.RO]6May2026 github.com/RLWRLD/RLDX-1 huggingface.co/collections/RLWRLD/rldx-1 [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] [Figure 7] [Figure 8] [Figure 9] [Figure 10] [Figure 11] [Figure 12] [Figure 13] [Figure 14] [Figure 15] [Figure 16] [Figure 17] [Figure 18] [Figur"
+    },
+    {
+      "slug": "3599_Exponentially_Faster_Language_Modelling",
+      "title": "Exponentially Faster Language Modelling",
+      "category": "HDBSCAN Cluster: reasoning, language, model, context",
+      "key": "FOLDER00329_1de7de343b2a",
+      "sourceIndex": 328,
+      "textBytes": 24145,
+      "figuresExtracted": 0,
+      "excerpt": "# arXiv:2311.10770v2[cs.CL]21Nov2023 ## Exponentially Faster Language Modeling Peter Belcak and Roger Wattenhofer ETH Z¨urich {belcak,wattenhofer}@ethz.ch ### Abstract Language models only really need to use an exponential fraction of their neurons for individual inferences. As proof, we present UltraFastBERT, a BERT variant that uses 0.3% of its neurons during inference while performing on par with similar BERT models. UltraFastBERT selectively engages just 12 out of 4095 neurons for each layer inference. This is achieved by replacing feedforward networks with fast feedforward networks (FFFs). While no truly efficient implementation currently exists to unlock the full acceleration potential of conditional neural execution, we provide highlevel CPU code achieving 78x speedup over the optimized baseline feedforward implementation, and a PyTorch implementation delivering 40x speedup over t"
+    },
+    {
+      "slug": "3600_Beyond_Semantic_Similarity_Rethinking_Retrieval_for_Agentic",
+      "title": "Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00330_74023426ca0d",
+      "sourceIndex": 329,
+      "textBytes": 141369,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2605.05242v1[cs.IR]3May2026 ## Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction Zhuofeng Li1,∗,† Haoxiang Zhang2,3∗ Cong Wei2,∗ Pan Lu4,∗ Ping Nie2,† Yi Lu2 Yuyang Bai1 Shangbin Feng5 Hangxiao Zhu1 Ming Zhong6 Yuyu Zhang7 Jianwen Xie8 Yejin Choi4 James Zou4 Jiawei Han6 Wenhu Chen2 Jimmy Lin2 Dongfu Jiang2, ,† Yu Zhang1, 1Texas A&M University 2University of Waterloo 3UC San Diego 4Stanford University 5University of Washington 6University of Illinois Urbana-Champaign 7Verdent AI 8Lambda [Figure 1] https://github.com/DCI-Agent/DCI-Agent-Lite ### Abstract Modern retrieval systems, whether lexical or semantic, expose a corpus through a fixed similarity interface that compresses access into a single top-k retrieval step before reasoning. This abstraction is efficient, but for agentic search, it becomes a bottleneck: exact lexical constra"
+    },
+    {
+      "slug": "3601_EgoX_Egocentric_Video_Generation_from_a_Single_Exocentric_Vi",
+      "title": "EgoX: Egocentric Video Generation from a Single Exocentric Video",
+      "category": "HDBSCAN Cluster: figure, video, university, generation",
+      "key": "FOLDER00331_cead5b4f6519",
+      "sourceIndex": 330,
+      "textBytes": 79183,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2512.08269v1[cs.CV]9Dec2025 ## EgoX: Egocentric Video Generation from a Single Exocentric Video Taewoong Kang1∗, Kinam Kim1∗, Dohyeon Kim2∗, Minho Park1, Junha Hyung1, Jaegul Choo1 1KAIST AI, 2 Seoul National University {keh0t0, kinamplify}@kaist.ac.kr, kdh8156@snu.ac.kr {m.park, sharpeeee, jchoo}@kaist.ac.kr Exocentric Video (Input) “The Dark Knight” – Joker [Figure 1] [Figure 2] [Figure 3] [Figure 4] [Figure 5] [Figure 6] [Figure 7] [Figure 8] [Figure 9] [Figure 10] [Figure 11] [Figure 12] Egocentric Video Generated by EgoX Figure 1. Given a single exocentric video, EgoX generates what the scene would look like from the actor’s eyes. Shown with an in-the-wild clip from The Dark Knight, our approach achieves realistic and generalizable egocentric generation. ### Abstract Egocentric perception enables humans to experience and understand the world directly from their own point of "
+    },
+    {
+      "slug": "3602_From_Skills_to_Talent_Organising_Heterogeneous_Agents_as_a_R",
+      "title": "From Skills to Talent: Organising Heterogeneous Agents as a Real-World Company",
+      "category": "HDBSCAN Cluster: skills, agents, skill, agent",
+      "key": "FOLDER00332_5f59e26459ed",
+      "sourceIndex": 331,
+      "textBytes": 110812,
+      "figuresExtracted": 5,
+      "excerpt": "### arXiv:2604.22446v1[cs.AI]24Apr2026 #### From Skills to Talent: Organising Heterogeneous Agents as a Real-World Company ###### Zhengxu Yu1,∗, Yu Fu1,∗, Zhiyuan He1, Yuxuan Huang3, Lee Ka Yiu1, Meng Fang3, Weilin Luo1, Jun Wang2 Project Homepage: https://one-man-company.com Repository: https://1mancompany.github.io/OneManCompany Digital Talent Market: https://one-man-company.com/market Abstract Individual agent capabilities have advanced rapidly through modular skills and tool integrations, yet multi-agent systems remain constrained by fixed team structures, tightly coupled coordination logic, and session-bound learning. We argue that this reflects a deeper absence: a principled organisational layer that governs how a workforce of agents is assembled, governed, and improved over time, decoupled from what individual agents know. To fill this gap, we introduce OneManCompany (OMC), a fram"
+    },
+    {
+      "slug": "3603_daVinci-Dev_Agent-native_Mid-training_for_Software_Engineeri",
+      "title": "daVinci-Dev: Agent-native Mid-training for Software Engineering",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00333_5f81aa0bd58e",
+      "sourceIndex": 332,
+      "textBytes": 73140,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2601.18418v2[cs.SE]27Jan2026 [Figure 1] [Figure 2] ## daVinci-Dev: Agent-native Mid-training for Software Engineering Ji Zeng2,3 Dayuan Fu1,3 Tiantian Mi1,3 Yumin Zhuang2,3 Yaxing Huang3 Xuefeng Li1,2,3 Lyumanshan Ye3 Muhang Xie1,3 Qishuo Hua2,3 Zhen Huang1,3 Mohan Jiang1,2,3 Hanning Wang1,3 Jifan Lin2,3 Yang Xiao3 Jie Sun1,3 Yunze Wu2,3 Pengfei Liu†1,2,3 1SII 2SJTU 3GAIR SII Open Source: Code Models Datasets [Figure 3] [Figure 4] ### Abstract Recently, the frontier of Large Language Model (LLM) capabilities has shifted from single-turn code generation to agentic software engineering—a paradigm where models autonomously navigate, edit, and test complex repositories. While post-training methods have become the de facto approach for code agents, agentic mid-training—mid-training (MT) on large-scale data that mirrors authentic agentic workflows—remains critically underexplored due t"
+    },
+    {
+      "slug": "3604_TiDAR_Think_in_Diffusion_Talk_in_Autoregression",
+      "title": "TiDAR: Think in Diffusion, Talk in Autoregression",
+      "category": "HDBSCAN Cluster: language, model, models, inference",
+      "key": "FOLDER00334_85535cb8b597",
+      "sourceIndex": 333,
+      "textBytes": 63804,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2511.08923v1[cs.CL]12Nov2025 [Figure 1] 2025-11-13 ## TiDAR: Think in Diffusion, Talk in Autoregression ###### Jingyu Liu*1, Xin Dong*, Zhifan Ye2, Rishabh Mehta, Yonggan Fu, Vartika Singh, Jan Kautz, Ce Zhang1, Pavlo Molchanov NVIDIA *Equal Contribution; XD as project lead; Corresponding: jingyu6@uchicago.edu, xind@nvidia.com Abstract: Diffusion language models hold the promise of fast parallel generation, while autoregressive (AR) models typically excel in quality due to their causal structure aligning naturally with language modeling. This raises a fundamental question: can we achieve a synergy with high throughput, higher GPU utilization, and AR level quality? Existing methods fail to effectively balance these two aspects, either prioritizing AR using a weaker model for sequential drafting (speculative decoding), leading to lower drafting efficiency, or using some form of lef"
+    },
+    {
+      "slug": "3605_Imaginative_Perception_Tokens_Enhance_Spatial_Reasoning_in_M",
+      "title": "Imaginative Perception Tokens Enhance Spatial Reasoning in Multimodal Language Models",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00335_1c594b19d4fc",
+      "sourceIndex": 334,
+      "textBytes": 102399,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2606.03988v2[cs.AI]3Jun2026 ## Imaginative Perception Tokens Enhance Spatial Reasoning in Multimodal Language Models Mahtab Bigverdi1,2∗ Linjie Li1∗ Weikai Huang1,2∗ Yiming Liu 1 Jaemin Cho 1,2,3 Jieyu Zhang 1,2 Tuhin Kundu 3 Chris Dangjoo Kim 2 Zelun Luo 4 Linda G. Shapiro1 Ranjay Krishna1,2 1University of Washington, 2Allen Institute for AI, 3Microsoft, 4OpenAI #### Abstract Vision-language models (VLMs) excel at many tasks, yet continue to struggle with spatial reasoning—problems where the key information is not directly observable in the input. Many spatial questions require imaginative perception: simulating an unseen viewpoint, tracing a trajectory through an occluded space, or integrating partial views into a coherent spatial map. Humans naturally support this kind of reasoning through imagination. Prior work has introduced intermediate visual representations (e.g., visual"
+    },
+    {
+      "slug": "3606_PaddleOCR-VL_Boosting_Multilingual_Document_Parsing_via_a_09",
+      "title": "PaddleOCR-VL: Boosting Multilingual Document Parsing via a 0.9B Ultra-Compact Vision-Language Model",
+      "category": "HDBSCAN Cluster: model, vision-language, decoding, box",
+      "key": "FOLDER00336_aa7d9d87db1a",
+      "sourceIndex": 335,
+      "textBytes": 94598,
+      "figuresExtracted": 5,
+      "excerpt": "[Figure 1] # arXiv:2510.14528v4[cs.CV]25Nov2025 ## PaddleOCR-VL: Boosting Multilingual Document Parsing via a 0.9B Ultra-Compact Vision-Language Model Cheng Cui, Ting Sun, Suyin Liang, Tingquan Gao, Zelun Zhang, Jiaxuan Liu, Xueqing Wang, Changda Zhou, Hongen Liu, Manhui Lin, Yue Zhang, Yubo Zhang, Handong Zheng, Jing Zhang, Jun Zhang, Yi Liu, Dianhai Yu, Yanjun Ma PaddlePaddle Team, Baidu Inc. paddleocr@baidu.com Source Code: https://github.com/PaddlePaddle/PaddleOCR Models & Online Demo: https://huggingface.co/PaddlePaddle ### Abstract In this report, we propose PaddleOCR-VL, a SOTA and resource-efficient model tailored for document parsing. Its core component is PaddleOCR-VL-0.9B, a compact yet powerful visionlanguage model (VLM) that integrates a NaViT-style dynamic resolution visual encoder with the ERNIE-4.5-0.3B language model to enable accurate element recognition. This innovativ"
+    },
+    {
+      "slug": "3607_Diffusion_Models_Are_Real-Time_Game_Engines",
+      "title": "Diffusion Models Are Real-Time Game Engines",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00337_04b1d0c5ff32",
+      "sourceIndex": 336,
+      "textBytes": 58774,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2408.14837v2[cs.LG]24Apr2025 ## DIFFUSION MODELS ARE REAL-TIME GAME ENGINES Dani Valevski∗ Google Research daniv@google.com Yaniv Leviathan∗ Google Research leviathan@google.com Moab Arar∗ Tel Aviv University† moab.arar@gmail.com Shlomi Fruchter∗ Google DeepMind shlomif@google.com ABSTRACT We present GameNGen, the first game engine powered entirely by a neural model that also enables real-time interaction with a complex environment over long trajectories at high quality. When trained on the classic game DOOM, GameNGen extracts gameplay and uses it to generate a playable environment that can interactively simulate new trajectories. GameNGen runs at 20 frames per second on a single TPU and remains stable over extended multi-minute play sessions. Next frame prediction achieves a PSNR of 29.4, comparable to lossy JPEG compression. Human raters are only slightly better than random cha"
+    },
+    {
+      "slug": "3608_GameWorld_Towards_Standardized_and_Verifiable_Evaluation_of",
+      "title": "GameWorld: Towards Standardized and Verifiable Evaluation of Multimodal Game Agents",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00338_5e0824b9411f",
+      "sourceIndex": 337,
+      "textBytes": 155011,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2604.07429v1[cs.CV]8Apr2026 ## GameWorld: Towards Standardized and Verifiable Evaluation of Multimodal Game Agents Mingyu Ouyang∗1, Siyuan Hu∗1, Kevin Qinghong Lin2, Hwee Tou Ng1†, Mike Zheng Shou1† 1National University of Singapore, 2University of Oxford https://gameworld-bench.github.io [Figure 1] Figure 1 GameWorld covers 34 diverse games with 170 tasks for standardized evaluation of game agents. ### Abstract Towards an embodied generalist for real-world interaction, Multimodal Large Language Model (MLLM) agents still suffer from challenging latency, sparse feedback, and irreversible mistakes. Video games offer an ideal testbed with rich visual observations and closed-loop interaction, demanding fine-grained perception, longhorizon planning, and precise control. However, systematically evaluating these capabilities is currently hindered by heterogeneous action interfaces and h"
+    },
+    {
+      "slug": "3609_TTRL_Test-Time_Reinforcement_Learning",
+      "title": "TTRL: Test-Time Reinforcement Learning",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00339_3bee8d12d803",
+      "sourceIndex": 338,
+      "textBytes": 69212,
+      "figuresExtracted": 5,
+      "excerpt": "# TTRL: Test-Time Reinforcement Learning Yuxin Zuo∗1,2 Kaiyan Zhang∗1 Li Sheng1,2 Shang Qu1,2 Ganqu Cui2 Xuekai Zhu1 Haozhan Li1,2 Yuchen Zhang2 Xinwei Long1 Ermo Hua1 Biqing Qi2 Youbang Sun1 Zhiyuan Ma1 Lifan Yuan1 Ning Ding†1,2 Bowen Zhou†1,2 1Tsinghua University 2Shanghai AI Lab https://github.com/PRIME-RL/TTRL arXiv:2504.16084v3[cs.CL]30Jun2025 ### Abstract This paper investigates Reinforcement Learning (RL) on data without explicit labels for reasoning tasks in Large Language Models (LLMs). The core challenge of the problem is reward estimation during inference while not having access to ground-truth information. While this setting appears elusive, we find that common practices in Test-Time Scaling (TTS), such as majority voting, yield surprisingly effective rewards suitable for driving RL training. In this work, we introduce Test-Time Reinforcement Learning (TTRL), a novel method f"
+    },
+    {
+      "slug": "3610_nablaNABLA_Neighborhood_Adaptive_Block-Level_Attention",
+      "title": "nablaNABLA: Neighborhood Adaptive Block-Level Attention",
+      "category": "HDBSCAN Bridge and Noise Papers",
+      "key": "FOLDER00340_4c12797d90e5",
+      "sourceIndex": 339,
+      "textBytes": 34790,
+      "figuresExtracted": 5,
+      "excerpt": "# arXiv:2507.13546v1[cs.CV]17Jul2025 ## ∇NABLA: Neighborhood Adaptive Block-Level Attention Dmitrii Mikhailov1,*, Aleksey Letunovskiy1, Maria Kovaleva1, Vladimir Arkhipkin1, Vladimir Korviakov1,*, Vladimir Polovnikov1,2, Viacheslav Vasilev1,3, Evelina Sidorova1, Denis Dimitrov1,4,* 1Sber AI, Moscow, Russia, 2Lomonosov Moscow State University (MSU), Moscow, Russia, 3Moscow Institute of Physics and Technology (MIPT), Moscow, Russia, 4Artificial Intelligence Research Institute (AIRI), Moscow, Russia *Corresponding authors: {dmsmikhaylov, vpkorvyakov, dimitrov.d.v}@sberbank.ru ###### Abstract Recent progress in transformer-based architectures has demonstrated remarkable success in video generation tasks. However, the quadratic complexity of full attention mechanisms remains a critical bottleneck, particularly for high-resolution and long-duration video sequences. In this paper, we propose NA"
     }
   ]
 }
