@@ -1,0 +1,1733 @@
+arXiv:2506.09993v2[cs.CV]3Jul2025
+
+# Text-Aware Image Restoration with Diffusion Models
+
+Jaewon Min1∗ Jin Hyeon Kim2∗ Paul Hyunbin Cho1 Jaeeun Lee3 Jihye Park4 Minkyu Park4
+
+Sangpil Kim2† Hyunhee Park4† Seungryong Kim1† 1KAIST AI 2Korea University 3Yonsei University 4Samsung Electronics
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 1]
+
+[Figure 2]
+
+[Figure 3]
+
+[Figure 4]
+
+[Figure 5]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 6]
+
+[Figure 7]
+
+[Figure 8]
+
+[Figure 9]
+
+DiffBIR DiffBIRv2.1 TeReDiff(Ours) GT
+
+[Figure 10]
+
+[Figure 11]
+
+[Figure 12]
+
+[Figure 13]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 14]
+
+[Figure 15]
+
+[Figure 16]
+
+[Figure 17]
+
+[Figure 18]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 19]
+
+[Figure 20]
+
+[Figure 21]
+
+[Figure 22]
+
+[Figure 23]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 24]
+
+[Figure 25]
+
+[Figure 26]
+
+[Figure 27]
+
+[Figure 28]
+
+[Figure 29]
+
+[Figure 30]
+
+[Figure 31]
+
+DiffBIR DiffBIRv2.1 TeReDiff(Ours) GT
+
+[Figure 32]
+
+[Figure 33]
+
+[Figure 34]
+
+[Figure 35]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 36]
+
+[Figure 37]
+
+[Figure 38]
+
+[Figure 39]
+
+[Figure 40]
+
+[Figure 41]
+
+[Figure 42]
+
+[Figure 43]
+
+[Figure 44]
+
+[Figure 45]
+
+Figure 1: Text-Aware Image Restoration (TAIR). Given a low-quality (LQ) image containing degraded text, our method faithfully restores the original textual content with high legibility and fidelity, whereas previous diffusion-based models [5, 94, 51, 9] often fail to recover the text regions.
+
+###### Abstract
+
+Image restoration aims to recover degraded images. However, existing diffusionbased restoration methods, despite great success in natural image restoration, often struggle to faithfully reconstruct textual regions in degraded images. Those methods frequently generate plausible but incorrect text-like patterns, a phenomenon we refer to as text–image hallucination. In this paper, we introduce Text-Aware
+
+∗: Equal contribution †: Corresponding authors
+
+Image Restoration (TAIR), a novel restoration task that requires the simultaneous recovery of visual contents and textual fidelity. To tackle this task, we present SA-Text, a large-scale benchmark of 100K high-quality scene images densely annotated with diverse and complex text instances. Furthermore, we propose a multi-task diffusion framework, called TeReDiff, that integrates internal features from diffusion models into a text-spotting module, enabling both components to benefit from joint training. This allows for the extraction of rich text representations, which are utilized as prompts in subsequent denoising steps. Extensive experiments demonstrate that our approach consistently outperforms state-of-the-art restoration methods, achieving significant gains in text recognition accuracy. See our project page: https://cvlab-kaist.github.io/TAIR/
+
+###### 1 Introduction
+
+Image restoration is a fundamental task in computer vision, aiming to recover high-quality images from degraded observations. This task is crucial for applications ranging from photography enhancement to medical and autonomous-vision systems. Recent advances in generative modeling—particularly diffusion models [25, 67]—have demonstrated remarkable capabilities in image restoration by leveraging powerful generative priors, achieving superior perceptual quality across various degradation scenarios [95, 78, 51, 86, 94, 9].
+
+However, previous models still struggle to recover text regions, as shown in Fig. 1. Since these models rely on powerful generative priors of diffusion models [51, 86, 94, 9], they often synthesize plausible textures instead of reconstructing the precise characters, leading to a text-image hallucination. Yet, textual content provides semantic cues that are essential for scenarios such as document digitization [59, 3, 42, 19, 20], street sign understanding [105, 73, 17], or AR navigation [41], where even slight distortions can compound into significant information loss. Most image restoration studies have focused on the overall perceptual quality and have not explicitly addressed text readability.
+
+On the other hand, image super-resolution methods for text restoration have attempted to improve the perceptual quality and legibility of cropped text regions [15, 81, 88, 39]. However, their patch-level focus introduces fundamental limitations. The global context is discarded by focusing solely on cropped text regions, thereby ignoring information crucial for overall visual coherence. Additionally, most methods train the model from scratch without leveraging large-scale generative priors, restricting their ability to generate high-quality images.
+
+To address these limitations, we propose a new task: Text-Aware Image Restoration (TAIR). In contrast to conventional image restoration approaches [82, 45, 95, 78, 51, 86, 94, 9], TAIR necessitates the integration of textual semantics within the restoration process by operating on full natural images that contain text of varying sizes and spatial contexts—unlike prior methods [15, 81, 88, 39] that focused solely on cropped text regions. However, a primary challenge lies in the absence of suitable datasets. Existing image restoration benchmarks [1, 6, 44, 85] are not designed to address text reconstruction, making it difficult to train models that align visual restoration with text readability. While some datasets [72, 76, 22, 32, 96, 10] provide image-text pairs for text-spotting, they are suboptimal for our purpose due to their limitations in scale and quality. These datasets, typically created through synthetic generation [22] or manual annotations [72, 76, 96, 10], often suffer from low resolution.
+
+To overcome this, we introduce a large-scale dataset, SA-Text, specifically curated for TAIR. Our dataset curation pipeline begins with automatic text detection to identify candidate images containing text regions. These candidates are then validated using vision-language models [4, 57] (VLMs), which align semantic labels with corresponding textual regions. After filtering out low-quality images using VLMs, we obtain high-quality crops of scene images paired with accurate text annotations. Based on SA-1B [36], SA-Text comprises 100K images densely annotated with rich textual content. The text in this dataset encompasses a diverse range of font styles, sizes, orientations, and complex visual contexts, offering a robust benchmark for evaluating TAIR. To the best of our knowledge, this is the first benchmark to jointly evaluate perceptual restoration quality and text fidelity.
+
+The primary objective of TAIR is to restore full scene images while faithfully preserving the original textual content. To achieve this, we propose a new model for TAIR, named TeReDiff (Text Restoration Diffusion model) that combines a diffusion-based image restoration model with a text-spotting module.
+
+###### Detection and Patch Cropping
+
+###### Detection and Box Cropping VLM Filtering
+
+|[Figure 46]<br><br>|
+|---|
+
+|[Figure 47]<br><br>| |
+|---|
+|
+|---|
+
+[Figure 48]
+
+[Figure 49]
+
+Cropped Box
+
+VLM1 “ 307 ”
+
+[Figure 50]
+
+| |
+|---|
+
+[Figure 51]
+
+Discard
+
+###### VLM2 “ 304 ”
+
+| |
+|---|
+
+[Figure 52]
+
+[Figure 53]
+
+Cropped Box
+
+###### VLM1 “ 306 ”
+
+| |
+|---|
+
+[Figure 54]
+
+| |
+|---|
+
+Keep and anno tate
+
+VLM2 “ 306 ”
+
+VLM Classification
+
+|[Figure 55]<br><br>| |
+|---|---|
+| | |
+
+|[Figure 56]<br><br>| |
+|---|
+| |
+|---|---|
+| | |
+
+FilteredVLMImages VLM ImagesLv1 ImagesLv2 ImagesLv3
+
+VLM Input Prompt
+
+" You are an image quality inspector.
+
+Classify the image into one of the following levels based on its sharpness:
+
+- 1. "Level 1" – The image is blurry and lacks clarity.
+- 2. "Level 2" – The image is somewhat clear but has minor blurriness.
+- 3. "Level 3" – The image is very clear and sharp. Please answer with exactly one of the three labels: "Level 1", "Level 2", or "Level 3".
+
+True Positive
+
+False Negative
+
+| |
+|---|
+
+| |
+|---|
+
+Text Detection Text Recognition
+
+Text-Spotting Model
+
+Patch Cropping
+
+“700, 300,
+
+| |
+|---|
+
+306, 206”
+
+- Figure 2: SA-Text curation pipeline. First, a text-spotting model such as DG-Bridge Spotter [31] is applied to the entire image to detect text regions. Since detection at the full-image scale may fail to capture certain text instances, we further extract image patches corresponding to the detected regions and reapply the same model to each patch in order to detect potential false negatives. Next, two vision-language models (VLMs) [4, 57] transcribe the text within each bounding box, and only patches with consistent predictions from both models are retained and annotated. Finally, a single VLM [4] classifies each patch into one of three categories based on image sharpness and blurriness.
+
+[Figure 57]
+
+Computer Vision Lab @ KAIST AI 1
+
+Inspired by recent studies demonstrating the effectiveness of diffusion features in vision downstream tasks [87, 33, 75], we directly use diffusion U-Net features as input to the text-spotting module. This multi-task diffusion framework improves the text spotting performance by leveraging semantically rich and text-aware representations, while also enhancing restoration performance through shared features. Furthermore, at inference time, the output of the text spotting module can be leveraged to generate input prompts for subsequent denoising steps, thereby jointly enhancing visual quality and text readability.
+
+In summary, our key contributions are as follows:
+
+- • We introduce Text-Aware Image Restoration (TAIR), the first restoration task that explicitly requires simultaneous recovery of scene appearance and textual fidelity.
+- • We release SA-Text, a dataset of 100K high-quality images densely annotated with diverse and VLM-verified text, enabling rigorous evaluation and further research on text-conditioned restoration.
+- • We propose TeReDiff, a model trained within a multi-task diffusion framework where U-Net features are forwarded to a text-spotting model during training, while the spotted text is provided as a prompt at inference time, yielding mutual gains in perceptual quality and character legibility.
+
+###### 2 Related Work
+
+Diffusion-based image restoration. Advancements in diffusion models for high-quality image [64, 67, 62] and video generation [90, 5, 103] have led to their application in various tasks, including image restoration (IR)[51, 61, 68, 69]. In contrast to previous GAN-based IR approaches[82, 83, 97, 8, 60], which suffer from unstable training and mode collapse, diffusion-based IR exhibits stable training, enhanced robustness, and improved generalization due to its iterative denoising nature. SR3 [69] was the first to introduce diffusion models for IR tasks, achieving state-of-the-art performance on both facial and natural image datasets. More recent works [68, 78] have further improved DMs-based IR methods by addressing challenges related to image degradation and fidelity.
+
+Text spotting. Scene text spotting refers to the joint task of detecting and recognizing text within natural images. Early approaches typically decomposed the problem into two distinct stages: text detection, which localizes text regions using region-based or segmentation-based techniques [47, 54, 58, 79, 48], and text recognition, which interprets the localized content using sequence modeling [21, 70, 71]. To address the challenges posed by irregularly shaped text in real-world scenes, recent detection methods have proposed polygon [91] or Bezier curve representations [53], substantially improving localization accuracy. Furthermore, transformer-based architectures inspired by object
+
+[Figure 58]
+
+| |
+|---|
+
+: True Positive
+
+: Incorrect Detection
+
+: False Negative (Missed Instance)
+
+: Patch Cropping
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 59]
+
+[Figure 60]
+
+[Figure 61]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| | |
+|---|---|
+
+| |
+|---|
+
+(a) Original Image
+
+(b) Ambiguous Instances (c) Incorrect Detections (d) False Negatives
+
+- Figure 3: Illustration of our dataset curation pipeline’s effectiveness. (a) Original high-resolution image with multiple text instances. (b) Ambiguous text instances are removed during the Vision–Language Model (VLM) filtering stage when the two VLMs produce differing recognition outputs. (c) Incorrect detections from the full image are corrected by re-running the detection model on smaller crops; here, the phrase "Powered by Yorkshire Bank" is successfully split into individual words. (d) False negatives (missed instances) from the initial detection on the entire image are effectively captured during the second detection pass on the smaller crops; the previously missed instance "WORK" is now correctly detected.
+
+detection models such as DETR [7] have demonstrated strong performance in text detection [91, 74, 101]. Concurrently, recognition has been formulated as an image-to-text translation task, with advances in visual feature extraction and cost computation [16, 40, 43, 29, 26, 30, 27, 28, 11–13] and language modeling [93, 18] contributing to significant improvements in recognition accuracy.
+
+###### 3 SA-Text Dataset
+
+In this section, we present our SA-Text curation pipeline, consisting of a detection stage and a recognition stage, as detailed in Sec.3.1. Next, we analyze SA-Text to illustrate its suitability for TAIR in Sec.3.2.
+
+###### 3.1 Data Curation Pipeline
+
+TAIR requires datasets where textual instances in images are explicitly paired with their corresponding bounding boxes. Existing datasets like TextOCR [72] provide such densely annotated images for text spotting tasks. However, their low resolution makes them unsuitable for training restoration models. TextZoom [80] provides text annotations for the high-resolution images in RealSR [6] and SR-RAW [102], which could be leveraged for TAIR. Yet, the limited scale of TextZoom [80] constrains the capacity for learning the fine-grained image-text alignment, which is essential for TAIR. Furthermore, the manual construction processes of these datasets pose significant challenges for scaling to larger and more diverse datasets.
+
+Beyond these datasets, conventional image restoration datasets [44, 32, 49], although rich in high-quality images, neither guarantee the presence of textual content nor provide any accompanying text annotations. In contrast, scene text spotting datasets include dense text annotations, but their images are predominantly low-quality and thus inadequate for image restoration training. Therefore, a suitable dataset for TAIR must satisfy three critical conditions: (i) high-quality images, (ii) dense and accurate text-location annotations, and (iii) scalability in both volume and diversity. Existing datasets do not fully meet these conditions. To bridge this gap, we propose a scalable dataset curation pipeline that produces high-resolution images with dense text annotations, specifically tailored for TAIR. To ensure a high-quality dataset suitable for image restoration, we sourced images from SA-1B [36], a well-known corpus of 11M high-resolution images.
+
+Text detection and region cropping. The first stage of our pipeline involves running a dedicated text detection model over entire high-resolution images to identify regions containing text instances. We observe that when images are high-resolution, the detection model often misses relatively small text instances as shown in Fig. 2. Nonetheless, based on these initial detections, we extract a 512×512 crop that fully encloses at least one complete text instance and ensures that each instance
+
+[Figure 62]
+
+[Figure 63]
+
+[Figure 64]
+
+[Figure 65]
+
+[Figure 66]
+
+[Figure 67]
+
+[Figure 68]
+
+[Figure 69]
+
+- Figure 4: Example images from our SA-Text. Our dataset comprises high-quality, diverse images featuring text in varied sizes, styles, and layouts—including curved, rotated, and complex forms—providing a robust foundation for the proposed TAIR task.
+
+appears in only one crop. As smaller text instances missed in the first pass often remain within these crops, we address this by re-running the detection model on every crop. The reduced field of view substantially boosts recall and introduces only a minimal number of additional false positives, which are subsequently removed in our VLM-based filtering stage. These refined detection results are passed to the recognition stage. Examples of this process are illustrated in Fig. 3.
+
+VLM-based text recognition and filtering. Recent vision–language models (VLMs) [4, 57] have exhibited strong text-recognition performance on OCRBench [55], validating their effectiveness as recognition backbones. Accordingly, we adopt VLMs for our recognition stage. To leverage VLM accuracy without suffering from their localization shortcomings [65], we first isolate every text instance within a crop using bounding boxes derived from the polygons returned by the detector. Each isolated patch is submitted to two distinct VLMs to mitigate individual recognition errors and resolve ambiguities in challenging cases. We retain an instance only when both VLMs return identical transcriptions, thereby filtering out misreadings, hard-to-read texts, and the false positives introduced during detection. Specifically, we utilize Qwen2.5-VL [4] and OVIS2 [57] in this dual-model verification process. We then apply a final filtering stage using one of the VLMs ( Qwen2.5-VL [4]) again to eliminate blurry or out-of-focus crops. SA-1B [36], despite its overall high quality, contains images with intentional blurring of human faces, license plates, and privacy-sensitive regions. Therefore, global variance-based blur metrics, such as Laplacian filtering, often fail to detect such localized, intentional blur. Moreover, crops may include background text that is inherently out of focus. By employing a VLM, we successfully identify and filter both the crops that have intentionally blurred regions or naturally out-of-focus text, thereby improving dataset quality for TAIR. The result images of the overall pipeline are shown in Fig. 4.
+
+[Figure 70]
+
+Computer Vision Lab @ KAIST AI 1
+
+- 3.2 Dataset Analysis
+
+Leveraging our dataset curation pipeline, which is specifically designed to improve text annotation accuracy, we construct SA-Text100K from SA-1B [36]. Note that the entire pipeline is fully automatic, making it readily scalable for curating even larger datasets. We compare SA-Text with datasets for text spotting [76, 32, 96, 10, 72] and image restoration [44, 32, 49]. As shown in Tab. 1, SAText is the only one that provides both highquality images and explicit text annotations, while also containing the largest number of images among all compared datasets. More detailed analyses of our dataset can be found in the supplementary materials.
+
+Table 1: Comparison with other datasets.
+
+Task Dataset HQ Text # of Img
+
+COCOText ✗ ✓ 13,880
+
+ICDAR2015 ✗ ✓ 1,000 CTW1500 ✗ ✓ 1,000 TotalText ✗ ✓ 1,255 TextOCR ✗ ✓ 21,778
+
+Text Spotting
+
+LSDIR ✓ ✗ 84,991
+
+Image Restoration
+
+DIV2K ✓ ✗ 800
+
+Flickr2K ✓ ✗ 2,650
+
+TAIR SA-Text (Ours) ✓ ✓ 105,330
+
+###### 4 Method
+
+###### 4.1 Overall Framework Overview
+
+Our complete framework of TeReDiff, consisting of the model architecture, as well as the training and inference pipelines, is illustrated in Fig. 5. We leverage a diffusion model’s strong generative prior for our task, TAIR, incorporating ControlNet [99] as a conditioning mechanism within the T2I diffusion
+
+(a) Detailed Architecture
+
+- (b) Training Pipeline
+- (c) Inference Pipeline
+
+LQImage
+
+𝑡, 𝑝𝑡
+
+𝑧𝑡 𝑐𝑡
+
+###### Diffusion Loss
+
+###### Text-Spotting Loss
+
+Ctrl-Net
+
+ℒdiff
+
+ℒenc + ℒdec
+
+U-Net 𝓤 Control-Net 𝓒
+
+Detection Decoder
+
+NoisyImage
+
+...
+
+...
+
+Skip connection
+
+Diffusion Feature Encoder
+
+U-Net
+
+Cross-attention
+
+. . .
+
+Recognition Decoder
+
+Convolution
+
+...
+
+LQImage
+
+Ctrl-Net
+
+𝜖𝑡
+
+Detection Decoder 𝓓𝐝𝐞𝐭
+
+HQ Image
+
+Concat
+
+Diffusion Feature Encoder 𝓔
+
+###### FFN FFN FFN
+
+Multi-scale feature
+
+|𝑑 𝑖 𝑖=1𝐾<br><br>|
+|---|
+
+. . .
+
+Detection
+
+Poly
+
+Decoder
+
+Noise
+
+Diffusion Feature Encoder
+
+. . .
+
+U-Net
+
+. . .
+
+Cross-attention
+
+. . .
+
+FFN FFN FFN
+
+Recognition
+
+|𝑟 𝑖 𝑖=1𝐾<br><br>|
+|---|
+
+. . .
+
+Text
+
+Decoder
+
+xT timesteps
+
+Recognition Decoder 𝓓𝐫𝐞𝒄
+
+xT timesteps
+
+- Figure 5: Overview of the TeReDiff architecture, training, and inference pipeline. TAIR integrates a text-spotting module into a diffusion image restoration framework, using text supervision during training and recognized text as a prompt at inference to enhance text-aware image restoration.
+
+framework. To handle unknown complex degradations in low-quality (LQ) images, a lightweight degradation removal module is employed following prior work [51, 2], improving generalization and conditioning reliability. A text-spotting module guides training via its supervisory signals. Unlike conventional methods relying on ResNet features [53, 93, 37, 92, 101], we utilize semantically rich diffusion features pretrained on large-scale image-text pairs. These diffusion features not only enhance text spotting performance, benefiting from their innate capability to generate text images, but also improve restoration quality through shared representations. The module outputs both localization and recognition of text, with recognized text used as a prompt during diffusion inference to refine textual restoration. A detailed analysis is provided in the supplementary material.
+
+###### 4.2 Architecture
+
+Light-weight degradation removal module. Given the complexity and entanglement of various degradations in LQ images, using them directly as conditioning signals for image restoration can lead to instability and difficulty in learning text-aware image features. Following prior work [51, 2], a lightweight degradation removal module [45] is initially applied to the LQ image to obtain a mildly denoised and smoothed image, thereby slightly reducing noise in text regions. This image then serves as a more reliable condition. It is subsequently encoded by a VAE encoder [35] to produce the conditioning latent c.
+
+Diffusion based image restoration module. The image restoration module is based on a diffusion model architecture comprising a U-Net U and a Control-Net C. The conditioning latent c, together with the prompt pt, is processed to guide restoration within the U-Net [67]. Specifically, the highquality (HQ) image is encoded into a latent representation z0, followed by a diffusion process that progressively adds noise, producing a noisy latent zt at timestep t ∼ U(1,T), where U denotes a uniform distribution over diffusion steps 1 to T. To enhance conditional learning, the noisy latent and conditioning latent are concatenated as ct = concat(zt,c) and fed into the Control-Net C.
+
+Text-spotting module. Incorporating a text-spotting module within the restoration framework enables the diffusion model to learn text-aware image features via gradient supervision. We adopt a transformer-based architecture to leverage the attention mechanism for accurate text detection and recognition. Specifically, an encoder E and two decoders, Ddet and Drec, are employed for multi-scale diffusion feature processing, text detection, and text recognition, respectively. The text-spotting
+
+module outputs a set of polygon-character tuples defined as Y = (d(i),r(i))Ki=1, where i indexes each text instance, and K denotes the number of instances with confidence scores exceeding a threshold T.
+
+ABCNet v2 [56] TESTR [101]
+
+Deg. Level Model
+
+Detection End-to-End Detection End-to-End Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑) Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑)
+
+- HQ (GT) 92.16 86.85 89.43 71.79 82.05 92.59 87.81 90.13 75.90 84.18
+
+LQ (Lv1) 89.79 29.51 44.42 24.29 34.25 84.01 30.24 44.47 25.93 34.73 Real-ESRGAN [82] 83.79 43.34 57.13 21.45 30.12 85.19 41.98 56.24 22.90 31.52 SwinIR [45] 84.95 40.93 55.25 22.70 31.26 87.93 39.62 54.63 25.50 33.75 ResShift [95] 81.93 40.07 53.82 20.40 28.74 88.47 35.81 50.98 22.39 30.14 StableSR [78] 77.90 55.44 64.78 21.93 29.29 84.44 50.68 63.34 24.02 31.84 DiffBIR [51] 76.29 56.44 64.88 23.14 32.73 84.00 52.13 64.34 25.51 35.47 SeeSR [86] 70.00 61.88 65.69 20.16 28.63 78.85 55.76 65.32 23.31 32.82 SUPIR [94] 43.64 49.46 46.37 14.58 19.34 53.02 46.19 49.37 17.44 22.29 FaithDiff [9] 69.16 61.51 65.12 20.44 27.78 78.80 57.12 66.23 22.50 31.59 TeReDiff (Ours) 85.29 58.34 69.29 26.59 35.69 87.50 54.90 67.47 28.19 36.99
+
+Level1
+
+LQ (Lv2) 87.67 22.89 36.30 20.49 27.82 78.45 23.93 36.68 20.49 27.37 Real-ESRGAN [82] 81.42 41.12 54.64 18.31 24.88 84.92 38.80 53.27 19.29 27.50 SwinIR [45] 80.14 37.31 50.91 17.82 24.93 85.43 34.81 49.47 19.07 26.99 ResShift [95] 81.11 35.22 49.12 17.89 25.54 85.18 32.05 46.57 17.26 26.09 StableSR [78] 75.49 51.95 61.55 19.55 26.69 79.03 48.87 60.39 20.06 27.68 DiffBIR [51] 72.96 53.94 62.03 19.60 27.52 79.69 50.50 61.82 21.64 30.36 SeeSR [86] 68.93 60.65 64.53 19.48 26.72 77.50 54.49 63.99 21.83 29.17 SUPIR [94] 42.01 45.65 43.75 13.21 17.42 53.54 43.25 47.84 15.50 19.96 FaithDiff [9] 66.62 59.34 62.77 18.94 25.99 76.16 54.17 63.31 20.98 28.56 TeReDiff (Ours) 83.02 56.30 67.10 24.42 33.23 86.95 52.86 65.75 26.39 35.13
+
+Level2
+
+LQ (Lv3) 85.38 13.24 22.92 12.17 16.95 76.01 15.37 25.57 12.52 17.72 Real-ESRGAN [82] 72.48 28.65 41.07 11.89 16.37 76.51 27.02 39.93 12.13 18.22 SwinIR [45] 74.41 25.57 38.06 11.27 16.33 78.38 24.16 36.94 11.85 17.12 ResShift [95] 75.00 22.57 34.70 10.80 15.19 81.10 20.04 32.13 9.89 15.63 StableSR [78] 67.63 38.08 48.72 13.34 18.91 72.21 35.22 47.35 13.65 19.68 DiffBIR [51] 59.30 42.20 49.31 13.88 19.39 72.27 38.98 50.65 15.61 22.67 SeeSR [86] 55.06 46.83 50.61 13.38 18.47 64.95 43.93 52.41 14.93 20.88 SUPIR [94] 31.05 34.72 32.78 9.07 11.77 40.78 32.77 36.34 11.21 14.02 FaithDiff [9] 56.04 47.91 51.66 13.69 19.01 69.44 45.01 54.62 15.40 21.18 TeReDiff (Ours) 81.76 44.11 57.30 19.61 27.50 84.50 42.02 56.13 19.92 28.34
+
+Level3
+
+- Table 2: Quantitative results of text spotting on SA-Text. Each block shows the performance of various image restoration methods under different degradation strengths, evaluated using two text spotting models. ‘None’ refers to recognition without a lexicon, and ‘Full’ denotes recognition with a full lexicon. Best results are in bold and second-best are underlined.
+
+Here, d(i) = (d(1i),...,d(Ni)) represents the coordinates of N control points forming a polygon, and r(i) = (r1(i),...,rM(i)) denotes the M recognized characters.
+
+###### 4.3 Textual prompt guidance
+
+Detected Box
+
+Recognized Text Input as a prompt for next timestep
+
+| |
+|---|
+
+T=0
+
+HQ(GT)
+
+LQ
+
+T=999
+
+T=652
+
+[Figure 71]
+
+[Figure 72]
+
+[Figure 73]
+
+[Figure 74]
+
+[Figure 75]
+
+TeReDiff(DiffBIROurs)
+
+  
+
+[Figure 76]
+
+[Figure 77]
+
+[Figure 78]
+
+[Figure 79]
+
+[Figure 80]
+
+| | |
+|---|---|
+| | |
+| | |
+
+| | |
+|---|---|
+| | |
+| | |
+
+| | |
+|---|---|
+| | |
+| | |
+
+
+
+
+
+
+
+“LOUIS VUITTON”
+
+“LOUSS VUITTON”
+
+“LOUIS VUITTON”
+
+- Figure 6: Example of textual prompt guidance for each timestep. The outputs of the text-spotting module serve as input prompts for the next timestep. The detected boxes and recognized texts may also change as the image is gradually restored over timesteps.
+
+ABCNet v2 [56] TESTR [101]
+
+Model
+
+Detection End-to-End Detection End-to-End Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑) Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑)
+
+HQ (GT) 90.03 85.52 87.72 72.06 79.48 90.29 85.77 87.97 74.50 81.72 LQ 89.10 44.97 59.77 42.64 50.21 85.33 51.61 64.32 47.08 55.11 Real-ESRGAN [82] 79.15 52.70 63.27 35.30 39.88 82.67 53.94 65.29 38.16 42.36 SwinIR [45] 80.29 47.45 59.64 38.39 42.63 82.92 47.89 60.72 39.97 44.56 ResShift [95] 81.17 33.76 47.69 30.95 34.87 82.23 39.91 53.74 35.31 39.99 StableSR [78] 79.79 59.89 68.42 41.23 47.64 82.19 60.39 69.62 42.53 49.39 DiffBIR [51] 66.04 59.69 62.71 33.75 40.05 76.33 61.87 68.35 39.27 46.11 SeeSR [86] 68.12 63.46 65.71 37.11 43.43 74.29 62.47 67.87 40.34 46.54 SUPIR [94] 44.00 40.56 42.21 22.29 25.03 53.08 44.47 48.39 27.25 30.59 FaithDiff [9] 71.21 64.50 67.69 38.81 44.28 76.90 65.20 70.57 41.64 47.97 TeReDiff (Ours) 83.95 67.58 74.88 48.39 55.01 84.30 67.37 74.89 49.39 56.45
+
+- Table 3: Quantitative results of text spotting on Real-Text. Using text spotting models, we evaluate the accuracy of text detection and recognition of the restored images on Real-Text.
+
+During the denoising process, the text-spotting module outputs polygon-character tuples {(d(i),r(i))}Ki=1 at each timestep t. To facilitate TAIR, a recognition-guided prompt is constructed as pt = Prompter({r(i)}Ki=1), where Prompter(·) formats the recognized texts for conditioning. This prompt dynamically guides the diffusion model to refine textual content based on intermediate recognition results as shown in Fig. 6. The prompt pt is used as input in the denoising step at timestep t−1 as zt−1 = ϵθ(zt,t,pt,ct), where zt is the noisy latent at timestep t, ct is the conditioning signal, and ϵθ is the noise prediction network. More details can be found in the supplementary material.
+
+###### 4.4 Training
+
+- Stage 1. Stage 1 training aims to learn an image restoration model that can restore textual content in images, guided by prompts describing the text. During this stage, only the diffusion components comprising U-Net U and ControlNet C are optimized, while all other modules remain frozen. Given the diffusion timestep t, prompt pt, and control input ct, the model learns a noise prediction network ϵθ that estimates the noise added to the HQ latent zt. The training loss in Stage1 is defined as:
+
+Ldiff = Ez
+
+0, t, pt, ct, ϵ∼N(0,1) ∥ϵ − ϵθ(zt,t,pt,ct)∥22 . (1)
+
+- Stage 2. In this stage, only the text-spotting module is trained, while all other components remain frozen. Following transformer-based text-spotting methods [31, 101, 63], detection and recognition losses are computed via bipartite matching [7], solved using the Hungarian algorithm [38]. Specifically, two separate loss functions are applied to the encoder and the dual decoder:
+
+Lenc =
+
+m
+
+λcls · L(clsm) + λbox · L(boxm) + λgIoU · L(gIoUm) , (2)
+
+Ldec =
+
+n
+
+λcls · L(clsn) + λpoly · L(polyn) + λchar · L(charn) , (3)
+
+where m and n denote the numbers of instances with confidence scores exceeding a threshold T, and Lcls, Lbox, LgIoU, Lpoly, and Lchar denote the text classification loss, bounding box regression loss, generalized IoU loss [66], polygon regression loss (L1), and character recognition loss (crossentropy), respectively. Each loss is weighted by its corresponding factor: λcls, λbox, λgIoU, λpoly, and λchar.
+
+- Stage 3. In the final training stage, we optimize both the diffusion-based image restoration module and the text spotting module. The total loss function is formulated as:
+
+L = Ldiff + λ(Lenc + Ldec), (4) where λ is a weight value.
+
+Dataset Model PSNR(↑) SSIM(↑) LPIPS(↓) DISTS(↓) FID(↓) NIQE(↓) MANIQA(↑) MUSIQ(↑) CLIPIQA(↑)
+
+DiffBIR 19.58 0.4965 0.3636 0.2080 45.10 5.107 0.6771 73.33 0.6589 DiffBIR† 16.81 0.4638 0.4001 0.2219 47.28 5.449 0.6890 72.55 0.6345 TeReDiff (Ours) 19.71 0.5717 0.2828 0.1702 36.94 5.452 0.6471 72.07 0.6145
+
+SA-Text test
+
+DiffBIR 23.00 0.6516 0.4108 0.2925 87.46 7.054 0.6147 66.84 0.5679 DiffBIR† 19.11 0.5107 0.5233 0.3127 80.59 8.42 0.5873 61.46 0.4961 TeReDiff (Ours) 23.37 0.7849 0.2848 0.2386 68.94 7.643 0.5637 62.02 0.4545
+
+Real-Text
+
+- Table 4: Quantitative results of image restoration. We evaluate the image quality of our TeReDiff compared with its baseline. The degradation pipeline [82] used in prior works is applied. DiffBIR [51]† (denoted as v2.1 in Fig. 1) uses GitHub-released weights that are further trained from those in the original paper.
+- 5 Experiments
+
+###### 5.1 Experimental Settings
+
+Training and evaluation dataset. We train our TeReDiff on SA-Text, which contains 100K highquality 512×512 images. Synthetic degradations are applied using the Real-ESRGAN pipeline [82], a method widely adopted in image restoration studies [95, 78, 51, 86, 94]. For testing, we curate a separate 1K subset of SA-Text. Similar to DASR [46] and FaithDiff [9], we apply three progressively challenging degradation levels to our test set, to evaluate the model in various difficulty settings. We further construct Real-Text, a set of real-world HR–LR pairs extracted from RealSR [6] and DRealSR[85] with text annotations using our dataset curation pipeline.
+
+Evaluation metrics. To evaluate the text restoration performance, we employ off-the-shelf pretrained text spotting models [56, 101] to perform text detection and recognition on the restored images. We measure Precision, Recall, and F1-scores for text detection results, and F1-scores for end-to-end text recognition results, which are standard in text spotting tasks. We evaluate image restoration performance using both reference and non-reference metrics. For reference-based evaluation, we adopt PSNR and SSIM [84] to measure fidelity, and LPIPS [100] and DISTS [14] to assess perceptual quality. Additionally, we use FID [24] to evaluate the distributional similarity between the restored and ground-truth image sets. For non-reference evaluation, we report NIQE [98], MANIQA [89], MUSIQ [34], and CLIPIQA [77] scores.
+
+Implementation details. We utilize SwinIR [45], DiffBIR [51], SD2.1 [67], and TESTR [101] as the light-weight degradation removal module, Control-Net, UNet, and text-spotting architecture, respectively. The training is performed using the AdamW optimizer with default parameters. The learning rate is set to 1 × 10−4 for Stage 1 and Stage 2, and 1 × 10−5 for Stage 3. Publicly available checkpoints are used for all models. The input LR and output HR images are both 512 × 512 in size. Further details can be found in the supplementary materials.
+
+###### 5.2 Main Results
+
+We compare our TeReDiff with GAN-based models (Real-ESRGAN [82] and SwinIR [45]) and diffusion-based models (ResShift [95], StableSR [78], DiffBIR [51], SeeSR [86], SUPIR [94], and FaithDiff [9]). More quantitative and qualitative results are provided in supplementary materials.
+
+Quantitative comparisons. Tab. 2 shows detection and recognition metrics on SA-Text. Our TeReDiff achieves the best F1-score at every level on both text spotting models. Prior models often lose recognition accuracy at Level2 and Level3, dropping below the raw low-resolution inputs because stronger degradations intensify text-image hallucination. In contrast, TAIR consistently restores textual regions, preserving recognition performance even under the strongest degradations. Furthermore, Tab. 3 illustrates the performance of our TeReDiff in real-world scenarios. For image quality, Tab. 4 demonstrates that our model outperforms the baseline on reference-based metrics while achieving comparable performance on non-reference metrics. These results indicate that our model restores text regions effectively without compromising overall image restoration performance.
+
+TESTR [101]
+
+Model
+
+Detection End-to-End Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑)
+
+Stage1null 81.77 47.37 59.99 21.24 29.79 Stage1pr 82.01 49.82 61.99 24.76 31.70 Stage1gt 85.09 61.56 71.44 32.51 42.71
+
+Stage3null 84.47 56.21 67.50 23.46 32.72 Stage3pr 86.95 52.86 65.75 26.39 35.13 Stage3gt 86.18 61.60 71.85 33.31 43.40
+
+(a) Multi-stage training and textual prompting. Stage-wise training and textual prompting of the restoration module enhance text restoration.
+
+TESTR [101]
+
+Caption
+
+Detection End-to-End Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑)
+
+Predtag 83.25 59.25 69.23 24.26 31.94 Predcap 86.95 52.86 65.75 26.39 35.13
+
+GTtag 84.40 62.56 71.86 32.02 42.12 GTcap 86.18 61.60 71.85 33.31 43.40
+
+(b) Prompting styles for text restoration. The choice of prompting style impacts restoration performance more noticeably with predicted text than with ground-truth text.
+
+- Table 5: Ablation study conducted on SA-Text (level 2 degradation). Subscripts null, pr, and gt indicate the use of a null prompt, a prompt generated by a prompter, and a ground-truth prompt, respectively. Stage1 and Stage3 refer to models trained until Stage 1 and Stage 3, respectively. The pr prompt is generated by a LLaVA captioner [52] in Stage1 and by our text-spotting module in Stage3. Lastly, tag and cap denote different prompting styles.
+
+Qualitative comparison. Fig. 1 shows representative results on SA-Text test set. Previous restoration methods often produce blurry characters, inconsistent stroke widths, which are text–image hallucinations under severe degradations due to reliance on the generative priors of diffusion models. In contrast, TeReDiff consistently restores readable text in challenging regions. These qualitative improvements align closely with the quantitative results in Tab. 3, highlighting our model’s effectiveness in enhancing text clarity without compromising overall image quality.
+
+###### 5.3 Ablation Study
+
+We conduct ablation studies on SA-Text (Level 2) to evaluate the effectiveness of multi-stage training, the importance of prompting textual content for text-aware image restoration, and to compare different prompting styles. Additional ablations on all levels of SA-Text and on Real-Text are provided in the supplementary material.
+
+Effectiveness of multi-stage training. To assess the effectiveness of multi-stage training for textaware restoration, we compare results from models trained up to Stage 1 and Stage 3, as shown in Tab.5(a). Advancing training to Stage 3 consistently improves performance across all caption types. The null type refers to cases where no prompt is provided during inference. The pr type uses a prompt sourced from either an external prompter[52] or our internal text-spotting module. The gt type uses the ground-truth text present in the LQ image.
+
+Importance of prompting for text restoration. Performance comparisons among the null, pr, and gt settings in Tab. 5(a) reveal that prompting with textual content from the LQ image enhances restoration quality in both Stage 1 and Stage 3, highlighting the importance of text prompts for improved text-aware restoration. In particular, using ground-truth text prompts results in substantial improvements in both stages. The small performance gap between the two stages under the gt setting suggests that supplying the restoration module with accurate ground-truth text constitutes an ideal scenario, effectively defining an upper bound for text-aware restoration performance.
+
+Text prompting style. Tab. 5(b) shows that the tag and cap prompting styles yield similar performance with ground-truth (gt) text. However, when using predicted text from the text-spotting module, a notable performance gap arises. This highlights the importance of prompting styles for predicted textual content. Given texts “text1,” “text2,” and “text3,” the caption style (subscript cap) uses the format: “A realistic scene where the texts text1, text2, ... appear clearly on signs, boards, buildings, or other objects.” The tag style (subscript tag) uses: “text1, text2, ....”
+
+###### 6 Conclusion and Future Work
+
+We revisit image restoration with a new focus: Text-Aware Image Restoration (TAIR), which targets the recovery of textual content in degraded images. This area remains largely unexplored due to the
+
+absence of large-scale, annotated datasets. To address this gap, we introduce SA-Text, a curated dataset that uses VLMs to provide automated supervision for text restoration. Models trained on SA-Text show significantly better performance than existing methods. Despite these advances, TAIR still faces important challenges. Performance declines noticeably with small text, where even the slightest degradation greatly reduces legibility. Text instances in complex natural scenes are also difficult to detect and recognize due to visual clutter and diverse layouts. Future research directions include incorporating more diverse real-world data, enhancing supervision quality, and investigating advanced prompting techniques. We hope that TAIR and SA-Text will inspire further research combining text understanding and image restoration.
+
+## Appendix
+
+This supplementary material is organized as follows. Sec.A provides additional details on the SA-Text curation pipeline, focusing on the handling of false negatives and incorrect detections. Sec.B demonstrates the effectiveness of leveraging diffusion features for training the text spotting module. Sec.C describes the implementation of the overall TAIR framework, including the evaluation metrics for text restoration, model architecture, training stages, and the text-spotting module used as a prompter. Sec.D presents extended quantitative results, including comparisons with baselines across three levels of degradation on SA-Text, and the Real-Text dataset, which captures real-world degradation scenarios. Furthermore, we report the results of a user study conducted to measure human preference on the restoration results. Finally, Sec. E provides qualitative comparisons of our TeReDiff against conventional image restoration methods.
+
+###### A SA-Text Curation Pipeline
+
+We apply our dataset curation pipeline to a subset of the SA-1B [36] dataset, a large-scale dataset originally designed for segmentation tasks. SA-1B [36] consists of 11M high-resolution images (3,300 × 4,950 pixels on average) that have been downsampled so that their shortest side is 1,500 pixels. This meets our requirements for high-quality images with sufficient resolution, suitable for the image restoration task. After processing with our dataset curation pipeline on a subset of SA-1B [36] (18.6% of the dataset), we are able to curate 100K high-quality crops that are densely annotated with text instances, enabling scalable dataset creation specifically for TAIR. We expect that using our pipeline on other high-quality large-scale datasets can provide additional data if required.
+
+For the dedicated detection model used in the patch and box cropping stages, we utilize a state-of-theart text spotting model, DG-Bridge Spotter [31]. As shown in Fig. 3, text instances initially missed by the detection model (false negatives) on full images are subsequently captured when the model is applied to smaller crops. We observe that running the detection model on smaller crops occasionally results in false positives, defined as detections of text in areas without actual text. Nonetheless, these instances are reliably filtered out in the subsequent VLM filtering stage, as at least one of the VLMs consistently identifies regions without text. Despite the strong recognition capabilities of DG-Bridge Spotter [31], we opt for VLMs due to their consistently superior recognition accuracy.
+
+For filtering out out-of-focus and intentionally blurred images, we employ a VLM to classify each image’s blurriness. We find that prompting the VLM to perform multiclass classification (as illustrated in Fig. 2) offers improved granularity and stricter filtering compared to using a simpler binary classification prompt ("blurry" vs. "not blurry"). Examples are shown in Fig. 7. After classification, crops labeled as Levels 1 and 2 (very blurry and slightly blurry, respectively) are filtered out from the final dataset. This VLM-based blur filtering ensures that only high-quality, sharply focused crops are used for TAIR.
+
+###### B Diffusion Features for Text Spotting
+
+Detection End-to-End
+
+Dataset Size Backbone
+
+Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑) 20K
+
+ResNet-50 [23] 77.67 65.91 71.31 1.81 1.96
+
+###### Stable Diffusion [67] 82.26 81.78 82.02 27.42 43.87 100K
+
+ResNet-50 [23] 83.24 74.52 78.64 17.03 28.70 Stable Diffusion [67] 84.55 82.09 83.30 32.29 45.77
+
+- Table 6: Comparsion of backbone features for training a text spotting module [101]. We evaluate the text detection and recognition performance of each trained model on SA-Text test set used in Tab. 2.
+
+As mentioned in Sec. 4, we demonstrate that a text spotting module can be trained directly using diffusion features for the text spotting task [101, 92, 63, 31] instead of the commonly used ResNet [23]
+
+[Figure 81]
+
+[Figure 82]
+
+[Figure 83]
+
+[Figure 84]
+
+[Figure 85]
+
+[Figure 86]
+
+Level1Level2Level3
+
+[Figure 87]
+
+[Figure 88]
+
+[Figure 89]
+
+[Figure 90]
+
+[Figure 91]
+
+[Figure 92]
+
+[Figure 93]
+
+[Figure 94]
+
+[Figure 95]
+
+[Figure 96]
+
+[Figure 97]
+
+[Figure 98]
+
+- Figure 7: Examples of images classified by blurriness. Images are categorized into Levels 1–3: Level 1 (very blurry), Level 2 (slightly blurry), and Level 3 (clearly focused). Images classified as Level 1 and Level 2 are excluded from the final dataset to ensure that only clearly focused (Level 3) images are used for TAIR.
+
+backbone, and that this approach not only enables effective training but also yields superior performance. To the best of our knowledge, this is the first work to demonstrate that diffusion features are suitable for effectively learning text spotting.
+
+###### B.1 Experimental Details
+
+We train TESTR [101] from scratch on subsets of SA-Text with a fixed timestep t = 0, varying both the vision features and the dataset size to evaluate their effects on text spotting performance. We use ResNet-50 [23], which serves as the vision backbone in the original TESTR [101], along with diffusion features extracted from Stable Diffusion 2.11 available on Hugging Face. We use model weights trained for 100K steps with a batch size of 8 and a learning rate of 1e-4, using 2 NVIDIA RTX 3090 GPUs. All other implementation details follow the default settings of TESTR [101].
+
+###### B.2 Result Analysis
+
+As shown in Tab. 6, with a dataset size of 100K, diffusion-based features demonstrate superior recognition performance compared to ResNet [23] features. Importantly, when the dataset size is reduced to 20K samples, models relying on ResNet [23] features fail to effectively learn recognition, whereas diffusion features still achieve meaningful recognition learning even under limited data conditions. This shows that ResNet [23] features require a larger amount of training data to capture text semantics, which is consistent with the reliance on a large-scale synthetic dataset [53] in existing text spotting methods [101, 92, 63, 31]. In contrast, diffusion features, pretrained on diverse imagetext pairs, can offer improved adaptability to text recognition, even when trained with limited real-world data.
+
+###### C Implementation Details
+
+Evaluation metric. We evaluate text spotting performance [53, 56, 101, 31] using standard detection and recognition metrics. For detection, we report Precision (P), Recall (R), and F1-score (F), where a detection is considered correct if its Intersection over Union (IoU) with a ground-truth box exceeds 0.5. For recognition, we adopt two lexicon-based evaluation settings: None and Full. The
+
+1stabilityai/stable-diffusion-2-1-base
+
+ABCNet v2 [56] TESTR [101]
+
+Deg. Level Model
+
+Detection End-to-End Detection End-to-End Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑) Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑)
+
+DiffBIR [51] 76.29 56.44 64.88 23.14 32.73 84.00 52.13 64.34 25.51 35.47 DiffBIR† [51] 53.01 51.86 52.43 15.26 20.71 60.53 51.99 55.94 16.78 22.82 TeReDiff (Ours) 85.29 58.34 69.29 26.59 35.69 87.50 54.90 67.47 28.19 36.99
+
+Level1
+
+DiffBIR [51] 72.96 53.94 62.03 19.60 27.52 79.69 50.50 61.82 21.64 30.36 DiffBIR† [51] 53.28 51.18 52.21 14.75 19.61 58.85 50.18 54.17 16.15 21.43 TeReDiff (Ours) 83.02 56.30 67.10 24.42 33.23 86.95 52.86 65.75 26.39 35.13
+
+Level2
+
+DiffBIR [51] 59.30 42.20 49.31 13.88 19.39 72.27 38.98 50.65 15.61 22.67 DiffBIR† [51] 44.16 40.62 42.31 10.15 14.45 49.73 41.25 45.09 10.75 15.41 TeReDiff (Ours) 81.76 44.11 57.30 19.61 27.50 84.50 42.02 56.13 19.92 28.34
+
+Level3
+
+- Table 7: Text spotting baseline comparison on SA-Text Each block presents text restoration performance under varying degradation levels, evaluated using two text spotting models [56, 101]. ‘None’ indicates recognition without the use of a lexicon, while ‘Full’ denotes recognition assisted by a full lexicon. The best results are shown in bold, and the second-best are underlined.
+
+Model
+
+ABCNet v2 [56] TESTR [101]
+
+Detection End-to-End Detection End-to-End Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑) Precision(↑) Recall(↑) F1-score(↑) None(↑) Full(↑)
+
+DiffBIR [51] 66.04 59.69 62.71 33.75 40.05 76.33 61.87 68.35 39.27 46.11 DiffBIR† [51] 55.31 56.02 55.67 26.85 31.23 58.99 60.19 59.58 31.41 35.98 TeReDiff (Ours) 83.95 67.58 74.88 48.39 55.01 84.30 67.37 74.89 49.39 56.45
+
+- Table 8: Text spotting baseline comparison on Real-Text. We evaluate the text detection and recognition accuracy of the restored images on Real-Text using text spotting models [56, 101]. None’ indicates recognition without the use of a lexicon, while ‘Full’ denotes recognition assisted by a full lexicon. The best results are shown in bold, and the second-best are underlined.
+
+None setting evaluates recognition without any lexicon, requiring exact matches to ground-truth transcriptions, reflecting performance in open-vocabulary scenarios. The Full setting permits matching predictions to the closest entry in a ground-truth lexicon, simulating closed-vocabulary conditions. This dual evaluation provides a comprehensive assessment of recognition accuracy.
+
+Model overview. Given a low-quality (LQ) image Ilq ∈ RH×W×3, the objective is to recover a highquality (HQ) image Ihq ∈ RH×W×3 with enhanced visual and textual fidelity with H = W = 512. The LQ image is first processed by a lightweight degradation removal module [45] and encoded by a VAE [35] to obtain a conditional latent c ∈ RH8 ×W8 ×4. The HQ image is encoded and perturbed with noise to produce a noisy latent zt ∈ RH8 ×W8 ×4. These are channel-wise concatenated to form the input condition ct ∈ RH8 ×W8 ×8. Along with a diffusion timestep t and a text prompt embedding pt ∈ Rn×d, where n = 77 and d = 1024, ct is fed into the diffusion-based image restoration module. After a single forward pass, we extract four intermediate diffusion features from the four decoder blocks of the U-Net-based restoration module. Each feature is processed by a separate convolutional layer to align the channel dimensions, after which the features are stacked to form a multi-scale diffusion feature input F ∈ RL×D to the transformer-based text spotting module, where L = 9472 denotes the total number of stacked tokens and D = 256 is the transformer hidden dimension. Deformable attention [104] is employed to alleviate the high attention computation cost.
+
+Following transformer-based text spotting methods [101, 63, 31] and inspired by DETR [7], two sets of queries, qdet ∈ RQ×D and qrec ∈ RQ×D with Q = 100, are provided to the detection and recognition decoders Ddet and Drec, respectively. These queries are processed through cross-attention with the encoder output in the respectful decoder layers. The resulting predictions are denoted as {d(i)}Ki=1 and {r(i)}Ki=1, where K is the number of instances with confidence scores above a threshold T = 0.5. Each d(i) = (d(1i),...,d(Ni)) represents a polygon with N = 16 control points, and r(i) = (r1(i),...,rM(i)) contains M = 25 recognized characters.
+
+Training details. To construct high-quality (HQ) and low-quality (LQ) training pairs for SA-Text, the LQ images were synthesized using the default degradation settings from the Real-ESRGAN pipeline [83]. The final model used for performance evaluation in the main paper was trained on four
+
+NVIDIA H100 GPUs, with a batch size of 32 per GPU. Each of the three training stages (Stage 1 to Stage 3) was trained for 100,000 iterations. The hyperparameters for the text spotting encoder loss function 2, decoder loss function 3, and stage3 loss function 4 are set as follows: λcls = 2.0, λcoord = 5.0, λchar = 4.0, λgIoU = 2.0 and λ = 0.01. The number of inference sampling steps for the diffusion based image restoration module was set to 50.
+
+Loss functions. Instance classification employs the focal loss [50], which is the difference of positive and negative terms to handle class imbalance. For the j-th query, the classification loss is given by
+
+L(clsj) = − 1{j∈Im(σ)} α(1 − ˆb(j))γ log(ˆb(j)) − 1{j /∈Im(σ)} (1 − α)(ˆb(j))γ log(1 − ˆb(j)),
+
+where ˆb(·) denotes the predicted confidence score, and Im(σ) is the set of indices matched by the optimal bipartite assignment σ between predictions and ground truth instances.
+
+The control point regression loss encourages precise localization by minimizing the ℓ1 distance between predicted and ground truth control points:
+
+N
+
+−1(j)) i
+
+L(coordj) = 1{j∈Im(σ)}
+
+d ˆ(ij) − d(σ
+
+,
+
+1
+
+i=1
+
+where dˆ(i·) and d(i·) denote predicted and ground truth control points, respectively, and σ−1 maps prediction index j to its assigned ground truth index.
+
+Character classification is formulated as a multi-class problem and optimized via cross-entropy loss:
+
+M
+
+−1(j))
+
+L(charj) = 1{j∈Im(σ)}
+
+−r(σ
+
+i log rˆi(j) ,
+
+i=1
+
+where rˆi(·) is the predicted probability for class i, and ri(·) is the one-hot encoded ground truth label. Text spotting module prompter. During inference, given a LQ image, the text spotting module produces K recognized text instances for sampling timestep t, denoted as {r(i)}Ki=1. These are subsequently passed to the prompter module, Prompter(·), to generate the input prompt for the image restoration module at the next denoising diffusion timestep t − 1, formulated as pt−1 = Prompter({r(i)}Ki=1). A handcrafted textual template is employed in the form: “A realistic scene where the texts ‘text1’, ‘text2’, ... appear clearly on signs, boards, buildings, or other objects.”, where each texti corresponds to r(i).
+
+###### D Additional Quantitative Results
+
+###### D.1 Extended Baseline Comparison
+
+Our main baseline image restoration model is DiffBIR [51]. We further include comparisons with DiffBIR† (denoted as DiffBIR v2.1), which leverages publicly available weights from the official GitHub repository that have undergone additional fine-tuning beyond what was reported in the original publication. The comparative results on text restoration performance are provided in Tab. 7 for SA-Text and Tab. 8 for Real-Text.
+
+###### D.2 Extended Ablation Experiments
+
+Extending the analysis in Tab. 5 of the main paper, we present additional ablation results in Tab. 9, including evaluations across three degradation levels on SA-Text and on the Real-Text dataset. The table compares (1) two model training stages, referred to as Stage1 and Stage3, and (2) three prompting strategies for the image restoration module: null (no prompt), pr (prompter generated prompt), and gt (ground truth prompt). The ground truth prompt is constructed from the textual content present in the LQ image and follows the format: “A realistic scene where the texts {text1,text2,...} appear clearly on signs, boards, buildings, or other objects.” The prompter-generated prompt adopts the same format, using recognized texts extracted from the LQ image by our text spotting module or a conventionally used LLaVA prompter [52].
+
+TESTR [101]
+
+Model
+
+Detection End-to-End Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑)
+
+Stage1null 82.09 50.27 62.36 25.36 31.66 Stage1pr 83.84 52.67 64.70 27.39 35.58 Stage1gt 86.79 63.42 73.28 33.68 44.21
+
+Stage3null 84.68 56.12 67.50 26.94 35.93 Stage3pr 87.50 54.90 67.47 28.19 36.99 Stage3gt 86.49 63.28 73.09 34.71 44.87
+
+(a) SA-Text (Level 1). Results evaluated on the SAText dataset with Level 1 degradation.
+
+TESTR [101]
+
+Model
+
+Detection End-to-End Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑)
+
+Stage1null 81.77 47.37 59.99 21.24 29.79 Stage1pr 82.01 49.82 61.99 24.76 31.70 Stage1gt 85.09 61.56 71.44 32.51 42.71
+
+Stage3null 84.47 56.21 67.50 23.46 32.72 Stage3pr 86.95 52.86 65.75 26.39 35.13 Stage3gt 86.18 61.60 71.85 33.31 43.40
+
+(b) SA-Text (Level 2). Results evaluated on the SAText dataset with Level 2 degradation.
+
+TESTR [101]
+
+Model
+
+Detection End-to-End Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑)
+
+Stage1null 75.69 39.53 51.94 16.32 22.22 Stage1pr 75.74 41.61 53.72 18.02 24.46 Stage1gt 80.60 55.94 66.04 27.08 37.57
+
+Stage3null 77.04 47.91 59.08 17.44 24.65 Stage3pr 84.50 42.02 56.13 19.92 28.34 Stage3gt 80.04 55.44 65.51 27.91 37.76
+
+(c) SA-Text (Level 3). Results evaluated on the SAText dataset with Level 3 degradation.
+
+TESTR [101]
+
+Model
+
+Detection End-to-End Precision(↑) Recall(↑) F1-Score(↑) None(↑) Full(↑)
+
+Stage1null 81.91 62.68 71.02 44.11 50.70 Stage1pr 81.23 65.48 72.51 44.72 51.28 Stage1gt 83.46 73.61 78.23 52.59 59.28
+
+Stage3null 81.06 70.27 75.28 46.09 52.78 Stage3pr 84.30 67.37 74.89 49.39 56.45 Stage3gt 83.41 75.28 79.14 54.06 60.74
+
+(d) Real-Text. Results evaluated on the Real-Text dataset.
+
+- Table 9: Additional ablations for SA-Text and Real-Text. Subscripts null, pr, and gt indicate the use of a null prompt, a prompt generated by a captioner, and a ground-truth prompt, respectively. Stage1 and Stage3 refer to models trained in Stage 1 and Stage 3, respectively. The pr prompt is generated by a LLaVA captioner in Stage1 and by our text-spotting module in Stage3.
+
+Overall comparison. Comparing Stage1null and Stage3null, we observe accuracy gains of +4.27%, +2.93%, +2.43% and +2.08% in Tab. 9a through Tab. 9d, respectively, indicating the benefit of
+
+training with text-aware supervision in Stage3. Next, we compare Stage1pr and Stage3pr, where the image restoration module is guided by prompts generated from the LQ image. In Stage1, we use the
+
+LLaVA prompter due to the absence of a text-spotting module, whereas Stage3 leverages our trained text-spotting module prompter. The improved performance of Stage3 indicates that our module provides more accurate and text-aware prompts, enhancing restoration quality. Finally, in the gt setting, where ground-truth texts are available, both Stage1 and Stage3 show substantial performance improvements with minimal difference between them. This indicates that this ideal scenario in which the restoration module is provided with exact textual information is not achievable in practice, and serves primarily to establish an upper bound on performance.
+
+Comparison on SA-Text degradation levels. Comparing Stage1pr and Stage3pr across the three degradation levels of SA-Text, we observe that the performance gap increases with higher degradation
+
+severity. This highlights the importance of Stage3, which learns text-aware features and enables prompting the restoration module using our text-spotting module, proving these prompts’ superiority over those from an external LLaVA prompter.
+
+###### D.3 User Study Evaluation
+
+###### Criteria DiffBIR [51] Ours
+
+Text Quality 1.50% 98.5% Image Quality 11.0% 89.0%
+
+###### Table 10: User study on text and image restoration quality.
+
+To evaluate the quality of both text and image restoration achieved by our TeReDiff, we conducted a simple user study comparing it with our baseline, DiffBIR [51]. The study included 10 samples: 5 from SA-Text Level 3 and 5 from Real-Text. A total of 21 participants took part in the evaluation. Samples for SA-Text and Real-Text were selected from the examples shown in Tab. 2 and Tab. 3, respectively. As shown in Tab. 10, the user study results indicate that our TeReDiff outperforms the
+
+baseline in both text restoration and visual quality. These results highlight that humans often consider text semantics when evaluating image quality, an aspect not fully captured by existing image metrics.
+
+Each participant evaluated the samples based on the following set of questions.:
+
+- 1. Which image better restores the text content? (Image 1 / Image 2)
+- 2. Which image better restores the overall appearance? (Image 1 / Image 2)
+
+LQ HQ(GT)
+
+LQ HQ(GT)
+
+[Figure 99]
+
+[Figure 100]
+
+Image 1 Image 2
+
+Image 1 Image 2
+
+[Figure 101]
+
+[Figure 102]
+
+Figure 8: Example samples for user study.
+
+###### E Additional Qualitative Results
+
+In Fig. 9, Fig. 10 , Fig. 11, and Fig. 12 we show further qualitative results on text-aware image restoration (TAIR). The results on SA-Text across different degradation levels and those on Real-Text, demonstrate that our model outperforms other diffusion-based methods in text restoration.
+
+### Level 1
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 103]
+
+[Figure 104]
+
+[Figure 105]
+
+[Figure 106]
+
+[Figure 107]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 108]
+
+[Figure 109]
+
+[Figure 110]
+
+[Figure 111]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 112]
+
+[Figure 113]
+
+[Figure 114]
+
+[Figure 115]
+
+[Figure 116]
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+| |
+|---|
+
+[Figure 117]
+
+[Figure 118]
+
+[Figure 119]
+
+[Figure 120]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 121]
+
+[Figure 122]
+
+[Figure 123]
+
+[Figure 124]
+
+[Figure 125]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 126]
+
+[Figure 127]
+
+[Figure 128]
+
+[Figure 129]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 130]
+
+[Figure 131]
+
+[Figure 132]
+
+[Figure 133]
+
+[Figure 134]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 135]
+
+[Figure 136]
+
+[Figure 137]
+
+[Figure 138]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 139]
+
+[Figure 140]
+
+[Figure 141]
+
+[Figure 142]
+
+[Figure 143]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 144]
+
+[Figure 145]
+
+[Figure 146]
+
+[Figure 147]
+
+###### Figure 9: Qualitative results on SA-Text test set Level 1.
+
+#### Level 2
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 148]
+
+[Figure 149]
+
+[Figure 150]
+
+[Figure 151]
+
+[Figure 152]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 153]
+
+[Figure 154]
+
+[Figure 155]
+
+[Figure 156]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 157]
+
+[Figure 158]
+
+[Figure 159]
+
+[Figure 160]
+
+[Figure 161]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 162]
+
+[Figure 163]
+
+[Figure 164]
+
+[Figure 165]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 166]
+
+[Figure 167]
+
+[Figure 168]
+
+[Figure 169]
+
+[Figure 170]
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 171]
+
+[Figure 172]
+
+[Figure 173]
+
+[Figure 174]
+
+| |
+|---|
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 175]
+
+[Figure 176]
+
+[Figure 177]
+
+[Figure 178]
+
+[Figure 179]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 180]
+
+[Figure 181]
+
+[Figure 182]
+
+[Figure 183]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 184]
+
+[Figure 185]
+
+[Figure 186]
+
+[Figure 187]
+
+[Figure 188]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 189]
+
+[Figure 190]
+
+[Figure 191]
+
+[Figure 192]
+
+###### Figure 10: Qualitative results on SA-Text test set Level 2.
+
+##### Level 3
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 193]
+
+[Figure 194]
+
+[Figure 195]
+
+[Figure 196]
+
+[Figure 197]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 198]
+
+[Figure 199]
+
+[Figure 200]
+
+[Figure 201]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 202]
+
+[Figure 203]
+
+[Figure 204]
+
+[Figure 205]
+
+[Figure 206]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 207]
+
+[Figure 208]
+
+[Figure 209]
+
+[Figure 210]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 211]
+
+[Figure 212]
+
+[Figure 213]
+
+[Figure 214]
+
+[Figure 215]
+
+[Figure 216]
+
+[Figure 217]
+
+[Figure 218]
+
+[Figure 219]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+| |
+|---|
+
+[Figure 220]
+
+[Figure 221]
+
+[Figure 222]
+
+[Figure 223]
+
+[Figure 224]
+
+[Figure 225]
+
+[Figure 226]
+
+[Figure 227]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 228]
+
+[Figure 229]
+
+[Figure 230]
+
+[Figure 231]
+
+[Figure 232]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 233]
+
+[Figure 234]
+
+[Figure 235]
+
+[Figure 236]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 237]
+
+[Figure 238]
+
+[Figure 239]
+
+[Figure 240]
+
+[Figure 241]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 242]
+
+[Figure 243]
+
+[Figure 244]
+
+[Figure 245]
+
+###### Figure 11: Qualitative results on SA-Text test set Level 3.
+
+###### Real
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 246]
+
+[Figure 247]
+
+[Figure 248]
+
+[Figure 249]
+
+[Figure 250]
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 251]
+
+[Figure 252]
+
+[Figure 253]
+
+[Figure 254]
+
+| |
+|---|
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 255]
+
+[Figure 256]
+
+[Figure 257]
+
+[Figure 258]
+
+[Figure 259]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 260]
+
+[Figure 261]
+
+[Figure 262]
+
+[Figure 263]
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 264]
+
+[Figure 265]
+
+[Figure 266]
+
+[Figure 267]
+
+[Figure 268]
+
+[Figure 269]
+
+[Figure 270]
+
+[Figure 271]
+
+[Figure 272]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 273]
+
+[Figure 274]
+
+[Figure 275]
+
+[Figure 276]
+
+[Figure 277]
+
+[Figure 278]
+
+[Figure 279]
+
+[Figure 280]
+
+| |
+|---|
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 281]
+
+[Figure 282]
+
+[Figure 283]
+
+[Figure 284]
+
+[Figure 285]
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 286]
+
+[Figure 287]
+
+[Figure 288]
+
+[Figure 289]
+
+| |
+|---|
+
+LQ Image StableSR SeeSR SUPIR FaithDiff
+
+[Figure 290]
+
+[Figure 291]
+
+[Figure 292]
+
+[Figure 293]
+
+[Figure 294]
+
+| |
+|---|
+
+DiffBIR DiffBIRv2.1 Ours GT
+
+[Figure 295]
+
+[Figure 296]
+
+[Figure 297]
+
+[Figure 298]
+
+###### Figure 12: Qualitative results on Real-Text.
+
+###### References
+
+- [1] Eirikur Agustsson and Radu Timofte. Ntire 2017 challenge on single image super-resolution: Dataset and study. In Proceedings of the IEEE conference on computer vision and pattern recognition workshops, pages 126–135, 2017.
+- [2] Yuang Ai, Xiaoqiang Zhou, Huaibo Huang, Xiaotian Han, Zhengyu Chen, Quanzeng You, and Hongxia Yang. Dreamclear: High-capacity real-world image restoration with privacy-safe dataset curation. Advances in Neural Information Processing Systems, 37:55443–55469, 2024.
+- [3] Jeonghun Baek, Geewook Kim, Junyeop Lee, Sungrae Park, Dongyoon Han, Sangdoo Yun, Seong Joon Oh, and Hwalsuk Lee. What is wrong with scene text recognition model comparisons? dataset and model analysis. In Proceedings of the IEEE/CVF international conference on computer vision, pages 4715–4723, 2019.
+- [4] Shuai Bai, Keqin Chen, Xuejing Liu, Jialin Wang, Wenbin Ge, Sibo Song, Kai Dang, Peng Wang, Shijie Wang, Jun Tang, Humen Zhong, Yuanzhi Zhu, Mingkun Yang, Zhaohai Li, Jianqiang Wan, Pengfei Wang, Wei Ding, Zheren Fu, Yiheng Xu, Jiabo Ye, Xi Zhang, Tianbao Xie, Zesen Cheng, Hang Zhang, Zhibo Yang, Haiyang Xu, and Junyang Lin. Qwen2.5-vl technical report. arXiv preprint arXiv:2502.13923, 2025.
+- [5] Andreas Blattmann, Tim Dockhorn, Sumith Kulal, Daniel Mendelevitch, Maciej Kilian, Dominik Lorenz, Yam Levi, Zion English, Vikram Voleti, Adam Letts, et al. Stable video diffusion: Scaling latent video diffusion models to large datasets. arXiv preprint arXiv:2311.15127, 2023.
+- [6] Jianrui Cai, Hui Zeng, Hongwei Yong, Zisheng Cao, and Lei Zhang. Toward real-world single image super-resolution: A new benchmark and a new model. In Proceedings of the IEEE/CVF international conference on computer vision, pages 3086–3095, 2019.
+- [7] Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, and Sergey Zagoruyko. End-to-end object detection with transformers. In European conference on computer vision, pages 213–229. Springer, 2020.
+- [8] Tong Che, Yanran Li, Athul Paul Jacob, Yoshua Bengio, and Wenjie Li. Mode regularized generative adversarial networks. arXiv preprint arXiv:1612.02136, 2016.
+- [9] Junyang Chen, Jinshan Pan, and Jiangxin Dong. Faithdiff: Unleashing diffusion priors for faithful image super-resolution. arXiv preprint arXiv:2411.18824, 2024.
+- [10] Chee Kheng Ch’ng and Chee Seng Chan. Total-text: A comprehensive dataset for scene text detection and recognition. In 2017 14th IAPR international conference on document analysis and recognition (ICDAR), volume 1, pages 935–942. IEEE, 2017.
+- [11] Seokju Cho, Sunghwan Hong, Sangryul Jeon, Yunsung Lee, Kwanghoon Sohn, and Seungryong Kim. Cats: Cost aggregation transformers for visual correspondence. Advances in Neural Information Processing Systems, 34:9011–9023, 2021.
+- [12] Seokju Cho, Sunghwan Hong, and Seungryong Kim. Cats++: Boosting cost aggregation with convolutions and transformers. IEEE Transactions on Pattern Analysis and Machine Intelligence, 45(6):7174–7194, 2022.
+- [13] Seokju Cho, Heeseong Shin, Sunghwan Hong, Anurag Arnab, Paul Hongsuck Seo, and Seungryong Kim. Cat-seg: Cost aggregation for open-vocabulary semantic segmentation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 4113–4123, 2024.
+- [14] Keyan Ding, Kede Ma, Shiqi Wang, and Eero P Simoncelli. Image quality assessment: Unifying structure and texture similarity. IEEE transactions on pattern analysis and machine intelligence, 44(5):2567–2581, 2020.
+- [15] Chao Dong, Ximei Zhu, Yubin Deng, Chen Change Loy, and Yu Qiao. Boosting optical character recognition: A super-resolution approach. arXiv preprint arXiv:1506.02211, 2015.
+
+- [16] Yongkun Du, Zhineng Chen, Caiyan Jia, Xiaoting Yin, Tianlun Zheng, Chenxia Li, Yuning Du, and Yu-Gang Jiang. Svtr: Scene text recognition with a single visual model. arXiv preprint arXiv:2205.00159, 2022.
+- [17] Christian Ertler, Jerneja Mislej, Tobias Ollmann, Lorenzo Porzi, Gerhard Neuhold, and Yubin Kuang. The mapillary traffic sign dataset for detection and classification on a global scale. In European Conference on Computer Vision, pages 68–84. Springer, 2020.
+- [18] Shancheng Fang, Hongtao Xie, Yuxin Wang, Zhendong Mao, and Yongdong Zhang. Read like humans: Autonomous, bidirectional and iterative language modeling for scene text recognition. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 7098–7107, 2021.
+- [19] Hao Feng, Shaokai Liu, Jiajun Deng, Wengang Zhou, and Houqiang Li. Deep unrestricted document image rectification. IEEE Transactions on Multimedia, 26:6142–6154, 2023.
+- [20] Hao Feng, Wengang Zhou, Jiajun Deng, Qi Tian, and Houqiang Li. Docscanner: Robust document image rectification with progressive learning. International Journal of Computer Vision, pages 1–20, 2025.
+- [21] Alex Graves, Santiago Fernández, Faustino Gomez, and Jürgen Schmidhuber. Connectionist temporal classification: labelling unsegmented sequence data with recurrent neural networks. In Proceedings of the 23rd international conference on Machine learning, pages 369–376, 2006.
+- [22] Ankush Gupta, Andrea Vedaldi, and Andrew Zisserman. Synthetic data for text localisation in natural images. In IEEE Conference on Computer Vision and Pattern Recognition, 2016.
+- [23] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 770–778, 2016.
+- [24] Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. Gans trained by a two time-scale update rule converge to a local nash equilibrium. Advances in neural information processing systems, 30, 2017.
+- [25] Jonathan Ho, Ajay Jain, and Pieter Abbeel. Denoising diffusion probabilistic models. In Annual Conference on Neural Information Processing Systems, 2020.
+- [26] Sunghwan Hong, Seokju Cho, Jisu Nam, Stephen Lin, and Seungryong Kim. Cost aggregation with 4d convolutional swin transformer for few-shot segmentation. In European Conference on Computer Vision, pages 108–126. Springer, 2022.
+- [27] Sunghwan Hong, Jaewoo Jung, Heeseong Shin, Jisang Han, Jiaolong Yang, Chong Luo, and Seungryong Kim. Pf3plat: Pose-free feed-forward 3d gaussian splatting. arXiv preprint arXiv:2410.22128, 2024.
+- [28] Sunghwan Hong, Jaewoo Jung, Heeseong Shin, Jiaolong Yang, Seungryong Kim, and Chong Luo. Unifying correspondence pose and nerf for generalized pose-free novel view synthesis. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 20196–20206, 2024.
+- [29] Sunghwan Hong and Seungryong Kim. Deep matching prior: Test-time optimization for dense correspondence. In Proceedings of the IEEE/CVF international conference on computer vision, pages 9907–9917, 2021.
+- [30] Sunghwan Hong, Jisu Nam, Seokju Cho, Susung Hong, Sangryul Jeon, Dongbo Min, and Seungryong Kim. Neural matching fields: Implicit representation of matching fields for visual correspondence. Advances in Neural Information Processing Systems, 35:13512–13526, 2022.
+- [31] Mingxin Huang, Hongliang Li, Yuliang Liu, Xiang Bai, and Lianwen Jin. Bridging the gap between end-to-end and two-step text spotting. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 15608–15618, 2024.
+
+- [32] Dimosthenis Karatzas, Lluis Gomez-Bigorda, Anguelos Nicolaou, Suman Ghosh, Andrew Bagdanov, Masakazu Iwamura, Jiri Matas, Lukas Neumann, Vijay Ramaseshan Chandrasekhar, Shijian Lu, et al. Icdar 2015 competition on robust reading. In 2015 13th international conference on document analysis and recognition (ICDAR), pages 1156–1160. IEEE, 2015.
+- [33] Bingxin Ke, Anton Obukhov, Shengyu Huang, Nando Metzger, Rodrigo Caye Daudt, and Konrad Schindler. Repurposing diffusion-based image generators for monocular depth estimation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 9492–9502, 2024.
+- [34] Junjie Ke, Qifei Wang, Yilin Wang, Peyman Milanfar, and Feng Yang. Musiq: Multi-scale image quality transformer. In Proceedings of the IEEE/CVF international conference on computer vision, pages 5148–5157, 2021.
+- [35] Diederik P Kingma, Max Welling, et al. Auto-encoding variational bayes, 2013.
+- [36] Alexander Kirillov, Eric Mintun, Nikhila Ravi, Hanzi Mao, Chloe Rolland, Laura Gustafson, Tete Xiao, Spencer Whitehead, Alexander C Berg, Wan-Yen Lo, et al. Segment anything. In Proceedings of the IEEE/CVF international conference on computer vision, pages 4015–4026, 2023.
+- [37] Yair Kittenplon, Inbal Lavi, Sharon Fogel, Yarin Bar, R Manmatha, and Pietro Perona. Towards weakly-supervised text spotting using a multi-task transformer. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 4604–4613, 2022.
+- [38] Harold W Kuhn. The hungarian method for the assignment problem. Naval research logistics quarterly, 2(1-2):83–97, 1955.
+- [39] Christian Ledig, Lucas Theis, Ferenc Huszár, Jose Caballero, Andrew Cunningham, Alejandro Acosta, Andrew Aitken, Alykhan Tejani, Johannes Totz, Zehan Wang, et al. Photo-realistic single image super-resolution using a generative adversarial network. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 4681–4690, 2017.
+- [40] Junyeop Lee, Sungrae Park, Jeonghun Baek, Seong Joon Oh, Seonghyeon Kim, and Hwalsuk Lee. On recognizing texts of arbitrary shapes with 2d self-attention. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops, pages 546–547, 2020.
+- [41] Boying Li, Danping Zou, Daniele Sartori, Ling Pei, and Wenxian Yu. Textslam: Visual slam with planar text features. In 2020 IEEE International Conference on Robotics and Automation (ICRA), pages 2102–2108. IEEE, 2020.
+- [42] Heng Li, Xiangping Wu, Qingcai Chen, and Qianjin Xiang. Foreground and text-lines aware document image rectification. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 19574–19583, 2023.
+- [43] Hui Li, Peng Wang, Chunhua Shen, and Guyu Zhang. Show, attend and read: A simple and strong baseline for irregular text recognition. In Proceedings of the AAAI conference on artificial intelligence, volume 33, pages 8610–8617, 2019.
+- [44] Yawei Li, Kai Zhang, Jingyun Liang, Jiezhang Cao, Ce Liu, Rui Gong, Yulun Zhang, Hao Tang, Yun Liu, Denis Demandolx, et al. Lsdir: A large scale dataset for image restoration. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 1775–1787, 2023.
+- [45] Jingyun Liang, Jiezhang Cao, Guolei Sun, Kai Zhang, Luc Van Gool, and Radu Timofte. Swinir: Image restoration using swin transformer. In Proceedings of the IEEE/CVF international conference on computer vision, pages 1833–1844, 2021.
+- [46] ShuBo Liang, Kechen Song, Wenli Zhao, Song Li, and Yunhui Yan. Dasr: Dual-attention transformer for infrared image super-resolution. Infrared Physics & Technology, 133:104837, 2023.
+
+- [47] Minghui Liao, Baoguang Shi, Xiang Bai, Xinggang Wang, and Wenyu Liu. Textboxes: A fast text detector with a single deep neural network. In Proceedings of the AAAI conference on artificial intelligence, volume 31, 2017.
+- [48] Minghui Liao, Zhaoyi Wan, Cong Yao, Kai Chen, and Xiang Bai. Real-time scene text detection with differentiable binarization. In Proceedings of the AAAI conference on artificial intelligence, volume 34, pages 11474–11481, 2020.
+- [49] Bee Lim, Sanghyun Son, Heewon Kim, Seungjun Nah, and Kyoung Mu Lee. Enhanced deep residual networks for single image super-resolution. In Proceedings of the IEEE conference on computer vision and pattern recognition workshops, pages 136–144, 2017.
+- [50] Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Dollár. Focal loss for dense object detection. In Proceedings of the IEEE international conference on computer vision, pages 2980–2988, 2017.
+- [51] Xinqi Lin, Jingwen He, Ziyan Chen, Zhaoyang Lyu, Bo Dai, Fanghua Yu, Yu Qiao, Wanli Ouyang, and Chao Dong. Diffbir: Toward blind image restoration with generative diffusion prior. In European Conference on Computer Vision, pages 430–448. Springer, 2024.
+- [52] Haotian Liu, Chunyuan Li, Qingyang Wu, and Yong Jae Lee. Visual instruction tuning. Advances in neural information processing systems, 36:34892–34916, 2023.
+- [53] Yuliang Liu, Hao Chen, Chunhua Shen, Tong He, Lianwen Jin, and Liangwei Wang. Abcnet: Real-time scene text spotting with adaptive bezier-curve network. In proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 9809–9818, 2020.
+- [54] Yuliang Liu and Lianwen Jin. Deep matching prior network: Toward tighter multi-oriented text detection. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 1962–1969, 2017.
+- [55] Yuliang Liu, Zhang Li, Biao Yang, Chunyuan Li, Xucheng Yin, Cheng-lin Liu, Lianwen Jin, and Xiang Bai. On the hidden mystery of ocr in large multimodal models. arXiv e-prints, pages arXiv–2305, 2023.
+- [56] Yuliang Liu, Chunhua Shen, Lianwen Jin, Tong He, Peng Chen, Chongyu Liu, and Hao Chen. Abcnet v2: Adaptive bezier-curve network for real-time end-to-end text spotting. IEEE Transactions on Pattern Analysis and Machine Intelligence, 44(11):8048–8064, 2021.
+- [57] Shiyin Lu, Yang Li, Qing-Guo Chen, Zhao Xu, Weihua Luo, Kaifu Zhang, and HanJia Ye. Ovis: Structural embedding alignment for multimodal large language model. arXiv:2405.20797, 2024.
+- [58] Jianqi Ma, Weiyuan Shao, Hao Ye, Li Wang, Hong Wang, Yingbin Zheng, and Xiangyang Xue. Arbitrary-oriented scene text detection via rotation proposals. IEEE transactions on multimedia, 20(11):3111–3122, 2018.
+- [59] Ke Ma, Zhixin Shu, Xue Bai, Jue Wang, and Dimitris Samaras. Docunet: Document image unwarping via a stacked u-net. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 4700–4709, 2018.
+- [60] Qi Mao, Hsin-Ying Lee, Hung-Yu Tseng, Siwei Ma, and Ming-Hsuan Yang. Mode seeking generative adversarial networks for diverse image synthesis. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 1429–1437, 2019.
+- [61] Kangfu Mei, Mauricio Delbracio, Hossein Talebi, Zhengzhong Tu, Vishal M Patel, and Peyman Milanfar. Codi: conditional diffusion distillation for higher-fidelity and faster image generation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 9048–9058, 2024.
+- [62] Dustin Podell, Zion English, Kyle Lacey, Andreas Blattmann, Tim Dockhorn, Jonas Müller, Joe Penna, and Robin Rombach. Sdxl: Improving latent diffusion models for high-resolution image synthesis. arXiv preprint arXiv:2307.01952, 2023.
+
+- [63] Qian Qiao, Yu Xie, Jun Gao, Tianxiang Wu, Shaoyao Huang, Jiaqing Fan, Ziqiang Cao, Zili Wang, and Yue Zhang. Dntextspotter: Arbitrary-shaped scene text spotting via improved denoising training. In Proceedings of the 32nd ACM International Conference on Multimedia, pages 10134–10143, 2024.
+- [64] Aditya Ramesh, Mikhail Pavlov, Gabriel Goh, Scott Gray, Chelsea Voss, Alec Radford, Mark Chen, and Ilya Sutskever. Zero-shot text-to-image generation. In International conference on machine learning, pages 8821–8831. Pmlr, 2021.
+- [65] Kanchana Ranasinghe, Satya Narayan Shukla, Omid Poursaeed, Michael S Ryoo, and TsungYu Lin. Learning to localize objects improves spatial reasoning in visual-llms. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 12977– 12987, 2024.
+- [66] Hamid Rezatofighi, Nathan Tsoi, JunYoung Gwak, Amir Sadeghian, Ian Reid, and Silvio Savarese. Generalized intersection over union: A metric and a loss for bounding box regression. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 658–666, 2019.
+- [67] Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer. High-resolution image synthesis with latent diffusion models. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 10684–10695, 2022.
+- [68] Hshmat Sahak, Daniel Watson, Chitwan Saharia, and David Fleet. Denoising diffusion probabilistic models for robust image super-resolution in the wild. arXiv preprint arXiv:2302.07864, 2023.
+- [69] Chitwan Saharia, Jonathan Ho, William Chan, Tim Salimans, David J Fleet, and Mohammad Norouzi. Image super-resolution via iterative refinement. IEEE transactions on pattern analysis and machine intelligence, 45(4):4713–4726, 2022.
+- [70] Baoguang Shi, Xiang Bai, and Cong Yao. An end-to-end trainable neural network for imagebased sequence recognition and its application to scene text recognition. IEEE transactions on pattern analysis and machine intelligence, 39(11):2298–2304, 2016.
+- [71] Baoguang Shi, Mingkun Yang, Xinggang Wang, Pengyuan Lyu, Cong Yao, and Xiang Bai. Aster: An attentional scene text recognizer with flexible rectification. IEEE transactions on pattern analysis and machine intelligence, 41(9):2035–2048, 2018.
+- [72] Amanpreet Singh, Guan Pang, Mandy Toh, Jing Huang, Wojciech Galuba, and Tal Hassner. Textocr: Towards large-scale end-to-end reasoning for arbitrary-shaped scene text. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 8802–8812, 2021.
+- [73] Domen Tabernik and Danijel Skoˇcaj. Deep learning for large-scale traffic-sign detection and recognition. IEEE transactions on intelligent transportation systems, 21(4):1427–1440, 2019.
+- [74] Jingqun Tang, Wenqing Zhang, Hongye Liu, MingKun Yang, Bo Jiang, Guanglong Hu, and Xiang Bai. Few could be better than all: Feature sampling and grouping for scene text detection. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 4563–4572, 2022.
+- [75] Luming Tang, Menglin Jia, Qianqian Wang, Cheng Perng Phoo, and Bharath Hariharan. Emergent correspondence from image diffusion. In Thirty-seventh Conference on Neural Information Processing Systems, 2023.
+- [76] Andreas Veit, Tomas Matera, Lukas Neumann, Jiri Matas, and Serge Belongie. Coco-text: Dataset and benchmark for text detection and recognition in natural images. arXiv preprint arXiv:1601.07140, 2016.
+- [77] Jianyi Wang, Kelvin CK Chan, and Chen Change Loy. Exploring clip for assessing the look and feel of images. In Proceedings of the AAAI conference on artificial intelligence, volume 37, pages 2555–2563, 2023.
+
+- [78] Jianyi Wang, Zongsheng Yue, Shangchen Zhou, Kelvin CK Chan, and Chen Change Loy. Exploiting diffusion prior for real-world image super-resolution. International Journal of Computer Vision, 132(12):5929–5949, 2024.
+- [79] Wenhai Wang, Enze Xie, Xiang Li, Wenbo Hou, Tong Lu, Gang Yu, and Shuai Shao. Shape robust text detection with progressive scale expansion network. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 9336–9345, 2019.
+- [80] Wenjia Wang, Enze Xie, Xuebo Liu, Wenhai Wang, Ding Liang, Chunhua Shen, and Xiang Bai. Scene text image super-resolution in the wild. In Computer Vision–ECCV 2020: 16th European Conference, Glasgow, UK, August 23–28, 2020, Proceedings, Part X 16, pages 650–666. Springer, 2020.
+- [81] Wenjia Wang, Enze Xie, Peize Sun, Wenhai Wang, Lixun Tian, Chunhua Shen, and Ping Luo. Textsr: Content-aware text super-resolution guided by recognition. arXiv preprint arXiv:1909.07113, 2019.
+- [82] Xintao Wang, Liangbin Xie, Chao Dong, and Ying Shan. Real-esrgan: Training real-world blind super-resolution with pure synthetic data. In Proceedings of the IEEE/CVF international conference on computer vision, pages 1905–1914, 2021.
+- [83] Xintao Wang, Ke Yu, Shixiang Wu, Jinjin Gu, Yihao Liu, Chao Dong, Yu Qiao, and Chen Change Loy. Esrgan: Enhanced super-resolution generative adversarial networks. In Proceedings of the European conference on computer vision (ECCV) workshops, pages 0–0, 2018.
+- [84] Zhou Wang, Alan C Bovik, Hamid R Sheikh, and Eero P Simoncelli. Image quality assessment: from error visibility to structural similarity. IEEE transactions on image processing, 13(4):600– 612, 2004.
+- [85] Pengxu Wei, Ziwei Xie, Hannan Lu, Zongyuan Zhan, Qixiang Ye, Wangmeng Zuo, and Liang Lin. Component divide-and-conquer for real-world image super-resolution. In Computer Vision–ECCV 2020: 16th European Conference, Glasgow, UK, August 23–28, 2020, Proceedings, Part VIII 16, pages 101–117. Springer, 2020.
+- [86] Rongyuan Wu, Tao Yang, Lingchen Sun, Zhengqiang Zhang, Shuai Li, and Lei Zhang. Seesr: Towards semantics-aware real-world image super-resolution. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 25456–25467, 2024.
+- [87] Jiarui Xu, Sifei Liu, Arash Vahdat, Wonmin Byeon, Xiaolong Wang, and Shalini De Mello. Open-vocabulary panoptic segmentation with text-to-image diffusion models. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 2955–2966, 2023.
+- [88] Xiangyu Xu, Deqing Sun, Jinshan Pan, Yujin Zhang, Hanspeter Pfister, and Ming-Hsuan Yang. Learning to super-resolve blurry face and text images. In Proceedings of the IEEE international conference on computer vision, pages 251–260, 2017.
+- [89] Sidi Yang, Tianhe Wu, Shuwei Shi, Shanshan Lao, Yuan Gong, Mingdeng Cao, Jiahao Wang, and Yujiu Yang. Maniqa: Multi-dimension attention network for no-reference image quality assessment. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 1191–1200, 2022.
+- [90] Zhuoyi Yang, Jiayan Teng, Wendi Zheng, Ming Ding, Shiyu Huang, Jiazheng Xu, Yuanming Yang, Wenyi Hong, Xiaohan Zhang, Guanyu Feng, et al. Cogvideox: Text-to-video diffusion models with an expert transformer. arXiv preprint arXiv:2408.06072, 2024.
+- [91] Maoyuan Ye, Jing Zhang, Shanshan Zhao, Juhua Liu, Bo Du, and Dacheng Tao. Dptext-detr: Towards better scene text detection with dynamic points in transformer. In Proceedings of the AAAI conference on artificial intelligence, volume 37, pages 3241–3249, 2023.
+
+- [92] Maoyuan Ye, Jing Zhang, Shanshan Zhao, Juhua Liu, Tongliang Liu, Bo Du, and Dacheng Tao. Deepsolo: Let transformer decoder with explicit points solo for text spotting. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 19348–19357, 2023.
+- [93] Deli Yu, Xuan Li, Chengquan Zhang, Tao Liu, Junyu Han, Jingtuo Liu, and Errui Ding. Towards accurate scene text recognition with semantic reasoning networks. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 12113–12122, 2020.
+- [94] Fanghua Yu, Jinjin Gu, Zheyuan Li, Jinfan Hu, Xiangtao Kong, Xintao Wang, Jingwen He, Yu Qiao, and Chao Dong. Scaling up to excellence: Practicing model scaling for photo-realistic image restoration in the wild. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 25669–25680, 2024.
+- [95] Zongsheng Yue, Jianyi Wang, and Chen Change Loy. Resshift: Efficient diffusion model for image super-resolution by residual shifting. Advances in Neural Information Processing Systems, 36:13294–13307, 2023.
+- [96] Liu Yuliang, Jin Lianwen, Zhang Shuaitao, and Zhang Sheng. Detecting curve text in the wild: New dataset and new solution. arXiv preprint arXiv:1712.02170, 2017.
+- [97] Jiahui Zhang, Shijian Lu, Fangneng Zhan, and Yingchen Yu. Blind image super-resolution via contrastive representation learning. arXiv preprint arXiv:2107.00708, 2021.
+- [98] Lin Zhang, Lei Zhang, and Alan C Bovik. A feature-enriched completely blind image quality evaluator. IEEE Transactions on Image Processing, 24(8):2579–2591, 2015.
+- [99] Lvmin Zhang, Anyi Rao, and Maneesh Agrawala. Adding conditional control to text-to-image diffusion models. In Proceedings of the IEEE/CVF international conference on computer vision, pages 3836–3847, 2023.
+- [100] Richard Zhang, Phillip Isola, Alexei A Efros, Eli Shechtman, and Oliver Wang. The unreasonable effectiveness of deep features as a perceptual metric. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 586–595, 2018.
+- [101] Xiang Zhang, Yongwen Su, Subarna Tripathi, and Zhuowen Tu. Text spotting transformers. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 9519–9528, 2022.
+- [102] Xuaner Zhang, Qifeng Chen, Ren Ng, and Vladlen Koltun. Zoom to learn, learn to zoom. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 3762–3770, 2019.
+- [103] Zangwei Zheng, Xiangyu Peng, Tianji Yang, Chenhui Shen, Shenggui Li, Hongxin Liu, Yukun Zhou, Tianyi Li, and Yang You. Open-sora: Democratizing efficient video production for all. arXiv preprint arXiv:2412.20404, 2024.
+- [104] Xizhou Zhu, Weijie Su, Lewei Lu, Bin Li, Xiaogang Wang, and Jifeng Dai. Deformable detr: Deformable transformers for end-to-end object detection. arXiv preprint arXiv:2010.04159, 2020.
+- [105] Zhe Zhu, Dun Liang, Songhai Zhang, Xiaolei Huang, Baoli Li, and Shimin Hu. Traffic-sign detection and classification in the wild. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 2110–2118, 2016.
+
