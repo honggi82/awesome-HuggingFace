@@ -1,0 +1,1412 @@
+# arXiv:2510.14967v2[cs.CL]24Mar2026
+
+## INFORMATION GAIN-BASED POLICY OPTIMIZATION: A SIMPLE AND EFFECTIVE APPROACH FOR MULTITURN SEARCH AGENTS
+
+Guoqing Wang1∗, Sunhao Dai1*,†Guangze Ye3*, Zeyu Gan2, Wei Yao2, Yong Deng1 Xiaofeng Wu1, Zhenzhe Ying1 1Venus Team, Ant Group, 2Renmin University of China, 3Individual Author {guoqingwang905, sunhaodai, guangzeye98}@gmail.com, zygan@ruc.edu.cn, wei.yao@ruc.edu.cn, {dengyong.deng, congyu.wxf, zhenzhe.yzz}@antgroup.com
+
+ABSTRACT
+
+Large language model (LLM)-based agents are increasingly trained with reinforcement learning (RL) to enhance their ability to interact with external environments through tool use, particularly in search-based settings that require multi-turn reasoning and knowledge acquisition. However, existing approaches typically rely on outcome-based rewards that are only provided exclusively upon generating the final answer. This reward sparsity becomes particularly problematic in multi-turn settings, where long trajectories exacerbate three critical issues: (i) advantage collapse, where all rollouts receive identical rewards and provide no useful learning signals; (ii) lack of fine-grained credit assignment, where the correctness of intermediate turns is obscured, especially in long-horizon tasks; and (iii) poor sample efficiency, where each rollout yields only a single outcome signal, leading to low data utilization. In this paper, we propose Information Gain-based Policy Optimization (IGPO), a simple yet effective RL framework that provides dense and intrinsic supervision for multi-turn agent training. IGPO models each interaction turn as an incremental process of acquiring information about the ground truth, and defines turn-level rewards as the marginal increase in the policy’s probability of producing the correct answer. Unlike prior process-level reward approaches that depend on external reward models or costly Monte Carlo estimation, IGPO derives intrinsic rewards directly from the model’s own belief updates. These intrinsic turn-level rewards are combined with outcome-level supervision to form dense reward signals. Extensive experiments on both in-domain and out-of-domain benchmarks demonstrate that IGPO consistently outperforms strong baselines in multiturn scenarios, achieving higher accuracy and improved data efficiency. Our code is available at https://github.com/GuoqingWang1/IGPO.
+
+1 INTRODUCTION
+
+Large language model (LLM)–based agents are increasingly equipped with the ability to interact with external environments through tool use (Zhang et al., 2025a; Huang et al., 2025; Li et al., 2025c), a capability often regarded as a critical step toward building general-purpose autonomous intelligent systems (Gutierrez et al., 2023; Qu et al., 2025). One of the most prominent application scenarios is agentic search, where an agent invokes tools such as web search (Zhang et al., 2025b; Qi et al., 2024) to access up-to-date, large-scale knowledge that substantially enhances its ability to solve complex, knowledge-intensive tasks (Ning et al., 2025). Through iterative interaction with the external environment via such tools, search agents can gradually acquire missing information and refine their reasoning trajectories toward solving the target query.
+
+∗Equal contributions. †Corresponding author.
+
+To equip general-purpose LLMs with such agentic search capabilities, early efforts primarily relied on prompt-based workflows (Li et al., 2025b; Wang et al., 2024a; Zheng et al., 2024), which allowed tool use without additional training but often suffered from poor generalization. More recent studies have explored supervised fine-tuning (SFT) (Wang et al., 2024b) and reinforcement learning (RL) (Jin et al., 2025; Song et al., 2025a; Zheng et al., 2025b) to explicitly incentivize tool use, achieving markedly better performance. In particular, Group Relative Policy Optimization (GRPO) (Shao et al., 2024)–style methods have emerged as the dominant approach for training agentic LLMs. In this paradigm, a group of rollouts is generated for each query under the current policy, and outcome-based rewards, typically defined by the correctness of the final answer against the ground truth, are used to construct group-relative advantages that drive policy optimization.
+
+Despite their simplicity and effectiveness in relatively easy tasks, outcome rewards suffer from inherent sparsity (Zhang et al., 2025c), providing supervision exclusively at the final answer. This limitation is particularly detrimental in multi-turn agentic settings, where long trajectories exacerbate three critical issues. First, outcome-only rewards frequently lead to advantage collapse: when intra-group rollouts yield identical answers (e.g., uniformly correct or incorrect), they receive identical rewards, yielding zero group-relative advantages and no gradient signal.
+
+As shown in Figure 1, a substantial portion of training iterations suffer from this issue, especially for smaller models, which struggle more with complex queries. Second, outcome supervision fails to provide finegrained credit assignment. In multi-turn scenarios, later turns are tightly dependent on earlier ones: the action of the current turn may be correct but rendered useless by prior mistakes, or conversely, early successes may be negated by subsequent errors. Thus, distinguishing the correctness of intermediate turns is essential in this scenario, but outcome rewards tend to blur such specific correctness. Third, outcome reward sparsity results in
+
+Figure 1: Proportion of zero-advantage groups during training—IGPO vs. GRPO on Qwen2.5-3B/7B-Instruct.
+
+poor sample efficiency. Since the entire trajectory receives only a single terminal signal, dense intermediate information is wasted, requiring significantly more samples to learn effective policies.
+
+Recent approaches have attempted to mitigate these issues by introducing process rewards. One line of work leverages external oracle knowledge or reward models to judge intermediate steps (Wang et al., 2025; Feng et al., 2025), but this strategy is costly and risks introducing bias. Another line relies on Monte Carlo simulations to estimate step values (Wang et al., 2023; Zuo et al., 2025; Zhang et al., 2025c), yet these methods suffer from high variance unless a large number of samples are collected. Overall, both directions face challenges in scalability and fail to provide simple and stable supervision, underscoring the need for an intrinsic and reliable process reward design.
+
+To address these challenges, we propose Information-Gain-based Policy Optimization (IGPO), a simple yet effective RL framework that provides stable and intrinsic supervision for multi-turn search agent training. The key intuition is to model each agent–environment interaction turn as an incremental process of acquiring information about the ground truth. Specifically, at every turn, IGPO computes the policy’s probability of producing the correct answer and defines the turn-level reward as the marginal increase in this probability compared to the previous state. This information gain reward offers ground-truth-aware feedback at every turn, in contrast to outcome rewards that only supervise the final answer. However, because outcome rewards are still necessary to anchor learning to the final objective, IGPO incorporates them alongside the turn-level rewards to construct dense reward signals for each rollout. To further stabilize training, we normalize the information gain rewards and outcome rewards separately within groups and propagate them with discounted accumulation, enabling the computation of turn-level discounted returns that capture long-horizon dependencies. Finally, IGPO optimizes the policy with a GRPO-style surrogate objective, replacing rollout-level advantages with our turn-level discounted returns. Additionally, we introduce a vectorized implementation to minimize the computational overhead of information gain rewards.
+
+To evaluate the effectiveness of IGPO, we conduct extensive experiments on both in-domain and outof-domain benchmarks with search-based agents. Results show that IGPO consistently outperforms strong baselines, delivering substantial gains in both answer accuracy and sample efficiency. Our main contributions can be summarized as follows: (1) We analyze the phenomenon of advantage collapse in outcome reward–based optimization, and reveal the inefficiency of existing process-
+
+level rewards due to reliance on external knowledge or high-variance estimation. (2) We propose IGPO, a simple yet effective policy optimization framework that leverages turn-level information gain to provide dense, ground-truth-aware supervision with negligible computational overhead. (3) Comprehensive experiments demonstrate that IGPO outperforms strong baselines across multiple benchmarks and significantly improves sample efficiency, especially for smaller models.
+
+2 PRELIMINARIES
+
+- 2.1 TASK FORMULATION
+
+Let D = {(q,a)} denote a dataset of question–answer pairs, and let E represent an external tool (e.g., a web search engine). The goal of the agent is to solve question q by generating a rollout o = (τ1,τ2,...,τT) through iterative interaction with the environment via tool E, where T is the total number of interaction turns. The last turn τT is the answer turn that outputs a rationale-thenfinal answer sequence, while all previous turns involve reasoning and tool interaction. Specifically, for t < T, each turn τt is defined as a triple consisting of [think], [tool call], and [tool response]. The [think] step compels the agent to reason explicitly before acting, and each reasoning process is wrapped in a <think></think> tag following the DeepSeek-R1 setting (Guo et al., 2025). The [tool call] step invokes the external tool E by producing a structured request, typically JSON-formatted and wrapped in a dedicated tag (e.g., <tool call>search query</tool call>). The [tool response] step then returns structured outputs from E, such as webpage snippets with titles, URLs, and text when using a web search engine tool, enclosed in <tool response>retrieved documents</tool response> tags. In the final turn, after a [think] step, the agent generates its answer within the <answer></answer> tag, and this content is extracted as the trajectory’s final prediction aˆ, which is expected to correctly address the input query q. This agent-environment interaction is illustrated at the bottom of Figure 2.
+
+- 2.2 AGENTIC REINFORCEMENT LEARNING PIPELINE
+
+Policy Optimization. Agentic RL typically adopts policy-gradient methods to optimize the agent policy πθ. A common approach is Group Relative Policy Optimization (GRPO) (Shao et al., 2024), which removes the need for an explicit critic by normalizing returns within each sampled group of rollouts. Formally, given an actor model πθ, a group of G rollouts {oi}Gi=1 is sampled from old policy πθ
+
+(· | q) for each input (q,a) ∼ D. The policy is then optimized by maximizing the clipped surrogate objective with KL regularization:
+
+old
+
+|oi|
+
+G
+
+πθ(oi,t | q,oi,<t) πθ
+
+1 |oi|
+
+1 G
+
+JGRPO(θ) = E(q,a)∼D,{o
+
+min
+
+Ai,
+
+i}∼πθold(·|q)
+
+(oi,t | q,oi,<t)
+
+old
+
+t=1
+
+i=1
+
+(1)
+
+πθ(oi,t | q,oi,<t) πθ
+
+, 1 − ϵ, 1 + ϵ Ai − β DKL(πθ ∥πref) ,
+
+clip
+
+(oi,t | q,oi,<t)
+
+old
+
+i−mean(r1,r2,··· ,rG)
+
+where Ai = r
+
+std(r1,r2,···,rG) is the normalized group-relative advantage for the i-th rollout and ri is the outcome reward of the i-th rollout. ϵ is the clipping ratio, and β controls the KL penalty relative to the reference model πref. During optimization, gradients are applied only to decision tokens (reasoning, tool calls, answers), while tool responses from the environment are masked out.
+
+Reward. During training, the agent receives a scalar reward r for each rollout o, which provides the optimization signal. Prior work typically combines an outcome reward with a format penalty:
+
+rO =
+
+F1(ˆa,a) = 2|aˆ||aˆ+∩|aa|| ∈ [0,1], if the output is in valid format, λfmt, otherwise,
+
+(2)
+
+where aˆ is the predicted answer, a is the ground-truth answer, and F1(ˆa,a) ∈ [0,1] denotes the word-level F1 score. If the output violates the required schema (e.g., missing tags or malformed JSON), a negative constant λfmt < 0 is assigned as a penalty. Thus, the outcome reward provides a correctness signal, while the format penalty enforces the structural validity of outputs.
+
+[Figure 1]
+
+[Figure 2]
+
+[Figure 3]
+
+[Figure 4]
+
+###### Turn-Level Discounted Return
+
+###### Interaction
+
+Information Gain–Based Immediate Reward 𝒓𝑰𝑮 (Answer is omitted)
+
+Rollout
+
+[Figure 5]
+
+[Figure 6]
+
+[Figure 7]
+
+[Figure 8]
+
+[Figure 9]
+
+Ground Truth 𝒍𝒐𝒈𝒑𝒊𝟎
+
+###### Turn 0
+
+Q
+
+[Figure 10]
+
+[Figure 11]
+
+[Figure 12]
+
+[Figure 13]
+
+[Figure 14]
+
+𝒓𝟏𝑰𝑮
+
+𝒓𝟏𝑶
+
+𝒓 𝟏 𝑹 𝟏
+
+𝑶𝟏
+
+[Figure 15]
+
+[Figure 16]
+
+[Figure 17]
+
+Info Gain ( 𝑮𝑻 | 𝑶𝒊𝟏 )
+
+Assign To
+
+Policy LLM
+
+[Figure 18]
+
+[Figure 19]
+
+[Figure 20]
+
+[Figure 21]
+
+[Figure 22]
+
+[Figure 23]
+
+[Figure 24]
+
+[Figure 25]
+
+[Figure 26]
+
+[Figure 27]
+
+[Figure 28]
+
+[Figure 29]
+
+Output 𝑶𝒊𝟏
+
+Ground Truth 𝒍𝒐𝒈𝒑𝒊𝟏
+
+###### Turn 1 Q
+
+𝒓𝟐𝑰𝑮 𝒓𝟐𝑶
+
+𝒓 𝟐 𝑹 𝟐
+
+𝑶𝟐
+
+[Figure 30]
+
+Group Norm
+
+𝜸
+
+[Figure 31]
+
+[Figure 32]
+
+𝑶𝒊𝟐
+
+Info Gain ( 𝑮𝑻 | )
+
+……
+
+……
+
+……
+
+……
+
+Assign To
+
+[Figure 33]
+
+[Figure 34]
+
+[Figure 35]
+
+[Figure 36]
+
+Query Info
+
+[Figure 37]
+
+[Figure 38]
+
+[Figure 39]
+
+[Figure 40]
+
+[Figure 41]
+
+[Figure 42]
+
+[Figure 43]
+
+[Figure 44]
+
+[Figure 45]
+
+[Figure 46]
+
+[Figure 47]
+
+[Figure 48]
+
+Output 𝑶𝒊𝟏 Output 𝑶𝒊𝟐
+
+Ground Truth 𝒍𝒐𝒈𝒑𝒊𝟐
+
+###### Turn 2 Q
+
+𝒓𝒊𝑰𝑮 𝒓𝒊𝑶
+
+𝒓 𝒊 𝑹 𝒊
+
+𝑶𝒊
+
+[Figure 49]
+
+[Figure 50]
+
+[Figure 51]
+
+[Figure 52]
+
+𝑶𝒊𝑻 𝟏
+
+Info Gain ( 𝑮𝑻 | )
+
+…
+
+Assign To
+
+[Figure 53]
+
+[Figure 54]
+
+[Figure 55]
+
+[Figure 56]
+
+[Figure 57]
+
+[Figure 58]
+
+[Figure 59]
+
+[Figure 60]
+
+[Figure 61]
+
+[Figure 62]
+
+[Figure 63]
+
+…
+
+[Figure 64]
+
+𝒓𝑮𝑰𝑮 𝒓𝑮𝑶
+
+𝒓 𝑮 𝑹 𝑮
+
+Environment
+
+Output 𝑶𝒊𝑻 𝟐 Output 𝑶𝒊𝑻 𝟏
+
+Ground Truth 𝒍𝒐𝒈𝒑𝒊𝑻 𝟏
+
+Turn T-1 Q
+
+𝑶𝑮
+
+[Figure 65]
+
+[Figure 66]
+
+[Figure 67]
+
+w/ loss
+
+[Figure 68]
+
+[Figure 69]
+
+[Figure 70]
+
+[Figure 71]
+
+[Figure 72]
+
+[Figure 73]
+
+[Figure 74]
+
+[Figure 75]
+
+[think] [toolcall] [toolresponse] … [think] [answer]
+
+[Figure 76]
+
+[Figure 77]
+
+[Figure 78]
+
+[Figure 79]
+
+[Figure 80]
+
+[Figure 81]
+
+[Figure 82]
+
+[Figure 83]
+
+Rollout ：
+
+[think] [tool call] [tool response]
+
+[Figure 84]
+
+[Figure 85]
+
+w/o loss Repeat at most T-1 Times
+
+Figure 2: The training pipeline of IGPO. (Upper) Turn-level information gain rewards are computed by measuring changes in ground-truth probability and combined with the outcome reward to derive discounted returns. (Lower) Each rollout contains at most T − 1 interaction turns, where each turn includes a reasoning step, a tool call, and the returned tool response, followed by a final answer turn. During optimization, the loss on tool response is masked out.
+
+- 3 INFORMATION GAIN-BASED POLICY OPTIMIZATION
+
+In this section, we first illustrate our motivation and then provide a detailed introduction to our proposed information gain-based policy optimization, whose overall framework is shown in Figure 2.
+
+- 3.1 MOTIVATION
+
+While outcome-based RL is effective in single-turn tasks, extending it to multi-turn agentic settings faces three critical limitations. First, standard GRPO leads to advantage collapse. In the standard framework (Eq. 1), each rollout oi receives a scalar reward derived solely from the final answer. For complex (or trivial) queries, rollouts often yield identical outcomes (uniformly zero or one), causing group-relative advantages to vanish and providing no valid gradient signal. Second, outcome-only supervision lacks fine-grained credit assignment. In multi-turn scenarios, later decisions strictly depend on earlier ones: a tool call may be conceptually correct but rendered useless by prior errors, or conversely, valid reasoning may be overshadowed by subsequent mistakes. Outcome rewards obscure these dependencies, failing to distinguish productive steps from invalid ones. Third, outcome reward sparsity results in poor sample efficiency. By relying solely on a single terminal signal, the dense semantic information embedded in intermediate reasoning and tool interactions is wasted, necessitating significantly more samples to learn effective policies
+
+To mitigate this issue, we introduce Information-Gain-based Policy Optimization (IGPO). The key idea is to exploit the multi-turn structure of agentic rollouts and treat each turn as an opportunity to acquire additional evidence toward the ground truth. At every turn, IGPO measures the increase in the policy’s confidence of generating the correct answer, which we defined as the information gain of this turn and uses this as the turn-level reward. By rewarding turn-level information gain, IGPO supplies denser and more fine-grained supervision, especially at early training stages. We further present a theoretical analysis in Appendix A, which intuitively explains why IGPO effectively addresses the limitations of sparse outcome rewards in multi-turn scenarios. Since the information gain is defined with respect to the ground-truth answer and computed under teacher forcing, it provides rich and dense supervision, ensuring that every sample contributes to learning even when no rollout produces a fully correct final answer.
+
+- 3.2 INFORMATION GAIN-BASED TURN-LEVEL REWARD
+
+Information Gain Reward. We view multi-turn agent–environment interaction as a process of incrementally acquiring information about the ground truth. To capture this intuition, we propose an intrinsic information gain-based reward. At each turn, we evaluate the policy’s probability of
+
+generating the ground-truth answer and define the reward as the difference between consecutive states. We call this the information gain reward, as it measures the marginal increase in posterior probability mass assigned to the ground truth induced by the current turn. In practice, to ensure numerical stability, we quantify this gain as the increment in log probability.
+
+Formally, let a = (a1,...,aL) denote the ground-truth answer tokens. For the t-th turn in the i-th rollout, the log probability of a under the current policy πθ is computed as
+
+L
+
+1 L
+
+log πθ(aj | q,oi,≤t,a<j), (3)
+
+log πθ(a | q,oi,≤t) =
+
+j=1
+
+where oi,≤t denotes the prefix of rollout oi up to turn t. Then the immediate reward 1 for turn t is
+
+ri,tIG = IG(a | q,oi,t) = log πθ(a | q,oi,≤t) − log πθ(a | q,oi,≤t−1), 1 ≤ t < T. (4)
+
+In practice, the ground-truth answer a is wrapped in the same schema as a predicted answer to ensure consistency with rollout formatting, e.g., <think>Now there’s enough information to answer</think><answer>Ground Truth a</answer>.
+
+This turn-level reward offers three key properties: (1) Ground-truth awareness: It increases when the turn-action raises the policy’s confidence in the correct answer, and decreases otherwise. Crucially, this objective derivation minimizes the potential bias inherent in external reward models or manual process labeling. (2) Dense supervision: It provides turn-level dense signals that resolve advantage collapse, enable fine-grained credit assignment, and improve sample efficiency. (3) Computational efficiency: Unlike other process reward designs (especially Monte Carlo estimation), it incurs negligible overhead, an advantage further amplified by the vectorized implementation presented below
+
+Efficient Vectorized Implementation. Although the information gain reward already enjoys inherent efficiency over existing process reward methods, we seek to further optimize its computation. In the standard implementation, computing the information gain re-
+
+###### Original Attention Mask Custom Attention Mask
+
+| | | | | | | | | | |
+|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | |
+| | | | | | | | | | |
+| | | | | | | | | | |
+| | | | | | | | | | |
+| | |[Figure 86]| | | | | | | |
+| | | | | | | | | | |
+| | | | | | | | | | |
+| | | | | | | | | | |
+| | | | | | | | | | |
+
+| | | | | | |
+|---|---|---|---|---|---|
+| | | | | | |
+| | |[Figure 87]| | | |
+| | | | | | |
+| | | | | | |
+| | | | | | |
+
+𝑻𝒖𝒓𝒏𝟏 𝑶𝒖𝒕𝒑𝒖𝒕
+
+𝑻𝒖𝒓𝒏𝟏 𝑶𝒖𝒕𝒑𝒖𝒕
+
+𝑻𝒖𝒓𝒏𝟐 𝑶𝒖𝒕𝒑𝒖𝒕
+
+- ward requires T separate forward passes, with com-
+
+𝑮𝒓𝒐𝒖𝒏𝒅 𝑻𝒓𝒖𝒕𝒉
+
+𝑻𝒖𝒓𝒏𝟐 𝑶𝒖𝒕𝒑𝒖𝒕
+
+plexity scaling as Tt=0−1 L2t, where Lt is the sequence length at turn t. To optimize this, we propose a vec-
+
+𝑮𝒓𝒐𝒖𝒏𝒅 𝑻𝒓𝒖𝒕𝒉
+
+𝑻𝒖𝒓𝒏𝟏 𝑶𝒖𝒕𝒑𝒖𝒕
+
+𝑮𝒓𝒐𝒖𝒏𝒅 𝑻𝒓𝒖𝒕𝒉
+
+𝑻𝒖𝒓𝒏𝟐 𝑶𝒖𝒕𝒑𝒖𝒕
+
+𝑻𝒖𝒓𝒏𝟏 𝑶𝒖𝒕𝒑𝒖𝒕
+
+𝑻𝒖𝒓𝒏𝟐 𝑶𝒖𝒕𝒑𝒖𝒕
+
+𝑮𝒓𝒐𝒖𝒏𝒅 𝑻𝒓𝒖𝒕𝒉
+
+torized implementation that appends T copies of the ground-truth answer to the end of the trajectory. By applying a custom attention mask (Figure 3) that restricts each copy’s visibility to its corresponding turn, we compute the log probabilities for all T turns simultaneously in a single forward pass (complexity
+
+Figure 3: The custom attenyion mask for vectorized implementation. Shaded cells denote allowed attention. Prompt and answer tokens are omitted for clarity.
+
+∝ L2T−1), while ensuring mathematical equivalence to Eq. 3. Given that the ground-truth length is orders of magnitude smaller than the full reasoning trajectory, the overhead introduced by these
+
+appended copies is negligible. This implementation yields an asymptotic speedup of ≈ T/3 (e.g.,
+
+- 3× for T = 10) and further enhances GPU utilization by reducing synchronization overhead.
+
+- 3.3 POLICY OPTIMIZATION WITH TURN-LEVEL DISCOUNTED RETURN Turn-Level Discounted Return.
+
+Given a group of rollouts {oi}Gi=1, where each rollout oi yields a sequence of T −1 information gain rewards {ri,tIG}Tt=1−1 and an outcome reward riO (calculated via Eq. 2), we follow GRPO (Shao et al.,
+
+- 2024) to stabilize training and capture the relative magnitude of rewards. Specifically, we perform group-wise z-normalization on the information gain rewards and outcome rewards separately.
+
+ 
+
+ri,tIG −µIG
+
+σIG , 1 ≤ t < T, riO−µO
+
+(5)
+
+r˜i,t =
+
+
+
+σO , t = T,
+
+1Due to its log-prob origin, we apply stop-gradient to the information gain–based reward.
+
+where µIG,σIG are the mean and standard deviation of all information gain rewards {ri,tIG} within the group, and µO,σO correspond to the outcome rewards {riO}.
+
+While r˜i,t captures the relative quality of each turn, it only reflects immediate effects and ignores the impact of current decisions on future turns. To incorporate such long-horizon dependencies, we
+
+compute a turn-level discounted return R˜i,t to reflect the cumulative impact of future rewards:
+
+T
+
+R˜i,t =
+
+##### γ k−tr˜i,k, (6)
+
+k=t
+
+where γ ∈ (0,1] is the discount factor. During optimization, R˜i,t is assigned to all tokens produced in turn t of rollout oi. This yields a dense and future-aware supervision signal for policy learning.
+
+Policy Optimization. With the turn-level discounted return R˜i,t defined above, we optimize the agent policy using a clipped surrogate objective with KL regularization, following the same structure as GRPO but with a finer-grained credit assignment. Formally, the IGPO objective is
+
+|oi|
+
+G
+
+πθ(oi,t | q,oi,<t) πθ
+
+1 G
+
+1 |oi|
+
+R˜i,t,
+
+JIGPO(θ) = E(q,a)∼D,{o
+
+min
+
+i}∼πθold(·|q)
+
+(oi,t | q,oi,<t)
+
+old
+
+t=1
+
+i=1
+
+(7)
+
+πθ(oi,t | q,oi,<t) πθ
+
+, 1 − ϵ, 1 + ϵ R ˜i,t − β DKL(πθ ∥πref) ,
+
+clip
+
+(oi,t | q,oi,<t)
+
+old
+
+where ϵ is the clipping threshold, β controls the KL penalty strength, and t maps token oi,t to its originating turn. During optimization, only decision tokens (reasoning, tool calls, and answers) receive gradient updates, while raw tool responses are masked out.
+
+To further substantiate the simplicity and implementability of the proposed IGPO, we provide an algorithmic flow comparison between IGPO and GRPO in Appendix G.
+
+- 4 EXPERIMENTS
+
+- 4.1 EXPERIMENTAL SETUP
+
+Datasets & Metrics. To evaluate the effectiveness of our proposed IGPO, we conduct experiments on both in-domain (ID) and out-of-domain (OOD) QA benchmarks in an agentic search setting. Following previous work (Zheng et al., 2025b; Deng et al., 2025), the ID setting includes four widely used datasets: NQ (Kwiatkowski et al., 2019), TQ (Joshi et al., 2017), HotpotQA (Yang et al., 2018), and 2Wiki (Ho et al., 2020), while the OOD setting includes three datasets: MusiQue (Trivedi et al.,
+
+- 2022), Bamboogle (Press et al., 2022), and PopQA (Mallen et al., 2022). We report word-level F1 as the evaluation metric, which is computed as the harmonic mean of precision and recall between the predicted and reference answers.
+
+Baselines. To directly verify IGPO’s superiority on agentic search tasks, we compare it against a set of competitive baselines: (1) Prompt-based methods: CoT (Wei et al., 2022), CoT+RAG (Gao et al.,
+
+- 2023), and Search-o1 (Li et al., 2025b), which represent the baseline performance of LLMs without further training on search tasks. (2) Outcome-reward RL-based methods: Search-r1-base/Instruct (Jin et al., 2025), R1-searcher (Song et al., 2025a), and DeepResearcher (Zheng et al., 2025b), the representative search agents with outcome-based reward RL, yielding marked performance gains.
+
+(3) Step-reward RL-based methods: StepSearch-base/instruct (Wang et al., 2025), ReasoningRAG (Zhang et al., 2025c), and GiGPO (Feng et al., 2025), which are the latest approaches exploring step-reward RL in search-agent settings.
+
+To further validate IGPO’s effectiveness, we also compare it against the following commonly used RL algorithms under the same configuration: PPO (Schulman et al., 2017), a widely used actor-critic algorithm that requires an additional value model, and critic-free methods Reinforce++ (Hu, 2025), RLOO (Kool et al., 2019; Ahmadian et al., 2024), GRPO (Shao et al., 2024), and GSPO(Zheng
+
+- et al., 2025a) which perform advantage estimation over trajectory groups or batchs.
+
+Implementation Details. We use Qwen2.5-7B-Instruct (Qwen et al., 2025) as our backbone model. The training is conducted using the verl (Sheng et al., 2025) framework. The discounted factor γ is
+
+Table 1: Main results of IGPO compared with different agentic RL baselines across seven datasets.
+
+In-domain Out-of-domain Method NQ TQ HotpotQA 2Wiki Musique Bamboogle PopQA Avg.
+
+#### Prompt-based
+
+CoT 19.8 45.6 24.4 26.4 8.5 22.1 17.0 23.4 CoT+RAG 42.0 68.9 37.1 24.4 10.0 25.4 46.9 36.4 Search-o1 32.4 58.9 33.0 30.9 14.7 46.6 38.3 36.4
+
+#### Outcome-reward RL-based
+
+Search-r1-base 45.4 71.9 55.9 44.6 26.7 56.5 43.2 49.2 Search-r1-instruct 33.1 44.7 45.7 43.4 26.5 45.0 43.0 40.2 R1-searcher 35.4 73.1 44.8 59.4 22.8 64.8 42.7 49.0 DeepResearcher 39.6 78.4 52.8 59.7 27.1 71.0 48.5 53.9
+
+#### Step-reward RL-based
+
+StepSearch-base - - 49.3 45.0 32.4 57.3 - 46.0 StepSearch-instruct - - 50.2 43.1 31.2 53.4 - 44.5 ReasoningRAG - - 48.9 50.4 20.6 45.5 46.2 42.3 GiGPO 46.4 64.7 41.6 43.6 18.9 68.9 46.1 47.2 IGPO 46.4 80.6 59.0 72.1 32.7 77.0 53.8 60.2
+
+set to 1.0 with no future tuning. At each training step, we sample 32 prompts, and sample 16 rollouts for each prompt. The maximum dialogue turns are set to 10. For the environment, we use the google search API as our tool. The settings of our experiments are consistent with DeepResearcher (Zheng
+
+- et al., 2025b). For the other baselines in Table 1, we directly copy their reported results. All RL training methods (including ours and the baselines) use exactly the same hyperparameter configurations. The training and inference prompt templates are shown in Appendix H. Please refer to Appendix C for more details.
+
+- 4.2 OVERALL PERFORMANCE
+
+The overall performance comparison between IGPO and the baseline methods is presented in Table 1 and Table 2. Based on these results, we can draw the following key observations:
+
+Training-based methods consistently outperform prompt-based baselines. As shown in Table 1, all RL–based methods, whether outcome- or step-reward driven, achieve substantially higher performance than all prompt-based approaches. This confirms that explicit policy optimization is essential for developing effective LLM-based agents, as opposed to relying on prompting alone.
+
+Existing step-reward methods yield competitive but unstable improvements compared to outcome-reward RL methods. While step-reward baselines occasionally surpass outcome-reward ones on specific datasets (e.g., StepSearch on Musique), their overall performance still lags behind the strongest outcome-reward methods such as DeepResearcher. This suggests that existing stepreward designs, although able to provide intermediate guidance, often suffer from noisy or weak supervision signals that limit their generalizability.
+
+IGPO achieves the best overall performance across both in-domain and out-of-domain datasets. Our IGPO outperforms all baselines, with an average score of 60.2, a clear margin over the best method (+6.3 over DeepResearcher). This improvement is attributed to IGPO’s information gain-based reward design, which assigns intrinsic, ground-truth-aware credit at every turn while preserving the outcome reward. By providing fine-grained credit assignment and improves sample efficiency, IGPO delivers robust gains across both in-domain and out-of-domain datasets.
+
+IGPO consistently outperforms other RL algorithms. Beyond task-specific baselines, Table 2 shows that IGPO also achieves the highest overall score among standard RL methods, surpassing RLOO, PPO, Reinforce++, and GSPO. Unlike these methods, which rely solely on sparse outcome rewards, IGPO incorporates turn-level discounted returns to provide denser and more stable supervision, leading to stronger generalization and more efficient training.
+
+Table 2: Main results of IGPO compared with different RL baselines across seven datasets.
+
+In-domain Out-of-domain
+
+Method NQ TQ HotpotQA 2Wiki Musique Bamboogle PopQA Avg. RLOO 40.7 72.5 49.6 55.0 24.8 62.2 43.1 49.7 PPO 38.7 75.4 48.6 59.7 26.2 63.4 48.7 51.5 GRPO 40.3 77.0 48.9 57.7 25.0 65.1 49.6 51.9 Reinforce++ 34.3 67.5 45.9 54.5 23.7 61.2 44.3 47.3 GSPO 41.5 77.7 46.3 60.1 25.4 67.6 45.4 52.0 IGPO 46.4 80.6 59.0 72.1 32.7 77.0 53.8 60.2
+
+- 4.3 ABLATION STUDY
+
+We further conduct ablation experiments to assess the contribution of different reward components. As shown in Table 3, we observe:
+
+First, using only information gain (IG) turn-level reward or only outcome reward (F1) yields clearly inferior results compared to the full combination. This highlights the complementary roles of turn-level and outcome-level supervision: the outcome reward enforces alignment with the final task objective but suffers from severe sparsity, whereas the information gain reward offers dense and stable guidance for intermediate steps.
+
+Second, IGPO with only IG achieves performance comparable to or even exceeding that of standard GRPO (i.e., IGPO w/ F1). This demonstrates that IGPO’s information gain reward is not subject to reward hacking. Usually, without outcome supervision, unstable reward designs would quickly collapse. In contrast, our IGPO remains robust because its turn-level signals are intrinsically defined and grounded in the ground truth.
+
+Table 3: Ablation results of IGPO on Qwen2.5-3B/7B-Instruct with different reward designs. IGPO (w/ F1) corresponds to using only outcome rewards, reducing to standard GRPO.
+
+In-domain Out-of-domain Method NQ TQ HotpotQA 2Wiki Musique Bamboogle PopQA Avg.
+
+###### Qwen2.5-3B-Instruct
+
+IGPO (w/ F1) 31.0 55.6 27.5 29.4 12.1 35.7 34.9 32.3 IGPO (w/ IG) 29.6 54.1 28.1 37.5 17.6 43.8 31.7 34.6 IGPO (w/ F1+IG) 41.9 69.2 47.8 51.4 24.8 58.4 49.0 48.9
+
+###### Qwen2.5-7B-Instruct
+
+IGPO (w/ F1) 40.3 77.0 48.9 57.7 25.0 65.1 49.6 51.9 IGPO (w/ IG) 37.3 75.2 52.1 63.3 28.9 69.8 47.8 53.5 IGPO (w/ F1+IG) 46.4 80.6 59.0 72.1 32.7 77.0 53.8 60.2
+
+Third, the improvements are particularly pronounced on the smaller 3B model. Compared to standard GRPO, IGPO improves the 3B model by +16.6 points (32.3 → 48.9) and the 7B model by +8.3 points (51.9 → 60.2). This larger benefit on the 3B model arises because advantage collapse is more severe for weaker models that struggle to directly produce correct answers (Figure 1), making them especially reliant on dense reward signals. In such cases, the information gain reward helps prune noisy reasoning paths and reinforce rollouts that progressively approach the ground truth.
+
+Finally, IGPO demonstrates consistently faster and more stable learning dynamics. As shown in Figure 4, IGPO steadily outperforms its two ablated variants throughout training across all seven datasets. The curves highlight two advantages: (i) IGPO converges to higher F1 scores, confirming the benefit of combining intrinsic turn-level reward and outcome rewards, and (ii) IGPO maintains stable improvements over steps, indicating robustness against reward sparsity and noisy supervision. These results further validate that IGPO provides dense and reliable training signals, thereby improving both training efficiency and final performance.
+
+In addition to the reward ablation, we compare different information gain bases (probability vs. log-probability) and normalization strategies (joint vs. separate) in Appendix D.1.
+
+(a) NQ (b) TQ (c) HotpotQA (d) 2Wiki
+
+(e) Musique (f) Bamboogle (g) PopQA
+
+Figure 4: Training curves on Qwen2.5-7B-Instruct with different reward designs.
+
+- 4.4 IN-DEPTH ANALYSIS
+
+Figure 6: Token Efficiency: average performance with respect to the number of tokens used for gradient updates.
+
+Figure 5: Mean reduction in ground-truth answer entropy from the initial query (Turn 0) to the last non-answer turn (T −1) during training.
+
+Ground-truth Entropy Reduction. To better understand how IGPO improves training dynamics, we measure the change in ground-truth answer entropy from the initial query (Turn 0) to the last non-answer turn (T − 1). As shown in Figure 5, IGPO consistently achieves a larger entropy reduction than GRPO throughout training. This indicates that the information gain reward effectively encourages intermediate steps to move the policy closer to the ground-truth answer distribution. In contrast, outcome-based supervision in GRPO provides no guidance for intermediate turns, resulting in weaker entropy reduction. These results highlight that IGPO’s turn-level supervision translates into more confident and grounded reasoning trajectories.
+
+Token Efficiency. We further compare IGPO and GRPO in terms of token efficiency, i.e., the performance improvement per token used for gradient updates. As shown in Figure 6, performance increases more rapidly under IGPO, and the gap over GRPO widens as training progresses. In other words, IGPO achieves stronger performance with fewer tokens, indicating that its turn-level rewards deliver denser and more informative gradients than outcome-only supervision, thereby effectively addressing the issue of poor sample efficiency. This finding is consistent with the training dynamics observed in Figure 4, where IGPO not only converges faster but also maintains a stable advantage throughout optimization. Such improvements in token efficiency are particularly valuable in agentic RL, where training data is scarce and expensive to obtain, making efficient use of every gradient update a critical factor for scaling.
+
+The additional experimental analysis is provided in Appendix D, in particular, the analysis regarding spurious correlations is presented in Appendix D.4. Details regarding IGPO’s failure modes are provided in Appendix E. Beyond empirical effectiveness, our theoretical analysis in Appendix A shows that maximizing turn-level information gain constrains error accumulation in multi-turn scenarios. Thus, IGPO not only alleviates credit-assignment and advantage collapse problems but also reduces error accumulation in long-horizon agentic tasks. The case study can be found in Appendix I.
+
+- 4.5 COMPUTATIONAL BUDGET
+
+| | | | |
+|---|---|---|---|
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+
+| | | | |
+|---|---|---|---|
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+
+We present an empirical runtime comparison between IGPO and GRPO. Results (Figure 7) show that the info-gain reward computation in IGPO incurs an overhead of less than 0.4% relative to the standard implementation. For the entire training step, IGPO increases latency by less than 0.02%, demonstrating a training speed nearly identical to GRPO. This underscores the superiority of IGPO: it enhances performance via fine-grained credit assignment with negligible cost. Beyond the empirical validation, we also provide a detailed theoretical analysis of IGPO’s time complexity n Appendix F.
+
+Figure 7: IGPO incurs negligible overhead (0.0227s / step), representing a <0.4% increase in info-gain reward computation and <0.02% end-to-end.
+
+- 5 RELATED WORK The recent success of reinforcement learning (RL) methods in large reasoning models (Chen et al.,
+
+- 2025a) such as OpenAI o1 (Jaech et al., 2024) and DeepSeek R1 (Guo et al., 2025) has established RL as a central tool for enhancing large language models (LLMs)-based agents to solve more complex tasks. A growing body of work has explored different RL algorithms such as PPO (Schulman et al., 2017), Reinforce++ (Hu, 2025), GRPO (Shao et al., 2024), RLOO (Kool et al., 2019; Ahmadian et al., 2024), DAPO (Yu et al., 2025), and GSPO (Zheng et al., 2025a). These methods have been particularly effective in improving the capabilities of LLM-based agents (Li et al., 2025a).
+
+Building on these advances, an important line of research has focused on applying RL to searchbased agents (Deng et al., 2025; Dai et al., 2025b;a). Early efforts such as DeepRetrieval (Jiang et al., 2025) demonstrated the feasibility of end-to-end optimization by applying PPO with retrievaloriented metrics (e.g., recall) as rewards. Subsequent works, including Search-R1 (Jin et al., 2025), DeepResearcher (Zheng et al., 2025b), and ReSearch (Chen et al., 2025b), extended this paradigm to multi-turn reasoning and search. R1-Searcher (Song et al., 2025a) and R1-Searcher++ (Song et al., 2025b) further introduced two-stage RL strategies, separately strengthening the ability to interact with retrieval systems and to utilize retrieved information effectively.
+
+However, in multi-turn scenarios, outcome-only rewards remain sparse and often fail to provide sufficient guidance, leading to unstable optimization and inefficient sample utilization. Recent studies have explored step-wise or process-level rewards that assign credit to intermediate actions. ReasonRAG (Zhang et al., 2025c) adopted Monte Carlo Tree Search (MCTS) to approximate the value of each step. StepSearch (Wang et al., 2025) leveraged a memory vector of retrieved documents, supervising intermediate steps based on their maximum similarity to ground-truth evidence. GiGPO (Feng et al., 2025) introduced anchor-based grouping to estimate relative advantages for actions originating from the same anchor state. While these methods provide denser supervision than outcomeonly rewards, they either rely on external oracle knowledge or suffer from limited stability and scalability, leaving room for more intrinsic and generalizable process-level reward designs.
+
+- 6 CONCLUSION, LIMITATIONS AND FUTURE WORK
+
+In this work, we propose IGPO, a simple and effective reinforcement learning framework for training multi-turn LLM-based search agents. By providing intrinsic, ground-truth-aware supervision at every turn while preserving alignment with the final objective, IGPO delivers dense and stable training signals. Extensive experiments across in-domain and out-of-domain benchmarks demonstrate that IGPO consistently outperforms strong baselines, achieving higher accuracy and better sample efficiency, particularly for smaller models where sparse rewards are most problematic. Moreover, IGPO demonstrates remarkable robustness to reward hacking while introducing only negligible computational costs. In doing so, it successfully addresses two critical bottlenecks inherent in existing fine-grained credit assignment RL algorithms: reward hacking and computational inefficiency.
+
+However, our approach still relies on the availability of ground-truth answers, which limits its applicability in open-ended settings. In future work, we plan to extend IGPO to broader agentic scenarios beyond search, including tasks without explicit supervision.
+
+ACKNOWLEDGMENTS
+
+This work was supported by Ant Group Research Intern Program. We thank the Venus Team, Ant Group for their resource support and technical guidance.
+
+ETHICS STATEMENT
+
+This work follows the ICLR Code of Ethics. No human or animal subjects were involved. All datasets (NQ, TQ, HotpotQA, 2Wiki, MuSiQue, Bamboogle, PopQA) were used according to their respective guidelines, with privacy fully respected. No personally identifiable information was included, and all procedures avoided potential privacy or security risks. Research was conducted with transparency and integrity.
+
+REPRODUCIBILITY STATEMENT
+
+Every effort has been made to ensure the reproducibility of the results reported in this paper. All code and datasets are publicly available in an anonymous repository to facilitate replication and verification. The experimental setup—including training procedures, model configurations, and hard-
+
+- ware specifications—is detailed in the appendix to support accurate reproduction of the experiments. These measures are intended to enable other researchers to reproduce the work and contribute to further advancements in the field.
+
+REFERENCES
+
+Arash Ahmadian, Chris Cremer, Matthias Gall´e, Marzieh Fadaee, Julia Kreutzer, Olivier Pietquin, Ahmet Ust¨¨ un, and Sara Hooker. Back to basics: Revisiting reinforce style optimization for learning from human feedback in llms. arXiv preprint arXiv:2402.14740, 2024.
+
+Kedi Chen, Dezhao Ruan, Yuhao Dan, Yaoting Wang, Siyu Yan, Xuecheng Wu, Yinqi Zhang, Qin Chen, Jie Zhou, Liang He, Biqing Qi, Linyang Li, Qipeng Guo, Xiaoming Shi, and Wei Zhang. A survey of inductive reasoning for large language models, 2025a. URL https://arxiv.org/ abs/2510.10182.
+
+Mingyang Chen, Tianpeng Li, Haoze Sun, Yijie Zhou, Chenzheng Zhu, Haofen Wang, Jeff Z Pan, Wen Zhang, Huajun Chen, Fan Yang, et al. Learning to reason with search for llms via reinforcement learning. arXiv preprint arXiv:2503.19470, 2025b.
+
+Gheorghe Comanici, Eric Bieber, Mike Schaekermann, Ice Pasupat, Noveen Sachdeva, Inderjit Dhillon, Marcel Blistein, Ori Ram, Dan Zhang, Evan Rosen, et al. Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities. arXiv preprint arXiv:2507.06261, 2025.
+
+Yuqin Dai, Guoqing Wang, Yuan Wang, Kairan Dou, Kaichen Zhou, Zhanwei Zhang, Shuo Yang, Fei Tang, Jun Yin, Pengyu Zeng, et al. Evinote-rag: Enhancing rag models via answer-supportive evidence notes. arXiv preprint arXiv:2509.00877, 2025a.
+
+Yuqin Dai, Shuo Yang, Guoqing Wang, Yong Deng, Zhanwei Zhang, Jun Yin, Pengyu Zeng, Zhenzhe Ying, Changhua Meng, Can Yi, et al. Careful queries, credible results: Teaching rag models advanced web search tools with reinforcement learning. arXiv preprint arXiv:2508.07956, 2025b.
+
+Yong Deng, Guoqing Wang, Zhenzhe Ying, Xiaofeng Wu, Jinzhen Lin, Wenwen Xiong, Yuqin Dai, Shuo Yang, Zhanwei Zhang, Qiwen Wang, Yang Qin, Yuan Wang, Quanxing Zha, Sunhao Dai, and Changhua Meng. Atom-searcher: Enhancing agentic deep research via fine-grained atomic thought reward. arXiv preprint arXiv:2508.12800, 2025.
+
+Lang Feng, Zhenghai Xue, Tingcong Liu, and Bo An. Group-in-group policy optimization for llm agent training. arXiv preprint arXiv:2505.10978, 2025.
+
+Zeyu Gan, Yun Liao, and Yong Liu. Rethinking external slow-thinking: From snowball errors to probability of correct reasoning. In Forty-second International Conference on Machine Learning, 2025.
+
+Yunfan Gao, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, Yuxi Bi, Yixin Dai, Jiawei Sun, Haofen Wang, and Haofen Wang. Retrieval-augmented generation for large language models: A survey. arXiv preprint arXiv:2312.10997, 2(1), 2023.
+
+Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song, Peiyi Wang, Qihao Zhu, Runxin Xu, Ruoyu Zhang, Shirong Ma, Xiao Bi, et al. Deepseek-r1 incentivizes reasoning in llms through reinforcement learning. Nature, 645(8081):633–638, 2025.
+
+Carlos I Gutierrez, Anthony Aguirre, Risto Uuk, Claire C Boine, and Matija Franklin. A proposal for a definition of general purpose artificial intelligence systems. Digital Society, 2(3):36, 2023.
+
+Xanh Ho, Anh-Khoa Duong Nguyen, Saku Sugawara, and Akiko Aizawa. Constructing a multi-hop qa dataset for comprehensive evaluation of reasoning steps. In Proceedings of the 28th International Conference on Computational Linguistics, pp. 6609–6625, 2020.
+
+Jian Hu. Reinforce++: A simple and efficient approach for aligning large language models. arXiv preprint arXiv:2501.03262, 2025.
+
+Yuxuan Huang, Yihang Chen, Haozheng Zhang, Kang Li, Meng Fang, Linyi Yang, Xiaoguang Li, Lifeng Shang, Songcen Xu, Jianye Hao, et al. Deep research agents: A systematic examination and roadmap. arXiv preprint arXiv:2506.18096, 2025.
+
+Aaron Jaech, Adam Kalai, Adam Lerer, Adam Richardson, Ahmed El-Kishky, Aiden Low, Alec Helyar, Aleksander Madry, Alex Beutel, Alex Carney, et al. Openai o1 system card. arXiv preprint arXiv:2412.16720, 2024.
+
+Pengcheng Jiang, Jiacheng Lin, Lang Cao, Runchu Tian, SeongKu Kang, Zifeng Wang, Jimeng Sun, and Jiawei Han. Deepretrieval: Hacking real search engines and retrievers with large language models via reinforcement learning. arXiv preprint arXiv:2503.00223, 2025.
+
+Bowen Jin, Hansi Zeng, Zhenrui Yue, Jinsung Yoon, Sercan Arik, Dong Wang, Hamed Zamani, and Jiawei Han. Search-r1: Training llms to reason and leverage search engines with reinforcement learning. arXiv preprint arXiv:2503.09516, 2025.
+
+Mandar Joshi, Eunsol Choi, Daniel S Weld, and Luke Zettlemoyer. Triviaqa: A large scale distantly
+
+supervised challenge dataset for reading comprehension. arXiv preprint arXiv:1705.03551, 2017. Wouter Kool, Herke van Hoof, and Max Welling. Buy 4 reinforce samples, get a baseline for free!
+
+2019.
+
+Tom Kwiatkowski, Jennimaria Palomaki, Olivia Redfield, Michael Collins, Ankur Parikh, Chris Alberti, Danielle Epstein, Illia Polosukhin, Jacob Devlin, Kenton Lee, et al. Natural questions: a benchmark for question answering research. Transactions of the Association for Computational Linguistics, 7:453–466, 2019.
+
+Long Li, Jiaran Hao, Jason Klein Liu, Zhijian Zhou, Xiaoyu Tan, Wei Chu, Zhe Wang, Shirui Pan, Chao Qu, and Yuan Qi. The choice of divergence: A neglected key to mitigating diversity collapse in reinforcement learning with verifiable reward. arXiv preprint arXiv:2509.07430, 2025a.
+
+Xiaoxi Li, Guanting Dong, Jiajie Jin, Yuyao Zhang, Yujia Zhou, Yutao Zhu, Peitian Zhang, and Zhicheng Dou. Search-o1: Agentic search-enhanced large reasoning models. arXiv preprint arXiv:2501.05366, 2025b.
+
+Xuefeng Li, Haoyang Zou, and Pengfei Liu. Torl: Scaling tool-integrated rl. arXiv preprint arXiv:2503.23383, 2025c.
+
+Alex Mallen, Akari Asai, Victor Zhong, Rajarshi Das, Hannaneh Hajishirzi, and Daniel Khashabi. When not to trust language models: Investigating effectiveness and limitations of parametric and non-parametric memories. arXiv preprint arXiv:2212.10511, 7, 2022.
+
+Liangbo Ning, Ziran Liang, Zhuohang Jiang, Haohao Qu, Yujuan Ding, Wenqi Fan, Xiao-yong Wei, Shanru Lin, Hui Liu, Philip S Yu, et al. A survey of webagents: Towards next-generation ai agents for web automation with large foundation models. In Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining V. 2, pp. 6140–6150, 2025.
+
+Ofir Press, Muru Zhang, Sewon Min, Ludwig Schmidt, Noah A Smith, and Mike Lewis. Measuring and narrowing the compositionality gap in language models. arXiv preprint arXiv:2210.03350, 2022.
+
+Zehan Qi, Xiao Liu, Iat Long Iong, Hanyu Lai, Xueqiao Sun, Wenyi Zhao, Yu Yang, Xinyue Yang, Jiadai Sun, Shuntian Yao, et al. Webrl: Training llm web agents via self-evolving online curriculum reinforcement learning. arXiv preprint arXiv:2411.02337, 2024.
+
+Changle Qu, Sunhao Dai, Xiaochi Wei, Hengyi Cai, Shuaiqiang Wang, Dawei Yin, Jun Xu, and JiRong Wen. Tool learning with large language models: A survey. Frontiers of Computer Science, 19(8):198343, 2025.
+
+Qwen, :, An Yang, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chengyuan Li, Dayiheng Liu, Fei Huang, Haoran Wei, Huan Lin, Jian Yang, Jianhong Tu, Jianwei Zhang, Jianxin Yang, Jiaxi Yang, Jingren Zhou, Junyang Lin, Kai Dang, Keming Lu, Keqin Bao, Kexin Yang, Le Yu, Mei Li, Mingfeng Xue, Pei Zhang, Qin Zhu, Rui Men, Runji Lin, Tianhao Li, Tianyi Tang, Tingyu Xia, Xingzhang Ren, Xuancheng Ren, Yang Fan, Yang Su, Yichang Zhang, Yu Wan, Yuqiong Liu, Zeyu Cui, Zhenru Zhang, and Zihan Qiu. Qwen2.5 technical report, 2025.
+
+John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov. Proximal policy optimization algorithms. arXiv preprint arXiv:1707.06347, 2017.
+
+Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, YK Li, Yang Wu, et al. Deepseekmath: Pushing the limits of mathematical reasoning in open language models. arXiv preprint arXiv:2402.03300, 2024.
+
+Guangming Sheng, Chi Zhang, Zilingfeng Ye, Xibin Wu, Wang Zhang, Ru Zhang, Yanghua Peng, Haibin Lin, and Chuan Wu. Hybridflow: A flexible and efficient rlhf framework. In Proceedings of the Twentieth European Conference on Computer Systems, EuroSys ’25, pp. 1279–1297. ACM, March 2025. doi: 10.1145/3689031.3696075.
+
+Huatong Song, Jinhao Jiang, Yingqian Min, Jie Chen, Zhipeng Chen, Wayne Xin Zhao, Lei Fang, and Ji-Rong Wen. R1-searcher: Incentivizing the search capability in llms via reinforcement learning. arXiv preprint arXiv:2503.05592, 2025a.
+
+Huatong Song, Jinhao Jiang, Wenqing Tian, Zhipeng Chen, Yuhuan Wu, Jiahao Zhao, Yingqian Min, Wayne Xin Zhao, Lei Fang, and Ji-Rong Wen. R1-searcher++: Incentivizing the dynamic knowledge acquisition of llms via reinforcement learning. arXiv preprint arXiv:2505.17005, 2025b.
+
+Harsh Trivedi, Niranjan Balasubramanian, Tushar Khot, and Ashish Sabharwal. Musique: Multihop questions via single-hop question composition. Transactions of the Association for Computational Linguistics, 10:539–554, 2022.
+
+Peiyi Wang, Lei Li, Zhihong Shao, RX Xu, Damai Dai, Yifei Li, Deli Chen, Yu Wu, and Zhifang Sui. Math-shepherd: Verify and reinforce llms step-by-step without human annotations. arXiv preprint arXiv:2312.08935, 2023.
+
+Xiaohua Wang, Zhenghua Wang, Xuan Gao, Feiran Zhang, Yixin Wu, Zhibo Xu, Tianyuan Shi, Zhengyuan Wang, Shizheng Li, Qi Qian, et al. Searching for best practices in retrieval-augmented generation. arXiv preprint arXiv:2407.01219, 2024a.
+
+Ziliang Wang, Xuhui Zheng, Kang An, Cijun Ouyang, Jialu Cai, Yuhang Wang, and Yichao Wu. Stepsearch: Igniting llms search ability via step-wise proximal policy optimization. arXiv preprint arXiv:2505.15107, 2025.
+
+Ziting Wang, Haitao Yuan, Wei Dong, Gao Cong, and Feifei Li. Corag: A cost-constrained retrieval optimization system for retrieval-augmented generation. arXiv preprint arXiv:2411.00744, 2024b.
+
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed Chi, Quoc V Le, Denny Zhou, et al. Chain-of-thought prompting elicits reasoning in large language models. Advances in neural information processing systems, 35:24824–24837, 2022.
+
+Zhilin Yang, Peng Qi, Saizheng Zhang, Yoshua Bengio, William W Cohen, Ruslan Salakhutdinov, and Christopher D Manning. Hotpotqa: A dataset for diverse, explainable multi-hop question answering. arXiv preprint arXiv:1809.09600, 2018.
+
+Qiying Yu, Zheng Zhang, Ruofei Zhu, Yufeng Yuan, Xiaochen Zuo, Yu Yue, Weinan Dai, Tiantian Fan, Gaohong Liu, Lingjun Liu, et al. Dapo: An open-source llm reinforcement learning system at scale. arXiv preprint arXiv:2503.14476, 2025.
+
+Guibin Zhang, Hejia Geng, Xiaohang Yu, Zhenfei Yin, Zaibin Zhang, Zelin Tan, Heng Zhou, Zhongzhi Li, Xiangyuan Xue, Yijiang Li, et al. The landscape of agentic reinforcement learning for llms: A survey. arXiv preprint arXiv:2509.02547, 2025a.
+
+Weizhi Zhang, Yangning Li, Yuanchen Bei, Junyu Luo, Guancheng Wan, Liangwei Yang, Chenxuan Xie, Yuyao Yang, Wei-Chieh Huang, Chunyu Miao, et al. From web search towards agentic deep research: Incentivizing search with reasoning agents. arXiv preprint arXiv:2506.18959, 2025b.
+
+Wenlin Zhang, Xiangyang Li, Kuicai Dong, Yichao Wang, Pengyue Jia, Xiaopeng Li, Yingyi Zhang, Derong Xu, Zhaocheng Du, Huifeng Guo, et al. Process vs. outcome reward: Which is better for agentic rag reinforcement learning. arXiv preprint arXiv:2505.14069, 2025c.
+
+Chujie Zheng, Shixuan Liu, Mingze Li, Xiong-Hui Chen, Bowen Yu, Chang Gao, Kai Dang, Yuqiong Liu, Rui Men, An Yang, et al. Group sequence policy optimization. arXiv preprint arXiv:2507.18071, 2025a.
+
+Yuxiang Zheng, Shichao Sun, Lin Qiu, Dongyu Ru, Cheng Jiayang, Xuefeng Li, Jifan Lin, Binjie Wang, Yun Luo, Renjie Pan, et al. Openresearcher: Unleashing ai for accelerated scientific research. arXiv preprint arXiv:2408.06941, 2024.
+
+Yuxiang Zheng, Dayuan Fu, Xiangkun Hu, Xiaojie Cai, Lyumanshan Ye, Pengrui Lu, and Pengfei Liu. Deepresearcher: Scaling deep research via reinforcement learning in real-world environments. arXiv preprint arXiv:2504.03160, 2025b.
+
+Yuxin Zuo, Kaiyan Zhang, Li Sheng, Shang Qu, Ganqu Cui, Xuekai Zhu, Haozhan Li, Yuchen Zhang, Xinwei Long, Ermo Hua, et al. Ttrl: Test-time reinforcement learning. arXiv preprint arXiv:2504.16084, 2025.
+
+- A THEORETICAL ANALYSIS
+
+The theoretical analysis here provides an intuitive support for the efficacy of our proposed method by addressing the limitations of sparse outcome rewards in multi-turn agents. Specifically, the theory establishes a crucial link: maximizing the process reward (IGPO’s objective) is equivalent to minimizing the upper bound on the undesirable accumulation of snowball errors during the reasoning process. This minimization, in turn, systematically lowers the theoretical minimum for the final answer error rate, thus providing a fundamental guarantee that IGPO’s dense, turn-level signals lead to more confident and successful reasoning trajectories.
+
+Notations. Let Efinal be the event that the agent’s generated final answer does not match the ground truth answer. Its probability is denoted by P(Efinal), i.e., the error rate. For each turn t , denote the observed response [think], [tool call] as Rt. We also posit that there is an unobservable, abstract thinking step It that underlies the generation of Rt. Let Rprocess(t) be the process reward, which is a dense reward signal received at each turn of the interaction. It is defined as the information gain about the ground truth answer, which is calculated as the increase in the log-probability of the correct answer from the previous state to the current state. Then, the total process reward Rtotal =
+
+T−1 t=1 E[Rprocess(t) ] is the cumulative sum of all process rewards over a complete trajectory or episode.
+
+The expectation is taken over the thinking step and observed response. The training objective of the policy is to maximize this total reward.
+
+Definition A.1 (Snowball Error in Multi-turn Agentic RL). Consistent with Gan et al. (2025), we define the information loss at turn T as the conditional entropy Ent(It|Rt). Consider the nontrivial case where |Ent(It|Rt)| is bounded. The cumulative snowball error up to turn T is the sum of these losses:
+
+T−1
+
+Ent<T(I|R) ≜
+
+Ent(It|Rt) (8)
+
+t=1
+
+This quantity measures the aggregate uncertainty and ambiguity accumulated throughout the reasoning trajectory before the final answer is produced.
+
+Next, we connect the cumulative snowball error to the agent’s final performance. It indicates the fundamental limitation of multi-turn agentic RL pipeline caused by snowball error.
+
+Lemma A.2 (Lower bound of error rate). The probability of a final answer error, P(Efinal), is lowerbounded by the cumulative snowball error accumulated during the reasoning process:
+
+Ent<T(I|R)
+
+T − 1 − Cconst. (9) where Cconst is a small positive constant.
+
+P(Efinal) = Ω
+
+Proof Sketch. This result is strongly motivated by Theorem 3.3 from Gan et al. (2025). We treat the generation of the final answer at turn T as the final step of a multi-step reasoning process. The quality of this final step is conditioned on the information accumulated over the previous T −1 turns. The theorem from (Gan et al., 2025) states that the error probability of any step is lower-bounded by the average snowball error accumulated up to that point. Applying this principle to the final step (t = T) yields the stated result.
+
+| |
+|---|
+
+Assumption A.3 (Monotonic Reward-Information Loss Link). The expected process reward at any turn H, E[Rprocess(t) ], is monotonically non-increasing with respect to the information loss at that turn, Ent(It|Rt). We assume there exists a bounded and monotonically non-increasing convex function
+
+##### f : R+ → R such that: E[Rprocess(t) |It,Rt] ≤ f (Ent(It|Rt)). (10)
+
+Remark. As the information loss Ent(It|Rt) at turn t increases, the expected total information loss tends to decreases and asymptotically approaches a relatively small value, which is characterized by the convex nature of function f.
+
+This assumption leads to the following result, demonstrating that optimizing for process rewards implicitly constrains the accumulation of snowball errors. We first formalize the intuition that a clearer reasoning step (lower information loss) is a prerequisite for a high-quality query, which in turn yields a higher expected process reward.
+
+Theorem A.4 (Process Reward as a Bound on Snowball Error). Under Assumption A.3, the expected cumulative snowball error is upper bounded by
+
+E[Ent<T(I|R)] = O(1) − Ω(Rtotal). (11)
+
+Theorem A.4 establishes that maximizing the process reward is mathematically coupled with minimizing an upper bound on the cumulative snowball error. The combination of Theorem A.4 and Lemma A.2 provides a complete, end-to-end theoretical justification for the efficacy of our proposed process reward mechanism. The logical chain is as follows:
+
+- • Maximizing the process reward (our algorithm’s objective) forces the agent to minimize an upper bound on the cumulative snowball error (Theorem A.4).
+- • Minimizing the cumulative snowball error, in turn, lowers the theoretical minimum for the final error rate, thereby systematically increasing the probability of task success (Lemma A.2).
+
+In conclusion, the turn-level process reward is not merely an engineering heuristic; it is a theoretically grounded mechanism that fundamentally addresses the problem of error accumulation in multi-step reasoning. By providing a dense, immediate signal for reasoning clarity, it transforms the intractable problem of sparse-reward, long-horizon exploration into a series of manageable, shorthorizon sub-problems, each aimed at maximizing immediate information gain. This explains the significant gains in training efficiency and final performance observed in our experiments.
+
+- B PROOF FOR THEORETICAL ANALYSIS
+
+- B.1 PROOF OF LEMMA A.2
+
+Proof. We achieve this by applying Theorem 3.3 from Gan et al. (2025) to the final decision-making step of the agent. In particular,
+
+P(Efinal) ≥
+
+Ent<T (I|R)
+
+T−1 − C1 log(|Afinal| − 1)
+
+, (12) where |Afinal| is the cardinality of the final answer space and C1 is a small positive constant analogous to Entb(et) in Gan et al. (2025). Since log(|Afinal|−1) and C1 are constant,
+
+Ent<T (I|R)
+
+T−1 −C1
+
+log(|Afinal|−1) simplifies to a form that is asymptotically dominated by the variable term. Therefore, the right-hand side of the inequality can be expressed in terms of the lower bound symbol Ω as Ω Ent
+
+<T (I|R) T−1 −Cconst,
+
+which completes the proof.
+
+| |
+|---|
+
+- B.2 PROOF OF THEOREM A.4
+
+Proof. According to the nature of f and the fact that there exist constants Cmax and β such that for all non-negative bounded x, there holds f(x) ≤ Cmax − βx. Therefore, by taking the expectation over Assumption A.3 and summing across all turns from t = 1 to T − 1, we have
+
+T−1
+
+T−1
+
+E[Rprocess(t) ] ≤
+
+E[f (Ent(It|Rt))]
+
+Rtotal =
+
+t=1
+
+t=1
+
+T−1
+
+E[Cmax − β · Ent(It|Rt)]
+
+≤
+
+t=1
+
+T−1
+
+E[Ent(It|Rt)]
+
+= (T − 1)Cmax − β
+
+t=1
+
+= (T − 1)Cmax − β E[Ent<T(I|R)]. Rearranging terms yields the final result.
+
+| |
+|---|
+
+- C MORE IMPLEMENTATION DETAILS
+
+All our training experiments are conducted on 8 × NVIDIA A100-80G GPUs. The detailed hyperparameter settings are provided in Table 4. Unless otherwise specified, all experiments are based on this configuration.
+
+Table 4: Training hyperparameters. Training hyperparameters Value
+
+Training Batch Size 32
+
+Mini-Batch Size 512 Infer Tensor Model Parallel Size 1
+
+Sequence Parallel Size 4 Max Prompt Length 30767
+
+Max Response Length 2000 Actor Learning Rate 1e-6 Rollout Temperature 1.0
+
+Rollout Group Size 16 Max Turn Call Turns 10
+
+KL-Divergence loss coefficient 0.001
+
+Table 5: Performance comparison across different IG bases and normalization strategies. We compare Prob-based IG (Joint & Separate normalization) against LogProb-based IG (Separate normalization). The combination of LogProb and Separate normalization outperforms other settings.
+
+In-domain Out-of-domain Method NQ TQ HotpotQA 2Wiki Musique Bamboogle PopQA Avg.
+
+Qwen2.5-3B-Instruct
+
+Prob+Joint 40.5 69.4 46.8 48.2 23.1 57.9 47.4 47.6 Prob+Separate 41.2 68.9 47.2 49.5 23.5 57.7 48.3 48.0 Logprob+Separate 41.9 69.2 47.8 51.4 24.8 58.4 49.0 48.9
+
+Qwen2.5-7B-Instruct
+
+Prob+Joint 46.7 80.1 57.2 68.2 31.4 74.9 52.5 58.7 Prob+Separate 46.2 80.3 58.2 71.4 31.8 74.6 53.6 59.4 Logprob+Separate 46.4 80.6 59.0 72.1 32.7 77.0 53.8 60.2
+
+- D MORE DISCUSSION AND EXPERIMENTAL ANALYSIS
+
+- D.1 COMPARISON OF INFO. GAIN BASIS (PROB. VS. LOGPROB) AND NORMALIZATION STRATEGIES (JOINT VS. SEPARATE)
+
+We investigate the impact of different information gain computation bases (probability vs. logprobability) and normalization strategies: joint (normalizing all rewards collectively) vs. separate (normalizing IG and outcome independently). Note that we exclude the Logprob+Joint combination due to the significant scale disparity between log-based IG and bounded outcome rewards, which renders joint normalization ineffective. As shown in Table 5, the combination of log-probability-based information gain and separate normalization (Logprob+Separate) emerges as the optimal strategy. Specifically, switching from joint to separate normalization (Prob+Joint → Prob+Separate) yields a clear gain (+0.7 on 7B Avg, +0.7 on 3B Avg), validating the necessity of decoupling the statistics of intermediate and final rewards. Replacing probability with log-probability (Prob+Separate → Logprob+Separate) provides an additional boost (+0.8 on 7B Avg, +0.9 on 3B Avg), demonstrating the numerical stability advantages of log-probability. These improvements are consistent across both model scales and domain types, demonstrating the robustness of our design choices.
+
+- D.2 COMPARISON WITH OTHER PROCESS-REWARD METHODS
+
+In addition to its obvious performance advantages, we also conduct a deeper analysis of IGPO’s superiority in terms of algorithmic characteristics compared to other process-reward-based agentic RL algorithms. We first introduce other existing process-reward-based agentic RL algorithms:
+
+- • ReasoningRAG. The main contribution of this work is the proposal of a step-level data labeling strategy based on MCTS. Subsequently, the DPO algorithm is used to optimize the agent’s policy on the labeled step-level dataset. The main limitations of this method are: (1) the data labeling process relies on MCTS, which is inefficient, and when the number of samples is insufficient, it is difficult to accurately estimate the value of each step; (2) the off-policy optimization based on DPO is less effective than on-policy algorithms.
+- • StepSearch. StepSearch constructs turn-level supervision signals by pre-defining golden search keywords and golden tool responses, and adopts an on-policy optimization approach. Although it shifts from off-policy to on-policy, the annotation process is resource-intensive and prone to annotator bias (whether from humans or LLMs).
+- • GiGPO. GiGPO introduces a step-level grouping strategy based on anchor states and performs fine-grained advantage estimation within each step-level group. Although this provides a novel solution, it essentially still relies on the Monte Carlo assumption. When the number of anchor states is insufficient, it is often difficult to accurately estimate their value, which in turn leads to biased advantage estimation.
+
+The proposed IGPO effectively addresses the aforementioned limitations. Starting from the onpolicy GRPO setting (where rollout data are used for a single parameter update), it employs an information-gain–based incremental reward construction strategy that requires no annotation and does not rely on Monte Carlo. Moreover, the incorporation of ground-truth awareness substantially reduces bias. Table 6 provides a detailed comparison highlighting the advantages of IGPO over other algorithms.
+
+Table 6: Comparison between various process reward methods.
+
+Algorithm On-Policy Explicit Labeling-Free Monte Carlo–Free Introduces No Bias ReasoningRAG No Yes No Sample-size Dependent StepSearch Yes No Yes No GiGPO Yes Yes No Sample-size Dependent IGPO Yes Yes Yes Yes
+
+- D.3 TIME BREAKDOWN OF EACH STAGE IN IGPO TRAINING (SAME AS GRPO)
+
+- Table 7: We have calculated the average time percentage spent on each phase of a training step for IGPO (same as GRPO). The majority of the time is spent on Sampling (Rollout), with Recompute Log-Prob accounting for less than 5% of the total duration. The time spent on the Return/Advantage Computation phase is much smaller than 1% and can be ignored.
+
+Phase Sampling Param Update Recompute Log-Prob Return/Advantage Comp. Time Proportion 82.6% 12.6% 4.8% <<1%
+
+- D.4 SPURIOUS CORRELATIONS ANALYSIS
+
+It is widely acknowledged that LLMs often exploit spurious correlations to solve problems—achieving correct answers through unfaithful or erroneous intermediate reasoning—rather than learning the genuine underlying reasoning process. This tendency significantly compromises their out-of-distribution performance. To investigate whether the proposed IGPO mitigates or exacerbates such spurious correlations, we conduct the following experiment:
+
+Experiment Setup. We select the set of test samples correctly answered (F1=1.0) by both IGPO and GRPO agents. We extract the corresponding outputs, remove the final answers, and retaine only the intermediate reasoning traces. Subsequently, we employe a powerful teacher LLM (gemini2.5-pro (Comanici et al., 2025)) to deduce the final answer based on these reasoning paths. By comparing the accuracy of the answers inferred from the IGPO versus GRPO reasoning traces, we assesse whether IGPO is more prone to yielding ’correct answers with incorrect or unfaithful reasoning’ (i.e., spurious correlations). The prompt template used for gemini-2.5-pro is illustrated in Figure 8.
+
+Result. As shown in Table 8, for both 3B and 7B models, the accuracy of the teacher model in inferring answers from IGPO-agent traces consistently outperforms that from GRPO-agent traces across all seven datasets, including both in-domain and out-of-domain tasks. This indicates that the reasoning traces generated by the IGPO agent are more informative and of higher quality. It demonstrates that IGPO effectively mitigates spurious correlations through ground-truth guided finegrained credit assignment, further validating its generalization capabilities.
+
+Additional Evidence. Beyond the aforementioned experiment, we provide the following evidence to further support that IGPO mitigates spurious correlations: (i) Superior OOD Performance. According to the results in Table 3, compared to GRPO, IGPO achieves an average performance gain of 12.6% (7B) and 42.8% (3B) on In-domain datasets (NQ, TQ, HotpotQA, and 2Wiki), whereas on Out-of-domain datasets (Musique, Bamboogle, PopQA), the average improvement increases to 13.7% (7B) and 55.2% (3B). The fact that performance gains in OOD settings exceed those in ID settings contradicts the pattern of spurious correlations, which typically favors ID performance at the expense of OOD generalization. (ii) Exceptional Multi-hop Capabilities. As indicated in Table 3, IGPO outperforms GRPO with an average improvement of 7.4% (7B) and 29.5% (3B) on singlehop tasks (NQ, TQ, PopQA), while on multi-hop tasks (HotpotQA, 2Wiki, Musique, Bamboogle), the average improvement reaches 17.8% (7B) and 68.1% (3B). The performance boost on multihop tasks is significantly greater than on single-hop tasks. This is also inconsistent with spurious correlation patterns, which are prone to appearing in multi-hop scenarios and consequently causing greater detriment to performance. Therefore, the superior performance in both OOD and multi-hop scenarios serves as further evidence that IGPO effectively mitigates spurious correlations.
+
+- Table 8: Results of spurious correlations analysis. We select test samples where both IGPO and GRPO agents achieve correct answers (F1=1.0). Using gemini-2.5-pro, we infer answers solely based on the reasoning traces from these samples to compare the informativeness of the traces generated by each method (”All” denotes the aggregated accuracy across all test samples). The results demonstrate that, compared to GRPO, IGPO yields reasoning traces that are more informative and of higher quality, further validating its generalization capabilities.
+
+In-domain Out-of-domain Method NQ TQ HotpotQA 2Wiki Musique Bamboogle PopQA All
+
+Qwen2.5-3B-Instruct
+
+GRPO 93.1 89.0 90.1 94.7 84.3 89.7 93.5 91.2 IGPO 95.4 92.8 94.2 97.7 90.2 92.3 96.1 94.6
+
+Qwen2.5-7B-Instruct
+
+GRPO 86.5 88.8 85.8 92.0 76.1 91.2 95.1 89.0 IGPO 89.5 91.1 92.6 94.4 83.0 94.1 95.1 92.0
+
+- E FAILURE ANALYSIS
+
+Despite IGPO’s superior performance, to ensure a comprehensive analysis, we investigated its failure modes, specifically examining instances where IGPO exhibits performance degradation (i.e., F1 scores lower than GRPO). As shown in Table 9, minor degradation is observed across datasets, with IGPO underperforming GRPO on approximately 3.6% of the test samples overall. While this degradation is marginal, it warrants in-depth analysis.
+
+# Task I will provide you with a question and a reasoning trace regarding that question. Your task is to infer the answer to the question relying *solely* on the provided reasoning trace. If the answer cannot be deduced from the provided reasoning trace, you must reply with "unknown".
+
+Question: {Question} Reasoning Trace: {Reasoning_Traces}
+
+#Answer Please strictly enclose your inferred answer (or "unknown") within <answer> and </answer> tags. Examples: <answer>Your Answer</answer> or <answer>unknown</answer>.
+
+Figure 8: Prompt template for gemini-2.5-pro in the spurious correlations analysis.
+
+Algorithmically, IGPO extends GRPO by computing the log probability increment of the ground truth answer between adjacent turns. This constructs a turn-level reward, providing stronger, denser, and ground-truth-aware supervision for fine-grained guidance. While GRPO relies solely on final outcome correctness, both methods depend on ground truth quality. Consequently, while IGPO amplifies the benefits of high-quality data, it inevitably exacerbates the impact of noise within the ground truth.
+
+Through detailed data inspection, we identified a representative pattern of ground truth failure: ambiguous questions lacking specific conditions, leading to multiple valid answers. In such scenarios, IGPO is prone to degradation. If the model leverages reasoning and tool usage to increase the probability of a factually correct—but non-ground-truth—answer, it incurs a penalty from the turn-level reward. This erroneously suppresses valid behaviors and impairs the model’s reasoning capabilities. Figure 9 illustrates a real training instance from HotpotQA. The question, ”Who is the author of Childhood?”, lacks context (e.g., genre), allowing for multiple valid answers. When the model retrieved information regarding ”Nathalie Sarraute” (a correct answer, though not the designated ground truth), it was penalized (Info Gain = -0.81). This constitutes a false suppression of correct reasoning and tool usage. While GRPO also struggles with such ambiguity, IGPO amplifies this noise, resulting in a more significant negative impact. We observed frequent occurrences of this pattern in the training set and identify it as the primary cause of IGPO’s performance degradation.
+
+It is important to note, however, that this degradation stems from data defects rather than algorithmic flaws. The ability of IGPO to maintain high performance despite these data imperfections (with a degradation rate of only 3.6%) effectively demonstrates its robustness. We look forward to exploring more complex failure modes in future work.
+
+- Table 9: We compared the F1 scores of IGPO and GRPO on the test set and analyzed the proportion of samples falling into three categories: IGPO > GRPO, IGPO = GRPO, and IGPO < GRPO. Overall, IGPO exhibits slight performance degradation across datasets, with approximately 3.6% of test samples showing lower performance compared to GRPO.
+
+Dataset IGPO>GRPO IGPO=GRPO IGPO<GRPO
+
+2Wiki 35.8% 59.6% 4.6% Bamboogle 47.2% 49.6% 3.2% HotpotQA 49.2% 48.4% 2.4% Musique 71.2% 25.4% 3.4% NQ 57.4% 40.4% 2.2% PopQA 42.8% 53.4% 3.8% TQ 33.6% 61.2% 5.2% All 48.3% 48.1% 3.6%
+
+[Figure 88]
+
+Who is the author of Childhood?
+
+Ground Truth: Leo Tolstoy
+
+[Figure 89]
+
+[Figure 90]
+
+[think] To answer this question, I need to perform a web search to find out the author of the book "Childhood". [tool call] {‘query’: [‘author of Childhood book’]}
+
+Info Gain: -0.81
+
+[Figure 91]
+
+[tool response] 'title': 'Childhood, Sarraute, Kaplan, Wright - The University of Chicago Press' 'title': 'Childhood: A Memoir, book by Shannon Burns - Text Publishing' 'title': 'The Anxious Generation: How the Great Rewiring of Childhood Is ...'
+
+[Figure 92]
+
+[Figure 93]
+
+[think] From the search results, it seems that there are different books with the title "Childhood." The book "Childhood, Nathalie Sarraute" is published by the University of Chicago Press and is an autobiographical work written when the author was eighty-three years old. Therefore, the author of "Childhood" in this context is Nathalie Sarraute.
+
+F1 Score: 0.0
+
+[Figure 94]
+
+- 1. 'Childhood, Nathalie Sarraute'
+- 2. 'Childhood, Leo Tolstoy'
+- 3. 'Childhood, Markus Natten' …
+
+Missing Conditions
+
+Who is the author of Childhood?
+
+Figure 9: The query ‘Who is the author of Childhood?’ (a question from HotpotQA) is inherently ambiguous because multiple unrelated works share the same title—e.g., Childhood by Leo Tolstoy (fiction, ground truth), Nathalie Sarraute (autobiography, the model’s answer), and Markus Natten (poem). Without specifying which literary work is intended, several factually correct answers exist. Consequently, when the model outputs a correct but non–ground-truth author, it is penalized as ‘wrong,’ producing misleading negative rewards. Such mislabeled supervision degrades the effectiveness of IGPO by punishing valid reasoning aligned with alternative correct interpretations
+
+.
+
+- F COMPUTATION BUDGET THEORETICAL ANALYSIS
+
+This section will provide a detailed analysis of the additional FLOPs introduced by IGPO. Since the extra computation introduced by IGPO occurs during the recompute log prob phase (a single forward propagation), we will analyze the FLOPs of a single forward propagation in the Transformer model to examine the additional computation introduced by IGPO.
+
+- F.1 FLOPS CALCULATION
+
+FLOPs (Float Point operations) represents the number of floating-point operations, commonly used to measure the computational complexity. We will focus on the FLOPs calculation in matrix multiplication. For matrices A ∈ R1×n and B ∈ Rn×1, computing AB requires n multiplication operations and n addition operations, totaling 2n FLOPs. Therefore, the FLOPs required to compute AB for matrices A ∈ Rm×n and B ∈ Rn×p is 2nmp.
+
+- F.2 SYMBOLS
+
+Let b: batch size, s: sequence length, g: ground-truth answers length, h: hidden state dimension (assume the intermediate dimension = 4h), headnum: number of attention heads, headdim: dimension
+
+of attention head, l: number of layers, V: vocabulary size, x: the input data, WQ: the query matrix, WK: the key matrix, WV : the value matrix, Wo: the output matrix of the attention module, Wup: the up-projection matrix in MLP module, Wdown: the down-projection matrix in MLP module, yattn: the output of attention module, ymlp: the output of MLP module, σ: the activation function.
+
+- F.3 ADDITIONAL FLOPS INTRODUCED BY IGPO COMPARED TO GRPO.
+
+We first analyze the FLOPs of GRPO’s recompute log prob phase, which refers to the FLOPs of a single forward propagation. The shape of the input data is [b,s]. We first analyze the selfattention module, whose computation process is as follows:
+
+##### Q = xWQ, K = xWK, V = xWV , (13)
+
+QKT √
+
+yattn = softmax(
+
+) · V · Wo + x. (14)
+
+h
+
+The input and output shapes of the matrix multiplication in Eq. 13 are: [b,s,h] × [h,h] → [b,s,h]. Based on ref FLOPs, the FLOPs for this process is:
+
+##### FLOPsattn1 = 3 × 2bsh2 = 6bsh2. (15)
+
+For QKT in Eq. 14 the input and output shapes of the matrix multiplication are: [b,headnum,s,headdim]×[b,headnum,headdim,s] → [b,headnum,s,s], the FLOPs for this process is 2bs2h.
+
+For attention score·V in Eq. 14 the input and output shapes of the matrix multiplication are: [b,headnum,s,s] × [b,headnum,s,headdim] → [b,headnum,s,headdim], the FLOPs for this process is 2bs2h.
+
+For the linear mapping operation of multiplying by Wo in Eq. 14, the input and output shapes of the matrix multiplication are: [b,s,h] × [h,h] → [b,s,h], the FLOPs for this process is 2bsh2.
+
+Therefore, the total FLOPs in Eq. 14 are:
+
+##### FLOPsattn2 = 2bs2h + 2bs2h + 2bsh2 = 4bs2h + 2bsh2. (16)
+
+Next, we analyze the FLOPs of the MLP module. We assume the intermediate dimension (i.e., the up-projection dimension) of the MLP module is 4h, which is a common setting. The computation process of the MLP module can be expressed as follows:
+
+##### ymlp = σ(yattnWup)Wdown + yattn. (17)
+
+For the up-projection operation in Eq. 17, the input and output shapes of the matrix multiplication are: [b,s,h]×[h,4h] → [b,s,4h] the FLOPs for this process is 8bsh2. And, for the down-projection operation, the input and output shapes of the matrix multiplication are: [b,s,4h]×[4h,h] → [b,s,h] the FLOPs for this process is 8bsh2. Therefore, the total FLOPs of the MLP model are:
+
+##### FLOPsmlp = 2 × 8bsh2 = 16bsh2. (18)
+
+At this point, we have calculated the FLOPs required for a Transformer module during the forward propagation process: FLOPsattn1 + FLOPsattn2 + FLOPsmlp. Therefore, the FLOPs for the entire Transformer model during the forward propagation process are: l × (FLOPsattn1 + FLOPsattn2 + FLOPsmlp).
+
+In addition, due to the large size of the vocabulary V, the computation involved in mapping the hidden state (dimension = h) to logits (dimension = V) at the end is also significant and cannot be ignored. The input and output shapes of the matrix multiplication are: [b,s,h] × [h,V], the FLOPs for this process is FLOPslogits = 2bshV.
+
+Therefore, the FLOPs of the GRPO’s recompute log prob phase are:
+
+FLOPsGRPO = l × (FLOPsattn1 + FLOPsattn2 + FLOPsmlp) + FLOPslogits
+
+. (19)
+
+= 24lbsh2 + 4lbs2h + 2bshV
+
+For the sake of simplicity in the subsequent analysis, we let α = 4lbh,β = 24lbh2 + 2bhV, The FLOPs of GRPO can be expressed as:
+
+##### FLOPsGRPO = αs2 + βs. (20)
+
+Since we integrated the process of calculating the ground truth answer’s log probability into the recompute log prob phase by extending the attention mask matrix 4.5, the FLOPs for the IGPO’s recompute log prob phase are:
+
+FLOPsIGPO = α(s + g)2 + β(s + g), (21) ≈ α(s2 + 2sg) + β(s + g), via g << s. (22)
+
+Eq. 21 to Eq. 22 use a first-order Taylor expansion, as g (on the order of 101) is much smaller than s (on the order of 104) during actual training.
+
+The additional FLOPs introduced by IGPO compared to GRPO are:
+
+∆FLOPs = FLOPsIGPO − FLOPsGRPO
+
+. (23)
+
+= 2αsg + βg
+
+The proportion of additional FLOPs introduced compared to GRPO is:
+
+∆FLOPs FLOPsGRPO
+
+2αsg + βg αs2 + βs
+
+=
+
+g(αs + β) + αsg s(αs + β)
+
+=
+
+g s
+
+αsg αs(s + αβ )
+
+. (24)
+
+=
+
++
+
+g s + αβ <
+
+g s
+
+=
+
++
+
+2g s
+
+In actual training scenarios, 2sg is typically on the order of 10−3, so the additional FLOPs introduced by the IGPO’s recompute log prob phase are only about one-thousandth of the original, and
+
+can be considered negligible. Considering the real time proportion of recompute log prob phase in Table 7, IGPO introduces only about one ten-thousandth of the additional time consumption compared to GRPO per training step.
+
+- G COMPARISON BETWEEN GRPO AND IGPO
+
+Algorithm 1 illustrates the algorithmic flow of IGPO (right) and GRPO (left). The key steps corresponding to each algorithm are highlighted with the same color font to visually highlight the differences: yellow for reward calculation, green for discounted/advantage estimation, blue for credit assignment, and purple for policy optimization. In terms of reward calculation, IGPO constructs dense turn-level rewards through incremental information gain. For discounted return/advantage estimation, GRPO performs group-wise normalization, whereas IGPO performs group-wise normalization followed by discounted accumulation. Regarding credit assignment, GRPO directly assigns the outcome-based advantage to all tokens of the current output, while IGPO performs turn-level credit assignment. In policy optimization, IGPO achieves efficient and effective optimization by maximizing the turn-level discounted returns.
+
+Algorithm 1 GRPO vs. IGPO GRPO Require: initial policy πθ
+
+IGPO Require: initial policy πθ
+
+; task prompts D; hyperparameters ϵ, β, µ
+
+; task prompts D; max turns H; hyperparameters ϵ, β, γ, µ
+
+init
+
+init
+
+- 1: πθ ← πθ
+
+init
+
+- 2: for iteration = 1,...,I do
+- 3: πref ← πθ
+- 4: for step = 1,...,M do
+- 5: Sample a batch Db from D
+- 6: πθ
+
+old ← πθ
+
+- 7: For each q ∈ Db, sample G outputs
+
+{yi}Gi=1 ∼ πθ
+
+old
+
+(· | q)
+
+- 8: Compute outcome reward {ri}Gi=1 from the final answer in each yi
+- 9: Compute each yi’s advantage {Ai}Gi=1
+
+via group normalization of {ri}Gi=1 (Eq.in Sec 2.2)
+
+- 10: Assign Ai to all tokens of yi
+- 11: for GRPO iter = 1,...,µ do
+- 12: Update πθ by maximizing the GRPO objective (Eq. 1)
+- 13: end for
+- 14: end for
+- 15: end for
+
+- 1: πθ ← πθ
+
+init
+
+- 2: for iteration = 1,...,I do
+- 3: πref ← πθ
+- 4: for step = 1,...,M do
+- 5: Sample a batch Db from D
+- 6: πθ
+
+old ← πθ
+
+- 7: For each q ∈ Db, sample G outputs
+
+{yi}Gi=1 ∼ πθ
+
+old
+
+(· | q)
+
+- 8: for iteration = 1,...,T do
+- 9: if t < T then
+- 10: Compute the infomation gain-
+
+based turn-level rewards {ri,t}Gi=1 for each yi (Eq. 4)
+
+- 11: else
+- 12: Compute the final-turn rewards
+
+{ri,T}Gi=1 based on the answer in each yi (Eq. 2)
+
+- 13: end if
+- 14: end for
+- 15: Normalize the turn rewards within the group to derive {r˜i,1≤t≤T}Gi=1 (Eq. 5)
+- 16: Compute the turn-level discounted returns {R˜i,1≤t≤T}Gi=1 in each yi (Eq. 6).
+- 17: Assign {R˜i,1≤t≤T}Gi=1 to the tokens in each turn
+- 18: for IGPO iteration = 1,...,µ do
+- 19: Update πθ by maximizing the IGPO objective (Eq. 7)
+- 20: end for
+- 21: end for
+- 22: end for
+
+### H PROMPT TEMPLATE USED IN OUR EXPERIMENTS.
+
+Our prompt follows the style of DeepResearcher Zheng et al. (2025b), and the same template is used for training, validation, and testing. The prompt template is shown in the Figure 10, where {today} represents the current date to ensure the relevance of the model’s response. {{ tool.name }}: {{ tool.description }} indicates the available tools, while the #Rollout section controls the model’s output format. The #Tools section provides the model with the tool invocation method.
+
+- * Today is {today}
+- * You are an AI Assistant*
+
+The question I give you is a complex question that requires a *deep research* to answer.
+
+###### I will provide you with tools to help you answer the question: {%- for tool in tools.values() %}
+
+- {{ tool.name }}: {{ tool.description }} {%- endfor %}
+
+You don't have to answer the question now, but you should first think about the research plan or what to search next. Your output format should be one of the following two formats:
+
+# Rollout <think> YOUR THINKING PROCESS </think> <answer> YOUR ANSWER AFTER GETTING ENOUGH INFORMATION </answer>
+
+or <think> YOUR THINKING PROCESS </think> <tool_call> YOUR TOOL CALL WITH CORRECT FORMAT </tool_call> You should always follow the above two formats strictly. Only output the final answer (in words, numbers or phrase) inside the <answer></answer> tag, without any
+
+explanations or extra information. If this is a yes-or-no question, you should only answer yes or no.
+
+# Tools You may call one or more functions to assist with the user query.
+
+You are provided with function signatures within <tools></tools> XML tags: <tools> {\%- for tool in tools.values() \%}
+
+{{ '{' }}"type": "function", "function": {{ '{' }}"name": "{{ tool.name | replace("'", '"') }}", "description": "{{ tool.description }}", "parameters": {{ '{' }}"type": "object", "properties": {{tool.inputs | replace("'", '"')}}, "example": {{tool.example | replace("'", '"')}}, "uniqueItems": true{{ '}}}' }}
+
+{\%- endfor \%} </tools>
+
+For each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags: <tool_call> {{ '{' }}"name": <function-name>, "arguments": <args-json-object>{{ '}' }} </tool_call>
+
+Figure 10: Prompt template used in our experiments.
+
+I CASE STUDY
+
+[Figure 95]
+
+Which film whose director is younger, College Lovers or The Dixie Flyer? Ground Truth: College Lovers
+
+[Figure 96]
+
+[Figure 97]
+
+[think] To answer this question, I need to find out the release dates of both films… [tool call] {'query': ['release date College Lovers film'…]}
+
+Info Gain: -0.80
+
+[Figure 98]
+
+[tool response] The release date of College Lovers is October 5, 1930 …
+
+[Figure 99]
+
+[Figure 100]
+
+[think] Next, I need to find the birth years of John G. Adolfi and Charles J. Hunt to determine which director is younger… [tool call] {'query': ['John G. Adolfi birth year'…]}
+
+Info Gain: 0.42
+
+[Figure 101]
+
+[tool response] John G. Adolfi was born on February 19, 1888…
+
+[Figure 102]
+
+[Figure 103]
+
+[think] John G. Adolfi was born on ... Charles J. Hunt was born on ... Since Charles J. Hunt was born earlier, he is younger than John G. Adolfi at the time of their respective film's release. Therefore, the director of The Dixie Flyer is younger.
+
+F1 Score: 0.0
+
+- Figure 11: Case study showing a scenario where the final answer is incorrect but contains a single correct retrieval turn. IGPO provides a process reward for this turn, improving token utilization.
+
+[Figure 104]
+
+When is Augusta Marie Of Holstein-Gottorp's mother's birthday? Ground Truth: 22 November 1610
+
+[Figure 105]
+
+[Figure 106]
+
+[think] To answer this question, I need to find out the birthday of Augusta Marie of Holstein-Gottorp… [tool call] {'query': ['Augusta Marie of Holstein-Gottorp'…]}
+
+Info Gain: -0.39
+
+[Figure 107]
+
+[tool response] Augusta Marie of Holstein-Gottorp (6 February 1649 – 25 April 1728) was a German noblewoman who became a…
+
+[Figure 108]
+
+[Figure 109]
+
+[think] I can see that Augusta Marie … was born on ... To find her mother's birthday, I need to look for information about her family, specifically her parents. [tool call] {'query': ['Augusta Marie of Holstein-Gottorp parents'…]}
+
+Info Gain: 0.45
+
+[Figure 110]
+
+[tool response] … she was a daughter of Frederick III, Duke of Holstein-Gottorp and Duchess Marie Elisabeth of Saxony …
+
+[Figure 111]
+
+[Figure 112]
+
+[think] Augusta Marie … mother was ... To find her birthday, I need to look for more details about Duchess Marie Elisabeth of Saxony. [tool call] {'query': ['Duchess Marie Elisabeth of Saxony birth date'…]}
+
+Info Gain: 0.78
+
+[Figure 113]
+
+[tool response] Duchess Marie Elisabeth of Saxony (22 November 1610 – 24 October
+
+1684) was a duchess consort of …
+
+[Figure 114]
+
+[Figure 115]
+
+[think] The search results consistently provide information that Duchess Marie Elisabeth of Saxony was born on 22 November 1610.
+
+F1 Score: 1.0
+
+- Figure 12: Case study illustrating a situation where the first round of retrieval failed, but the second and third rounds successfully located the correct evidence and produced the right answer. In this case, IGPO imposes a penalty on the erroneous retrieval in the first round.
+

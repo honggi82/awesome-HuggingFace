@@ -1,12 +1,12 @@
 # Codex-Native Full Curation Provenance
 
-Generated: 2026-07-07T06:55:53.865022+00:00
+Generated: 2026-07-07T10:01:51.968411+00:00
 
 This repository contains Codex-native full-curation artifacts generated from local PDF text and figure extraction evidence.
 
 - Mode: `codex-native-full-curation`
 - Topic: `huggingface`
-- Processed papers: 2440
+- Processed papers: 3440
 - Source extract report: `E:/조선대/연구/paper-curation/paper/awesome-HuggingFace/_folder_source_extract_report.json`
 - Data artifacts: `data/paper_curation`
 - Review artifacts: `docs/paper_curation/papers`
