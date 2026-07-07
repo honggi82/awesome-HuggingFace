@@ -1,0 +1,1497 @@
+## CoInteract: Physically-Consistent Human-Object Interaction Video Synthesis via Spatially-Structured Co-Generation
+
+Xiangyang Luo∗†1,2, Xiaozhe Xin∗‡2, Tao Feng1, Xu Guo1, Meiguang Jin2, and Junfeng Ma2
+
+# arXiv:2604.19636v1[cs.CV]21Apr2026
+
+1Tsinghua University, 2Alibaba Group https://xinxiaozhe12345.github.io/CoInteract_Project/
+
+Abstract. Synthesizing human–object interaction (HOI) videos has broad
+
+practical value in e-commerce, digital advertising, and virtual marketing. However, current diffusion models, despite their photorealistic rendering capability, still frequently fail on (i) the structural stability of sensitive regions such as hands and faces and (ii) physically plausible contact (e.g., avoiding hand–object interpenetration). We present CoInteract, an end-to-end framework for HOI video synthesis conditioned on a person reference image, a product reference image, text prompts, and speech audio. CoInteract introduces two complementary designs embedded into a Diffusion Transformer (DiT) backbone. First, we propose a Human-Aware Mixture-of-Experts (MoE) that routes tokens to lightweight, region-specialized experts via spatially supervised routing, improving fine-grained structural fidelity with minimal parameter overhead. Second, we propose Spatially-Structured Co-Generation, a dual-stream training paradigm that jointly models an RGB appearance stream and an auxiliary HOI structure stream to inject interaction geometry priors. During training, the HOI stream attends to RGB tokens and its supervision regularizes shared backbone weights; at inference, the HOI branch is removed for zero-overhead RGB generation. Experimental results demonstrate that CoInteract significantly outperforms existing methods in structural stability, logical consistency, and interaction realism.
+
+Keywords: Diffusion Model, Human Centric Video Generation, Human Object Interaction
+
+### 1 Introduction
+
+Driven by the remarkable progress in video generation [20, 42], speech-driven avatar generation [50,52,57,59] has achieved unprecedented photorealism, which has opened up vast possibilities for digital humans in e-commerce [22,23,38], virtual assistance [11,31], and remote education [46,47]. However, as demand shifts
+
+∗ Equal contribution. † Work done during internship at Alibaba Group. ‡ Corresponding author.
+
+[Figure 1]
+
+[Figure 2]
+
+[Figure 3]
+
+[Figure 4]
+
+[Figure 5]
+
+[Figure 6]
+
+[Figure 7]
+
+###### Video Generation
+
+###### Unified Generation
+
+[Figure 8]
+
+[Figure 9]
+
+[Figure 10]
+
+[Figure 11]
+
+[Figure 12]
+
+[Figure 13]
+
+[Figure 14]
+
+[Figure 15]
+
+[Figure 16]
+
+[Figure 17]
+
+[Figure 18]
+
+[Figure 19]
+
+[Figure 20]
+
+[Figure 21]
+
+[Figure 22]
+
+[Figure 23]
+
+[Figure 24]
+
+[Figure 25]
+
+[Figure 26]
+
+###### Interactive Generation
+
+Clip 1: Strokes, rotates left, and lifts the bag. Clip 2: Lowers bag to waist. Clip 3: Raises bag to chest.
+
+###### Multi-condition Generation Multi-Reference Injection
+
+###### CoInteract
+
+[Figure 27]
+
+[Figure 28]
+
+[Figure 29]
+
+RGB video
+
+[Figure 30]
+
+[Figure 31]
+
+[Figure 32]
+
+Human Condition
+
+Human Image
+
+[Figure 33]
+
+Human Image
+
+[Figure 34]
+
+[Figure 35]
+
+[Figure 36]
+
+[Figure 37]
+
+Generator
+
+[Figure 38]
+
+Generator
+
+[Figure 39]
+
+Generator
+
+HOI video
+
+[Figure 40]
+
+[Figure 41]
+
+Object Image
+
+[Figure 42]
+
+Object Image
+
+[Figure 43]
+
+Object Condition
+
+[Figure 44]
+
+[Figure 45]
+
+Structure constrain
+
+[Figure 46]
+
+[Figure 47]
+
+[Figure 48]
+
+[Figure 49]
+
+No structured interaction constrain
+
+Heavy inference-time preprocessing
+
+Easy to use HOI structure aware
+
+- Fig. 1: Given two reference images, a text prompt, and audio, CoInteract generates high-fidelity HOI videos. Bottom: Comparison of generation paradigms. Unlike existing methods that rely on heavy inference-time preprocessing and lack structured interaction constraints, CoInteract implements a unified, end-to-end generation framework that is both easy to use and inherently aware of HOI structures.
+
+from passive speaking to active product demonstration, Human-Object Interaction (HOI) video synthesis has emerged as the next critical frontier, requiring coordinated hand movements, precise object manipulation, and strict physical plausibility beyond what existing talking-avatar generation methods provide.
+
+As shown in Fig. 1, prior work on HOI video synthesis can be broadly grouped into two paradigms. (i) Multi-condition generation. These methods extract per-frame human poses and object conditions to guide generation [26, 43, 51], but the required preprocessing and domain-specific signals often limit robustness and generalization. (ii) Multi-reference generation. Another line conditions a generative model on person/product references, either by directly synthesizing videos from multiple references [5, 17, 21] or by compositing references via image editing and then performing speech-to-video generation [10,48,54]. While more flexible, these approaches typically lack explicit mechanisms to enforce interaction structure—e.g. interaction geometry and physically plausible hand poses—often leading to implausible human–object interaction.
+
+We argue that this limitation is rooted in the RGB-centric nature of current diffusion backbones. As also observed in recent studies [49,53], models trained purely on pixel-level supervision have no built-in notion of 3D hand-object spatial relationships or body structure, and must rely on appearance cues alone to infer interaction, which leads to two recurring failure modes: (1) structural collapse in hands and faces, where fingers merge or facial features blur, and (2) physical violations such as human-object interpenetration, where hands pass through product surfaces due to the lack of explicit object boundary awareness.
+
+To address these challenges, we argue that a model must not only "see" pixels but also "understand" the underlying structural and interaction relationships. In this paper, we present CoInteract, an end-to-end framework that introduces a Spatially-Structured Co-Generation paradigm for physically-consistent HOI video synthesis. Our core philosophy is to embed human structural priors and HOI physical constraints directly into the Diffusion Transformer (DiT) backbone, transforming it from a pure appearance generator into a structureaware interaction engine. The technical contribution of CoInteract is twofold. First, we propose a Human-Aware Mixture-of-Experts (MoE) to improve hand and face quality. Using face and hand bounding boxes as supervision, a lightweight router learns to dispatch tokens to region-specialized experts that enhance structural fidelity with only a marginal increase in parameters. Second, we introduce a dual-stream co-generation paradigm to enforce physical plausibility. An auxiliary HOI structure stream—where the human body is reduced to a silhouette while the object retains its RGB appearance—is jointly trained with the RGB stream within a shared DiT backbone. This forces the backbone to learn spatial and interaction relationships rather than relying on appearance cues alone. During training, the HOI stream attends to RGB tokens and its supervision regularizes the shared backbone; at inference, we keep only the RGB stream. Extensive experiments demonstrate that CoInteract consistently outperforms existing methods in interaction plausibility, structural stability, and identity preservation. Our contributions are summarized as follows:
+
+- – We propose CoInteract, a novel end-to-end framework for speech-driven HOI video synthesis that embeds human structural priors and interaction geometry constraints directly into the DiT backbone, ensuring both physical plausibility and structural consistency without relying on external preprocessing or post-processing.
+- – We introduce a Human-Aware Mixture-of-Experts (MoE) that uses spatial supervision to guide lightweight specialized experts for hands and faces. This targeted processing ensures high structural fidelity and effectively reduces the artifacts commonly seen in these critical regions, with minimal additional parameters.
+- – We develop a Spatially-Structured Co-Generation paradigm using an asymmetric co-attention mask to embed physical interaction rules into the DiT. This approach forces the model to respect geometric constraints and substantially reduces hand-object interpenetration, while ensuring zero additional computational cost at inference.
+
+### 2 Related Works
+
+#### 2.1 Video Diffusion Models
+
+Video diffusion models [1,13,20,21,42] have evolved rapidly from image diffusion to temporally coherent video synthesis. Early methods [1,13] extend image priors with temporal modules but often suffer from flickering and drift. Subsequent works [40,41] improve consistency via patch- or view-based designs. Recent stateof-the-art approaches [21,42] predominantly adopt DiT-style backbones [33] to model spatiotemporal tokens with global attention.
+
+Despite strong visual quality, RGB-centric video diffusion models remain fragile in complex human–object interaction (HOI) scenarios [27], where supervision provides weak constraints on contact geometry and body topology. This often manifests as hand/face distortions and contact violations such as interpenetration. To introduce additional structural cues, recent works explore multistream co-generation by jointly predicting auxiliary modalities (e.g., depth or flow) alongside RGB [4,14], or by explicitly injecting geometric constraints during training [49]. However, these methods target general video synthesis and do not explicitly address HOI-specific challenges such as stable hand articulation under occlusion and physically plausible grasping. Our work focuses on HOI and injects interaction-structure supervision and region-specific specialization into a shared DiT backbone.
+
+#### 2.2 Audio-driven Human Animation
+
+Audio-driven human animation has achieved impressive results for talking heads and avatars, emphasizing lip synchronization and identity preservation [31,34, 45, 50, 57, 59, 62]. Beyond faces, co-speech gesture generation maps speech to plausible body/hand motion, where diffusion models are effective in capturing one-to-many motion variability [9, 10, 12, 24, 54]. However, most prior work focuses on human-only motion and does not explicitly enforce hand–object contact constraints in rendered videos.
+
+Recent studies recognize that hands and faces require dedicated treatment. CyberHost [25] introduces region attention with learnable latent features to refine hand/face synthesis, and Make-Your-Anchor [16] applies post-hoc face enhancement. These approaches typically act as external add-ons that are decoupled from the generative backbone. In contrast, we embed a Human-Aware Mixture-of-Experts (MoE) directly into DiT blocks to specialize capacity for hands/faces within the generation process, and further introduce HOI-structured supervision to improve physically plausible interactions.
+
+#### 2.3 Human–Object Interaction Video Generation
+
+HOI video synthesis requires jointly modeling human motion, object manipulation, and physically plausible contact. Existing approaches can be roughly grouped into two paradigms.
+
+- (i) Multi-condition generation. These methods augment diffusion models
+
+with explicit pose and object-related structural controls [26,43,51]. For instance, AnchorCrafter [51] conditions on human pose and multi-view object features, while ByteLoom [26] introduces geometric priors (e.g., relative coordinate maps) to improve spatial alignment. While effective, such approaches rely on heavy preprocessing and external signals, and often do not internalize HOI constraints within the backbone.
+
+- (ii) Multi-reference generation. Another line injects identity and prod-
+
+uct references without explicit geometry conditions. This includes direct multireference video synthesis [5,17,21,61] and two-stage pipelines that composite references via image editing [2,48] before speech-to-video generation [9,10,44,54]. Despite flexibility, these methods often lack HOI-specific structural supervision, leading to unstable hand articulation and implausible contact.
+
+CoInteract addresses these limitations by formulating HOI synthesis as spatially-
+
+structured co-generation: it jointly trains an RGB stream with an auxiliary HOI structure stream to inject interaction geometry priors, and uses a Human-Aware MoE to stabilize structurally sensitive regions, while enabling zero-overhead inference by removing the auxiliary HOI branch.
+
+### 3 Method
+
+As illustrated in Fig. 2, we present CoInteract, an end-to-end framework for speech-driven human–object interaction (HOI) video synthesis. Given dual reference images (character identity Iref and product Iprod) together with motion frames Vmot that preserve temporal continuity [10,30,58], our goal is to synthesize HOI videos that are both structurally stable and physically plausible. Unlike conventional video diffusion models that operate purely in RGB space, CoInteract explicitly injects interaction structure and body-level consistency into a shared Diffusion Transformer (DiT) backbone.
+
+#### 3.1 Unified RGB–HOI Co-Generation
+
+Standard diffusion-based video models learn RGB-dominated spatiotemporal priors without explicit supervision on interaction geometry. While effective for general synthesis, they provide weak constraints for contact topology and occlusion ordering, often producing HOI artifacts such as hand–object interpenetration and unstable hand articulation.
+
+To address this, we introduce a unified co-generation paradigm (Fig. 2(a)) in which an RGB appearance stream zr and an auxiliary HOI structure stream zh are jointly trained within a single DiT backbone. The key insight is to train with a texture-stripped HOI structure stream that preserves interaction geometry (mesh projection with fused object masks) while removing appearance cues, thereby guiding shared weights toward physically consistent representations.
+
+HOI Video (a) Framework of CoInteract
+
+Reference Images Motion Frames RGB Video
+
+[Figure 50]
+
+[Figure 51]
+
+[Figure 52]
+
+[Figure 53]
+
+[Figure 54]
+
+[Figure 55]
+
+[Figure 56]
+
+[Figure 57]
+
+𝑉 𝑉
+
+[Figure 58]
+
+|[Figure 59]|[Figure 60]|
+|---|---|
+
+[Figure 61]
+
+Asymmetric Co-Attention
+
+Audio Encoder
+
+VAE
+
+𝑃 𝑃
+
+add noise
+
+CrossAttention
+
+CrossAttention
+
+MLP Projector
+
+RGB Expert Patchify
+
+HOI Expert Patchify
+
+Human-Aware MoE
+
+×𝒏
+
+DiT Blocks
+
+[Figure 62]
+
+[Figure 63]
+
+Audio Block
+
+Unified Unpatchify
+
+𝑉 𝑉
+
+Height
+
+Hidden States
+
+HOI Latents
+
+[Figure 64]
+
+[Figure 65]
+
+[Figure 66]
+
+[Figure 67]
+
+[Figure 68]
+
+[Figure 69]
+
+[Figure 70]
+
+[Figure 71]
+
+[Figure 72]
+
+[Figure 73]
+
+[Figure 74]
+
+[Figure 75]
+
+(b) 3D ROPE (c) Human-Aware MoE
+
+|[Figure 76]|
+|---|
+|[Figure 77]|
+|[Figure 78]|
+
+[Figure 79]
+
+[Figure 80]
+
+[Figure 81]
+
+[Figure 82]
+
+[Figure 83]
+
+[Figure 84]
+
+[Figure 85]
+
+[Figure 86]
+
+[Figure 87]
+
+[Figure 88]
+
+[Figure 89]
+
+[Figure 90]
+
+[Figure 91]
+
+[Figure 92]
+
+[Figure 93]
+
+[Figure 94]
+
+[Figure 95]
+
+[Figure 96]
+
+[Figure 97]
+
+[Figure 98]
+
+[Figure 99]
+
+[Figure 100]
+
+[Figure 101]
+
+[Figure 102]
+
+[Figure 103]
+
+[Figure 104]
+
+[Figure 105]
+
+[Figure 106]
+
+[Figure 107]
+
+[Figure 108]
+
+[Figure 109]
+
+Motion Latents
+
+[Figure 110]
+
+[Figure 111]
+
+[Figure 112]
+
+[Figure 113]
+
+[Figure 114]
+
+[Figure 115]
+
+[Figure 116]
+
+[Figure 117]
+
+[Figure 118]
+
+[Figure 119]
+
+[Figure 120]
+
+[Figure 121]
+
+[Figure 122]
+
+[Figure 123]
+
+[Figure 124]
+
+[Figure 125]
+
+[Figure 126]
+
+[Figure 127]
+
+[Figure 128]
+
+[Figure 129]
+
+[Figure 130]
+
+[Figure 131]
+
+[Figure 132]
+
+[Figure 133]
+
+[Figure 134]
+
+[Figure 135]
+
+[Figure 136]
+
+[Figure 137]
+
+[Figure 138]
+
+[Figure 139]
+
+[Figure 140]
+
+[Figure 141]
+
+[Figure 142]
+
+[Figure 143]
+
+[Figure 144]
+
+Shared Expert
+
+Head Expert
+
+Hand Expert
+
+Base Expert
+
+RGB Latents Ref. Latents
+
+[Figure 145]
+
+[Figure 146]
+
+[Figure 147]
+
+[Figure 148]
+
+[Figure 149]
+
+[Figure 150]
+
+[Figure 151]
+
+[Figure 152]
+
+[Figure 153]
+
+[Figure 154]
+
+[Figure 155]
+
+[Figure 156]
+
+[Figure 157]
+
+[Figure 158]
+
+[Figure 159]
+
+[Figure 160]
+
+[Figure 161]
+
+[Figure 162]
+
+[Figure 163]
+
+[Figure 164]
+
+[Figure 165]
+
+[Figure 166]
+
+[Figure 167]
+
+[Figure 168]
+
+[Figure 169]
+
+[Figure 170]
+
+[Figure 171]
+
+[Figure 172]
+
+[Figure 173]
+
+[Figure 174]
+
+[Figure 175]
+
+[Figure 176]
+
+[Figure 177]
+
+[Figure 178]
+
+[Figure 179]
+
+[Figure 180]
+
+[Figure 181]
+
+[Figure 182]
+
+[Figure 183]
+
+[Figure 184]
+
+[Figure 185]
+
+[Figure 186]
+
+[Figure 187]
+
+[Figure 188]
+
+[Figure 189]
+
+[Figure 190]
+
+[Figure 191]
+
+[Figure 192]
+
+[Figure 193]
+
+[Figure 194]
+
+[Figure 195]
+
+[Figure 196]
+
+[Figure 197]
+
+[Figure 198]
+
+[Figure 199]
+
+[Figure 200]
+
+[Figure 201]
+
+[Figure 202]
+
+[Figure 203]
+
+[Figure 204]
+
+[Figure 205]
+
+[Figure 206]
+
+[Figure 207]
+
+[Figure 208]
+
+[Figure 209]
+
+[Figure 210]
+
+[Figure 211]
+
+[Figure 212]
+
+[Figure 213]
+
+[Figure 214]
+
+[Figure 215]
+
+[Figure 216]
+
+[Figure 217]
+
+[Figure 218]
+
+[Figure 219]
+
+[Figure 220]
+
+[Figure 221]
+
+[Figure 222]
+
+[Figure 223]
+
+Head Bbox
+
+[Figure 224]
+
+[Figure 225]
+
+[Figure 226]
+
+[Figure 227]
+
+[Figure 228]
+
+[Figure 229]
+
+[Figure 230]
+
+[Figure 231]
+
+[Figure 232]
+
+[Figure 233]
+
+[Figure 234]
+
+[Figure 235]
+
+[Figure 236]
+
+[Figure 237]
+
+[Figure 238]
+
+[Figure 239]
+
+[Figure 240]
+
+[Figure 241]
+
+[Figure 242]
+
+[Figure 243]
+
+[Figure 244]
+
+[Figure 245]
+
+[Figure 246]
+
+[Figure 247]
+
+[Figure 248]
+
+[Figure 249]
+
+[Figure 250]
+
+[Figure 251]
+
+[Figure 252]
+
+[Figure 253]
+
+[Figure 254]
+
+[Figure 255]
+
+[Figure 256]
+
+[Figure 257]
+
+[Figure 258]
+
+[Figure 259]
+
+[Figure 260]
+
+[Figure 261]
+
+[Figure 262]
+
+[Figure 263]
+
+[Figure 264]
+
+[Figure 265]
+
+[Figure 266]
+
+[Figure 267]
+
+[Figure 268]
+
+[Figure 269]
+
+[Figure 270]
+
+[Figure 271]
+
+[Figure 272]
+
+[Figure 273]
+
+[Figure 274]
+
+[Figure 275]
+
+[Figure 276]
+
+[Figure 277]
+
+[Figure 278]
+
+[Figure 279]
+
+[Figure 280]
+
+[Figure 281]
+
+[Figure 282]
+
+[Figure 283]
+
+[Figure 284]
+
+[Figure 285]
+
+[Figure 286]
+
+[Figure 287]
+
+[Figure 288]
+
+[Figure 289]
+
+[Figure 290]
+
+[Figure 291]
+
+[Figure 292]
+
+[Figure 293]
+
+[Figure 294]
+
+[Figure 295]
+
+[Figure 296]
+
+Time
+
+[Figure 297]
+
+[Figure 298]
+
+[Figure 299]
+
+[Figure 300]
+
+CE Loss
+
+[Figure 301]
+
+[Figure 302]
+
+[Figure 303]
+
+[Figure 304]
+
+[Figure 305]
+
+[Figure 306]
+
+[Figure 307]
+
+[Figure 308]
+
+[Figure 309]
+
+[Figure 310]
+
+[Figure 311]
+
+[Figure 312]
+
+[Figure 313]
+
+[Figure 314]
+
+[Figure 315]
+
+[Figure 316]
+
+[Figure 317]
+
+[Figure 318]
+
+[Figure 319]
+
+[Figure 320]
+
+[Figure 321]
+
+[Figure 322]
+
+[Figure 323]
+
+[Figure 324]
+
+[Figure 325]
+
+[Figure 326]
+
+[Figure 327]
+
+[Figure 328]
+
+[Figure 329]
+
+[Figure 330]
+
+[Figure 331]
+
+[Figure 332]
+
+[Figure 333]
+
+[Figure 334]
+
+[Figure 335]
+
+[Figure 336]
+
+[Figure 337]
+
+[Figure 338]
+
+[Figure 339]
+
+Router
+
+[Figure 340]
+
+[Figure 341]
+
+[Figure 342]
+
+[Figure 343]
+
+[Figure 344]
+
+[Figure 345]
+
+[Figure 346]
+
+[Figure 347]
+
+[Figure 348]
+
+[Figure 349]
+
+[Figure 350]
+
+[Figure 351]
+
+[Figure 352]
+
+[Figure 353]
+
+[Figure 354]
+
+[Figure 355]
+
+[Figure 356]
+
+[Figure 357]
+
+[Figure 358]
+
+[Figure 359]
+
+[Figure 360]
+
+[Figure 361]
+
+[Figure 362]
+
+[Figure 363]
+
+[Figure 364]
+
+[Figure 365]
+
+[Figure 366]
+
+[Figure 367]
+
+[Figure 368]
+
+[Figure 369]
+
+[Figure 370]
+
+[Figure 371]
+
+[Figure 372]
+
+[Figure 373]
+
+[Figure 374]
+
+[Figure 375]
+
+[Figure 376]
+
+[Figure 377]
+
+[Figure 378]
+
+[Figure 379]
+
+[Figure 380]
+
+[Figure 381]
+
+[Figure 382]
+
+[Figure 383]
+
+[Figure 384]
+
+[Figure 385]
+
+[Figure 386]
+
+[Figure 387]
+
+[Figure 388]
+
+[Figure 389]
+
+[Figure 390]
+
+[Figure 391]
+
+[Figure 392]
+
+[Figure 393]
+
+[Figure 394]
+
+[Figure 395]
+
+[Figure 396]
+
+[Figure 397]
+
+[Figure 398]
+
+[Figure 399]
+
+[Figure 400]
+
+[Figure 401]
+
+[Figure 402]
+
+[Figure 403]
+
+-2 -1 0 1 2 3 30 31
+
+Width
+
+Hidden States
+
+- Fig. 2: Overview of CoInteract. (a) The framework jointly generates RGB and HOI streams within a shared DiT backbone equipped with a Human-Aware MoE. An asymmetric co-attention mask enforces interaction-structure supervision during training;
+
+the HOI branch is removed at inference. Vr,h and Pr,h denote the hidden states and prompts of the RGB and HOI streams, respectively. (b) 3D RoPE assigns distinct spatiotemporal coordinates to motion, RGB, reference, and HOI latents. (c) The HumanAware MoE employs a spatially supervised router to dispatch head and hand tokens to specialized experts.
+
+HOI structure stream. We construct an auxiliary HOI structure stream as a silhouette-like 3-channel rendering obtained by projecting the recovered human mesh to the image plane and fusing the projected object mask. This produces a pixel-aligned structural target that highlights interaction boundaries while discarding RGB texture.
+
+Tokenization and shared backbone. The two streams are tokenized by modalityspecific patch embedding layers (with the same patch size) and then fed into shared DiT blocks. The HOI stream uses a fixed descriptive prompt template to provide consistent semantic conditioning. Within each DiT block, the two streams share all transformer parameters but employ stream-specific modulation parameters (scale and shift in adaptive layer normalization), enabling a single backbone to specialize feature statistics for appearance versus structure without duplicating the full model.
+
+Joint flow-matching objective. We optimize the model with a joint flow-matching objective supervising both streams:
+
+Lflow = Lr + λhLh. (1)
+
+0,z1 ∥vr − vθ(zr,t,t,c)∥22 , Lh = Et,z
+
+Lr = Et,z
+
+0,z1 ∥vh − vθ(zh,t,t,c)∥22 .
+
+(2)
+
+where v denotes the target velocity field, t is the diffusion timestep, and c denotes conditioning (text, audio, dual reference images, and motion latents). We set λh = 1 unless otherwise stated.
+
+Multi-Modal Coordinate Assignment via 3D RoPE To seamlessly integrate heterogeneous modalities—ranging from historical motion and static references to dual-stream generative latents—we assign each token a 3D coordinate (h,w,t) encoded by 3D Rotary Positional Encoding (3D RoPE). As illustrated in Fig. 2(b), our coordinate assignment enforces the following inductive biases:
+
+- – Spatial coordinates for dual streams. To preserve pixel-level correspondence between RGB and HOI, we concatenate the two streams along the width dimension, assigning distinct horizontal coordinates—e.g. w ∈ [0,W] for RGB and w ∈ [−W,0] for HOI—while sharing identical height and time indices. This allows the model to learn cross-stream alignment through relative positional distances.
+- – Temporal causality and reference anchoring. We explicitly structure the temporal axis to distinguish between motion context, generated video, and identity reference:
+
+- 1. Historical motion (t < 0). Past motion frames are assigned negative temporal indices (e.g., t ∈ {−N,...,−1}), placing them logically before the current generation window to encourage causal motion continuity.
+- 2. Reference anchoring (t ≫ T). Static reference images are mapped to a far-field temporal location (e.g., t = 30,31) with a significant offset, encouraging the model to treat them as global identity anchors rather than adjacent frames.
+
+Formally, the position of any token x is encoded as:
+
+Pos(xi,j,k) = RoPE3D(hi,wj′,tk), (3)
+
+where wj′ accounts for the virtual width shift in the HOI stream. This unified mapping encourages the attention mechanism to respect structural and temporal relationships across all inputs.
+
+###### (a) Training Stage 1: Full Attention (b) Training Stage 2: Asymmetric Co-Attention (c) Inference
+
+RGB stream HOI stream RGB tokens HOI tokens RGB stream HOI stream RGB tokens HOI tokens
+
+RGB stream HOI stream
+
+|𝑅 → 𝑅|𝑅 → 𝐻|
+|---|---|
+|𝐻 → 𝑅|𝐻 → 𝐻|
+
+|𝑅 → 𝑅|𝑅 → 𝐻|
+|---|---|
+|𝐻 → 𝑅|𝐻 → 𝐻|
+
+[Figure 404]
+
+[Figure 405]
+
+| | | |
+|---|---|---|
+|S|elf-Attention| |
+| | | |
+
+| | | |
+|---|---|---|
+| |Asymmetric Co-Attention| |
+| | | |
+
+Asymmetric Co-Attention
+
+###### RGB video HOI stream Attention Mask Attention Mask Optional
+
+𝐿 𝐿 𝐿 𝐿
+
+- Fig. 3: Two-stage training and inference (DiT blocks omitted for clarity). Stage 1 uses full attention to establish coupling between the RGB and HOI streams. Stage 2 applies an asymmetric co-attention mask, enabling removal of the HOI branch at inference for
+
+efficiency. Lr and Lh denote the flow-matching losses for the RGB and HOI streams, respectively, and red dashed arrows indicate gradient flow into shared DiT parameters.
+
+Two-Stage Asymmetric Co-Attention To inject interaction-structure supervision while maintaining inference efficiency, we adopt a two-stage training strategy with an Asymmetric Co-Attention mechanism (Fig. 3). In Stage 1, standard bidirectional attention is applied across both streams for rapid convergence, allowing the model to learn global dependencies between appearance and interaction structure. In Stage 2, we enforce an asymmetric attention mask. Let Tr and Th denote the token sets for the RGB and HOI streams, respectively, and let rows correspond to queries and columns to keys. The mask M is defined as:
+
+ 
+
+1, if i ∈ Tr, j ∈ Tr, 1, if i ∈ Th, j ∈ Tr ∪ Th, 0, otherwise.
+
+(4)
+
+Mi,j =
+
+
+
+Under this mask, RGB queries attend only to RGB tokens, making the RGB pathway independent of the HOI branch and thus removable at inference with zero overhead. HOI queries, conversely, attend to both streams, leveraging cleaner RGB features to predict interaction structure. Crucially, Lh backpropagates through the HOI←RGB cross-attention into the shared DiT parameters; since the RGB stream reuses the same parameters at inference, this transfers interactionstructure supervision to the RGB generator even when the HOI branch is removed.
+
+#### 3.2 Human-Aware Mixture-of-Experts
+
+While structured co-generation injects interaction priors into the backbone, hands and faces may still exhibit artifacts due to their high-frequency detail and articulation complexity. We therefore incorporate a Human-Aware Mixtureof-Experts (MoE) module [8,37] that routes tokens to region-specialized experts via a spatially supervised router R (Fig. 2(c)). We include a Shared expert that reuses the original DiT FFN as a shortcut path, and three lightweight experts (Head, Hand, Base) implemented as small FFNs, introducing a modest parameter overhead. This enables dedicated capacity for anatomically sensitive
+
+[Figure 406]
+
+[Figure 407]
+
+[Figure 408]
+
+[Figure 409]
+
+[Figure 410]
+
+[Figure 411]
+
+[Figure 412]
+
+HOI Image Person Image Product Image
+
+[Figure 413]
+
+[Figure 414]
+
+[Figure 415]
+
+[Figure 416]
+
+[Figure 417]
+
+[Figure 418]
+
+[Figure 419]
+
+SAM3
+
+Validate
+
+[Figure 420]
+
+[Figure 421]
+
+Blend
+
+[Figure 422]
+
+SAM3Dbody
+
+- Fig. 4: Preprocessing pipeline for constructing paired RGB and HOI-structure training data.
+
+regions, improving hand sharpness and face identity consistency without degrading general synthesis quality.
+
+Spatially supervised routing. To prevent router optimization from interfering with the DiT representation learning, we apply a stop-gradient operation sg[·] to hidden states before routing. The routing probability for token xi is computed as:
+
+G(xi) = Softmax(Wg · sg[hi]). (5) Using face and hand bounding boxes, the router assigns tokens inside the corresponding regions to Ehead or Ehand, while remaining tokens are processed by the base expert. We enforce specialization via a cross-entropy routing loss:
+
+⊮(yi = k)log(G(xi)k), (6)
+
+Lroute = −
+
+i k∈{head,hand,base}
+
+where yi is the ground-truth region label and ⊮(·) is the indicator function. The total training objective is:
+
+Ltotal = Lflow + ηLroute. (7)
+
+#### 3.3 Data Curation and Representation
+
+To facilitate structure-aware training, we transform raw HOI videos into paired RGB and HOI-structure representations (Fig. 4). We first decouple entities using Qwen-Edit [48] to create independent person and product references, followed by a validation module that filters mismatched (source image, person, object) triplets. For geometric supervision, we use SAM3 [3] to obtain object masks and SAM3D-body [55] to recover a human mesh, which is then projected to the image plane. We fuse the projected human rendering with the object mask to form a texture-stripped HOI structure stream Vh. Since this HOI stream is geometryfocused, the model is encouraged to learn spatial and interaction relationships rather than exploiting appearance shortcuts. Finally, both RGB video Vr and HOI stream Vh are encoded into a shared latent space via a pre-trained VAE for dual-stream training. Additionally, we use off-the-shelf detectors [29,36] to obtain face and hand bounding boxes, which provide explicit supervision for the MoE router during training.
+
+### 4 Experiments
+
+#### 4.1 Training Details
+
+Dataset. We curate a large-scale HOI video dataset following Section 3.3, comprising 40 hours of product demonstration and live-streaming videos. After quality filtering, 12K high-quality clips are retained with paired RGB–HOI representations, hand/face bounding boxes, and silhouette masks. A held-out test set of 50 clips covers diverse product categories and unseen identities.
+
+Implementation Details. CoInteract is initialized from WanS2V [10]. The Human-Aware MoE consists of four experts: one Shared expert that reuses the original DiT FFN, and three lightweight experts (Head, Hand, Base) each implemented as a light FFN with hidden dimension 256. The router is a two-layer MLP trained with spatial supervision. AdamW [19] is used with learning rate 1×10−4 and cosine annealing. Training proceeds in two stages: full bidirectional self-attention with 5K iterations, followed by asymmetric co-attention with 2K iterations. Loss weights are λh = 1 and η = 1. The HOI branch is discarded at inference, incurring zero additional cost. As for inference settings, we set CFG with 5, inference steps with 40, and generate videos at 480p resolution.
+
+#### 4.2 Quantitative Comparison
+
+Baselines. We compare CoInteract against AnchorCrafter [51], Phantom [28], Humo [5], InteractAvatar [60], SkyReels-V3 [21], and VACE [17]. All methods use identical reference images and audio inputs. Since InteractAvatar does not natively support separate injection of identity and product references, we first use Qwen-Image [48] to composite both references into a single image before feeding it to the model; its results therefore partly benefit from the image editing model’s compositing capability. For AnchorCrafter, we follow the authors’ preprocessing pipeline to prepare per-frame pose and object annotations for all test samples.
+
+Evaluation Metrics. We evaluate from four complementary aspects.
+
+Video Quality. AES↑ measures perceptual aesthetics via the LAION aesthetic predictor [35]. IQ↑ uses MUSIQ [18] for frame-level perceptual quality. Smooth↑ computes CLIP cosine similarity between consecutive frames. All three metrics are computed via VBench [15].
+
+Human–Object Interaction. Standardized benchmarks for evaluating HOI video quality remain scarce; we therefore rely primarily on two automatic metrics alongside a perceptual user study (Sec. 4.4). VLM-QA↑ employs Gemini3-Pro [39], one of the most capable video perception models, to assess HOI plausibility. We design a structured questionnaire of 50 binary (0/1) questions that probe interaction rationality; the per-video score is the fraction of positive responses, averaged over the test set. HQ↑ (Hand Quality) computes the mean confidence of hand keypoints detected by DWPose [56], averaged over all frames in the generated video. Higher scores indicate more structurally plausible and clearly rendered hands.
+
+Table 1: Quantitative comparison on the HOI video generation test set. Bold indicates the best result; underline indicates the second best; “—” indicates unsupported.
+
+Video Quality HOI Reference Audio AES IQ Smooth VLM-QA HQ DINOid DINOobj FaceSim Syncconf
+
+Method
+
+AnchorCrafter [51] 0.448 0.643 0.9743 0.22 0.596 0.538 0.453 0.487 Phantom [28] 0.579 0.724 0.9916 0.50 0.650 0.654 0.595 0.593 Humo [5] 0.565 0.741 0.9919 0.56 0.664 0.643 0.629 0.618 5.71 VACE [17] 0.530 0.733 0.9904 0.46 0.627 0.623 0.635 0.647 InteractAvatar [60] 0.528 0.722 0.9938 0.62 0.696 0.658 0.608 0.681 5.82 SkyReels-V3 [21] 0.563 0.720 0.9861 0.44 0.626 0.637 0.564 0.569 —
+
+CoInteract 0.554 0.749 0.9951 0.72 0.724 0.671 0.624 0.696 5.87
+
+Reference Consistency. DINOid↑ measures DINOv2 [32] cosine similarity between the identity reference Iref and generated character crops. DINOobj↑ measures DINOv2 similarity between the product reference Iprod and generated object regions. FaceSim↑ computes ArcFace [7] cosine similarity between reference face embeddings and generated face embeddings averaged across frames.
+
+Audio-Visual Alignment. Syncconf↑ is the lip-sync confidence score [6].
+
+Results. Table 1 presents quantitative comparisons. CoInteract achieves the best or competitive results across most metrics. In particular, it obtains the highest VLM-QA (0.72) and HQ (0.724), confirming superior interaction plausibility and hand structural stability. It also leads in identity preservation (DINOid: 0.671, FaceSim: 0.696) and temporal coherence (Smooth: 0.9951). Phantom and Humo score slightly higher on AES, partly because they tend to hallucinate novel backgrounds that happen to look aesthetically pleasing but deviate from the input reference (see Fig. 5); CoInteract instead faithfully preserves the reference scene, which trades marginal aesthetic scores for stronger consistency.
+
+#### 4.3 Qualitative Results
+
+- Fig. 5 presents qualitative comparisons across diverse scenarios. CoInteract consistently produces videos with coherent hand articulation, natural product grasping, and faithful prompt adherence. Other baselines exhibit varying degrees of deficiency in HOI plausibility, prompt compliance, and background consistencycommon failure modes include hand-object interpenetration, inconsistent product appearance, and background deviation from the reference. AnchorCrafter performs noticeably better on the last two cases, which correspond to objects in its training set; on the first two unseen-object cases, it suffers from identity drift and unnatural interaction boundaries, revealing limited generalization. InteractAvatar benefits from Qwen-Image compositing, which provides a strong initial frame with correct object placement; however, as generation progresses, it still produces HOI plausibility issues such as unnatural grasping poses (e.g., last row). In contrast, CoInteract maintains physically plausible interaction and structural stability throughout the full sequence.
+
+Ref. Images AnchorCrafter Phantom HuMo VACE InteractAvatar SkyReels-V3 CoInteract
+
+[Figure 423]
+
+[Figure 424]
+
+[Figure 425]
+
+[Figure 426]
+
+[Figure 427]
+
+[Figure 428]
+
+[Figure 429]
+
+[Figure 430]
+
+[Figure 431]
+
+Prompt: The man gestures with right hand while holding the white instrument.
+
+[Figure 432]
+
+[Figure 433]
+
+[Figure 434]
+
+[Figure 435]
+
+[Figure 436]
+
+[Figure 437]
+
+[Figure 438]
+
+[Figure 439]
+
+[Figure 440]
+
+Prompt: The woman wears the bag and adjusts its strap
+
+[Figure 441]
+
+[Figure 442]
+
+[Figure 443]
+
+[Figure 444]
+
+[Figure 445]
+
+[Figure 446]
+
+[Figure 447]
+
+[Figure 448]
+
+[Figure 449]
+
+Prompt: The man holds a cup and points at the cup with the other hand.
+
+[Figure 450]
+
+[Figure 451]
+
+[Figure 452]
+
+[Figure 453]
+
+[Figure 454]
+
+[Figure 455]
+
+[Figure 456]
+
+[Figure 457]
+
+[Figure 458]
+
+Prompt: The woman supports a plush toy, holding it in front of her chest
+
+- Fig. 5: Qualitative comparison with existing methods, CoInteract preserves higher interaction fidelity and better adheres to the input prompts. (Zoom in for details.)
+
+Visualization of HOI branch and Human-Aware MoE To further investigate CoInteract’s internal mechanisms, we visualize the dual-stream generation and MoE routing behavior in Fig. 6. The HOI stream maintains precise spatiotemporal synchronization with the RGB stream, providing a consistent geometric scaffold that mitigates hand-object interpenetration even during drastic motions such as opening a bin lid. The routing heatmaps confirm that the router accurately isolates face and hand tokens and dispatches them to specialized experts, maintaining high-frequency structural fidelity even under rapid movement.
+
+#### 4.4 User Study
+
+We conducted a perceptual user study with 24 evaluators recruited via crowdsourcing. Each evaluator was shown 10 randomly sampled test cases. For each case, all methods were provided with identical inputs, and the resulting videos
+
+[Figure 459]
+
+[Figure 460]
+
+[Figure 461]
+
+[Figure 462]
+
+[Figure 463]
+
+[Figure 464]
+
+Generated RGB Video Generated HOI Video
+
+[Figure 465]
+
+[Figure 466]
+
+[Figure 467]
+
+[Figure 468]
+
+[Figure 469]
+
+Face Prediction Hand Prediction
+
+[Figure 470]
+
+- Fig. 6: Visualization of Dual-Stream Co-generation and MoE Routing. The top rows display the generated RGB video and the corresponding auxiliary HOI representation, demonstrating precise spatio-temporal alignment and structural consistency during complex interactions (e.g., opening a bin). The bottom rows show the routing heatmaps for face and hand experts from the MoE router.
+
+Table 2: User study (mean rank, lower is better).
+
+Criterion AnchorCrafter Phantom Humo VACE InteractAvatar SkyReels-V3 CoInteract
+
+Obj. Consist.↓ 6.08 4.13 4.42 3.54 3.08 4.58 2.17 Hum/BG↓ 6.28 4.38 4.21 3.46 2.92 4.83 1.92 Interact.↓ 6.55 4.29 3.92 3.58 3.33 4.54 1.79
+
+were presented in a blind randomized order. Evaluators were asked to rank the methods (lower is better) according to three criteria: Object Consistency, Human/Background Consistency, and Interaction Plausibility. Table 2 reports the mean rank. CoInteract achieves the best (lowest) mean rank across all criteria, with the largest advantage on Interaction Plausibility, consistent with our HOI-focused design.
+
+#### 4.5 Ablation Study
+
+We systematically ablate each core component via four model variants: (1) w/o MoE, replacing the Human-Aware MoE with a standard FFN to disable expert specialization; (2) w/o Co-Gen, removing the HOI stream entirely to reduce the model to a single-stream RGB baseline without structural supervision; (3) w/o Asym. Mask, replacing the Stage-2 asymmetric co-attention mask with standard bidirectional self-attention, requiring the HOI branch to be retained at inference; and (4) Full Model, the complete CoInteract. All variants share identical training configurations.
+
+Quantitative results are reported in Table 3. Removing MoE (row 1) notably degrades HQ (0.724 → 0.658) and FaceSim (0.696 → 0.662), confirming its role
+
+Table 3: Ablation study on core components.
+
+Video Quality HOI Reference Audio AES IQ Smooth VLM-QA HQ DINOid DINOobj FaceSim Syncconf Infer. Cost
+
+Variant
+
+w/o MoE 0.541 0.736 0.993 0.66 0.658 0.659 0.611 0.662 5.64 1.00× w/o Co-Gen 0.536 0.753 0.991 0.48 0.706 0.664 0.597 0.678 5.86 1.04× w/o Asym. Mask 0.548 0.742 0.994 0.76 0.738 0.668 0.618 0.689 5.81 4.13×
+
+Full Model 0.554 0.749 0.995 0.72 0.724 0.671 0.624 0.696 5.87 1.04×
+
+Woman holds handbag with slight hand movement. Woman holds puffer jacket, picks up pants.
+
+[Figure 471]
+
+[Figure 472]
+
+[Figure 473]
+
+[Figure 474]
+
+[Figure 475]
+
+[Figure 476]
+
+[Figure 477]
+
+[Figure 478]
+
+w/o Co-GEN
+
+[Figure 479]
+
+Ref. Images Ref. Images
+
+[Figure 480]
+
+[Figure 481]
+
+[Figure 482]
+
+[Figure 483]
+
+[Figure 484]
+
+[Figure 485]
+
+[Figure 486]
+
+[Figure 487]
+
+[Figure 488]
+
+| |
+|---|
+
+| |
+|---|
+
+w/o MoE
+
+[Figure 489]
+
+[Figure 490]
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 491]
+
+[Figure 492]
+
+[Figure 493]
+
+[Figure 494]
+
+[Figure 495]
+
+[Figure 496]
+
+CoInteract
+
+- Fig. 7: Qualitative comparison of ablation variants. The absence of unified HOI cogeneration yields interactions that lack physical plausibility. Conversely, removing the Human-Aware MoE induces structural collapse and artifacts in high-frequency regions like hands. (Zoom in for details.)
+
+in fine-grained structural fidelity. Removing the HOI stream (row 2) causes the largest drop in VLM-QA (0.72 → 0.48, −33.3%), demonstrating that the auxiliary stream is essential for internalizing physical interaction constraints. Retaining the HOI branch at inference (row 3) slightly surpasses the full model on VLM-QA (0.76) and HQ (0.738), as expected from direct structural guidance; however, it inflates inference cost to 4.13× due to the doubled token count. The MoE introduces only a 1.04× overhead relative to the MoE-free baseline, confirming its minimal impact on inference efficiency. Our asymmetric strategy trades marginal interaction gains for a dramatic efficiency improvement at near-zero additional inference cost. Qualitative results in Fig. 7 corroborate these findings: removing co-generation yields physically implausible interactions, while removing MoE leads to hand collapse and blurred facial details.
+
+### 5 Conclusion
+
+This paper presents CoInteract, a structure-aware framework for speech-driven human-object interaction (HOI) video synthesis that prioritizes structural integrity and physical consistency. The framework introduces a Human-Aware Mixture-of-Experts (MoE) to enhance the fidelity of hands and faces through a spatially-supervised routing policy. Furthermore, the Spatially-Structured CoGeneration paradigm, utilizing an asymmetric co-attention mask, allows the model to learn physical interaction priors during training. This architecture effectively reduces hand-object interpenetration and geometric misalignment while maintaining a zero-overhead inference path. Extensive experiments demonstrate that CoInteract consistently outperforms existing methods in interaction plausibility and structural stability, advancing the quality of HOI video generation.
+
+### References
+
+- 1. Blattmann, A., Dockhorn, T., Kulal, S., Mendelevitch, D., Kilian, M., Lorenz, D., Levi, Y., English, Z., Voleti, V., Letts, A., et al.: Stable video diffusion: Scaling latent video diffusion models to large datasets. arXiv preprint arXiv:2311.15127
+
+(2023)
+
+- 2. Cai, H., Cao, S., Du, R., Gao, P., Hoi, S., Hou, Z., Huang, S., Jiang, D., Jin, X., Li, L., et al.: Z-image: An efficient image generation foundation model with single-stream diffusion transformer. arXiv preprint arXiv:2511.22699 (2025)
+- 3. Carion, N., Gustafson, L., Hu, Y.T., Debnath, S., Hu, R., Suris, D., Ryali, C., Alwala, K.V., Khedr, H., Huang, A., et al.: Sam 3: Segment anything with concepts. arXiv preprint arXiv:2511.16719 (2025)
+- 4. Chefer, H., Singer, U., Zohar, A., Kirstain, Y., Polyak, A., Taigman, Y., Wolf, L., Sheynin, S.: Videojam: Joint appearance-motion representations for enhanced motion generation in video models. arXiv preprint arXiv:2502.02492 (2025)
+- 5. Chen, L., Ma, T., Liu, J., Li, B., Chen, Z., Liu, L., He, X., Li, G., He, Q., Wu, Z.: Humo: Human-centric video generation via collaborative multi-modal conditioning. arXiv preprint arXiv:2509.08519 (2025)
+- 6. Chung, J.S., Zisserman, A.: Out of time: Automated lip sync in the wild. In: Asian Conference on Computer Vision. pp. 251–263. Springer (2016)
+- 7. Deng, J., Guo, J., Xue, N., Zafeiriou, S.: Arcface: Additive angular margin loss for deep face recognition. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. pp. 4690–4699 (2019)
+- 8. Fei, Z., Fan, M., Yu, C., Li, D., Huang, J.: Scaling diffusion transformers to 16 billion parameters. arXiv preprint arXiv:2407.11633 (2024)
+- 9. Gan, Q., Yang, R., Zhu, J., Xue, S., Hoi, S.: Omniavatar: Efficient audiodriven avatar video generation with adaptive body animation. arXiv preprint arXiv:2506.18866 (2025)
+- 10. Gao, X., Hu, L., Hu, S., Huang, M., Ji, C., Meng, D., Qi, J., Qiao, P., Shen, Z., Song, Y., et al.: Wan-s2v: Audio-driven cinematic video generation. arXiv preprint arXiv:2508.18621 (2025)
+- 11. Guo, X., Ye, F., Li, X., Tu, P., Zhang, P., Sun, Q., Zhao, S., Hou, X., He, Q.: Dreamid-v: Bridging the image-to-video gap for high-fidelity face swapping via diffusion transformer. arXiv preprint arXiv:2601.01425 (2026)
+
+- 12. Guo, X., Ye, F., Sun, Q., Chen, L., Li, B., Zhang, P., Liu, J., Zhao, S., He, Q., Hou, X.: Dreamid-omni: Unified framework for controllable human-centric audio-video generation. arXiv preprint arXiv:2602.12160 (2026)
+- 13. Guo, Y., Yang, C., Rao, A., Liang, Z., Wang, Y., Qiao, Y., Agrawala, M., Lin, D., Dai, B.: Animatediff: Animate your personalized text-to-image diffusion models without specific tuning. arXiv preprint arXiv:2307.04725 (2023)
+- 14. Huang, J., Zhang, Y., He, X., Gao, Y., Cen, Z., Xia, B., Zhou, Y., Tao, X., Wan, P., Jia, J.: Unityvideo: Unified multi-modal multi-task learning for enhancing worldaware video generation. arXiv preprint arXiv:2512.07831 (2025)
+- 15. Huang, Z., He, Y., Yu, J., Zhang, F., Si, C., Jiang, Y., Zhang, Y., Wu, T., Jin, Q., Chanpaisit, N., et al.: Vbench: Comprehensive benchmark suite for video generative models. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. pp. 21807–21818 (2024)
+- 16. Huang, Z., Tang, F., Zhang, Y., Cun, X., Cao, J., Li, J., Lee, T.Y.: Make-youranchor: A diffusion-based 2d avatar generation framework. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)
+
+(2024)
+
+- 17. Jiang, Z., Han, Z., Mao, C., Zhang, J., Pan, Y., Liu, Y.: Vace: All-in-one video creation and editing. In: Proceedings of the IEEE/CVF International Conference on Computer Vision. pp. 17191–17202 (2025)
+- 18. Ke, J., Wang, Q., Wang, Y., Milanfar, P., Yang, F.: Musiq: Multi-scale image quality transformer. In: Proceedings of the IEEE/CVF International Conference on Computer Vision. pp. 5148–5157 (2021)
+- 19. Kingma, D.P., Ba, J.: Adam: A method for stochastic optimization. arXiv preprint arXiv:1412.6980 (2014)
+- 20. Kong, W., Tian, Q., Zhang, Z., Min, R., Dai, Z., Zhou, J., Xiong, J., Li, X., Wu, B., Zhang, J., et al.: Hunyuanvideo: A systematic framework for large video generative models. arXiv preprint arXiv:2412.03603 (2024)
+- 21. Li, D., Fei, Z., Li, T., Dou, Y., Chen, Z., Yang, J., Fan, M., Xu, J., Wang, J., Gu, B., et al.: Skyreels-v3 technique report. arXiv preprint arXiv:2601.17323 (2026)
+- 22. Li, X., Sun, Q., Zhang, P., Ye, F., Liao, Z., Feng, W., Zhao, S., He, Q.: Anydressing: Customizable multi-garment virtual dressing via latent diffusion models. In: 2025 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR). pp. 23723–23733. IEEE (2025)
+- 23. Liao, Z., Liu, X., Qin, W., Li, Q., Wang, Q., Wan, P., Zhang, D., Zeng, L., Feng, P.: Humanaesexpert: Advancing a multi-modality foundation model for human image aesthetic assessment. arXiv preprint arXiv:2503.23907 (2025)
+- 24. Lin, G., Jiang, J., Yang, J., Zheng, Z., Liang, C., Zhang, Y., Liu, J.: Omnihuman-1: Rethinking the scaling-up of one-stage conditioned human animation models. In: Proceedings of the IEEE/CVF International Conference on Computer Vision. pp. 13847–13858 (2025)
+- 25. Lin, G., Zheng, J., Yang, J., Zheng, Z., Liang, C., Zhang, Y., Liu, J.: Cyberhost: Taming audio-driven avatar diffusion model with region codebook attention. arXiv preprint arXiv:2409.01876 (2025)
+- 26. Liu, B., Gong, X., Zhao, Z., Song, Z., Lu, Y., Wu, S., Zhang, J., Banerjee, S., Zhang, H.: Byteloom: Weaving geometry-consistent human-object interactions through progressive curriculum learning. arXiv preprint arXiv:2512.22854 (2025)
+- 27. Liu, K., Liu, Q., Liu, X., Li, J., Zhang, Y., Luo, J., He, X., Liu, W.: Hoigen-1m: A large-scale dataset for human-object interaction video generation. In: Proceedings of the Computer Vision and Pattern Recognition Conference. pp. 24001–24010
+
+(2025)
+
+- 28. Liu, L., Ma, T., Li, B., Chen, Z., Liu, J., Li, G., Zhou, S., He, Q., Wu, X.: Phantom: Subject-consistent video generation via cross-modal alignment. In: Proceedings of the IEEE/CVF International Conference on Computer Vision. pp. 14951–14961
+
+(2025)
+
+- 29. Lugaresi, C., Tang, J., Nash, H., McClanahan, C., Uboweja, E., Hays, M., Zhang, F., Chang, C.L., Yong, M.G., Lee, J., et al.: Mediapipe: A framework for building perception pipelines. arXiv preprint arXiv:1906.08172 (2019)
+- 30. Luo, X., Li, Q., Liu, X., Qin, W., Yang, M., Wang, M., Wan, P., Zhang, D., Gai, K., Huang, S.L.: Filmweaver: Weaving consistent multi-shot videos with cache-guided autoregressive diffusion. In: Proceedings of the AAAI Conference on Artificial Intelligence. vol. 40, pp. 7689–7697 (2026)
+- 31. Luo, X., Zhu, Y., Liu, Y., Lin, L., Wan, C., Cai, Z., Li, Y., Huang, S.L.: Canonswap: High-fidelity and consistent video face swapping via canonical space modulation. In: Proceedings of the IEEE/CVF International Conference on Computer Vision. pp. 10064–10074 (2025)
+- 32. Oquab, M., Darcet, T., Moutakanni, T., Vo, H., Szafraniec, M., Khalidov, V., Fernandez, P., Haziza, D., Massa, F., El-Nouby, A., et al.: Dinov2: Learning robust visual features without supervision. Transactions on Machine Learning Research
+
+(2024)
+
+- 33. Peebles, W., Xie, S.: Scalable diffusion models with transformers. In: Proceedings of the IEEE/CVF international conference on computer vision. pp. 4195–4205 (2023)
+- 34. Prajwal, K., Mukhopadhyay, R., Namboodiri, V.P., Jawahar, C.: A lip sync expert is all you need for speech to lip generation in the wild. In: Proceedings of the 28th ACM international conference on multimedia. pp. 484–492 (2020)
+- 35. Schuhmann, C., Beaumont, R., Vencu, R., Gordon, C., Wightman, R., Cherti, M., Coombes, T., Katta, A., Mullis, C., Wortsman, M., et al.: Laion-5b: An open largescale dataset for training next generation image-text models. Advances in Neural Information Processing Systems 35, 25278–25294 (2022)
+- 36. Shan, D., Geng, J., Shu, M., Fouhey, D.F.: Understanding human hands in contact at internet scale. In: Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. pp. 9869–9878 (2020)
+- 37. Shi, M., Yuan, Z., Yang, H., Wang, X., Zheng, M., Tao, X., Zhao, W., Zheng, W., Zhou, J., Lu, J., et al.: Diffmoe: Dynamic token selection for scalable diffusion transformers. arXiv preprint arXiv:2503.14487 (2025)
+- 38. Sun, L., Tang, Y.: Avatar effect of ai-enabled virtual streamers on consumer purchase intention in e-commerce livestreaming. Journal of Consumer Behaviour 23(6), 2999–3010 (2024)
+- 39. Team, G., Anil, R., Borgeaud, S., Alayrac, J.B., Yu, J., Sorber, R., Schalkwyk, J., Dai, A.M., Hauth, A., Millican, K., et al.: Gemini: A family of highly capable multimodal models. arXiv preprint arXiv:2312.11805 (2024)
+- 40. Voleti, V., Yao, C.H., Boss, M., Letts, A., Pankratz, D., Tochilkin, D., Laforte, C., Rombach, R., Jampani, V.: Sv3d: Novel multi-view synthesis and 3d generation from a single image using latent video diffusion. In: European Conference on Computer Vision. pp. 439–457. Springer (2024)
+- 41. Wan, C., Luo, X., Luo, H., Cai, Z., Song, Y., Zhao, Y., Bai, Y., Wang, F., He, Y., Gong, Y.: Grid: Omni visual generation. arXiv preprint arXiv:2412.10718 (2024)
+- 42. Wan, T., Wang, A., Ai, B., Wen, B., Mao, C., Xie, C.W., Chen, D., Yu, F., Zhao, H., Yang, J., et al.: Wan: Open and advanced large-scale video generative models. arXiv preprint arXiv:2503.20314 (2025)
+
+- 43. Wang, L., Xia, Z., Hu, T., Wang, P., Wei, P., Zheng, Z., Zhou, M., Zhang, Y., Gao, M.: Dreamactor-h1: High-fidelity human-product demonstration video generation via motion-designed diffusion transformers. arXiv preprint arXiv:2506.10568 (2025)
+- 44. Wang, M., Wang, Q., Jiang, F., Fan, Y., Zhang, Y., Qi, Y., Zhao, K., Xu, M.: Fantasytalking: Realistic talking portrait generation via coherent motion synthesis. In: Proceedings of the 33rd ACM International Conference on Multimedia. pp. 9891–9900 (2025)
+- 45. Wang, S., Li, L., Ding, Y., Fan, C., Yu, X.: Audio2head: Audio-driven one-shot talking-head generation with natural head motion. arXiv preprint arXiv:2107.09293 (2021)
+- 46. Wonggom, P., Kourbelis, C., Newman, P., Du, H., Clark, R.A.: Effectiveness of avatar-based technology in patient education for improving chronic disease knowledge and self-care behavior: a systematic review. JBI evidence synthesis 17(6), 1101–1129 (2019)
+- 47. Wonggom, P., Nolan, P., Clark, R.A., Barry, T., Burdeniuk, C., Nesbitt, K., O’Toole, K., Du, H.: Effectiveness of an avatar educational application for improving heart failure patients’ knowledge and self-care behaviors: A pragmatic randomized controlled trial. Journal of advanced nursing 76(9), 2401–2415 (2020)
+- 48. Wu, C., Li, J., Zhou, J., Lin, J., Gao, K., Yan, K., Yin, S.m., Bai, S., Xu, X., Chen, Y., et al.: Qwen-image technical report. arXiv preprint arXiv:2508.02324 (2025)
+- 49. Wu, H., Wu, D., He, T., Guo, J., Ye, Y., Duan, Y., Bian, J.: Geometry forcing: Marrying video diffusion and 3d representation for consistent world modeling. arXiv preprint arXiv:2507.07982 (2025)
+- 50. Xie, Y., Feng, T., Zhang, X., Luo, X., Guo, Z., Yu, W., Chang, H., Ma, F., Yu, F.R.: Pointtalk: Audio-driven dynamic lip point cloud for 3d gaussian-based talking head synthesis. In: Proceedings of the AAAI Conference on Artificial Intelligence. vol. 39, pp. 8753–8761 (2025)
+- 51. Xu, Z., Huang, Z., Cao, J., Zhang, Y., Cun, X., Shuai, Q., Wang, Y., Bao, L., Tang, F.: Anchorcrafter: Animate cyber-anchors selling your products via human-object interacting video generation. IEEE Transactions on Visualization and Computer Graphics (2026)
+- 52. Xue, H., Luo, X., Hu, Z., Zhang, X., Xiang, X., Dai, Y., Liu, J., Zhang, Z., Li, M., Yang, J., et al.: Human motion video generation: A survey. IEEE Transactions on Pattern Analysis and Machine Intelligence (2025)
+- 53. Xue, H., Chen, Q., Wang, Z., Huang, X., Shechtman, E., Xie, J., Chen, Y.: Mogan: Improving motion quality in video diffusion via few-step motion adversarial posttraining. arXiv preprint arXiv:2511.21592 (2025)
+- 54. Yang, S., Kong, Z., Gao, F., Cheng, M., Liu, X., Zhang, Y., Kang, Z., Luo, W., Cai, X., He, R., et al.: Infinitetalk: Audio-driven video generation for sparse-frame video dubbing. arXiv preprint arXiv:2508.14033 (2025)
+- 55. Yang, X., Kukreja, D., Pinkus, D., Sagar, A., Fan, T., Park, J., Shin, S., Cao, J., Liu, J., Ugrinovic, N., et al.: Sam 3d body: Robust full-body human mesh recovery. arXiv preprint arXiv:2602.15989 (2026)
+- 56. Yang, Z., Zeng, A., Yuan, C., Li, Y.: Effective whole-body pose estimation with two-stages distillation. In: Proceedings of the IEEE/CVF International Conference on Computer Vision. pp. 4210–4220 (2023)
+- 57. Yu, H., Qu, Z., Yu, Q., Chen, J., Jiang, Z., Chen, Z., Zhang, S., Xu, J., Wu, F., Lv, C., et al.: Gaussiantalker: Speaker-specific talking head synthesis via 3d gaussian splatting. In: Proceedings of the 32nd ACM International Conference on Multimedia. pp. 3548–3557 (2024)
+
+- 58. Zhang, L., Agrawala, M.: Packing input frame context in next-frame prediction models for video generation. arXiv preprint arXiv:2504.12626 (2025)
+- 59. Zhang, W., Cun, X., Wang, X., Zhang, Y., Shen, X., Guo, Y., Shan, Y., Wang, F.: Sadtalker: Learning realistic 3d motion coefficients for stylized audio-driven single image talking face animation. In: Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. pp. 8652–8661 (2023)
+- 60. Zhang, Y., Zhou, Z., Yu, Z., Huang, Z., Hu, T., Liang, S., Zhang, G., Peng, Z., Li, S., Chen, Y., et al.: Making avatars interact: Towards text-driven human-object interaction for controllable talking avatars. arXiv preprint arXiv:2602.01538 (2026)
+- 61. Zhou, D., Liu, G., Yang, H., Li, J., Lin, J., Huang, X., Liu, Y., Gao, X., Chen, C., Wen, S., et al.: Omnishow: Unifying multimodal conditions for human-object interaction video generation. arXiv preprint arXiv:2604.11804 (2026)
+- 62. Zhou, Y., Han, X., Shechtman, E., Echevarria, J., Kalogerakis, E., Li, D.: Makelttalk: speaker-aware talking-head animation. ACM Transactions On Graphics (TOG) 39(6), 1–15 (2020)
+

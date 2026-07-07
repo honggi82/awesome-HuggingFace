@@ -1,0 +1,1811 @@
+# arXiv:2605.00658v1[cs.CV]1May2026
+
+## UniVidX: A Unified Multimodal Framework for Versatile Video Generation via Diffusion Priors
+
+HOUYUAN CHEN, MMLab@HKUST, China HONG LI, Beihang University, China XIANGHAO KONG, MMLab@HKUST, China TIANRUI ZHU, Nanjing University, China SHAOCONG XU, BAAI, China WEIQING XIAO, Nanjing University, China YUWEI GUO, MMLab@CUHK, China CHONGJIE YE, CUHK-Shenzhen, China LVMIN ZHANG, Stanford University, USA HAO ZHAO, Tsinghua University, China ANYI RAO∗, MMLab@HKUST, China
+
+Recent progress has shown that video diffusion models (VDMs) can be repurposed to solve various multimodal graphics tasks. However, existing approaches predominantly train separate models for each specific problem setting. This practice locks models into fixed input-output mappings, and typically ignores the joint correlations across modalities. In this paper, we present UniVidX, a unified multimodal framework designed to leverage VDM priors to enable versatile video generation. Our goal is to (i) master diverse pixel-aligned tasks by formulating them as conditional generation problems within multimodal space, (ii) adapt to modality-specific distributions without compromising the backbone’s native priors, and (iii) ensure cross-modal consistency during synthesis. Concretely, we propose three key designs: 1) Stochastic Condition Masking (SCM): by randomly partitioning modalities into clean conditions and noisy targets during training, we enable the model to learn omni-directional conditional generation rather than fixed mappings. 2) Decoupled Gated LoRA (DGL): we attach per-modality LoRAs and activate them when a modality serves as a generation target, thereby preserving the VDM’s strong priors. 3) Cross-Modal Self-Attention (CMSA): we explicitly share keys/values across modalities while maintaining modality-specific queries, facilitating information exchange and inter-modal alignment. We validate our framework by instantiating it in two domains: 1) UniVid-Intrinsic for RGB videos and their intrinsic maps (albedo, irradiance, normal), and 2) UniVid-Alpha for blended RGB videos and their constituent RGBA layers. Experimental results demonstrate that both models achieve performance competitive with state-of-the-art methods across distinct tasks.
+
+Notably, they exhibit robust generalization capabilities in in-the-wild scenarios, even when trained on limited datasets of fewer than 1k videos. Our project page: https://houyuanchen111.github.io/UniVidX.github.io/.
+
+CCS Concepts: • Information systems → Multimedia content creation. Additional Key Words and Phrases: video diffusion models, multimodal video generation
+
+#### ACM Reference Format:
+
+Houyuan Chen, Hong Li, Xianghao Kong, Tianrui Zhu, Shaocong Xu, Weiqing Xiao, Yuwei Guo, Chongjie Ye, Lvmin Zhang, Hao Zhao, and Anyi Rao. 2026. UniVidX: A Unified Multimodal Framework for Versatile Video Generation via Diffusion Priors. In Proceedings of Special Interest Group on Computer Graphics and Interactive Techniques Conference (SIGGRAPH ’26). ACM, New York, NY, USA, Article 51, 17 pages. https://doi.org/10.1145/3811304
+
+1 Introduction
+
+Pre-trained Video Diffusion Models (VDMs) have evolved into powerful foundation engines, capturing rich priors of real-world dynamics [Blattmann et al. 2023; Brooks et al. 2024; Hong et al. 2022; Kong et al. 2024; Peng et al. 2025; Wan et al. 2025; Yang et al. 2024b; Zheng et al. 2024]. Leveraging the robust VDM priors for downstream multimodal graphics tasks, ranging from perception (e.g., intrinsic decomposition [Liang et al. 2025]) to generation (e.g., content creation [Dong et al. 2025]), has proven to be highly effective.
+
+∗Corresponding author.
+
+Authors’ Contact Information: Houyuan Chen, houyuanchen111@gmail.com, MMLab@HKUST, Hong Kong, China; Hong Li, link0502@buaa.edu.cn, Beihang University, Beijing, China; Xianghao Kong, refkxh@outlook.com, MMLab@HKUST, Hong Kong, China; Tianrui Zhu, 221900034@smail.nju.edu.cn, Nanjing University, Nanjing, China; Shaocong Xu, scxu@baai.ac.cn, BAAI, Beijing, China; Weiqing Xiao, weiqing001@smail. nju.edu.cn, Nanjing University, Nanjing, China; Yuwei Guo, guoyw.nju@gmail.com, MMLab@CUHK, Hong Kong, China; Chongjie Ye, chongjieye@link.cuhk.edu.cn, CUHK-Shenzhen, Shenzhen, China; Lvmin Zhang, lyuminzhang@outlook.com, Stanford University, Stanford, USA; Hao Zhao, zhaohao@air.tsinghua.edu.cn, Tsinghua University, Beijing, China; Anyi Rao, anyirao@ust.hk, MMLab@HKUST, Hong Kong, China.
+
+However, existing approaches typically treat different problems in isolation, training separate networks for each specific input–output mapping (e.g., RGB→alpha; intrinsic→X), which introduces two critical limitations. First, it locks each model into a fixed role, limiting flexibility for diverse graphics applications where input conditions may vary. Second, it often ignores the correlations shared across visual modalities [Eftekhar et al. 2021; Zamir et al. 2018], an oversight reflected in their modality-exclusive prediction strategy. This restricts prior methods to either dedicated single-modality generation (e.g., NormalCrafter [Bin et al. 2025]) or serial multimodal inference (e.g., Ouroboros [Sun et al. 2025a]), which leads to cross-modal inconsistencies in the final modality stack.
+
+This work is licensed under a Creative Commons Attribution 4.0 International License. SIGGRAPH ’26, Los Angeles, CA, USA
+
+© 2026 Copyright held by the owner/author(s). ACM ISBN 978-x-xxxx-xxxx-x/YYYY/MM https://doi.org/10.1145/3811304
+
+Motivated by this limitation, we pose a fundamental question: Can we design a unified generative framework that allows a video
+
+Text X: Text-to-Intrinsic
+
+[Figure 1]
+
+[Figure 2]
+
+[Figure 3]
+
+[Figure 4]
+
+RGB Albedo Irradiance Normal
+
+Supporting paradigms
+
+[Figure 5]
+
+### UniVidX Text X
+
+[Figure 6]
+
+X X Text&X X
+
+[Figure 7]
+
+[Figure 8]
+
+A hamster wearing chef's hat …
+
+Versatile Video Generation
+
+UniVid-IntrinsicUniVid-Alpha
+
+X X : Inverse Rendering
+
+[Figure 9]
+
+[Figure 10]
+
+[Figure 11]
+
+[Figure 12]
+
+[Figure 13]
+
+RGB Albedo Irradiance Normal
+
+Data Efficiency
+
+[Figure 14]
+
+[Figure 15]
+
+[Figure 16]
+
+[Figure 17]
+
+[Figure 18]
+
+[Figure 19]
+
+[Figure 20]
+
+[Figure 21]
+
+Indoor
+
+Human
+
+[Figure 22]
+
+Leverage VDM Priors
+
+X X: Inverse Rendering Text&X X: Video Relighting
+
+[Figure 23]
+
+[Figure 24]
+
+[Figure 25]
+
+[Figure 26]
+
+[Figure 27]
+
+[Figure 28]
+
+[Figure 29]
+
+[Figure 30]
+
+[Figure 31]
+
+[Figure 32]
+
+[Figure 33]
+
+[Figure 34]
+
+[Figure 35]
+
+[Figure 36]
+
+[Figure 37]
+
+[Figure 38]
+
+RGB Albedo Normal New RGB
+
+Human
+
+Animal
+
+< 1K Training Videos Specific Domain
+
+Out-of-Distribution Generalization
+
+Sunshine at dusk …
+
+Text X: Text-to-RGBA X X : Video Matting
+
+[Figure 39]
+
+[Figure 40]
+
+[Figure 41]
+
+[Figure 42]
+
+[Figure 43]
+
+[Figure 44]
+
+BL FG Alpha BG
+
+BL
+
+Alpha
+
+X X: Video Matting Text&X X: Video Inpainting
+
+[Figure 45]
+
+[Figure 46]
+
+FG
+
+BG
+
+[Figure 47]
+
+[Figure 48]
+
+[Figure 49]
+
+[Figure 50]
+
+BL Alpha BG New BL
+
+A tabby cat …, room with sunlight … Sunglasses, pink suit…
+
+Fig. 1. UniVidX is a unified multimodal framework designed for versatile video generation, which supports diverse paradigms (Text→X, X→X, and Text&X→X; ’X’ denotes visual modality like albedo). We instantiate this framework into two models: 1) UniVid-Intrinsic (top), which supports tasks including text-to-intrinsic, inverse rendering, and video relighting; and 2) UniVid-Alpha (bottom), which supports tasks including text-to-RGBA, video matting, and video inpainting. Notably, by leveraging VDM priors, both models demonstrate remarkable data efficiency, generalizing well despite being trained with small-scale data.
+
+model to let different subsets of aligned modalities set act as conditions or targets, enabling flexible generation across visual modalities?
+
+Realizing such a unified formulation is non-trivial and presents three primary challenges: (i) It must be capable of mastering diverse task categories within a single conditional generation framework; (ii) It requires adapting to distinct modality distributions, while simultaneously preserving the backbone’s generative priors to ensure high-quality output; and (iii) It must guarantee alignment across diverse interacting modalities during joint generation.
+
+To this end, we present UniVidX. It is a unified multimodal framework designed to leverage VDM priors for versatile video generation, which incorporates three key designs: 1) Stochastic Condition Masking (SCM) randomly partitions modalities into clean conditions and noisy targets, enabling the T2V backbone to uniformly process pure text, visual, and hybrid inputs, thereby compelling the model to learn omni-directional generation. 2) Decoupled Gated LoRA (DGL) assigns independent LoRAs [Hu et al. 2022] to each
+
+modality and activates them only when that modality is a generation target, preventing parameter interference while preserving VDM priors; and 3) Cross-Modal Self-Attention (CMSA), where keys and values are shared across modalities while queries remain modality-specific to ensure cross-modal consistency.
+
+To validate the effectiveness of our framework, we instantiate UniVidX in two multimodal domains: 1) UniVid-Intrinsic, which models among RGB videos and the corresponding intrinsic maps (albedo/irradiance/normal), and 2) UniVid-Alpha, which processes blended RGB (BL), alpha matte (Alpha), foreground (FG), and background (BG) layers. Powered by unified design of our UniVidX, both models demonstrate versatility, supporting three paradigms (Text→X; X→X; Text&X→X) and collectively covering 15 distinct tasks. As illustrated in Fig. 1, UniVid-Intrinsic (top) can handle tasks such as text-to-intrinsic (Text→X), inverse rendering (X→X), and video relighting (Text&X→X); UniVid-Alpha (bottom) enables tasks including text-to-RGBA (Text→X), video matting (X→X), and video inpainting (Text&X →X). Moreover, the flexibility of our approach
+
+allows for the composition of different tasks to support downstream applications, such as video relighting, video retexturing, material editing for UniVid-Intrinsic, and video inpainting, background/foreground replacement for UniVid-Alpha (see Sec. 4.5).
+
+Prompt
+
+###### Input Data
+
+Stochastic Condition Masking
+
+Decoupled Gated LoRA
+
+[Figure 51]
+
+- Modality #1
+
+[Figure 52]
+
+[Figure 53]
+
+[Figure 54]
+
+- Modality #2
+
+[Figure 55]
+
+[Figure 56]
+
+[Figure 57]
+
+- Modality #3
+
+[Figure 58]
+
+[Figure 59]
+
+[Figure 60]
+
+- Modality #4
+
+VAEEncoderVAEEncoderVAEEncoderVAEEncoder
+
+LoRA #2
+
+LoRA #3
+
+LoRA #4
+
+LoRA #1
+
+[Figure 61]
+
+Target
+
+[Figure 62]
+
+[Figure 63]
+
+[Figure 64]
+
+###### ONOFF
+
+ON
+
+ON
+
+ON
+
+Add Noise
+
+[Figure 65]
+
+Remarkably, attributed to the efficient utilization of VDM priors, both models demonstrate exceptional data efficiency. They exhibit robust generalization to out-of-distribution, in-the-wild scenarios, despite being trained on limited domain-specific datasets. Moreover, extensive experiments demonstrate that both UniVid-Intrinsic and UniVid-Alpha achieve performance competitive with state-of-theart methods across diverse tasks. The main contributions of this work are summarized as follows: 1) We propose UniVidX, a unified multimodal framework that utilizes video diffusion priors to enable versatile generation across diverse visual modalities. 2) We introduce Stochastic Condition Masking (SCM) for omni-directional generation, Decoupled Gated LoRA (DGL) for preventing parameter interference and preserving native priors, and Cross-Modal Self-Attention (CMSA) for cross-modal consistency. 3) We validate our framework by instantiating it into two distinct models, UniVidIntrinsic and UniVid-Alpha. Both demonstrate state-of-the-art performance across diverse tasks and robust in-the-wild generalization, despite using limited training data (<1k videos).
+
+Cross-Modal Self-Attention
+
+Condition
+
+modality-specific
+
+###### Q
+
+Q Q Q
+
+Remain Clean
+
+[Figure 66]
+
+Shared K
+
+Target
+
+[Figure 67]
+
+Add Noise
+
+[Figure 68]
+
+Shared V
+
+[Figure 69]
+
+Target
+
+[Figure 70]
+
+Cross-Attention
+
+Add Noise
+
+[Figure 71]
+
+DiT Blocks ×N
+
+Fig. 2. Architecture of UniVidX (using UniVid-Intrinsic as an example). Multimodal inputs are encoded and passed through Stochastic Condition Masking (SCM), which randomly assigns them as clean conditions or noisy targets. The DiT blocks are equipped with Decoupled Gated LoRA (DGL): distinct LoRAs are assigned to each modality and are activated only for target inputs while deactivated for conditions (indicated by the faded modules). Modality consistency is ensured via Cross-Modal Self-Attention (CMSA), where queries are modality-specific while keys/values are shared.
+
+- 2 Related Work
+
+Visual Multimodal Generative Models. The landscape of visual synthesis has been reshaped by the advent of VDMs [Blattmann
+
+2021]. Recently, researchers have begun to leverage generative priors to mitigate the ill-posed nature of decomposition [Chen et al. 2025b; Liang et al. 2025; Luo et al. 2024]. Beyond decomposition, a paradigm of intrinsic generation (text-to-intrinsic) is emerging, shifting to synthesize intrinsic maps directly from text [Dirik et al. 2025; Han et al. 2025; Kocsis et al. 2025], yet remaining confined to the image level. In this paper, we introduce UniVid-Intrinsic as a representative instantiation of our framework. Unlike prior methods, it enables versatile video generation, where RGB videos and their intrinsic components (albedo, irradiance, normal) can be arbitrarily synthesized from one another or directly from text prompts.
+
+- et al. 2023; Brooks et al. 2024; Hong et al. 2022; Kong et al. 2024; Meituan LongCat Team et al. 2025; Peng et al. 2025; Wan et al. 2025; Yang et al. 2024b; Zheng et al. 2024], which have established new benchmarks to simulate real-world dynamics. Trained on billionscale datasets, these models possess robust priors beyond the RGB domain. Recent research leverages these priors primarily in two directions: enhancing controllability by incorporating additional visual modalities [Guo et al. 2023; Mou et al. 2023; Qin et al. 2023; Xi et al. 2025a,b; Xu et al. 2025b, 2024b; Zhang et al. 2023], and improving perception ability in geometry estimation [Chen et al. 2025a; Fu et al. 2024; Gui et al. 2024; He et al. 2025; Hu et al. 2025; Ke et al. 2024; Lin et al. 2025; Mi et al. 2025; Xu et al. 2025a; Yang
+- et al. 2024a; Zhang et al. 2024] or broader multimodal tasks [Huang
+- et al. 2025; Jiang et al. 2025; Le et al. 2024; Sun et al. 2025b; Zhao et al. 2025]. However, this paradigm typically enforces rigid inputoutput mappings while ignoring the joint correlations shared across modalities. Bridging this gap, our work aims to enable versatile video generation by formulating diverse tasks as conditional generation problems within multimodal spaces.
+
+Alpha-wise Perception and Generation. Alpha-channel processing, a cornerstone of computer graphics, has evolved from traditional optimization heuristics [Aksoy et al. 2017; Chen et al. 2007; Levin et al. 2007, 2008; Tang et al. 2019], to data-driven paradigms. Modern data-driven approaches have since advanced to precise structure disentanglement, ranging from robust video matting [Chen et al. 2018; Li et al. 2024b; Lin et al. 2021, 2022; Sengupta et al. 2020; Shen et al. 2016; Yao et al. 2024a,b] to semantic layer decomposition [Aksoy et al. 2018; Lee et al. 2025; Yang et al. 2025a]. More recently, a generative paradigm has emerged. Research in this domain has expanded from text-to-RGBA generation [Dalva et al. 2024; Dong et al. 2025; Zhang and Agrawala 2024] to alpha-guided inpainting, where transparency acts as a spatial constraint for content completion [Guo et al. 2025; Zhou et al. 2023; Zhuang et al. 2024]. Despite sharing common principles, perception and generation are typically treated in isolation. While pioneering efforts like OmniAlpha [Yu et al. 2025] attempt unification at the image level, they rely on specialized alpha-aware VAEs. In this paper, we introduce UniVid-Alpha. By reformulating alpha-wise tasks as conditional video generation,
+
+Intrinsic Decomposition and Generation. Intrinsic image decomposition (inverse rendering), which aims to disentangle RGB images into appearance and geometry-related channels, has long been a fundamental problem in graphics [Bell et al. 2014]. Methodologies have evolved from traditional optimization based on physical heuristics [Barron and Malik 2013; Bonneel et al. 2017; Bousseau et al. 2009; Gkioulekas et al. 2013] to data-driven networks, often tailored for specific domains such as faces [Shu et al. 2018, 2017; Sun et al. 2019] or complex materials [Li et al. 2024c; Wang et al. 2022; Zhang et al.
+
+it serves as a representative instantiation of our framework, unlocking versatile capabilities across diverse tasks, including but not limited to video matting, inpainting, and text-to-RGBA generation.
+
+- 3 Method
+
+Our UniVidX is a unified framework designed to leverage the robust VDM priors for versatile multimodal generation. The overall model architecture is illustrated in Fig. 2. In Sec. 3.1, we introduce Stochastic Condition Masking (SCM), a strategy that breaks the rigidity of fixed input-output mappings by dynamically partitioning modalities into conditions and targets. In Sec. 3.2, we propose Decoupled Gated LoRA (DGL), which efficiently adapts the backbone to distinct modality distributions without mutual parameter interference. In Sec. 3.3, we incorporate Cross-Modal Self-Attention (CMSA) to ensure spatiotemporal consistency and dense interaction across diverse modalities. Finally, in Sec. 3.4, we detail the implementation of two specific instantiations of UniVidX, namely UniVid-Intrinsic and UniVid-Alpha, followed by their respective training configurations and dataset strategies in Sec. 3.5.
+
+- 3.1 Stochastic Condition Masking
+
+Video Diffusion Models (VDMs) typically follow a fixed input-output pattern, where the conditional input is restricted to text (T2V) or videos confined to the RGB domain (V2V). We argue that this rigid distinction between condition and target unnecessarily limits model versatility. To address this, we propose Stochastic Condition Masking (SCM), a strategy that unifies diverse video tasks into one diffusion model. Specifically, SCM is built upon a T2V backbone, selected for two strategic reasons: (i) it inherently possesses the capability to process pure text inputs, and (ii) its latent space is adaptable, allowing us to seamlessly incorporate visual inputs alongside text. By dynamically redefining the input-output partition within this fixed multimodal space via SCM, our framework enables versatile video generation for three paradigms: Text→X (generating visual modalities from text), X→X (translation between visual modalities), and Text&X→X (generation guided by text and visual conditions).
+
+Let Z denote the collection of latents from all visual modalities. During training, we employ a dynamic random partitioning strategy that splits Z into two mutually exclusive subsets: 1) Target Subset Ztgt: The subset selected for generation. These latents serve as the data targets and are corrupted to train the flow model. 2) Condition Subset Zcond: The complementary subset. These latents remain clean to serve as conditions for the generation. Notably, Zcond can be an empty set (e.g., in Text→X tasks, where generation relies solely on text prompts 𝑐txt).
+
+We implement this logical partition via timestep manipulation. Specifically, for the target subset Ztgt, we denote the clean latents as xT. The intermediate noisy state z𝑡T is obtained via linear interpola-
+
+tion between the Gaussian noise 𝜖 ∼ N(0, I) and the clean data xT at timestep 𝑡 ∈ [0, 1]; the latents in Zcond are fixed at 𝑡 = 1, denoted as z1C, serving as unnoised conditions. Then, the flow matching [Lipman et al. 2022] objective Luni is formulated to predict the velocity field specifically for the target subset:
+
+Luni = E𝑡,xT,𝜖 v𝜃 (z𝑡T|z1C,𝑐txt) − v 22 (1)
+
+where 𝜃 denotes the model parameters. v𝜃 is the predicted velocity field, and v = xT − 𝜖 corresponds to the ground truth vector field.
+
+This strategy empowers our framework with versatile video generation capabilities. During inference, we customize the partition based on specific tasks: latents corresponding to the conditional modalities remain clean to serve as input (or excluded for Text→X), while those for the target modalities are initialized as Gaussian noise. This allows for diverse tasks within a single unified model.
+
+- 3.2 Decoupled Gated LoRA
+
+To efficiently leverage the generative priors of pre-trained VDMs while adapting to diverse multimodal requirements, we propose the Decoupled Gated LoRA (DGL) strategy. Since different visual modalities follow distinct distributions, sharing parameters across them leads to destructive interference. Therefore, instead of applying a monolithic update, DGL assigns independent LoRAs to each specific modality. Crucially, these LoRAs are activated only when their corresponding modality serves as a generation target. This decoupling effectively prevents parameter interference, allowing the model to capture modality-specific statistics while preserving the robust VDM priors, thereby mitigating the risk of catastrophic forgetting often associated with full fine-tuning, which typically leads to severe performance degradation [He et al. 2025].
+
+Formally, let 𝑊 ∈ R𝑑×𝑑 denote the frozen pre-trained weights. For the 𝑘-th modality, we introduce a specific parameter update Δ𝑊𝑘 = 𝐵𝑘𝐴𝑘, where 𝐵𝑘 ∈ R𝑑×𝑟 and 𝐴𝑘 ∈ R𝑟×𝑑 are learnable low-rank matrices (r ≪ d). This design decouples the processing capabilities for different modalities into distinct parameter spaces, isolating disparate data distributions. Critically, these LoRAs are dynamically gated based on the role of the modality. We formulate the adaptive forward pass to obtain the modality-specific effective weights𝑊𝑘′:
+
+𝑊𝑘′ =𝑊 + m𝑘 · Δ𝑊𝑘 (2) When the 𝑘-th modality serves as a generation target (noisy input), the gate is activated (𝑚𝑘 = 1); when it serves as a condition (clean input), the gate is suppressed (𝑚𝑘 = 0), which bypasses the adapter, maximizing the utilization of the VDM’s native encoding capability to extract robust semantic features from the visual context without domain-shift interference. For a detailed analysis of these decoupling and gating designs, please refer to the ablation study in Sec. 4.3.
+
+- 3.3 Cross-Modal Self-Attention
+
+In our UniVidX framework, data from diverse visual modalities are concatenated along the batch dimension to enable unified processing. However, the vanilla self-attention of standard VDMs operates on each modality in isolation, failing to capture inter-modal dependencies. Motivated by cross-domain diffusion approaches [Gao* et al. 2024; Höllein et al. 2024; Kocsis et al. 2025; Long et al. 2023; Yang et al. 2025b], we introduce Cross-Modal Self-Attention (CMSA) to accelerate interaction and fusion across modalities. Specifically, we aggregate the keys and values from all modalities to form a shared context, while keeping the queries modality-specific.
+
+Let 𝑞𝑖,𝑘𝑖,𝑣𝑖 denote the query, key, and value of the 𝑖-th modality. We construct a shared key/value set by concatenating them:𝑘shared = [𝑘1,𝑘2, . . .,𝑘𝑛] and 𝑣shared = [𝑣1,𝑣2, . . .,𝑣𝑛]. The attention operation
+
+Prompt: A robot is cooking in the kitchen ... Prompt: A little cat is eating fish …
+
+[Figure 72]
+
+[Figure 73]
+
+[Figure 74]
+
+[Figure 75]
+
+[Figure 76]
+
+[Figure 77]
+
+[Figure 78]
+
+[Figure 79]
+
+[Figure 80]
+
+[Figure 81]
+
+[Figure 82]
+
+[Figure 83]
+
+RGBAlbedoNormal
+
+[Figure 84]
+
+[Figure 85]
+
+[Figure 86]
+
+[Figure 87]
+
+[Figure 88]
+
+[Figure 89]
+
+[Figure 90]
+
+[Figure 91]
+
+[Figure 92]
+
+[Figure 93]
+
+[Figure 94]
+
+[Figure 95]
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 96]
+
+[Figure 97]
+
+[Figure 98]
+
+[Figure 99]
+
+[Figure 100]
+
+[Figure 101]
+
+[Figure 102]
+
+[Figure 103]
+
+[Figure 104]
+
+[Figure 105]
+
+[Figure 106]
+
+[Figure 107]
+
+| |
+|---|
+
+| |
+|---|
+
+IntrinsiX Our UniVid-Intrinsic IntrinsiX Our UniVid-Intrinsic
+
+- Fig. 3. Visual comparison for text-to-intrinsic generation. Compared to IntrinsiX, which exhibits noticeable artifacts and modality misalignment (indicated by red boxes), our UniVid-Intrinsic produces superior results. Our method generates temporally coherent video clips with precise alignment across RGB, albedo, and normal maps, effectively capturing complex geometries and fine textures like the cat’s fur. Please zoom in to find more details.
+
+for modality 𝑖 is then reformulated as:
+
+Attention(𝑞𝑖,𝑘shared,𝑣shared) = Softmax
+
+𝑞𝑖𝑘𝑇shared √𝑑𝑘
+
+𝑣shared (3)
+
+This design ensures that each modality is aware of the multimodal context, thereby promoting cross-modal consistency and enabling alignment between generated content and control conditions.
+
+- 3.4 Model Instantiations
+
+To validate our UniVidX, we implement two instantiations using this framework in two domains. 1) UniVid-Intrinsic operates on the RGB videos and their intrinsic maps (albedo/irradiance/normal); 2) UniVid-Alpha focuses on processing blended RGB (BL), alpha mattes (Alpha), foregrounds (FG), and backgrounds (BG). Both models operate across three paradigms (Text→X, X→X, and Text&X→X), supporting a total of 15 distinct tasks (detailed in the appendix).
+
+In UniVid-Intrinsic model, we extend the input space beyond standard RGB videos to capture the underlying physical properties of the scene. Specifically, in addition to the RGB video 𝑅 ∈ R𝑇×𝐻×𝑊 ×3, we incorporate the following intrinsic components: 1) albedo 𝐴 ∈ R𝑇×𝐻×𝑊 ×3, representing the surface’s diffuse reflectance that remains invariant to illumination and viewing angles; 2) irradiance 𝐼 ∈ R𝑇×𝐻×𝑊 ×3, serving as a lighting representation that captures the incoming light intensity accounting for shadows and illumination; and 3) normal 𝑁 ∈ R𝑇×𝐻×𝑊 ×3, encoding the per-pixel surface orientation to provide high-frequency geometric details.
+
+While the standard Disney BRDF model [Burley and Studios 2012] characterizes specular reflectance using roughness and metallic maps, we deliberately exclude them from our target modalities. This decision is driven by two factors. First, reliable ground-truth annotations for material properties are scarce and difficult to curate. Whether synthesized or derived from existing public datasets (e.g., InteriorVerse [Zhu et al. 2022a]), these labels frequently suffer from significant noise and spatial inconsistency. Second, we leverage the
+
+robust priors of pre-trained VDMs. We observe that the VDM possesses an inherent capacity to infer material properties from context, automatically deducing correct material responses to synthesize realistic reflections without needing explicit parameterization.
+
+We also exclude depth maps from our formulation. Depth is primarily a macro-geometric attribute rather than a direct photometric component of the shading equation. Moreover, our framework already incorporates surface normals, which capture the finer local geometric details essential for shading computation.
+
+In UniVid-Alpha model, we decompose the input video space beyond the blended RGB (BL) video 𝑅 ∈ R𝑇×𝐻×𝑊 ×3 into three distinct compositing layers: 1) foreground (FG) 𝐹 ∈ R𝑇×𝐻×𝑊 ×3, which isolates the intrinsic color and texture details of the subject; 2) alpha matte (Alpha) 𝑃 ∈ R𝑇×𝐻×𝑊 ×3, defining the soft silhouette and per-pixel opacity of the foreground; and 3) background (BG) 𝐵 ∈ R𝑇×𝐻×𝑊 ×3, capturing the clean environmental context.
+
+The pre-trained VAE encoder in our backbone necessitates 3channel RGB inputs. To ensure compatibility, we adapt the inherently single-channel Alpha by replicating it across three channels before feeding it into the VAE. This allows us to process alpha matte within the same latent space as color (RGB).
+
+For the BG layer, we aim to recover the scene as if the foreground subject were never present. Leveraging the robust generative capability of the VDM, our model is trained to automatically inpaint regions originally occluded by the foreground. This ensures the generation of a spatially complete scene filled with coherent structures and textures, rather than a background with "holes" or artifacts.
+
+3.5 Training Details and Data Strategy
+
+Training Details. We build our framework upon the Wan2.1-T2V14B1 backbone. The rank of LoRA modules in DGL is set to 32 for all modalities, resulting in a total of 385M trainable parameters. We employ a unified optimization strategy for both UniVid-Intrinsic and UniVid-Alpha, using AdamW [Loshchilov and Hutter 2017]
+
+1https://huggingface.co/Wan-AI/Wan2.1-T2V-14B
+
+Table 1. Quantitative comparison for text-to-intrinsic and text-toRGBA generation tasks. Best results are bolded. "-" indicates that the metric is not applicable (as IntrinsiX and LayerDiffuse generates images)
+
+Temporal Flickering User study
+
+Text-to-Intrinsic RGB ↑ Albedo ↑ Normal ↑ RGB ↑ Albedo ↑ Normal ↑ TA ↑ MC ↑
+
+IntrinsiX [Kocsis et al. 2025] - - - 7.82 8.44 8.12 8.65 7.02 Our UniVid-Intrinsic 0.9876 0.9885 0.9874 9.34 9.23 9.17 9.04 9.29
+
+Text-to-RGBA BL ↑ FG ↑ BG ↑ BL ↑ FG ↑ BG ↑ TA ↑ MC ↑
+
+LayerDiffuse [Zhang et al. 2024] - - - 9.12 8.91 8.41 8.89 8.61 Our UniVid-Alpha 0.9912 0.9954 0.9891 9.30 9.12 9.25 9.04 9.35
+
+BL: A telescope … starry sky in the desert. FG: A telescope … BG: Starry sky in the desert.
+
+Shared Prompt: A telescope … starry sky in the desert.
+
+[Figure 108]
+
+[Figure 109]
+
+[Figure 110]
+
+[Figure 111]
+
+[Figure 112]
+
+[Figure 113]
+
+[Figure 114]
+
+[Figure 115]
+
+BL: Two dogs are boxing … on a boxing ring. FG: Two dogs are boxing … BG: A boxing ring.
+
+Shared Prompt: Two dogs are boxing … on a boxing ring.
+
+[Figure 116]
+
+[Figure 117]
+
+[Figure 118]
+
+[Figure 119]
+
+[Figure 120]
+
+[Figure 121]
+
+[Figure 122]
+
+[Figure 123]
+
+LayerDiffuse Our UniVid-Alpha
+
+- Fig. 4. Visual results for text-to-RGBA generation. Compared to LayerDiffuse, which is limited to static images, our method can generate highquality, dynamic RGBA videos. Notably, while LayerDiffuse needs distinct prompts for different layers to ensure separation, our method achieves robust performance using a single shared prompt.
+
+(𝛽1 = 0.9, 𝛽2 = 0.999, weight decay=10−2) coupled with a Cosine Annealing scheduler [Loshchilov and Hutter 2016] that decays the learning rate from an initial 1 × 10−4 to 1 × 10−6.
+
+Trainingisconductedon4×NVIDIAH100GPUs,utilizingBFloat16
+
+(BF16) mixed precision to maximize throughput. Moreover, both models process video clips of 21 frames, with a per-GPU batch size of 1. Under this setup, UniVid-Intrinsic is trained for 6, 000 steps, while UniVid-Alpha is trained for 5, 000 steps.
+
+Training Dataset. For UniVid-Intrinsic, we require high-quality RGB videos paired with ground-truth albedo, irradiance, and normal maps. Since such dense physical supervision is unattainable in realworld data and existing public synthetic datasets typically provide only a subset of these modalities, we construct a synthetic dataset InteriorVid. It comprises 924 high-quality indoor video clips, each consisting of 21 frames at a resolution of 480 × 640, with paired ground-truth for albedo, irradiance, and normal maps (see appendix for construction details). We partition the dataset into InteriorVidTrain (900 clips) for training and InteriorVid-Test (24 clips) for testing. For UniVid-Alpha, we utilize VideoMatte240K [Lin et al. 2021], a widely adopted dataset for video matting featuring human foregrounds with paired ground-truth alpha mattes. We use 484 videos from this dataset to train our model, with resolution resized
+
+to 432×768. To obtain text descriptions, we leverage Qwen3-VL [Bai et al. 2025] to generate captions for the training data.
+
+Construction Details of InteriorVid. To construct InteriorVid, we curate 167 high-quality 3D indoor scenes from SuperHiveMarket2. To simulate realistic camera dynamics, we implement smooth random walk trajectories for each scene, further augmented with randomized Field of View (FOV) and focal lengths. This setup ensures that the resulting dataset encompasses a diverse array of motion patterns and perspective variations.
+
+The data generation pipeline is executed using Blender3 with the Cycles path-tracing engine (128 samples).We implement a finegrained decoupling of physical components via the Blender Compositor node tree. Crucially, all output components are exported in OpenEXR 16-bit Float format to preserve the full dynamic range in linear space, strictly ensuring that the decomposed layers adhere to the constraints of the physical rendering equation.
+
+4 Experiment
+
+In this section, we provide a detailed experimental analysis of our framework. We first outline the experimental setup, detailing the specific tasks evaluated for both models (Sec. 4.1). Next, we provide comprehensive qualitative and quantitative comparisons against other baselines (Sec. 4.2). Specifically, we detail the results for textto-intrinsic and text-to-RGBA generation in Sec. 4.2.1. Evaluations for inverse/forward rendering are presented in Sec. 4.2.2. We further report albedo estimation results in Sec. 4.2.3, and we also include a focused assessment of normal estimation in Sec. 4.2.4. Finally, we demonstrate our video matting performance in Sec. 4.2.5.
+
+We then conduct thorough ablation studies to validate the effectiveness of our core architectural designs (Sec. 4.3). In Sec. 4.4, we discuss the critical value of multi-condition perception in resolving ambiguity. Furthermore, we demonstrate the flexibility of our framework, illustrating how the composition of different tasks supports diverse downstream applications (Sec. 4.5). Finally, we analyze the current limitations and failure cases in Sec. 4.6.
+
+- 4.1 Experimental Setup
+
+We focus on representative tasks that allow for quantitative comparison. For UniVid-Intrinsic, we evaluate: (1) text-to-intrinsic (Text→X), which jointly generates RGB videos and their corresponding intrinsic maps from text prompts; (2) inverse rendering (X→X), which estimates intrinsic maps given an input RGB video, including dedicated evaluations of albedo/normal estimation as critical sub-tasks; and (3) forward rendering (X→X), which performs realistic RGB video synthesis derived from input intrinsic channels. For UniVidAlpha, we evaluate: (1) text-to-RGBA (Text→X), which synthesizes decomposed RGBA layers and the final blended video from text; and (2) video matting (X→X), which decomposes an input blended video into its constituent RGBA layers.
+
+- 4.2 Comparative Evaluation
+
+4.2.1 Text→X. Due to the absence of open-source text-to-video methods for text-to-intrinsic and text-to-RGBA, we benchmark our
+
+- 2https://superhivemarket.com/
+- 3https://www.blender.org/
+
+Table 2. Quantitative comparison of inverse rendering and forward rendering. Best results are bolded and second best are underlined.
+
+Albedo Irradiance Normal Forward Rendering Methods PSNR ↑ LPIPS ↓ SSIM ↑ PSNR ↑ LPIPS ↓ SSIM ↑ MAE ↓ 11.25◦ ↑ PSNR ↑ LPIPS ↓ SSIM ↑ RGB↔X [Zeng et al. 2024] 11.64 0.3324 0.6462 11.29 0.3734 0.7182 18.48 50.88 13.48 0.2728 0.6842 Stable Normal [Ye et al. 2024] - - - - - - 13.68 61.23 - - Lotus [He et al. 2025] - - - - - - 14.51 58.21 - - NormalCrafter [Bin et al. 2025] - - - - - - 12.49 64.13 - - Diffusion Renderer [Liang et al. 2025] 13.59 0.2624 0.6817 - - - 15.76 54.42 9.87 0.2920 0.6142 Ouroboros [Sun et al. 2025a] 14.21 0.2639 0.7063 9.7309 0.4560 0.6460 14.52 57.58 13.15 0.2701 0.6700 Our UniVid-Intrinsic 16.89 0.2248 0.7812 13.46 0.3674 0.7895 11.09 70.52 15.31 0.2567 0.7031
+
+Input RGB X Diffusion Renderer Ouroboros Our UniVid-Intrinsic Ground Truth
+
+[Figure 124]
+
+[Figure 125]
+
+[Figure 126]
+
+[Figure 127]
+
+[Figure 128]
+
+[Figure 129]
+
+(a) Albedo estimation. Comparison of estimated albedo maps.
+
+Input RGB X Ouroboros Our UniVid-Intrinsic Ground Truth
+
+[Figure 130]
+
+[Figure 131]
+
+[Figure 132]
+
+[Figure 133]
+
+[Figure 134]
+
+- (b) Irradiance estimation. Comparison of estimated irradiance maps.
+
+[Figure 135]
+
+[Figure 136]
+
+[Figure 137]
+
+[Figure 138]
+
+[Figure 139]
+
+[Figure 140]
+
+Input RGB X Diffusion Renderer Ouroboros Our UniVid-Intrinsic Ground Truth
+
+- (c) Normal estimation. Comparison of estimated normal maps.
+
+[Figure 141]
+
+[Figure 142]
+
+[Figure 143]
+
+[Figure 144]
+
+[Figure 145]
+
+RGB X Diffusion Renderer Ouroboros Our UniVid-Intrinsic Ground Truth
+
+- (d) Forward rendering. Comparison of reconstructed RGB videos.
+
+- Fig. 5. Visual comparison for inverse and forward rendering tasks. In all tasks, UniVid-Intrinsic produces results closest to the Ground Truth.
+
+methods against representative image generation models. For textto-intrinsic, we compare UniVid-Intrinsic against IntrinsiX [Kocsis et al. 2025] on the intersection of modalities: RGB, albedo, and normal. Notably, while our model generates RGB frames simultaneously with intrinsic maps, the RGB images of IntrinsiX are rendered from its generated intrinsic maps following its official protocol. For textto-RGBA, we compare UniVid-Alpha against LayerDiffuse [Zhang
+
+- et al. 2024]. Both methods take text as input to generate foreground (FG), background (BG), and the blended RGB (BL) result.
+
+To assess generation quality, we conduct a user study where participants rate results on a scale from 1 to 10. We utilized Gemini 3 Pro 4 to design evaluation prompts, resulting in 221 samples for both tasks. Evaluation criteria include (1) visual quality (of all generated modalities), (2) text alignment (TA), and (3) modality consistency (MC). Furthermore, given the temporal nature of our outputs, we employ the Temporal Flickering metric (range 0-1, higher is better) from VBench [Huang et al. 2024] to evaluate temporal stability.
+
+4https://gemini.google.com/
+
+#### Table 3. Quantitative results of albedo estimation on the MAW benchmark. Different cellcolors refer to best , 2nd-best and 3rd-best .
+
+Methods Intensity (×100) ↓ Chromaticity ↓
+
+Bell et al. [2014] 3.11 6.61 Li and Snavely [2018] 2.71 5.15 Sengupta et al. [2019] 2.17 6.39 Liu et al. [2020] 2.62 6.00 Li et al. [2020] 1.41 5.64 Luo et al. [2020] 1.24 4.73 Lettry et al. [2018] 2.77 8.05 Zhu et al. [2022b] 1.44 4.94 Kocsis et al. [2024] 1.13 5.35 Chen et al. [2024] 0.98 4.12
+
+- Careaga and Aksoy [2023] 0.57 6.56
+- Careaga and Aksoy [2024] 0.54 3.37 Zeng et al. [2024] 0.82 3.96 Liang et al. [2025] 0.46 3.53 Sun et al. [2025a] 0.48 5.47 Our UniVid-Intrinsic 0.44 3.60
+
+#### Table 4. Quantitative results of normal estimation on the Sintel benchmark. Different cellcolors refer to best , 2nd-best and 3rd-best .
+
+Methods Training Frames ↓ Mean ↓ Med ↓ 11.25◦ ↑ 22.5◦ ↑ 30◦ ↑ RanK ↓
+
+DSINE 160K 34.9 28.1 21.5 41.5 52.7 5.7 GeoWizard 280K 37.6 32.0 11.7 32.8 46.8 7.8 GenPercept 90K 34.6 26.2 18.4 43.8 55.8 4.4 Stable-Normal 250K 38.8 32.7 17.9 36.1 46.6 8.0 Marigold-E2E-FT 59K 33.5 27.0 21.5 43.0 54.3 4.6 Lotus 59K 32.3 25.5 22.4 44.9 57.0 2.2 NormalCrafter 860K 30.7 23.9 23.5 47.5 60.1 1.0 Ours 19K 33.5 25.8 21.6 43.2 57.3 3.1
+
+Across both text-to-intrinsic and text-to-RGBA tasks, our UniVidIntrinsic and UniVid-Alpha consistently surpass the representative baselines (IntrinsiX and LayerDiffuse, respectively). In user studies (see Tab. 1), we obtain higher ratings for visual quality, text alignment, and modality consistency. Furthermore, our Temporal Flickering scores are consistently close to 1.0, confirming our ability to generate temporally stable content, which is a critical advantage over image-based baselines.
+
+The qualitative results validate the effectiveness of our method. 1) For text-to-intrinsic, while IntrinsiX often exhibits misalignment among modalities (highlighted by red boxes in Fig. 3), our UniVidIntrinsic maintains consistency. Additionally, we excel in generating realistic illumination (see Fig. 3 row 1) and high-frequency geometry
+
+[Figure 146]
+
+[Figure 147]
+
+[Figure 148]
+
+[Figure 149]
+
+[Figure 150]
+
+[Figure 151]
+
+[Figure 152]
+
+[Figure 153]
+
+NormalCrafter
+
+Input
+
+[Figure 154]
+
+[Figure 155]
+
+[Figure 156]
+
+[Figure 157]
+
+[Figure 158]
+
+[Figure 159]
+
+[Figure 160]
+
+[Figure 161]
+
+DiffusionRendererOurUniVid-IntrinsicOuroboros
+
+RGBX
+
+[Figure 162]
+
+[Figure 163]
+
+[Figure 164]
+
+[Figure 165]
+
+[Figure 166]
+
+[Figure 167]
+
+[Figure 168]
+
+[Figure 169]
+
+StabxleNormalLotus
+
+[Figure 170]
+
+[Figure 171]
+
+[Figure 172]
+
+[Figure 173]
+
+[Figure 174]
+
+[Figure 175]
+
+[Figure 176]
+
+[Figure 177]
+
+- Fig. 6. Normal estimation on a cinematic video sequence. Compared to specialized normal estimators and intrinsic-related baselines which struggle with temporal stability or detail preservation, our method yields temporally coherent normals while maintaining high-fidelity geometric details.
+
+details, such as the fur of the cat (see Fig. 3 row 3). 2) For textto-RGBA, despite being trained only on dataset [Lin et al. 2021] significantly smaller than LayerDiffuse (484 videos vs 1M images), and without requiring VAE fine-tuning, the generation quality of our UniVid-Alpha remains impressive, demonstrating the effectiveness of leveraging VDM priors. Furthermore, unlike LayerDiffuse, which relies on distinct prompts for the BL, FG, and BG layers to ensure quality, our method achieves robust performance using a shared prompt. This is attributed to decoupling design in DGL (please refer to Sec. 4.3 for details). Moreover, although both models are trained on limited domain-specific data (UniVid-Intrinsic on indoor scenes; UniVid-Alpha on human data), they generalize well to outof-distribution samples, such as animals.
+
+- 4.2.2 Inverse Rendering and Forward Rendering. We benchmark UniVid-Intrinsic on inverse and forward rendering tasks against several representative methods like RGB↔X [Zeng et al. 2024], Diffusion Renderer [Liang et al. 2025] and Ouroboros [Sun et al. 2025a]. For normal estimation, we include comparisons with specialized normal estimation methods: Stable Normal [Ye et al. 2024], Lotus [He
+
+- et al. 2025], and NormalCrafter [Bin et al. 2025]. All evaluations are conducted on the InteriorVid-Test benchmark (see Sec. 3.5).
+
+To quantitatively evaluate performance, we measure PSNR, SSIM, and LPIPS on both the estimated intrinsic maps (inverse rendering) and the reconstructed RGB videos (forward rendering). For surface normals, we report geometric accuracy using the Mean Angular Error (MAE) and the percentage of pixels with errors below 11.25◦.
+
+Both quantitative and qualitative results demonstrate that our UniVid-Intrinsic achieves state-of-the-art performance. Quantitatively (see Tab. 2), our method not only outperforms intrinsic baselines, but also surpasses specialized estimators (e.g., Stable Normal) in surface normal estimation, achieving the lowest MAE of 11.09◦. Qualitatively (see Fig. 5), our method produces results that most closely resemble the ground truth. Specifically, it recovers artifactfree albedo (row 1), illumination-consistent irradiance maps (row 2),
+
+Table 5. Quantitative comparison of video matting. We benchmark our UniVid-Alpha against several methods, categorized into Mask-Guided (MG) approaches (top block) and Auxiliary-Free (AF) approaches (bottom block). Best results are bolded and second best are underlined.
+
+Methods MAD ↓ MSE ↓ Grad ↓ dtSSD ↓ Conn ↓
+
+AdaM [Lin et al. 2023] 4.80 0.76 2.15 1.45 0.30 FTP-VM [Huang and Lee 2023] 7.45 2.14 4.76 2.07 0.31 MaGGIe [Huynh et al. 2024] 4.46 0.80 2.41 1.46 0.31 Matanyone [Yang et al. 2025c] 4.37 0.74 2.57 1.42 0.26
+
+RVM [Lin et al. 2022] 5.47 0.78 2.64 1.61 0.30 MODNet [Ke et al. 2022] 10.11 4.80 5.53 2.44 0.81 VM-Former [Li et al. 2024a] 6.25 1.48 3.13 2.24 0.37 Our UniVid-Alpha 4.24 0.69 1.86 1.39 0.52
+
+and high-quality normal maps (row 3) in inverse rendering, alongside high-fidelity reconstruction (row 4) in forward rendering.
+
+- 4.2.3 Albedo Estimation. Albedo estimation has long been a fundamental problem in graphics. To further evaluate the performance of our method, particularly its transfer to real-world scenes, we report results on the Measured Albedo in the Wild (MAW) dataset [Wu et al. 2023]. MAW is a real-world benchmark for albedo estimation that measures accuracy in terms of both intensity and chromaticity. It consists of 850 images, each annotated with measured albedo in specific masked regions, where the measurements are obtained using a known gray card placed on areas of homogeneous albedo.
+
+As shown in Tab. 3, ourUniVid-Intrinsic achieves the best intensity error of 0.44 and a competitive chromaticity error of 3.60, placing it among the top-performing methods. Notably, although UniVidIntrinsic is trained solely on synthetic data, it transfers well to this real-world benchmark, suggesting promising generalization ability.
+
+- 4.2.4 Normal Estimation. Given the critical role of geometry in scene understanding, we provide a focused analysis of our normal
+
+[Figure 178]
+
+[Figure 179]
+
+[Figure 180]
+
+InputRVMMODNetVMFormerOurUniVid-Alpha
+
+[Figure 181]
+
+[Figure 182]
+
+[Figure 183]
+
+[Figure 184]
+
+[Figure 185]
+
+[Figure 186]
+
+[Figure 187]
+
+[Figure 188]
+
+[Figure 189]
+
+[Figure 190]
+
+[Figure 191]
+
+[Figure 192]
+
+- Fig. 7. Visual comparison of auxiliary-free video matting results. While competing approaches exhibit noticeable artifacts and background leakage (e.g., the wall sconce), our method produces accurate mattes.
+
+estimation capabilities. As shown in Fig. 6, while these baselines frequently suffer from texture loss and temporal flickering, our method faithfully recovers high-frequency details (e.g., facial features) and ensures temporally consistent results free from jitter.
+
+Quantitatively,wepresentanevaluation ofUniVid-Intrinsic against state-of-the-art specialized normal estimation models on the Sintel [Butler et al. 2012] benchmark. Our comparison set encompasses robust image-based methods, including DSINE [Bae and Davison 2024], GeoWizard [Fu et al. 2024], GenPercept [Xu et al. 2024a], Stable-Normal [Ye et al. 2024], Marigold-E2E-FT [Martin Garcia et al. 2025], and Lotus [He et al. 2025], as well as the video-based baseline NormalCrafter [Bin et al. 2025]. Following standard evaluation protocols, we report the Mean and Median angular errors (↓), alongside the accuracy within angular thresholds of 11.25◦, 22.5◦, and 30◦ (↑). Additionally, we explicitly report the training data scale for each method to analyze data efficiency.
+
+As shown in Tab. 4, UniVid-Intrinsic achieves performance comparable to these specialized baselines while requiring significantly less training data. Notably, compared to the video-specific counterpart NormalCrafter [Bin et al. 2025], our model demonstrates superior data efficiency: we utilize only 19K training frames compared to their 860K (a reduction of over 45×). This highlights that our framework effectively leverages strong diffusion priors, enabling robust generalization even when trained on small-scale datasets.
+
+- 4.2.5 Video Matting. For video matting, our UniVid-Alpha operates as an Auxiliary-Free (AF) method, requiring only RGB inputs. We compare our approach against two categories of video matting methods: AF Methods, such as RVM [Lin et al. 2022], MODNet [Ke et al. 2022], and VMFormer [Li et al. 2024a]; Mask-Guided (MG)
+
+Methods, such as AdaM [Lin et al. 2023], FTP-VM [Huang and Lee 2023], MaGGIe [Huynh et al. 2024] and MatAnyone [Yang et al. 2025c], which require additional segmentation masks as inputs.
+
+For quantitative evaluation, we employ MAD (Mean Absolute Difference) and MSE (Mean Squared Error) to assess semantic accuracy, Grad [Rhemann et al. 2009] for detail extraction, dtSSD [Erofeev et al. 2015] for temporal coherence, and Conn (Connectivity) [Rhemann et al. 2009] for perceptual quality. Quantitative evaluations are conducted on the VideoMatte [Lin et al. 2021] benchmark.
+
+Quantitatively, while MG methods typically outperform AF methods due to explicit guidance, our method defies this trend. As shown in Tab. 5, we achieve state-of-the-art results (e.g., lowest MAD of 4.24), outperforming both AF and MG competitors. Qualitatively (Fig. 7), this advantage is evident in challenging multi-subject inthe-wild scenarios. Although competing approaches suffer from significant artifacts and background leakage (e.g., the wall sconce),
+
+- our method produces clean, coherent mattes, accurately preserving even intricate hair details. This success stems from our effective use of VDM priors, which provide the robust semantic segmentation capability needed to distinguish subjects from complex backgrounds without auxiliary inputs [Amit et al. 2021; Tian et al. 2023].
+
+It is worth highlighting that while traditional video matting methods are typically limited to yielding only foregrounds and alpha mattes, our UniVid-Alpha leverages the generative capabilities of VDMs to jointly synthesize a clean background.
+
+4.3 Ablation Study
+
+Why do we not use channel-concatenation? To enable simultaneous multimodal generation, a prevalent paradigm is channelconcatenation, adopted by methods like Diffusion Render [Liang et al. 2025], Geo4D [Jiang et al. 2025], and CtrlVDiff [Xi et al. 2025b]. This approach stacks latents from different modalities along the channel dimension before feeding them into the DiT. While theoretically advantageous for preserving spatial correspondence and pixel alignment, we find that this strategy severely compromises the pre-trained diffusion priors. The necessity of retraining input convolutional layers from scratch and adding new output heads causes a significant shift in the internal feature distribution. Although previ-
+
+- ous works mitigate this by training on massive datasets (e.g., ∼350K videos in CtrlVDiff), our experiments reveal that this method fails under limiteddata regimes. To verify this, we trained variants of both UniVid-Intrinsic and UniVid-Alpha using the channel-concatenation strategy. As shown in Fig. 9, the generated videos from these variants suffer from severe structural collapse. In contrast, our UniVidX concatenates multimodal latents along the batch dimension. This approach requires no modifications to the input/output structures, thereby maximally leveraging native VDM priors and achieving superior data efficiency (< 1K videos). Consequently, as evident in Fig. 9, our model produces high-fidelity results, effectively overcoming the collapse observed in the channel-concatenation variants.
+
+Why do we need decoupling design in DGL? In our Decoupled Gated LoRA strategy, we assign an independent LoRA module to each specific modality. This design is intended to decouple the processing capabilities for distinct modalities into separate parameter spaces, thereby significantly enhancing training robustness. To
+
+FG Prompt: A burly adult man … BG Prompt: …cyberpunk cityscape. BL Prompt:cyberpunkA burlycityscape.adult man … Shared Prompt: A burly adult man … cyberpunk cityscape.
+
+[Figure 193]
+
+[Figure 194]
+
+[Figure 195]
+
+[Figure 196]
+
+[Figure 197]
+
+[Figure 198]
+
+[Figure 199]
+
+[Figure 200]
+
+[Figure 201]
+
+[Figure 202]
+
+[Figure 203]
+
+[Figure 204]
+
+LayerDiffuse
+
+[Figure 205]
+
+[Figure 206]
+
+[Figure 207]
+
+[Figure 208]
+
+[Figure 209]
+
+[Figure 210]
+
+UniVid-Alphaw/oDec.
+
+[Figure 211]
+
+[Figure 212]
+
+[Figure 213]
+
+[Figure 214]
+
+[Figure 215]
+
+[Figure 216]
+
+FG BG BL
+
+FG BG BL
+
+- Fig. 8. Qualitative ablation of decoupling design. Comparison of generation using distinct prompts (Left) vs. a shared prompt (Right). While LayerDiffuse fails with shared prompt and the ’w/o Dec.’ variant consistently fails due to parameter sharing, our approach achieves robust generation in both situations.
+
+[Figure 217]
+
+[Figure 218]
+
+[Figure 219]
+
+[Figure 220]
+
+Prompt: Two little kittens hold tiny teacups… Prompt: A red fox wearing a woolen coat, …
+
+Channel-Concatenation
+
+Albedo Albedo FG FG
+
+Our UniVid-Intrinsic Channel-Concatenation Our UniVid-Alpha
+
+- Fig. 9. Visual results of channel-concatenation. Left: Albedo results for text-to-intrinsic generation. Right: FG results for text-to-RGBA generation. In both tasks, the channel-concatenation variant fails completely, yielding corrupted outputs due to the disruption of the diffusion priors. Conversely, UniVid-Intrinsic and UniVid-Alpha models generate high-fidelity results, demonstrating the superiority of our UniVidX.
+
+[Figure 221]
+
+[Figure 222]
+
+[Figure 223]
+
+[Figure 224]
+
+[Figure 225]
+
+Input BL FG BG
+
+UniVid-ALphaw/oDec.
+
+[Figure 226]
+
+[Figure 227]
+
+- Fig. 10. Attention map analysis. Maps are extracted from the Cross-Modal Self-Attention layers in the 20th DiT block at denoising step 25/50. Top: Our method yields clean attention maps where FG and BG branches distinctively attend to the subject and background. Bottom: The ’w/o Dec.’ variant results are noisy, proving its inability to separate different modalities effectively.
+
+Input w/o Gating Our UniVid-Intrinsic Ground Truth
+
+[Figure 228]
+
+[Figure 229]
+
+[Figure 230]
+
+[Figure 231]
+
+[Figure 232]
+
+[Figure 233]
+
+[Figure 234]
+
+[Figure 235]
+
+Fig. 11. Qualitative ablation of the gating design. While the ’w/o Gating’ variant suffers from inaccurate background prediction and texture loss, our full model demonstrates robust normal estimation capabilities.
+
+a shared-parameter variant. For a fair comparison, we implement a shared LoRA variant (named ’w/o Dec.’) instead of full fine-tuning and set the rank of the shared LoRA to 64 (double that of our decoupled modules) to maintain an identical parameter count. Furthermore, we add distinct RoPE [Su et al. 2021] positional encoding to different modalities in the ’w/o Dec.’ setup. Conversely, since the decoupling mechanism inherently handles modality distinction, our model utilizes identical positional encoding for all modalities.
+
+As shown in Fig. 10, our method exhibits clear modality disentanglement: the BL branch focuses globally, the FG branch concentrates precisely on the foreground subject, and the BG branch covers the background. In contrast, the ’w/o Dec.’ variant produces chaotic and noisy attention maps, exhibiting severe feature leakage across FG and BG. This indicates that without parameter decoupling, the model struggles to effectively differentiate between modalities.
+
+Table 6. Quantitative ablation on gating design. We compare the full model against the ’w/o Gated’ variant. Best results are bolded.
+
+In text-to-RGBA task, our method maintains robust layer separation with both specific and shared prompts. Conversely, the ’w/o Dec.’ variant suffers from severe foreground-background confusion in both scenarios. Notably, we observe that LayerDiffuse [Zhang et al. 2024], which also relies on shared parameters, fails to separate layers when using a shared prompt. This comparison reinforces that the decoupling design is critical for robust multimodal processing.
+
+Albedo Irradiance Normal Methods PSNR ↑ LPIPS ↓ SSIM ↑ PSNR ↑ LPIPS ↓ SSIM ↑ MAE ↓ 11.25◦ ↑
+
+w/o Gating 15.02 0.2884 0.7112 12.04 0.4012 0.7058 13.01 59.75 Our UniVid-Intrinsic 16.89 0.2248 0.7812 13.46 0.3674 0.7895 11.09 70.52
+
+validate the necessity of this decoupling strategy, we conduct an ablation study on UniVid-Alpha by comparing our method against
+
+[Figure 236]
+
+[Figure 237]
+
+Prompt: An astronaut is riding a motorcycle on the moon.
+
+[Figure 238]
+
+[Figure 239]
+
+[Figure 240]
+
+[Figure 241]
+
+[Figure 242]
+
+[Figure 243]
+
+[Figure 244]
+
+[Figure 245]
+
+[Figure 246]
+
+| |
+|---|
+
+| |
+|---|
+
+RGBAlbedoNormal
+
+[Figure 247]
+
+[Figure 248]
+
+[Figure 249]
+
+[Figure 250]
+
+[Figure 251]
+
+[Figure 252]
+
+[Figure 253]
+
+[Figure 254]
+
+[Figure 255]
+
+[Figure 256]
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 257]
+
+[Figure 258]
+
+[Figure 259]
+
+[Figure 260]
+
+[Figure 261]
+
+[Figure 262]
+
+[Figure 263]
+
+[Figure 264]
+
+[Figure 265]
+
+[Figure 266]
+
+Irradiance
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 267]
+
+[Figure 268]
+
+[Figure 269]
+
+[Figure 270]
+
+[Figure 271]
+
+[Figure 272]
+
+[Figure 273]
+
+[Figure 274]
+
+[Figure 275]
+
+[Figure 276]
+
+| |
+|---|
+
+| |
+|---|
+
+Our UniVid-Intrinsic
+
+w/ Van.
+
+Fig. 12. Qualitative ablation on Cross-Modal Self-Attention. We compare the text-to-intrinsic generation results of our UniVid-Intrinsic with the ’w/ Van.’ variant using the same prompt. As shown, our model demonstrates superior structural consistency across all modalities (RGB, albedo, irradiance, and normal). In contrast, the ’w/ Van.’ variant suffers from noticeable inconsistencies and misalignment between different modalities.
+
+Why do we need gating design in DGL? To prevent task-specific parameters from interfering with the backbone’s native encoding capabilities, we employ a gating mechanism. This strategy selectively activates LoRAs only when a modality serves as generation target (noisy input) and deactivates them when it serves as condition (clean input). We validate this design by comparing our UniVidIntrinsic against a "w/o Gating" model, where the gating logic is disabled by fixing m𝑘 = 1 in Eq. 2 to keep LoRA permanently active. Qualitatively (see Fig. 11), the ’w/o Gating’ variant suffers from lowquality snowy ground normal estimation and severe texture loss on the walking stick. This is further corroborated by quantitative evaluations on InteriorVid-Test (Tab. 6), where the variant underperforms UniVid-Intrinsic. For example, the albedo PSNR drops to 15.02 dB, a decrease of 1.87 dB. Collectively, these results confirm that the gated mechanism is essential for utilizing VDM’s priors.
+
+Why do we not use vanilla self-attention? In our UniVidX framework, we employ Cross-Modal Self-Attention (CMSA) instead of the standard vanilla attention. While vanilla attention maximally preserves the generative priors of the pre-trained VDM by processing each stream independently, this isolation prevents information exchange among modalities, resulting in weak cross-modal alignment. In contrast, our CMSA facilitates interaction by aggregating the keys and values from all modalities to form a shared context, which allows each modality to attend to others, effectively resolving misalignment issues. We validate this design using the UniVid-Intrinsic instantiation, comparing our full model against the ’w/ Van.’ variant equipped with vanilla attention.
+
+As shown in Fig. 12, our model demonstrates strong consistency across all modalities in the text-to-intrinsic task, maintaining precise alignment even in fine-grained details (e.g., the astronaut’s
+
+Normal
+
+[Figure 277]
+
+[Figure 278]
+
+[Figure 279]
+
+RGB
+
+RGB+AlbedoInputRGBInput
+
+[Figure 280]
+
+RGB
+
+[Figure 281]
+
+[Figure 282]
+
+[Figure 283]
+
+[Figure 284]
+
+Albedo
+
+[Figure 285]
+
+Fig. 13. Demonstrating the value of multi-condition for mitigating perceptual ambiguity. The single-condition RGB input (top) fails to capture the geometry of the distant, blurry object due to the inherent ambiguity of the RGB input. In contrast, by utilizing the auxiliary Albedo modality as a structural constraint, the multi-condition RGB + albedo input (bottom) successfully reconstructs the surface normals of the video.
+
+suit). Conversely, the ’w/ Van.’ variant suffers from significant misalignment due to the lack of inter-modal interaction. These results empirically verify the effectiveness of our CMSA.
+
+4.4 The Value of Multi-Condition Perception Paths
+
+Thanks to the flexible generation paradigm of UniVidX, a specific target modality (e.g., normal) can be derived through multiple perception paths (e.g., RGB input; RGB + albedo input). While standard RGB-based perception (i.e., RGB → X) generally yields plausible results, we highlight the significant value of multi-condition strategies (i.e., RGB + auxiliary modality → X) in addressing the inherently ill-posed nature of inverse rendering. When the RGB input contains
+
+[Figure 286]
+
+[Figure 287]
+
+51:12 • Chen et al.
+
+Material Editing. As demonstrated in Fig. 17, we first decompose the input RGB video into intrinsic components. We then manually edit the albedo (to change colors) and normal maps (to modify texture details). Finally, taking these edited maps and the original irradiance as conditions, UniVid-Intrinsic functions as a forward renderer to generate the final output with updated materials.
+
+|Correct|
+|---|
+
+|[Figure 288]<br><br>RGB|
+|---|
+
+Normal
+
+[Figure 289]
+
+|Incorrect|
+|---|
+
+Prompt: A piece of ice, … orange pink sunset in the distance.
+
+[Figure 290]
+
+[Figure 291]
+
+[Figure 292]
+
+BL FG Alpha
+
+Video Inpainting. As shown in Fig. 18, we first decompose the input video into alpha mattes and background components. We then condition the model on these extracted alpha mattes and background videos, along with a target text prompt. Finally, the model generates new foreground content and the corresponding blended RGB video. This process allows for precise appearance editing of the subject while strictly preserving the original context defined by the background and alpha boundaries.
+
+- Fig. 14. Failure cases of our models. Top row (UniVid-Intrinsic): The inverse rendering results given the input RGB (enclosed in a red border). We observe instability in normal estimation for transparent glass surfaces: while it successfully reconstructs the claw machine’s glass (highlighted in the yellow box), it fails to capture the geometry of the central glass cover (highlighted in the green box). Bottom row (UniVid-Alpha): In the text-toRGBA task, although the model generates visually plausible BL and FG for the ice cube, the generated alpha matte remains fully opaque (values saturated at 1.0) instead of exhibiting the expected fractional values.
+
+Background Replacement. Illustrated in Fig. 19, we first generate the alpha matte and foreground from a source text prompt. Subsequently, by conditioning on these generated components along with a prompt describing the replacement background, we synthesize the new background layer and the final blended RGB video.
+
+Foreground Replacement. As shown in Fig. 20, we first extract the background from an input video through video matting, then utilize this background and a target prompt describing the desired subject as conditions. Finally, the model jointly generates the corresponding blended RGB video, the new foreground, and its alpha matte, effectively placing a new subject into the existing scene.
+
+ambiguous regions, auxiliary modalities serve as robust semantic cues and structural constraints, guiding the model toward more physically accurate predictions.
+
+A concrete example is illustrated in Fig. 13. In the RGB input case, the blurry planet is misinterpreted by the model as empty sky and effectively ignored. In contrast, under the RGB + albedo input setting, the additional albedo explicitly signals the presence of the underlying structure, which helps the model accurately recover the surface normals for the planet.
+
+4.6 Limitations and Failure Analysis
+
+Two models. Due to the lack of training data jointly annotated with both intrinsic labels and alpha labels, the intrinsic-related and alpharelated capabilities are currently instantiated separately in UniVidIntrinsic and UniVid-Alpha. We believe that, if such jointly annotated data become available, these two capabilities can be further unified into a single model within our framework.
+
+4.5 Applications
+
+ComputationalConstraints.Despiteemployingaparameter-efficient
+
+Benefiting from the versatile generation paradigm of UniVidX, both UniVid-Intrinsic and UniVid-Alpha support flexible input and output modalities rather than a fixed mapping. This flexibility allows us to creatively combine different tasks within the same model to achieve various downstream graphics applications.
+
+tuning strategy (only training LoRAs), the substantial memory footprint of the 14B Wan2.1-T2V backbone necessitates high VRAM usage. Consequently, UniVidX is constrained to processing at most 4 modalities, generating videos of up to 21 frames, and operating at a resolution of 480p.
+
+Video Relighting. As shown in Fig. 15, we first perform inverse rendering on the input RGB video to obtain intrinsic maps. We then select the albedo and normal maps as conditions. Combined with a target text prompt, the model generates the relighted RGB video and corresponding irradiance maps. Conditioning on albedo and normal ensures that the surface colors and geometric structures remain preserved, allowing only the illumination to be changed.
+
+Data Bias and Corner Cases. We attribute the exceptional data efficiency of our UniVidX to the rich semantic knowledge encapsulated within the pre-trained VDM priors [Tang et al. 2023]. Conceptually, our fine-tuning process does not learn representations from scratch but rather steers these powerful priors toward the task-specific manifold [Aghajanyan et al. 2020; Hu et al. 2022; Ilharco et al. 2022]. However, this strong reliance on priors renders the model susceptible to distribution biases present in the training dataset, leading to suboptimal performance on specific physical corner cases.
+
+Text-driven Video Retexturing. Illustrated in Fig. 16, we first utilize the model for text-to-intrinsic generation to synthesize a full set of maps. We then extract the irradiance and normal maps to serve as conditions. By feeding these maps along with a target prompt, we generate the new RGB video and albedo map. The conditioned irradiance ensures consistent lighting, while the normal map preserves the underlying geometry, facilitating surface modification.
+
+A notable example is observed in UniVid-Intrinsic when estimating normals for glass surfaces (see Fig. 14 top row). Although the input RGB clearly depicts transparent glass in multiple regions, the model exhibits spatially inconsistent behavior: it correctly reconstructs the planar normal of the claw machine’s glass near the
+
+Condition Prompt: … moonlight at night.
+
+Input RGB
+
+Reference
+
+[Figure 293]
+
+[Figure 294]
+
+[Figure 295]
+
+[Figure 296]
+
+[Figure 297]
+
+[Figure 298]
+
+[Figure 299]
+
+[Figure 300]
+
+RGBIrradiance
+
+Albedo
+
+[Figure 301]
+
+[Figure 302]
+
+[Figure 303]
+
+[Figure 304]
+
+[Figure 305]
+
+[Figure 306]
+
+[Figure 307]
+
+[Figure 308]
+
+Normal
+
+[Figure 309]
+
+- Fig. 15. Application of UniVid-Intrinsic — Video Relighting. The figure illustrates a two-stage relighting pipeline. First, we perform inverse rendering on the input RGB to get albedo and normal maps. Second, using these intrinsic components as conditions along with a target text prompt, we generate the relighted RGB video and irradiance maps. The reference column displays the original input video and its irradiance from the initial inverse rendering.
+
+[Figure 310]
+
+[Figure 311]
+
+[Figure 312]
+
+[Figure 313]
+
+[Figure 314]
+
+[Figure 315]
+
+[Figure 316]
+
+[Figure 317]
+
+[Figure 318]
+
+[Figure 319]
+
+[Figure 320]
+
+[Figure 321]
+
+[Figure 322]
+
+[Figure 323]
+
+[Figure 324]
+
+Prompt Condition Prompt: … wearing a blue suit, no words on the blackboard.
+
+RGBAlbedo
+
+Apenguinwearing
+
+blacksuit,…theblackboard
+
+[Figure 325]
+
+Irradiance
+
+[Figure 326]
+
+[Figure 327]
+
+[Figure 328]
+
+Normal
+
+[Figure 329]
+
+Reference
+
+[Figure 330]
+
+- Fig. 16. Application of UniVid-Intrinsic — Text-driven Video Retexturing. First, we generate the initial RGB and intrinsic maps from a source prompt. Second, we freeze the generated geometry (normal and irradiance) to constrain the structure, while re-synthesizing the RGB and albedo via a target prompt. This pipeline allows for surface appearance control without altering the underlying scene geometry and lighting.
+
+[Figure 331]
+
+[Figure 332]
+
+[Figure 333]
+
+[Figure 334]
+
+[Figure 335]
+
+[Figure 336]
+
+[Figure 337]
+
+[Figure 338]
+
+[Figure 339]
+
+[Figure 340]
+
+| |
+|---|
+
+[Figure 341]
+
+| |
+|---|
+
+[Figure 342]
+
+[Figure 343]
+
+Remain Unchanged
+
+Edit Albedo and Normal
+
+Irradiance
+
+Normal
+
+Albedo
+
+Normal
+
+Albedo
+
+Irradiance
+
+Input RGB Edited RGB
+
+- Fig. 17. Application of UniVid-Intrinsic — Material Editing. First, the input video is decomposed into intrinsic maps. We then manually edit the albedo and normal maps. Finally, taking these edited maps and the original irradiance as conditions, UniVid-Intrinsic generates the output with edited materials.
+
+right-side wall, yet fails on the central glass cover, where the estimated normals erroneously penetrate the surface to reflect the internal details. This dichotomy demonstrates that the model indeed possesses the capability to recognize and represent glass materials (as evidenced by the claw machine’s glass case). However, it succumbs to the spatial distribution bias of the indoor training dataset InteriorVid, where peripheral regions are typically planar walls
+
+and central regions contain complex objects with high-frequency geometry, thus causing the failure in the center glass cover.
+
+A similar phenomenon is observed in UniVid-Alpha (see Fig. 14 bottomrow).Thetransparenticeblocks within the generated blended RGB videos correctly refract the background light, demonstrating that the model inherently understands the physical properties of transparent objects. However, it fails to predict the corresponding fractional alpha values. We attribute this to the label bias in the
+
+Prompt: A woman wearing a black camisole dress.
+
+Input BL
+
+Condition
+
+[Figure 344]
+
+[Figure 345]
+
+[Figure 346]
+
+[Figure 347]
+
+[Figure 348]
+
+[Figure 349]
+
+[Figure 350]
+
+[Figure 351]
+
+[Figure 352]
+
+[Figure 353]
+
+Alpha
+
+FGBL
+
+[Figure 354]
+
+[Figure 355]
+
+[Figure 356]
+
+[Figure 357]
+
+[Figure 358]
+
+[Figure 359]
+
+[Figure 360]
+
+BG
+
+[Figure 361]
+
+- Fig. 18. Application of UniVid-Alpha — Video Inpainting. First, we decompose the input video into alpha mattes and background components. Second, conditioning on these extracted alpha mattes and background videos, we generate new foreground and blended RGB videos controlled by a text prompt. This allows for precise appearance editing of the subject within the original context.
+
+[Figure 362]
+
+[Figure 363]
+
+[Figure 364]
+
+[Figure 365]
+
+[Figure 366]
+
+[Figure 367]
+
+Prompt Prompt: A panda is eating bamboo, …flowing streams.
+
+[Figure 368]
+
+[Figure 369]
+
+[Figure 370]
+
+[Figure 371]
+
+[Figure 372]
+
+[Figure 373]
+
+[Figure 374]
+
+[Figure 375]
+
+[Figure 376]
+
+Apandaiseatingbamboo,…
+
+rainymountains.
+
+[Figure 377]
+
+[Figure 378]
+
+[Figure 379]
+
+[Figure 380]
+
+[Figure 381]
+
+[Figure 382]
+
+[Figure 383]
+
+[Figure 384]
+
+[Figure 385]
+
+[Figure 386]
+
+[Figure 387]
+
+[Figure 388]
+
+BG
+
+Condition
+
+FG Alpha
+
+BGBL
+
+[Figure 389]
+
+[Figure 390]
+
+[Figure 391]
+
+[Figure 392]
+
+[Figure 393]
+
+[Figure 394]
+
+[Figure 395]
+
+[Figure 396]
+
+[Figure 397]
+
+BL
+
+[Figure 398]
+
+[Figure 399]
+
+[Figure 400]
+
+[Figure 401]
+
+[Figure 402]
+
+[Figure 403]
+
+[Figure 404]
+
+[Figure 405]
+
+[Figure 406]
+
+FG
+
+BGBL
+
+- Fig. 19. Application of UniVid-Alpha — Background Replacement. We first generate the alpha matte and foreground from a text prompt. Then, conditioning on these components and a new background prompt, the model generates the new background and blended RGB output.
+
+[Figure 407]
+
+[Figure 408]
+
+[Figure 409]
+
+[Figure 410]
+
+[Figure 411]
+
+[Figure 412]
+
+[Figure 413]
+
+[Figure 414]
+
+[Figure 415]
+
+[Figure 416]
+
+[Figure 417]
+
+[Figure 418]
+
+[Figure 419]
+
+[Figure 420]
+
+[Figure 421]
+
+Input BL Condition
+
+Alpha BG
+
+FG Prompt:hair, …Athemanexteriorwith longwall.curly
+
+[Figure 422]
+
+[Figure 423]
+
+[Figure 424]
+
+BL FG Alpha
+
+- Fig. 20. Application of UniVid-Alpha — Foreground Replacement. We first extract the background from input video through matting. By conditioning on this background and target foreground prompt, the model synthesizes the corresponding blended RGB, foreground and alpha matte output.
+
+training data: the human-centric matting dataset VideoMatte240K lacks labels for transparent objects with semi-transparent alpha mattes, thereby leaving the model without the specific knowledge to determine the correct alpha matte for transparent surfaces.
+
+Masking with Decoupled Gated LoRA, our approach effectively harnesses robust VDM priors, with Cross-Modal Self-Attention ensuring alignment across modalities. Validated through UniVidIntrinsic and UniVid-Alpha, our approach demonstrates exceptional performance, superior temporal stability, and robust in-the-wild generalization, all achieved with remarkable data efficiency (<1k videos). By successfully breaking the boundaries of isolated taskspecific paradigms, we envision UniVidX as a common recipe for aligned multimodal video modeling, with broader V2V settings left for future work.
+
+However, these observations are encouraging, suggesting that the VDM backbone already harbors the physical priors to handle such corner cases. Consequently, we believe that these limitations are not structural but data-dependent, and can be effectively resolved by supplementing the training set with targeted samples.
+
+5 Conclusion
+
+In this paper, we present UniVidX, a unified framework for versatile multimodal video generation. By synergizing Stochastic Condition
+
+Acknowledgments
+
+This work was partially supported by a grant from the NSFC/RGC Collaborative Research Scheme Project No. CRS_HKUST605/25.
+
+References
+
+Armen Aghajanyan, Luke Zettlemoyer, and Sonal Gupta. 2020. Intrinsic dimensionality explains the effectiveness of language model fine-tuning. arXiv preprint arXiv:2012.13255 (2020).
+
+Yağiz Aksoy, Tae-Hyun Oh, Sylvain Paris, Marc Pollefeys, and Wojciech Matusik. 2018. Semantic soft segmentation. TOG (2018). Yagiz Aksoy, Tunc Ozan Aydin, and Marc Pollefeys. 2017. Designing effective inter-pixel information flow for natural image matting. In CVPR.
+
+Tomer Amit, Eliya Nachmani, Tal Shaharbany, and Lior Wolf. 2021. Segdiff: Image segmentation with diffusion probabilistic models. arXiv preprint arXiv:2112.00390
+
+(2021). Gwangbin Bae and Andrew J. Davison. 2024. Rethinking Inductive Biases for Surface Normal Estimation. In CVPR. Shuai Bai et al. 2025. Qwen3-VL Technical Report. arXiv preprint arXiv:2511.21631
+
+(2025). Jonathan T Barron and Jitendra Malik. 2013. Intrinsic scene properties from a single rgb-d image. In CVPR. Sean Bell, Kavita Bala, and Noah Snavely. 2014. Intrinsic images in the wild. TOG
+
+(2014).
+
+Yanrui Bin, Wenbo Hu, Haoyuan Wang, Xinya Chen, and Bing Wang. 2025. NormalCrafter: Learning Temporally Consistent Normals from Video Diffusion Priors. Andreas Blattmann, Tim Dockhorn, Sumith Kulal, Daniel Mendelevitch, et al. 2023. Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets. arXiv preprint arXiv:2311.15127 (2023).
+
+Nicolas Bonneel, Balazs Kovacs, Sylvain Paris, and Kavita Bala. 2017. Intrinsic decompositions for image editing. In Computer graphics forum. Adrien Bousseau, Sylvain Paris, and Frédo Durand. 2009. User-assisted intrinsic images. In SIGGRAPH Asia.
+
+Tim Brooks, Bill Peebles, Connor Homes, Will DePue, Yufei Guo, Li Jing, David Schnurr, Joe Taylor, et al. 2024. Video generation models as world simulators. OpenAI Technical Report (2024).
+
+Brent Burley and Walt Disney Animation Studios. 2012. Physically-based shading at disney. In SIGGRAPH 2012 Course Notes. Daniel J Butler, Jonas Wulff, Garrett B Stanley, and Michael J Black. 2012. A naturalistic open source movie for optical flow evaluation. In ECCV.
+
+- Chris Careaga and Yağız Aksoy. 2023. Intrinsic image decomposition via ordinal shading. ACM Transactions on Graphics 43, 1 (2023), 1–24.
+- Chris Careaga and Yağız Aksoy. 2024. Colorful diffuse intrinsic image decomposition in the wild. TOG (2024).
+
+Guanying Chen, Kai Han, and Kwan-Yee K Wong. 2018. Tom-net: Learning transparent object matting from a single image. In CVPR. Jiawen Chen, Sylvain Paris, and Frédo Durand. 2007. Real-time edge-aware image processing with the bilateral grid. TOG (2007).
+
+Sili Chen, Hengkai Guo, Shengnan Zhu, Feihu Zhang, Zilong Huang, Jiashi Feng, and Bingyi Kang. 2025a. Video Depth Anything: Consistent Depth Estimation for Super-Long Videos. arXiv:2501.12375 (2025).
+
+Xi Chen, Sida Peng, Dongchen Yang, Yuan Liu, Bowen Pan, Chengfei Lv, and Xiaowei Zhou. 2024. Intrinsicanything: Learning diffusion priors for inverse rendering under unknown illumination. In European Conference on Computer Vision. Springer, 450–467.
+
+Zhifei Chen, Tianshuo Xu, Wenhang Ge, Leyi Wu, Dongyu Yan, Jing He, Luozhou Wang, Lu Zeng, Shunsi Zhang, and Ying-Cong Chen. 2025b. Uni-Renderer: Unifying Rendering and Inverse Rendering Via Dual Stream Diffusion. In CVPR.
+
+Yusuf Dalva, Yijun Li, Qing Liu, Nanxuan Zhao, et al. 2024. LayerFusion: Harmonized Multi-Layer Text-to-Image Generation with Generative Priors. arXiv preprint arXiv:2412.04460 (2024).
+
+Alara Dirik, Tuanfeng Wang, Duygu Ceylan, Stefanos Zafeiriou, and Anna Frühstück.
+
+2025. PRISM: A Unified Framework for Photorealistic Reconstruction and Intrinsic Scene Modeling. arXiv preprint arXiv:2504.14219 (2025).
+
+Haotian Dong, Wenjing Wang, Chen Li, and Di Lin. 2025. Wan-Alpha: High-Quality Text-to-Video Generation with Alpha Channel. arXiv preprint arXiv:2509.24979
+
+(2025).
+
+Ainaz Eftekhar, Alexander Sax, Jitendra Malik, and Amir Zamir. 2021. Omnidata: A scalable pipeline for making multi-task mid-level vision datasets from 3d scans. In CVPR.
+
+Mikhail Erofeev, Yury Gitman, Dmitriy S Vatolin, Alexey Fedorov, and Jue Wang. 2015. Perceptually Motivated Benchmark for Video Matting.. In BMVC.
+
+Xiao Fu, Wei Yin, Mu Hu, Kaixuan Wang, Yuexin Ma, Ping Tan, Shaojie Shen, Dahua Lin, and Xiaoxiao Long. 2024. GeoWizard: Unleashing the Diffusion Priors for 3D Geometry Estimation from a Single Image. In ECCV.
+
+Ruiqi Gao*, Aleksander Holynski*, Philipp Henzler, Arthur Brussee, Ricardo MartinBrualla, Pratul P. Srinivasan, Jonathan T. Barron, and Ben Poole*. 2024. CAT3D: Create Anything in 3D with Multi-View Diffusion Models. NIPS (2024).
+
+Ioannis Gkioulekas, Shuang Zhao, Kavita Bala, Todd Zickler, and Anat Levin. 2013. Inverse volume rendering with material dictionaries. TOG (2013).
+
+Ming Gui, Johannes Schusterbauer, Ulrich Prestel, Pingchuan Ma, et al. 2024. DepthFM: Fast Monocular Depth Estimation with Flow Matching. arXiv preprint arXiv:2403.13788 (2024).
+
+Yuwei Guo, Ceyuan Yang, Anyi Rao, Maneesh Agrawala, Dahua Lin, and Bo Dai.
+
+2023. SparseCtrl: Adding Sparse Controls to Text-to-Video Diffusion Models. arXiv preprint arXiv:2311.16933 (2023).
+
+Yuwei Guo, Ceyuan Yang, Anyi Rao, Chenlin Meng, Omer Bar-Tal, Shuangrui Ding, Maneesh Agrawala, Dahua Lin, and Bo Dai. 2025. Keyframe-Guided Creative Video Inpainting. In CVPR.
+
+Xu Han, Biao Zhang, Xiangjun Tang, Xianzhi Li, and Peter Wonka. 2025. LumiX: Structured and Coherent Text-to-Intrinsic Generation. arXiv preprint arXiv:2512.02781
+
+(2025).
+
+Jing He, Haodong Li, Wei Yin, Yixun Liang, et al. 2025. Lotus: Diffusion-based Visual Foundation Model for High-quality Dense Prediction. arXiv preprint arXiv:2409.18124
+
+(2025).
+
+Lukas Höllein, Aljaž Božič, Norman Müller, David Novotny, Hung-Yu Tseng, Christian Richardt, Michael Zollhöfer, and Matthias Nießner. 2024. Viewdiff: 3d-consistent image generation with text-to-image models. In CVPR.
+
+Wenyi Hong, Ming Ding, Wendi Zheng, Xinghan Liu, and Jie Tang. 2022. CogVideo: Large-scale Pretraining for Text-to-Video Generation via Transformers. arXiv preprint arXiv:2205.15868 (2022).
+
+Edward J Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang, and Weizhu Chen. 2022. LoRA: Low-Rank Adaptation of Large Language Models. In ICLR.
+
+Wenbo Hu, Xiangjun Gao, Xiaoyu Li, Sijie Zhao, Xiaodong Cun, Yong Zhang, Long Quan, and Ying Shan. 2025. DepthCrafter: Generating Consistent Long Depth Sequences for Open-world Videos. In CVPR.
+
+Jiehui Huang, Yuechen Zhang, Xu He, Yuan Gao, Zhi Cen, Bin Xia, Yan Zhou, Xin Tao, Pengfei Wan, and Jiaya Jia. 2025. UnityVideo: Unified Multi-Modal Multi-Task Learning for Enhancing World-Aware Video Generation. arXiv preprint arXiv:2512.07831 (2025).
+
+Wei-Lun Huang and Ming-Sui Lee. 2023. End-to-End Video Matting With Trimap Propagation. In CVPR.
+
+Ziqi Huang, Yinan He, Jiashuo Yu, Fan Zhang, Chenyang Si, Yuming Jiang, Yuanhan Zhang, Tianxing Wu, Qingyang Jin, Nattapol Chanpaisit, et al. 2024. Vbench: Comprehensive benchmark suite for video generative models. In CVPR.
+
+Chuong Huynh, Seoung Wug Oh, , Abhinav Shrivastava, and Joon-Young Lee. 2024. MaGGIe: Masked Guided Gradual Human Instance Matting. In CVPR.
+
+Gabriel Ilharco, Marco Tulio Ribeiro, Mitchell Wortsman, Suchin Gururangan, Ludwig Schmidt, Hannaneh Hajishirzi, and Ali Farhadi. 2022. Editing models with task arithmetic. arXiv preprint arXiv:2212.04089 (2022).
+
+Zeren Jiang, Chuanxia Zheng, Iro Laina, Diane Larlus, and Andrea Vedaldi. 2025. Geo4D: Leveraging Video Generators for Geometric 4D Scene Reconstruction. arXiv preprint arXiv:2504.07961 (2025).
+
+Bingxin Ke, Anton Obukhov, Shengyu Huang, Nando Metzger, Rodrigo Caye Daudt, and Konrad Schindler. 2024. Repurposing Diffusion-Based Image Generators for Monocular Depth Estimation. In CVPR.
+
+Zhanghan Ke, Jiayu Sun, Kaican Li, Qiong Yan, and Rynson W.H. Lau. 2022. MODNet: Real-Time Trimap-Free Portrait Matting via Objective Decomposition. In AAAI. Peter Kocsis, Lukas Höllein, and Matthias Nießner. 2025. IntrinsiX: High-Quality PBR
+
+Generation using Image Priors. NIPS (2025). Peter Kocsis, Vincent Sitzmann, and Matthias Nießner. 2024. Intrinsic Image Diffusion for Indoor Single-view Material Estimation. CVPR (2024).
+
+Weijie Kong, Qi Tian, Zijian Zhang, Rox Min, Zuozhuo Dai, Jin Zhou, Jiangfeng Xiong, Xin Li, Bo Wu, Jianwei Zhang, et al. 2024. Hunyuanvideo: A systematic framework for large video generative models. arXiv preprint arXiv:2412.03603 (2024).
+
+Duong H. Le, Tuan Pham, Sangho Lee, Christopher Clark, et al. 2024. One Diffusion to Generate Them All. arXiv preprint arXiv:2411.16318 (2024).
+
+Yao-Chih Lee, Erika Lu, Sarah Rumbley, Michal Geyer, Jia-Bin Huang, Tali Dekel, and Forrester Cole. 2025. Generative Omnimatte: Learning to Decompose Video into Layers. In CVPR.
+
+Louis Lettry, Kenneth Vanhoey, and Luc Van Gool. 2018. Unsupervised deep singleimage intrinsic decomposition using illumination-varying image sequences. In Computer graphics forum, Vol. 37. Wiley Online Library, 409–419.
+
+Anat Levin, Dani Lischinski, and Yair Weiss. 2007. A closed-form solution to natural
+
+image matting. TPAMI (2007). Anat Levin, Alex Rav-Acha, and Dani Lischinski. 2008. Spectral matting. TPAMI (2008). Jiachen Li, Vidit Goel, Marianna Ohanyan, Shant Navasardyan, Yunchao Wei, and
+
+Humphrey Shi. 2024a. Vmformer: End-to-end video matting with transformer. In WACV.
+
+Jiachen Li, Jitesh Jain, and Humphrey Shi. 2024b. Matting anything. In CVPR.
+
+Jia Li, Lu Wang, Lei Zhang, and Beibei Wang. 2024c. Tensosdf: Roughness-aware tensorial representation for robust geometry and material reconstruction. TOG
+
+(2024).
+
+Zhengqin Li, Mohammad Shafiei, Ravi Ramamoorthi, Kalyan Sunkavalli, and Manmohan Chandraker. 2020. Inverse rendering for complex indoor scenes: Shape, spatially-varying lighting and svbrdf from a single image. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. 2475–2484.
+
+Zhengqi Li and Noah Snavely. 2018. Learning intrinsic image decomposition from watching the world. In Proceedings of the IEEE conference on computer vision and pattern recognition. 9039–9048.
+
+Ruofan Liang, Zan Gojcic, Huan Ling, Jacob Munkberg, Jon Hasselgren, Zhi-Hao Lin, Jun Gao, Alexander Keller, Nandita Vijaykumar, Sanja Fidler, and Zian Wang. 2025. DiffusionRenderer: Neural Inverse and Forward Rendering with Video Diffusion Models.
+
+Chung-Ching Lin, Jiang Wang, Kun Luo, Kevin Lin, Linjie Li, Lijuan Wang, and Zicheng Liu. 2023. Adaptive Human Matting for Dynamic Videos. In CVPR.
+
+Hongkai Lin, Dingkang Liang, Mingyang Du, Xin Zhou, and Xiang Bai. 2025. More Than Generation: Unifying Generation and Depth Estimation via Text-to-Image Diffusion Models. In NIPS.
+
+Shanchuan Lin, Andrey Ryabtsev, Soumyadip Sengupta, Brian L Curless, Steven M Seitz, and Ira Kemelmacher-Shlizerman. 2021. Real-time high-resolution background matting. In CVPR.
+
+Shanchuan Lin, Linjie Yang, Imran Saleemi, and Soumyadip Sengupta. 2022. Robust high-resolution video matting with temporal guidance. In WACV.
+
+Yaron Lipman, Ricky TQ Chen, Heli Ben-Hamu, Maximilian Nickel, and Matt Le. 2022. Flow matching for generative modeling. arXiv preprint arXiv:2210.02747 (2022). Yunfei Liu, Yu Li, Shaodi You, and Feng Lu. 2020. Unsupervised learning for intrinsic image decomposition from a single image. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. 3248–3257.
+
+Xiaoxiao Long, Yuan-Chen Guo, Cheng Lin, Yuan Liu, Zhiyang Dou, Lingjie Liu, Yuexin Ma, Song-Hai Zhang, Marc Habermann, Christian Theobalt, et al. 2023. Wonder3D: Single Image to 3D using Cross-Domain Diffusion. arXiv preprint arXiv:2310.15008 (2023).
+
+- Ilya Loshchilov and Frank Hutter. 2016. Sgdr: Stochastic gradient descent with warm restarts. arXiv preprint arXiv:1608.03983 (2016).
+- Ilya Loshchilov and Frank Hutter. 2017. Decoupled weight decay regularization. arXiv preprint arXiv:1711.05101 (2017).
+
+Jundan Luo, Duygu Ceylan, Jae Shin Yoon, Nanxuan Zhao, Julien Philip, Anna Frühstück, Wenbin Li, Christian Richardt, and Tuanfeng Y. Wang. 2024. IntrinsicDiffusion: Joint Intrinsic Layers from Latent Diffusion Models. In SIGGRAPH Conference Papers. Jundan Luo, Zhaoyang Huang, Yijin Li, Xiaowei Zhou, Guofeng Zhang, and Hujun Bao. 2020. NIID-Net: Adapting surface normal knowledge for intrinsic image decomposition in indoor scenes. IEEE Transactions on Visualization and Computer Graphics 26, 12 (2020), 3434–3445.
+
+Gonzalo Martin Garcia, Karim Abou Zeid, Christian Schmidt, Daan de Geus, Alexander Hermans, and Bastian Leibe. 2025. Fine-Tuning Image-Conditional Diffusion Models is Easier than You Think. In WACV.
+
+Meituan LongCat Team, Xunliang Cai, Qilong Huang, Zhuoliang Kang, Hongyu Li, et al. 2025. LongCat-Video Technical Report. arXiv preprint arXiv:2510.22200 (2025).
+
+Zhenxing Mi, Yuxin Wang, and Dan Xu. 2025. One4D: Unified 4D Generation and Reconstruction via Decoupled LoRA Control. arXiv preprint arXiv:2511.18922 (2025).
+
+Chong Mou, Xintao Wang, Liangbin Xie, Yanze Wu, Jian Zhang, Zhongang Qi, Ying Shan, and Xiaohu Qie. 2023. T2i-adapter: Learning adapters to dig out more controllable ability for text-to-image diffusion models. arXiv preprint arXiv:2302.08453 (2023).
+
+Xiangyu Peng, Zangwei Zheng, Chenhui Shen, Tom Young, Xinying Guo, Binluo Wang, Hang Xu, Hongxin Liu, Mingyan Jiang, Wenjun Li, Yuhui Wang, Anbang Ye, Gang Ren, Qianran Ma, Wanying Liang, Xiang Lian, Xiwen Wu, Yuting Zhong, Zhuangyan Li, Chaoyu Gong, Guojun Lei, Leijun Cheng, Limin Zhang, Minghao Li, Ruijie Zhang, Silan Hu, Shijie Huang, Xiaokang Wang, Yuanheng Zhao, Yuqi Wang, Ziang Wei, and Yang You. 2025. Open-Sora 2.0: Training a Commercial-Level Video Generation Model in 200k. arXiv preprint arXiv:2503.09642 (2025).
+
+Can Qin, Shu Zhang, Ning Yu, Yihao Feng, Xinyi Yang, Yingbo Zhou, Huan Wang, Juan Carlos Niebles, Caiming Xiong, Silvio Savarese, et al. 2023. UniControl: A Unified Diffusion Model for Controllable Visual Generation In the Wild. arXiv preprint arXiv:2305.11147 (2023).
+
+Christoph Rhemann, Carsten Rother, Jue Wang, Margrit Gelautz, Pushmeet Kohli, and Pamela Rott. 2009. A perceptually motivated online benchmark for image matting. In CVPR.
+
+Soumyadip Sengupta, Jinwei Gu, Kihwan Kim, Guilin Liu, David W Jacobs, and Jan Kautz. 2019. Neural inverse rendering of an indoor scene from a single image. In Proceedings of the IEEE/CVF International Conference on Computer Vision. 8598–8607.
+
+Soumyadip Sengupta, Vivek Jayaram, Brian Curless, Steven M Seitz, and Ira Kemelmacher-Shlizerman. 2020. Background matting: The world is your green screen. In CVPR.
+
+Xiaoyong Shen, Aaron Hertzmann, Jiaya Jia, Sylvain Paris, Brian Price, Eli Shechtman, and Ian Sachs. 2016. Automatic portrait segmentation for image stylization. In Computer Graphics Forum.
+
+Zhixin Shu, Mihir Sahasrabudhe, Riza Alp Guler, Dimitris Samaras, Nikos Paragios, and Iasonas Kokkinos. 2018. Deforming autoencoders: Unsupervised disentangling of shape and appearance. In ECCV.
+
+Zhixin Shu, Ersin Yumer, Sunil Hadap, Kalyan Sunkavalli, Eli Shechtman, and Dimitris Samaras. 2017. Neural face editing with intrinsic image disentangling. In CVPR. Jianlin Su, Yu Lu, Shengfeng Pan, Bo Wen, and Yunfeng Liu. 2021. RoFormer: Enhanced
+
+Transformer with Rotary Position Embedding. arXiv:2104.09864
+
+Shanlin Sun, Yifan Wang, Hanwen Zhang, Yifeng Xiong, Qin Ren, Ruogu Fang, Xiaohui Xie, and Chenyu You. 2025a. Ouroboros: Single-step Diffusion Models for Cycleconsistent Forward and Inverse Rendering. arXiv preprint arXiv:2508.14461 (2025).
+
+Tiancheng Sun, Jonathan T Barron, Yun-Ta Tsai, Zexiang Xu, Xueming Yu, Graham Fyffe, Christoph Rhemann, Jay Busch, Paul E Debevec, and Ravi Ramamoorthi. 2019. Single image portrait relighting. TOG (2019).
+
+Yang-Tian Sun, Xin Yu, Zehuan Huang, Yi-Hua Huang, Yuan-Chen Guo, Ziyi Yang, Yan-Pei Cao, and Xiaojuan Qi. 2025b. UniGeo: Taming Video Diffusion for Unified Consistent Geometry Estimation. arXiv preprint arXiv:2505.24521 (2025).
+
+Jingwei Tang, Yagiz Aksoy, Cengiz Oztireli, Markus Gross, and Tunc Ozan Aydin. 2019. Learning-based sampling for natural image matting. In CVPR. Luming Tang, Menglin Jia, Qianqian Wang, Cheng Perng Phoo, and Bharath Hariharan.
+
+2023. Emergent correspondence from image diffusion. NIPS (2023). Junjiao Tian, Lavisha Aggarwal, Andrea Colaco, Zsolt Kira, and Mar Gonzalez-Franco.
+
+2023. Diffuse, Attend, and Segment: Unsupervised Zero-Shot Segmentation using Stable Diffusion. arXiv preprint arXiv:2308.12469 (2023).
+
+Team Wan, Ang Wang, Baole Ai, Bin Wen, Chaojie Mao, Chen-Wei Xie, et al. 2025. Wan: Open and Advanced Large-Scale Video Generative Models. arXiv preprint arXiv:2503.20314 (2025).
+
+Beibei Wang, Wenhua Jin, Miloš Hašan, and Ling-Qi Yan. 2022. Spongecake: A layered microflake surface appearance model. TOG (2022).
+
+Jiaye Wu, Sanjoy Chowdhury, Hariharmano Shanmugaraja, David Jacobs, and Soumyadip Sengupta. 2023. Measured albedo in the wild: Filling the gap in intrinsics evaluation. In 2023 IEEE International Conference on Computational Photography (ICCP). IEEE, 1–12.
+
+Dianbing Xi, Jiepeng Wang, Yuanzhi Liang, Xi Qi, Yuchi Huo, Rui Wang, Chi Zhang, and Xuelong Li. 2025a. OmniVDiff: Omni Controllable Video Diffusion for Generation and Understanding. arXiv preprint arXiv:2504.10825 (2025).
+
+Dianbing Xi, Jiepeng Wang, Yuanzhi Liang, Xi Qiu, et al. 2025b. CtrlVDiff: Controllable Video Generation via Unified Multimodal Video Diffusion. arXiv preprint arXiv:2511.21129 (2025).
+
+Guangkai Xu, Yongtao Ge, Mingyu Liu, Chengxiang Fan, Kangyang Xie, Zhiyue Zhao, Hao Chen, and Chunhua Shen. 2024a. What Matters When Repurposing Diffusion Models for General Dense Perception Tasks? arXiv preprint arXiv:2403.06090 (2024).
+
+Tian-Xing Xu, Xiangjun Gao, Wenbo Hu, Xiaoyu Li, Song-Hai Zhang, and Ying Shan. 2025a. GeometryCrafter: Consistent Geometry Estimation for Open-world Videos with Diffusion Priors. arXiv preprint arXiv:2504.01016 (2025).
+
+Yifeng Xu, Zhenliang He, Meina Kan, Shiguang Shan, and Xilin Chen. 2025b. Jodi: Unification of Visual Generation and Understanding via Joint Modeling. arXiv preprint arXiv:2505.19084 (2025).
+
+Yifeng Xu, Zhenliang He, Shiguang Shan, and Xilin Chen. 2024b. CtrLoRA: An Extensible and Efficient Framework for Controllable Image Generation. arXiv preprint arXiv:2410.09400 (2024).
+
+Honghui Yang, Di Huang, Wei Yin, Chunhua Shen, Haifeng Liu, Xiaofei He, Binbin Lin, Wanli Ouyang, and Tong He. 2024a. Depth Any Video with Scalable Synthetic Data. arXiv preprint arXiv:2410.10815 (2024).
+
+Jinrui Yang, Qing Liu, Yijun Li, Soo Ye Kim, Daniil Pakhomov, Mengwei Ren, Jianming Zhang, Zhe Lin, Cihang Xie, and Yuyin Zhou. 2025a. Generative Image Layer Decomposition with Visual Effects. CVPR.
+
+Peiqing Yang, Shangchen Zhou, Jixin Zhao, Qingyi Tao, and Chen Change Loy. 2025c. MatAnyone: Stable Video Matting with Consistent Memory Propagation. In CVPR.
+
+Yuxiao Yang, Xiaoxiao Long, Zhiyang Dou, Cheng Lin, Yuan Liu, Qingsong Yan, Yuexin Ma, Haoqian Wang, Zhiqiang Wu, and Wei Yin. 2025b. Wonder3D++: Cross-Domain Diffusion for High-Fidelity 3D Generation From a Single Image. TPAMI (2025). Zhuoyi Yang, Jiayan Teng, Wendi Zheng, Ming Ding, Shiyu Huang, Jiazheng Xu, Yuanming Yang, Wenyi Hong, Xiaohan Zhang, Guanyu Feng, et al. 2024b. CogVideoX: Text-to-Video Diffusion Models with An Expert Transformer. arXiv preprint arXiv:2408.06072 (2024).
+
+Jingfeng Yao, Xinggang Wang, Shusheng Yang, and Baoyuan Wang. 2024a. ViTMatte: Boosting image matting with pre-trained plain vision transformers. Information Fusion (2024).
+
+Jingfeng Yao, Xinggang Wang, Lang Ye, and Wenyu Liu. 2024b. Matte anything: Interactive natural image matting with segment anything model. Image and Vision Computing (2024).
+
+Chongjie Ye, Lingteng Qiu, Xiaodong Gu, Qi Zuo, Yushuang Wu, Zilong Dong, Liefeng Bo, Yuliang Xiu, and Xiaoguang Han. 2024. Stablenormal: Reducing diffusion
+
+variance for stable and sharp normal. TOG (2024).
+
+Hao Yu, Jiabo Zhan, Zile Wang, Jinglin Wang, et al. 2025. OmniAlpha: A Sequenceto-Sequence Framework for Unified Multi-Task RGBA Generation. arXiv preprint arXiv:2511.20211 (2025).
+
+Amir R Zamir, Alexander Sax, William Shen, Leonidas J Guibas, Jitendra Malik, and Silvio Savarese. 2018. Taskonomy: Disentangling task transfer learning. In CVPR.
+
+Zheng Zeng, Valentin Deschaintre, Iliyan Georgiev, Yannick Hold-Geoffroy, et al. 2024. RGB↔X: Image decomposition and synthesis using material- and lighting-aware diffusion models. In SIGGRAPH Conference Papers.
+
+Jingyang Zhang, Shiwei Li, Yuanxun Lu, Tian Fang, David McKinnon, Yanghai Tsin, Long Quan, and Yao Yao. 2024. JointNet: Extending Text-to-Image Diffusion for Dense Distribution Modeling. ICLR (2024).
+
+Kai Zhang, Fujun Luan, Qianqian Wang, Kavita Bala, and Noah Snavely. 2021. Physg: Inverse rendering with spherical gaussians for physics-based material editing and relighting. In CVPR.
+
+Lvmin Zhang and Maneesh Agrawala. 2024. Transparent Image Layer Diffusion using Latent Transparency. TOG (2024). Lvmin Zhang, Anyi Rao, and Maneesh Agrawala. 2023. Adding Conditional Control to Text-to-Image Diffusion Models.
+
+Canyu Zhao, Mingyu Liu, Huanyi Zheng, Muzhi Zhu, Zhiyue Zhao, Hao Chen, Tong He, and Chunhua Shen. 2025. Diception: A generalist diffusion model for visual perceptual tasks. arXiv preprint arXiv:2502.17157 (2025).
+
+Zangwei Zheng, Xiangyu Peng, Tianji Yang, Chenhui Shen, Shenggui Li, Hongxin Liu, Yukun Zhou, Tianyi Li, and Yang You. 2024. Open-sora: Democratizing efficient video production for all. arXiv preprint arXiv:2412.20404 (2024).
+
+Shangchen Zhou, Chongyi Li, Kelvin C.K Chan, and Chen Change Loy. 2023. ProPainter: Improving Propagation and Transformer for Video Inpainting. In ICCV.
+
+Jingsen Zhu, Fujun Luan, Yuchi Huo, Zihao Lin, Zhihua Zhong, Dianbing Xi, Rui Wang, Hujun Bao, Jiaxiang Zheng, and Rui Tang. 2022a. Learning-based inverse rendering of complex indoor scenes with differentiable monte carlo raytracing. In SIGGRAPH Asia Conference Papers.
+
+Jingsen Zhu, Fujun Luan, Yuchi Huo, Zihao Lin, Zhihua Zhong, Dianbing Xi, Rui Wang, Hujun Bao, Jiaxiang Zheng, and Rui Tang. 2022b. Learning-based inverse rendering of complex indoor scenes with differentiable monte carlo raytracing. In Siggraph asia 2022 conference papers. 1–8.
+
+Junhao Zhuang, Yanhong Zeng, Wenran Liu, Chun Yuan, and Kai Chen. 2024. A Task is Worth One Word: Learning with Task Prompts for High-Quality Versatile Image Inpainting. In ECCV.
+

@@ -1,0 +1,1503 @@
+## CoSTA∗: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing
+
+# arXiv:2503.10613v1[cs.CV]13Mar2025
+
+Advait Gupta NandaKiran Velaga Dang Nguyen Tianyi Zhou University of Maryland, College Park {advait25,nvelaga,dangmn,tianyi}@umd.edu Project: https://github.com/tianyi-lab/CoSTAR
+
+### Abstract
+
+Text-to-image models like stable diffusion and DALLE-3 still struggle with multi-turn image editing. We decompose such a task as an agentic workflow (path) of tool use that addresses a sequence of subtasks by AI tools of varying costs. Conventional search algorithms require expensive exploration to find tool paths. While large language models (LLMs) possess prior knowledge of subtask planning, they may lack accurate estimations of capabilities and costs of tools to determine which to apply in each subtask. Can we combine the strengths of both LLMs and graph search to find cost-efficient tool paths? We propose a threestage approach “CoSTA∗” that leverages LLMs to create a subtask tree, which helps prune a graph of AI tools for the given task, and then conducts A∗ search on the small subgraph to find a tool path. To better balance the total cost and quality, CoSTA∗ combines both metrics of each tool on every subtask to guide the A∗ search. Each subtask’s output is then evaluated by a visionlanguage model (VLM), where a failure will trigger an update of the tool’s cost and quality on the subtask. Hence, the A∗ search can recover from failures quickly to explore other paths. Moreover, CoSTA∗ can automatically switch between modalities across subtasks for a better cost-quality tradeoff. We build a novel benchmark of challenging multi-turn image editing, on which CoSTA∗ outperforms state-of-the-art image-editing models or agents in terms of both cost and quality, and performs versatile trade-offs upon user preference.
+
+### 1. Introduction
+
+Text-to-Image models such as stable diffusion, FLUX, and DALLE has been widely studied to replace humans on image-editing tasks, which are time-consuming due to various repetitive operations and trial-and-errors. While these models have exhibited remarkable potential for generating
+
+Pareto Front Ours ( = 0) Ours ( = 0.5)
+
+- Ours ( = 1)
+
+Ours ( = 1.5)
+
+- Ours ( = 2)
+
+CLOVA
+
+Instruct Pix2Pix
+
+GenArtist
+
+MagicBrush
+
+0.96
+
+0.94
+
+###### Quality
+
+0.92
+
+0.90
+
+0.88
+
+0.70
+
+0.60
+
+54 56 58 60 62 64 66 68
+
+Cost (seconds)
+
+Figure 1. CoSTA∗ with different cost-quality trade-off coefficients α vs. four recent image-editing models/agents. CoSTA∗ achieves Pareto optimality and dominates baselines on both metrics.
+
+diverse images and simple object editing, they usually struggle to follow composite instructions that require multi-turn editing, in which a sequence of delicate adjustments are requested to manipulate (e.g., remove, replace, add) several details (e.g., object attributes or texts) while keeping other parts intact. For example, given an image, it is usually challenging for them to “recolor the chalkboard to red while redacting the text on it and write “A CLASSROOM” on the top. Also, detect if any children are in the image.”
+
+Although a large language model (LLM) can decompose the above multi-turn composite task into easier subtasks, and each subtask can be potentially learned by existing techniques such as ControlNet, the required training data and computational costs are usually expensive. Hence, a training-free agent that automatically selects tools to address the subtasks is usually more appealing. However, finding an efficient and successful path of tool use (i.e., toolpath) is nontrivial: while some subtasks are exceptionally challenging and may require multi-round trial-and-errors with advanced and costly AI models, various subtasks could be handled by much simpler, lower-cost tools. Moreover, users with limited budgets usually prefer to control and optimize the trade-off between quality and cost. However, most exist-
+
+INPUT CoSTA* (ours) GenArtist MagicBrush InstructPix2Pix CLOVA
+
+[Figure 1]
+
+[Figure 2]
+
+[Figure 3]
+
+[Figure 4]
+
+[Figure 5]
+
+[Figure 6]
+
+Update the closed signage to open while detecting the trash can and pedestrian crossing for better scene understanding. Also, remove the people for clarity.
+
+[Figure 7]
+
+[Figure 8]
+
+[Figure 9]
+
+[Figure 10]
+
+[Figure 11]
+
+[Figure 12]
+
+Detect the bench in image while recoloring it to pink. Also, remove the cat for a clearer view and recolor the wall to yellow.
+
+[Figure 13]
+
+[Figure 14]
+
+[Figure 15]
+
+[Figure 16]
+
+[Figure 17]
+
+[Figure 18]
+
+Detect the wooden sign while replacing its content to “SAFE ZONE”. Also, replace the cat in the image with a dog.
+
+- Figure 2. Comparison of CoSTA∗ with State-of-the-Art image editing models/agents, which include GenArtist (Wang et al., 2024b), MagicBrush (Zhang et al., 2024a), InstructPix2Pix (Brooks et al., 2023), and CLOVA (Gao et al., 2024). The input images and prompts are shown on the left of the figure. The outputs generated by each method illustrate differences in accuracy, visual coherence, and the ability to multimodal tasks. Figure 9 shows examples of step-by-step editing using CoSTA∗with intermediate subtask outputs presented.
+
+ing image-editing agents are not cost-sensitive so the search cost of their toolpaths can be highly expensive.
+
+Despite the strong heuristic of LLMs on tool selection for each subtask, as shown in Figure 3, they also suffer from hallucinations and may generate sub-optimal paths due to the lack of precise knowledge for each tool and the long horizon of multi-turn editing. On the other hand, classical search algorithms such as A∗ and MCTS can precisely find the optimal tool path after sufficient exploration, if accurate estimates of per-step value/cost and high-quality heuristics are available. However, they are not scalable to explore tool paths on a large-scale graph of many computationally heavy models as tools, e.g., diffusion models. This motivates the question: Can we combine the strengths of both methods in a complementary manner?
+
+In this paper, we develop a novel agentic mechanism “Cost-Sensitive Toolpath Agent (CoSTA∗)” that combines both LLMs and A∗ search’s strengths while overcoming each other’s weaknesses to find a cost-sensitive path of tool use for a given task. As illustrated in Figure 3, we propose a hierarchical planning strategy where an LLM focuses on subtask planning (each subtask is a subsequence of tool uses), which decomposes the given task into a subtask tree on which every root-to-leaf path is a feasible high-level plan for the task. This is motivated by the observations that LLMs are more powerful on subtask-level commonsense reasoning but may lack accurate knowledge to decide which specific tools to use per subtask. Then, a low-level A∗ search is applied to the subgraph spanned by the subtask
+
+tree on a tool dependency graph (TDG, with an example in Figure 4). It aims to find a toolpath fulfilling the userdefined quality-cost trade-off. The subtask tree effectively reduces the graph of tools on which the A∗ search is conducted, saving a significant amount of searching cost.
+
+In CoSTA∗, we exploit available prior knowledge and benchmark evaluation results of tools, which are underexplored in previous LLM agents, to improve both the planning and search accuracy. We mainly leverage two types of prior information: (1) the input, output, and subtasks of each tool/model; and (2) the benchmark performance and cost of each tool or model reported in the existing literature. Specifically, a sparse tool dependency graph (TDG) is built based on (1), where two tools are connected if the first’s output is a legal input to the second in certain subtask(s). Moreover, the information in (2) defines the heuristics h(x) in A∗ search, which combines both the cost and quality with a trade-off coefficient α. We further propose an actual execution cost g(x) combining the actual cost and quality in completed subtasks, and update it during exploration. By adjusting α, the cost-sensitive A∗ search aims to find a toolpath aligning with user preference of quality-cost trade-off.
+
+To examine the performance of CoSTA∗, we curate a novel benchmark for multi-turn image editing with challenging, composite tasks. We compare CoSTA∗ with state-of-theart image-editing models or agents. As shown in Figure 1, CoSTA∗achieves advantages over others on both the cost and quality, pushing the Pareto frontier of their trade-offs. In Figure 9, in several challenging multi-turn image-editing
+
+Different Subtasks by colors Tools colored by their subtasks
+
+[Figure 19]
+
+Input Image Unexplored nodes
+
+[Figure 20]
+
+[Figure 21]
+
+Searched toolpath Explored toolpath
+
+[Figure 22]
+
+[Figure 23]
+
+[Figure 24]
+
+Complex Image-Editing Tasks require to apply different tools for multiple steps, i.e., to find a tool path
+
+Input
+
+||Model|Subtask Supported|Input|Output|
+|---|---|---|---|
+|YOLO|Object Detection|Input Image|Bounding Box|
+<br><br>Model Description Table<br><br>... ...|
+|---|
+
+||Model|Subtask|Accuracy|Time|
+|---|---|---|---|
+|YOLO|Object Detection| | |
+<br><br>Benchmark Table<br><br>... ...|
+|---|
+
+Tools
+
+Target Image
+
+ToolPath
+
+|Input Image<br><br>ABC<br><br>|
+|---|
+
+|Instruction<br><br>Recolor the person red, replace the cat with a dog, and change “ABC” to “DEF.”|
+|---|
+
+|[Figure 25]<br><br>Tool Graph<br><br>|
+|---|
+
+DEF
+
+[Figure 26]
+
+Find ToolPath
+
+Search Algorithms (A*, MCTS, etc)
+
+LLM-only Planning
+
+Expensive exploration cost, optimal path guarantee
+
+Low exploration cost, but LLM-planned path may fail
+
+|Instruction| |
+|---|---|
+| | |
+
+Instruction Tool Dependency Graph
+
+Edited Image
+
+ToolPath
+
+Tool Graph spanned by Subtask Tree
+
+Subtask Tree
+
+| |Edited Image<br><br>DEF<br><br>|
+|---|---|
+| | |
+
+[Figure 27]
+
+[Figure 28]
+
+LLM
+
+Search Algorithm of ToolPath
+
+[Figure 29]
+
+| | |
+|---|---|
+|Tools| |
+
+CoSTA*: Cost-Sensitive ToolPath Agent (ours)
+
+LLM prunes the tool graph by high-level subtask planning, which reduces the exploration of A* search for a cost-sensitive toolpath.
+
+|Prompt Instruction| |
+|---|---|
+| | |
+
+|Benchmark Quality & Cost of Tools| |
+|---|---|
+| | |
+
+Tool Dependency Graph
+
+A* Search Steps: Explore tools based on their Quality & Cost
+
+Tool Subgraph spanned by Subtask Tree
+
+| |Edited Image<br><br>DEF<br><br>|
+|---|---|
+| | |
+
+Subtask Tree (LLM-pruned)
+
+Intermediate Step Image
+
+[Figure 30]
+
+[Figure 31]
+
+A* Search
+
+LLM
+
+[Figure 32]
+
+[Figure 33]
+
+| | |
+|---|---|
+|List of Supported Subtasks| |
+
+Updated Quality & Cost of Tools
+
+Quality Check by VLM
+
+Fail Pass
+
+- Figure 3. Comparison of CoSTA∗ with other planning agents. LLM-only planning is efficient but prone to failure and heuristics. Search algorithms like A∗ guarantee optimal paths but are computationally expensive. CoSTA∗ balances cost and quality by first pruning the subtask tree using an LLM, which reduces the graph of tools we conduct fine-grained A∗ search on.
+
+tasks, only CoSTA∗ accomplishes the goals. Our contributions can be summarized as below:
+
+- • We propose a novel hierarchical planning agent CoSTA∗ that combines the strengths of LLMs and graph search to find toolpaths for composite multi-turn image editing.
+- • CoSTA∗ addresses the quality-cost trade-off problem by a controllable cost-sensitive A∗ search, and achieves the Pareto optimality over existing agents.
+- • We exploit prior knowledge of tools to improve the toolpath finding.
+- • We propose a new challenging benchmark for multi-turn image editing covering tasks of different complexities.
+
+### 2. Related Work
+
+Image Editing via Generative AI Image editing has seen significant advancements with the rise of diffusion models (Dhariwal & Nichol, 2021; Ho et al., 2020), enabling highly realistic and diverse image generation and modification. Modern approaches focus on text-to-image frameworks that
+
+transform descriptive text prompts into images, achieving notable quality (Chen et al., 2023a; Rombach et al., 2022b; Saharia et al., 2022) but often facing challenges with precise control over outputs. To mitigate this controllability issue, methods like ControlNet (Zhang et al., 2023b) and sketchbased conditioning (Voynov et al., 2022) refine user-driven edits, while layout-to-image systems synthesize compositions from spatial object arrangements (Chen et al., 2023b; Li et al., 2023b; Lian et al., 2024; Xie et al., 2023). Beyond text-driven editing, research efforts have also focused on personalized generation and domain-specific fine-tuning for tasks such as custom content creation or rendering text within images. However, current models still struggle with handling complex prompts, underscoring the need for unified, flexible solutions (Brooks et al., 2023; Chen et al., 2024; Parmar et al., 2023; Yang et al., 2022).
+
+Large Multimodal Agents for Image Editing Recent advancements in multimodal large language models (MLLMs) have significantly enhanced complex image editing capabilities (Wang et al., 2024b; Huang et al., 2024; Zhang et al., 2024b; Huang et al., 2023; Zhang et al., 2024c; Yang et al.,
+
+Magic Brush
+
+RealESRGAN
+
+Text Redaction
+
+###### Stable Diffusion Group
+
+Google Cloud Vision
+
+MiDaS
+
+SD 3, SD Search-and-Recolor, SD Outpaint, SD Remove Background
+
+Deep Font
+
+DALL-E
+
+DALL-E
+
+Grounding DINO
+
+Stable Diffusion Erase
+
+Image Modality
+
+Stable Diffusion Inpaint
+
+Input Image
+
+LLM (GPT 4o)
+
+Text Writing using Pillow
+
+SAM
+
+CRAFT
+
+YOLO
+
+Text Modality
+
+Stable Diffusion Erase
+
+Text Removal by painting
+
+EasyOCR
+
+LLM (GPT 4o)
+
+pix2pix
+
+All Prerequisites Required
+
+Text Writing using Pillow (For Addition)
+
+Stable Diffusion Group
+
+Deblur GAN
+
+CLIP
+
+- Figure 4. Tool Dependency Graph (TDG). A directed graph where nodes represent tools and edges indicate dependencies. An edge (v1, v2) means v1’s output is a legal input of v2. It enables toolpath search for multi-turn image-editing tasks with composite instructions.
+
+2024; Wang et al., 2024c). GenArtist (Wang et al., 2024b) introduces a unified system where an MLLM agent coordinates various models to decompose intricate tasks into manageable sub-problems, enabling systematic planning and self-correction. DialogGen (Huang et al., 2024) aligns MLLMs with text-to-image (T2I) models, facilitating multiturn dialogues that allow users to iteratively refine images through natural language instructions. IterComp (Zhang et al., 2024b) aggregates preferences from multiple models and employs iterative feedback learning to enhance compositional generation, particularly in attribute binding and spatial relationships. SmartEdit (Huang et al., 2023) leverages MLLMs for complex instruction-based editing, utilizing a bidirectional interaction module to improve understanding and reasoning. These approaches build upon foundational works like BLIP-2 (Li et al., 2023a), which integrates vision and language models for image understanding, and InstructPix2Pix (Brooks et al., 2023), which focuses on text-guided image editing.
+
+- 3. Foundations of CoSTA∗ We present the underlying models, supporting data structures, and prior knowledge that CoSTA∗ relies on before explaining the design of the CoSTA∗ algorithm. Specifically, we describe the Model Description Table, the Tool Dependency Graph, and the Benchmark Table.
+
+##### 3.1. Model Description Table
+
+Table 1. Model Description Table (excerpt)
+
+Model Supported Subtasks Inputs Outputs YOLO (Wang et al., 2022) Object Detection Input Image Bounding Boxes SAM (Kirillov et al., 2023a) Segmentation Bounding Boxes Segmentation Masks DALL-E (Ramesh et al., 2021) Object Replacement Segmentation Mask Edited Image Stable Diffusion Inpaint Object Removal, Replacement, Segmentation Mask Edited Image
+
+(Rombach et al., 2022a) Recoloration EasyOCR Text Extraction Text Bounding Box Extracted Text (Kittinaradorn et al., 2022)
+
+We first construct a Model Description Table (MDT) that lists all specialized models (e.g., SAM, YOLO) and the corresponding tasks they support (e.g., image segmentation, object detection). In this paper, we consider 24 models that collectively support 24 tasks, covering both image and text
+
+modalities. The supported tasks can be broadly categorized into image editing tasks (e.g., object removal, object recolorization) and text-in-image editing tasks (e.g., text removal, text replacement). Our system allows for easy extension by adding new models and their corresponding tasks to this table. The MDT also includes columns specifying the input dependencies and outputs of each model. An excerpt of the MDT is shown in Table 1 to illustrate its structure, and full MDT is available in Appendix (Table 10).
+
+- 3.2. Tool Dependency Graph Each tool in our library is a specialized model for a specific subtask, where some tools require the outputs of other tools as inputs. To capture these dependencies, we construct a Tool Dependency Graph (TDG). Formally, we define the TDG as a directed graph Gtd = (Vtd,Etd), where Vtd is the set of tools, and Etd ⊆ Vtd × Vtd contains edges (v1,v2) if tool v2 depends on the output of v1. Figure 4 presents the full TDG, illustrating the dependencies between tools. This TDG can be automatically generated based on the input-output specifications of each tool mentioned in the MDT, reducing the need for extensive human effort (see Appendix C for a detailed explanation).
+- 3.3. Benchmark Table for Heuristic Scores At its core, CoSTA∗ employs A∗ search over a network of interdependent tools to find the optimal cost-sensitive path. This process relies on a heuristic function h(x) for each tool x. We initialize these heuristic values using prior knowledge of execution time and quality scores obtained from existing benchmarks or published studies (e.g., mAP score for YOLO (Wang et al., 2022) and F1 score for CRAFT (Baek et al., 2019a)). Since not all tools have sufficient benchmark data, we evaluate them over 137 instances of the specific subtask, applied across 121 images from the dataset to handle missing values. For each tool-task pair (vi,sj), we define an execution time C(vi,sj) and a quality score Q(vi,sj). To ensure comparability, quality values are normalized per subtask to a [0,1] scale. The complete
+
+Different Subtasks by colors Tools colored by their subtasks
+
+[Figure 34]
+
+[Figure 35]
+
+[Figure 36]
+
+Input Image Visited Nodes Optimal toolpath
+
+[Figure 37]
+
+[Figure 38]
+
+###### 1. Subtask Tree Planning 2. Tool Subgraph Construction 3. Optimal Toolpath Search with A*
+
+||Replace the car with a small delivery truck, change the STOP sign to display “GO,” and remove all pedestrians in the background.|
+|---|
+<br><br>|[Figure 39]|
+|---|
+<br><br>Input Image Instruction| |
+|---|---|
+| | |
+
+Object Removal
+
+Text Editing
+
+Object Replacement
+
+Pass Failed Pass Pass
+
+| | |
+|---|---|
+|Quality Check by VLM| |
+| | |
+|[Figure 40]| |
+
+| | |
+|---|---|
+|Quality Check by VLM| |
+| | |
+|[Figure 41]| |
+
+| | |
+|---|---|
+|Quality Check by VLM| |
+| | |
+|[Figure 42]| |
+
+Quality Check by VLM
+
+Input
+
+|[Figure 43]| | |
+|---|---|---|
+| | | |
+
+[Figure 44]
+
+|Tool Dependency Graph| |
+|---|---|
+| | |
+
+| |Model Description Table|
+|---|---|
+| | |
+
+Tool Subgraph Constructor
+
+|List of Supported Subtasks| |
+|---|---|
+| | |
+
+LLM
+
+| | |
+|---|---|
+|Object Removal<br><br>Object Replacement<br><br>Text Editing<br><br>Text Editing<br><br>Subtask Tree<br><br>| |
+
+Object Removal Tool Subgraph
+
+Text Editing Tool Subgraph
+
+Object Replacement Tool Subgraph
+
+- Figure 5. Three stages in CoSTA∗: (1) an LLM generates a subtask tree based on the input and task dependencies; (2) the subtask tree spans a tool subgraph that maintains tool dependencies; and (3) A∗ search finds the best toolpath balancing efficiency and quality. Benchmark Table (BT) is shown in Table 11.
+
+The subtask tree encodes various solution approaches, accommodating different subtask orders and workflows. Path selection determines an optimized workflow based on efficiency or quality. Part 1 of Figure 5 (Subtask Tree Planning) illustrates an example where the LLM constructs a subtask tree from an input image and prompt.
+
+### 4. CoSTA∗: Cost-Sensitive Toolpath Agent
+
+This section details our approach for constructing and optimizing a Tool Subgraph (TS) to efficiently execute multimodal editing tasks. The methodology consists of three key stages: (1) generating a subtask tree, (2) constructing the TS, and (3) applying A∗ search to determine the optimal execution path.
+
+##### 4.2. Tool Subgraph Construction
+
+The TS, denoted as Gts = (Vts,Ets), represents the structured execution paths for fulfilling subtasks in the Subtask Tree (ST) Gss. It is constructed by mapping each subtask node to a corresponding model subgraph from the TDG Gtd.
+
+First, as shown in Figure 5, an LLM infers subtasks and dependencies from the input image, prompt, and the set of supported subtasks S, generating a subtask tree Gss. Then, this tree is transformed into the Tool Subgraph Gts, where each subtask is mapped to a model subgraph within the TDG. This ensures that model dependencies are maintained while incorporating task sequences and execution constraints. Finally, A∗ search explores Gts to identify an optimal execution path by balancing computational cost and output quality. It prioritizes paths based on a cost function f(x) = g(x)+h(x) where g(x) represents real-time execution costs, and h(x) is the precomputed heuristic. A tunable parameter α controls the tradeoff between efficiency and quality, allowing for adaptive optimization.
+
+The node set Vts consists of all models required for execution, ensuring that every subtask si ∈ S is associated with a valid model:
+
+M(si), (1)
+
+Vts =
+
+si∈S
+
+where M(si) denotes the set of models that can perform subtask si, as listed in the MDT.
+
+The edge set Ets represents dependencies between models, ensuring that each model receives the necessary inputs from its predecessors before execution. These dependencies are derived from Gtd by backtracking to identify required intermediate outputs:
+
+- 4.1. Task Decomposition & Subtask Tree Planning Given an input image x and prompt u, we employ an LLM π(·|fplan(x,u,S)) to generate a subtask tree Gss = (Vss,Ess), where each node vi represents a subtask si, and each edge (vi,vj) denotes a dependency. Here, fplan is a prompt template containing the input image, task description u, and supported subtasks S. The full prompt is detailed in Appendix K. The LLM infers task relationships, forming a directed acyclic graph where each root-to-leaf path represents a valid solution.
+
+Eti, (2)
+
+Ets =
+
+si∈S
+
+where Eti contains directed edges between models in M(si) based on their execution dependencies.
+
+The final tool subgraph Gts encapsulates all feasible execution paths while preserving dependencies and logical
+
+[Figure 45]
+
+1 Subtask
+
+8 Subtasks
+
+8 Subtasks
+
+2 Subtasks
+
+2 Subtasks
+
+9
+
+4
+
+5
+
+- 6 Subtasks
+
+5 Subtasks
+
+- 7 Subtasks
+
+- 6 Subtasks
+
+5 Subtasks
+
+- 7 Subtasks
+
+9
+
+14
+
+- 9
+- 10
+
+- 5
+- 6
+
+9
+
+6
+
+3 Subtasks
+
+3 Subtasks
+
+10 15
+
+4 6
+
+4 Subtasks
+
+4 Subtasks
+
+- Figure 6. Distribution of image-only (left) and text+image tasks (middle) in our proposed benchmark, and quality comparison of different methods on the benchmark (right). CoSTA∗ excels in complex multimodal tasks and outperforms all the baselines.
+
+consistency. Figure 5 (Tool Subgraph Construction) illustrates this transformation.
+
+##### 4.3. Path Optimization with A∗ Search
+
+The A∗ algorithm finds the optimal execution path by minimizing the cost function: f(x) = g(x) + h(x) where g(x) is the actual execution cost, dynamically updated during execution, and h(x) is the heuristic estimate, precomputed from benchmark values. Nodes are explored in increasing order of f(x), ensuring an efficient tradeoff between execution time and quality.
+
+##### 4.4. Heuristic Cost h(x)
+
+The heuristic cost h(x) estimates the best-case execution cost from node x to a leaf node (excluding the cost of x itself), factoring in both execution time and quality. Each node represents a tool-task pair (vi,si), where vi is the tool and si is the subtask. For example, y = (YOLO,Object Detection) ensures that y is inherently multivariate. The heuristic is defined as:
+
+((hC(y) + C(y))α
+
+h(x) = min
+
+y∈Neighbors(x)
+
+× (2 − Q(y) × hQ(y))(2−α)
+
+where hC(y) represents the cost component of h(y) (initialized as 0 for leaf nodes), while hQ(y) denotes the quality component (initialized as 1 for leaf nodes). C(y) and Q(y) correspond to the benchmark execution time and quality of tool y, respectively, and α controls the tradeoff between cost and quality. This heuristic propagates recursively, ensuring each node maintains the best possible estimate to a leaf node.
+
+###### 4.5. Actual Execution Cost g(x) The actual execution cost g(x) is computed in real-time as execution progresses:
+
+2−α
+
+α
+
+x
+
+x
+
+(3)
+
+× 2 −
+
+g(x) =
+
+c(vi,si)
+
+q(vi,si)
+
+i=1
+
+i=1
+
+where c(vi,si) represents the actual execution time (in
+
+seconds) of the tool-subtask pair (vi,si), and q(vi,si) is the real-time validated quality score for the same pair.
+
+The summation includes only nodes in the currently explored path. Each node is initialized with g(x) = ∞, except the start node, which is set to zero. Upon execution, g(x) is updated to the minimum observed value.
+
+If a node x fails the manually set quality threshold, it undergoes a retry mechanism with updated hyperparameters. If successful, the new execution cost is accumulated in g(x). If a node fails all retries, g(x) remains unchanged, and the path is not added back to the queue, ensuring failed paths are deprioritized, but alternative routes exploring the same node remain possible. More information about the execution is in Appendix I.
+
+### 5. Experiments
+
+We evaluate CoSTA∗ on a curated dataset, comparing it against baselines to assess its effectiveness in complex image and text-in-image editing. This section details experimental settings, results, ablation studies, and case studies showcasing CoSTA∗’s capabilities.
+
+##### 5.1. Experimental Settings
+
+Benchmark Dataset Our dataset consists of 121 manually curated images with prompts involving 1–8 subtasks per task, ensuring comprehensive coverage across both image and text-in-image modalities. It includes 81 tasks with image-only edits and 40 tasks requiring multimodal processing. The dataset is evenly distributed across subtask counts. Figure 6 summarizes its distribution, with further details in Appendix D.
+
+Baselines We compare CoSTA∗ against agentic baselines such as VISPROG (Gupta & Kembhavi, 2023), GenArtist (Wang et al., 2024a), and CLOVA (Gao et al., 2024). These methods support task orchestration but lack CoSTA∗’s A∗ path optimization, cost-quality tradeoff, and multimodal capabilities. Additionally, they handle only 5–6 subtasks, limiting flexibility, especially for text-in-image editing, compared to CoSTA∗’s 24 supported subtasks.
+
+- Table 2. Accuracy comparison of CoSTA∗ with baselines across task types and categories. CoSTA∗ excels in complex workflows with A∗ search and a diverse set of tools, ensuring higher accuracy.
+
+Task Type Task Category CoSTA∗ VisProg CLOVA GenArtist Instruct Pix2Pix MagicBrush
+
+(Gupta & Kembhavi, 2023) (Gao et al., 2024) (Wang et al., 2024b) (Brooks et al., 2023) (Zhang et al., 2023a)
+
+Image-Only Tasks
+
+1–2 subtasks 0.94 0.88 0.91 0.93 0.87 0.92 3–4 subtasks 0.93 0.76 0.77 0.85 0.74 0.78 5–6 subtasks 0.93 0.62 0.63 0.71 0.55 0.51 7–8 subtasks 0.95 0.46 0.45 0.61 0.38 0.46
+
+Text+Image Tasks
+
+2–3 subtasks 0.93 0.61 0.63 0.67 0.48 0.62 4–5 subtasks 0.94 0.50 0.51 0.61 0.42 0.40 6–8 subtasks 0.94 0.38 0.36 0.56 0.31 0.26
+
+Overall Accuracy
+
+Image Tasks 0.94 0.69 0.70 0.78 0.64 0.67 Text+Image Tasks 0.93 0.49 0.50 0.61 0.40 0.43 All Tasks 0.94 0.62 0.63 0.73 0.56 0.59
+
+5.2. Evaluation Metrics Human Evaluation To ensure a reliable assessment of model performance, we employ human evaluation for accuracy measurement. Each subtask si in task T is manually assessed and assigned a score A(si): 1 if fully correct, 0 if failed, and x ∈ (0,1) if partially correct. Task-level accuracy A(T) is computed as the mean of its subtasks, while overall accuracy Aoverall is averaged over all evaluated tasks. For partial correctness (x), predefined rules are used to assign values based on specific evaluation criteria. This structured human evaluation provides a robust performance measure across all tasks (see Appendix B for a detailed explanation of the evaluation process and the rules for assigning partial scores).
+
+Human Evaluation vs. CLIP Scores While automatic metrics like CLIP similarity are common for image/text editing, we use human evaluation for complex, multi-step, multimodal tasks. CLIP often misses small but critical changes (e.g., missing bounding boxes) and struggles with semantic coherence in multimodal tasks or tasks with multiple valid outputs. Our evaluation of 50 tasks with intentional errors showed CLIP similarity scores (0.93-0.98) significantly higher than human accuracy (0.7-0.8), highlighting CLIP’s limitations (Table 3).
+
+- Table 3. Comparison of CLIP Similarity vs. Human Evaluation on 50 tasks to assess CLIP similarity against human judgments in multimodal and multi-step editing.
+
+Table 4. Correlation Analysis of CLIP vs Human Evaluation on 40 tasks, which indicates that human evaluation is still necessary.
+
+Metric Correlation Coefficient p-value
+
+Spearman’s ρ 0.59 6.07 × 10−5 Kendall’s τ 0.47 5.83 × 10−5
+
+finding weak agreement (Spearman’s ρ = 0.59, Kendall’s τ = 0.47). The low correlation confirms CLIP’s inability to capture nuanced inaccuracies, as visualized in Table 4 and the scatter plot in Appendix J.
+
+Execution Cost (Time) The cumulative execution time, including feedback-based retries and exploration of alternate models, is used to evaluate CoSTA∗’s efficiency.
+
+##### 5.3. Main Results
+
+Performance Analysis Table 2 demonstrates that CoSTA∗ consistently outperforms baselines across all task categories. For simpler image-only tasks (1–2 subtasks), CoSTA∗ achieves comparable accuracy, but as complexity increases (5+ subtasks), it significantly outperforms baselines. This is due to its A* search integration, which effectively refines LLM-generated plans, whereas baselines struggle with intricate workflows.
+
+In text+image tasks, CoSTA∗ achieves much higher accuracy due to its extensive toolset for text manipulation. Baselines, limited in tool variety, fail to perform well in multimodal scenarios. Additionally, CoSTA∗’s dynamic feedback and retry mechanisms further enhance robustness across diverse tasks, maintaining high-quality outputs. These results highlight its superiority in balancing cost and quality over agentic and non-agentic baselines.
+
+Metric CLIP Similarity Score Human Evaluation Accuracy Average (50 Tasks) 0.96 0.78
+
+CLIP in Feedback Loops vs. Dataset Evaluation CLIP is effective for real-time subtask validation, as each subtask is assessed in isolation. In object detection, for instance, it evaluates only the detected region against the expected label (e.g., ‘car’ or ‘person’), ensuring accurate verification. However, for full-task evaluation, CLIP prioritizes global similarity, often missing localized errors, making it unreliable for holistic assessment but useful for individual subtasks.
+
+Radar Plot Analysis Figure 6 compares CoSTA∗ with baselines across task complexities. While it shows marginal improvement in simple tasks, its advantage becomes pronounced in complex tasks (3+ subtasks), attributed to its path optimization and feedback integration. The radar plot confirms CoSTA∗’s scalability and multimodal capabilities, handling both image-only and text+image tasks effectively.
+
+Pareto Optimality Analysis The Pareto front (Figure 1) shows CoSTA∗’s ability to balance cost and quality by adjusting α. α = 2 prioritizes cost, while α = 0 maxi-
+
+Correlation Analysis We analyzed the correlation between CLIP scores and human accuracy across 40 tasks,
+
+[Figure 46]
+
+[Figure 47]
+
+[Figure 48]
+
+###### Input Instruction
+
+Output (Only h(x)) Output (h(x) + g(x))
+
+Remove the pedestrians, replace the cat with a dog and the car with a red truck
+
+- Figure 7. Comparison of a task with h(x) and h(x) + g(x), showing how real-time feedback improves path selection and execution.
+
+mizes quality. Baselines lack this flexibility and fall short of the Pareto front due to lower quality at comparable costs, demonstrating CoSTA∗’s superior cost-quality optimization.
+
+- Table 5. Comparison of key features across methods, highlighting the extensive set of capabilities supported by CoSTA∗, which are absent in baselines and contribute to its superior performance.
+
+Feature CoSTA∗ CLOVA GenArtist VisProg Instruct Pix2Pix
+
+Integration of LLM with A* Path Optimization
+
+✓ × × × ×
+
+Automatic Feedback Integration (Real-Time)
+
+✓ × × × ×
+
+Real-Time Cost-Quality Tradeoff
+
+✓ × × × ×
+
+User-Defined Cost-Quality Weightage
+
+✓ × × × ×
+
+Multimodality Support (Image + Text)
+
+✓ × × × ×
+
+Number of Tools for Task Accomplishment
+
+24 <10 <10 <12 <5
+
+Feedback-Based Retrying and Model Selection
+
+✓ ✓ ✓ × ×
+
+Dynamic Adjustment of Heuristic Values
+
+✓ × × × ×
+
+Qualitative Results Figure 2 provides qualitative comparisons, illustrating CoSTA∗’s ability to seamlessly handle multimodal tasks. Table 5 highlights its distinct advantages, including real-time feedback, dynamic heuristic adjustments, and LLM integration with A* search—features lacking in baselines.
+
+Summary CoSTA∗ consistently outperforms baselines by integrating A* search, cost-quality optimization, and multimodal capabilities. It efficiently balances execution time and accuracy across a broader range of tasks, making it a highly adaptable solution for complex image and textin-image editing tasks.
+
+5.4. Ablation Study
+
+We evaluate the impact of CoSTA*’s key components—realtime feedback integration and multimodality support—through targeted experiments, demonstrating their contributions to accuracy and task execution quality.
+
+- Table 6. Comparison of accuracy with and without g(x) on 35 high-risk tasks to analyze the impact of real-time feedback g(x).
+
+Approach Average Accuracy
+
+h(x) Only 0.798 h(x) + g(x) 0.923
+
+Feedback Integration with g(x) To assess the role of real-time feedback, we compared two configurations across 35 high-risk tasks: one using only heuristic values (h(x)), and another integrating real-time feedback (g(x)). Tasks involved cases where tools with favorable h(x) sometimes underperformed, while alternatives with poorer heuristic scores excelled. As shown in Table 6, using only h(x) resulted in 0.798 accuracy, whereas incorporating g(x) improved accuracy to 0.923 by penalizing poorly performing tools and dynamically selecting better alternatives. Figure 7 illustrates an object replacement task where the h(x)-only approach failed but was corrected using g(x). This confirms that real-time feedback significantly enhances path selection and execution robustness.
+
+Table 7. Comparison of image editing tools vs. CoSTA∗ for textbased tasks. CoSTA∗ outperforms image-only tools.
+
+Metric Image Editing Tools CoSTA* Average Accuracy (30 Tasks) 0.48 0.93
+
+Impact of Multimodality Support We tested CoSTA* on tasks requiring both text and image processing, comparing performance against tools designed primarily for image modality like DALL-E(Ramesh et al., 2021) and Stable Diffusion Inpaint(Rombach et al., 2022a). As shown in Table 7, these tools struggled with text-related edits, achieving only 0.48 accuracy, while CoSTA* retained visual and textual fidelity, reaching 0.93 accuracy. Figure 8 highlights the qualitative advantages of multimodal support, reinforcing that integrating specialized models for text manipulation leads to significantly better results.
+
+[Figure 49]
+
+[Figure 50]
+
+[Figure 51]
+
+|Instruction<br><br>Replace "THIS IS A NICE STREEE" with "THIS IS NOT A NICE STREEE"|
+|---|
+
+CoSTA* DALL-E/Stable Diffusion
+
+[Figure 52]
+
+[Figure 53]
+
+[Figure 54]
+
+|Instruction<br><br>Add following text: “As dawn breaks over calm waters, the village awakens to the rhythm of the sea.”|
+|---|
+
+CoSTA* DALL-E/Stable Diffusion
+
+Figure 8. Qualitative comparison of image editing tools vs. CoSTA∗ for text-based tasks, highlighting the advantages of our multimodal support in preserving visual and textual fidelity.
+
+### 6. Conclusions
+
+In this paper, we present a novel image editing agent that leverages the capabilities of a large multimodal model as a planner combined with the flexibility of the A* algorithm to search for an optimal editing path, balancing the cost-quality tradeoff. Experimental results demonstrate
+
+that CoSTA∗effectively handles complex, real-world editing queries with reliability while surpassing existing baselines in terms of image quality. Moreover, our proposed agent supports 24 tasks, significantly more than the current stateof-the-art. We believe that this neurosymbolic approach is a promising direction toward more capable and reliable agents in the future.
+
+### Impact Statement
+
+This paper aims to advance the field of multimodal machine learning by improving image and text-in-image editing through optimized task decomposition and execution. Our work enhances automation in content creation, accessibility, and image restoration, contributing positively to various applications. However, as with any image manipulation system, there is a potential risk of misuse, such as generating misleading content or altering visual information in ways that could contribute to misinformation. While our approach itself does not promote unethical use, we acknowledge the importance of responsible deployment and advocate for safeguards such as provenance tracking and watermarking to ensure transparency. Additionally, since our method relies on pre-trained models, inherent biases in those models may persist. Addressing fairness through dataset audits and bias mitigation remains an important consideration for future research. Overall, our work strengthens AI-driven editing capabilities while emphasizing the need for ethical and responsible usage.
+
+### References
+
+Baek, Y., Lee, B., Han, D., Yun, S., and Lee, H. Character region awareness for text detection. In IEEE Conference on Computer Vision and Pattern Recognition, CVPR 2019, Long Beach, CA, USA, June 16-20, 2019, pp. 9365–9374. Computer Vision Foundation / IEEE, 2019a. doi: 10. 1109/CVPR.2019.00959.
+
+Baek, Y., Lee, B., Han, D., Yun, S., and Lee, H. Character region awareness for text detection, 2019b.
+
+Brooks, T., Holynski, A., and Efros, A. A. Instructpix2pix: Learning to follow image editing instructions, 2023.
+
+Chen, J., Yu, J., Ge, C., Yao, L., Xie, E., Wu, Y., Wang, Z., Kwok, J., Luo, P., Lu, H., and Li, Z. Pixart-α: Fast training of diffusion transformer for photorealistic textto-image synthesis, 2023a.
+
+Chen, M., Laina, I., and Vedaldi, A. Training-free layout control with cross-attention guidance, 2023b.
+
+Chen, X., Huang, L., Liu, Y., Shen, Y., Zhao, D., and Zhao, H. Anydoor: Zero-shot object-level image customization, 2024.
+
+Dhariwal, P. and Nichol, A. Q. Diffusion models beat gans on image synthesis. In Ranzato, M., Beygelzimer, A., Dauphin, Y. N., Liang, P., and Vaughan, J. W. (eds.), Advances in Neural Information Processing Systems 34: Annual Conference on Neural Information Processing Systems 2021, NeurIPS 2021, December 6-14, 2021, virtual, pp. 8780–8794, 2021.
+
+Gao, Z., Du, Y., Zhang, X., Ma, X., Han, W., Zhu, S., and Li, Q. CLOVA: A closed-loop visual assistant with tool usage and update. In IEEE/CVF Conference on Computer Vision and Pattern Recognition, CVPR 2024, Seattle, WA, USA, June 16-22, 2024, pp. 13258–13268. IEEE, 2024. doi: 10.1109/CVPR52733.2024.01259.
+
+Google Cloud. Google Cloud Vision API, 2024. URL https://cloud.google.com/vision. Accessed: January 29, 2025.
+
+Gupta, T. and Kembhavi, A. Visual programming: Compositional visual reasoning without training. In IEEE/CVF Conference on Computer Vision and Pattern Recognition, CVPR 2023, Vancouver, BC, Canada, June 17-24, 2023, pp. 14953–14962. IEEE, 2023. doi: 10.1109/ CVPR52729.2023.01436.
+
+Ho, J., Jain, A., and Abbeel, P. Denoising diffusion probabilistic models. In Larochelle, H., Ranzato, M., Hadsell, R., Balcan, M., and Lin, H. (eds.), Advances in Neural Information Processing Systems 33: Annual Conference on Neural Information Processing Systems 2020, NeurIPS 2020, December 6-12, 2020, virtual, 2020.
+
+Huang, M., Long, Y., Deng, X., Chu, R., Xiong, J., Liang, X., Cheng, H., Lu, Q., and Liu, W. Dialoggen: Multimodal interactive dialogue system for multi-turn text-toimage generation, 2024.
+
+Huang, Y., Xie, L., Wang, X., Yuan, Z., Cun, X., Ge, Y., Zhou, J., Dong, C., Huang, R., Zhang, R., and Shan, Y. Smartedit: Exploring complex instruction-based image editing with multimodal large language models, 2023.
+
+Isola, P., Zhu, J.-Y., Zhou, T., and Efros, A. A. Image-toimage translation with conditional adversarial networks, 2018.
+
+Kirillov, A., Mintun, E., Ravi, N., Mao, H., Rolland, C., Gustafson, L., Xiao, T., Whitehead, S., Berg, A. C., Lo, W., Doll´ar, P., and Girshick, R. B. Segment anything. In IEEE/CVF International Conference on Computer Vision, ICCV 2023, Paris, France, October 1-6, 2023, pp. 3992–4003. IEEE, 2023a. doi: 10.1109/ICCV51070. 2023.00371.
+
+Kirillov, A., Mintun, E., Ravi, N., Mao, H., Rolland, C., Gustafson, L., Xiao, T., Whitehead, S., Berg, A. C., Lo,
+
+W.-Y., Doll´ar, P., and Girshick, R. Segment anything, 2023b.
+
+Kittinaradorn, R., Wichitwong, W., Tlisha, N., Sarda, S., Potter, J., Sam S, Bagchi, A., ronaldaug, Nina, Vijayabhaskar, Mun, D., Mejans, Agarwal, A., Kim, M., A2va, Mama, A., Chaovavanich, K., Loay, Kucza, K., Gurevich, V., Tim, M., Abduroid, Abraham, B., Moutinho, G., milosjovac, Rashad, M., Msrikrishna, Thalhath, N., RaitaroHikami, and Sumon, S. A. cwittwer/easyocr: Easyocr, July 2022.
+
+Kupyn, O., Budzan, V., Mykhailych, M., Mishkin, D., and Matas, J. Deblurgan: Blind motion deblurring using conditional adversarial networks, 2018.
+
+Li, J., Li, D., Savarese, S., and Hoi, S. Blip-2: Bootstrapping language-image pre-training with frozen image encoders and large language models, 2023a.
+
+Li, Y., Liu, H., Wu, Q., Mu, F., Yang, J., Gao, J., Li, C., and Lee, Y. J. Gligen: Open-set grounded text-to-image generation, 2023b.
+
+Lian, L., Li, B., Yala, A., and Darrell, T. Llm-grounded diffusion: Enhancing prompt understanding of text-to-image diffusion models with large language models, 2024.
+
+Liu, S., Zeng, Z., Ren, T., Li, F., Zhang, H., Yang, J., Jiang, Q., Li, C., Yang, J., Su, H., Zhu, J., and Zhang, L. Grounding dino: Marrying dino with grounded pre-training for open-set object detection, 2024.
+
+Parmar, G., Singh, K. K., Zhang, R., Li, Y., Lu, J., and Zhu, J.-Y. Zero-shot image-to-image translation, 2023.
+
+Radford, A., Kim, J. W., Hallacy, C., Ramesh, A., Goh, G., Agarwal, S., Sastry, G., Askell, A., Mishkin, P., Clark, J., Krueger, G., and Sutskever, I. Learning transferable visual models from natural language supervision, 2021.
+
+Ramesh, A., Pavlov, M., Goh, G., Gray, S., Voss, C., Radford, A., Chen, M., and Sutskever, I. Zero-shot text-toimage generation. CoRR, abs/2102.12092, 2021.
+
+Ranftl, R., Lasinger, K., Hafner, D., Schindler, K., and Koltun, V. Towards robust monocular depth estimation: Mixing datasets for zero-shot cross-dataset transfer, 2020.
+
+Ravi, N., Gabeur, V., Hu, Y.-T., Hu, R., Ryali, C., Ma, T., Khedr, H., R¨adle, R., Rolland, C., Gustafson, L., Mintun, E., Pan, J., Alwala, K. V., Carion, N., Wu, C.-Y., Girshick, R., Doll´ar, P., and Feichtenhofer, C. Sam 2: Segment anything in images and videos, 2024.
+
+Rombach, R., Blattmann, A., Lorenz, D., Esser, P., and Ommer, B. High-resolution image synthesis with latent diffusion models. In IEEE/CVF Conference on Computer Vision and Pattern Recognition, CVPR 2022, New
+
+Orleans, LA, USA, June 18-24, 2022, pp. 10674–10685. IEEE, 2022a. doi: 10.1109/CVPR52688.2022.01042.
+
+Rombach, R., Blattmann, A., Lorenz, D., Esser, P., and Ommer, B. High-resolution image synthesis with latent diffusion models, 2022b.
+
+Saharia, C., Chan, W., Saxena, S., Li, L., Whang, J., Denton, E., Ghasemipour, S. K. S., Ayan, B. K., Mahdavi, S. S., Lopes, R. G., Salimans, T., Ho, J., Fleet, D. J., and Norouzi, M. Photorealistic text-to-image diffusion models with deep language understanding, 2022.
+
+Voynov, A., Aberman, K., and Cohen-Or, D. Sketch-guided text-to-image diffusion models, 2022.
+
+Wang, C.-Y., Bochkovskiy, A., and Liao, H.-Y. M. Yolov7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors, 2022.
+
+Wang, X., Xie, L., Dong, C., and Shan, Y. Real-esrgan: Training real-world blind super-resolution with pure synthetic data. In IEEE/CVF International Conference on Computer Vision Workshops, ICCVW 2021, Montreal, QC, Canada, October 11-17, 2021, pp. 1905–1914. IEEE, 2021. doi: 10.1109/ICCVW54120.2021.00217.
+
+Wang, Z., Yang, J., Jin, H., Shechtman, E., Agarwala, A., Brandt, J., and Huang, T. S. Deepfont: Identify your font from an image, 2015.
+
+Wang, Z., Li, A., Li, Z., and Liu, X. Genartist: Multimodal LLM as an agent for unified image generation and editing. CoRR, abs/2407.05600, 2024a. doi: 10.48550/ARXIV. 2407.05600.
+
+Wang, Z., Li, A., Li, Z., and Liu, X. Genartist: Multimodal llm as an agent for unified image generation and editing,
+
+- 2024b.
+
+Wang, Z., Xie, E., Li, A., Wang, Z., Liu, X., and Li, Z. Divide and conquer: Language models can plan and self-correct for compositional text-to-image generation,
+
+- 2024c.
+
+Xie, J., Li, Y., Huang, Y., Liu, H., Zhang, W., Zheng, Y., and Shou, M. Z. Boxdiff: Text-to-image synthesis with training-free box-constrained diffusion, 2023.
+
+Yang, B., Gu, S., Zhang, B., Zhang, T., Chen, X., Sun, X., Chen, D., and Wen, F. Paint by example: Exemplar-based image editing with diffusion models, 2022.
+
+Yang, Z., Wang, J., Li, L., Lin, K., Lin, C.-C., Liu, Z., and Wang, L. Idea2img: Iterative self-refinement with gpt-4v(ision) for automatic image design and generation, 2024.
+
+Zhang, K., Mo, L., Chen, W., Sun, H., and Su, Y. Magicbrush: A manually annotated dataset for instructionguided image editing. In Oh, A., Naumann, T., Globerson, A., Saenko, K., Hardt, M., and Levine, S. (eds.), Advances in Neural Information Processing Systems 36: Annual Conference on Neural Information Processing Systems 2023, NeurIPS 2023, New Orleans, LA, USA, December 10 - 16, 2023, 2023a.
+
+- Zhang, K., Mo, L., Chen, W., Sun, H., and Su, Y. Magicbrush: A manually annotated dataset for instructionguided image editing, 2024a.
+- Zhang, L., Rao, A., and Agrawala, M. Adding conditional control to text-to-image diffusion models, 2023b.
+
+Zhang, X., Yang, L., Li, G., Cai, Y., Xie, J., Tang, Y., Yang, Y., Wang, M., and Cui, B. Itercomp: Iterative composition-aware feedback learning from model gallery for text-to-image generation, 2024b.
+
+Zhang, Z., Chen, D., and Liao, J. Sgedit: Bridging llm with text2image generative model for scene graph-based image editing, 2024c.
+
+Input Final Output
+
+[Figure 55]
+
+[Figure 56]
+
+[Figure 57]
+
+[Figure 58]
+
+Detect the wooden sign while replacing its content to “SAFE ZONE”. Also, replace the cat in the image with a dog.
+
+Subtask 1: Object Replacement
+
+Subtask 2: Object Detection
+
+Subtask 3: Text Replacement
+
+Input Final Output
+
+[Figure 59]
+
+[Figure 60]
+
+[Figure 61]
+
+[Figure 62]
+
+[Figure 63]
+
+Update the closed signage to open while detecting the trash can and pedestrian crossing for better scene understanding. Also, remove the people for clarity.
+
+Subtask 1: Text Replacement
+
+Subtask 2: Object Removal
+
+Subtask 3: Object Detection
+
+Subtask 4: Object Detection
+
+Input Final Output
+
+[Figure 64]
+
+[Figure 65]
+
+[Figure 66]
+
+[Figure 67]
+
+[Figure 68]
+
+Output: “The quote “Ask not what your country can do for you”, is from John F. Kennedy. It is a famous line from his inaugural address on January 20, 1961.”
+
+Identify the author of the quote in image while detecting the bench and recoloring it to pink. Also, remove the cat for a clearer view and recolor the wall to yellow.
+
+Subtask 1: Question Answering based on Text within the Image
+
+Subtask 2: Object Removal
+
+Subtask 3: Object Recoloration
+
+Subtask 4: Object Recoloration
+
+Subtask 5: Object Detection
+
+Figure 9. Step-by-step execution of editing tasks using CoSTA∗. Each row illustrates an input image, the corresponding subtask breakdown, and intermediate outputs at different stages of the editing process. This visualization highlights how CoSTA∗ systematically refines outputs by leveraging specialized models for each subtask, ensuring greater accuracy and consistency in multimodal tasks.
+
+### A. Step-by-Step Execution of Tasks in Figure 2
+
+To complement the qualitative comparisons presented in Figure 2, Figure 9 provides a visualization of the step-by-step execution of selected subtasks within the composite task by CoSTA∗. This figure highlights the intermediate outputs produced by each subtask, illustrating how complex image editing operations are decomposed and executed sequentially.
+
+By showcasing the incremental progression of subtasks, this visualization provides a clearer view of how different intermediate outputs contribute to the final edited image. Rather than illustrating the full decision-making process of CoSTA∗, the figure focuses on the stepwise transformations applied to the image, offering a practical reference for understanding the effects of each subtask.
+
+This breakdown highlights key transitions in tasks, demonstrating the intermediate results generated at various stages. It provides insight into how each operation modifies the image, helping to better interpret the qualitative comparisons presented in the main text.
+
+#### B. Human Evaluation for Accuracy Calculation To ensure reliable performance assessment, we conduct human evaluations for accuracy calculation across all subtasks and tasks. Unlike automatic metrics such as CLIP similarity, human evaluation accounts for nuanced errors, semantic inconsistencies, and multi-step dependencies that are often missed by automated tools. This section outlines the evaluation methodology, scoring criteria, and aggregation process.
+
+Table 8. Predefined Rules for Assigning Partial Correctness Scores in Human Evaluation
+
+Task Type Evaluation Criteria Assigned Score
+
+Minor artifacts, barely noticeable distortions 0.9 Some visible artifacts, but main content is unaffected 0.8 Noticeable distortions, but retains basic correctness 0.7 Significant artifacts or blending issues 0.5 Major distortions or loss of key content 0.3 Output is almost unusable, but some attempt is visible 0.1
+
+Image-Only Tasks
+
+Text is correctly placed but slightly misaligned 0.9 Font or color inconsistencies, but legible 0.8 Noticeable alignment or formatting issues 0.7 Some missing or incorrect words but mostly readable 0.5 Major formatting errors or loss of intended meaning 0.3 Text placement is incorrect, missing, or unreadable 0.1
+
+Text+Image Tasks
+
+##### B.1. Subtask-Level Accuracy
+
+Each subtask si in a task T is manually assessed by evaluators and assigned a correctness score A(si) based on the following criteria:
+
+ 
+
+1, if the subtask is fully correct x, if the subtask is partially correct, where x ∈ {0.1,0.3,0.5,0.7,0.8,0.9} 0, if the subtask has failed
+
+(4)
+
+A(si) =
+
+
+
+Partial correctness (x) is determined based on predefined task-specific criteria. Table 8 defines the rules used to assign these scores across different subtasks.
+
+###### B.2. Task-Level Accuracy Task accuracy is computed as the mean correctness of its subtasks:
+
+1 |ST|
+
+A(T) =
+
+|ST |
+
+A(si) (5)
+
+i=1
+
+where ST is the set of subtasks in task T, ensuring that task accuracy reflects overall subtask correctness.
+
+###### B.3. Overall Accuracy Across Tasks To evaluate system-wide performance, the overall accuracy is computed as the average of task-level accuracies:
+
+1 |T|
+
+Aoverall =
+
+|T|
+
+A(Tj) (6)
+
+j=1
+
+where |T| is the total number of evaluated tasks.
+
+### C. Automatic Construction of the Tool Dependency Graph
+
+The Tool Dependency Graph (TDG) can be automatically generated by analyzing the input-output relationships of each tool. Each tool vi is associated with a set of required inputs I(vi) and a set of produced outputs O(vi). We construct directed edges (vi,vj) whenever O(vi) ∩ I(vj) ̸= ∅, meaning the output of tool vi is required as input for tool vj.
+
+These input-output relationships are explicitly listed in the Model Description Table (MDT), where two dedicated columns specify the expected inputs and produced outputs for each tool. Using this structured metadata, the TDG can be dynamically constructed without manual intervention, ensuring that dependencies are correctly captured and automatically updated as the toolset evolves.
+
+### D. Dataset Generation and Evaluation Setup
+
+##### D.1. A. Dataset Construction for Benchmarking
+
+To rigorously evaluate the effectiveness of our method, we constructed a diverse, large-scale dataset designed to test various image editing tasks under complex, multi-step, and multimodal constraints. The dataset generation process was carefully structured to ensure both realism and consistency in task complexity.
+
+- D.1.1. 1. AUTOMATIC PROMPT GENERATION & HUMAN CURATION
+
+To simulate real-world image editing tasks, we first generated a diverse set of structured prompts using a Large Language Model (LLM). These prompts were designed to cover a wide variety of editing operations, including:
+
+- • Object replacement, addition, removal, and recoloration,
+- • Text-based modifications such as replacement, addition, and redaction,
+- • Scene-level changes, including background modification and outpainting.
+
+While LLM-generated prompts provided an automated way to scale dataset creation, they lacked real-world editing constraints. Thus, each prompt was manually curated by human annotators to ensure:
+
+- 1. Logical Feasibility: Ensuring that edits could be performed realistically on an image.
+- 2. Complexity Diversity: Creating simple (1-2 subtasks) and complex (5+ subtasks) tasks for a comprehensive evaluation.
+- 3. Ensuring Clarity: Refining ambiguous phrasing or vague instructions.
+
+- D.1.2. 2. IMAGE GENERATION WITH META AI
+
+Once the curated prompts were finalized, image generation was performed using Meta AI’s generative model. Unlike generic image generation, our human annotators provided precise instructions to ensure that:
+
+- • Every key element mentioned in the prompt was included in the generated image.
+- • The scene, object attributes, and text elements were visually clear for the intended edits.
+- • The images had sufficient complexity and diversity to challenge different image-editing models.
+
+For example, if a prompt requested “Replace the red bicycle with a blue motorcycle and remove the tree in the background,” the generated image explicitly contained a red bicycle and a clearly distinguishable tree, ensuring that subsequent edits could be precisely evaluated.
+
+##### D.2. B. Dataset Composition & Subtask Distribution
+
+Our dataset comprises 121 total image-task pairs, with tasks spanning both image-only and text+image categories. Each image-editing prompt is decomposed into subtasks, which are then mapped to the supported models for evaluation.
+
+Figure 11 illustrates the distribution of subtasks across the dataset. This provides insights into:
+
+- • The relative frequency of each subtask.
+- • The balance between different categories (e.g., object-based, text-based, scene-based).
+
+| | | | | | | | |
+|---|---|---|---|---|---|---|---|
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+
+Text Detection
+
+Caption Consistency Check
+
+Sentiment Analysis
+
+Keyword Highlighting
+
+Question Answering Based on Text
+
+Text Redaction
+
+Text Addition
+
+Text Removal
+
+Text Replacement
+
+Text Extraction
+
+Image Deblurring
+
+Subtask
+
+Depth Estimation
+
+Outpainting
+
+Object Recoloration
+
+Changing Scenery
+
+Image Captioning
+
+Image Upscaling
+
+Object Replacement
+
+Landmark Detection
+
+Background Removal
+
+Object Removal
+
+Object Addition
+
+Object Segmentation
+
+Object Detection
+
+0 10 20 30 40 50 60 Count
+
+Figure 10. Distribution of the number of instances for each subtask in the dataset.
+
+1-2 Subtasks
+
+3-4 Subtasks
+
+5-6 Subtasks
+
+7-8 Subtasks
+
+[Figure 69]
+
+[Figure 70]
+
+[Figure 71]
+
+[Figure 72]
+
+Remove the pedestrians and recolor the truck to green.
+
+Remove the dog and recolor the kite to blue while segmenting the child finally expanding the image.
+
+Replace the hiker with a giraffe and segment the signboard while detecting the giraffe, removing the dog, upscaling the image, and generating a caption for it.
+
+Detect and identify the building, replace the cat with a dog, recolor the dog to pink, segment the dog, generate a caption describing the landmark, upscale the image for clarity, and expand the image.
+
+4-5 Subtasks
+
+6-8 Subtasks
+
+2-3 Subtasks
+
+[Figure 73]
+
+[Figure 74]
+
+[Figure 75]
+
+Detect the lighthouse and recolor both the boat to yellow and the lighthouse to pink itself, while extracting and redacting the text on the boat, then outpaint the horizon to extend the scene.
+
+Detect the landmark and replace the banner text with the name of the landmark + “Open”.
+
+Replace the billboard text with “Grand Opening”, recolor the bird to pink while also detecting the bird, caption the image, and check if the new caption matches the image.
+
+Figure 11. An overview of the dataset used for evaluation, showcasing representative input images and prompts across different task categories. The top section presents examples from image-only tasks, while the bottom section includes text+image tasks. These examples illustrate the diversity of tasks in our dataset, highlighting the range of modifications required for both visual and multimodal editing scenarios.
+
+The dataset ensures adequate representation of each subtask, avoiding skew toward a specific category. The most common subtasks in the dataset include Object Replacement, Object Recoloration, and Object Removal, while rarer but complex operations like Keyword Highlighting remain crucial for evaluation.
+
+Table 9. Average CLIP Similarity Scores for Outputs of Randomness-Prone Subtasks Subtask Avg Similarity Score
+
+Object Replacement 0.98 Object Recoloration 0.99 Object Addition 0.97 Object Removal 0.97 Image Captioning 0.92 Outpainting 0.99 Changing Scenery 0.96 Text Removal 0.98 QA on Text 0.96
+
+### E. Consistency in CoSTA* Outputs
+
+To assess robustness against randomness, we evaluated CoSTA* on subtasks prone to variability, such as object replacement and recoloration, where outputs may slightly differ across executions (e.g., different dog appearances when replacing a cat). A set of 20 images per subtask was selected, and each was processed multiple times. Outputs for each image were compared among each other using CLIP similarity scores, measuring consistency. As summarized in Table 9, CoSTA* maintains high similarity across runs, confirming its stability. Variability was negligible in most cases, except for image captioning (0.92 similarity), where multiple valid descriptions naturally exist. These results demonstrate that CoSTA* is highly consistent, with minimal impact from randomness.
+
+- Table 10. Model Description Table (MDT). Each model is listed with its supported subtasks, input dependencies, and outputs. Model Tasks Supported Inputs Outputs
+
+Grounding DINO(Liu et al., 2024) Object Detection Input Image Bounding Boxes YOLOv7(Wang et al., 2022) Object Detection Input Image Bounding Boxes SAM(Kirillov et al., 2023b) Object Segmentation Bounding Boxes Segmentation Masks DALL-E(Ramesh et al., 2021) Object Replacement Segmentation Masks Edited Image DALL-E(Ramesh et al., 2021) Text Removal Text Region Bounding Box Image with Removed Text Stable Diffusion Erase(Rombach et al., 2022b) Text Removal Text Region Bounding Box Image with Removed Text Stable Diffusion Inpaint(Rombach et al., 2022b) Object Replacement, Object Recol-
+
+Segmentation Masks Edited Image
+
+oration, Object Removal
+
+Stable Diffusion Erase(Rombach et al., 2022b) Object Removal Segmentation Masks Edited Image Stable Diffusion 3(Rombach et al., 2022b) Changing Scenery Input Image Edited Image Stable Diffusion Outpaint(Rombach et al., 2022b) Outpainting Input Image Expanded Image Stable Diffusion Search & Recolor(Rombach et al., 2022b) Object Recoloration Input Image Recolored Image Stable Diffusion Remove Background(Rombach et al., 2022b) Background Removal Input Image Edited Image Text Removal (Painting) Text Removal Text Region Bounding Box Image with Removed Text DeblurGAN(Kupyn et al., 2018) Image Deblurring Input Image Deblurred Image LLM (GPT-4o) Image Captioning Input Image Image Caption LLM (GPT-4o) Question Answering based on text,
+
+Extracted Text, Font Style Label New Text, Text Region Bounding Box, Text Sentiment, Answers to Questions
+
+Sentiment Analysis
+
+Google Cloud Vision(Google Cloud, 2024) Landmark Detection Input Image Landmark Label CRAFT(Baek et al., 2019b) Text Detection Input Image Text Bounding Box CLIP(Radford et al., 2021) Caption Consistency Check Extracted Text Consistency Score DeepFont(Wang et al., 2015) Text Style Detection Text Bounding Box Font Style Label EasyOCR(Kittinaradorn et al., 2022) Text Extraction Text Bounding Box Extracted Text MagicBrush(Zhang et al., 2024a) Object Addition Input Image Edited Image with Object pix2pix(Isola et al., 2018) Changing Scenery (Day2Night) Input Image Edited Image Real-ESRGAN(Wang et al., 2021) Image Upscaling Input Image High-Resolution Image Text Writing using Pillow (For Addition) Text Addition New Text, Text Region Bounding
+
+Image with Text Added
+
+Box
+
+Text Writing using Pillow Text Replacement, Keyword Highlighting
+
+Image with Removed Text Image with Text Added
+
+Text Redaction (Code-based) Text Redaction Text Region Bounding Box Image with Redacted Text MiDaS Depth Estimation Input Image Image with Depth of Objects
+
+### F. Model Description Table (MDT)
+
+The full Model Description Table (MDT) provides a comprehensive list of all 24 specialized models used in the CoSTA∗ pipeline for image and text-in-image editing. Each model is mapped to its supported subtasks, input dependencies, and outputs, ensuring optimal tool selection for diverse editing requirements. These structured input-output relationships enable the automatic construction of the Tool Dependency Graph (TDG) by identifying dependencies between models based on their required inputs and generated outputs. The inputs and outputs are mentioned only in a way to design dependencies between models to construct the Tool Dependency Graph. Some standard inputs are skipped in this table for simplicity (e.g. each model’s input would also include the previous model’s output image, some models might also require extra inputs which were outputted not by the previous model but by a model back in the path, etc.). Unlike generic pipelines, CoSTA∗ utilizes targeted models to enhance accuracy and efficiency in text-related visual tasks. Table 10 presents the complete MDT, detailing the capabilities of each model across different task categories and their role in facilitating automated dependency resolution.
+
+### G. Benchmark Table (BT)
+
+The Benchmark Table (BT) defines execution time and accuracy scores for each tool-task pair BT(vi,sj), where vi is a tool and sj is a subtask. It serves as a baseline for A∗ search, enabling efficient tool selection. Both execution time and accuracy scores are based on empirical evaluations and published benchmarks (wherever available). For tools without prior benchmarks, evaluations on 137 instances of the specific subtask were conducted on 121 images from the dataset, with results included in Table 11. Accuracy values are normalized with respect to max within each subtask on a [0,1] scale for comparability.
+
+- Table 11. Benchmark Table for Accuracy and Execution Time. Accuracy and execution time for each tool-task pair are obtained from cited sources where available. For tools without prior benchmarks, evaluation was conducted over 137 instances of the specific subtask on 121 images from the dataset, ensuring a robust assessment across varied conditions.
+
+Model Name Subtask Accuracy Time (s) Source
+
+DeblurGAN(Kupyn et al., 2018) Image Deblurring 1.00 0.8500 (Kupyn et al., 2018) MiDaS(Ranftl et al., 2020) Depth Estimation 1.00 0.7100 Evaluation on 137 instances of this subtask YOLOv7(Wang et al., 2022) Object Detection 0.82 0.0062 (Wang et al., 2022) Grounding DINO(Liu et al., 2024) Object Detection 1.00 0.1190 Accuracy: (Liu et al., 2024), Time: Evaluation on 137 instances of this subtask CLIP(Radford et al., 2021) Caption Consistency Check 1.00 0.0007 Evaluation on 137 instances of this subtask SAM(Ravi et al., 2024) Object Segmentation 1.00 0.0460 Accuracy: Evaluation on 137 instances of this subtask, Time: (Ravi et al., 2024) CRAFT(Baek et al., 2019b) Text Detection 1.00 1.2700 Accuracy: (Baek et al., 2019b), Time: Evaluation on 137 instances of this subtask Google Cloud Vision(Google Cloud, 2024) Landmark Detection 1.00 1.2000 Evaluation on 137 instances of this subtask EasyOCR(Kittinaradorn et al., 2022) Text Extraction 1.00 0.1500 Evaluation on 137 instances of this subtask Stable Diffusion Erase(Rombach et al., 2022a) Object Removal 1.00 13.8000 Evaluation on 137 instances of this subtask DALL-E(Ramesh et al., 2021) Object Replacement 1.00 14.1000 Evaluation on 137 instances of this subtask Stable Diffusion Inpaint(Rombach et al., 2022a) Object Removal 0.93 12.1000 Evaluation on 137 instances of this subtask Stable Diffusion Inpaint(Rombach et al., 2022a) Object Replacement 0.97 12.1000 Evaluation on 137 instances of this subtask Stable Diffusion Inpaint(Rombach et al., 2022a) Object Recoloration 0.89 12.1000 Evaluation on 137 instances of this subtask Stable Diffusion Search & Recolor(Rombach et al., 2022a) Object Recoloration 1.00 14.7000 Evaluation on 137 instances of this subtask Stable Diffusion Outpaint(Rombach et al., 2022a) Outpainting 1.00 12.7000 Evaluation on 137 instances of this subtask Stable Diffusion Remove Background(Rombach et al., 2022a) Background Removal 1.00 12.5000 Evaluation on 137 instances of this subtask Stable Diffusion 3(Rombach et al., 2022a) Changing Scenery 1.00 12.9000 Evaluation on 137 instances of this subtask pix2pix(Isola et al., 2018) Changing Scenery (Day2Night) 1.00 0.7000 Accuracy: (Isola et al., 2018), Time: Evaluation on 137 instances of this subtask Real-ESRGAN(Wang et al., 2021) Image Upscaling 1.00 1.7000 Evaluation on 137 instances of this subtask LLM (GPT-4o) Question Answering based on Text 1.00 6.2000 Evaluation on 137 instances of this subtask LLM (GPT-4o) Sentiment Analysis 1.00 6.1500 Evaluation on 137 instances of this subtask LLM (GPT-4o) Image Captioning 1.00 6.3100 Evaluation on 137 instances of this subtask DeepFont(Wang et al., 2015) Text Style Detection 1.00 1.8000 Evaluation on 137 instances of this subtask Text Writing - Pillow Text Replacement 1.00 0.0380 Evaluation on 137 instances of this subtask Text Writing - Pillow Text Addition 1.00 0.0380 Evaluation on 137 instances of this subtask Text Writing - Pillow Keyword Highlighting 1.00 0.0380 Evaluation on 137 instances of this subtask MagicBrush(Zhang et al., 2023a) Object Addition 1.00 12.8000 Accuracy: (Zhang et al., 2023a), Time: Evaluation on 137 instances of this subtask Text Redaction Text Redaction 1.00 0.0410 Evaluation on 137 instances of this subtask Text Removal by Painting Text Removal (Fallback) 0.20 0.0450 Evaluation on 137 instances of this subtask DALL-E(Ramesh et al., 2021) Text Removal 1.00 14.2000 Evaluation on 137 instances of this subtask Stable Diffusion Erase(Rombach et al., 2022a) Text Removal 0.97 13.8000 Evaluation on 137 instances of this subtask
+
+### H. Algorithms
+
+- Algorithm 1: A* Search for Optimal Toolpath
+
+Input: Tool Subgraph Gts, Benchmark Table BT, Tradeoff Parameter α, Quality Threshold Output: Optimal Execution Path
+
+- Step 1: Initialize Search Initialize Priority Queue Q; Initialize g(x) ← ∞ for all nodes except root; Precompute heuristic values for all nodes: foreach v in Gts do
+
+h(v) ← CalculateHeuristic(BT, v, α);
+
+Initialize Start Node: Set Input Image as Root Node r; g(r) ← 0; f(r) ← h(r); Push (f(r),[r]) into Q; Mark r as Open; while Q is not empty do
+
+(f(x),current path) ← Pop(Q); x ← LastNode(current path); if x is a leaf node then
+
+return current path
+
+foreach neighbor y in Neighbors(x) do c(y) ← CalculateActualCost(y); q(y) ← CalculateActualQuality(y); g(y)new ← ComputeExecutionCost(g(x), c(y), q(y), α); if QualityCheck(y) ≥ Quality Threshold then
+
+g(y) ← Min(g(y)new, g(y)); else
+
+g(y)new2 ← RetryMechanism(y); if QualityCheck(y) ≥ Quality Threshold then
+
+g(y)final ← g(y)new + g(y)new2; g(y) ← Min(g(y)final, g(y));
+
+else
+
+continue; Node remains unexplored
+
+f(y) ← g(y) + h(y); Push (f(y),current path + [y]) into Q;
+
+- Step 2: Output Optimal Path Terminate when the lowest-cost valid path is found; return Optimal Path;
+
+- Algorithm 2: Tool Subgraph Construction
+
+Input: Image x, Prompt u, Tool Dependency Graph Gtd, Model Description Table MDT, Supported Subtasks S Output: Tool Subgraph Gts
+
+- Step 1: Generate Subtask Tree Gss ← GenerateSubtaskTree(LLM, x, u, S);
+- Step 2: Build Tool Subgraph (TG) Initialize Gts; foreach subtask si ∈ Vss do
+
+Ti ← GetModelsForSubtask(MDT, si); Gti ← BacktrackDependencies(Gtd, Ti); Replace si in Gss with Gti to construct Gts;
+
+##### return Gts;
+
+### I. A* Execution Strategy
+
+CoSTA∗ initializes heuristic values using benchmark data and dynamically updates execution costs based on real-time performance. The A∗ search iteratively selects the node with the lowest f(x), explores its neighbors, and updates the corresponding values. If execution quality is below threshold, a retry mechanism adjusts parameters and re-evaluates g(x) (Figure 12). The process continues until a leaf node is reached. By integrating precomputed heuristics with real-time cost updates, CoSTA∗ efficiently balances execution time and quality. This adaptive approach ensures robust decision-making, outperforming existing agentic and non-agentic baselines in complex multimodal editing tasks.
+
+Iteration 1
+
+Iteration 2
+
+Qt Pass
+
+OPEN
+
+Quality Threshold (Qt) = 0.92
+
+- B
+
+- g(b) = ∞
+
+C
+
+- g(c) = 10
+
+D
+
+- g(d) = 9
+
+- B
+
+- g(b) = ∞
+
+C
+
+- g(c) = 10
+
+D
+
+- g(d) = 9
+
+t(b) = 1.5s q(b) = 0.8
+
+UNEXPLORED
+
+Qt Fail
+
+q(b) < Qt Retry
+
+S
+
+S
+
+OPEN
+
+CLOSED
+
+OPEN
+
+Figure 12. Visualization of the Retry Mechanism
+
+### J. Correlation Analysis of CLIP Scores and Human Accuracy
+
+We analyzed the correlation between CLIP similarity scores and human accuracy across 40 tasks to assess CLIP’s reliability in evaluating complex image-text edits. The scatter plot (Figure 13) illustrates the weak correlation, with Spearman’s ρ = 0.59 and Kendall’s τ = 0.47, indicating that CLIP often fails to capture fine-grained inaccuracies. Despite assigning high similarity scores, CLIP struggles with detecting missing objects, distinguishing between multiple valid outputs, and recognizing context-dependent errors. Many instances where CLIP scored above 0.95 had human accuracy below 0.75, reinforcing the need for human evaluation in multimodal tasks. These findings highlight the limitations of CLIP as a standalone metric and emphasize the necessity of integrating human feedback for more reliable assessment.
+
+Scatter Plot: Human Evaluation Accuracy vs CLIP Scores
+
+Task Data
+
+1.00
+
+0.99
+
+0.98
+
+CLIPSimilarityScores
+
+0.97
+
+0.96
+
+0.95
+
+0.94
+
+0.93
+
+0.92
+
+0.65 0.70 0.75 0.80 0.85 0.90 0.95 1.00
+
+Human Evaluation Accuracy
+
+Figure 13. Scatter plot of CLIP scores vs. human accuracy across 40 tasks. The weak correlation (Spearman’s ρ = 0.59, Kendall’s τ = 0.47) highlights CLIP’s limitations in capturing nuanced inaccuracies, particularly in complex, multi-step tasks.
+
+### K. LLM Prompt for Generating Subtask Tree
+
+You are an advanced reasoning model responsible for decomposing a given image editing task into a structured subtask tree. Your task is to generate a well-formed subtask tree that logically organizes all necessary steps to fulfill the given user prompt. Below are key guidelines and expectations:
+
+- K.1. Understanding the Subtask Tree A subtask tree is a structured representation of how the given image editing task should be broken down into smaller, logically ordered subtasks. Each node in the tree represents an atomic operation that must be performed on the image. The tree ensures that all necessary operations are logically ordered, meaning a subtask that depends on another must appear after its dependency.
+- K.2. Steps to Generate the Subtask Tree
+
+- 1. Step 1: Identify all relevant subtasks needed to fulfill the given prompt.
+- 2. Step 2: Ensure that each subtask is logically ordered, meaning operations dependent on another should be placed later in the path.
+- 3. Step 3: Each subtask should be uniquely labeled based on the object it applies to and follow the format (Obj1
+
+→ Obj2) where Obj1 is replaced with Obj2. In case of recoloring, use (Obj → new color), while for removal, simply include (Obj) as the object being removed.
+
+- 4. Step 4: A tree may involve multiple correct paths where subtasks are independent of each other. In such cases, a subtask may appear twice in different parts of the tree. Number such occurrences distinctly, e.g., Subtask1(1), Subtask1(2), ensuring clarity.
+- 5. Step 5: Some tasks may have multiple valid approaches. For example, replacing a cat with a pink dog can be done in two ways:
+
+- • Object Replacement (Cat → Pink Dog)
+- • Object Replacement (Cat → Dog) → Object Recoloration (Dog → Pink Dog)
+
+- K.3. Logical Constraints & Dependencies
+
+- • Ensure proper ordering, e.g., if an object is replaced and then segmented, segmentation must follow replacement.
+- • Operations should be structured logically so that every subtask builds upon the previous one.
+
+- K.4. Supported Subtasks Below is the complete list of available subtasks: Object Detection, Object Segmentation, Object Addition, Object Removal, Background Removal, Landmark Detection, Object Replacement, Image Upscaling, Image Captioning, Changing Scenery, Object Recoloration, Outpainting, Depth Estimation, Image Deblurring, Text Extraction, Text Replacement, Text Removal, Text Addition, Text Redaction, Question Answering Based on Text, Keyword Highlighting, Sentiment Analysis, Caption Consistency Check, Text Detection You must strictly use only these subtasks when constructing the tree.
+- K.5. Expected Output Format The model should output the subtask tree in structured JSON format, where each node contains:
+
+- • Subtask Name (with object label if applicable)
+- • Parent Node (Parent subtask from which it depends)
+- • Execution Order (Logical flow of tasks)
+
+- K.6. Example Inputs & Expected Outputs
+
+- K.6.1. EXAMPLE 1
+
+Input Prompt: “Detect the pedestrians, remove the car and replacement the cat with rabbit and recolor the dog to pink.” Expected Subtask Tree:
+
+"task": "Detect the pedestrians, remove the car and replacement the cat with rabbit and recolor the dog to pink", "subtask_tree": [ {
+
+"subtask": "Object Detection (Pedestrian)(1)", "parent": []
+
+}, {
+
+"subtask": "Object Removal (Car)(2)", "parent": ["Object Detection (Pedestrian)(1)"]
+
+}, {
+
+"subtask": "Object Replacement (Cat -> Rabbit)(3)", "parent": ["Object Removal (Car)(2)"]
+
+}, {
+
+"subtask": "Object Replacement (Cat -> Rabbit)(4)", "parent": ["Object Detection (Pedestrian)(1)"]
+
+}, {
+
+"subtask": "Object Removal (Car)(5)", "parent": ["Object Replacement (Cat -> Rabbit)(4)"]
+
+}, {
+
+"subtask": "Object Recoloration (Dog -> Pink Dog)(6)", "parent": ["Object Replacement (Cat -> Rabbit)(3)",
+
+"Object Removal (Car)(5)"] }
+
+]
+
+- K.6.2. EXAMPLE 2 Input Prompt: “Update the closed signage to open while detecting the trash can and pedestrian crossing for better scene understanding. Also, remove the people for clarity.” Expected Subtask Tree: "task": "Update the closed signage to open while detecting the trash can and pedestrian crossing for better scene understanding. Also, remove the people for clarity.",
+
+"subtask_tree": [ {
+
+"subtask": "Text Replacement (CLOSED -> OPEN)(1)", "parent": []
+
+}, {
+
+"subtask": "Object Detection (Pedestrian Crossing)(2)", "parent": ["Text Replacement (CLOSED -> OPEN)(1)"]
+
+},
+
+{
+
+"subtask": "Object Detection (Trash Can)(3)", "parent": ["Text Replacement (CLOSED -> OPEN)(1)"]
+
+}, {
+
+"subtask": "Object Detection (Pedestrian Crossing)(4)", "parent": ["Object Detection (Trash Can)(3)"]
+
+}, {
+
+"subtask": "Object Detection (Trash Can)(5)", "parent": ["Object Detection (Pedestrian Crossing)(2)"]
+
+}, {
+
+"subtask": "Object Removal (People)(6)", "parent": ["Object Detection (Pedestrian Crossing)(4)",
+
+"Object Detection (Trash Can)(5)"] }
+
+]
+
+- K.7. Final Task Now, using the given input image and prompt, generate a well-structured subtask tree that adheres to the principles outlined above.
+
+- • Ensure logical ordering and clear dependencies.
+- • Label subtasks by object name where needed.
+- • Structure the output as a JSON-formatted subtask tree.
+
+##### Input Details:
+
+- • Image: input image
+
+- • Prompt: User Prompt
+- • Supported Subtasks: (See the list above)
+
+##### Now, generate the correct subtask tree. Before you generate the tree, ensure that for every possible path, all required subtasks are included and none are skipped.
+
+### L. LLM Prompt for Getting Bounding Box and Text for Replacement
+
+You are given an image containing text, where each word has associated bounding box coordinates. The existing text and their corresponding bounding boxes are as follows:
+
+- • ”THIS”: (281,438,502,438,502,494,281,494)
+- • ”IS”: (533,437,649,440,647,497,531,493)
+- • ”A”: (667,444,734,444,734,492,667,492)
+- • ”NICE”: (214,504,810,502,811,649,214,651)
+- • ”STREET”: (68,674,915,640,924,859,77,893)
+
+The user wants to replace this text with:
+
+##### ”THIS IS NOT A NICE STREET”
+
+- L.1. Your Task You must determine which words in the image should be removed and which words need to be rewritten to ensure a smooth transition to the new text. The goal is to maintain spatial coherence while ensuring that the updated text fits naturally within the image.
+- L.2. Guidelines for Text Replacement
+
+- 1. Identify Words to Remove:
+
+- • Any word that needs to be replaced or modified should be marked for removal.
+- • If the new text introduces an additional word, the surrounding words should also be removed and rewritten to maintain proper spacing.
+
+- 2. Determine Placement for New Words:
+
+- • If a word or phrase is being replaced (e.g., "GOOD BOY" → "BAD GIRL"), use a single bounding box that covers the area of both words instead of providing separate locations.
+- • If new words need to be inserted, ensure that adjacent words are also rewritten to provide sufficient space for readability.
+- • If the new text is longer than the original, adjust placements accordingly:
+
+- – Remove and rewrite words from the next or previous line if needed.
+- – If necessary, split the updated text into two separate lines and provide distinct bounding boxes for each.
+
+- 3. Bounding Box Adjustments:
+
+- • If text placement changes, the bounding box should be expanded or shifted to accommodate the new words.
+- • Ensure that all bounding boxes align with the natural flow of the text in the image.
+
+- L.3. Example Case for Clarity Input Scenario: Original Text: ”I AM A GOOD BOY” Replacement Text: ”I AM A BAD GIRL” Expected Output:
+
+- • Remove: "GOOD" and "BOY"
+- • Write: "BAD GIRL"
+- • Bounding Box for ”BAD GIRL”: (Bounding box covering the area where ”GOOD BOY” was originally written)
+
+If "BAD GIRL" doesn’t fit naturally within the same space, adjust the bounding box or split it into multiple lines.
+
