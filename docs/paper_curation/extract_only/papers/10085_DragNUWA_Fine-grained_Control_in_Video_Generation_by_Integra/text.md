@@ -1,0 +1,960 @@
+# arXiv:2308.08089v1[cs.CV]16Aug2023
+
+## DRAGNUWA: FINE-GRAINED CONTROL IN VIDEO GENERATION BY INTEGRATING TEXT, IMAGE, AND TRAJECTORY
+
+##### Shengming Yin1∗ Chenfei Wu2∗ Jian Liang3 Jie Shi3 Houqiang Li1 Gong Ming2 Nan Duan2†
+
+1University of Science and Technology of China 2Microsoft Research Asia 3Peking University {sheyin@mail.,lihq}@ustc.edu.cn, {chewu,migon,nanduan}@microsoft.com, {j.liang@stu.,jieshi@}pku.edu.cn
+
+Input Image Input Text Input Trajectory Output Video
+
+[Figure 1]
+
+[Figure 2]
+
+[Figure 3]
+
+[Figure 4]
+
+[Figure 5]
+
+[Figure 6]
+
+[Figure 7]
+
+A boy playing football on the playground
+
+[Figure 8]
+
+[Figure 9]
+
+[Figure 10]
+
+[Figure 11]
+
+[Figure 12]
+
+[Figure 13]
+
+[Figure 14]
+
+A boy playing football on the playground
+
+[Figure 15]
+
+[Figure 16]
+
+[Figure 17]
+
+[Figure 18]
+
+[Figure 19]
+
+[Figure 20]
+
+[Figure 21]
+
+A cat is running on the lawn
+
+[Figure 22]
+
+[Figure 23]
+
+[Figure 24]
+
+[Figure 25]
+
+[Figure 26]
+
+[Figure 27]
+
+[Figure 28]
+
+A boy is running on the lawn
+
+[Figure 29]
+
+[Figure 30]
+
+[Figure 31]
+
+[Figure 32]
+
+[Figure 33]
+
+[Figure 34]
+
+[Figure 35]
+
+Fish swimming in the pond
+
+[Figure 36]
+
+[Figure 37]
+
+[Figure 38]
+
+[Figure 39]
+
+[Figure 40]
+
+[Figure 41]
+
+[Figure 42]
+
+Fish
+
+swimming in the pond
+
+Figure 1: DragNUWA integrates text, image, and trajectory controls to achieve controllable video generation from semantic, spatial, and temporal perspectives. The three groups of examples demonstrate the impact of altering one control while keeping the other two fixed. The first group (Row 1-2) displays the control of complex trajectories, including complex motions (red curved arrows) and camera movements (red rightward arrows). The second group (Row 3-4) illustrates the influence of language control, pairing different text with the same image and trajectory to achieve the effect of introducing new objects in the images. The third group (Row 5-6) demonstrates the impact of image control, showcasing the generation of both real-world and artistic videos.
+
+ABSTRACT
+
+Controllable video generation has gained significant attention in recent years. However, two main limitations persist: Firstly, most existing works focus on either text, image, or trajectory-based control, leading to an inability to achieve fine-grained control in videos. Secondly, trajectory control research is still in its early stages, with most experiments being conducted on simple datasets like Human3.6M. This constraint limits the models’ capability to process open-domain images and effectively handle complex curved trajectories. In this paper, we propose DragNUWA, an open-domain diffusion-based video generation model. To tackle the issue of insufficient control granularity in existing works, we simultaneously introduce text, image, and trajectory information to provide fine-grained control over video content from semantic, spatial, and temporal perspectives. To resolve the problem of limited open-domain trajectory control in current research, We propose trajectory modeling with three aspects: a Trajectory Sampler (TS) to enable open-domain control of arbitrary trajectories, a Multiscale Fusion (MF) to control trajectories in different granularities, and an Adaptive Training (AT) strategy to generate consistent videos following trajectories. Our experiments validate the effectiveness of DragNUWA, demonstrating its superior performance in fine-grained control in video generation. The homepage link is https: //www.microsoft.com/en-us/research/project/dragnuwa/
+
+∗Both authors contributed equally to this research. Shengming, Jian, and Jie’s internship work under the mentorship of Chenfei. †Corresponding author.
+
+A boat sailing on the lake
+
+[Figure 43]
+
+[Figure 44]
+
+[Figure 45]
+
+[Figure 46]
+
+[Figure 47]
+
+[Figure 48]
+
+[Figure 49]
+
+[Figure 50]
+
+A girl is skiing in the forest
+
+[Figure 51]
+
+[Figure 52]
+
+[Figure 53]
+
+[Figure 54]
+
+[Figure 55]
+
+A steam locomotive journeying through the verdant forest
+
+[Figure 56]
+
+[Figure 57]
+
+[Figure 58]
+
+[Figure 59]
+
+[Figure 60]
+
+[Figure 61]
+
+[Figure 62]
+
+[Figure 63]
+
+[Figure 64]
+
+Few people walking on the street
+
+[Figure 65]
+
+[Figure 66]
+
+[Figure 67]
+
+[Figure 68]
+
+[Figure 69]
+
+[Figure 70]
+
+[Figure 71]
+
+Herd of elephants walking in the forest
+
+[Figure 72]
+
+[Figure 73]
+
+[Figure 74]
+
+[Figure 75]
+
+[Figure 76]
+
+[Figure 77]
+
+[Figure 78]
+
+Zebras are running
+
+[Figure 79]
+
+[Figure 80]
+
+[Figure 81]
+
+[Figure 82]
+
+[Figure 83]
+
+[Figure 84]
+
+A dog is running in the path
+
+[Figure 85]
+
+[Figure 86]
+
+[Figure 87]
+
+[Figure 88]
+
+[Figure 89]
+
+[Figure 90]
+
+[Figure 91]
+
+[Figure 92]
+
+Along the river of Qingming Festival
+
+[Figure 93]
+
+[Figure 94]
+
+[Figure 95]
+
+[Figure 96]
+
+[Figure 97]
+
+[Figure 98]
+
+[Figure 99]
+
+[Figure 100]
+
+A group of people discussing at the table
+
+[Figure 101]
+
+[Figure 102]
+
+[Figure 103]
+
+[Figure 104]
+
+[Figure 105]
+
+- Figure 2: Samples generated by DragNUWA are presented, with the first column showcasing three input controls: text, image, and trajectory. The second, third, and fourth columns exhibit the 5th, 10th, and 15th frames of the output video, respectively. There are 16 frames with a resolution of 576 × 320 in total. DragNUWA is capable of concurrently controlling the movement of the camera, multiple objects, and complex trajectories, enabling the generation of videos featuring both realworld scenes and artistic paintings.
+
+1 INTRODUCTION
+
+Controllable video generation is a hot topic in research. Most of these studies focus on controllable visual generation. Early research primarily emphasized image-to-video generation, using the initial frame image as a control to manipulate the generated video spatially Lotter et al. (2016); Srivastava et al. (2015); Chiappa et al. (2016). However, relying solely on images as controls cannot determine the subsequent frames of future videos. Consequently, there has been growing interest in text-tovideo research, employing text to semantically constrain video generation Wu et al. (2021; 2022); Hong et al. (2022); Singer et al. (2022); Ho et al. (2022). Some studies also utilize both text and image conditions for more precise control over video generation Hu et al. (2022); Yin et al. (2023); Esser et al. (2023). Nonetheless, both language and image remain limited in expressing the temporal information of videos, such as camera movements and complex object trajectories.
+
+To control temporal information of videos, trajectory-based control has emerged as a user-friendly approach increasingly gaining attention in research. CVG Hao et al. (2018) and C2M Ardino et al. (2021) encode images and trajectories, predicting optical flow maps and warp features as intermediate results for controllable video generation. However, warp operations often result in unnatural distortions. To solve this issue, II2V Blattmann et al. (2021b) and iPOKE Blattmann et al. (2021a) compress videos into a dense latent space and learn to manipulate these latent variables using RNN. Similarly, MCDiff Chen et al. (2023) predicts future frames by diffusion latents in an auto-regressive way. While MCDiff has achieved promising results, it relies on HRNet Wang et al. (2021) to extract 17 keypoints for each person to construct data, it can only control motion from humans. Additionally, MCDiff and the aforementioned models neglect to consider the control of languages, which in turn limits their ability to control the videos effectively.
+
+The aforementioned research inspired us with a two-fold vision for controllable video generation.
+
+- 1) Firstly, the current consideration of text, image, and trajectory-based controls in existing works is not comprehensive enough. We argue that these three types of controls are indispensable, as they each contribute to the regulation of video content from semantic, spatial, and temporal perspectives. As depicted in Figure 1, the combination of text and images alone is insufficient to convey the intricate motion details present in a video, which can be supplemented by incorporating trajectory information. Furthermore, while images and trajectories may not adequately represent future objects in a video, language can compensate for this shortcoming. Lastly, relying solely on trajectories and language can result in ambiguity when expressing abstract concepts, such as differentiating between real-world fish and a painting of a fish, whereas images can provide the necessary distinction. 2) Secondly, current research on trajectory control is still in its early stages, with most experiments being conducted on simple datasets like Human3.6M. This constraint limits the models’ capability to process open-domain images and effectively handle complex curved trajectories, multiple object movements, and camera motion simultaneously.
+
+Based on these observations, we propose DragNUWA, an open-domain video generation model. To address the issue of insufficient control granularity in existing works, we simultaneously introduce text, image, and trajectory information to provide fine-grained control over video content from semantic, spatial, and temporal perspectives. To resolve the problem of limited open-domain trajectory control in current research, We model trajectory with three aspects: a Trajectory Sampler (TS) to enable open-domain control of arbitrary trajectories, a Multiscale Fusion (MF) to control trajectories in different granularities, and an Adaptive Training (AT) strategy to generate consistent videos following trajectories.
+
+The main contributions of our work are as follows:
+
+- • We introduce DragNUWA, an end-to-end video generation model that seamlessly integrates three essential controls—Text, Image, and Trajectory—providing strong and userfriendly controllability.
+- • We focus on trajectory modeling with three aspects: a Trajectory Sampler (TS) to enable open-domain control of arbitrary trajectories, a Multiscale Fusion (MF) to control trajectories in different granularities, and an Adaptive Training (AT) strategy to generate consistent videos following trajectories.
+- • We conduct extensive experiments to validate the effectiveness of DragNUWA, demonstrating its superior performance in fine-grained control in video synthesis.
+
+- 2 RELATED WORKS
+
+- 2.1 TEXT/IMAGE CONTROL IN VIDEO SYNTHESIS
+
+Early research primarily emphasized image-to-video generation, with a common assumption that the environment is deterministic and has only one possible future Lotter et al. (2016); Srivastava et al. (2015); Chiappa et al. (2016). However, this assumption cannot satisfy the requirements of realworld videos with unlimited possibilities. To address this issue, text-to-video generation has been widely studied in recent years (GODIVA Wu et al. (2021), NUWA Wu et al. (2022), CogVideo Hong et al. (2022), Make A Video Singer et al. (2022), Imagen Video Ho et al. (2022)), introducing text descriptions to semantically control the content of video generation. However, text alone cannot accurately describe the spatial information of visuals. Therefore, MAGE Hu et al. (2022) emphasizes text-image-to-video, utilizing both semantic information from text and spatial information from images for precise video control. Similarly, GEN-1 Esser et al. (2023) integrates depth maps with texts using cross-attention mechanisms for control. In the domain of long video generation, text-image-tovideo has also been widely used. For example, Phenaki Villegas et al. (2022) generates subsequent frames by auto-regressively introducing previous frames and text, achieving long video generation. NUWA-XL Yin et al. (2023) employs a hierarchical diffusion architecture to continuously complete intermediate frames based on previous frames and text.
+
+While text and images can effectively convey semantics and appearance, they struggle to adequately represent complex motion information and camera movements. Unlike these approaches, DragNUWA adds trajectory control to text and image control, enabling fine-grained control of videos in terms of semantics, appearance, and motion.
+
+- 2.2 TRAJECTORY CONTROL IN VIDEO SYNTHESIS
+
+To better control motion in videos, future video prediction methods control subsequent frame generation based on given video frames Wu et al. (2020); Wichers et al. (2018); Walker et al. (2017); Liang et al. (2017). On the other hand, video-to-video generation transfers the style of a complete video or video sketch to a new domain, providing rich control information Chan et al. (2019); Wang et al. (2019). However, this requires users to provide video input and restricts fine-grained control as the style transfer is based on the original video’s skeleton. Consequently, image-trajectory-tovideo methods have emerged, controlling video development through trajectories given in images. CVG Hao et al. (2018) and C2M Ardino et al. (2021) encode images and trajectories, predicting optical flow maps and warp features as intermediate results for controllable video generation. However, warp operations often result in unnatural distortions. II2V Blattmann et al. (2021b) and iPOKE Blattmann et al. (2021a) compress videos into a dense latent space and learn to manipulate these latent variables using recurrent neural networks. However, since trajectory control operates on the pixel level, it is sparse and prone to ambiguity. To address this issue, sparse strokes are first transformed into dense flows, and then future frames are predicted based on dense flow using autoregression. Nonetheless, since MCDiff Chen et al. (2023) relies on HRNet Wang et al. (2021) to extract 17 keypoints for each person to construct data, it can only control motion from humans. To achieve control of open-domain objects, Video Composer Wang et al. (2023) very recently used MPEG-4 to extract motion vector information from videos as conditions for training, but due to the lack of high-level semantic information in motion vectors, it could only control simple object movements.
+
+In comparison to previous research, which solely focused on managing human motion or rudimentary object movements, DragNUWA stands out as the pioneering approach in accomplishing fine-grained open-domain video generation by enabling the dragging of any objects in an image, facilitating control over multiple objects, and accommodating their complex trajectories and camera movements.
+
+- 3 METHOD Unlike previous works that only support either text-based Wu et al. (2021), image-based Zhang et al.
+
+- (2020), or trajectory-based control Hu et al. (2022), DragNUWA is designed to incorporate all three types of control while emphasizing trajectory modeling from three aspects:
+
+Trajectory Sampler (TS)
+
+[Figure 106]
+
+[Figure 107]
+
+[Figure 108]
+
+[Figure 109]
+
+[Figure 110]
+
+[Figure 111]
+
+[Figure 112]
+
+[Figure 113]
+
+[Figure 114]
+
+[Figure 115]
+
+[Figure 116]
+
+[Figure 117]
+
+[Figure 118]
+
+[Figure 119]
+
+[Figure 120]
+
+[Figure 121]
+
+[Figure 122]
+
+[Figure 123]
+
+[Figure 124]
+
+[Figure 125]
+
+Prompts: A speedy drive on a curvy road near laketahoe.
+
+[Figure 126]
+
+[Figure 127]
+
+[Figure 128]
+
+[Figure 129]
+
+[Figure 130]
+
+[Figure 131]
+
+[Figure 132]
+
+[Figure 133]
+
+[Figure 134]
+
+[Figure 135]
+
+[Figure 136]
+
+[Figure 137]
+
+[Figure 138]
+
+[Figure 139]
+
+[Figure 140]
+
+[Figure 141]
+
+Adaptive Training (AT) Image Enc Trajectory Enc
+
+Text Enc
+
+Multiscale Fusion (MF)
+
+Down
+
+Mid
+
+Up
+
+Down
+
+Up
+
+Down
+
+Up
+
+Down
+
+Up
+
+[Figure 142]
+
+[Figure 143]
+
+[Figure 144]
+
+- Figure 3: Overview of DragNUWA’s Training Process. DragNUWA supports three optional inputs: text p, image s, and trajectory g, and focuses on designing the trajectory from three aspects. First, the Trajectory Sampler (TS) dynamically samples trajectories from open-domain video flow. Second, Multiscale Fusion (MF) deeply integrates trajectory with text and image within each block of the UNet architecture. Lastly, Adaptive Training (AT) adapts the model from optical flow conditions to user-friendly trajectories. Ultimately, DragNUWA is capable of handling open-domain videos with multiple objects and their complex trajectories.
+
+- • 1) To enable open-domain control of arbitrary trajectories, a Trajectory Sampler (TS) (introduced in Sec. 3.1) is employed to directly sample trajectories from open-domain video flows during training, as opposed to the specific domain, such as human pose trajectories used in MCDiff Chen et al. (2023).
+- • 2) To achieve control over different trajectory granularities, a Multiscale Fusion (MF) (introduced in Sec. 3.2) is utilized to downsample the trajectory to various scales and deeply integrate it with text and image within each block of the UNet architecture, rather than directly concatenating controls with diffusion noise as in Chen et al. (2023); Wang et al.
+
+(2023).
+
+- • 3) To generate stable and consistent videos, we adopt an Adaptive Training (AT) (introduced in Sec. 3.3) approach, initially conditioning on dense flow to stabilize video generation and subsequently training on sparse trajectories to adapt the model.
+
+In the following sections, we focus on introducing the training process from Sec. 3.1 to Sec. 3.3, specifically discussing how the model calculates loss by merely using the input video and text pair, denoted as < v,p >. In Sec. 3.4, we introduce the inference process, which demonstrates how the model processes the input text p, image s, and trajectory g to output the generated video v.
+
+- 3.1 TRAJECTORY SAMPLER (TS)
+
+In the training data, since it only contains video and text pairs < v,p >, it is essential to extract trajectories from the videos. Previous studies primarily utilized key point tracking models to preextract video trajectories for training. However, this approach has two main drawbacks. Firstly, as these models are trained on specific domains, such as human poses, their ability to handle opendomain videos is limited. Secondly, in practical applications, it is difficult to ensure that users input trajectories precisely at key points, resulting in a gap between training and inference. To facilitate open-domain video trajectories and enable users to input arbitrary trajectories, We designed
+
+a Trajectory Sampler (TS) that directly samples trajectories from video optical flow, allowing the model to learn various possible trajectories in an open-domain setting.
+
+Given a video v ∈ RL×C×H×W with L frames, C channels, H height, W width, we first utilize Unimatch Xu et al. (2023), an optical flow estimator, to extract dense optical flow f ∈ R(L−1)×C×H×W. For clarity, we represent the optical flow of the first and second frames as f0 ∈ RC×H×W. A straightforward approach is to directly sample trajectories from f0 according to the intensity of the optical flow. However, this would result in excessive sampling on objects with larger motions, while those objects with smaller motions would have limited opportunities for learning. To handle this issue, we uniformly distribute anchor points with an interval of λ. Moreover, to cover the entire image region as much as possible, we add random perturbations δ ranging from −λ/2 to λ/2 to the anchor points. Finally, we obtain a slightly sparser anchored optical flow f0a in the following:
+
+f0a,i,j =
+
+0, else f0,i,j, (i + δ)%λ = 0&(j + δ)%λ = 0
+
+(1)
+
+To support control over multiple trajectories, we define the maximum number of trajectories N and randomly sample the number of trajectories n ∼ U[1,N]. To accommodate both large and small motion objects while selecting trajectories based on flow intensity, we sample n anchor tracking points from f0a,i,j according to the multinomial distribution M(n,||f0a,i,j||2). This results in a sparser flow of f0s containing n tracking points. Since f0s only contains the tracking points from the first frame, to obtain the full trajectory fs, we proceed to iteratively track the trajectories by updating the position of the tracking points according to the corresponding optical flow f.
+
+Given that fs is highly sparse, it is not conducive for the model to learn from these trajectories. Therefore, we apply Gaussian Filter to fs to obtain an enhanced trajectory map fg ∈ R(L−1)×C×H×W. Compared with fs, fg improves the robustness and helps the model to better capture trajectory information.
+
+- 3.2 MULTISCALE FUSION (MF)
+
+Encoding of Video During training, we treat video v ∈ RL×C×H×W as independent frames and encode it into x0 ∈ RL×c×h×w using a pre-trained image autoencoder Rombach et al. (2022). It is important to note that the subscript 0 in x0 does not represent the first frame but indicates the initial step in the diffusion process. We follow the pre-defined diffusion process q (xt|xt−1) = N xt;√αt xt−1, (1 − αt)I and add noise to x0:
+
+### xt = √α¯t x0 + (1 − α¯t)ϵ ϵ ∼ N(0,I) (2)
+
+where ϵ is noise, xt is the t-th intermediate state in diffusion process, αt,α¯t is hyperparameters in diffusion model.
+
+Encoding of Text Control Given the text prompts, we encode them with CLIP Radford et al.
+
+- (2021) Text Encoder to get prompt embedding p ∈ Rl
+
+p×cp where lp is token length, cp is prompt embedding dimension.
+
+Encoding of Image Control For image control, we utilize the first frame of the video as a condition, providing general information such as appearance, style, and layout. To match the size for fusion, the first frame is repeated L times. Subsequently, the pre-trained image autoencoder Rombach et al. (2022) and a sequence of convolution layers are employed to independently encode each frame into a representation s ∈ RL×c
+
+s×h×w.
+
+Encoding of Trajectory Control By Trajectory Sampler introduced in Sec. 3.1, we obtain fg ∈ R(L−1)×C×H×W directly from open-domain videos v. To match the fusion size, we pad a full zero frame in front of fg, and encode it using a series of convolutional layers, resulting in g ∈ RL×c
+
+g×h×w.
+
+To fuse multiple controls in different granularities, we propose Multiscale Fusion (MF), which can simultaneously accept text p, image s, and trajectory g as conditions and merge them at different resolutions. The Multiscale Fusion will first downsample the trajectory g and image s to various
+
+scales g(l) and s(l), where the superscript l represents downsample depth. The trajectory and image are then integrated with text p in UNet architecture, composed of multiscale downblocks and upblocks with skip connection.
+
+For the image condition s and trajectory condition g, they are fused into hidden state h via linear projection. In the l-th block of UNet architecture, s(l), m(l) and g(l) are first transferred to scale ws(l),wm(l),wg(l) and shift b(sl),b(ml),b(gl) via zero-initialized convolution layers, where m(l) is a binary mask to indicate whether the frame is provided as a condition. Then, the scale w and shift b are fused into h via simple linear projection.
+
+h := ws(l) · h + b(sl) + h (3) h := wm(l) · h + b(ml) + h (4) h := wg(l) · h + b(gl) + h (5)
+
+For the text condition p, it is injected to hidden states h via Prompt Cross-Attention with hidden states h treated as query, and text p treated as key and value.
+
+To support various combinations of conditions, we introduce randomness into the training process by randomly omitting text, images, and trajectories before feeding them into Multiscale Fusion. For the dropped text, we employ empty strings as replacements, whereas for dropped images and trajectories, frames populated with all zeros are used. Through this training paradigm involving mixed conditions, our model is capable of generating consistent videos during inference across different condition combinations.
+
+- 3.3 ADAPTIVE TRAINING (AT)
+
+Simultaneously conditioning the video generation process on both image and sparse trajectory while maintaining visual consistency presents a significant challenge. To address this issue, we employ an Adaptive Training (AT) strategy to optimize DragNUWA.
+
+In the first stage, to generate visually and dynamically consistent videos, we provide the model with prompt p, dense optical flow f, and the repeated first frame s as conditions, the model is optimized to minimize the distance between the output of the UNet ϵθ (xt,p,s,f) and the added noise ϵ. Considering the density of optical flow, we do not apply Gaussian filtering for enhancement.
+
+- Lθ = ||ϵ − ϵθ (xt,p,s,f)||22 (6)
+
+As provided the complete optical flow f as a condition, it is much easier to generate dynamically consistent videos while preserving the first frame. In the second stage, to adapt the model from complete optical flow to user-friendly trajectories, we continue training the model by sampling trajectory fg from the original optical flow f using Trajectory Sampler (TS).
+
+- Lθ = ||ϵ − ϵθ (xt,p,s,g)||22 (7)
+
+Despite the trajectory being considerably sparser than the optical flow, the model is capable of generating dynamics consistent with trajectories while maintaining stability and consistency learned from the previous training.
+
+- 3.4 INFERENCE
+
+During inference, given the text, image, and trajectory, DragNUWA is capable of generating realistic and contextually consistent videos v.
+
+The text is encoded by CLIP Radford et al. (2021) Text encoder to get text embedding p. The image is repeated L times and encoded to s. The input trajectory is first processed by Gaussian Filter and zero frame padding and then encoded to g. After that, x0 is iteratively sampled from a pure Gaussian noise xT using the Unet ϵθ (xt,p,s,g). Finally, the sampled latent code x0 is decoded into video pixels v by image autoencoder.
+
+|Version<br><br>| |DragNUWA-LD<br><br>|DragNUWA-HD|
+|---|---|---|---|
+|Data<br><br>|Dataset<br><br>|WebVid|WebVid+VideoHD|
+| |Samples|10M|10M+75K|
+| |Resolution (W × H)<br><br>|320 × 192|576 × 320|
+| |Max Duration<br><br>|2s<br><br>|4s|
+| |Frames (L)|8f<br><br>|16f|
+| |Framerate<br><br>|4 fps| |
+|Augmentation|RandomResizeCrop|scale=(0.9, 1.), ratio=(5/3, 5/3)| |
+| |ColorJitter|brightness=0.05, contrast=0.15, saturation=0.15| |
+| |RandomStartFrame<br><br>|[0, video duration-2]<br><br>|[0, video duration-4]<br><br>|
+|Trajectory Sampler(TS)<br><br>|Max Trajectories (N)<br><br>|8| |
+| |Gaussian Kernel|kernel size=99, sigma=10<br><br>| |
+| |Anchor Interval (λ)<br><br>|16| |
+|Multiscale Fusion(MF)<br><br>|Text Control (p)<br><br>|77x1024| |
+| |Image Control (s)|8 × 320 × 40 × 24 8 × 320 × 20 × 12 8 × 640 × 10 × 6 8 × 1280 × 5 × 3<br><br>|16 × 320 × 72 × 40 16 × 320 × 36 × 20 16 × 640 × 18 × 10 16 × 1280 × 9 × 5|
+| |Trajectory Control (g)<br><br>|8 × 320 × 40 × 24 8 × 320 × 20 × 12 8 × 640 × 10 × 6 8 × 1280 × 5 × 3|16 × 320 × 72 × 40 16 × 320 × 36 × 20 16 × 640 × 18 × 10 16 × 1280 × 9 × 5|
+| |Control Drop Ratio|Text: 0.1, Image: 0.1, Trajectory: 0.1| |
+|Adaptive Training(AT)<br><br>|Batch Size<br><br>|128| |
+| |Learning Rate|5 × 10−6| |
+| |Scheduler<br><br>|WarmupLinear, warmup ratio=0.05<br><br>| |
+| |Optimizer<br><br>|Adam| |
+| |Parameters<br><br>|1.60B| |
+
+Table 1: Implementation details of DragNUWA.
+
+- 4 EXPERIMENTS
+
+- 4.1 DATASETS In the training process, we utilize WebVid and VideoHD to optimize DragNUWA.
+
+- • WebVid is a vast dataset Bain et al. (2021) comprising 10 million web videos encompassing diverse real-world scenarios with corresponding caption. It covers a wide range of motion patterns, making it suitable for open-domain trajectory-based video generation.
+- • VideoHD We build VideoHD dataset based on web-crawled videos. We first collected 75K high-resolution, top-quality video clips from the internet. Subsequently, these clips are annotated using BLIP2 Li et al. (2023). Finally, we manually filter out some errors in the generated results.
+
+- 4.2 IMPLEMENTATION DETAILS
+
+We implement two versions of DragNUWA, namely DragNUWA-LD and DragNUWA-HD. DragNUWA-LD is trained on videos of 8 frames with a resolution of 320×192, while DragNUWAHD is trained on 16 frames with a resolution of 576 × 320. For the Trajectory Sampler (TS), the maximum number of trajectories N is 8, with anchor interval λ of 16. The Gaussian kernel size is 99, with sigma value set to 10. To support different condition combinations, we randomly omit text, images, and trajectories with a probability of 0.1. We train the model using Adam optimizer Kingma & Ba (2014) with a batch size of 128, learning rate of 5 × 10−6. More implementation details can be found in Tab. 1.
+
+- 4.3 TRAJECTORY CONTROLLABILITY
+
+Contrary to existing studies that focus on text or image control, DragNUWA primarily emphasizes modeling trajectory control. In order to validate the effectiveness of trajectory control, we test DragNUWA from two aspects: camera movements and complex trajectories.
+
+Camera movements. In video production, camera movements play a significant role in creating dynamic and engaging visuals for the audience. Different types of camera movements can aid in narrative storytelling, or emphasizing elements within a scene. Common camera movements include not only horizontal and vertical movements but also zooming in and zooming out. As shown in Fig. 4, we discovered that although DragNUWA does not explicitly model camera movements, it learns various camera movements from the modeling of open-domain trajectories.
+
+[Figure 145]
+
+Input Text : The great wall of China Input Image :
+
+Input Trajectory : Output Video :
+
+[Figure 146]
+
+[Figure 147]
+
+[Figure 148]
+
+[Figure 149]
+
+[Figure 150]
+
+[Figure 151]
+
+[Figure 152]
+
+[Figure 153]
+
+[Figure 154]
+
+[Figure 155]
+
+[Figure 156]
+
+[Figure 157]
+
+[Figure 158]
+
+[Figure 159]
+
+[Figure 160]
+
+[Figure 161]
+
+[Figure 162]
+
+[Figure 163]
+
+[Figure 164]
+
+[Figure 165]
+
+[Figure 166]
+
+[Figure 167]
+
+[Figure 168]
+
+[Figure 169]
+
+[Figure 170]
+
+[Figure 171]
+
+[Figure 172]
+
+[Figure 173]
+
+[Figure 174]
+
+[Figure 175]
+
+[Figure 176]
+
+[Figure 177]
+
+[Figure 178]
+
+[Figure 179]
+
+[Figure 180]
+
+[Figure 181]
+
+[Figure 182]
+
+[Figure 183]
+
+[Figure 184]
+
+[Figure 185]
+
+[Figure 186]
+
+[Figure 187]
+
+[Figure 188]
+
+[Figure 189]
+
+[Figure 190]
+
+[Figure 191]
+
+[Figure 192]
+
+[Figure 193]
+
+[Figure 194]
+
+[Figure 195]
+
+[Figure 196]
+
+[Figure 197]
+
+[Figure 198]
+
+[Figure 199]
+
+[Figure 200]
+
+[Figure 201]
+
+[Figure 202]
+
+[Figure 203]
+
+[Figure 204]
+
+[Figure 205]
+
+[Figure 206]
+
+[Figure 207]
+
+[Figure 208]
+
+[Figure 209]
+
+[Figure 210]
+
+[Figure 211]
+
+[Figure 212]
+
+[Figure 213]
+
+- Figure 4: Various camera movement effects can be achieved by utilizing identical text and images while altering the dragging trajectories. For instance, zoom-in and zoom-out effects can be expressed by drawing the directional trajectories at the desired zoom locations.
+
+Complex Trajectories. Motion modeling in video generation presents challenges due to the presence of multiple moving objects, intricate motion trajectories, and varying motion amplitudes among different objects. To evaluate the capability of DragNUWA in accurately modeling complex motion, we conducted tests on various intricate drag trajectories using the same image and text, as depicted in Fig. 5. Our findings indicate that DragNUWA can reliably control complex motions. This encompasses several aspects: firstly, DragNUWA supports complex curved trajectories, enabling the generation of objects moving along the specific intricate trajectory (see Row 6). Secondly, DragNUWA allows for variable trajectory lengths, with longer trajectories resulting in larger motion amplitudes (see Row 7-8). Lastly, DragNUWA has the capability to simultaneously control the trajectories of multiple objects. To the best of our knowledge, no existing video generation model has effectively achieved such trajectory controllability, highlighting DragNUWA’s substantial potential to advance controllable video generation in future applications.
+
+[Figure 214]
+
+Two boys skateboarding
+
+Input Text : on the ramp Input Image : Input Trajectory : Output Video :
+
+[Figure 215]
+
+[Figure 216]
+
+[Figure 217]
+
+[Figure 218]
+
+[Figure 219]
+
+[Figure 220]
+
+[Figure 221]
+
+[Figure 222]
+
+[Figure 223]
+
+[Figure 224]
+
+[Figure 225]
+
+[Figure 226]
+
+[Figure 227]
+
+[Figure 228]
+
+[Figure 229]
+
+[Figure 230]
+
+[Figure 231]
+
+[Figure 232]
+
+[Figure 233]
+
+[Figure 234]
+
+[Figure 235]
+
+[Figure 236]
+
+[Figure 237]
+
+[Figure 238]
+
+[Figure 239]
+
+[Figure 240]
+
+[Figure 241]
+
+[Figure 242]
+
+[Figure 243]
+
+[Figure 244]
+
+[Figure 245]
+
+[Figure 246]
+
+[Figure 247]
+
+[Figure 248]
+
+[Figure 249]
+
+[Figure 250]
+
+[Figure 251]
+
+[Figure 252]
+
+[Figure 253]
+
+[Figure 254]
+
+[Figure 255]
+
+[Figure 256]
+
+[Figure 257]
+
+[Figure 258]
+
+[Figure 259]
+
+[Figure 260]
+
+[Figure 261]
+
+[Figure 262]
+
+[Figure 263]
+
+[Figure 264]
+
+[Figure 265]
+
+[Figure 266]
+
+[Figure 267]
+
+[Figure 268]
+
+[Figure 269]
+
+[Figure 270]
+
+- Figure 5: Various complex trajectory effects can be achieved by employing the same text and image while altering the dragging trajectory. DragNUWA supports complex curved trajectories, allows for variable trajectory lengths, and supports concurrent control of trajectories for multiple objects.
+
+- 4.4 ESSENTIAL OF THREE CONTROLS
+
+A man surfing on snow
+
+Input
+
+Image :
+
+Input
+
+Trajectory :
+
+Input
+
+Text :
+
+[Figure 271]
+
+[Figure 272]
+
+[Figure 273]
+
+[Figure 274]
+
+[Figure 275]
+
+[Figure 276]
+
+[Figure 277]
+
+[Figure 278]
+
+[Figure 279]
+
+[Figure 280]
+
+[Figure 281]
+
+[Figure 282]
+
+[Figure 283]
+
+[Figure 284]
+
+[Figure 285]
+
+[Figure 286]
+
+[Figure 287]
+
+[Figure 288]
+
+[Figure 289]
+
+[Figure 290]
+
+×
+
+[Figure 291]
+
+[Figure 292]
+
+[Figure 293]
+
+A man surfing on snow
+
+[Figure 294]
+
+[Figure 295]
+
+A man surfing on snow
+
+[Figure 296]
+
+Output
+
+Video :
+
+×
+
+×
+
+× ×
+
+×
+
+- Figure 6: DragNUWA achieves fine-grained video generation by integrating three essential controls: text, image, and trajectory, corresponding to semantic, spatial, and temporal aspects, respectively.
+
+While DragNUWA primarily emphasizes trajectory control modeling, it also incorporates the control of text and images. We believe that text, image, and trajectory each represent one of the three fundamental control aspects of videos: semantic, spatial, and temporal perspectives. Fig. 6 illustrates the necessity of these conditions by showcasing different combinations of text (p), trajectory (g), and image (s), including s2v, p2v, gs2v, ps2v, and pgs2v. It is important to note that we did not model g2v and pg2v, as we believe that trajectories without images are meaningless.
+
+The s2v and p2v exemplify the constraints of image and text control when utilized as an individual condition. As shown in s2v, although an image alone provides some potential semantic and kinetic information, it does not allow for precise control over the background and the character’s movement. As illustrated in p2v, when only text is provided, the model successfully generates a video related to the text, however, the appearance and dynamics remain entirely uncontrollable. The gs2v and ps2v emphasize the importance of text (p) and trajectory (g). In the absence of text, it is impossible to determine whether the ambiguous image (s) represents surfing on the sea or snow. In the absence of trajectory, the model automatically assumes that the character is moving to the left. The pgs2v demonstrates the combined impact of all three essential conditions, enabling the control of surfing on the snow and moving to the right.
+
+It is worth mentioning that some studies incorporate video as a condition, which is beyond the scope of this research. We focus on the fundamental conditions, while the video condition provides excessive information, significantly constraining the creation of videos and primarily serving for style transfer purposes. Moreover, the video condition necessitates users to provide specific video materials, consequently presenting significant challenges in practical application.
+
+- 5 CONCLUSION
+
+We present DragNUWA, an end-to-end video generation model that seamlessly incorporates text, image, and trajectory input, enabling fine-grained and user-friendly control from semantic, spatial, and temporal perspectives. Additionally, our trajectory modeling framework, consisting of the Trajectory Sampler (TS), Multiscale Fusion (MF), and Adaptive Training (AT), tackles challenges in open-domain trajectory control, thereby enabling the generation of coherent videos in accordance with complex trajectories. Experiments validate DragNUWA’s superiority over existing approaches, demonstrating its ability to generate fine-grained videos effectively.
+
+REFERENCES
+
+Pierfrancesco Ardino, Marco De Nadai, Bruno Lepri, Elisa Ricci, and St´ephane Lathuili`ere. Click To Move: Controlling Video Generation With Sparse Motion. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pp. 14749–14758, 2021.
+
+Max Bain, Arsha Nagrani, G¨ul Varol, and Andrew Zisserman. Frozen in time: A joint video and image encoder for end-to-end retrieval. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pp. 1728–1738, 2021.
+
+Andreas Blattmann, Timo Milbich, Michael Dorkenwald, and Bj¨orn Ommer. Ipoke: Poking a still image for controlled stochastic video synthesis. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pp. 14707–14717, 2021a.
+
+Andreas Blattmann, Timo Milbich, Michael Dorkenwald, and Bjorn Ommer. Understanding Object Dynamics for Interactive Image-to-Video Synthesis. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 5171–5181, 2021b.
+
+Caroline Chan, Shiry Ginosar, Tinghui Zhou, and Alexei A. Efros. Everybody Dance Now. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pp. 5933–5942, 2019.
+
+Tsai-Shien Chen, Chieh Hubert Lin, Hung-Yu Tseng, Tsung-Yi Lin, and Ming-Hsuan Yang. Motion-Conditioned Diffusion Model for Controllable Video Synthesis. arXiv preprint arXiv:2304.14404, 2023.
+
+Silvia Chiappa, S´ebastien Racaniere, Daan Wierstra, and Shakir Mohamed. Recurrent Environment Simulators. In International Conference on Learning Representations, November 2016.
+
+Patrick Esser, Johnathan Chiu, Parmida Atighehchian, Jonathan Granskog, and Anastasis Germanidis. Structure and content-guided video synthesis with diffusion models. arXiv preprint arXiv:2302.03011, 2023.
+
+Zekun Hao, Xun Huang, and Serge Belongie. Controllable Video Generation With Sparse Trajectories. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 7854–7863, 2018.
+
+Jonathan Ho, William Chan, Chitwan Saharia, Jay Whang, Ruiqi Gao, Alexey Gritsenko, Diederik P. Kingma, Ben Poole, Mohammad Norouzi, and David J. Fleet. Imagen video: High ˜video generation with diffusion models. arXiv preprint arXiv:2210.02303, 2022.
+
+Wenyi Hong, Ming Ding, Wendi Zheng, Xinghan Liu, and Jie Tang. CogVideo: Large-scale Pretraining for Text-to-Video Generation via Transformers. arXiv preprint arXiv:2205.15868, 2022.
+
+Yaosi Hu, Chong Luo, and Zhenzhong Chen. Make It Move: Controllable Image-to-Video Generation With Text Descriptions. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 18219–18228, 2022.
+
+Diederik P. Kingma and Jimmy Ba. Adam: A method for stochastic optimization. arXiv preprint arXiv:1412.6980, 2014.
+
+Junnan Li, Dongxu Li, Silvio Savarese, and Steven Hoi. BLIP-2: Bootstrapping LanguageImage Pre-training with Frozen Image Encoders and Large Language Models. arXiv preprint arXiv:2301.12597, 2023.
+
+Xiaodan Liang, Lisa Lee, Wei Dai, and Eric P. Xing. Dual Motion GAN for Future-Flow Embedded Video Prediction. In Proceedings of the IEEE International Conference on Computer Vision, pp. 1744–1752, 2017.
+
+William Lotter, Gabriel Kreiman, and David Cox. Deep Predictive Coding Networks for Video Prediction and Unsupervised Learning. In International Conference on Learning Representations, November 2016.
+
+Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, and Jack Clark. Learning transferable visual models from natural language supervision. In International Conference on Machine Learning, pp. 8748–8763. PMLR, 2021.
+
+Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Bj¨orn Ommer. HighResolution Image Synthesis With Latent Diffusion Models. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 10684–10695, 2022.
+
+Uriel Singer, Adam Polyak, Thomas Hayes, Xi Yin, Jie An, Songyang Zhang, Qiyuan Hu, Harry Yang, Oron Ashual, Oran Gafni, Devi Parikh, Sonal Gupta, and Yaniv Taigman. Make-A-Video: Text-to-Video Generation without Text-Video Data, September 2022.
+
+Nitish Srivastava, Elman Mansimov, and Ruslan Salakhudinov. Unsupervised Learning of Video Representations using LSTMs. In Proceedings of the 32nd International Conference on Machine Learning, pp. 843–852. PMLR, June 2015.
+
+Ruben Villegas, Mohammad Babaeizadeh, Pieter-Jan Kindermans, Hernan Moraldo, Han Zhang, Mohammad Taghi Saffar, Santiago Castro, Julius Kunze, and Dumitru Erhan. Phenaki: Variable Length Video Generation from Open Domain Textual Descriptions. In ICLR, September 2022.
+
+Jacob Walker, Kenneth Marino, Abhinav Gupta, and Martial Hebert. The Pose Knows: Video Forecasting by Generating Pose Futures. In Proceedings of the IEEE International Conference on Computer Vision, pp. 3332–3341, 2017.
+
+Jingdong Wang, Ke Sun, Tianheng Cheng, Borui Jiang, Chaorui Deng, Yang Zhao, Dong Liu, Yadong Mu, Mingkui Tan, Xinggang Wang, Wenyu Liu, and Bin Xiao. Deep High-Resolution Representation Learning for Visual Recognition. IEEE Transactions on Pattern Analysis and Machine Intelligence, 43(10):3349–3364, October 2021. ISSN 1939-3539. doi: 10.1109/TPAMI. 2020.2983686.
+
+Ting-Chun Wang, Ming-Yu Liu, Andrew Tao, Guilin Liu, Jan Kautz, and Bryan Catanzaro. Fewshot video-to-video synthesis. In Proceedings of the 33rd International Conference on Neural Information Processing Systems, pp. 5013–5024, Red Hook, NY, USA, December 2019. Curran Associates Inc.
+
+Xiang Wang, Hangjie Yuan, Shiwei Zhang, Dayou Chen, Jiuniu Wang, Yingya Zhang, Yujun Shen, Deli Zhao, and Jingren Zhou. VideoComposer: Compositional Video Synthesis with Motion Controllability, June 2023.
+
+Nevan Wichers, Ruben Villegas, Dumitru Erhan, and Honglak Lee. Hierarchical Long-term Video Prediction without Supervision. In Proceedings of the 35th International Conference on Machine Learning, pp. 6038–6046. PMLR, July 2018.
+
+Chenfei Wu, Lun Huang, Qianxi Zhang, Binyang Li, Lei Ji, Fan Yang, Guillermo Sapiro, and Nan Duan. GODIVA: Generating Open-DomaIn Videos from nAtural Descriptions. arXiv:2104.14806 [cs], April 2021.
+
+Chenfei Wu, Jian Liang, Lei Ji, Fan Yang, Yuejian Fang, Daxin Jiang, and Nan Duan. N\”UWA: Visual Synthesis Pre-training for Neural visUal World creAtion. In Proceedings of the European Conference on Computer Vision (ECCV), 2022.
+
+Yue Wu, Rongrong Gao, Jaesik Park, and Qifeng Chen. Future Video Synthesis With Object Motion Prediction. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 5539–5548, 2020.
+
+Haofei Xu, Jing Zhang, Jianfei Cai, Hamid Rezatofighi, Fisher Yu, Dacheng Tao, and Andreas Geiger. Unifying flow, stereo and depth estimation. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2023.
+
+Shengming Yin, Chenfei Wu, Huan Yang, Jianfeng Wang, Xiaodong Wang, Minheng Ni, Zhengyuan Yang, Linjie Li, Shuguang Liu, and Fan Yang. NUWA-XL: Diffusion over Diffusion for eXtremely Long Video Generation. arXiv preprint arXiv:2303.12346, 2023.
+
+Jiangning Zhang, Chao Xu, Liang Liu, Mengmeng Wang, Xia Wu, Yong Liu, and Yunliang Jiang. DTVNet: Dynamic Time-Lapse Video Generation via Single Still Image. In Andrea Vedaldi, Horst Bischof, Thomas Brox, and Jan-Michael Frahm (eds.), Computer Vision – ECCV 2020, Lecture Notes in Computer Science, pp. 300–315, Cham, 2020. Springer International Publishing. ISBN 978-3-030-58558-7. doi: 10.1007/978-3-030-58558-7 18.
+
