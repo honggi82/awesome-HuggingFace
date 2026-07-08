@@ -1,0 +1,1608 @@
+# arXiv:2406.17758v3[cs.CV]29Oct2024
+
+## MotionBooth: Motion-Aware Customized Text-to-Video Generation
+
+Jianzong Wu1,3, Xiangtai Li2,3 †, Yanhong Zeng3, Jiangning Zhang4, Qianyu Zhou5, Yining Li3, Yunhai Tong1, Kai Chen3 1PKU 2S-Lab, NTU 3Shanghai AI Laboratory 4ZJU 5SJTU Project Page: https://jianzongwu.github.io/projects/motionbooth Email: jzwu@stu.pku.edu.cn, xiangtai94@gmail.com
+
+Subject motion Camera motion
+
+Subject
+
+Generated Videos
+
+[Figure 1]
+
+[Figure 2]
+
+[Figure 3]
+
+[Figure 4]
+
+[Figure 5]
+
+Down Left
+
+A dog jumping down the stairs
+
+[Figure 6]
+
+[Figure 7]
+
+[Figure 8]
+
+[Figure 9]
+
+|| | |
+|---|---|
+| | |
+<br><br>| |
+|---|
+|
+|---|
+
+[Figure 10]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+A monster toy walking in Times Square
+
+[Figure 11]
+
+[Figure 12]
+
+[Figure 13]
+
+[Figure 14]
+
+|| |
+|---|
+<br><br>| |
+|---|
+<br><br>|
+|---|
+
+[Figure 15]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+A cat jumping over the wall
+
+[Figure 16]
+
+[Figure 17]
+
+[Figure 18]
+
+[Figure 19]
+
+[Figure 20]
+
+|| | |
+|---|---|
+| | |
+<br><br>| |
+|---|
+|
+|---|
+
+Right
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+A cartoon running in a painting forest
+
+Figure 1: Motion-aware customized video generation results of MotionBooth. Our method animates a customized object with controllable subject and camera motions.
+
+### Abstract
+
+In this work, we present MotionBooth, an innovative framework designed for animating customized subjects with precise control over both object and camera movements. By leveraging a few images of a specific object, we efficiently finetune a text-to-video model to capture the object’s shape and attributes accurately. Our approach presents subject region loss and video preservation loss to enhance the subject’s learning performance, along with a subject token cross-attention loss to integrate the customized subject with motion control signals. Additionally, we propose training-free techniques for managing subject and camera motions during inference. In particular, we utilize cross-attention map manipulation to govern subject motion and introduce a novel latent shift module for camera movement control as well. MotionBooth excels in preserving the appearance of subjects while simultaneously controlling the motions in generated videos. Extensive quantitative and qualitative evaluations demonstrate the superiority and effectiveness of our method. Models and codes will be made publicly available.
+
+Work done when Jianzong is an intern at Shanghai AI Laboratory. †: Project Lead.
+
+Preprint. Under review.
+
+### 1 Introduction
+
+Generating videos for customized subjects, such as specific scenarios involving a particular dog’s type or appearance, has gained research attention [55, 25, 42]. This customized generation field originated from text-to-image (T2I) generation methods, which learn a subject’s appearance from a few images and generate diverse images of that subject [12, 42, 30]. Following them, subject-driven text-to-video (T2V) generation has seen increasing interest, which has found a wide range of applications in personal shorts or film production [55, 25, 42, 57, 13]. Can you imagine your toy riding along the road from a distance to the camera or your pet dog dancing on the street from the left to the right? However, rendering such lovely imaginary videos is a challenging task. It often involves subject learning and motion injection while maintaining the generative capability to generate diverse scenes. Notably, VideoBooth [25] trains an image encoder to embed the subject’s appearance into the model, generating a short clip of the subject. However, the generated videos often display minimal or missing motion, resembling a "moving image." This approach underutilizes the motion diversity of pre-trained T2V models. Another line of works [57, 61, 13] fine-tunes the customized model on specific videos, requiring motion learning for each specific camera or subject motion type. Their pipelines restrict the type of motion and require fine-tuning a new adapter for each motion type, which is inconvenient and computationally expensive.
+
+The key lies in the conflict between subject learning and video motion preservation. During subject learning, training on limited images of the specific subject significantly shifts the distribution of the base T2V model, leading to significant degradation (e.g., blurred backgrounds and static video). Therefore, existing methods often need additional motion learning for specific motion control. In this paper, we argue that the base T2V model already has diverse motion prior, and the key is to preserve video capability during subject learning and digging out the motion control during inference.
+
+To ensure subject-driven video generation with universal and precise motion control, we present MotionBooth, which can perform motion-aware customized video generation. The videos generated by MotionBooth are illustrated in Fig. 1. MotionBooth can take any combination of subject, subject motion, and camera motion as inputs and generate diverse videos, maintaining quality on par with pre-trained T2V models.
+
+MotionBooth learns subjects without hurting video generation capability, enabling a training-free motion injection for subject-driven video generation. First, during subject learning, we introduce subject region loss and video preservation loss, which enhance both subject fidelity and video quality. In addition, we present a subject token cross-attention loss to connect the customized subject with motion control signals. During inference, we propose training-free techniques to control the camera and subject motion. We directly manipulate the cross-attention maps to control the subject motion. We also propose a novel latent shift module to govern the camera movement. It shifts the noised latent to move the camera pose. Through quantitative and qualitative experiments, we demonstrate the superiority and effectiveness of the proposed motion control methods, and they can be applied to different base T2V models without further tuning.
+
+Our contributions are summarized as follows: 1) We propose a unified framework, MotionBooth, for motion-aware customized video generation. To our knowledge, this is the first framework capable of generating diverse videos by combining customized subjects, subject motions, and camera movements as input. 2) We propose a novel loss-augmented training architecture for subject learning. This includes subject region loss, video preservation loss, and subject token cross-attention loss, significantly enhancing subject fidelity and video quality. 3) We develop innovative, training-free methods for controlling subject and camera motions. Extensive experiments demonstrate that MotionBooth outperforms existing state-of-the-art video generation models.
+
+### 2 Related Work
+
+Text-to-video generation. T2V generation leverages deep learning models to interpret text input and generate corresponding video content. It builds upon earlier breakthroughs in text-to-image generation [44, 41, 19, 21, 37, 48, 60, 62] but introduces more complex dynamics by incorporating motion and time [46, 20, 18, 2, 68, 59]. Recent advancements particularly leverage diffusion-based architectures. Notable models such as ModelScopeT2V [51] and LaVie [54] integrate temporal layers within spatial frameworks. VideoCrafter1 [6] and VideoCrafter2 [7] address the scarcity of video
+
+|[Figure 21]<br><br>[Figure 22]<br><br>Image/Video Outputs| |
+|---|---|
+|Subject Region Loss ℒ𝑠𝑢𝑏| |
+|Trainable| |
+
+###### Training
+
+###### Inference
+
+Video Preservation Loss ℒ𝑣𝑖𝑑
+
+Camera Control
+
+Extra Inputs
+
+“A [V] dog running on the beach”
+
+“A [V] dog”
+
+[Figure 23]
+
+[Figure 24]
+
+Camera Direction Bounding Box
+
+[Figure 25]
+
+[Figure 26]
+
+[Figure 27]
+
+Sequence
+
+CrossAttn.
+
+CrossAttn.
+
+CrossAttn.
+
+CrossAttn.
+
+SelfAttn.
+
+SelfAttn.
+
+SelfAttn.
+
+SelfAttn.
+
+[Figure 28]
+
+Preservation Video
+
+[Figure 29]
+
+[Figure 30]
+
+· · · · · · · · ·
+
+Shifted Latent
+
+[Figure 31]
+
+· · · · · · · · ·
+
+[Figure 32]
+
+| |
+|---|
+
+𝜎1~𝜎2
+
+Latent Shift
+
+Generated Video
+
+| | |
+|---|---|
+|𝒄𝑐𝑎𝑚| |
+| | |
+
+Camera
+
+Direction
+
+| | |
+|---|---|
+|Extract cross-attention maps 𝐀 at [V] dog| |
+
+Input Image
+
+<start> a · · ·
+
+[V] <end>
+
+Subject Motion Control
+
+dog
+
+No
+
+No Change
+
+[Figure 33]
+
+| |Subject Token<br><br>Cross-Attention Loss ℒ𝑠𝑡𝑐𝑎|
+|---|---|
+| | |
+
+[Figure 34]
+
+[Figure 35]
+
+[Figure 36]
+
+[Figure 37]
+
+Change
+
+[Figure 38]
+
+amplify suppress
+
+Edit Cross-Attention Maps
+
+Bounding Box Sequence
+
+Step t Latent
+
+Cross Attn. Map
+
+Subject Mask
+
+Figure 2: The overall pipeline of MotionBooth. We first fine-tune a T2V model on the subject. This procedure incorporates subject region loss, video preservation loss, and subject token cross-attention loss. During inference, we control the camera movement with a novel latent shift module. At the same time, we manipulate the cross-attention maps to govern the subject motion.
+
+data by utilizing high-quality image datasets. Latte [36] and W.A.L.T [14] adopt Transformers as backbones [49]. VideoPoet [29] explores generating videos autoregressively to produce consistent long videos. Recent Sora [3] excels in generating videos with impressive quality, stable consistency, and varied motion. Despite these advancements, controlling video content through text alone remains challenging, highlighting a continuing need for research into more refined control signals.
+
+Customized generation. Generating images and videos with customized subjects is attracting growing interest. Most works concentrate on learning a specific subject with a few images from the same subject [23, 8, 10, 43, 47, 39] or specific domains [15, 16, 50]. Textual Inversion [12] proposes to train a new word to capture the feature of an object. In contrast, DreamBooth [42] fine-tunes the whole U-Net, resulting in a better IP preservation ability. Following them, many works explore more challenging tasks, such as customizing multiple objects [30, 55, 33, 5], developing common subject adapter [58, 25, 65, 11, 67], and simultaneously controlling their positions [11, 33]. However, the customization of video models from a few images often results in overfitting. The models fail to incorporate significant motion dynamics. A recent work, DreamVideo [57], addresses this by learning specific motion types from video data. Yet, this method is restricted to pre-defined motion types and lacks the flexibility of text-driven input. In contrast, our work introduces MotionBooth to control both the subject and camera motions without needing pre-defined motion prototypes.
+
+Motion-aware video generation. Recent works explore incorporating explicit motion control in video generation. This includes camera and object motions. To control camera motion, existing works like AnimateDiff [13], VideoComposer [53], CameraCtrl [17], Direct-A-Video [66], and MotionCtrl [56] design specific modules to encode the camera movement or trajectory. These models usually rely on training on large-scale datasets [1, 9], leading to high computational costs. In contrast, our MotionBooth framework builds a training-free camera motion module that can be easily integrated with any T2V model, eliminating the need for re-training. For object motion control, recent works [63, 31, 32, 24, 66, 4, 69, 27, 22] propose effective methods to manipulate attention values during the inference stage. Inspired by these approaches, we connect subject text tokens to the subject position using a subject token cross-attention loss. This allows for straightforward control over the motion of a customized object by adjusting cross-attention values.
+
+### 3 Method
+
+#### 3.1 Overview
+
+Task formulation. We focus on generating motion-aware videos featured by a customized subject. To customize video subjects, we fine-tune the T2V model on a specific subject. This process can be accomplished with just a few (typically 3-5) images of the same subject. During inference, the fine-tuned model generates motion-aware videos of the subject. The motion encompasses both camera and subject movements, which are freely defined by the user. For camera motion, the user
+
+inputs the horizontal and vertical camera movement ratios, denoted as ccam = [cx,cy]. For subject motion, the user provides a bounding box sequence [B1,B2,...,BL] to indicate the desired positions of the subject, where L represents the video length. Each bounding box specifies the x-y coordinates of the top-left and bottom-right points for each frame. By incorporating these conditional inputs, the model is expected to generate videos that include a specific subject, along with predefined camera movements and subject motions.
+
+Overall pipeline. The overall pipeline of MotionBooth is illustrated in Fig. 2. During the training stage, MotionBooth learns the appearance of the given subject by fine-tuning the T2V model. To prevent overfitting, we introduce video preservation loss and subject region loss in Section 3.2. Additionally, we propose a subject token cross-attention (STCA) loss in Section 3.2 to explicitly connect the subject tokens with the subject’s position on cross-attention maps, facilitating the control of subject motion. Camera and subject motion control are performed during the inference stage. We manipulate the cross-attention maps by amplifying the subject tokens and their corresponding regions while suppressing other tokens in Section 3.3. This ensures that the generated subjects appear in the desired positions. By training on the cross-attention map, the STCA loss enhances the subjects’ motion control. For camera movement, we introduce a novel latent shift module to shift the noised latent directly, achieving smooth camera movement in the generated videos in Section 3.4.
+
+#### 3.2 Subject Learning
+
+Given a few images of a subject, previous works have demonstrated that fine-tuning a diffusion model on these images can effectively learn the appearance of the subject [42, 23, 8, 10, 43, 47]. However, two significant challenges remain. First, due to the limited size of the dataset, the model quickly overfits the input images, including their backgrounds, within a few steps. This overfitting of the background impedes the generation of videos with diverse scenes, a problem also noted in previous works [42, 12]. Second, fine-tuning T2V models using images can impair the model’s inherent ability to generate videos, leading to severe background degradation in the generated videos. To illustrate these issues, we conducted a toy experiment. As depicted in Fig. 3, without any modifications, the model overfits the background to the subject image. To address this, we propose computing the diffusion reconstruction loss solely within the subject region. However, even with this adjustment, the background in the generated videos remains over-smoothed. This degradation likely results from tuning a T2V model exclusively with images, which damages the model’s original weights for video generation. To mitigate this, we propose incorporating video data as preservation data during the training process. Although training with video data but without subject region loss still suffers from overfitting, our approach, MotionBooth, can generate videos with detailed and diverse backgrounds.
+
+###### a dog running on the grass a [V] dog running on the grass
+
+[Figure 39]
+
+[Figure 40]
+
+[Figure 41]
+
+(e) Region Video
+
+(a) Pre-trained text-to-video (c) Region Video
+
+[Figure 42]
+
+[Figure 43]
+
+[Figure 44]
+
+[Figure 45]
+
+(d) Region Video (f) Region Video
+
+(b) Subject
+
+Figure 3: Case study on subject learning. “Region” indicates subject region loss. “Video” indicates video preservation loss. The images are extracted from generated videos.
+
+Preliminary. T2V diffusion models learn to generate videos by reconstructing noise in a latent space [42, 30, 55, 12]. The input video is first encoded into a latent representation z0. Noise ϵ is added to this latent representation, resulting in a noised latent zt, where t represents the timestamp. This process simulates the reverse process of a fixed-length Markov Chain [41]. The diffusion model ϵθ is trained to predict this noise. The training loss, which is a reconstruction loss, is given by:
+
+L = Ez,ϵ∼N(0,I),t,c ||ϵ − ϵθ(zt,c,t)||22 , (1)
+
+where c is the conditional input used in classifier-free guidance methods, which can be text or a reference image. During inference, a pure noise zT is gradually denoised to a clean latent z′0, where T is the length of the Markov Chain. The clean latent is then decoded back into RGB space to generate the video X′.
+
+Subject region loss. To address the challenge of overfitting backgrounds in training images, we propose a subject region loss. The core idea is to calculate the diffusion reconstruction loss exclusively
+
+within the subject region, thereby preventing the model from learning the background. Specifically, we first extract the subject mask for each image. This can be done manually or through automatic methods, such as a segmentation model. In practice, we use SAM [28] to collect all the masks. The subject region loss is then calculated as follows:
+
+Lsub = Ez,ϵ∼N(0,I),t,c ||(ϵ − ϵθ(zt,ci,t)) · M||22 , (2)
+
+where M represents the binary masks for the training images. These masks are resized to the latent space to compute the dot product. ci is a fixed sentence in the format "a [V] [class name]," where "[V]" is a rare token and "[class name]" is the class name of the subject [42]. We have found that with the subject region loss, the trained model effectively avoids the background overfitting problem.
+
+Video preservation loss. Image customization datasets like DreamBooth [42] and CustomDiffusion [30] provide excellent examples of multiple images from the same subject. However, in the customized video generation task, directly fine-tuning the video diffusion model on images leads to significant background degradation. Intuitively, this image-based training process may harm the original knowledge embedded in video diffusion models. To address this, we introduce a video preservation loss designed to maintain video generation knowledge by joint training with video data. Unlike the class-specific preservation data used in previous works [42, 55], we utilize common videos with captions denoted as cv. Our experiments in Section 4 demonstrate that common videos are more effective for subject learning and preserving video generation capabilities. The loss function is formulated as follows:
+
+##### Lvid = Ez,ϵ∼N(0,I),t,c ||ϵ − ϵθ(zt,cv,t)||22 . (3)
+
+Subject token cross-attention loss. To control the subject’s motion, we directly manipulate the cross-attention maps during inference. Since we introduce a unique token, “[V]”, in the training stage and associate it with the subject, we need to link this special token to the subject’s position within the cross-attention maps. As illustrated in Fig. 4, fine-tuning the model does not effectively connect the unique token to the cross-attention maps. Therefore, we propose a Subject Token Cross-Attention (STCA) loss to guide this process explicitly. First, we extract the crossattention map, A, at the tokens “[V] [class name]”. We then apply a Binary Cross-Entropy Loss to ensure that the corresponding attention map is larger at the subject’s position and smaller outside this region. This process incorporates the subject mask and can be expressed as:
+
+[Figure 46]
+
+[Figure 47]
+
+[Figure 48]
+
+[Figure 49]
+
+[Figure 50]
+
+[Figure 51]
+
+(a) Input Images (b) w/o STCA loss (c) w/ STCA loss
+
+Figure 4: Case study on subject token cross-attention maps. (b) and (c) are visualization of cross-attention maps on tokens “[V]” and “dog”.
+
+Lstca = −[Mlog(A) + (1 − M)log(1 − A)]. (4) During training, the overall loss function is defined as:
+
+L = Lsub + λ1Lvid + λ2Lstca, (5) where λ1 and λ2 are hyperparameters that control the weights of the different loss components.
+
+#### 3.3 Subject Motion Control
+
+We chose bounding boxes as the motion control signal for subjects because they are easy to draw and manipulate. In contrast, providing object masks for every frame is labor-intensive, requiring consideration of the subject’s shape transformation between frames. In practice, we find that bounding boxes are sufficient for precisely controlling the positions of subjects. Previous works like GLIGEN [31] attempt to control object positions by training an extra condition module with large-scale image data. However, these training methods fix the models and cannot easily align with customized models fine-tuned for specific subjects. Therefore, we adopt an alternative approach that
+
+directly edits the cross-attention maps during inference in a training-free manner [66, 27, 4]. This cross-attention editing method is plug-and-play and can be used with any customized model.
+
+In cross-attention layers, the query features Q are extracted from the video latent and represent the vision features. The key and value features K and V are derived from input language tokens. The calculation process of the edited cross-attention layer can be formulated as follows:
+
+EditedCrossAttn(Q,K,V) = Softmax
+
+#### QK⊤
+
++ αS V, (6)
+
+√
+
+d
+
+⊤
+
+where d is the feature dimension of Q and serves as a normalization term. QK
+
+d is the normalized production between Q and K, representing the attention scores between vision and language features. We manipulate the production by adding a new term αS, where S has positive values on the subject region provided in bounding boxes and large negative values outside the desired positions. α is a hyperparameter to control the editing strength. The editing matrix S is set as follows:
+
+√
+
+ 
+
+1 − |B
+
+k|
+
+|Q| , if i ∈ Bk and j ∈ P and t ≥ τ 0, if i ∈ Bk and j ∈ P and t < τ −∞, otherwise
+
+(7)
+
+Sk[i,j] =
+
+
+
+where i, j, and k indicate the vision token, language token, and frame indexes, respectively. P represents the indexes for subject language tokens in the text prompt. In this work, we choose “[V]” and “[class name]” as subject tokens. The SCTA loss in Section 3.2 binds the two tokens with cross-attention maps. t is the denoising timestamp and τ is a hyperparameter defining a timestamp threshold. Since diffusion models tend to form the approximate object layout in earlier denoising steps and refine the details in later steps [63], we apply stronger attention amplification in earlier steps and no amplification in later steps. Note that attention suppression outside the bounding box regions persists throughout the generation. |Bk| and |Q| are the areas of the box and query, respectively. Following previous works [27, 66], smaller boxes should have larger amplifications, and we do not apply any editing on the <start> and <end> tokens.
+
+Discussion. An important aspect is how the necessary information from other language tokens is integrated into the generated outputs, given that tokens such as verbs and background nouns are assigned minimal values. We propose that this information is extracted through the <start> and <end> tokens. Given that Transformer-based language encoders like CLIP [40] are typically trained on classification tasks, they often encode the overall context of a sentence into these special tokens. Thus, despite the suppression of other tokens during the softmax calculation, the model can still access relevant information about verbs, background elements, and other components necessary for the generation process. To support this explanation, we conducted an experiment in which we examined the softmax outputs using a naive text-to-video pipeline. The results showed that the <start> token consistently held the highest softmax value, close to 1, while the <end> token had the second-largest value. The remaining tokens, including those representing nouns, adjectives, verbs, and conjunctions, were distributed among the remaining softmax values.
+
+#### 3.4 Camera Movement Control
+
+Simply editing the cross-attention map can efficiently control the motion of the subject. This suggests that the latent can be considered a "shrunk image," which maintains the same visual geographic distribution as the generated images. For camera movement control, an intuitive approach is to directly shift the noised latent during inference based on the camera movement signal ccam = [cx,cy]. The latent shift pipeline is illustrated in Table 2. The key challenge with this idea is filling in the missing parts caused by the latent shift (the question mark region in Step
+
+|Denoising 𝜎1 − 𝜎2 steps|
+|---|
+
+###### “A waterfall in a beautiful forest with fall foliage”
+
+[Figure 52]
+
+[Figure 53]
+
+[Figure 54]
+
+[Figure 55]
+
+| | | |[Figure 56]| | | | | | |
+|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | |
+| | | | | | | | | | |
+| | | | | | | | | | |
+| | | | | | | | | | |
+
+[Figure 57]
+
+Noised Latent 𝑧𝜎1 Step 1: Shift
+
+- Step 2: Sample Tokens
+- Step 3: Fill in the Missing Part
+
+[Figure 58]
+
+[Figure 59]
+
+| | | | | | | |
+|---|---|---|---|---|---|---|
+
+[Figure 60]
+
+[Figure 61]
+
+| |
+|---|
+| |
+| |
+| |
+
+Input Camera
+
+Movement
+
+x-axis y-axis
+
+Shifted Noised Latent 𝑧𝜎2
+
+Figure 5: Illustration of camera movement control through shifting the noised latent.
+
+1). To address this issue, we propose sampling tokens from the original noised latent and using them to fill the gap. This is based on the prior knowledge that when a camera moves in a video, the new scene it captures is semantically close to the previous one. For example, in a video with forest scenes, when the camera pans left, it is highly likely to capture more trees similar to those in the original scene. Another assumption is that in a normally angled video, a visual element is more likely to be semantically close to elements along the same x-axis or y-axis rather than other elements. For instance, in the waterfall video in Fig. 5, trees are at the top and bottom, spreading horizontally, while the waterfall spans the middle x-axis area. Experimentally, we over that sampling tokens horizontally and vertically provides better initialization and results in smoother video transitions. Randomly sampling tokens degrades the generated video quality. The latent shift process for timestamp t can be formulated as follows:
+
+- hx = SampleHorizontal(zt,B,cx),
+- hy = SampleVertical(zt,B,cy),
+
+zshift = Crop(Shift(zt,cx,cy)), zt = Fill(zshift,hx,hy,cx,cy),
+
+(8)
+
+where hx and hy are sampled tokens along the x and y axes, respectively. Crop(·) removes the tokens outside the camera view after the shift. B is the subject bounding box. We filter out the tokens belonging to the subjects because they are not likely to occur in the new scenes. In addition, to avoid a drastic change in latent in one shift, we spread the latent shift over multiple timestamps, with each step only shifting a small number of tokens. Note that the latent shift needs to be applied after the subject’s approximate layout is fixed but before the video details are completed. We set a pair of hyperparameters σ1 and σ2. The latent shift only applies in the timestamp range [σ1,σ2].
+
+### 4 Experiments
+
+#### 4.1 Experimental Setup
+
+Datasets. For customization, we collect a total of 26 objects from DreamBooth [42] and CustomDiffusion [30]. These objects include pets, plushies, toys, cartoons, and vehicles. To evaluate camera and object motion control, we built a dataset containing 40 text-object motion pairs and 40 text-camera motion pairs, ensuring that the camera and object motion patterns are consistent with the text prompts. This dataset evaluates the videos generated for each subject in various scenarios and motions.
+
+Implementation details. We train MotionBooth for 300 steps using the AdamW optimizer, with a learning rate of 5e-2 and a weight decay of 1e-2. We collect 500 preservation videos from the Panda-70M [9] training set, chosen randomly. Each batch consists of one batch for images and one for videos, with batch sizes equal to the number of training images and 1 for images and videos, respectively. The loss weight parameters λ1 and λ2 are set to 1.0 and 0.01. We use Zeroscope and LaVie as base models. During inference, we perform 50-step denoising using the DDIM scheduler and set the classifier-free guidance scale to 7.5. The generated videos are 576x320x24 and 512x320x16 for Zeroscope and LaVie, respectively. The training process finishes in around 10 minutes in a single NVIDIA A100 80G GPU. Additional implementation details can be found in Appendix A.1.
+
+Baselines. Since we are pioneering motion-aware customized video generation, we compare our methods with closely related works, including DreamBooth [42], CustomVideo [55], and DreamVideo [57]. Dreambooth customizes subjects for text-to-image generation. We follow its practice with class preservation images and fine-tune T2V models for generating videos. CustomVideo is a recent video customizing method. We adopt its parameter-efficient training procedure. DreamVideo learns motion patterns from video data. To provide such data, we sample videos from Panda-70M, which are most relevant to the evaluation motions. Since these methods cannot control motions during inference, we apply our camera and object motion control technologies for a fair comparison. Additionally, we compare our camera control method with training-based methods, AnimateDiff [13] and CameraCtrl [17], focusing on camera motion control without subject customization. Since AnimateDiff is trained with only basic camera movement types and cannot take user-defined camera movement ccam = [cx,cy] as input, we use the closest basic movement type for evaluation.
+
+Table 1: Quantitative comparison for motion-aware customized video generation.
+
+T2V Model Method R-CLIP ↑ R-DINO ↑ CLIP-T ↑ T-Cons. ↑ Flow error ↓
+
+DreamBooth [42] 0.608 0.279 0.231 0.951 0.690 CustomVideo [55] 0.657 0.267 0.245 0.955 0.516 DreamVideo [57] 0.656 0.238 0.258 0.954 0.349 MotionBooth (Ours) 0.667 0.306 0.258 0.958 0.252
+
+Zeroscope
+
+DreamBooth [42] 0.696 0.426 0.238 0.958 1.156 CustomVideo [55] 0.634 0.189 0.248 0.911 1.055 DreamVideo [57] 0.649 0.216 0.243 0.925 0.691 MotionBooth (Ours) 0.712 0.472 0.247 0.962 0.332
+
+LaVie
+
+Table 2: Quantitative comparison for camera movement control.
+
+Method Module Weight Storage FVD ↓ CLIP-T ↑ T-Cons. ↑ Flow error ↓
+
+Text2Video-Zero (SD 1.5) [26] [No Training] 1821.72 0.248 0.904 1.854 AnimateDiff [13] 74M 1515.82 0.245 0.925 1.683 CameraCtrl [17] 2.5G 1468.53 0.237 0.939 0.807 MotionCtrl [56] 4.0G 1109.45 0.236 0.935 0.872
+
+MotionBooth (Zeroscope) [No Training] 905.40 0.252 0.948 0.190 MotionBooth (LaVie) [No Training] 723.26 0.241 0.963 0.296
+
+Evaluation metrics. We evaluate motion-aware customized video generation from four aspects: region subject fidelity, temporal consistency, camera motion fidelity, and video quality. 1) To ensure the subject is well-preserved and accurately generated in the specified motion, we introduce region CLIP similarity (R-CLIP) and region DINO similarity metrics (R-DINO). These metrics utilize the CLIP [40] and DINOv2 [38] models to compute the similarities between the subject images and frame regions indicated by bounding boxes. Additionally, we use CLIP image-text similarity (CLIP-T) to measure the similarity between entire frames and text prompts. 2) We evaluate temporal consistency by computing CLIP image features between each consecutive frame. 3) We use VideoFlow [45] to predict the optical flow of the generated videos. Then, we calculate the flow error by comparing the predicted flow with the ground-truth camera motion provided in the evaluation dataset. 4) We randomly select 1000 videos from the MSRVTT dataset [64], predict their camera motion sequences with VideoFlow [45], and compute the FVD metric for camera motion control only.
+
+#### 4.2 Main Results
+
+Quantitative results. We conduct quantitative comparisons with baseline models on both motionaware customized video generation and camera movement control. The results for motion-aware customized video generation are shown in Table 1. The results demonstrate that MotionBooth outperforms all baselines on both Zeroscope and LaVie models, indicating that our proposed technologies can be extended to different T2V models. Thanks to the training-free architecture of subject and camera motion control methods, MotionBooth is expected to be adaptable to more open-sourced models in the future, such as Sora [3]. Notably, DreamVideo [57] achieves the second-best scores in T-Cons. and flow error, which aligns with our observation that incorporating video data as auxiliary training data enhances video generation performance. On the other hand, CustomVideo [55] shows inferior performance in R-DINO scores, indicating a poorer ability to generate subjects in given positions. This may be attributed to its approach of only fine-tuning the text embeddings and cross-attention layers of the diffusion models, which is insufficient for learning the subjects.
+
+For camera movement control, we compare our method with two training-based methods, AnimateDiff [13] and CameraCtrl [17]. The results are shown in Table 2. Remarkably, MotionBooth achieves superior results compared to the two baselines with our training-free latent shift module. Specifically, MotionBooth outperforms the recent method CameraCtrl by 0.617, 0.015, and 0.009 in flow error, CLIP-T, and T-Cons. metrics with Zeroscope, and 0.511, 0.004, and 0.024 for the LaVie model. These results demonstrate that the latent shift method is simple yet effective.
+
+Qualitative results. The qualitative comparison results for video generation with customized objects and controlled subject motions are presented in Fig. 6. Our observations reveal that MotionBooth excels in subject motion alignment, text prompt alignment, and overall video quality. In contrast,
+
+|| |
+|---|
+<br><br>| |
+|---|
+<br><br>|
+|---|
+
+|| |
+|---|
+<br><br>| |
+|---|
+|
+|---|
+
+[Figure 62]
+
+[Figure 63]
+
+[Figure 64]
+
+[Figure 65]
+
+[Figure 66]
+
+[Figure 67]
+
+Subject
+
+BaseZeroscopeModel +
+
+Base Model LaVie
+
++
+
++ Motion
+
+[Figure 68]
+
+[Figure 69]
+
+[Figure 70]
+
+[Figure 71]
+
+[Figure 72]
+
+[Figure 73]
+
+[Figure 74]
+
+[Figure 75]
+
+DreamBooth
+
+[Figure 76]
+
+[Figure 77]
+
+[Figure 78]
+
+[Figure 79]
+
+[Figure 80]
+
+[Figure 81]
+
+[Figure 82]
+
+[Figure 83]
+
+CustomVideo
+
+[Figure 84]
+
+[Figure 85]
+
+[Figure 86]
+
+[Figure 87]
+
+[Figure 88]
+
+[Figure 89]
+
+[Figure 90]
+
+[Figure 91]
+
+DreamVideo
+
+[Figure 92]
+
+[Figure 93]
+
+[Figure 94]
+
+[Figure 95]
+
+[Figure 96]
+
+[Figure 97]
+
+[Figure 98]
+
+[Figure 99]
+
+MotionBooth (Ours)
+
+a [V] cat jumping off the stairs
+
+a [V} toy riding a bike on the road with a view of mountains
+
+Figure 6: Qualitative comparison of customizing objects and controlling their motions.
+
+Up Right
+
+Down Left
+
+Right
+
+Up
+
+A waterfall in a beautiful forest with fall foliage
+
+A playful puppy frolicking in flowers
+
+A squirrel gathering acorns
+
+clown fish swimming in a coral reef
+
+|[Figure 100]<br><br>|
+|---|
+|[Figure 101]<br><br>|
+|[Figure 102]<br><br>|
+|[Figure 103]<br><br>|
+
+|[Figure 104]|[Figure 105]|[Figure 106]<br><br>|
+|---|---|---|
+|[Figure 107]|[Figure 108]|[Figure 109]<br><br>|
+|[Figure 110]|[Figure 111]|[Figure 112]<br><br>|
+|[Figure 113]|[Figure 114]|[Figure 115]<br><br>|
+
+|[Figure 116]<br><br>|
+|---|
+|[Figure 117]<br><br>|
+|[Figure 118]<br><br>|
+|[Figure 119]<br><br>|
+
+|[Figure 120]|[Figure 121]|
+|---|---|
+|[Figure 122]|[Figure 123]|
+|[Figure 124]|[Figure 125]|
+|[Figure 126]|[Figure 127]|
+
+|[Figure 128]|[Figure 129]|
+|---|---|
+|[Figure 130]|[Figure 131]|
+|[Figure 132]|[Figure 133]|
+|[Figure 134]|[Figure 135]|
+
+|[Figure 136]|[Figure 137]|
+|---|---|
+|[Figure 138]|[Figure 139]|
+|[Figure 140]|[Figure 141]|
+|[Figure 142]|[Figure 143]|
+
+[Figure 144]
+
+[Figure 145]
+
+[Figure 146]
+
+[Figure 147]
+
+AnimateDiff CameraCtrl Ours (Zeroscope)
+
+AnimateDiff CameraCtrl Ours (Zeroscope)
+
+AnimateDiff CameraCtrl Ours (LaVie)
+
+CameraCtrl Ours (LaVie)
+
+AnimateDiff
+
+Figure 7: Qualitative comparison of camera motion control. Lines and points are used to help the readers track the camera movement more easily.
+
+Table 3: Ablation study for training technologies. “mask” means subject region loss. “STCA” means subject token cross-attention loss. “video” means video preservation loss. “w/ class video” means utilizing class-specific videos in video preservation loss. The results are evaluated on LaVie.
+
+Method R-CLIP ↑ R-DINO ↑ CLIP-T ↑ T-Cons. ↑ Flow error ↓
+
+w/o mask 0.673 0.216 0.245 0.943 0.451 w/o STCA 0.710 0.453 0.244 0.962 0.363 w/o video 0.677 0.364 0.244 0.953 0.344
+
+w/ class video 0.677 0.364 0.244 0.953 0.345 MotionBooth 0.712 0.472 0.247 0.962 0.332
+
+DreamBooth and CustomVideo produce videos with vague backgrounds, highlighting that generated backgrounds deteriorate when training is conducted without video data. Additionally, CustomVideo and DreamVideo struggle to capture the subjects’ appearances, likely because their approach tunes only part of the diffusion model, preventing the learning process from fully converging.
+
+We also conduct qualitative experiments focused on camera movement control, with results shown in Fig. 7. AnimateDiff, limited to basic movements, does not support user-defined camera directions. Although the CameraCtrl method can accept user input, it generates videos with subpar aesthetics and objects that exhibit flash movements. In contrast, our MotionBooth model outperforms both the Zeroscope and Lavie models. The proposed latent method generates videos that adhere to user-defined camera movements while maintaining time consistency and high video quality.
+
+#### 4.3 Ablation Studies
+
+Training technologies. We analyze the technologies proposed during the subject learning stage. The ablation results are shown in Table 3. Clearly, without the proposed modules, the quantitative
+
+metrics drop accordingly. These results demonstrate that the proposed subject region loss, STCA loss, and video preservation loss are beneficial for subject learning and generating motion-aware customized videos. Specifically, the R-DINO metric decreases significantly by 0.256 without the subject region loss, highlighting its core contribution in filtering out image backgrounds during training. Additionally, the "w/ class video" experiment, which uses class-specific videos instead of randomly sampled common videos, yields worse results. This approach restricts the scenes and backgrounds in class-specific videos, hindering the models’ ability to generalize effectively.
+
+#### 4.4 Human Preference Study
+
+To evaluate our approach to understanding user preferences, we conducted a user study experiment. We collected 30 groups of videos generated by MotionBooth and baseline methods. We then asked 7 colleagues to select the best videos based on the following criteria: subject motion alignment, camera movement alignment, subject appearance alignment, and temporal consistency. For each group of videos, the annotators selected only the best one. For the subject appearance alignment, the annotators were provided with corresponding subject images. As shown in Fig. 8, MotionBooth was the most preferred method across all models and evaluation aspects, particularly in subject appearance alignment. These results further demonstrate the effectiveness of our method.
+
+|16.4<br><br>3.4 1.5<br><br>9.3 0.8 7.4 4 3.6 6 16 13.3 9.2<br><br>75.4 75.6<br><br>81.6<br><br>75.5<br><br>0<br><br>20<br><br>40<br><br>60<br><br>80<br><br>100<br><br>Motion Alignment Camera Alignment Subject Alignment Temporal Consistency<br><br>PreferenceRate(%)<br><br>DreamBooth CustomVideo DreamVideo MotionBooth (Ours)<br><br>|
+|---|
+
+PreferenceRate(%)
+
+Figure 8: Human preference study. Our MotionBooth achieves the best human preference scores in all the evaluation aspects.
+
+#### 4.5 Limitations and Future Work
+
+In Fig. 9, we illustrate several failure cases of MotionBooth. One significant limitation of MotionBooth is its struggle with generating videos involving multiple objects. As shown in Fig. 9(a), the subject’s appearance can sometimes merge with other objects, resulting in visually confusing outputs. This issue might be resolved by incorporating advanced training technologies for multiple subjects.
+
+Another limitation is the model’s capability to depict certain motions indicated by the text prompt. As depicted in Fig. 9(b), MotionBooth may fail to accurately represent motions that are unlikely to be performed by the subject. For example, it is hard to imagine a scene where a wolf plushie is riding a bike. These failure cases highlight the need for further improvement in the model’s subject separation and motion understanding capabilities to enhance the realism and accuracy of the generated videos. Utilizing more powerful T2V models may eliminate these drawbacks. Future work could focus on refining these aspects to address the current limitations and provide more robust performance in complex scenarios.
+
+[Figure 148]
+
+[Figure 149]
+
+[Figure 150]
+
+[Figure 151]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+a [V] dog and a horse walking on the grass
+
+Subject
+
+- (a) Failure case on multiple objects
+
+[Figure 152]
+
+Subject a [V] plushie riding a bike on the road
+
+[Figure 153]
+
+[Figure 154]
+
+[Figure 155]
+
+- (b) Failure case on hard motions
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+Figure 9: Failure cases of MotionBooth.
+
+### 5 Conclusion
+
+This paper introduces MotionBooth, a novel framework for motion-aware, customized video generation. MotionBooth fine-tunes a T2V diffusion model to learn specific subjects, utilizing subject region loss to focus on the subject area. The training procedure incorporates video preservation data to prevent background degradation. Additionally, an STCA loss is designed to connect subject tokens with the cross-attention map. During inference, training-free technologies are proposed to control both subject and camera motion. Extensive experiments demonstrate the effectiveness and generalization ability of our method. In conclusion, MotionBooth can generate vivid videos with given subjects and controllable subject and camera motions.
+
+Acknowledgement. This work is supported by the National Key Research and Development Program of China (No. 2023YFC3807600).
+
+### References
+
+- [1] Max Bain, Arsha Nagrani, Gül Varol, and Andrew Zisserman. Frozen in time: A joint video and image encoder for end-to-end retrieval. In ICCV, 2021. 3
+- [2] Andreas Blattmann, Robin Rombach, Huan Ling, Tim Dockhorn, Seung Wook Kim, Sanja Fidler, and Karsten Kreis. Align your latents: High-resolution video synthesis with latent diffusion models. In CVPR,
+
+2023. 2
+
+- [3] Tim Brooks, Bill Peebles, Connor Holmes, Yufei Guo Will DePue, Li Jing, David Schnurr, Joe Taylor, Troy Luhman, Eric Luhman, Clarence Ng, Ricky Wang, and Aditya Ramesh. Sora: Creating video from text, 2024. 3, 8
+- [4] Changgu Chen, Junwei Shu, Lianggangxu Chen, Gaoqi He, Changbo Wang, and Yang Li. Motionzero: Zero-shot moving object control framework for diffusion-based video generation. arXiv preprint arXiv:2401.10150, 2024. 3, 6, 14, 15, 16, 17
+- [5] Hong Chen, Xin Wang, Guanning Zeng, Yipeng Zhang, Yuwei Zhou, Feilin Han, and Wenwu Zhu. Videodreamer: Customized multi-subject text-to-video generation with disen-mix finetuning. arXiv preprint arXiv:2311.00990, 2023. 3
+- [6] Haoxin Chen, Menghan Xia, Yingqing He, Yong Zhang, Xiaodong Cun, Shaoshu Yang, Jinbo Xing, Yaofang Liu, Qifeng Chen, Xintao Wang, et al. Videocrafter1: Open diffusion models for high-quality video generation. arXiv preprint arXiv:2310.19512, 2023. 2
+- [7] Haoxin Chen, Yong Zhang, Xiaodong Cun, Menghan Xia, Xintao Wang, Chao Weng, and Ying Shan. Videocrafter2: Overcoming data limitations for high-quality video diffusion models. arXiv preprint arXiv:2401.09047, 2024. 2
+- [8] Hong Chen, Yipeng Zhang, Xin Wang, Xuguang Duan, Yuwei Zhou, and Wenwu Zhu. Disenbooth: Disentangled parameter-efficient tuning for subject-driven text-to-image generation. arXiv preprint arXiv:2305.03374, 2023. 3, 4
+- [9] Tsai-Shien Chen, Aliaksandr Siarohin, Willi Menapace, Ekaterina Deyneka, Hsiang-wei Chao, Byung Eun Jeon, Yuwei Fang, Hsin-Ying Lee, Jian Ren, Ming-Hsuan Yang, et al. Panda-70m: Captioning 70m videos with multiple cross-modality teachers. arXiv preprint arXiv:2402.19479, 2024. 3, 7
+- [10] Wenhu Chen, Hexiang Hu, Yandong Li, Nataniel Ruiz, Xuhui Jia, Ming-Wei Chang, and William W Cohen. Subject-driven text-to-image generation via apprenticeship learning. NeurIPS, 2024. 3, 4
+- [11] Xi Chen, Lianghua Huang, Yu Liu, Yujun Shen, Deli Zhao, and Hengshuang Zhao. Anydoor: Zero-shot object-level image customization. CVPR, 2024. 3
+- [12] Rinon Gal, Yuval Alaluf, Yuval Atzmon, Or Patashnik, Amit H Bermano, Gal Chechik, and Daniel Cohen-Or. An image is worth one word: Personalizing text-to-image generation using textual inversion. arXiv preprint arXiv:2208.01618, 2022. 2, 3, 4
+- [13] Yuwei Guo, Ceyuan Yang, Anyi Rao, Zhengyang Liang, Yaohui Wang, Yu Qiao, Maneesh Agrawala, Dahua Lin, and Bo Dai. Animatediff: Animate your personalized text-to-image diffusion models without specific tuning. In ICLR, 2024. 2, 3, 7, 8
+- [14] Agrim Gupta, Lijun Yu, Kihyuk Sohn, Xiuye Gu, Meera Hahn, Li Fei-Fei, Irfan Essa, Lu Jiang, and José Lezama. Photorealistic video generation with diffusion models. arXiv preprint arXiv:2312.06662, 2023. 3
+- [15] Yue Han, Jiangning Zhang, Junwei Zhu, Xiangtai Li, Yanhao Ge, Wei Li, Chengjie Wang, Yong Liu, Xiaoming Liu, and Ying Tai. A generalist facex via learning unified facial representation. arXiv preprint arXiv:2401.00551, 2023. 3
+- [16] Yue Han, Junwei Zhu, Keke He, Xu Chen, Yanhao Ge, Wei Li, Xiangtai Li, Jiangning Zhang, Chengjie Wang, and Yong Liu. Face adapter for pre-trained diffusion models with fine-grained id and attribute control. arXiv preprint arXiv:2405.12970, 2024. 3
+- [17] Hao He, Yinghao Xu, Yuwei Guo, Gordon Wetzstein, Bo Dai, Hongsheng Li, and Ceyuan Yang. Cameractrl: Enabling camera control for text-to-video generation. arXiv preprint arXiv:2404.02101, 2024. 3, 7, 8
+- [18] Jonathan Ho, William Chan, Chitwan Saharia, Jay Whang, Ruiqi Gao, Alexey Gritsenko, Diederik P Kingma, Ben Poole, Mohammad Norouzi, David J Fleet, et al. Imagen video: High definition video generation with diffusion models. arXiv preprint arXiv:2210.02303, 2022. 2
+- [19] Jonathan Ho, Ajay Jain, and Pieter Abbeel. Denoising diffusion probabilistic models. In NeurIPS, 2020. 2
+- [20] Jonathan Ho, Tim Salimans, Alexey Gritsenko, William Chan, Mohammad Norouzi, and David J Fleet. Video diffusion models. In NeurIPS, 2022. 2
+- [21] Emiel Hoogeboom, Jonathan Heek, and Tim Salimans. simple diffusion: End-to-end diffusion for high resolution images. In ICML, 2023. 2
+- [22] Teng Hu, Jiangning Zhang, Ran Yi, Yating Wang, Hongrui Huang, Jieyu Weng, Yabiao Wang, and Lizhuang Ma. Motionmaster: Training-free camera motion transfer for video generation. arXiv preprint arXiv:2404.15789, 2024. 3
+
+- [23] Miao Hua, Jiawei Liu, Fei Ding, Wei Liu, Jie Wu, and Qian He. Dreamtuner: Single image is enough for subject-driven generation. arXiv preprint arXiv:2312.13691, 2023. 3, 4
+- [24] Yash Jain, Anshul Nasery, Vibhav Vineet, and Harkirat Behl. Peekaboo: Interactive video generation via masked-diffusion. arXiv preprint arXiv:2312.07509, 2023. 3
+- [25] Yuming Jiang, Tianxing Wu, Shuai Yang, Chenyang Si, Dahua Lin, Yu Qiao, Chen Change Loy, and Ziwei Liu. Videobooth: Diffusion-based video generation with image prompts. In CVPR, 2024. 2, 3
+- [26] Levon Khachatryan, Andranik Movsisyan, Vahram Tadevosyan, Roberto Henschel, Zhangyang Wang, Shant Navasardyan, and Humphrey Shi. Text2video-zero: Text-to-image diffusion models are zero-shot video generators. In ICCV, 2023. 8, 14, 16, 18
+- [27] Yunji Kim, Jiyoung Lee, Jin-Hwa Kim, Jung-Woo Ha, and Jun-Yan Zhu. Dense text-to-image generation with attention modulation. In ICCV, 2023. 3, 6
+- [28] Alexander Kirillov, Eric Mintun, Nikhila Ravi, Hanzi Mao, Chloe Rolland, Laura Gustafson, Tete Xiao, Spencer Whitehead, Alexander C Berg, Wan-Yen Lo, et al. Segment anything. arXiv preprint arXiv:2304.02643, 2023. 5
+- [29] Dan Kondratyuk, Lijun Yu, Xiuye Gu, José Lezama, Jonathan Huang, Rachel Hornung, Hartwig Adam, Hassan Akbari, Yair Alon, Vighnesh Birodkar, et al. Videopoet: A large language model for zero-shot video generation. arXiv preprint arXiv:2312.14125, 2023. 3
+- [30] Nupur Kumari, Bingliang Zhang, Richard Zhang, Eli Shechtman, and Jun-Yan Zhu. Multi-concept customization of text-to-image diffusion. In CVPR, 2023. 2, 3, 4, 5, 7, 14
+- [31] Yuheng Li, Haotian Liu, Qingyang Wu, Fangzhou Mu, Jianwei Yang, Jianfeng Gao, Chunyuan Li, and Yong Jae Lee. Gligen: Open-set grounded text-to-image generation. In CVPR, 2023. 3, 5
+- [32] Han Lin, Abhay Zala, Jaemin Cho, and Mohit Bansal. Videodirectorgpt: Consistent multi-scene video generation via llm-guided planning. arXiv preprint arXiv:2309.15091, 2023. 3
+- [33] Zhiheng Liu, Yifei Zhang, Yujun Shen, Kecheng Zheng, Kai Zhu, Ruili Feng, Yu Liu, Deli Zhao, Jingren Zhou, and Yang Cao. Cones 2: Customizable image synthesis with multiple subjects. arXiv preprint arXiv:2305.19327, 2023. 3
+- [34] Wan-Duo Kurt Ma, J. P. Lewis, and W. Bastiaan Kleijn. Trailblazer: Trajectory control for diffusion-based video generation. arXiv preprint arXIv:2401.00896, 2024. 14, 16, 17
+- [35] Wan-Duo Kurt Ma, J. P. Lewis, Avisek Lahiri, Thomas Leung, and W. Bastiaan Kleijn. Directed diffusion: Direct control of object placement through attention guidance. In AAAI, 2024. 14, 15, 16, 17
+- [36] Xin Ma, Yaohui Wang, Gengyun Jia, Xinyuan Chen, Ziwei Liu, Yuan-Fang Li, Cunjian Chen, and Yu Qiao. Latte: Latent diffusion transformer for video generation. arXiv preprint arXiv:2401.03048, 2024. 3
+- [37] Alexander Quinn Nichol and Prafulla Dhariwal. Improved denoising diffusion probabilistic models. In ICML, 2021. 2
+- [38] Maxime Oquab, Timothée Darcet, Théo Moutakanni, Huy Vo, Marc Szafraniec, Vasil Khalidov, Pierre Fernandez, Daniel Haziza, Francisco Massa, Alaaeldin El-Nouby, et al. Dinov2: Learning robust visual features without supervision. arXiv preprint arXiv:2304.07193, 2023. 8
+- [39] Xu Peng, Junwei Zhu, Boyuan Jiang, Ying Tai, Donghao Luo, Jiangning Zhang, Wei Lin, Taisong Jin, Chengjie Wang, and Rongrong Ji. Portraitbooth: A versatile portrait model for fast identity-preserved personalization. arXiv preprint arXiv:2312.06354, 2023. 3
+- [40] Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, et al. Learning transferable visual models from natural language supervision. In ICCV, 2021. 6, 8
+- [41] Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer. High-resolution image synthesis with latent diffusion models. In CVPR, 2022. 2, 4
+- [42] Nataniel Ruiz, Yuanzhen Li, Varun Jampani, Yael Pritch, Michael Rubinstein, and Kfir Aberman. Dreambooth: Fine tuning text-to-image diffusion models for subject-driven generation. In CVPR, 2023. 2, 3, 4, 5, 7, 8, 14
+- [43] Nataniel Ruiz, Yuanzhen Li, Varun Jampani, Wei Wei, Tingbo Hou, Yael Pritch, Neal Wadhwa, Michael Rubinstein, and Kfir Aberman. Hyperdreambooth: Hypernetworks for fast personalization of text-to-image models. arXiv preprint arXiv:2307.06949, 2023. 3, 4
+- [44] Chitwan Saharia, William Chan, Saurabh Saxena, Lala Li, Jay Whang, Emily L Denton, Kamyar Ghasemipour, Raphael Gontijo Lopes, Burcu Karagol Ayan, Tim Salimans, et al. Photorealistic text-toimage diffusion models with deep language understanding. NeurIPS, 2022. 2
+- [45] Xiaoyu Shi, Zhaoyang Huang, Weikang Bian, Dasong Li, Manyuan Zhang, Ka Chun Cheung, Simon See, Hongwei Qin, Jifeng Dai, and Hongsheng Li. Videoflow: Exploiting temporal cues for multi-frame optical flow estimation. In ICCV, 2023. 8
+- [46] Uriel Singer, Adam Polyak, Thomas Hayes, Xi Yin, Jie An, Songyang Zhang, Qiyuan Hu, Harry Yang, Oron Ashual, Oran Gafni, et al. Make-a-video: Text-to-video generation without text-video data. arXiv preprint arXiv:2209.14792, 2022. 2
+- [47] James Seale Smith, Yen-Chang Hsu, Lingyu Zhang, Ting Hua, Zsolt Kira, Yilin Shen, and Hongxia Jin. Continual diffusion: Continual customization of text-to-image diffusion with c-lora. arXiv preprint arXiv:2304.06027, 2023. 3, 4
+
+- [48] Jiaming Song, Chenlin Meng, and Stefano Ermon. Denoising diffusion implicit models. arXiv preprint arXiv:2010.02502, 2020. 2
+- [49] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. NeurIPS, 2017. 3
+- [50] Chaoyang Wang, Xiangtai Li, Lu Qi, Henghui Ding, Yunhai Tong, and Ming-Hsuan Yang. Semflow: Binding semantic segmentation and image synthesis via rectified flow. arXiv preprint arXiv:2405.20282,
+
+2024. 3
+
+- [51] Jiuniu Wang, Hangjie Yuan, Dayou Chen, Yingya Zhang, Xiang Wang, and Shiwei Zhang. Modelscope text-to-video technical report. arXiv preprint arXiv:2308.06571, 2023. 2
+- [52] Jiawei Wang, Yuchen Zhang, Jiaxin Zou, Yan Zeng, Guoqiang Wei, Liping Yuan, and Hang Li. Boximator: Generating rich and controllable motions for video synthesis. arXiv preprint arXIv:2402.01566, 2024. 14, 15
+- [53] Xiang Wang, Hangjie Yuan, Shiwei Zhang, Dayou Chen, Jiuniu Wang, Yingya Zhang, Yujun Shen, Deli Zhao, and Jingren Zhou. Videocomposer: Compositional video synthesis with motion controllability. NeurIPS, 2024. 3
+- [54] Yaohui Wang, Xinyuan Chen, Xin Ma, Shangchen Zhou, Ziqi Huang, Yi Wang, Ceyuan Yang, Yinan He, Jiashuo Yu, Peiqing Yang, et al. Lavie: High-quality video generation with cascaded latent diffusion models. arXiv preprint arXiv:2309.15103, 2023. 2, 16
+- [55] Zhao Wang, Aoxue Li, Enze Xie, Lingting Zhu, Yong Guo, Qi Dou, and Zhenguo Li. Customvideo: Customizing text-to-video generation with multiple subjects. arXiv preprint arXiv:2401.09962, 2024. 2, 3, 4, 5, 7, 8
+- [56] Zhouxia Wang, Ziyang Yuan, Xintao Wang, Tianshui Chen, Menghan Xia, Ping Luo, and Ying Shan. Motionctrl: A unified and flexible motion controller for video generation. arXiv preprint arXiv:2312.03641,
+
+2023. 3, 8, 14, 16
+
+- [57] Yujie Wei, Shiwei Zhang, Zhiwu Qing, Hangjie Yuan, Zhiheng Liu, Yu Liu, Yingya Zhang, Jingren Zhou, and Hongming Shan. Dreamvideo: Composing your dream videos with customized subject and motion. arXiv preprint arXiv:2312.04433, 2023. 2, 3, 7, 8
+- [58] Yuxiang Wei, Yabo Zhang, Zhilong Ji, Jinfeng Bai, Lei Zhang, and Wangmeng Zuo. Elite: Encoding visual concepts into textual embeddings for customized text-to-image generation. In ICCV, 2023. 3
+- [59] Jianzong Wu, Xiangtai Li, Chenyang Si, Shangchen Zhou, Jingkang Yang, Jiangning Zhang, Yining Li, Kai Chen, Yunhai Tong, Ziwei Liu, et al. Towards language-driven video inpainting via multimodal large language models. CVPR, 2024. 2
+- [60] Jianzong Wu, Xiangtai Li, Shilin Xu, Haobo Yuan, Henghui Ding, Yibo Yang, Xia Li, Jiangning Zhang, Yunhai Tong, Xudong Jiang, Bernard Ghanem, and Dacheng Tao. Towards open vocabulary learning: A survey. T-PAMI, 2024. 2
+- [61] Jay Zhangjie Wu, Yixiao Ge, Xintao Wang, Stan Weixian Lei, Yuchao Gu, Yufei Shi, Wynne Hsu, Ying Shan, Xiaohu Qie, and Mike Zheng Shou. Tune-a-video: One-shot tuning of image diffusion models for text-to-video generation. In ICCV, 2023. 2
+- [62] Jiahao Xie, Wei Li, Xiangtai Li, Ziwei Liu, Yew Soon Ong, and Chen Change Loy. Mosaicfusion: Diffusion models as data augmenters for large vocabulary instance segmentation. arXiv preprint arXiv:2309.13042,
+
+2023. 2
+
+- [63] Jinheng Xie, Yuexiang Li, Yawen Huang, Haozhe Liu, Wentian Zhang, Yefeng Zheng, and Mike Zheng Shou. Boxdiff: Text-to-image synthesis with training-free box-constrained diffusion. In ICCV, 2023. 3, 6
+- [64] Jun Xu, Tao Mei, Ting Yao, and Yong Rui. Msr-vtt: A large video description dataset for bridging video and language. In CVPR, 2016. 8
+- [65] Binxin Yang, Shuyang Gu, Bo Zhang, Ting Zhang, Xuejin Chen, Xiaoyan Sun, Dong Chen, and Fang Wen. Paint by example: Exemplar-based image editing with diffusion models. In CVPR, 2023. 3
+- [66] Shiyuan Yang, Liang Hou, Haibin Huang, Chongyang Ma, Pengfei Wan, Di Zhang, Xiaodong Chen, and Jing Liao. Direct-a-video: Customized video generation with user-directed camera movement and object motion. arXiv preprint arXiv:2402.03162, 2024. 3, 6
+- [67] Haoyu Zhao, Tianyi Lu, Jiaxi Gu, Xing Zhang, Zuxuan Wu, Hang Xu, and Yu-Gang Jiang. Videoassembler: Identity-consistent video generation with reference entities using diffusion model. arXiv preprint arXiv:2311.17338, 2023. 3
+- [68] Daquan Zhou, Weimin Wang, Hanshu Yan, Weiwei Lv, Yizhe Zhu, and Jiashi Feng. Magicvideo: Efficient video generation with latent diffusion models. arXiv preprint arXiv:2211.11018, 2022. 2
+- [69] Yupeng Zhou, Daquan Zhou, Ming-Ming Cheng, Jiashi Feng, and Qibin Hou. Storydiffusion: Consistent self-attention for long-range image and video generation. arXiv preprint arXiv:2405.01434, 2024. 3
+
+|[Figure 156]|[Figure 157]|[Figure 158]|[Figure 159]|[Figure 160]|[Figure 161]|[Figure 162]|[Figure 163]|[Figure 164]|
+|---|---|---|---|---|---|---|---|---|
+|[Figure 165]|[Figure 166]|[Figure 167]|[Figure 168]|[Figure 169]|[Figure 170]|[Figure 171]|[Figure 172]|[Figure 173]|
+|[Figure 174]|[Figure 175]|[Figure 176]|[Figure 177]|[Figure 178]|[Figure 179]|[Figure 180]|[Figure 181]| |
+
+Figure 10: The evaluation dataset. We present one picture for each subject.
+
+### A Appendix
+
+Overview. The supplementary includes the following sections:
+
+- • Appendix A.1. Implementation details of the experiments.
+- • Appendix A.2. Discussions about our method and the differences with related methods.
+- • Appendix A.3. Comparison with more baselines.
+- • Appendix A.4. Ablation studies.
+- • Appendix A.5. Social impacts.
+- • Appendix A.6. More qualitative results.
+
+Video Demo. We also present a video in a separate supplementary file, which shows the results in video format.
+
+#### A.1 Implementation Details
+
+Hyperparameters. For the LaVie model, we set α = 10.0, τ = 0.7T, σ1 = 0.8T, and σ2 = 0.6T. For the Zeroscope model, we set α = 10.0, τ = 0.9T, σ1 = 0.9T, and σ2 = 0.7T.
+
+Evaluation dataset. We collect a total of 26 subjects from DreamBooth [42] and CustomDiffusion [30]. We show one image for each subject in Fig. 10. The subjects contain a wide variety of types, including pets, plushie toys, cartoons, and vehicles, which can provide us with a thorough analysis of the model’s effectiveness.
+
+User study interface. We show the application interface for human preference study in Fig. 11. During user study, we ask the annotators to select the best video based on the question, e.g., “Which video do you think has the best temporal consistency?”
+
+[Figure 182]
+
+[Figure 183]
+
+Pseudo-code of latent shift. To present the latent shift module more clearly, we show the pseudo-code of the algorithm in Fig. 14. Our latent shift module can control the camera movement in videos in a training-free manner at minimal costs.
+
+Figure 11: The application interface for user study.
+
+#### A.2 Discussions
+
+Differences with related works. Our proposed subject and camera motion control methods differ in several ways from previously established approaches, such as TrailBlazer [34], Directed Diffusion [35], Boximator [52], Motion-Zero [4], MotionCtrl [56], and Text2Video-Zero [26].
+
+TrailBlazer [34] and Directed Diffusion [35] use a training-free approach for controlling object motion by manipulating the cross-attention maps. Specifically, TrailBlazer [34] adjusts both spatial and
+
+[Figure 184]
+
+[Figure 185]
+
+|[Figure 186]|
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 187]
+
+[Figure 188]
+
+[Figure 189]
+
+| |
+|---|
+
+Zoom In
+
+| |
+|---|
+
+###### Left
+
+| |
+|---|
+
+[Figure 190]
+
+[Figure 191]
+
+|[Figure 192]|
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+Frame 1 Frame 12 Frame 24
+
+Zoom Out
+
+- (d) Example of combining zoom-in and camera motion control.
+
+A [v] dog running on grass
+
+[Figure 193]
+
+[Figure 194]
+
+[Figure 195]
+
+[Figure 196]
+
+Subject Generated Video
+
+- (e) Example of masking images during training.
+
+A wooden barrel drifting on the river
+
+Straight-Sample
+
+(Ours)
+
+[Figure 197]
+
+[Figure 198]
+
+[Figure 199]
+
+Random Sample
+
+Right
+
+Random Init
+
+Loop
+
+Reflect
+
+(Text2Video-Zero)
+
+[Figure 200]
+
+[Figure 201]
+
+[Figure 202]
+
+[Figure 203]
+
+[Figure 204]
+
+[Figure 205]
+
+[Figure 206]
+
+[Figure 207]
+
+[Figure 208]
+
+[Figure 209]
+
+[Figure 210]
+
+[Figure 211]
+
+- (f) Ablations of the filling method in latent shift.
+
+Frame 1
+
+Frame 12 Frame 24
+
+- (a) Examples of enlarging or shrinking the subject bounding box.
+
+Frame 1 Frame 8 Frame 16
+
+- 1x camera speed
+
+[Figure 212]
+
+[Figure 213]
+
+[Figure 214]
+
+[Figure 215]
+
+[Figure 216]
+
+[Figure 217]
+
+[Figure 218]
+
+[Figure 219]
+
+[Figure 220]
+
+- 2x camera speed
+- 3x camera speed （fail）
+
+Down Left
+
+- (b) Examples of gradually enlarging the camera motion speed.
+
+Frame 1 Frame 8 Frame 16
+
+[Figure 221]
+
+[Figure 222]
+
+[Figure 223]
+
+[Figure 224]
+
+[Figure 225]
+
+[Figure 226]
+
+- (c) Examples of camera motion control with large foreground objects.
+
+[Figure 227]
+
+[Figure 228]
+
+[Figure 229]
+
+[Figure 230]
+
+[Figure 231]
+
+[Figure 232]
+
+[Figure 233]
+
+[Figure 234]
+
+[Figure 235]
+
+[Figure 236]
+
+[Figure 237]
+
+[Figure 238]
+
+[Figure 239]
+
+[Figure 240]
+
+[Figure 241]
+
+Latent Shift
+
+Up Left Up Up Right
+
+(Ours)
+
+[Figure 242]
+
+[Figure 243]
+
+[Figure 244]
+
+[Figure 245]
+
+[Figure 246]
+
+[Figure 247]
+
+[Figure 248]
+
+[Figure 249]
+
+[Figure 250]
+
+[Figure 251]
+
+[Figure 252]
+
+[Figure 253]
+
+[Figure 254]
+
+[Figure 255]
+
+[Figure 256]
+
+Left Right
+
+No Camera Motion
+
+Text Guidance
+
+[Figure 257]
+
+[Figure 258]
+
+[Figure 259]
+
+[Figure 260]
+
+[Figure 261]
+
+[Figure 262]
+
+[Figure 263]
+
+[Figure 264]
+
+[Figure 265]
+
+Up Right Right
+
+A playful puppy frolicking in flowers
+
+###### A Villa in a garden
+
+Down Left Down Down Right
+
+(g) Examples of controlling both subject and camera motion.
+
+(h) Comparison of latent shift and text guidance to control camera motion.
+
+#### Figure 12: More qualitative results.
+
+temporal cross-attention by scaling the attention maps with a hyper-parameter of less than 1. Directed Diffusion [35] focuses on image generation in a similar manner. Our approach, in contrast, targets only the spatial cross-attention, setting attention values outside the object’s bounding box to zero. This targeted manipulation simplifies implementation and significantly enhances the performance in generating motion-aware customized videos.
+
+Boximator [52] relies on a training-based technique, requiring box coordinates as inputs to a newly trained self-attention layer. In comparison, our method is training-free, thus providing a more accessible and user-friendly solution for controlling subject and camera motion.
+
+Motion-Zero [4] also operates without additional training, but it utilizes a test-time tuning technique to adjust the latent space using cross-attention map loss during the denoising process. This technique, however, increases the generation time and memory requirements considerably—from approximately 15 seconds to several minutes per video. Additionally, our experiments indicate that Motion-Zero often produces poor-quality outputs, with videos collapsing into unrecognizable elements. This outcome is likely due to the detrimental effects of test-time tuning on parameters and latent distributions in customized scenarios. In contrast, our method directly manipulates the cross-attention map, adding only 0.3 seconds to the generation process and consistently yielding more reliable visual outcomes.
+
+MotionCtrl [56] uses a training-based approach that requires inputting point trajectories to control camera poses and object motion. Our method does not involve additional training, offering a simpler alternative for subject and camera motion control.
+
+Text2Video-Zero [26] builds on a pre-trained text-to-image (T2I) model and extends it to video generation by utilizing consistent noise across frames. However, this approach is unsuitable for text-to-video (T2V) models, which typically use different noise for each frame. Additionally, Text2Video-Zero uses latent shifting for overall scene movement and mirrors latent information to fill in missing regions. In comparison, our approach employs random sampling along the x and y axes, resulting in more concise and coherent video generation for camera motion control.
+
+We conducted quantitative experiments to evaluate the performance of these methods, as reported in Table 2 and Table 4b. Some methods are not included due to the unavailability of their code. Nonetheless, our results indicate that our method generally outperforms the other alternatives. In particular, we observed significant limitations in the test-time tuning strategy of Motion-Zero [4] when applied to customized video generation, which further emphasizes the strengths of our approach.
+
+Zoom-in/out effect with subject motion control. Our subject motion control technique effectively manages changes in bounding box size, such as gradual enlargement or reduction. Specifically, enlarging the bounding box results in an appropriate scaling of the subject, creating a zoom-in effect in the generated video. Conversely, reducing the bounding box size produces a zoom-out effect. This zoom-in and zoom-out behavior is demonstrated in Fig. 12a, where examples illustrate these effects in response to bounding box adjustments. Fig. 12d shows an example of combining zoom-in and camera motion control, demonstrating the method’s flexibility.
+
+Large camera motion speeds. We evaluate the performance of our camera motion control technique under varying levels of camera movement intensity. As depicted in Fig. 12b, the method was first tested with a camera movement vector of [cx,cy] = [−0.5,0.45], corresponding to a movement of half the video width to the left and nearly half downward. Under these conditions, our method successfully managed the camera movement, producing accurate results. When the camera motion speed was doubled, the model continued to perform well, demonstrating its ability to handle highspeed scenarios. However, at a speed three times the initial setting, i.e., [cx,cy] = [−1.5,1.35], the method exhibited limitations, resulting in only a downward tiling effect. These findings indicate that while our method can effectively manage camera movements spanning the entire video width, its performance diminishes under extremely high-speed conditions.
+
+Camera motion control with large foreground objects. We evaluate the camera control capability in scenes containing substantial foreground objects. The results, presented in Fig. 12c, show an experiment involving a scene dominated by a large candy house, which nearly occupies the entire frame. Despite the significant presence of the foreground object, our technique effectively managed to pan the camera to the right, suggesting that the method is capable of handling complex scenes with large foreground elements. This robustness is attributed to the method’s reliance on latent shifts, which simultaneously move both foreground and background elements, thereby ensuring that the presence of large foreground objects does not significantly impair performance.
+
+Model efficiency. Training our model by fine-tuning a specific subject takes approximately 10 minutes. For LaVie [54], the naive text-to-video (T2V) pipeline takes about 15.0 seconds per video. When incorporating subject control, the inference time is 15.3 seconds per video; with camera control, it increases to 20.6 seconds per video; and when applying both camera and subject control, the inference time is 21.5 seconds per video.
+
+- A.3 Comparison with More Baselines
+
+Table 4: Comparison with More Baselines.
+
+(a) Comparison of the latent shift method and text guidance for camera motion control.
+
+(b) Comparison of subject motion control with more baselines.
+
+Method CLIP-T ↑ T-Cons. ↑ Flow error ↓
+
+Text Guidance 0.256 0.957 0.416 Latent Shift (Ours) 0.252 0.948 0.190
+
+Method R-CLIP R-DINO CLIP-T ↑ T-Cons. ↑ Motion-Zero [4] - - Collapse Directed Diffusion [35] 0.668 0.242 0.260 0.954 TrailBlazer [34] 0.669 0.251 0.259 0.957
+
+Ours (Zeroscope) 0.767 0.305 0.242 0.968 Ours (LaVie) 0.735 0.247 0.244 0.965
+
+| |0.80 𝐓|
+|---|---|
+|0.85 𝐓| |
+| | |
+
+𝜏
+
+0.95 𝐓 0.90 𝐓
+
+[Figure 266]
+
+𝛼
+
+[Figure 267]
+
+[Figure 268]
+
+[Figure 269]
+
+[Figure 270]
+
+5.0
+
+[Figure 271]
+
+[Figure 272]
+
+[Figure 273]
+
+[Figure 274]
+
+7.5
+
+Subject
+
+|| |
+|---|
+|
+|---|
+
+[Figure 275]
+
+[Figure 276]
+
+[Figure 277]
+
+[Figure 278]
+
+10.0
+
+[Figure 279]
+
+[Figure 280]
+
+[Figure 281]
+
+[Figure 282]
+
+Position
+
+a [V] cat running
+
+15.0
+
+on the grass
+
+(a) Ablation study on subject motion control. Only the first frame is shown. Experiments on Zeroscope.
+
+|| |(𝜎1,𝜎2)|
+|---|---|
+| |(0.9𝐓, 0.7𝐓)|
+| | |
+| |(0.8𝐓, 0.6𝐓)|
+| | |
+| |(0.7𝐓, 0.5𝐓)|
+| | |
+|
+|---|
+
+| |(𝜎1,𝜎2)|
+|---|---|
+| |(0.9𝐓, 0.7𝐓)|
+| | |
+| |(0.8𝐓, 0.6𝐓)|
+| | |
+| |(0.7𝐓, 0.5𝐓)|
+| | |
+
+[Figure 283]
+
+[Figure 284]
+
+Pan Right
+
+[Figure 285]
+
+[Figure 286]
+
+Camera Direction
+
+a child blowing
+
+[Figure 287]
+
+[Figure 288]
+
+bubbles in the park
+
+| |
+|---|
+
+First Frame Last Frame
+
+(b) Ablation study on latent shift. Experiments on LaVie. A higher σ means an earlier denoising step.
+
+#### Figure 13: Ablation study on motion control hyperparameters.
+
+Table 5: Ablation study for the number of video preservation data. # Videos R-CLIP ↑ R-DINO ↑ CLIP-T ↑ T-Cons. ↑ Flow error ↓
+
+100 0.714 0.488 0.245 0.964 0.324 300 0.711 0.486 0.245 0.962 0.330 500 0.712 0.472 0.247 0.962 0.332 700 0.712 0.473 0.247 0.963 0.340 900 0.712 0.480 0.244 0.963 0.328
+
+Comparison with text guidance for camera motion control. we compare our latent shift method with text guidance for controlling camera motion with the results presented in Table 4a and Fig. 12h. Specifically, we utilize simple text prompts, such as “camera pan right” and “camera pan up right,” to influence camera movement. The generated videos reflect these instructions to some extent, especially for straightforward motions like panning to the right. However, we observe that such text prompts often lack sufficient specificity, particularly in terms of conveying critical details such as the speed or distance of the camera movement. As a result, this approach yielded sub-optimal outcomes when compared to our proposed method. This indicates that our approach offers a more precise and stable mechanism for controlling camera motion than is possible with text prompts alone.
+
+Comparison of subject motion control with more baselines. Table 4b presents quantitative experiments comparing our method with several baseline approaches, including TrailBlazer [34], Directed Diffusion [35], and Motion-Zero [4]. The results demonstrate that our approach generally outperforms these alternatives.
+
+#### A.4 Ablation Studies
+
+Subject motion control hyperparameters. We conduct ablation studies on the hyperparameter for subject motion control, with the results presented in Fig. 13a. We examined the effects of varying the factor α of S and the maximum cross-attention manipulation timestamp τ. The findings indicate that increasing α and extending the controlling steps lead to stronger control. With lower control strengths, the subject does not appear in the desired position, or only part of its body aligns with the intended spot. Conversely, when the control strengths are too high, the generated subjects tend to appear unnaturally square in shape.
+
+Latent shift hyperparameters. We experiment with the influence of σ1 and σ2 in the latent shift module. The results are shown in Fig. 13b. The results indicate that applying latent shift in the earlier steps of the denoising process results in incomplete camera movement, as evidenced by the trees in the background. Conversely, shifting the latent in the later steps degrades video quality and introduces artifacts, highlighted by the red boxes in the last row. Empirically, setting σ1 and σ2 to middle values provides optimal control over camera movement.
+
+Number of preservation videos. We conduct an ablation study on the number of preservation videos. As shown in Table 5, ranging the preservation videos from 100 to 900 does not bring large changes to the quantitative scores. We conclude that the key is to use video data to preserve the video generation ability of the pre-trained T2V models. The number of video data can be flexible.
+
+#### Table 6: More ablation studies.
+
+(a) Ablation of controlling single motion type.
+
+(b) Ablation of masking the training images.
+
+(c) Ablation of the latent filling method in latent shift.
+
+T2V Model Evaluation Set R-CLIP ↑ R-DINO ↑ CLIP-T ↑ T-Cons. ↑ Flow error ↓
+
+Only Subject 0.767 0.305 0.242 0.968 Only Camera - - 0.252 0.948 0.190 Both 0.667 0.306 0.258 0.958 0.252
+
+Zeroscope
+
+Only Subject 0.735 0.247 0.244 0.965 Only Camera - - 0.241 0.963 0.296 Both 0.712 0.472 0.247 0.962 0.332
+
+LaVie
+
+Method R-CLIP ↑ R-DINO ↑ CLIP-T ↑ T-Cons. ↑
+
+Mask Image 0.683 0.060 0.237 0.937 Mask Loss (Ours) 0.712 0.472 0.247 0.962
+
+Method CLIP-T ↑ T-Cons. ↑ Flow error ↓
+
+Random Init 0.235 0.922 0.212 Random Sample 0.248 0.954 0.185 Loop 0.252 0.956 0.168 Reflect - Collapse -
+
+Ours 0.252 0.948 0.190
+
+Controlling Single Motion Type. We conduct an additional experiment focusing specifically on the scenario where only subject motion is controlled, and the results are summarized in Table 6a. Notably, we observe that the inclusion of both subject and camera motion controls leads to a slight decrease in some metrics. For instance, using the Zeroscope model, there is a 0.1 drop in the R-CLIP score and a 0.01 decrease in the T-Cons metric when both types of motion are controlled compared to the scenario where only subject motion is controlled. However, there are also instances where metrics such as R-DINO and CLIP-T show a slight improvement under combined control conditions. We consider this trade-off acceptable within the context of motion-aware customized video generation. Qualitative results in Fig. 12g show that our method can successfully handle controlling both subject and camera motion.
+
+Masking the training images. We conduct an ablation study to evaluate the effect of masking the background regions directly in pixel space of the training images, compared to masking the diffusion loss. As illustrated in Fig. 12e, directly masking the training images significantly impairs the model’s capacity to learn the subject effectively. The quantitative metrics shown in Table 6b indicate a marked decrease in performance when the training images are masked. We hypothesize that this decline arises from the unnatural distribution created by the masked images, which disrupts the learning process. Consequently, we conclude that masking the diffusion loss, rather than masking the training images directly, is a more effective strategy for preserving the integrity of the learned representations.
+
+Latent Filling Methods. We test several latent filling approaches and present the qualitative results in Fig. 12f and the quantitative results in Table 6c.
+
+Random Init: This method involves filling the hole with random values. Our experiments revealed that this technique leads to severe artifacts due to the disruption of the natural horizontal and vertical distribution of latent pixels, ultimately degrading the overall visual quality.
+
+Random Sample: In this approach, values are randomly sampled in the latents. Similar to Random Init, this method produced significant artifacts, leading to poor visual quality in the generated video.
+
+Loop: This method reuses the moved-out-of-scene values to fill the missing region, thereby creating a looping background effect. While this technique was found to preserve video quality better than the random methods, it introduced a limitation in terms of flexibility for camera movements, resulting in repetitive looping effects. Therefore, it is not suitable for more diverse camera controls.
+
+Reflect: This approach is employed in Text2Video-Zero [26], where the missing region is filled by reflecting the surrounding content. However, in our Text-to-Video (T2V) scenario, this method collapsed, failing to maintain the desired visual quality.
+
+The quantitative results presented in Table 6c corroborate these findings. Random Init and Random Sample lead to significant artifacts, whereas the Loop method provides better visual quality but at the cost of limiting camera movement diversity. The Reflect method, despite its success in other applications, did not yield satisfactory results in our T2V context.
+
+In conclusion, our proposed straight-sample method consistently maintained high visual quality without introducing significant artifacts or limiting camera movement flexibility, demonstrating its superiority in maintaining the desired video fidelity.
+
+#### A.5 Social Impacts
+
+Positive societal impacts. MotionBooth allows for precise control over customized subjects and camera movements in video generation, opening new avenues for artists, filmmakers, and content creators to produce unique and high-quality visual content without extensive resources or professional equipment.
+
+Potential negative societal impacts. The ability to generate realistic customized videos could be misused to create deepfakes, leading to potential disinformation campaigns, privacy violations, and reputational damage. This risk is particularly significant in the context of political manipulation and social media. If the underlying models are trained on biased datasets, the generated content might reinforce harmful stereotypes or exclude certain groups. Ensuring diversity and fairness in training data is crucial to mitigate this risk.
+
+Mitigation strategies. Developing and adhering to strict ethical guidelines for the use and dissemination of video generation technologies can help mitigate misuse. This includes implementing usage restrictions and promoting transparency about the generated content.
+
+- A.6 More Qualitative Results We show more qualitative results in Fig. 15.
+
+|def shift_latent_one_step(latent, cx, cy, bbox, num_shift_steps): # latent: noised latent for timestamp t # cx: x-axis speed for camera movement # cy: y-axis speed for camera movement<br><br># bbox: the bounding box for the customized subject<br><br># num_shift_steps: 𝜎1 − 𝜎2, the total steps needed to complete latent shift # get the latent shape batch_size, channels, num_frames, height, width = latent.shape<br><br># divide the camera speed by num_shift_steps. # for each step, we move a part of the total distance<br><br>sx = cx / num_shift_steps<br>sy = cy / num_shift_steps<br><br><br>for f in range(num_frames):<br><br># define latent shift distance for each frame<br><br>sfx = int(sx * f)<br>sfy = int(sy * f)<br><br><br># define a obj_mask to avoid sampling tokens within the subject region obj_mask = torch.ones_like(latent[0,0,f,:,:]) obj_mask[bbox] = False<br><br># sampling tokens horizontally<br><br>if sfx != 0: fill_x = torch.zeros_like(latent[:,:,f,:,:abs(sfx)]) for i in range(height):<br><br>included_indices = [x for x in range(0, width) if obj_mask[i,x]]<br><br>sampled_indices = random_choice(included_indices, size=abs(sfx) fill_x[:,:,i,:] = latent[:,:,f,i,sampled_indices]<br><br># sampling tokens vertically<br><br>if sfy != 0: fill_y = torch.zeros_like(latent[:,:,f,:abs(sfy),:]) for j in range(width):<br><br><br>included_indices = [y for y in range(0, height) if obj_mask[y,j]] sampled_indices = random_choice(included_indices, size=abs(sfy) fill_y[:,:,:,j] = latent[:,:,f,sampled_indices,j]<br><br># shift the original latent and fill in the hole with sampled tokens<br><br>if sfx > 0: temp = latent[:,:,f,:,sfx:] latent[:,:,f,:,:] = torch.cat([temp, fill_x], dim=-1)<br><br>elif sfx < 0: temp = latent[:,:,f,:,:sfx] latent[:,:,f,:,:] = torch.cat([fill_x, temp], dim=-1)<br><br>if sfy > 0: temp = latent[:,:,f,sfy:,:] latent[:,:,f,:,:] = torch.cat([temp, fill_y], dim=-2)<br><br>elif sfy < 0: temp = latent[:,:,f,:sfy,:] latent[:,:,f,:,:] = torch.cat([fill_y, temp], dim=-2)<br><br><br><br><br>return latents|
+|---|
+
+###### Figure 14: Pseudo-code of the latent shift algorithm.
+
+Subject Subject motion Camera motion Generated Videos
+
+[Figure 289]
+
+[Figure 290]
+
+[Figure 291]
+
+[Figure 292]
+
+###### Up Right
+
+A plushie panda running on the grass
+
+[Figure 293]
+
+[Figure 294]
+
+[Figure 295]
+
+[Figure 296]
+
+###### Down Left
+
+A dog jumping down the stairs
+
+|| |
+|---|
+<br><br>| |
+|---|
+<br><br>|
+|---|
+
+[Figure 297]
+
+[Figure 298]
+
+[Figure 299]
+
+[Figure 300]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+A robot toy walking in sunrise
+
+[Figure 301]
+
+[Figure 302]
+
+[Figure 303]
+
+|| |
+|---|
+<br><br>| |
+|---|
+|
+|---|
+
+[Figure 304]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+A dog running on the beach
+
+[Figure 305]
+
+[Figure 306]
+
+[Figure 307]
+
+[Figure 308]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+A motorbike moving closer on the beach with
+
+seashore in the background
+
+[Figure 309]
+
+[Figure 310]
+
+[Figure 311]
+
+[Figure 312]
+
+|| |
+|---|
+|
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+A car driving on the highway
+
+[Figure 313]
+
+[Figure 314]
+
+[Figure 315]
+
+[Figure 316]
+
+|| |
+|---|
+<br><br>| |
+|---|
+<br><br>|
+|---|
+
+###### Right
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+A plushie swimming around coral reef
+
+[Figure 317]
+
+[Figure 318]
+
+[Figure 319]
+
+[Figure 320]
+
+|| |
+|---|
+<br><br>| |
+|---|
+|
+|---|
+
+Up Left
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+A wolf plushie running on the grass
+
+Figure 15: More qualitative results of our MotionBooth.
+
