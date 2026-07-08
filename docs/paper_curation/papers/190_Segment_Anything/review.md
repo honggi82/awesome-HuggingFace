@@ -1,4 +1,4 @@
-# Segment Anything with Multiple Modalities
+# Segment Anything in High Quality
 
 ## Essence
 이 논문은 `HDBSCAN Cluster: figure, model, segment, anything` 범주에서 중요한 근거 문헌로 분류된다. Codex는 추출된 PDF 본문과 제목을 함께 읽고, 핵심 주제를 `figure, model, segment, anything, mask, data` 중심으로 요약했다. 현재 리뷰는 외부 Claude/Gemini API가 아니라 Codex-native 검토 경로에서 생성되었다.
