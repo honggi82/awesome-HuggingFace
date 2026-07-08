@@ -1,0 +1,1540 @@
+## LucidDreamer: Towards High-Fidelity Text-to-3D Generation via Interval Score Matching
+
+Yixun Liang*1 Xin Yang*1,2 Jiantao Lin1 Haodong Li1 Xiaogang Xu3,4 Yingcong Chen∗∗1,2 1 HKUST (GZ) 2 HKUST 3 Zhejiang Lab 4 Zhejiang University
+
+yliang982@connect.hkust-gz.edu.cn xin.yang@connect.ust.hk jlin695@hkust-gz.edu.cn hli736@connect.hkust-gz.edu.cn xgxu@zhejianglab.com yingcongchen@ust.hk
+
+# arXiv:2311.11284v3[cs.CV]2Dec2023
+
+[Figure 1]
+
+[Figure 2]
+
+[Figure 3]
+
+[Figure 4]
+
+[Figure 5]
+
+[Figure 6]
+
+[Figure 7]
+
+[Figure 8]
+
+[Figure 9]
+
+[Figure 10]
+
+[Figure 11]
+
+[Figure 12]
+
+[Figure 13]
+
+[Figure 14]
+
+[Figure 15]
+
+[Figure 16]
+
+“A portrait of Hatsune Miku, robot”
+
+“A beautiful cyborg with brown hair”
+
+[Figure 17]
+
+[Figure 18]
+
+[Figure 19]
+
+[Figure 20]
+
+[Figure 21]
+
+“An armored green-skin orc warrior riding a vicious hog”
+
+“A warrior with red cape riding a horse”
+
+[Figure 22]
+
+[Figure 23]
+
+[Figure 24]
+
+“A forbidden castle high up in the mountains” “A highly-detailed sandcastle”
+
+[Figure 25]
+
+[Figure 26]
+
+[Figure 27]
+
+[Figure 28]
+
+[Figure 29]
+
+[Figure 30]
+
+[Figure 31]
+
+[Figure 32]
+
+[Figure 33]
+
+[Figure 34]
+
+[Figure 35]
+
+[Figure 36]
+
+[Figure 37]
+
+[Figure 38]
+
+[Figure 39]
+
+[Figure 40]
+
+[Figure 41]
+
+[Figure 42]
+
+[Figure 43]
+
+[Figure 44]
+
+[Figure 45]
+
+[Figure 46]
+
+[Figure 47]
+
+[Figure 48]
+
+[Figure 49]
+
+[Figure 50]
+
+“Gandalf smiling, white hair, head, HDR, photorealistic,8K.”
+
+“A portrait of IRONMAN, white hair , head, HDR, photorealistic,8K.”
+
+“A DSLR photo of a football helmet.”
+
+“ Viking axe, fantasy, weapon, blender, 8k, HD.”
+
+“A DSLR photo of a bagel filled with cream cheese and lox.”
+
+“ A blue motorcycle.”
+
+[Figure 51]
+
+[Figure 52]
+
+[Figure 53]
+
+[Figure 54]
+
+[Figure 55]
+
+[Figure 56]
+
+[Figure 57]
+
+[Figure 58]
+
+[Figure 59]
+
+[Figure 60]
+
+[Figure 61]
+
+[Figure 62]
+
+[Figure 63]
+
+[Figure 64]
+
+[Figure 65]
+
+[Figure 66]
+
+[Figure 67]
+
+[Figure 68]
+
+“'Zombie JOKER, head, HDR, photorealistic,8K.”
+
+“A pyramid shaped burrito with a slice cut out of it.”
+
+“SaberfromFatestayNight,3D, girl, anime”
+
+“ A DSLR photo of a LV handbag”
+
+“ A delicious hamburger.” “A Supercar made out of toy bricks.”
+
+Figure 1. Examples of text-to-3D content creations with our framework. We present a text-to-3D generation framework, named the LucidDreamer, to distill high-fidelity textures and shapes from pretrained 2D diffusion models (detailed shows on Sec. 4) with a novel Interval Score Matching objective and an Advanced 3D distillation pipeline. Together, we achieve superior 3D generation results with photorealistic quality in a short training time. Please zoom in for details.
+
+** Corresponding author.
+
+*The first two authors contributed equally to this work.
+
+- * Conceptualization: Yixun Liang: 60%, Xin Yang: 40%,
+- * Methodology: Xin Yang: 60%, Yixun Liang: 40%.
+
+### Abstract
+
+noises
+
+[Figure 69]
+
+[Figure 70]
+
+[Figure 71]
+
+[Figure 72]
+
+[Figure 73]
+
+[Figure 74]
+
+“A Tudor style house”
+
+𝜖 𝜖 𝜖 𝜖
+
+The recent advancements in text-to-3D generation mark a significant milestone in generative models, unlocking new possibilities for creating imaginative 3D assets across various real-world scenarios. While recent advancements in text-to-3D generation have shown promise, they often fall short in rendering detailed and high-quality 3D models. This problem is especially prevalent as many methods base themselves on Score Distillation Sampling (SDS). This paper identifies a notable deficiency in SDS, that it brings inconsistent and low-quality updating direction for the 3D model, causing the over-smoothing effect. To address this, we propose a novel approach called Interval Score Matching (ISM). ISM employs deterministic diffusing trajectories and utilizes interval-based score matching to counteract over-smoothing. Furthermore, we incorporate 3D Gaussian Splatting into our text-to-3D generation pipeline. Extensive experiments show that our model largely outperforms the state-of-the-art in quality and training efficiency. Our code will be available at: EnVision-Research/LucidDreamer
+
+[Figure 75]
+
+[Figure 76]
+
+[Figure 77]
+
+[Figure 78]
+
+[Figure 79]
+
+[Figure 80]
+
+[Figure 81]
+
+“A Lego Porsche car”
+
+[Figure 82]
+
+[Figure 83]
+
+[Figure 84]
+
+[Figure 85]
+
+[Figure 86]
+
+[Figure 87]
+
+“An icecream”
+
+[Figure 88]
+
+𝑥 = 𝑔(𝜃,𝑐) + noise 𝑥 denoise 𝑥 pseudo-ground-truth
+
+average
+
+SDS update direction
+
+Figure 2. Examples of SDS [34]. Let t = 500, we simulate the SDS distillation process by sampling xt with same x0 but different noises {ϵ1, ..., ϵ4}. We discover that the SDS distillation process produces overly-smoothed pseudo-ground-truth (i.e., xˆt0) for x0. First, the random noise and timestep sampling strategy of SDS drives x0 towards the averaged xˆt0 and eventually leads to the “feature-averaging” result. Second, SDS exploits the diffusion model for xˆt0 estimation in one step, which results in low-quality guidance at large timesteps. Please refer to Sec. 3.1 for more analysis.
+
+### 1. Introduction
+
+rendered by the 3D model with the pseudo-Ground-Truth (pseudo-GT) generated by the diffusion model. However, as shown in Fig. 2, the generated pseudo-GTs are usually inconsistent and have low visual quality. Consequently, all update directions provided by these pseudo-GTs are subsequently applied to the same 3D model. Due to the average effect, the final results tend to be over-smooth and lack of details.
+
+Digital 3D asserts have become indispensable in our digital age, enabling the visualization, comprehension, and interaction with complex objects and environments that mirror our real-life experiences. Their impact spans a wide range of domains including architecture, animation, gaming, virtual and augmented reality, and is widely used in retail, online conferencing, education, etc. The extensive use of 3D technologies brings a significant challenge, i.e., generating high-quality 3D content is a process that needs a lot of time, effort, and skilled expertise.
+
+This paper aims to overcome the aforementioned limitations. We show that the unsatisfactory pseudo-GTs originated from two aspects. Firstly, these pseudo-GTs are onestep reconstruction results from the diffusion models, which have high reconstruction errors. Besides, the intrinsic randomness in the diffusion trajectory makes these pseudo-GTs semantically variant, which causes an averaging effect and eventually leads to over-smoothing results. To address these issues, we propose a novel approach called Interval Score Matching (ISM). ISM improves SDS with two effective mechanisms. Firstly, by employing DDIM inversion, ISM produces an invertible diffusion trajectory and mitigates the averaging effect caused by pseudo-GT inconsistency. Secondly, rather than matching the pseudo-GTs with images rendered by the 3D model, ISM conducts matching between two interval steps in the diffusion trajectory, which avoids one-step reconstruction that yields high reconstruction error. We show that our ISM loss consistently outperforms SDS by a large margin with highly realistic and detailed results. Finally, we also show that our ISM is not only compatible with the original 3D model introduced in [34], by utilizing a more advanced model – 3D Gaussian Splatting [20], our
+
+This stimulates the rapid developments of 3D content generation approaches [5, 14, 16, 21–24, 29, 31, 34, 35, 41, 47]. Among them, text-to-3D generation [5, 14, 21, 29, 31, 34, 47, 52] stands out for its ability to create imaginative 3D models from mere text descriptions. This is achieved by utilizing a pretrained text-to-image diffusion model as a strong image prior to supervise the training of a neural parameterized 3D model, enabling for rendering 3D consistent images in alignment with the text. This remarkable capability is fundamentally grounded in the use of Score Distillation Sampling (SDS). SDS acts as the core mechanism that lifts 2D results from diffusion models to the 3D world, enabling the training of 3D models without images [4, 5, 16, 21, 29, 34, 50].
+
+Despite its popularity, empirical observations have shown that SDS often encounters issues such as over-smoothing, which significantly hampers the practical application of highfidelity 3D generation. In this paper, we thoroughly investigate the underlying cause of this problem. Specifically, we reveal that the mechanism behind SDS is to match the images
+
+model achieves superior results compared to the state-ofthe-art approaches, including Magic3D [21], Fantasia3D [5], and ProlificDreamer [47]. Notably, these competitors require multi-stage training, which is not needed in our model. This not only reduces our training cost but also maintains a simple training pipeline. Overall, our contributions can be summarized as follows.
+
+- • We provide an in-depth analysis of Score Distillation Sampling (SDS), the fundamental component in text-to-3D generation, and identify its key limitations for providing inconsistent and low-quality pseudo-GTs. This provides an explanation of the over-smoothing effect that exists in many approaches.
+- • In response to SDS’s limitations, we propose the Interval Score Matching (ISM). With invertible diffusion trajectories and interval-based matching, ISM significantly outperforms SDS with highly realistic and detailed results.
+- • By integrating with 3D Gaussian Splatting, our model achieves state-of-the-art performance, surpassing existing methods with less training costs.
+
+### 2. Related Works
+
+Text-to-3D Generation. One work can be categorized as text-to-3D generation [2, 5–7, 12, 17, 21, 30, 34, 38, 39, 41, 45, 48]. As a pioneer, DreamField [17] firstly train NeRF [32] with CLIP [37] guidance to achieve text-to-3D distillation. However, the results is unsatisfactory due to the weak supervision from CLIP loss. With the advance of diffusion model, Dreamfusion [34] introduces Score Distillation Sampling (SDS) to distill 3D assets from pre-trained 2D textto-image diffusion models. SDS facilitates 3D distillation by seeking specific modes in a text-guide diffusion model, allowing for training a 3D model based on the 2D knowledge of diffusion models. This quickly motivates a great number of following works [5, 16, 21, 30, 34, 36, 50] and becomes a critical integration of them. These works improve the performance of text-to-3D in various ways. For example, some of them [5, 12, 21, 30, 45, 48] improve the visual quality of textto-3D distillation via modifying NeRF or introducing other advanced 3D representations. The other some [2, 6, 41] focus on addressing the Janus problems, e.g., MVDream [41] propose to fine-tune the pre-trained diffusion models to make it 3D aware, and GSGEN [6] proposes a novel approach by introducing a 3D diffusion model for joint optimization. However, all these methods heavily rely on the Score Distillation Sampling. Albeit promising, SDS has shown oversmoothing effects in a lot of literatures [21, 31, 34, 50]. Besides, it need coupling with a large conditional guidance scale [12], leading to over-saturation results. There are also some very recent works [18, 47, 49, 52] target at improving SDS. ProlificDreamer [47] proposes VSD to model 3D representation as a distribution. HiFA [52] propose a iterative to estimate a better sampling direction. Although signifi-
+
+cant improve has been made, these works require a much longer training stage. CSD [49] and NFSD [18] are two concurrent works that analyze the components in the SDS to obtain empirical solutions to improve the original SDS. Our work is intrinsically different in the sense that it provides a systematic analysis on the the inconsistency and low-quality pseudo-ground-truths in SDS. And by introducing the Interval Score Matching, it achieves superior results without increasing the computational burden.
+
+Differentiable 3D Representations. Differentiable 3D representation is a crucial integration of text-guided 3D generation. Given a 3D representation with trainable parameter θ, a differentiable rendering equation g(θ,c) is used to render an image in camera pose c of that 3D representation. As process is differentiable, we could train the 3D representation to fit our condition with backpropagation. Previously, various representations have been introduce to text-to-3D generations [3, 8, 32, 40, 46]. Among them, NeRF [21, 32, 41] is the most common representation in text-to-3D generation tasks. The heavy rendering process of implicit representations makes it challenging for NeRF to produce highresolution images that match the diffusion’s resolution during distillation. Consequently, this limitation leads to suboptimal outcomes. To address this, textual meshes s [40], known for their efficient explicit rendering, are now used in this field to create detailed 3D assets [5, 21, 47], leading to better performance. Meanwhile, 3D Gaussian Splatting [19], another effective explicit representation, demonstrates remarkable efficiency in reconstruction tasks. In this paper, we investigate 3D Gaussian Splatting [19] as the 3D representation in our framework.
+
+Diffusion Models. Another key component of text-to-3D generation is the diffusion model, which provides supervision for the 3D model. We briefly introduce it here to covers some notations. The Denoising Diffusion Probabilistic Model (DDPM) [13, 39, 43] has been widely adopted for text-guided 2D image generation for its comprehensive capability. DDPMs assume p(xt|xt−1) as a diffusion process according to a predefined schedule βt on timestep t, that:
+
+p(xt|xt−1) = N(xt;√1 − βtxt−1,βtI). (1)
+
+And the posterior pϕ(xt−1|xt) is modelled with a neural network ϕ, where:
+
+pϕ(xt−1|xt) = N(xt−1;√α¯t−1µϕ(xt),(1 − α¯t−1)Σϕ(xt)), (2)
+
+where α¯t := ( t1 1 − βt), and µϕ(xt), Σϕ(xt) denote the predicted mean and variance given xt, respectively.
+
+### 3. Methodology
+
+#### 3.1. Revisiting the SDS
+
+As mentioned in Sec. 2, SDS [34] pioneers text-to-3D generation by seeking modes for the conditional post prior in the
+
+DDPM latent space. Denoting x0 := g(θ,c) as 2D views rendered from θ, the posterior of noisy latent xt is defined as:
+
+qθ(xt) = N(xt;√α¯tx0,(1 − α¯t)I). (3)
+
+Meanwhile, SDS adopts pretrained DDPMs to model the conditional posterior of pϕ(xt|y). Then, SDS aims to distill 3D representation θ via seeking modes for such conditional posterior, which can be achieved by minimizing the following KL divergence for all t:
+
+(θ) := Et,c ω(t)DKL(qθ(xt) ∥ pϕ(xt|y)) . (4)
+
+minθ∈Θ LSDS
+
+Further, by reusing the weighted denoising score matching objective [13, 43] for DDPM training, the Eq. (4) is reparameterized as:
+
+(θ) := Et,c ω(t)||ϵϕ(xt,t,y) − ϵ||22 , (5)
+
+minθ∈Θ LSDS
+
+where ϵ ∼ N(0,I) is the ground truth denoising direction of xt in timestep t. And the ϵϕ(xt,t,y) is the predicted denoising direction with given condition y. Ignoring the UNet Jacobian [34], the gradient of SDS loss on θ is given by:
+
+)∂g∂θ(θ,c)]. (6)
+
+(θ) ≈ Et,ϵ,c [ω(t)(ϵϕ(xt,t,y) − ϵ SDS update direction
+
+∇θLSDS
+
+Analysis of SDS. To lay a clearer foundation for the upcoming discussion, we denote γ(t) =
+
+√√1−α¯αt¯t and equivalently transform Eq. (5) into an alternative form as follows:
+
+(θ) := Et,ϵ,c
+
+LSDS
+
+min
+
+θ∈Θ
+
+= Et,ϵ,c
+
+(xt − xt) √α¯t ||22
+
+ω(t) γ(t)||γ(t)(ϵϕ(xt,t,y) − ϵ) +
+
+∂g(θ,c) ∂θ
+
+ω(t) γ(t)||x0 − xˆt0||22
+
+∂g(θ,c) ∂θ
+
+.
+
+(7)
+
+√1−α¯tϵϕ(xt,t,y)
+
+where xt ∼ qθ(xt) and xˆt0 = xt−
+
+√α¯t . Consequently, we can also rewrite the gradient of SDS loss as:
+
+(θ) = Et,ϵ,c [ωγ((tt))(x0 − xˆt0)∂g∂θ(θ,c)]. (8)
+
+∇θLSDS
+
+In this sense, the SDS objective can be viewed as matching the view x0 of the 3D model with xˆt0 (i.e., the pseudoGT) that DDPM estimates from xt in a single-step. However, we have discovered that this distillation paradigm overlooks certain critical aspects of the DDPM. In Fig. 2, we show that the pretrained DDPM tends to predict feature-inconsistent pseudo-GTs, which are sometimes of low quality during the distillation process. However, all updating directions yielded by Eq. (8) under such undesirable circumstances would be updated to the θ, and inevitably lead to over-smoothed results. We conclude the reasons for such phenomena from two major aspects. First, it is important to note a key intuition of SDS: it generates pseudo-GTs with 2D DDPM by referencing the input view x0. And afterward, SDS exploits such
+
+pseudo-GTs for x0 optimization. As disclosed by Eq. (8), SDS achieves this goal by first perturbing x0 to xt with random noises, then estimating xˆt0 as the pseudo-GT. However, we notice that the DDPM is very sensitive to its input, where minor fluctuations in xt would change the features of pseudo-GT significantly. Meanwhile, we find that not only the randomness in the noise component of xt, but also the randomness in the camera pose of x0 could contribute to such fluctuations, which is inevitable during the distillation. Optimizing x0 towards inconsistent pseudo-GTs ultimately leads to feature-averaged outcomes, as depicted in the last column of Fig. 2.
+
+Second, Eq. (8) implies that SDS obtains such pseudoGTs with a single-step prediction for all t, which neglects the limitation of single-step-DDPM that are usually incapable of producing high-quality results. As we also show in the middle columns of Fig. 2, such single-step predicted pseudo-GTs are sometimes detail-less or blurry, which obviously hinders the distillation. Consequently, we believe that distilling 3D assets with the SDS objective might be less ideal. Motivated by such observations, we aim to settle the aforementioned issues in order to achieve better results.
+
+#### 3.2. Interval Score Matching
+
+Note that the aforementioned problems originate from the fact that xˆt0, which serves as the pseudo-ground-truth to match with x0 = g(θ,c), is inconsistent and sometimes low quality. In this section, we provide an alternative solution to SDS that significantly mitigates these problems.
+
+Our core idea lies in two folds. First, we seek to obtain more consistent pseudo-GTs during distillation, regardless of the randomness in noise and camera pose. Then, we generate such pseudo-GTs with high visual quality.
+
+DDIM Inversion. As discussed above, we seek to produce more consistent pseudo-GTs that are aligned with x0. Thus, instead of producing xt stochastically with Eq. (3), we employ the DDIM inversion to predict the noisy latent xt. Specifically, DDIM inversion predicts a invertible noisy latent trajectory {xδ
+
+,...,xt} in an iterative manner: xt = √α¯txˆs0 + √1 − α¯tϵϕ(xs,s,∅)
+
+,x2δ
+
+T
+
+T
+
+(9)
+
+= √α¯t(xˆs0 + γ(t)ϵϕ(xs,s,∅)),
+
+xs − γ(s)ϵϕ(xs,s,∅). With some simple computation, we organize xˆs0 as:
+
+where s = t − δT, and xˆs0 = √1α¯
+
+s
+
+- xˆs0 = x0−γ(δT)[ϵϕ(xδ
+
+T
+
+,δT,∅) − ϵϕ(x0,0,∅)] − ··· −γ(s)[ϵϕ(xs,s,∅) − ϵϕ(xs−δ
+
+T
+
+,s − δT,∅)],
+
+(10)
+
+Thanks to the invertibility of DDIM inversion, we significantly increase the consistency of the pseudo-GT (i.e., the
+
+- xˆt0) with x0 for all t, which is important for our subsequent operations. To save space, please refer to our supplement for analysis.
+
+[Figure 89]
+
+Interval Score Matching. Another limitation of SDS is that it generates pseudo-GTs with a single-step prediction from xt for all t, making it challenging to guarantee high-quality pseudo-GTs. On this basis, we further seek to improve the visual quality of the pseudo-GTs. Intuitively, this can be achieved by replacing the single-step estimated pseudoGT xˆt0 = √1α¯
+
+“A hi-poly model of a yellow supercar”
+
+3D Generator (optional)
+
+Initialize
+
+[Figure 90]
+
+𝑐
+
+[Figure 91]
+
+[Figure 92]
+
+[Figure 93]
+
+[Figure 94]
+
+[Figure 95]
+
+𝑥 𝜖 (𝑥 ,𝑠,∅) 𝑥 𝜖 (𝑥 ,𝑡,𝑦)
+
+[Figure 96]
+
+[Figure 97]
+
+xt − γ(t)ϵϕ(xt,t,y) with a multi-step one,
+
+Random views 𝑥 = 𝑔(𝜃,𝑐)
+
+𝜃
+
+t
+
+denoted as x˜t0 := x˜0, following the multi-step DDIM denoising process, i.e., iterating
+
+𝐿 = 𝐸 ,  𝜔 𝑡 𝜖 (𝑥 ,𝑡,𝑦) − 𝜖 𝑥 ,𝑠,∅
+
+###### update
+
+Interval score
+
+Learnable 3D Representation
+
+DDIM inversion
+
+Pretrained 2D Diffusion Model
+
+(xˆt0 + γ(t − δT)ϵϕ(xt,t,y)) (11)
+
+x˜t−δ
+
+= α¯t−δ
+
+T
+
+T
+
+Figure 3. An overview of LucidDreamer. In our paper, we first initialize the 3D representation (i.e. Gaussian Splatting [20]) θ via the pretrained text-to-3D generator [33] with prompt y. Incorporate with pretrained 2D DDPM, we disturb random views x0 = g(θ, c) to unconditional noisy latent trajectories {x0, ..., xs, xt} via DDIM inversion [42]. Then, we update θ with the interval score. Please refer to Sec. 3.2 for details.
+
+until x˜0. Note that different from the DDIM inversion (Eq. (9)), this denoising process is conditioned on y. This matches the behavior of SDS (Eq. (6)), i.e., SDS imposes unconditional noise ϵ during forwarding and denoise the noisy latent with a conditional model ϵϕ(xt,t,y).
+
+Intuitively, by replacing xˆt0 in Eq. (8) with x˜t0, we conclude a naive alternative of the SDS, where:
+
+distillation quality. Please refer to our supplement for more analysis and experiments about ηt.
+
+∇θL(θ) = Ec [ωγ((tt))(x0 − x˜t0)∂g∂θ(θ,c)]. (12)
+
+Consequently, we propose an efficient alternative to Eq. (12) by disregarding the bias term ηt and focusing on minimizing the interval score, which we termed Interval Score Matching (ISM). Specifically, with a given prompt y and the noisy latents xs and xt generated through DDIM inversion from x0, the ISM loss is defined as:
+
+Although x˜t0 might produce higher quality guidance, it is overly time-consuming to compute, which greatly limits the practicality of such an algorithm. This motivates us to delve deeper into the problem and search for a more efficient approach.
+
+Initially, we investigate the denoising process of x˜t0 jointly with the inversion process. We first unify the iterative process in Eq. (11) as
+
+(θ) := Et,c ω(t)||ϵϕ(xt,t,y) − ϵϕ(xs,s,∅)||2 . (16) Following [34], the gradient of ISM loss over θ is given by:
+
+minθ∈Θ LISM
+
+###### xt
+
+x˜t0 =
+
+√α¯t − γ(t)ϵϕ(xt,t,y) + γ(s)[ϵϕ(xt,t,y) − ϵϕ(x˜s,s,y)]
+
+(13)
+
+)∂g∂θ(θ,c)]. (17)
+
+(θ) := Et,c [ω(t)(ϵϕ(xt,t,y) − ϵϕ(xs,s,∅)
+
++··· + γ(δT)[ϵϕ(x˜2δ
+
+,2δT,y) − ϵϕ(x˜δ
+
+,δT,y)].
+
+∇θLISM
+
+T
+
+T
+
+ISM update direction
+
+Then, combining Eq. (9) with Eq. (13), we could transform Eq. (12) as follows:
+
+Despite omitting ηt from Equation (19), the core of optimizing the ISM objective still revolves around updating x0 towards pseudo-GTs that are feature-consistent, high-quality, yet computationally friendly. Hence, ISM aligns with the fundamental principles of SDS-like objectives [9, 34, 47] albeit in a more refined manner.
+
+∇θL(θ) = Et,c [ωγ((tt))(γ(t)[ϵϕ(xt,t,y) − ϵϕ(xs,s,∅)
+
+] + ηt)∂g∂θ(θ,c)]. (14)
+
+interval scores
+
+where we summarize the bias term ηt as:
+
+As a result, ISM presents several advantages over previous methodologies. Firstly, owing to ISM providing consistent, high-quality pseudo-GTs, we produce high-fidelity distillation outcomes with rich details and fine structure, eliminating the necessity for a large conditional guidance scale [12] and enhancing the flexibility for 3D content creation. Secondly, unlike the other works [26, 47], transitioning from SDS to ISM takes marginal computational overhead. Meanwhile, although ISM necessitates additional computation costs for DDIM inversion, it does not compromise the overall efficiency since 3D distillation with ISM usually converges in fewer iterations. Please refer to our supplement for more discussion.
+
+ηt = + γ(s)[ϵϕ(x˜s,s,y) − ϵϕ(xs−δ
+
+,s − δT,∅)] − γ(s)[ϵϕ(xt,t,y) − ϵϕ(xs,s,∅)]
+
+T
+
+(15)
+
++ ...
+
+,δT,y) − ϵϕ(x0,0,∅)] − γ(δT)[ϵϕ(x˜2δ
+
++ γ(δT)[ϵϕ(x˜δ
+
+T
+
+,2δT,y) − ϵϕ(xδ
+
+,δT,∅)].
+
+T
+
+T
+
+Notably, ηt includes a series of neighboring interval scores with opposing scales, which are deemed to cancel each other out. Moreover, minimizing ηt is beyond our intention since it contains a series of score residuals that are more related to δT, which is a hyperparameter that is unrelated to 3D representation. Thus, we propose to disregard ηt to gain a boost in the training efficiency without compromising the
+
+DreamFusion (SDS)
+
+Magic3D
+
+Fantasia3D
+
+###### Ours
+
+ProlificDreamer (VSD)
+
+[Figure 98]
+
+(~ 30mins)
+
+(~ 1h)
+
+(~ 1h)
+
+(~ 8hrs)
+
+(~35mins)
+
+[Figure 99]
+
+[Figure 100]
+
+[Figure 101]
+
+[Figure 102]
+
+[Figure 103]
+
+[Figure 104]
+
+[Figure 105]
+
+[Figure 106]
+
+[Figure 107]
+
+[Figure 108]
+
+[Figure 109]
+
+[Figure 110]
+
+[Figure 111]
+
+[Figure 112]
+
+[Figure 113]
+
+“A DSLR photo of the Imperial State Crown of England.”
+
+[Figure 114]
+
+[Figure 115]
+
+[Figure 116]
+
+[Figure 117]
+
+[Figure 118]
+
+[Figure 119]
+
+[Figure 120]
+
+[Figure 121]
+
+[Figure 122]
+
+[Figure 123]
+
+[Figure 124]
+
+[Figure 125]
+
+[Figure 126]
+
+[Figure 127]
+
+“A DSLR photo of a Schnauzer wearing a pirate hat .”
+
+- Figure 4. Comparison with baselines methods in text-to-3D generation. Experiment shows that our approach is capable of creating 3D content that matches well with the input text prompts with high fidelity and intricate details. The running time of our method is measured on a single A100 GPU with a view batch size of 4, δS = 200. Please zoom in for details.
+
+Algorithm 1 Interval Score Matching
+
+- 1: Initialization: DDIM inversion step size δT and δS, the target prompt y
+- 2: while θ is not converged do
+- 3: Sample: x0 = g(θ,c),t ∼ U(1,1000)
+- 4: let s = t − δT and n = s/δS
+- 5: for i = [0,...,n − 1] do
+- 6: xˆiδ
+
+S
+
+0 = √ 1 α¯iδS (xiδ
+
+S −
+
+√1 − α¯iδ
+
+S
+
+ϵϕ(xiδ
+
+S
+
+,iδS,∅))
+
+- 7: x(i+1)δ
+
+S
+
+= α¯(i+1)δ
+
+S
+
+xˆiδ
+
+S
+
+0 + 1 − α¯(i+1)δ
+
+S
+
+ϵϕ(xiδ
+
+S
+
+,iδS,∅)
+
+- 8: end for
+- 9: predict ϵϕ(xs,s,∅), then step xs → xt via xt = √α¯txˆs0 + √1 − α¯tϵϕ(xs,s,∅)
+
+- 10: predict ϵϕ(xt,t,y) and compute ISM gradient ∇θLISM = ω(t)(ϵϕ(xt,t,y) − ϵϕ(xs,s,∅))
+- 11: update x0 with ∇θLISM
+- 12: end while
+
+Meanwhile, as the standard DDIM inversion usually adopts a fixed stride, it increases the cost for trajectory estimation linearly as t goes larger. However, it is usually beneficial to supervise θ at larger timesteps. Thus, instead of estimating the latent trajectory with a uniform stride, we propose to accelerate the process by predicting xs with larger step sizes δS. We find such a solution reduces the training time dramatically without compromising the distillation quality. In addition, we present a quantitative analysis of the impact of δT and δS in Sec. 4.1. Overall, we summarize our proposed ISM in Fig. 3 and Algorithm 1.
+
+#### 3.3. The Advanced Generation Pipeline
+
+We also explore the factors that would affect the visual quality of text-to-3D generation and propose an advanced pipeline with our ISM. Specifically, we introduce 3D Guassians Splatting (3DGS) as our 3D representation and 3D point cloud generation models for initialization.
+
+3D Gaussian Splatting. Empirical observations of existing works indicate that increasing the rendering resolution and batch size for training would significantly improve the visual quality. However, most learnable 3D representations that have been adopted in the text-to-3D generation [34, 41, 47] are relatively time and memory-consuming. In contrast, 3D Gaussian Splatting [19] provides highly efficient in both rendering and optimizing. This drives our pipeline to achieve high-resolution rendering and large batch size even with more limited computational resources.
+
+Initialization. Most previous methods [5, 34, 41, 47] usually initialize their 3D representation with limited geometries like box, sphere, and cylinder, which could lead to undesired results on non-axial-symmetric objects. Since we introduce the 3DGS as our 3D representation, we can naturally adopt several text-to-point generative models [33] to generate the coarse initialization with humans prior. This initialization approach greatly improves the convergence speed, as shown in Sec. 4.1.
+
+### 4. Experiments
+
+Text-to-3D Generation. We show the generated results of LucidDreamer in Fig. 1 with original stable diffusion [38] (below the dashed line) and various fintune checkpoints [1, 27, 53]1 (above the dashed line). The results
+
+1Term of Service: https://civitai.com/content/tos
+
+[Figure 128]
+
+[Figure 129]
+
+[Figure 130]
+
+SDS CFG=100
+
+δ = 5 δ = 100 δ = 150 δ = 200
+
+δ = 50
+
+[Figure 131]
+
+[Figure 132]
+
+[Figure 133]
+
+[Figure 134]
+
+[Figure 135]
+
+[Figure 136]
+
+[Figure 137]
+
+[Figure 138]
+
+[Figure 139]
+
+[Figure 140]
+
+[Figure 141]
+
+ISM CFG=7.5
+
+[Figure 142]
+
+[Figure 143]
+
+[Figure 144]
+
+[Figure 145]
+
+[Figure 146]
+
+[Figure 147]
+
+[Figure 148]
+
+“A Lego castle”
+
+- (a). 3DGS
+- (b). NeRF
+
+“A hamburger” “An ice cream” “A ripe strawberry”
+
+[Figure 149]
+
+𝛅𝐒 = 𝟐𝟎𝟎
+
+[Figure 150]
+
+𝛅𝐓 = 𝟓𝟎
+
+δ = 150 δ = 100 δ = 50
+
+δ = 25
+
+[Figure 151]
+
+[Figure 152]
+
+SDS CFG=100
+
+- Figure 6. ISM with Different δT and δS. We fix δT = 50 (orange dashed box) and δS = 200 (black dashed box) respectively to compare the influence of these hyperparameters qualitatively.
+
+[Figure 153]
+
+SpherePoint-E
+
+“A military Mech, future, scifi.”
+
+[Figure 154]
+
+ISM
+
+[Figure 155]
+
+[Figure 156]
+
+[Figure 157]
+
+[Figure 158]
+
+[Figure 159]
+
+[Figure 160]
+
+Initialization Results
+
+- Figure 7. LucidDreamer with Different initialization. We compare the results of two different initializations to evaluate the effectiveness of the Point Generator in our advanced pipeline.
+
+[Figure 161]
+
+[Figure 162]
+
+[Figure 163]
+
+[Figure 164]
+
+ISM CFG=7.5
+
+“A 3D model of an adorable cottage with a thatched roof.”
+
+“A plate piled high with chocolate chip cookies.”
+
+- Figure 5. A comparison of SDS [34] and ISM with different 3D models. It shows that either using (a). 3DGS or (b). NeRF, the results of SDS tend to be smooth, whereas our ISM excels in distilling more realistic content and is rich in detail. Please zoom in for details.
+
+demonstrate that LucidDreamer is capable of generating 3D content that is highly consistent with the semantic cues of the input text. It excels in producing realistic and intricate appearances, avoiding issues of excessive smoothness or over-saturation, such as in the details of character portraits or hair textures. Furthermore, our framework is not only proficient in accurately generating common objects but also supports creative creations, like imagining unique concepts such as "Iron Man with white hair" (Fig. 1).
+
+Compared to Schnauzer generated by other methods, our approach produces Schnauzer with hair texture and overall body shape that is closer to reality, showing a clear advantage. Meanwhile, since the Point Generator introduces the geometry prior, the Janus problem is reduced in our framework.
+
+User study. We conduct a user study to provide a comprehensive evaluation. Specifically, we select 28 prompts and generate objects using different Text-to-3D generation methods with each prompt. The users were asked to rank them based on the fidelity and the degree of alignment with the given text prompt. We show the average ranking to evaluate the users’ preferences. As shown in Tab. 1, our framework gets the highest average ranking in 6 selective methods. Indi-
+
+Generalizability of ISM. To evaluate the generalizability of ISM, we conduct a comparison with ISM and SDS in both explicit representation (3DGS [20]) and implicit representation (NeRF [32]). Notably, we follow the hyperparameter design of ProlificDreamer in the NeRF comparison. As shown in Fig 5, our ISM provides fined-grained details even with normal CFG (7.5) in both NeRF [32] and 3D Gaussian Splatting [20] (3DGS), which is significantly better than the SDS. This is a clear demonstration of the generalizability of our ISM.
+
+|DreamFusion [34] Magic3D [21] Text2Mesh[31] Fantasia3D [5] ProlificDreamer [47]|Ours<br><br>|
+|---|---|
+|3.28 3.44 4.76 4.53 2.37|1.25|
+
+Table 1. We survey the users’ preference ranking (the smaller, the better) averaged on 28 sets of text-to-3D generation results produced by baselines and our method, respectively. Our result is preferred by most users.
+
+Qualitative Comparison. We compare our model with current SoTA baselines [5, 21, 34, 47] reimplemented by Three-studio [11]. We all use the stable diffusion 2.1 for distillation and all experiments were conducted on A100 for fair comparison. As shown in Fig. 4, our method achieves results regarding high fidelity and geometry consistency with less time and resource consumption. For example, the Crown generated by our framework exhibits more precise geometric structures and realistic colors, contrasting sharply with the geometric ambiguity prevalent in other baseline methods.
+
+cate that users consistently favored the 3D models generated by our framework. Please refer to our supplement for more details of the user study and more visual results.
+
+#### 4.1. Ablation Studies
+
+Effect of Interval Length. We explore the effect of interval length δT and δS during training in this section. In Fig. 6,
+
+- 2D Editing 3D Editing 3D Avatar
+
+[Figure 165]
+
+[Figure 166]
+
+[Figure 167]
+
+[Figure 168]
+
+[Figure 169]
+
+[Figure 170]
+
+[Figure 171]
+
+[Figure 172]
+
+[Figure 173]
+
+[Figure 174]
+
+[Figure 175]
+
+[Figure 176]
+
+[Figure 177]
+
+[Figure 178]
+
+[Figure 179]
+
+[Figure 180]
+
+[Figure 181]
+
+[Figure 182]
+
+[Figure 183]
+
+[Figure 184]
+
+###### Input Edited Input Edited
+
+“… A cat wearing armor.” “… A corgi wearing armor.” “… A pug wearing armor.”
+
+“Cactus, North Window, oil on linen.” “A photo of tiger.”
+
+ISM loss ISM loss
+
+ISM loss
+
+[Figure 185]
+
+[Figure 186]
+
+… denotes “A DSLR photo of”
+
+“Elsa in Frozen Disney.”
+
+[Figure 187]
+
+[Figure 188]
+
+[Figure 189]
+
+[Figure 190]
+
+[Figure 191]
+
+[Figure 192]
+
+| | |[Figure 193]<br><br>[Figure 194]| |
+|---|---|---|---|
+|[Figure 195]|[Figure 196]| | |
+
+[Figure 197]
+
+[Figure 198]
+
+[Figure 199]
+
+[Figure 200]
+
+[Figure 201]
+
+[Figure 202]
+
+[Figure 203]
+
+[Figure 204]
+
+[Figure 205]
+
+Input images “A DSLR photo of a [V] wearing a green suit and a top hat” “Stormtrooper.”
+
+Input images “A [V] wearing sunglasses.”
+
+Personalized text-to-3D
+
+Figure 8. Applications of ISM. We explore several applications with our proposed ISM, including the zero-shot 2D and 3D editing (top left), personalized text-to-3D generation with LoRA (bottom left), and 3D avatar generation. Generally, our proposed ISM as well as the Advanced 3D generation pipeline performs surprisingly well across various tasks. Please refer to our paper for more details.
+
+we visualize the influence of δT and δS. For a fixed δT, an increasing δS takes marginal influence in the results but significantly saves the computational costs of DDIM inversion. Meanwhile, as the parameter δT increases, the results adopt a more natural color and simpler structure. However, this comes at the expense of detail. Thus, we conclude a tradeoff in the selection of δT. For instance, at higher δT, castle walls appear smoother. Conversely, lower δT values enhance detail but can result in unnecessary visual anomalies, such as overly saturated color and the illusion of floating artifacts atop castle towers. We hypothesize such observation is caused by the gradients provided by small intervals containing more detailed features but less structural supervision. Thus, we propose annealing the interval with the intuitive process of initially constructing the overall structures and subsequently incorporating fine-grained features. Moreover, this hyperparameter allows the user to generate objects with different levels of smoothness according to their preferences. Initialization with Point Generators We ablate the Point Generators in this section. Specifically, we train two 3D Gaussians from a random initialization and starting from a generated raw point cloud with a given prompt, respectively. In Fig. 7, we compare the distillation results with the same prompts but different. With the parameter and random seed guaranteed to be constant, 3D Gaussian with point initialization has a better result in geometry.
+
+on ControlNet [51] conditioned on DensePose [10] signals to offer more robust supervision. Specifically, we render the 3D human mesh into a 2D image using pytorch3d based on sampled camera parameters and subsequently input it into the pre-trained DensePose model to acquire the human body part segmentation map as a DensePose condition. A more detailed framework is shown in the supplement. Following such an advanced control signal, we can achieve a highfidelity avatar as shown in Fig. 8.
+
+Personalized Text-to-3D. We also combine our framework with personalized techniques, LoRA [15]. Using such techniques, our model can learn to tie the subjects or styles to an identifier string and generate images of the subjects or styles. For text-to-3D generation, we can use the identifier string for 3D generation of specific subjects and styles. As shown in Fig. 8, our method can generate personalized humans or things with fine-grained details. This also shows the great potential of our method in controllable text-to-3D generation by combining it with advanced personalized techniques.
+
+Zero-shot 2D and 3D Editing. While our framework is primarily designed for text-to-3D generation tasks, extending ISM to editing is feasible due to the similarities in both tasks. Effortlessly, we can edit a 2D image or 3D representation in a conditional distillation manner, as ISM provides consistent update directions based on the input image, guiding it towards the target condition, as demonstrated in Fig. 8. Owing to space limitations, we reserve further customization of ISM for 2D/3D editing tasks for future exploration.
+
+### 5. Applications
+
+This section further explores the applications of LucidDreamer. Specifically, we combine our framework with advanced conditioning techniques and achieve some realworld applications.
+
+### 6. Conclusions
+
+In this paper, we have presented a comprehensive analysis of the over-smoothing effect inherent in Score Distillation Sampling (SDS), identifying its root cause in the inconsistency and low quality of pseudo ground truth. Addressing this issue, we introduced Interval Score Matching (ISM), a novel approach that offers consistent and reliable guidance.
+
+Zero-shot Avatar Generation. We expand our framework to produce pose-specific avatars by employing the Skinned Multi-Person Linear Model (SMPL) [25] as a geometry prior to initializing the 3D Gaussian point cloud. Then, we rely
+
+Our findings demonstrate that ISM effectively overcomes the over-smoothing challenge, yielding highly detailed results without extra computational costs. Notably, ISM’s compatibility extends to various applications, including NeRF and
+
+Camera poses
+
+[Figure 206]
+
+[Figure 207]
+
+[Figure 208]
+
+[Figure 209]
+
+c c c c
+
+“military Mech, future, scifi”
+
+(a) Input views
+
+[Figure 210]
+
+[Figure 211]
+
+[Figure 212]
+
+[Figure 213]
+
+Random add noise ↓
+
+[Figure 214]
+
+[Figure 215]
+
+[Figure 216]
+
+[Figure 217]
+
+[Figure 218]
+
+[Figure 219]
+
+[Figure 220]
+
+[Figure 221]
+
+- 3D Gaussian Splatting for 3D generation and editing, as well as 2D editing tasks, showcasing its exceptional versatility. Building upon this, we have developed LucidDreamer, a framework that combines ISM with 3D Gaussian Splatting. Through extensive experimentation, we established that LucidDreamer significantly surpasses current state-of-the-art methodologies. Its superior performance paves the way for a broad spectrum of practical applications, ranging from textto-3D generation and editing to zero-shot avatar creation and personalized Text-to-3D conversions, among others.
+
+𝜖
+
+[Figure 222]
+
+[Figure 223]
+
+[Figure 224]
+
+[Figure 225]
+
+[Figure 226]
+
+[Figure 227]
+
+[Figure 228]
+
+[Figure 229]
+
+𝜖
+
+[Figure 230]
+
+[Figure 231]
+
+Noises
+
+[Figure 232]
+
+[Figure 233]
+
+[Figure 234]
+
+[Figure 235]
+
+[Figure 236]
+
+[Figure 237]
+
+𝜖
+
+[Figure 238]
+
+[Figure 239]
+
+[Figure 240]
+
+[Figure 241]
+
+[Figure 242]
+
+[Figure 243]
+
+[Figure 244]
+
+[Figure 245]
+
+Averaged ↓ Averaged ↓
+
+(b) t = 500
+
+(c) t = 200
+
+### 7. Appendix
+
+[Figure 246]
+
+[Figure 247]
+
+[Figure 248]
+
+[Figure 249]
+
+DDIM inversion ↓
+
+[Figure 250]
+
+[Figure 251]
+
+[Figure 252]
+
+[Figure 253]
+
+#### 7.1. Implementation details
+
+𝜹𝑻 = 20
+
+[Figure 254]
+
+In our LucidDreamer framework, we adopt an explicit 3D representation, the 3D Gaussian Splatting (3DGS) [19], for 3D distillation with our proposed Interval Score Matching (ISM) objective. To optimize 3DGS towards the pseudoground-truth (pseudo-GT) generated by diffusion models, we follow most training hyperparameters from the original 3DGS paper. Specifically, we implement a strategy of densifying and pruning the Gaussian at every 300 iteration interval until a total of 3000 iterations. As our ISM provides precise gradients, we observe a significantly high coverage speed. Consequently, we streamline our training process to consist of around 5000 iterations, substantially less than the original 10,000 iterations required in previous works [34]. In terms of the initialization of 3DGS, we utilize the pretrained PointE [33] checkpoint. Also, for some asymmetrical objects, we adopt camera-dependent prompts during the training following Perp-Neg [2] to reduce the Janus problems further.
+
+[Figure 255]
+
+[Figure 256]
+
+[Figure 257]
+
+[Figure 258]
+
+[Figure 259]
+
+[Figure 260]
+
+[Figure 261]
+
+𝜹𝑻 = 200
+
+(d) t = 500 (e) t = 200
+
+Figure 9. (a): The rendered x0 from 3D representation with camera poses c = {c1, ..., c4}. (b) and (c): pseudo-GTs xˆt0 generated via randomly add noise ϵ = {ϵ1, ...ϵ3} to x0 at timestep t = {500, 200}. (e) and (f): pseudo-GTs xˆt0 generated via DDIM inversion with step size of δT = {20, 200} at timestep t = {500, 200}. Please zoom in for details.
+
+caused by the following properties of the SDS algorithm: (1) randomness in timestep t; (2) randomness in the noise component ϵ of xt; (3) randomness in camera pose c.
+
+To better explain the issue, we conducted a quantitative experiment on the inconsistency of pseudo-GTs with the aforementioned properties. In Fig. 9 (a), we visualize the input views of 4 camera poses and the pseudo-GTs produced by SDS at different timesteps (Fig. 9 (b) and (c)) and with different noise ϵ (row 2 to 3). It can be seen that even with the noise fixed, the SDS pseudo-GTs tend to be inconsistent over different camera poses and timesteps and eventually lead to feature-averaged results, which is inevitable under the SDS distillation scheme.
+
+LucidDreamer with negative prompts Also, we find that negative prompts would further improve the generation quality, thus, we use the negative prompts from [18] in some cases. Denoting y and yn as the positive and negative prompts, we predict the text-conditional score of the noisy latent xt following the classifier-free guidance [12]:
+
+ϵϕ(xt,t,y) = ϵϕ(xt,t,yn) + gs ∗ (ϵϕ(xt,t,y) − ϵϕ(xt,t,yn)), (18) where gs is the guidance scale of prompt y.
+
+#### 7.3. Complementary Experiments of ISM
+
+##### 7.3.1 Benefits of DDIM inversion
+
+#### 7.2. Inconsistency in SDS pseudo-GT
+
+In the previous section, we visualize the inconsistency issue of SDS pseudo-GTs. In the methodology section of our main paper, we propose to mitigate such a problem by introducing DDIM inversion for noisy latent estimation. Hence, we further examine the effect of replacing the vanilla add noise function for x0 → xt with DDIM inversion in Fig. 9 (d)
+
+In our main paper, we discussed the inconsistency issue regards the pseudo-GTs produced by SDS [34] in our revisiting of SDS. Specifically, it raised our concerns when we spotted significant inconsistency among the pseudo-GTs. Our investigation points out that such inconsistency is mainly
+
+and (e). It can be seen that, the pseudo-GTs that incorporate with DDIM inversion are more similar to the input views in Fig. 9 (a). Therefore, they are significantly more consistent feature and style-wise between different views and timesteps compared to Fig. 9 (b) and (c). Meanwhile, such a property holds when we increase δT from 20 to 200. Notably, DDIM inversion doesn’t necessarily handle the quality problem of the pseudo-GTs generated with a single-step prediction with diffusion models. We will delve deeper into this problem in Sec. 7.3.2.
+
+###### (b) 𝐿
+
+(a) 𝐿 = 𝐸 ,  𝜔 𝑡 𝑥 − 𝑥
+
+𝜹𝑻
+
+10 25 50 100 𝛿 =200, 𝛿 =100
+
+[Figure 262]
+
+[Figure 263]
+
+[Figure 264]
+
+[Figure 265]
+
+Iteration
+
+[Figure 266]
+
+2400
+
+[Figure 267]
+
+[Figure 268]
+
+[Figure 269]
+
+[Figure 270]
+
+[Figure 271]
+
+4000
+
+Running time
+
+4.6 hrs 2.1 hrs 1.3 hrs 0.86 hrs
+
+0.56 hrs
+
+Figure 10. Comparison of the distillation results and running time. (a) Distillation results with the naive objective (Eq. (19)) at different δT = {10, 25, 50, 100}. (b) Distillation results with our proposed ISM objective (Eq. (21)). Please zoom in for details.
+
+3D distillation v.s. image-to-image translation As we discussed in the main paper, ISM follows the basic intuition of SDS which generates pseudo-GTs with 2D diffusion models by referencing x0. Intuitively, such a process is quite similar to the diffusion-based image-to-image translation tasks that have been discussed in some previous works [28, 44] that intend to alter the input image towards the given condition in a similar manner. In such a perspective, since SDS perturbs the clean sample x0 with random noises, it encounters the same problem with SDEdit [28] that it struggles to find an ideal timestep t which ensures both the editability of the algorithm while maintaining the basic structure of the input image.
+
+where ηt is a bias term depending on the denoising process xt −→ x˜t0. For example, when we adopt the step size of the DDIM inversion process x0 −→ xt, δT, as the step size of the denoising process, it leads to:
+
+ηt = + γ(s)[ϵϕ(x˜s,s,y) − ϵϕ(xs−δ
+
+,s − δT,∅)] − γ(s)[ϵϕ(xt,t,y) − ϵϕ(xs,s,∅)]
+
+T
+
++ γ(s − δT)[ϵϕ(x˜s−δ
+
+,s − δT,y) − ϵϕ(xs−2δ
+
+,s − 2δT,∅)] − γ(s − δT)[ϵϕ(x˜s,s,y) − ϵϕ(xs−δ
+
+T
+
+T
+
+(20)
+
+,s − δT,∅)]
+
+T
+
++ ...
+
+Instead, our ISM adopts DDIM inversion to estimate xt from x0 and thus share more common senses with DDIB [44] which mitigates the aforementioned problem. In essence, the DDIB proposes to edit images in a first “DDIM inversion” then “DDIM denoising” paradigm, which can be viewed as building two concatenated Schrödinger bridges [? ] that are intrinsically entropy-regularized optimal transport. Similarly, our proposed ISM can be seen as first bridging the distribution of rendered images q(x0) to the latent space pϕ(xt) of pretrained diffusion models ϕ via DDIM inversion, then, we bridge pϕ(xt) to the target distribution (pϕ(x0|y)) via DDIM denoising. Then, we optimize q(x0) towards pϕ(x0|y) along these bridges, which makes our ISM also an entropy-regularized optimal transport objective that is discussed in DDIB [44]. Consequently, our ISM is able to provide better pseudo-GTs for 3D distillation, which elucidates its superior performance over SDS.
+
+,δT,y) − ϵϕ(x0,0,∅)] − γ(δT)[ϵϕ(x˜2δ
+
++ γ(δT)[ϵϕ(x˜δ
+
+T
+
+,2δT,y) − ϵϕ(xδ
+
+,δT,∅)].
+
+T
+
+T
+
+Despite ηt containing a series of neighboring interval scores with opposite scales that are deemed to cancel each other out, it inevitably leaks interval scores such as
+
+,s − δT,∅)] and etc depending on the hyperparameters.
+
+(γ(s) − γ(s − δT))[ϵϕ(x˜s,s,y) − ϵϕ(xs−δ
+
+T
+
+Recap that the intuition behind Eq. (19) is to distill update directions from all timestep t. Intuitively, because our algorithm would traverse all t, it is beyond our intention to distill update directions of the other timesteps (i.e., s,s − δT,...,δT) when we focus on t. Furthermore, it is rather time-consuming to compute x˜t0 since it requires equivalent steps of estimation for inversion and denoising.
+
+In this paper, we propose to omit ηt from Eq. (19), which leads to our ISM objective, where:
+
+LISM(θ) = Et,c [ω(t)||ϵϕ(xt,t,y) − ϵϕ(xs,s,∅)||2]. (21)
+
+##### 7.3.2 Discussion of ηt
+
+In Fig. 10, we compare the distillation results of the naive objective versus ISM (with accelerated DDIM inversion). The results indicate that distilling 3D objects with ISM, as opposed to using the naive (19), is not only markedly more efficient but also yields results with enhanced details. While the efficiency gain of ISM is anticipated, our hypothesis is that the observed improvement in details stems from the ISM objective’s emphasis on updating directions solely at timestep t. This focus helps avoid the potentially inconsistent update directions at other timesteps s,s − δT,...,δT while
+
+In our main paper, we propose to replace the single-step pseudo-GT estimation adopted in SDS with a multi-step denoising operation. Then, combining the multi-step DDIM inversion with DDIM denoising with the same step size, we formulate our naive objective of 3D distillation as follows:
+
+ω(t) γ(t)||x0 − x˜t0||2]
+
+L(θ) =Ec [
+
+(19)
+
+ω(t) γ(t)||γ(t)[ϵϕ(xt,t,y) − ϵϕ(xs,s,∅)
+
+] + ηt||2],
+
+=Et,c [
+
+interval scores
+
+[Figure 272]
+
+[Figure 273]
+
+[Figure 274]
+
+[Figure 275]
+
+[Figure 276]
+
+[Figure 277]
+
+[Figure 278]
+
+[Figure 279]
+
+[Figure 280]
+
+[Figure 281]
+
+[Figure 282]
+
+[Figure 283]
+
+“A DSLR photo of A Rugged, vintageinspired hiking boots with a weathered
+
+“A DSLR photo of A Stylish Air Jordan shoes, best quality, 4K, HD.”
+
+“Kid Spiderman, blue hair, head, photorealistic, 8K, HDR.”
+
+“White marble bust of Captain America.”
+
+leather finish, best quality, 4K, HD.”
+
+[Figure 284]
+
+[Figure 285]
+
+[Figure 286]
+
+[Figure 287]
+
+[Figure 288]
+
+[Figure 289]
+
+[Figure 290]
+
+[Figure 291]
+
+[Figure 292]
+
+[Figure 293]
+
+[Figure 294]
+
+[Figure 295]
+
+“a metal sculpture of a lion head, highly detailed.”
+
+“A DSLR photo of pug wearing a bee costume.”
+
+“A DSLR photo of A Cream Cheese Donut.” “A durian, 8k, HDR.”
+
+[Figure 296]
+
+[Figure 297]
+
+[Figure 298]
+
+[Figure 299]
+
+[Figure 300]
+
+[Figure 301]
+
+[Figure 302]
+
+[Figure 303]
+
+[Figure 304]
+
+[Figure 305]
+
+[Figure 306]
+
+[Figure 307]
+
+“A wooden car.”
+
+“Mini Garden, highly detailed, 8K, HD.”
+
+“A pillow with huskies printed on it.” “A DSLR photo of the ancient Egyptian pyramid.”
+
+###### Figure 11. More results generated by our LucidDreamer framework. Please zoom in for details.
+
+Iteration
+
+1 1000 2000 3000 4000 5000
+
+| |
+|---|
+
+[Figure 308]
+
+[Figure 309]
+
+[Figure 310]
+
+[Figure 311]
+
+[Figure 312]
+
+[Figure 313]
+
+|[Figure 314]|
+|---|
+
+DensePose
+
+“Elsa in Frozen Disney”
+
+SDS
+
+（CFG=100）
+
+Initialize(SMPL)
+
+[Figure 315]
+
+[Figure 316]
+
+[Figure 317]
+
+[Figure 318]
+
+[Figure 319]
+
+[Figure 320]
+
+[Figure 321]
+
+| |
+|---|
+
+[Figure 322]
+
+[Figure 323]
+
+| |𝑥s| |
+|---|---|---|
+| | | |
+
+ISM
+
+𝜖𝜙(𝑥𝑠,𝑠,∅)
+
+[Figure 324]
+
+[Figure 325]
+
+（CFG=7.5）
+
+ControlNet
+
+𝑥𝑡 𝜖𝜙(𝑥𝑡,𝑡,𝑦)
+
+|Random views<br><br>𝑥0 = 𝑔(𝜃,𝑐)|
+|---|
+
+|𝜃|
+|---|
+
+'a DSLR photo of A very beautiful tiny human heart organic sculpture made of copper wire and threaded pipes, very intricate, curved, Studio lighting, high resolution.'
+
+𝐿ISM = 𝐸𝑡,𝑐 𝜔 𝑡 𝜖𝜙(𝑥𝑡,𝑡,𝑦) − 𝜖𝜙 𝑥𝑠,𝑠, ∅ 2
+
+###### update
+
+Figure 12. Comparision of convergence speed. Our ISM could quickly generate a clear structure (1000 iterations). While SDS failed. Please zoom in for details.
+
+Interval score
+
+DDIM inversion
+
+Learnable 3D Representation
+
+Pretrained 2D Diffusion Model
+
+Figure 13. Framework of zero-shot Avatar Generation. In our paper, we first initialize the 3D representation via SMPL [25]. Then, we rely on ControlNet [51] conditioned on DensePose [10] signals provied by a pretrained DensePose predictor to offer more robust supervision.
+
+we are not focusing on these timesteps. We will leave the investigation of such a problem to our future work.
+
+##### 7.3.3 The convergence speed of ISM v.s. SDS
+
+We also compare the convergence speed of ISM and SDS. Specifically, we fixed the noise and hyperparameters and generated 3D assets using SDS and ISM, respectively. As shown in Fig. 12, our proposal (ISM) converges faster than SDS. e.g. Our ISM generates a clear and reasonable structure using only 1000 iterations, while SDS is quite noisy at the same stage.
+
+#### 7.4. Zero-shot Avatar Generation
+
+Our framework is highly adaptable to pose-specific avatar generation scenarios, as depicted in Fig 13, which showcases the detailed workflow. To begin with, we utilize SMPL as an initialization step for positioning the Gaussian point cloud. Subsequently, we employ a pre-trained DensePose model to generate a segmentation map of the human body. This segmentation map serves as a conditional input for the pretrained ControlNet, where we use an open-source controlnetseg [51].
+
+#### 7.5. Details of User Study
+
+In this paper, we conduct a user study to research the user’s preferences on the current SoTA text-to-3D methods. In the user study, we ask the participants to compare the 360◦ rendered video of generated assets from 6 different methods (including our proposal). We provide 28 sets of videos generated by different prompts. We collected 50 questionnaires from the internet and summarized the users’ preferences, as shown in the main paper.
+
+#### 7.6. More visual results
+
+We show additional generated results in Fig. 11. It can be seen that our LucidDreamer could generate 3D assets with high visual quality and 3D consistency.
+
+### References
+
+- [1] 7whitefire7. Realcartoon-pixar. https://civitai. com/models/107289/realcartoon-pixar, 2023. 6
+- [2] Mohammadreza Armandpour, Huangjie Zheng, Ali Sadeghian, Amir Sadeghian, and Mingyuan Zhou. Reimagine the negative prompt algorithm: Transform 2d diffusion into 3d, alleviate janus problem and beyond. arXiv,
+
+2023. 3, 9
+
+- [3] Jonathan T Barron, Ben Mildenhall, Matthew Tancik, Peter Hedman, Ricardo Martin-Brualla, and Pratul P Srinivasan. Mip-nerf: A multiscale representation for anti-aliasing neural radiance fields. In ICCV, 2021. 3
+- [4] Yukang Cao, Yan-Pei Cao, Kai Han, Ying Shan, and KwanYeeK. Wong. Dreamavatar: Text-and-shape guided 3d human avatar generation via diffusion models. 2023. 2
+- [5] Rui Chen, Yongwei Chen, Ningxin Jiao, and Kui Jia. Fantasia3d: Disentangling geometry and appearance for highquality text-to-3d content creation. In ICCV, 2023. 2, 3, 6, 7
+- [6] Zilong Chen, Feng Wang, and Huaping Liu. Text-to-3d using gaussian splatting. arXiv, 2023. 3
+- [7] Prafulla Dhariwal and Alex Nichol. Diffusion models beat gans on image synthesis, 2021. 3
+- [8] Wenhang Ge, Tao Hu, Haoyu Zhao, Shu Liu, and Ying-Cong Chen. Ref-neus: Ambiguity-reduced neural implicit surface learning for multi-view reconstruction with reflection. ICCV,
+
+2023. 3
+
+- [9] Alexandros Graikos, Nikolay Malkin, Nebojsa Jojic, and Dimitris Samaras. Diffusion models as plug-and-play priors. In NeurIPS, 2022. 5
+- [10] Rıza Alp Güler, Natalia Neverova, and Iasonas Kokkinos. Densepose: Dense human pose estimation in the wild. In CVPR, 2018. 8, 11
+- [11] Yuan-Chen Guo, Ying-Tian Liu, Ruizhi Shao, Christian Laforte, Vikram Voleti, Guan Luo, Chia-Hao Chen, ZiXin Zou, Chen Wang, Yan-Pei Cao, and Song-Hai Zhang. threestudio: A unified framework for 3d content generation. https://github.com/threestudio-project/ threestudio, 2023. 7
+
+- [12] Jonathan Ho and Tim Salimans. Classifier-free diffusion guidance, 2022. 3, 5, 9
+- [13] Jonathan Ho, Ajay Jain, and Pieter Abbeel. Denoising diffusion probabilistic models, 2020. 3, 4
+- [14] Fangzhou Hong, Mingyuan Zhang, Liang Pan, Zhongang Cai, Lei Yang, and Ziwei Liu. Avatarclip: Zero-shot text-driven generation and animation of 3d avatars. 2022. 2
+- [15] Edward J Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang, and Weizhu Chen. Lora: Low-rank adaptation of large language models. arXiv, 2021. 8
+- [16] Yukun Huang, Jianan Wang, Ailing Zeng, He Cao, Xianbiao Qi, Yukai Shi, Zheng-Jun Zha, and Lei Zhang. Dreamwaltz: Make a scene with complex 3d animatable avatars. arXiv,
+
+2023. 2, 3
+
+- [17] Ajay Jain, Ben Mildenhall, Jonathan T Barron, Pieter Abbeel, and Ben Poole. Zero-shot text-guided object generation with dream fields. In CVPR, 2022. 3
+- [18] Oren Katzir, Or Patashnik, Daniel Cohen-Or, and Dani Lischinski. Noise-free score distillation. arXiv, 2023. 3, 9
+- [19] Bernhard Kerbl, Georgios Kopanas, Thomas Leimkühler, and George Drettakis. 3d gaussian splatting for real-time radiance field rendering. ToG, 2023. 3, 6, 9
+- [20] Bernhard Kerbl, Georgios Kopanas, Thomas Leimkühler, and George Drettakis. 3d gaussian splatting for real-time radiance field rendering. ToG, 2023. 2, 5, 7
+- [21] Chen-Hsuan Lin, Jun Gao, Luming Tang, Towaki Takikawa, Xiaohui Zeng, Xun Huang, Karsten Kreis, Sanja Fidler, MingYu Liu, and Tsung-Yi Lin. Magic3d: High-resolution text-to3d content creation. In CVPR, 2023. 2, 3, 7
+- [22] Yukang Lin, Haonan Han, Chaoqun Gong, Zunnan Xu, Yachao Zhang, and Xiu Li. Consistent123: One image to highly consistent 3d asset using case-aware diffusion priors. 2023.
+- [23] Minghua Liu, Chao Xu, Haian Jin, Linghao Chen, Zexiang Xu, Hao Su, et al. One-2-3-45: Any single image to 3d mesh in 45 seconds without per-shape optimization. arXiv, 2023.
+- [24] Ruoshi Liu, Rundi Wu, BasileVan Hoorick, Pavel Tokmakov, Sergey Zakharov, and Carl Vondrick. Zero-1-to-3: Zero-shot one image to 3d object. 2023. 2
+- [25] Matthew Loper, Naureen Mahmood, Javier Romero, Gerard Pons-Moll, and Michael J Black. Smpl: A skinned multiperson linear model. In Seminal Graphics Papers: Pushing the Boundaries, Volume 2, pages 851–866. 2023. 8, 11
+- [26] Weijian Luo, Tianyang Hu, Shifeng Zhang, Jiacheng Sun, Zhenguo Li, and Zhihua Zhang. Diff-instruct: A universal approach for transferring knowledge from pre-trained diffusion models, 2023. 5
+- [27] Lykon. 3d animation diffusion. https://civitai.com/ models / 118086 / 3d - animation - diffusion,
+
+2023. 6
+
+- [28] Chenlin Meng, Yutong He, Yang Song, Jiaming Song, Jiajun Wu, Jun-Yan Zhu, and Stefano Ermon. Sdedit: Guided image synthesis and editing with stochastic differential equations. arXiv, 2021. 10
+
+- [29] Gal Metzer, Elad Richardson, Or Patashnik, Raja Giryes, and Daniel Cohen-Or. Latent-nerf for shape-guided generation of 3d shapes and textures. 2
+- [30] Gal Metzer, Elad Richardson, Or Patashnik, Raja Giryes, and Daniel Cohen-Or. Latent-nerf for shape-guided generation of 3d shapes and textures. In CVPR, 2023. 3
+- [31] Oscar Michel, Roi Bar-On, Richard Liu, Sagie Benaim, and Rana Hanocka. Text2mesh: Text-driven neural stylization for meshes. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 13492– 13502, 2022. 2, 3, 7
+- [32] Ben Mildenhall, Pratul P Srinivasan, Matthew Tancik, Jonathan T Barron, Ravi Ramamoorthi, and Ren Ng. Nerf: Representing scenes as neural radiance fields for view synthesis. Communications of the ACM, 2021. 3, 7
+- [33] Alex Nichol, Heewoo Jun, Prafulla Dhariwal, Pamela Mishkin, and Mark Chen. Point-e: A system for generating 3d point clouds from complex prompts. arXiv, 2022. 5, 6, 9
+- [34] Ben Poole, Ajay Jain, Jonathan T Barron, and Ben Mildenhall. Dreamfusion: Text-to-3d using 2d diffusion. arXiv, 2022. 2, 3, 4, 5, 6, 7, 9
+- [35] Senthil Purushwalkam and Nikhil Naik. Conrad: Image constrained radiance fields for 3d generation from a single image. arXiv, 2023. 2
+- [36] Guocheng Qian, Jinjie Mai, Abdullah Hamdi, Jian Ren, Aliaksandr Siarohin, Bing Li, Hsin-Ying Lee, Ivan Skorokhodov, Peter Wonka, Sergey Tulyakov, et al. Magic123: One image to high-quality 3d object generation using both 2d and 3d diffusion priors. arXiv, 2023. 3
+- [37] Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. Learning transferable visual models from natural language supervision, 2021. 3
+- [38] Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer. High-resolution image synthesis with latent diffusion models. In CVPR, 2022. 3, 6
+- [39] Chitwan Saharia, William Chan, Saurabh Saxena, Lala Li, Jay Whang, Emily Denton, Seyed Kamyar Seyed Ghasemipour, Burcu Karagol Ayan, S. Sara Mahdavi, Rapha Gontijo Lopes, Tim Salimans, Jonathan Ho, David J Fleet, and Mohammad Norouzi. Photorealistic text-to-image diffusion models with deep language understanding, 2022. 3
+- [40] Tianchang Shen, Jun Gao, Kangxue Yin, Ming-Yu Liu, and Sanja Fidler. Deep marching tetrahedra: a hybrid representation for high-resolution 3d shape synthesis. In NeurIPS, 2021. 3
+- [41] Yichun Shi, Peng Wang, Jianglong Ye, Long Mai, Kejie Li, and Xiao Yang. Mvdream: Multi-view diffusion for 3d generation. arXiv, 2023. 2, 3, 6
+- [42] Jiaming Song, Chenlin Meng, and Stefano Ermon. Denoising diffusion implicit models, 2022. 5
+- [43] Yang Song, Jascha Sohl-Dickstein, Diederik P Kingma, Abhishek Kumar, Stefano Ermon, and Ben Poole. Score-based generative modeling through stochastic differential equations. In ICLR, 2021. 3, 4
+
+- [44] Xuan Su, Jiaming Song, Chenlin Meng, and Stefano Ermon. Dual diffusion implicit bridges for image-to-image translation. arXiv, 2022. 10
+- [45] Jiaxiang Tang, Jiawei Ren, Hang Zhou, Ziwei Liu, and Gang Zeng. Dreamgaussian: Generative gaussian splatting for efficient 3d content creation. arxiv, 2023. 3
+- [46] Dor Verbin, Peter Hedman, Ben Mildenhall, Todd Zickler, Jonathan T Barron, and Pratul P Srinivasan. Ref-nerf: Structured view-dependent appearance for neural radiance fields. In CVPR, 2022. 3
+- [47] Zhengyi Wang, Cheng Lu, Yikai Wang, Fan Bao, Chongxuan Li, Hang Su, and Jun Zhu. Prolificdreamer: High-fidelity and diverse text-to-3d generation with variational score distillation. arXiv, 2023. 2, 3, 5, 6, 7
+- [48] Taoran Yi, Jiemin Fang, Guanjun Wu, Lingxi Xie, Xiaopeng Zhang, Wenyu Liu, Qi Tian, and Xinggang Wang. Gaussiandreamer: Fast generation from text to 3d gaussian splatting with point cloud priors. arXiv, 2023. 3
+- [49] Xin Yu, Yuan-Chen Guo, Yangguang Li, Ding Liang, SongHai Zhang, and Xiaojuan Qi. Text-to-3d with classifier score distillation. arXiv, 2023. 3
+- [50] Huichao Zhang, Bowen Chen, Hao Yang, Liao Qu, Xu Wang, Li Chen, Chao Long, Feida Zhu, Kang Du, and Min Zheng. Avatarverse: High-quality & stable 3d avatar creation from text and pose. 2023. 2, 3
+- [51] Lvmin Zhang, Anyi Rao, and Maneesh Agrawala. Adding conditional control to text-to-image diffusion models. In ICCV, 2023. 8, 11
+- [52] Joseph Zhu and Peiye Zhuang. Hifa: High-fidelity text-to-3d with advanced diffusion guidance. arXiv, 2023. 2, 3
+- [53] Zovya. A-zovya rpg artist tools. https : / / civitai . com / models / 8124 / a - zovya - rpg artist-tools, 2023. 6
+
