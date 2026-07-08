@@ -1,0 +1,834 @@
+## Diffusion-Sharpening: Fine-tuning Diffusion Models with Denoising Trajectory Sharpening
+
+Ye Tian 1 * Ling Yang 2 * Xinchen Zhang 3 Yunhai Tong 1 Mengdi Wang 2 Bin Cui 1 1Peking University 2Princeton University 3Tsinghua University Code: https://github.com/Gen-Verse/Diffusion-Sharpening
+
+# arXiv:2502.12146v1[cs.CV]17Feb2025
+
+### Abstract
+
+- (i) Diffusion Reinforcement Learning
+- (ii) Diffusion Sampling Trajectory Optimization
+
+D Reward
+
+Gradient
+
+Reward
+
+Best of N Choice
+
+- (iii) Diffusion Sharpening
+
+We propose Diffusion-Sharpening, a fine-tuning approach that enhances downstream alignment by optimizing sampling trajectories. Existing RL-based fine-tuning methods focus on single training timesteps and neglect trajectory-level alignment, while recent sampling trajectory optimization methods incur significant inference NFE costs. Diffusion-Sharpening overcomes this by using a path integral framework to select optimal trajectories during training, leveraging reward feedback, and amortizing inference costs. Our method demonstrates superior training efficiency with faster convergence, and best inference efficiency without requiring additional NFEs. Extensive experiments show that Diffusion-Sharpening outperforms RL-based fine-tuning methods (e.g., Diffusion-DPO) and sampling trajectory optimization methods (e.g., Inference Scaling) across diverse metrics including text alignment, compositional capabilities, and human preferences, offering a scalable and efficient solution for future diffusion model fine-tuning.
+
+𝑋 𝑋 𝑋 𝑋
+
+𝑋
+
+Reward
+
+𝑋
+
+𝑋 𝑋
+
+𝑋 𝑋
+
+Reward
+
+𝑋
+
+[Figure 1]
+
+Reward
+
+𝑋 𝑋
+
+[Figure 2]
+
+Reward
+
+𝑋 𝑋
+
+𝑋 𝑋
+
+[Figure 3]
+
+Reward
+
+𝑋 𝑋
+
+Gradient
+
+Figure 1. Comparison of Three Diffusion-Based Methods for Reward-Driven Optimization: (i) Diffusion Reinforcement Learning, (ii) Diffusion Sampling Trajectory Optimization, and (iii) Diffusion Sharpening.
+
+### 1. Introduction
+
+Diffusion models have emerged as a cornerstone of modern generative modeling, achieving state-of-the-art performance in tasks such as text-to-image synthesis and video generation (Ho et al., 2020; Song et al., 2020; Sohl-Dickstein et al., 2015; Ramesh et al., 2022; Rombach et al., 2022; Ho et al., 2022; Blattmann et al., 2023; Zhang et al., 2024a). Despite their success, fine-tuning these models to align with diverse and nuanced user preferences remains a fundamental challenge, particularly in domains requiring fine-grained or domain-specific control over generated outputs.
+
+Fine-tuning diffusion models to align with predefined evaluation criteria or human preferences remains a key challenge. A promising approach involves fine-tuning these models using reinforcement learning (RL) through gradient-based optimization during training to optimize reward signals that reflect user-defined objectives (Black et al., 2024; Wallace et al., 2024; Prabhudesai et al., 2023; Xu et al., 2024; Zhang et al., 2024b), as shown in Figure 1 (i).While effective with large-scale curated datasets, these methods focus on optimizing a single timestep’s output and overlook the potential for optimizing the entire sampling trajectory.
+
+*Equal contribution . Correspondence to: Ling Yang <yangling0818@163.com>. Preprint.
+
+Recent approaches extend optimization to the backward
+
+denoising process, enabling real-time adjustments during diffusion sampling and performing progressive trajectory refinement. As illustrated in Figure 1 (ii), these sampling trajectory optimization methods (Kim et al., 2024; Yeh et al., 2024; Ma et al., 2025) demonstrate that intermediate states along the trajectory can guide generative improvements. However, these methods incur significant computational overhead, with high-quality generation taking up to 40 minutes per image (Yeh et al., 2024), making them impractical for real-world use.
+
+To address these limitations, we propose DiffusionSharpening, a fine-tuning framework that enhances diffusion model alignment by optimizing the sampling trajectory, as shown in Figure 1(iii). During training, we sample multiple trajectories and compute rewards through path integration, guiding the model to optimize towards the best trajectory. We introduce two implementations:
+
+- (1) SFT-Diffusion-Sharpening, which uses a pre-existing image-text dataset for supervised fine-tuning, enabling optimization with any reward model; and (2) RLHF-DiffusionSharpening, which uses online methods to generate positive and negative samples from denoising outputs, achieving selfguided learning and improved alignment with any reward model through DPO loss.
+
+We experimentally demonstrate the effectiveness of our method, showing its efficient convergence during training compared to standard fine-tuning, as well as its high efficiency during inference without the need for additional search costs. Furthermore, Diffusion-Sharpening consistently outperforms RL-based fine-tuning methods and sampling trajectory optimization methods across a range of image generation metrics, including text alignment, compositional abilities, and human preferences.
+
+Our contributions are summarized as follows:
+
+- • We introduce Diffusion-Sharpening, a fundamental and effective trajectory-level optimization-based finetuning method that aligns diffusion models with arbitrary pre-defined rewards.
+- • We develop SFT-Diffusion-Sharpening and RLHFDiffusion-Sharpening, with the former providing a more efficient SFT pipeline, while the latter eliminates the need for dataset curation in DPO training.
+- • Compared to previous fine-tuning-based and sampling trajectory optimization methods, our approach achieves the best training and inference efficiency, while setting state-of-the-art performance across diverse metrics, including text alignment, compositional capabilities, and human preferences.
+
+### 2. Related Work
+
+##### 2.1. Diffusion Alignment
+
+Diffusion alignment aims to align model outputs with user preferences by integrating reinforcement learning (RL) into diffusion models to enhance generative controllability (Wallace et al., 2024; Xu et al., 2024; Zhang et al., 2025; Uehara et al., 2024; Yang et al., 2024a). DDPO (Black et al., 2024) uses predefined reward functions to fine-tune diffusion models for specific tasks, such as compressibility. In contrast, DPOK (Fan et al., 2024) utilizes feedback from AI models trained on large-scale human preference datasets. An alternative to predefined rewards is direct preference optimization (DPO). Diffusion-DPO (Wallace et al., 2024) extends DPO (Clark et al., 2024) to diffusion models by directly utilizing preference data for fine-tuning, thereby eliminating the need for predefined reward functions. Despite its potential, Diffusion-DPO relies on large-scale preference datasets and still fails to handle complex generation scenarios. Recent IterComp (Zhang et al., 2024b) address these challenges by gathering composition-aware preference data from a set of open-sourced models and aligning with the collected preferences iteratively.
+
+##### 2.2. Diffusion Trajectory Forward Optimization
+
+Forward optimization in diffusion trajectories focuses on refining the forward process through carefully designed transition kernels or data-dependent initialization distributions (Liu et al., 2022; Hoogeboom & Salimans, 2022; Dockhorn et al., 2021; Lee et al., 2021; Karras et al., 2022; Yang et al., 2024b). For instance, Rectified Flow (Liu et al., 2022) and Consistency Flow Matching (Yang et al., 2024c) learns a straight path connecting the data distribution and the prior distribution, effectively simplifying the denoising process. Grad-TTS (Popov et al., 2021) and PriorGrad (Lee et al., 2021) introduce conditional forward processes with data-dependent priors, specifically designed for audio diffusion models. Other methods like ContextDiff (Yang et al., 2024b) focus on parameterizing the forward process with additional neural networks. For example, Diffusion Models for Video Generation (Zhang & Chen, 2021), Maximum Likelihood Training for Score-based Diffusion Models (Kim et al., 2022), and Variational Diffusion Models (VDM) (Kingma et al., 2021) employ neural architectures to enhance the forward trajectory.
+
+##### 2.3. Diffusion Trajectory Sampling Optimization
+
+Beyond forward optimization, recent research has explored real-time optimization during the sampling process, incorporating stochastic optimization techniques to guide the backward sampling trajectory. For instance, MBD (Pan et al., 2024) utilizes score functions to direct the sampling
+
+path in the backward process. Similarly, in music generation tasks, SCG (Huang et al., 2024b) employs stochastic optimization to leverage non-differentiable reward functions. Demon (Yeh et al., 2024) focuses on optimizing the sampling process to concentrate sampling density in regions with high rewards during inference. Free2Guide (Kim et al.,
+
+- 2024) uses path integral control to provide gradient-free, non-differentiable reward guidance, enabling the alignment of generated videos with textual prompts without requiring additional model training. Inference-Scaling (Ma et al.,
+- 2025) employs a verifier and search algorithm to scale diffusion inference beyond NFEs.
+
+While these approaches demonstrate significant potential, they often incur substantial computational overhead due to the extra steps required for calculating intermediate rewards during inference. For example, Demon (Yeh et al., 2024) and Inference-Scaling (Ma et al., 2025) may require up to 1000x the inference cost per image to achieve optimal performance. This significant increase in computational cost considerably slows down the generation process, limiting their practicality for real-world applications.
+
+### 3. Method
+
+##### 3.1. Preliminaries
+
+Diffusion Probabilistic Models (Sohl-Dickstein et al., 2015; Song et al., 2020; Ho et al., 2020) learns a stochastic process by iteratively denoising random noise generated by the forward diffusion process. Specifically, for any t ∈ (0,T], the transition distribution is defined as:
+
+p(xt|x0,c) = p(xt|x0) = N(αtx0,σt2I), (1)
+
+where x0 ∈ RD is a D-dimensional data signal variable with an unknown distribution p0(x0|c), c ∼ q(c) is the given condition, and αt,σt ∈ R+ are noise scheduler.
+
+Foundational works (Kingma et al., 2021; Song et al., 2020) have analyzed the underlying stochastic differential equation (SDE) and ordinary differential equation (ODE) formulations for DPM. The forward and reverse dynamics are given for any t ∈ [0,T] as:
+
+dxt = f(xt)dt + g(t)dwt, x0 ∼ p0(x0|c), (2) dxt = f(xt) − g2(t)∇xt
+
+log pt(xt|c) dt + g(t)dw¯t,
+
+(3)
+
+where wt and w¯t are standard Wiener processes in forward and reverse time, respectively, and f and g are functions defined in terms of αt and σt.
+
+Practically, DPM performs sampling by solving either the reverse SDE or ODE backward from T to 0. To facilitate this, a neural network ϵθ(xt,c,t), known as the noise prediction model, is introduced to approximate the conditional
+
+score function based on xt and c at time t. Specifically, ϵθ(xt,c,t) = −σt∇xt
+
+log pt(xt|c), and its parameters θ are optimized via the objective:
+
+0,ϵ,c,t ωt∥ϵθ(xt,c,t) − ϵ∥22 , (4)
+
+Ex
+
+where ωt is a weighting function, ϵ ∼ N(0,I), c ∼ q(c), xt = αtx0 + σtϵ, and t ∼ U[0,T].
+
+##### 3.2. Diffusion Sharpening
+
+In autoregressive language models, performance can be improved through ”self-improvement,” where the model itself acts as a validator. Specifically, a base model πbase: X → ∆(Y ), representing a conditional distribution, evaluates generated sequences. We refer to sharpening as training the model to produce outputs with higher conditional probabilities shifts the model’s distribution towards more confident and higher-quality responses. Formally, a sharpening model πˆ(x) is one that (approximately) maximizes the self-reward toward responses that maximize a self-reward rself:
+
+πˆ(x) ≈ arg max
+
+rself(y | x;πbase).
+
+y∈Y
+
+While sharpening in language models focuses on sequencelevel optimization, diffusion alignment typically fine-tunes individual trajectory points, which may lead to suboptimal results. The lack of trajectory-level feedback exposes the generative process to stochastic noise and inconsistencies along the sampling path.
+
+To address these challenges, we propose DiffusionSharpening, which leverages online alignment techniques for fine-tuning diffusion models. First, we approximate x0 from intermediate states to evaluate the reward for xt. Then, we perform reward evaluation along the sampling trajectory. To implement this, we introduce two fine-tuning strategies: SFT-Diffusion-Sharpening and RLHF-DiffusionSharpening.
+
+Approximate x0 for Reward Evaluation We leverage techniques from EDM (Karras et al., 2022) to approximate the posterior distribution of x0 given an intermediate state xt. Starting from the reverse-time SDEEquation (3), we have
+
+x0 = xt +
+
+0
+
+f(x|c)du + g(u)dw¯u, (5)
+
+t
+
+where f(x|c) = f(xt) − g2(t)∇xt
+
+log pt(xt|c) represents the drift term , while w¯u denotes the stochastic noise component. To simplify this estimation, as shown in (Song et al., 2020; Karras et al., 2022), the reversed-time SDE reduces to PF-ODE when β ≡ 0. For each t, a diffeomorphic relationship exists between a noisy sample xt and a clean sample
+
+###### Denoising Trajectory
+
+𝑋
+
+Reward
+
+𝑋 𝑋
+
+𝑋 𝑋
+
+Sharpening loss
+
+Sharpened Denoising Trajectory
+
+###### Best Reward
+
+𝑋
+
+(ii) Diffusion Sharpening Inference
+
+𝑋
+
+Sharpening loss
+
+Reward model
+
+CLIP Score Compositional MLLM Preference
+
+𝑋
+
+Reward
+
+(i) Diffusion Sharpening Training
+
+(iii) Difference Choice of Reward Models
+
+- Figure 2. Overview of Our Diffusion Sharpening Framework: (i) Training, (ii) Inference, and (iii) Reward Model Selection x0 generated by PF-ODE (Yeh et al., 2024):
+
+SFT Diffusion Sharpening In the language model framework, SFT-Sharpening (Huang et al., 2024a) filters responses with large self-reward values and applies standard supervised fine-tuning to the resulting high-quality samples. Similarly, in the pretraining or supervised fine-tuning (SFT) of text-to-image diffusion models, a large image-text dataset is filtered through selected reward models, retaining the highest-scoring image-text pairs for training. However, this direct fine-tuning process only captures the preferences of the final output generated by the diffusion model, relying solely on a single random timestep and backpropagating with v-loss (Salimans & Ho, 2022) or ϵ-loss (Ho et al., 2020). We argue that this approach fails to fully exploit the potential of each sample (image, text), as one timestep’s v-prediction or ϵ-prediction cannot represent the entire denoising trajectory.
+
+0
+
+log p(xu|c))du. (6)
+
+(−u∇xu
+
+c(xt,t) := x0 = xt +
+
+t
+
+For any timestep xt in the diffusion process and a given condition c, the reward R(xt,c) is defined as:
+
+R(xt,c) = Reward(c(xt,t)), (7)
+
+where Reward(·) represents any reward model, which can be implemented using various forms, such as a differentiable neural network, a human feedback-based scoring function, or even a non-differentiable external model like a multimodal LLM.
+
+Trajectory-Level Reward Aggregation Fine-tuning based on a single trajectory point is often insufficient, as it is highly sensitive to stochastic perturbations in the noise distribution. To address this limitation, we computed and aggregated rewards over selected diffusion sampling trajectories τ rather than individual xt. Specifically, this involves evaluating the reward for different sampled trajectories and selecting the optimal one based on cumulative feedback:
+
+To address this limitation, as discussed in Section 3.2, we propose a redesigned SFT Diffusion Sharpening process that fully utilizes the sampling trajectory for each sample (image, text), prestented in Algorithm 1. Specifically, consider a collection of image-text pairs (x,c) from a dataset D. For each prompt (x,c), we randomly sample n noise vectors z1,...,zn ∼ N(0,1), and then randomly select a timestep t. Noise is added to the image x to generate xit, where i ∈ {1,...,N}. We then perform sampling on the noisy images xit for m steps and collect the corresponding sampling trajectories. Afterward, we select the optimal trajectory based on reward feedback. Finally, we backpropagate the gradients using the loss from the m-step path
+
+R(xt,c), (8)
+
+τˆ = arg max
+
+τ∈T t∈τ
+
+where T denotes the set of possible trajectories.
+
+This approach ensures that the diffusion model learns to generate sampling paths with consistently high rewards, leading to improved sample quality and more robust generative behavior.
+
+T,ϵ,c,T∈[t,t−m] ωT∥ϵθ(xT,c,T) − ϵ∥22 . (9)
+
+L = Ex
+
+##### 3.3. Algorithms for Diffusion Sharpening
+
+In this section, we present two families of self-improvement algorithms for diffusion sharpening: SFT Diffusion Sharpening, which filters high-reward responses and performs online fine-tuning using standard supervised learning pipelines, and RLHF Diffusion Sharpening, which refines the sampling trajectory by online optimizing winning and losing sets through reinforcement learning techniques, such as Diffusion-DPO (Wallace et al., 2024).
+
+RLHF Diffusion Sharpening RLHF Diffusion Sharpening Algorithm 2 aims to optimize a conditional distribution pθ(xt|c) such that the reward model R(xt,c) defined on it is maximized while regularizing the KL-divergence from a reference distribution pref
+
+Algorithm 1 SFT Diffusion Sharpening
+
+Algorithm 2 RLHF Diffusion Sharpening
+
+Input: dataset D, number of samples n, number of steps m, reward model R, diffusion model Mθ, learning rate η for each image-text pair (x,c) in D do
+
+Input: prompt dataset D, number of samples n, number of steps m, reward model R, diffusion model Mθ, learning rate η
+
+for each training iteration do
+
+Sample n random noise vectors z1,...,zn ∼ N(0,1) Randomly select a timestep t
+
+Sample prompt c and generate latents with Mθ
+
+Add noise to the image x to generate xit for i ∈ {1,...,N}
+
+Sample n random noise vectors z1,...,zn ∼ N(0,1) Randomly select a timestep t and add noise to gener-
+
+for each noisy image xit do Perform m steps of sampling from xit Calculate R(xt,c) in Equation (7) Collect the sampling trajectory τi = {xt
+
+ated latents for noisy latent samples xit for each noisy sample xit do
+
+Perform m steps of sampling from xit Evaluate reward R(xt,c) using the reward model Collect the sampling trajectory τi = {xt
+
+k}mk=1
+
+end for Select the optimal trajectory τˆ with Equation (8) Compute the loss L in Equation (9) Mθ ← Mθ − η∇θL
+
+k}mk=1
+
+end for Identify best and worst trajectories:
+
+τw = arg maxτ∈T t∈τ R(xt,c), τl = arg minτ∈T t∈τ R(xt,c), Compute LRLHF(θ) using Equation (11) Update model parameters: Mθ ← Mθ − η∇θLDPO
+
+##### end for
+
+##### end for
+
+Ec∼D
+
+max
+
+c,x0∼pθ(x0|c) [r(c,x0)] −βDKL [pθ(x0|c) ∥ pref(x0|c)] (10)
+
+θ
+
+For its efficiency, we adopt Diffusion-DPO (Wallace et al.,
+
+- 2024) to implement RLHF Diffusion Sharpening, aiming to fully leverage the model’s self-evolution capabilities. Instead of relying on predefined image-text pairs, we construct the dataset online by generating latent samples and applying noise perturbations during training. Similar to SFT Diffu-
+
+sion Sharpening, after selecting a set of noisy samples xit and their corresponding trajectories, we use a reward model
+
+to identify the best and worst trajectories, τw and τl, respectively. To maximize the use of prior reward information, we optimize the model using the reward-modulated DPO loss (Gao et al., 2024).
+
+LRLHF(θ) = Ex
+
+w∈τw,xl∈τl,c
+
+pθ(xw | c) pref(xw | c) − β log
+
+pθ(xl | c) pref(xl | c)
+
+log σ β log
+
+−(R(xw,c) − R(xl,c)))] (11)
+
+### 4. Experiments
+
+##### 4.1. Implemention Details
+
+Baseline Models We conduct diffusion sharpening finetuning on SDXL (Podell et al., 2023) for a fair comparison, using the default configuration with a DDIM Scheduler, T = 50 steps, and classifier-free guidance with a scale of w = 5. For comparison with fine-tuning methods, we select
+
+five established approaches: (1) Standard Fine-tuning1, traditional fine-tuning using a predefined image-text dataset;
+
+- (2) Diffusion-DPO (Wallace et al., 2024), fine-tuning based on human preference datasets; (3) DDPO (Black et al., 2024), reward model-based reinforcement fine-tuning; (4) D3PO (Yang et al., 2024a), fine-tuning using human feedback without a reward model; and (5) IterPO (Zhang et al., 2024b), iterative alignment of composition-aware model preferences introduced in IterComp (Zhang et al., 2024b). For comparison with sampling trajectory optimization methods, we select: (1) Demon (Yeh et al., 2024), which recalculates the optimal noise at each denoising timestep to optimize inference; (2) Free2Guide (Kim et al., 2024), an inference optimization method for video generation that searches for optimal noise over 1/10 of the timesteps; and
+- (3) Inference Scaling (Ma et al., 2025), which performs inference using a search and verifier mechanism. These methods are adapted to SDXL with default settings as described in their respective papers. More Details are provided in Appendix A.1.
+
+Datasets For SFT Diffusion-Sharpening, we use two highquality text-to-image datasets: JourneyDB (Pan et al., 2023) and Text-to-Image-2M (zk, 2024), which contain a large number of image-text pairs, ideal for evaluating the benefits of sharpening over baseline SFT methods. Additionally, we employ the domain-specific dataset Pokemon-BlipCaption (lambdalabs, 2023) to assess sharpening’s effectiveness in personalized scenarios, measuring its adaptabil-
+
+1https://github.com/huggingface/ diffusers/blob/main/examples/text_to_image/ train_text_to_image_sdxl.py
+
+Table 1. Comparison of Model Performance across Multiple Metrics
+
+T2I-Compbench
+
+Model CLIP Score
+
+Aesthetic ImageReward MLLM Color Shape Texture Spatial Non-Spatial Complex
+
+SDXL 0.322 0.6369 0.5408 0.5637 0.2032 0.3110 0.4091 5.531 0.780 0.780
+
+Fine-tuning based Methods
+
+Standard Fine-tuning 0.325 0.6437 0.5771 0.5692 0.2084 0.3147 0.4100 5.556 0.791 0.784 Diffusion DPO (Wallace et al., 2024) 0.334 0.6602 0.5553 0.5640 0.2112 0.3180 0.4055 5.754 1.352 0.864 DDPO (Black et al., 2024) 0.324 0.6435 0.5365 0.5531 0.2030 0.3142 0.4024 5.640 0.910 0.791 D3PO (Yang et al., 2024a) 0.328 0.6434 0.5435 0.5657 0.2114 0.3153 0.4102 5.528 0.982 0.785 IterPO (Zhang et al., 2024b) 0.335 0.6637 0.5593 0.6167 0.2128 0.3207 0.4377 5.923 1.408 0.884
+
+###### Sampling Trajectory Optimization Methods
+
+Free2Guide (Kim et al., 2024) 0.325 0.6321 0.5386 0.5548 0.2050 0.3125 0.4082 5.560 0.873 0.786 Demon (Yeh et al., 2024) 0.325 0.6502 0.5507 0.5602 0.2150 0.3158 0.4070 5.630 1.243 0.300 Inference Scaling (Ma et al., 2025) 0.328 0.6550 0.5527 0.5700 0.2204 0.3168 0.4265 5.752 1.329 0.872
+
+SFT Diffusion Sharpening 0.334 0.6578 0.5692 0.5733 0.2120 0.3185 0.4125 5.785 1.301 0.864 RLHF Diffusion Sharpening 0.338 0.6841 0.5680 0.6401 0.2134 0.3220 0.4498 5.956 1.445 0.921
+
+ity while preserving output quality. For RLHF DiffusionSharpening, no image data is required during training as online optimization relies solely on prompts. We randomly sample 10,000 prompts from DrawBench (Saharia et al., 2022), DiffusionDB (Wang et al., 2022), and prompts from the SFT datasets for fine-tuning. More details are included in Appendix A.2
+
+Reward Models We evaluate the performance of various reward models in diffusion sharpening, analyzing their effectiveness and efficiency across tasks: (1) CLIP Score (Radford et al., 2021), used to evaluate text-image alignment,
+
+- (2) Compositional rewards from IterComp (Zhang et al.,
+
+- 2025), which assess the model’s ability to handle compositional prompts such as object relationships and attributes,
+
+- (3) MLLM grader (Ma et al., 2025), specifically prompted GPT-4o, detailed in Appendix C, which provide holistic image scoring across multiple dimensions to improve overall quality, and (4) Human Preferences. We employ ImageReward (Xu et al., 2024), a reward model trained to align with human preferences, to evaluate satisfaction with text-image alignment, aesthetic quality, and harmlessness.
+
+Evaluation Metrics We use several key metrics to evaluate the performance of our models: (1) CLIP Score (Radford et al., 2021), which measures text-image alignment, (2) Aesthetic Score from DrawBench (Saharia et al., 2022), assessing the visual appeal and quality of the generated image (3) T2I-Compbench (Huang et al., 2023), to evaluate the compositional capabilities and (4) ImageReward (Xu et al., 2024), which evaluates how well the generated images align with human preferences, including text-image consistency, aesthetic quality, and overall satisfaction. We also report scores used in the MLLM grader for overall evalution. Additionally, due to the inherent subjectivity in evaluating image generation tasks, we conducted an extensive user study to complement our quantitative metrics in Appendix B.
+
+##### 4.2. Main Results
+
+Comparison with Fine-tuning based Methods In the quantitative analysis, we compare various methods, as shown in Table 1. We train Diffusion-Sharpening on different reward models and report the corresponding evaluation metrics. Notably, the Aesthetic score is derived as the average result across 4 rewards’ corresponding model. Our approach outperforms Diffusion-DPO and D3PO in human preference evaluations and generalizes to any reward model. Compared to DDPO, which also uses reward modelbased fine-tuning, our sharpening method optimizes the most relevant reward path, further improving overall performance. Compared to IterPO, our method achieves improved image compositionality, further enhancing model’s alignment with complex compositional prompts. As seen in the table, RLHF-Diffusion-Sharpening consistently achieves top results across all evaluation metrics, demonstrating exceptional generalization and adaptability to diverse reward models. Qualitative results, presented in Figure 3, show that our model leverages multiple reward models tailored to specific needs, improving text-image alignment, compositional abilities, human preferences, and MLLM assessments. RLHF-Diffusion-Sharpening, in particular, excels in both qualitative and quantitative performance. These improvements stem from the base model’s extensive pretraining on large datasets. In SFT-Sharpening, the standard epsilon-loss converges quickly, leaving little room for further enhancement. However, RLHF-Diffusion-Sharpening, through DPO loss, better separates good and bad trajectories, offering greater optimization potential.
+
+Comparison with Sampling Trajectory Optimization Methods We also compare with sampling trajectory optimization methods. As shown in Table 1, Free2Guide provides slight improvements in image generation, but its performance is limited. Demon and Inference Scaling improve by increasing inference steps (NFE), but our method achieves superior quantitative results while effectively amor-
+
+#### Reward: CLIP Score
+
+#### Reward: Compositional Reward
+
+[Figure 4]
+
+[Figure 5]
+
+[Figure 6]
+
+[Figure 7]
+
+[Figure 8]
+
+[Figure 9]
+
+[Figure 10]
+
+[Figure 11]
+
+Baseline SFTDiffusion
+
+[Figure 12]
+
+[Figure 13]
+
+[Figure 14]
+
+[Figure 15]
+
+[Figure 16]
+
+[Figure 17]
+
+[Figure 18]
+
+[Figure 19]
+
+Sharpening RLHFDiffusion
+
+[Figure 20]
+
+[Figure 21]
+
+[Figure 22]
+
+[Figure 23]
+
+[Figure 24]
+
+[Figure 25]
+
+[Figure 26]
+
+[Figure 27]
+
+Sharpening
+
+interior design of a luxurious master bedroom, gold and marble furniture, luxury, intricate, breathtaking
+
+A depiction of Hermione Granger from the Harry Potter series as a zombie.
+
+A pair of clear hands looking through a transparent glass Christmas ball , hyper-realistic, minimalist, futuristic background with cute Christmas decorations like Santa Claus, a snowman, and snowflakes, 8k
+
+Shadowed silhouette of a brunette boy and blonde girl, both 18, in sci-fi suits, sitting in a dark futuristic room. Background features a window view of Earth from space, hyperrealistic, 8K.
+
+Black and white, Helmut Newton-style photo of a tall, slender French supermodel in a repair garage at night, smiling, with motorcycles, ultra-sharp, panoramic, wide angle.
+
+realistic detailed man and woman met in a dating club, they are successful, happy, independent, in the background of a stunning island on a luxury yacht
+
+There is a secret museum of magical items inside a crystal greenhouse palace filled with intricate bookshelves, plants, and Victorian style decor.
+
+A woman holding two rainbow slices of cake.
+
+Reward: MLLM
+
+#### Reward: Human Preference
+
+[Figure 28]
+
+[Figure 29]
+
+[Figure 30]
+
+[Figure 31]
+
+[Figure 32]
+
+[Figure 33]
+
+[Figure 34]
+
+[Figure 35]
+
+Baseline SFTDiffusion
+
+[Figure 36]
+
+[Figure 37]
+
+[Figure 38]
+
+[Figure 39]
+
+[Figure 40]
+
+[Figure 41]
+
+[Figure 42]
+
+[Figure 43]
+
+Sharpening RLHFDiffusion
+
+[Figure 44]
+
+[Figure 45]
+
+[Figure 46]
+
+[Figure 47]
+
+[Figure 48]
+
+[Figure 49]
+
+[Figure 50]
+
+[Figure 51]
+
+Sharpening
+
+cute rabbit in a spacesuit
+
+Armies of angels and demons fighting in the skytwo smoke monsters, winged Demons fighting golden wingless flaming angels, embodiment of darkness and light battle in a cloudy sky, beautiful clouds behind them, fantasy, high detail, realistic photo, high detail, digital painting, cinematic, stunning, hyperrealistic, sharp focus, high resolution 8k, insanely detailed
+
+A swirling, multicolored portal emerges from the depths of an ocean of coffee, with waves of the rich liquid gently rippling outward. The portal engulfs a coffee cup, which serves as a gateway to a fantastical dimension. The surrounding digital art landscape reflects the colors of the portal, creating an alluring scene of endless possibilities.
+
+a cute fluffy rabbit pilot walking on a military aircraft carrier, unreal engine render, 8k, cinematic
+
+A old historical notebook detailing the discovery of unicorns
+
+An epic space battleship between futuristic spacecraft, set against a backdrop of swirling nebulas and distant stars, capturing the intensity of interstellar warfare.
+
+selfie of an American girl , smiling ,mountains, wearing a backpack, red top, rocks, river, wood, analog style (look at viewer:1.2), DSLR
+
+Minimalist photography, beautiful mermaid with long hair covered with seashells and seagras, under water, sad face, crying, heterochromia eyes blue and black, 8k, intricate detailed, anne stokes inspired
+
+- Figure 3. Qualitative results comparing Diffusion Sharpening methods using different reward models. The images show the generated results with CLIP Score, Compositional Reward, MLLM, and Human Preferences as reward models, showcasing the effectiveness of SFT Diffusion Sharpening and RLHF Diffusion Sharpening in diffusion finetuning.
+
+[Figure 52]
+
+[Figure 53]
+
+[Figure 54]
+
+- Figure 4. SDXL Finetuning Loss across Difference Datasets. Here ”Diffusion-Sharpening” represents SFT Diffusion-Sharpening specifically.
+
+tizing inference costs, demonstrating efficiency and validity.
+
+##### 4.3. Model Efficiency
+
+Training Efficiency Diffusion Sharpening significantly enhances model efficiency through trajectory-level optimization. During the training phase, we set τ = 3 and n = 3 random noise vectors, with a learning rate of 1 × 10−6, comparing it to the standard SDXL fine-tuning pipeline. We reported the fitted loss curve in Figure 4. As is shown, Diffusion-Sharpening leads to faster convergence, typically within 500 to 1000 steps, whereas the baseline requires 1000 to 1500 steps to achieve similar results. The training curve for Diffusion Sharpening is smoother and achieves better final convergence with a lower final loss. These results demonstrate that Diffusion Sharpening enables faster, more stable, and superior fine-tuning compared to standard diffusion pipelines.
+
+Inference Time vs CLIP Score
+
+0.34
+
+RLHF Diffusion-Sharpening
+
+SFT Diffusion-Sharpening
+
+0.33
+
+0.32
+
+CLIPScore
+
+0.31
+
+Demon
+
+Free²Guide
+
+0.30
+
+Inference Scaling
+
+SFT Diffusion-Sharpening
+
+RLHF Diffusion-Sharpening
+
+0.29
+
+10² 10³
+
+Inference Time (NFE)
+
+Figure 5. Inference Performance of Diffusion Sharpening.
+
+Inference Efficiency Beyond training efficiency, our method also achieves optimal inference performance. Using CLIP Score as the reward model during inference, we evaluate SDXL with the default 100 NFE. As shown in Figure 5, all sampling trajectory optimization methods improve performance as NFE increases. However, the computational cost rises sharply, with methods like Demon and Inference Scaling requiring over 10,000 NFE, leading to inference times of several hours per image—rendering them impractical for real-world use. In contrast, our method integrates inference optimization into training, focusing on refining the sampling trajectory. This allows it to achieve superior performance within the same inference time as the baseline SDXL, demonstrating its efficiency.
+
+##### 4.4. Ablation Study
+
+Effect of Sampling Trajectory Optimization To validate the optimization process along the sampling trajectory, we conducted an ablation study focusing on Sampling Trajec-
+
+SFT-Diffusion-Sharpening
+
+RLHF-Diffusion-Sharpening
+
+0.72
+
+0.70
+
+Reward
+
+0.68
+
+0.66
+
+0 200 400 600 800 1000
+
+Training Steps
+
+Figure 6. Diffusion Sharpening Fine-tuning Reward Curve.
+
+tory Optimization. During training, we log reward results for both SFT and RLHF Diffusion Sharpening. As shown in Figure 6, we track reward scores over the first 1000 SDXL fine-tuning steps, with the shaded region representing the standard deviation across multiple sampled trajectories at each step. The results show a steady increase in average reward and a decrease in variance as training progresses, indicating the model’s convergence toward more optimal paths. This confirms the effectiveness of our approach in enhancing both stability and performance during training.
+
+Analysis of the Number of Samples We analyze the effect of the sampling number of samples n during training and set the number of steps m = 1 for comparison. As is shown in Table 2, a number of samples of 1 corresponds to a standard DPO finetuning pipeline and we find an optimal number of samples = 3 for the final training configuration.
+
+- Table 2. Performance of Different Number of Samples in Training Number of Steps CLIP Score ImageReward MLLM
+
+- 1 0.334 1.352 0.864
+- 2 0.336 1.355 0.891
+- 3 0.338 1.445 0.921
+- 4 0.336 1.446 0.911 8 0.337 1.444 0.919
+
+Analysis of the Number of Steps We also analyze the effect of the sampling number of steps m during training in
+
+- Table 3 after choosing the number of samples n. A number of steps of 1 corresponds to a standard end-to-end finetuning baseline. The results show that increasing the number of steps leads to improved model performance. We set the number of steps to 3 for balancing cost and performance. Table 3. Performance of Different Number of Steps in Training
+
+Number of Steps CLIP Score ImageReward MLLM
+
+- 1 0.322 1.321 0.897
+- 2 0.328 1.357 0.902
+- 3 0.338 1.445 0.921
+- 4 0.334 1.442 0.923 8 0.321 1.376 0.912
+
+### 5. Conclusion
+
+In this work, we propose Diffusion-Sharpening, a novel fine-tuning approach that optimizes diffusion model performance by refining sampling trajectories. Our method addresses the limitations of existing approaches by enabling trajectory-level optimization through alignment with arbitrary reward models, while effectively amortizing the high inference costs. We introduce two variants: SFTDiffusion-Sharpening, which leverages supervised finetuning for efficient backward trajectory optimization, and RLHF-Diffusion-Sharpening, which eliminates the need for curated datasets and performs online trajectory optimization. Through extensive experiments, we demonstrate superior training efficiency as well as inference efficiency. Across diverse metrics, our Diffusion-Sharpening consistently outperforms existing fine-tuning methods and sampling trajectory optimization approaches.
+
+### References
+
+Black, K., Janner, M., Du, Y., Kostrikov, I., and Levine, S. Training diffusion models with reinforcement learning. In The Twelfth International Conference on Learning Representations, 2024.
+
+Blattmann, A., Rombach, R., Ling, H., Dockhorn, T., Kim, S. W., Fidler, S., and Kreis, K. Align your latents: Highresolution video synthesis with latent diffusion models. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 22563–22575, 2023.
+
+Clark, K., Vicol, P., Swersky, K., and Fleet, D. J. Directly fine-tuning diffusion models on differentiable rewards. In The Twelfth International Conference on Learning Representations, 2024.
+
+Dockhorn, T., Vahdat, A., and Kreis, K. Score-based generative modeling with critically-damped langevin diffusion. In International Conference on Learning Representations, 2021.
+
+Fan, Y., Watkins, O., Du, Y., Liu, H., Ryu, M., Boutilier, C., Abbeel, P., Ghavamzadeh, M., Lee, K., and Lee, K. Reinforcement learning for fine-tuning text-to-image diffusion models. Advances in Neural Information Processing Systems, 36, 2024.
+
+Gao, Z., Chang, J. D., Zhan, W., Oertell, O., Swamy, G., Brantley, K., Joachims, T., Bagnell, J. A., Lee, J. D., and Sun, W. Rebel: Reinforcement learning via regressing relative rewards. arXiv preprint arXiv:2404.16767, 2024.
+
+Ho, J., Jain, A., and Abbeel, P. Denoising diffusion probabilistic models. Advances in neural information processing systems, 33:6840–6851, 2020.
+
+Ho, J., Chan, W., Saharia, C., Whang, J., Gao, R., Gritsenko, A., Kingma, D. P., Poole, B., Norouzi, M., Fleet, D. J., et al. Imagen video: High definition video generation with diffusion models. arXiv preprint arXiv:2210.02303, 2022.
+
+Hoogeboom, E. and Salimans, T. Blurring diffusion models. In The Eleventh International Conference on Learning Representations, 2022.
+
+Huang, A., Block, A., Foster, D. J., Rohatgi, D., Zhang, C., Simchowitz, M., Ash, J. T., and Krishnamurthy, A. Self-improvement in language models: The sharpening mechanism. arXiv preprint arXiv:2412.01951, 2024a.
+
+Huang, K., Sun, K., Xie, E., Li, Z., and Liu, X. T2icompbench: A comprehensive benchmark for open-world compositional text-to-image generation. Advances in Neural Information Processing Systems, 36:78723–78747, 2023.
+
+Huang, Y., Ghatare, A., Liu, Y., Hu, Z., Zhang, Q., Sastry, C. S., Gururani, S., Oore, S., and Yue, Y. Symbolic music generation with non-differentiable rule guided diffusion. arXiv preprint arXiv:2402.14285, 2024b.
+
+Karras, T., Aittala, M., Aila, T., and Laine, S. Elucidating the design space of diffusion-based generative models. Advances in Neural Information Processing Systems, 35: 26565–26577, 2022.
+
+Kim, D., Na, B., Kwon, S. J., Lee, D., Kang, W., and Moon, I.-c. Maximum likelihood training of implicit nonlinear diffusion model. Advances in Neural Information Processing Systems, 35:32270–32284, 2022.
+
+Kim, J., Kim, B. S., and Ye, J. C. Free2Guide: Gradient-free path integral control for enhancing text-to-video generation with large vision-language models. arXiv preprint arXiv:2411.17041, 2024.
+
+Kingma, D., Salimans, T., Poole, B., and Ho, J. Variational diffusion models. Advances in neural information processing systems, 34:21696–21707, 2021.
+
+lambdalabs. pokeman-blip-captions, 2023. URL https://huggingface.co/datasets/ lambdalabs/pokemon-blip-captions.
+
+Lee, S.-g., Kim, H., Shin, C., Tan, X., Liu, C., Meng, Q., Qin, T., Chen, W., Yoon, S., and Liu, T.-Y. Priorgrad: Improving conditional denoising diffusion models with data-dependent adaptive prior. In International Conference on Learning Representations, 2021.
+
+Liu, X., Gong, C., et al. Flow straight and fast: Learning to generate and transfer data with rectified flow. In The Eleventh International Conference on Learning Representations, 2022.
+
+Ma, N., Tong, S., Jia, H., Hu, H., Su, Y.-C., Zhang, M., Yang, X., Li, Y., Jaakkola, T., Jia, X., et al. Inference-time scaling for diffusion models beyond scaling denoising steps. arXiv preprint arXiv:2501.09732, 2025.
+
+Sohl-Dickstein, J., Weiss, E., Maheswaranathan, N., and Ganguli, S. Deep unsupervised learning using nonequilibrium thermodynamics. In International conference on machine learning, pp. 2256–2265. PMLR, 2015.
+
+Pan, C., Yi, Z., Shi, G., and Qu, G. Model-based diffusion for trajectory optimization. In The Thirty-eighth Annual Conference on Neural Information Processing Systems, 2024.
+
+Pan, J., Sun, K., Ge, Y., Li, H., Duan, H., Wu, X., Zhang, R., Zhou, A., Qin, Z., Wang, Y., Dai, J., Qiao, Y., and Li, H. Journeydb: A benchmark for generative image understanding, 2023.
+
+Podell, D., English, Z., Lacey, K., Blattmann, A., Dockhorn, T., M¨uller, J., Penna, J., and Rombach, R. Sdxl: Improving latent diffusion models for high-resolution image synthesis. arXiv preprint arXiv:2307.01952, 2023.
+
+Popov, V., Vovk, I., Gogoryan, V., Sadekova, T., and Kudinov, M. Grad-tts: A diffusion probabilistic model for text-to-speech. In International Conference on Machine Learning, pp. 8599–8608. PMLR, 2021.
+
+Prabhudesai, M., Goyal, A., Pathak, D., and Fragkiadaki, K. Aligning text-to-image diffusion models with reward backpropagation. arXiv preprint arXiv:2310.03739, 2023.
+
+Radford, A., Kim, J. W., Hallacy, C., Ramesh, A., Goh, G., Agarwal, S., Sastry, G., Askell, A., Mishkin, P., Clark, J., et al. Learning transferable visual models from natural language supervision. In International conference on machine learning, pp. 8748–8763. PMLR, 2021.
+
+Ramesh, A., Dhariwal, P., Nichol, A., Chu, C., and Chen, M. Hierarchical text-conditional image generation with clip latents. arXiv preprint arXiv:2204.06125, 1(2):3, 2022.
+
+Rombach, R., Blattmann, A., Lorenz, D., Esser, P., and Ommer, B. High-resolution image synthesis with latent diffusion models. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pp. 10684–10695, 2022.
+
+Saharia, C., Chan, W., Saxena, S., Li, L., Whang, J., Denton, E. L., Ghasemipour, K., Gontijo Lopes, R., Karagol Ayan, B., Salimans, T., et al. Photorealistic text-to-image diffusion models with deep language understanding. Advances in neural information processing systems, 35: 36479–36494, 2022.
+
+Salimans, T. and Ho, J. Progressive distillation for fast sampling of diffusion models. arXiv preprint arXiv:2202.00512, 2022.
+
+Song, Y., Sohl-Dickstein, J., Kingma, D. P., Kumar, A., Ermon, S., and Poole, B. Score-based generative modeling through stochastic differential equations. arXiv preprint arXiv:2011.13456, 2020.
+
+Uehara, M., Zhao, Y., Black, K., Hajiramezanali, E., Scalia, G., Diamant, N. L., Tseng, A. M., Levine, S., and Biancalani, T. Feedback efficient online fine-tuning of diffusion models. In Forty-first International Conference on Machine Learning, 2024.
+
+Wallace, B., Dang, M., Rafailov, R., Zhou, L., Lou, A., Purushwalkam, S., Ermon, S., Xiong, C., Joty, S., and Naik, N. Diffusion model alignment using direct preference optimization. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 8228–8238, 2024.
+
+Wang, Z. J., Montoya, E., Munechika, D., Yang, H., Hoover, B., and Chau, D. H. Diffusiondb: A large-scale prompt gallery dataset for text-to-image generative models. arXiv preprint arXiv:2210.14896, 2022.
+
+Xu, J., Liu, X., Wu, Y., Tong, Y., Li, Q., Ding, M., Tang, J., and Dong, Y. Imagereward: Learning and evaluating human preferences for text-to-image generation. Advances in Neural Information Processing Systems, 36, 2024.
+
+- Yang, K., Tao, J., Lyu, J., Ge, C., Chen, J., Shen, W., Zhu, X., and Li, X. Using human feedback to fine-tune diffusion models without any reward model. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 8941–8951, 2024a.
+- Yang, L., Zhang, Z., Yu, Z., Liu, J., Xu, M., Ermon, S., and Bin, C. Cross-modal contextualized diffusion models for text-guided visual generation and editing. In The Twelfth International Conference on Learning Representations, 2024b.
+
+Yang, L., Zhang, Z., Zhang, Z., Liu, X., Xu, M., Zhang, W., Meng, C., Ermon, S., and Cui, B. Consistency flow matching: Defining straight flows with velocity consistency. arXiv preprint arXiv:2407.02398, 2024c.
+
+Yeh, P.-H., Lee, K.-H., and Chen, J.-C. Training-free diffusion model alignment with sampling demons. arXiv preprint arXiv:2410.05760, 2024.
+
+Zhang, Q. and Chen, Y. Diffusion normalizing flow. In NeurIPS, volume 34, pp. 16280–16291, 2021.
+
+Zhang, X., Yang, L., Cai, Y., Yu, Z., Wang, K.-N., Tian, Y., Xu, M., Tang, Y., Yang, Y., Bin, C., et al. Realcompo: Balancing realism and compositionality improves textto-image diffusion models. In The Thirty-eighth Annual Conference on Neural Information Processing Systems, 2024a.
+
+Zhang, X., Yang, L., Li, G., Cai, Y., Xie, J., Tang, Y., Yang, Y., Wang, M., and Cui, B. Itercomp: Iterative composition-aware feedback learning from model gallery for text-to-image generation. arXiv preprint arXiv:2410.07171, 2024b.
+
+Zhang, X., Yang, L., Li, G., Cai, Y., Xie, J., Tang, Y., Yang, Y., Wang, M., and Cui, B. Itercomp: Iterative composition-aware feedback learning from model gallery for text-to-image generation. In International Conference on Learning Representations, 2025.
+
+zk. text-to-image-2m, 2024. URL https: //huggingface.co/datasets/jackyhate/ text-to-image-2M.
+
+### A. Implemantation Details
+
+##### A.1. Baseline Models Configuration
+
+In this section, we describe the configurations of different baseline models used in our study. We adopt the original model implementations whenever possible. For models that are not open-sourced or not directly compatible with SDXL, we perform minimal adaptations based on the original papers.
+
+- • Diffusion-DPO (Wallace et al., 2024):Re-formulate Direct Preference Optimization (DPO) for diffusion models by incorporating a likelihood-based objective, utilizing the evidence lower bound to derive a differentiable optimization process. Using the Pick-a-Pic dataset containing 851K crowdsourced pairwise preferences, they fine-tuned the base SDXL-1.0 model with Diffusion-DPO. We directly use the pretrained Diffusion-DPO on SDXL.
+- • DDPO (Black et al., 2024): This method optimizes diffusion models directly on downstream objectives using reinforcement learning (RL). By framing denoising diffusion as a multi-step decision-making process, it enables policy gradient algorithms referred to as Denoising Diffusion Policy Optimization. We adapt the original implementation to SDXL and use aesthetic quality as the optimization metric for fine-tuning.
+- • D3PO (Yang et al., 2024a): This approach omits the training of a reward model and instead functions as an optimal reward model trained using human feedback data to guide the learning process. By eliminating the need for explicit reward model training, D3PO proves to be a more direct and computationally efficient solution.
+- • IterPO (Zhang et al., 2024b): This method is the alignment framework of IterComp (Zhang et al., 2024b), which collects composition-aware model preferences from multiple models and employ an iterative feedback learning approach to enable the progressive self-refinement of both the base diffusion model and reward models.
+- • Demon (Yeh et al., 2024): This method guides the denoising process at inference time without backpropagation through reward functions or model retraining. We adapt the original method to SDXL using the EDM scheduler with the tanh-demon configuration, setting a fixed inference cost of five minutes per image generation.
+- • Free2Guide (Kim et al., 2024): A gradient-free framework for aligning generated videos with text prompts without requiring additional model training. Leveraging principles from path integral control, Free2Guide approximates guidance for diffusion models using non-differentiable reward functions. Since the original work focuses on video models, we directly adapt the provided pseudo-code to SDXL with a DDIM scheduler. Experiments are conducted on randomly selected T = 5 inference steps, maintaining the same reward model settings.
+- • Inference-Scaling (Ma et al., 2025): This method formulates a search problem to identify better noise initializations for the diffusion sampling process. The design space is structured along two axes: the verifiers providing feedback and the algorithms searching for optimal noise candidates. While the original paper evaluates this approach on FLUX.1-DEV, we adapt the pseudo-code to SDXL, maintaining a fixed inference cost of five minutes and using the same verifier configurations for evaluation.
+
+##### A.2. Datasets
+
+We utilize multiple datasets for training and evaluation, covering a diverse range of text-to-image tasks. Below, we describe each dataset used in our experiments:
+
+- • JourneyDB (Pan et al., 2023): A large-scale collection of high-resolution images generated by Midjourney. This dataset contains diverse and detailed text descriptions that capture a wide range of visual attributes, enabling robust multi-modal training.
+- • Text-to-Image-2M (zk, 2024): A curated text-image pair dataset designed for fine-tuning text-to-image models. The dataset consists of approximately 2 million samples, carefully selected and enhanced to meet the high demands of text-to-image model training.
+- • Pokemon-Blip (lambdalabs, 2023): A dataset containing unique Pok´emon images labeled with BLIP-generated captions. It is specifically designed to evaluate adaptation to seen data and assess the model’s convergence capabilities.
+
+- • DiffusionDB (Wang et al., 2022): The first large-scale text-to-image prompt dataset, containing 14 million images generated by Stable Diffusion using user-specified prompts and hyperparameters. The unprecedented scale and diversity of this human-actuated dataset provide valuable research opportunities in understanding the interplay between prompts and generative models, detecting deepfakes, and designing human-AI interaction tools to improve model usability.
+- • DrawBench (Saharia et al., 2022): A comprehensive and challenging benchmark for text-to-image models, introduced by the Imagen research team. It consists of 200 prompts spanning 11 diverse categories. The benchmark evaluates text-to-image models’ ability to handle complex prompts and generate realistic, high-quality images. During evaluation, we generate one image per prompt.
+
+##### A.3. Training Settings
+
+We train our models with carefully optimized settings to ensure stable and efficient training. We use the AdamW optimizer without weight decay, configured with beta parameters (β1 = 0.0,β2 = 0.99). The learning rate is set to 5×10−6, reflecting the distinct requirements of each modality. Both diffusion sharpening models are trained with a batch size of 8.
+
+##### A.4. Evaluation Settings
+
+For MLLM Grader, we prompt the GPT-4o model to assess synthesized images from five different perspectives: Accuracy to Prompt, Originality, Visual Quality, Internal Consistency, and Emotional Resonance following (Ma et al., 2025). Each perspective is rated from 0 to 100, and the averaged overall score is used as the final metric. In Figure 8 we present the detailed prompt. We observe that search can be beneficial to each scoring category of the MLLM Grader.
+
+T2I-CompBench. For each prompt we search for two noises and generate two samples. During evaluation, the samples are splitted into six categories: color, shape, texture, spatial, numeracy, and complex. Following Huang et al. (2023), we use the BLIP-VQA model for evaluation in color, shape, and texture, the UniDet model for spatial and numeracy, and a weighted averaged scores from BLIP VQA, UniDet, and CLIP for evaluating the complex category.
+
+### B. User Study
+
+Preference Rate Comparison
+
+| |63.2%<br><br>44.7%<br><br>68.4%<br><br>65.3%<br><br>60.1%<br><br>54.6%| | |23.3% 14.5%<br><br>32.9% 23.4%<br><br>15.0% 17.6%<br><br>20.0% 15.7%<br><br>24.0% 16.9%<br><br>22.0% 24.4%| | | |
+|---|---|---|---|---|---|---|---|
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+
+RLHF Diffusion-Sharpen
+
+Stable Diffusion XL
+
+RLHF Diffusion-Sharpen
+
+DDPO
+
+RLHF Diffusion-Sharpen
+
+D3PO
+
+RLHF Diffusion-Sharpen
+
+Demon
+
+RLHF Diffusion-Sharpen
+
+Diffusion-DPO
+
+RLHF Diffusion-Sharpen
+
+Free²Guide
+
+0 20 40 60 80 100
+
+RLHF Diffusion-Sharpen Comparable Other
+
+Figure 7. User Study about Comparision with Other Methods
+
+To verify the effectiveness of our proposed Diffusion-Sharpening, we conduct an extensive user study across various scenes and models. Users compared model pairs by selecting their preferred video from three options: method 1, method 2, and comparable results. As presented in Figure 7, our method (orange in left) obtains more user preferences than others (blue in right), which further proving its effectiveness.
+
+### C. MLLM Grader Design
+
+|"You are a multimodal large-language model tasked with evaluating images generated by a text-to-image model. Your goal is to assess each generated image based on specific aspects and provide a detailed critique, along with a scoring system. The final output should be formatted as a JSON object containing individual scores for each aspect and an overall score. Below is a comprehensive guide to follow in your evaluation process:<br><br>1. Key Evaluation Aspects and Scoring Criteria: For each aspect, provide a score from 0 to 10, where 0 represents poor performance and 10 represents excellent performance. For each score, include a short explanation or justification (1-2 sentences) explaining why that score was given. The aspects to evaluate are as follows:<br><br>a) Accuracy to Prompt Assess how well the image matches the description given in the prompt. Consider whether all requested elements are present and if the scene, objects, and setting align accurately with the text. Score: 0 (no alignment) to 10 (perfect match to prompt).<br>b) Creativity and Originality Evaluate the uniqueness and creativity of the generated image. Does the model present an imaginative or aesthetically engaging interpretation of the prompt? Is there any evidence of creativity beyond a literal interpretation? Score: 0 (lacks creativity) to 10 (highly creative and original).<br>c) Visual Quality and Realism Assess the overall visual quality, including resolution, detail, and realism. Look for coherence in lighting, shading, and perspective. Even if the image is stylized or abstract, judge whether the visual elements are well-rendered and visually appealing. Score: 0 (poor quality) to 10 (high-quality and realistic).<br>d) Consistency and Cohesion Check for internal consistency within the image. Are all elements cohesive and aligned with the prompt? For instance, does the perspective make sense, and do objects fit naturally within the scene without visual anomalies? Score: 0 (inconsistent) to 10 (fully cohesive and consistent).<br>e) Emotional or Thematic Resonance Evaluate how well the image evokes the intended emotional or thematic tone of the prompt. For example, if the prompt is meant to be serene, does the image convey calmness? If it’s adventurous, does it evoke excitement? Score: 0 (no resonance) to 10 (strong resonance with the prompt’s theme).<br><br><br>2. Overall Score After scoring each aspect individually, provide an overall score, representing the model’s general performance on this image. This should be a weighted average based on the importance of each aspect to the prompt or an average of all aspects."<br>|
+|---|
+
+Figure 8. The detailed prompt for evaluation with the MMLLM Grader.
+
+### D. More Qualitative Results
+
+[Figure 55]
+
+[Figure 56]
+
+[Figure 57]
+
+[Figure 58]
+
+[Figure 59]
+
+[Figure 60]
+
+[Figure 61]
+
+[Figure 62]
+
+- Figure 9. More Qualitative Results for SFT Diffusion-Sharpening.
+
+[Figure 63]
+
+[Figure 64]
+
+[Figure 65]
+
+[Figure 66]
+
+[Figure 67]
+
+[Figure 68]
+
+[Figure 69]
+
+###### Figure 10. More Qualitative Results for RLHF Diffusion-Sharpening.
+
