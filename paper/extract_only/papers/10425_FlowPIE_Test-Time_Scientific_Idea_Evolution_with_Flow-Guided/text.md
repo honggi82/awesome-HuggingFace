@@ -1,0 +1,1212 @@
+## arXiv:2603.29557v1[cs.AI]31Mar2026
+
+[Figure 1]
+
+IP Intelligence 2026-04
+
+# FlowPIE: Test-Time Scientific Idea Evolution with Flow-Guided Literature Exploration
+
+Qiyao Wang1,2,∗ Hongbo Wang3,∗ Longze Chen1,2 Zhihao Yang1,2 Guhong Chen1 Hamid Alinejad-Rokny4 Hui Li6 Yuan Lin3† Min Yang1,5†
+
+1 Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences 2 University of Chinese Academy of Sciences 3 Dalian University of Technology 4 UNSW Sydney 5 Shenzhen University of Advanced Technology 6 Xiamen University
+
+[Figure 2]
+
+[Figure 3]
+
+[Figure 4]
+
+[Figure 5]
+
+[Figure 6]
+
+[Figure 7]
+
+wangqiyao25@mails.ucas.ac.cn zhlin@dlut.edu.cn min.yang@siat.ac.cn
+
+Website FlowPIE ∗ Equal Contribution. † Corresponding Authors.
+
+Abstract | Scientific idea generation (SIG) is critical to AI-driven autonomous research, yet existing approaches are often constrained by a static retrieval-then-generation paradigm, leading to homogeneous and insufficiently divergent ideas. In this work, we propose FlowPIE, a tightly coupled retrieval–generation framework that treats literature exploration and idea generation as a co-evolving process. FlowPIE expands literature trajectories via a flow-guided Monte Carlo Tree Search (MCTS) inspired by GFlowNets, using the quality of current ideas assessed by an LLM-based generative reward model (GRM) as a supervised signal to guide adaptive retrieval and construct a diverse, high-quality initial population. Based on this population, FlowPIE models idea generation as a test-time idea evolution process, applying selection, crossover, and mutation with the isolation island paradigm and GRM-based fitness computation to incorporate cross-domain knowledge. It effectively mitigates the information cocoons arising from over-reliance on parametric knowledge and static literature. Extensive evaluations demonstrate that FlowPIE consistently produces ideas with higher novelty, feasibility and diversity compared to strong LLM-based and agent-based frameworks, while enabling reward scaling during test time.
+
+### 1. Introduction
+
+With the rapid development of large language models (LLMs) [Hurst et al., 2024, Liu et al., 2024], their strong multidisciplinary understanding and reasoning capabilities make it increasingly feasible to synthesize knowledge from large-scale scientific literature. Recent efforts have shown that LLMbased and agent-based systems can support the entire scientific research pipeline, from proposal development and experimental design to result analysis and paper drafting, forming an autonomous research paradigm [Chen et al., 2025].
+
+Scientific idea generation (SIG) has emerged as a key frontier in autonomous research, attracting significant efforts across diverse domains. As shown in Figure 1, most existing methods mine novel ideas from literature databases using a decoupled two-stage framework: first retrieving relevant literature, and then generating ideas based on the retrieved literature. This pipeline typically relies on a single retrieval step driven by keyword matching and semantic relevance [Wang et al., 2024] to a specific topic. However, relying on this static manner as the sole source of the inspiration yields contexts that are merely topically similar, rather than genuinely conducive to innovation. Consequently, this restricts the depth and breadth of the provided knowledge, frequently leading to homogeneous ideas with limited divergence.
+
+In the idea generation stage, prior works leverage LLMs brainstorming [Wang et al., 2024], research agent with review [Baek et al., 2025] or multi-agent discussion [Su et al., 2025] to generate and refine ideas. These approaches attempt to exploit the parametric knowledge encoded in LLMs together with information from static retrieval literature. However, such designs risk trapping LLMbased generators within an information cocoon, bounded by their internal knowledge and static
+
+external sources. These limitations motivate us to revisit the widely adopted retrieval-and-generation paradigm for SIG. Specifically, we focus on the following two research questions (RQs): RQ1: How can literature retrieval be a dynamic, adaptive component within the idea generation, instead of a static stage? RQ2: How can LLMs leverage retrieved literature and their relationships to generate novel and divergent ideas and continuous refinement?
+
+Standard Literature-based SIG Framework
+
+- Stage 1: Literature Retrieval (Static)
+
+Ours: Test-Time Idea Evolution (FlowPIE)
+
+Topic / Query One-Shot
+
+[Figure 8]
+
+Literature Database
+
+Keyword Semantic
+
+Top K Knowledge Graph
+
+- Stage 2: Idea Generation LLM-based Brainstorm [SCIPIP]
+
+[Figure 9]
+
+[Figure 10]
+
+Multi-Agent Discussion [VirSci]
+
+fixed k literatures
+
+Research Agent with Review [Baek et al.]
+
+[Figure 11]
+
+###### Idea Population Initialization
+
+[Figure 12]
+
+In this work, we propose FlowPIE, a tightly coupled retrieval–generation framework for test-time idea evolution, as illustrated in Figure 3. Moving beyond the traditional static retrieval paradigm, FlowPIE unifies literature retrieval and idea generation into a dynamic and adaptive test-time idea evolution process. Within this process, intermediate generated ideas serve as active feedback to guide subsequent literature exploration. Specifically, it performs structured exploration over the literature subgraph by modeling the retrieval as a flowguided MCTS inspired by GFlowNets [Bengio et al., 2023], thereby incrementally expanding retrieval trajectories in both breadth and depth.
+
+Exploration
+
+Topic / Query
+
+Literature Database Flow-Guided MCTS
+
+Initial Idea Population
+
+[Figure 13]
+
+[Figure 14]
+
+dynamic literature trajectory
+
+[Figure 15]
+
+###### Idea Evolution
+
+New Idea Candidates
+
+Crossover Mutation
+
+[Figure 16]
+
+[Figure 17]
+
+[Figure 18]
+
+[Figure 19]
+
+[Figure 20]
+
+[Figure 21]
+
+[Figure 22]
+
+N(i)
+
+Isolation
+
+Island [N + M](i)
+
+Survival Selection GRM-based Fitness Evaluation
+
+Figure 1 | Comparison of traditional literature-based SIG frameworks and our FlowPIE.
+
+The ideas generated along these paths are then organized into an initial population for subsequent iterative evolution. FlowPIE is implemented as an evolutionary algorithm that operates over this idea population through the iterative application of selection, crossover, and mutation operators, with fitness evaluated via LLM-based generative reward model (GRM). During the mutation stage of the evolutionary process, FlowPIE specifically introduces the isolation island paradigm. This paradigm maintains multiple isolated literature, thereby facilitating the incorporation of cross-domain knowledge and diverse literature characteristics.
+
+Extensive experiments and human evaluations on AI Idea Bench 2025 [Qiu et al., 2025] and IdeaBench [Guo et al., 2025] demonstrate that FlowPIE outperforms prior LLM-based and agent-based baselines, while generating more novel, divergent ideas and demonstrates domain generalization. Beyond benchmark results, we analyze the reward scaling curve of FlowPIE in Figure 2, observing that its reward initially fluctuates during literature exploration and then rises due to flow-guided balancing of exploration and exploitation. After obtaining initial ideas, continuous idea evolution further refines these ideas toward regions of higher quality and more stable convergence. Notably, both the evolved ideas and even the initial ideas achieve higher reward scores than those of other baselines. Our main contributions are as follows:
+
+- • We propose the novel framework, FlowPIE, which models idea generation as a test-time idea evolution process, iteratively applying survival selection, crossover, and mutation operators to an initial population of ideas, supervised by a GRM-based fitness evaluation.
+- • We rethink the retrieval-generation SIG framework and propose a novel flow-guided MCTS in FlowPIE that integrates dynamic literature retrieval with initial idea generation, leveraging idea
+
+- quality feedback to balance exploration and exploitation in literature retrieval.
+- • Experimental results on benchmarks demonstrate that our FlowPIE significantly improves idea quality and exhibits domain generalization. Notably, analysis of the idea evolution reward curve shows that FlowPIE exhibits clear test-time scaling on reward and consistently surpasses other baselines.
+
+### 2. Related Work
+
+AI for Science Research. With the advancement of LLMs, the landscape of scientific inquiry has been fundamentally reshaped across a wide range of disciplines, including physics [Ye et al., 2025], medicine [Liao et al., 2024], and mathematics [Romera-Paredes et al., 2023]. Chen et al. [2025] established a holistic framework of AI for Research that not only systemizes current AI applications but also explores the future trajectory of AI’s impact on the research ecosystem. AI-Scientist [Lu et al., 2026] and AI-Researcher [Tang et al., 2025] aim to support the complete lifecycle of autonomous research, with the ultimate goal of producing a full research paper, including code generation and experimental execution.
+
+###### Test-Time Idea Evolution Scaling
+
+Initial Ideation Idea Evolution SCIPIP
+
+0.80
+
+Diversity Stability
+
+Research Agent
+
+0.75
+
+Chain-of-Ideas
+
+AverageReward
+
+VirSci
+
+0.70
+
+0.65
+
+Continue Exploration & Exploitation
+
+better
+
+0.60
+
+MCTS Construction & Exploration
+
+Step
+
+Figure 2 | Test-time idea evolution scaling for reward. Initial Ideation couples literature exploration with idea generation via flow-guided MCTS, where higher reward, reflecting better initial ideas, amplify the weight of corresponding literature. Idea Evolution uses various evolutionary operators to guide ideas toward regions of higher rewards and stable convergence.
+
+Scientific Idea Generation. Most previous SIG algorithms are rooted in simulations of the human ideation process. SCIPIP [Wang et al., 2024] leverages keywords and semantic similarity to statically retrieve relevant literature and synthesizes new ideas through LLM-based brainstorming. Li et al. [2025] consider relationships among prior literature and leverage a CoI agent to construct a chain-of-ideas before idea generation, using it as a curated future direction prompt for subsequent synthesis. Baek et al. [2025] construct an entity-centric knowledge graph for literature survey, then generate and review ideas using a research agent and a review agent. Additionally, VirSci [Su et al., 2025] adopts a multi-agent system, including team construction and discussion for ideation simulation.
+
+We concur with these literature-based methods that new ideas arise from prior art rather than in a vacuum, and further argue that the quality of generated ideas is constrained by the quality of the relevant prior works. Therefore, our proposed FlowPIE approaches idea generation from a test-time idea evolution perspective based on an evolutionary algorithms (EAs), and couples literature retrieval with the quality of the initial idea to enable high-quality literature trajectory exploration. More discussion about related work on the evaluation of SIG and LLMs-enhanced EAs framework are provided in Appendix A.
+
+###### Idea Population Initialization with Flow-Guided MCTS Test-Time Idea Evolution
+
+[Figure 23]
+
+[Figure 24]
+
+[Figure 25]
+
+Literature Database
+
+Initial / 𝒊-𝐭𝐡 Population (size: N)
+
+Survival Selection (N+M) → N
+
+[Figure 26]
+
+[Figure 27]
+
+[Figure 28]
+
+[Figure 29]
+
+Flow-Guided MCTS on Graph 𝒢
+
+Reward
+
+[Figure 30]
+
+[Figure 31]
+
+( 𝐼,𝑅 )
+
+[Figure 32]
+
+[Figure 33]
+
+[Figure 34]
+
+[Figure 35]
+
+Fitness Evaluation on Child ideas (Size: M)
+
+[Figure 36]
+
+[Figure 37]
+
+[Figure 38]
+
+[Figure 39]
+
+[Figure 40]
+
+[Figure 41]
+
+GRM
+
+Forward
+
+[Figure 42]
+
+Query
+
+[Figure 43]
+
+Execution
+
+[Figure 44]
+
+[Figure 45]
+
+[Figure 46]
+
+[Figure 47]
+
+Crossover Mutation
+
+𝑠
+
+𝑹𝒕 = 𝑹 ⋅ 𝜸𝑻 𝒕
+
+[Figure 48]
+
+𝑃
+
+1 3
+
+Select Parent from 𝒊-𝐭𝐡 Population
+
+𝑠
+
+[Figure 49]
+
+𝑠 |𝑠
+
+Parent Ideas
+
+[Figure 50]
+
+[Figure 51]
+
+𝑠
+
+[Figure 52]
+
+𝑠
+
+𝐼 Parent Idea
+
+𝑠
+
+[Figure 53]
+
+=
+
+𝐼 𝐼
+
+[Figure 54]
+
+1 𝐴
+
+LLM Idea 𝐼 GRM
+
+[Figure 55]
+
+Isolation Island
+
+𝑹𝑻 = 𝑹
+
+𝑠
+
+[Figure 56]
+
+(𝐼 , 𝑅 ) Reward ( 𝐼 , 𝑅 )
+
+[Figure 57]
+
+Backward
+
+[Figure 58]
+
+Forward: Selection and Expansion
+
+Backpropagation
+
+Reward 𝑅
+
+core technical ℱ feature crossover ℱ
+
+without entity overlap and edge linkage
+
+[Figure 59]
+
+1 𝑁(𝑠 |𝑠)
+
+𝑁(𝑠) 1 + 𝑁(𝑠 + 𝑠)
+
+[Figure 60]
+
+[Figure 61]
+
+𝑄 𝑠 𝑠 =
+
+𝑅 𝑃 𝑠 𝑠 ← 1 − 𝛼 𝑃 𝑠 𝑠 + 𝛼 𝑅
+
+𝑈𝐶𝐵 𝑠 𝑠 = 𝑄 𝑠 𝑠 + 𝑐 ⋅ 𝑃 (𝑠 |𝑠)
+
+Evolution Operation
+
+𝐼
+
+𝐼
+
+exploration
+
+exploitation
+
+Child Idea
+
+Child Idea
+
+Figure 3 | Overview of FlowPIE. Left: Idea initialization based on flow-guided MCTS: forward exploration via flow-guided UCB (Eq.1) for nodes selection and expansion, and backward updating (Eq.2) to enforce local and global flow constraints; this dual process dynamically adjusts literature weights with GRM-based rewards on generated ideas. Right: Test-time idea evolution, supervised by GRM-based fitness computation, leveraging various operators, including crossover on core technical features and isolation-island-enhanced mutation, to evolve ideas.
+
+### 3. Methodology
+
+In this paper, we contend that the generation of scientific ideas is not an isolated process. Rather, their novelty must be grounded in technical realism, emerging cumulatively from the synthesis of prior sciences knowledge. Based on this perspective, we propose FlowPIE, as illustrated in Fig. 3 and Algorithm 1, and 2. It models the SIG process using an evolutionary algorithm. Specifically, the initial idea population is generated through dynamic literature exploration drawn by a flow-guided Monte Carlo Tree Search (MCTS) (see Sec. 3.1). The initial population is then refined through iterative evolution incorporating fitness evaluation, survival selection, and crossover and mutation operators,
+
+- as detailed in Sec. 3.2.
+
+Task and Idea Formulation. The target of scientific idea generation is to formulate novel and diverse research hypotheses that can accelerate automated scientific discovery. Given a topic or query 𝑞, idea generator aims to generate a set of structured scientific ideas grounded in existing knowledge and literature. Formally, the framework leverages an LLM-based idea generator to map a 𝑞 to an idea set I = {𝐼1, ...𝐼𝑘}, where each idea 𝐼 is represented as a structured tuple comprising Motivation, Method and Experimental Plan. Prior work such as SCIPIP, which primarily focuses on problem–method, our formulation explicitly incorporates a detailed experimental plan, following Baek et al. [2025], making the ideas more actionable and better aligned with practical research workflows.
+
+###### 3.1. Initial Idea Population Construction
+
+Patent Literature Graph Construction. Most prior works leverage papers as the literature source. In contrast, we use patents accessing from the USPTO, whose clearly defined, precisely scoped and easily extracted structural claims reduce ambiguity in scientific statements, thereby enabling more stable and reliable generation. To model the relationships among literature, we construct a hierarchical structured attribution for each patent. Consider the literature database D spanning various domains within the International Patent Classification (IPC), given any patent 𝑝 ∈ D, we leverage an LLM maps 𝑝 into an attribution tuple ⟨A𝑝, F𝑝, S𝑝⟩, where A𝑝 represents its abstract, F𝑝 represents its core technical feature set extracted by a LLM, and S𝑝 ∈ ℝ𝑑 denotes its semantic embedding.
+
+We formalize the whole literature graph as G = (V, E), where V is the node set of unique patent entities parsed from D. The edge set E represents the relation between nodes, where an edge 𝑒𝑖𝑗 ∈ E exists if patents 𝑝𝑖 and 𝑝𝑗 satisfy at least one of the following criteria: (i) a direct citation relation; (ii)
+
+- at least an overlap in core technical features, i.e. F𝑖 ∩ F𝑗 ≠ ∅; (iii) the semantic similarity 𝑠𝑖𝑚(E𝑖, E𝑗) exceeding the threshold. Details of patent literature are in Appendix B.2.
+
+Idea Initialization with Literature Exploration via Flow-Guided MCTS. To construct a high-quality and diverse initial population of ideas, inspired by GFlowNet [Bengio et al., 2023], we propose a literature exploration mechanism, termed flow-guided MCTS, over graph G. Given a query, we regard it as the root node 𝑠0 and set its initial flow 𝐹(𝑠0) = 1, then we retrieve relevant literature using similarity. For any node 𝑠 with expandable adjacent node 𝑠′ ∈ 𝐴(𝑠), the flow 𝑃𝑓 is uniformly initialized as 𝑃𝑓 (𝑠′ | 𝑠) = |𝐴1(𝑠)|.
+
+Selection and Expansion: We balance exploration and exploitation when selecting and expanding new adjacent nodes along the edges of the constructed literature graph G, by utilizing a flow-guided Upper Confidence Bound (UCB):
+
+√︁𝑁(𝑠) 1 + 𝑁(𝑠′ | 𝑠)
+
+(1)
+
+𝑈𝐶𝐵(𝑠′ | 𝑠) = 𝑄(𝑠′ | 𝑠) + 𝑐 · 𝑃𝑓 (𝑠′ | 𝑠)
+
+where 𝑄(𝑠′ | 𝑠) denotes the expected value, encouraging exploitation of paths that have previously generated high reward ideas. 𝑁(·) denotes visit counts, and 𝑐 is the exploration rate. Execution and Backpropagation: The LLM-based idea generator produces an idea based on the currently explored patent trajectory, which then receives a reward 𝑅 from the GRM. We then backpropagate this reward to update the UCB value of trajectory in Equation 1. Considering the importance of literature at different depths, we introduce a depth-decayed reward 𝑅˜𝑡 = 𝑅 · 𝛾𝑇−𝑡, where 𝑇 is the maximum depth of current trajectory. The value estimation is updated via standard averaging 𝑄(𝑠′ | 𝑠) = 𝑁(𝑠1′|𝑠) 𝑅𝑖, while the flow probability is updated using a moving average:
+
+𝑃𝑓 (𝑠′ | 𝑠) ← (1 − 𝛼)𝑃𝑓 (𝑠′ | 𝑠) + 𝛼𝑅˜𝑡 (2) where 𝛼 ∈ [0, 1] controls the weight of the reward.
+
+Following this, 𝑃𝑓 is locally normalized over 𝐴(𝑠𝑡) at each time step 𝑡. Crucially, 𝑃𝑓 acts as a local probability constrained by the global flow 𝐹, defined as 𝑃𝑓 (𝑠′ | 𝑠) = 𝐹𝐹(𝑠(′𝑠|)𝑠). Thus, the global flow iteratively updates forwardly via 𝐹(𝑠𝑖+1) = 𝐹(𝑠𝑖) · 𝑃𝑓 (𝑠𝑖+1 | 𝑠𝑖). The iterative exploration terminates once the reward variance of the generated ideas falls below a threshold 𝜖. These ideas subsequently serve as the initial population for the idea evolution phase, accompanied by the explored literature traced from the root node 𝑠0.
+
+###### 3.2. Test-Time Idea Evolution
+
+The initial idea population within the flow-guided MCTS primarily serves as an intermediate signal for broad and deep literature exploration, but lacks sufficient continuous refinement to enhance novelty and feasibility, resulting in the reward bottleneck shown in Figure 2. In this section, we introduce test-time idea evolution within FlowPIE, iteratively applying survival selection, crossover, and mutation operators for LLM-based idea generator to the initial population for continuous evolution.
+
+Idea Evolution with Crossover and Mutation. We leverage an LLM-based idea generator, to produce offspring ideas through pairwise crossover and isolation-island-enhanced mutation operator.
+
+Crossover Operator. The crossover operator aims to synthesize advantageous from different promising ideas. Given two parent ideas I𝑚 and I𝑛, along with the explored literature, we define the crossover process as I𝑘 = LLM(𝑞, I𝑚, I𝑛), where I𝑘 denotes the generated offspring idea. Rather than performing
+
+superficial textual interpolation, the operator recombines the core technical features of the two parent ideas under the guidance of the retrieved literature, enabling the LLM to synthesize a novel descendant idea that integrates their complementary characteristics and inherits their strengths.
+
+Mutation Operator with Isolation Island. To prevent idea evolution from being trapped in local optima while maintaining diversity, we introduce a mutation operator governed by a mutation rate 𝜌. For each offspring I𝑘, mutation is triggered by sampling 𝑧𝑘 ∼ Bernoulli(𝜌). If 𝑧𝑘 = 1, we apply the lsolation Island strategy on graph G. Instead of retrieving literature only from the current local neighborhoods, we sample an auxiliary set Q𝑘iso ⊂ G from topologically distant subgraphs disconnected from the current neighborhood. The mutated idea is then generated by I𝑘′ = LLM(𝑞, I𝑘, Q𝑘iso), where the LLM is encouraged to logically integrate the out-of-domain (OOD) information into I𝑘 which enrich the boundaries of the ideas.
+
+Idea Fitness Evaluation. The offspring ideas obtained through evolution are then evaluated using the GRM. Specifically, we use the GRM to assess each idea across multiple dimensions (e.g., novelty and feasibility), which are subsequently aggregated into a scalar fitness score. Reward definitions and prompts detials are provided in Appx. D.2 and F.
+
+Survival Selection. We adopt a tournament selection strategy to form the next-generation population I𝑛𝑒𝑥𝑡. Specifically, the offspring and parent ideas are merged into a candidate pool 𝐶. While |I𝑛𝑒𝑥𝑡| < 𝑁, we randomly sample a subset 𝑆 ⊂ 𝐶, select the highest-reward idea, add it to I𝑛𝑒𝑥𝑡. The process repeats until |I𝑛𝑒𝑥𝑡| = 𝑁, thereby preserving high-fitness ideas for the next generation. The evolution process stops when the maximum number of iterations is reached or the reward converges, yielding the final 𝑁 evolved ideas.
+
+### 4. Experiments
+
+###### 4.1. Experimental Setup
+
+Baselines. We compare FlowPIE with two types of baselines, including (i) LLM-based Framework, SCIPIP [Wang et al., 2024], which leverages a dual-path framework that integrates retrieved literature with LLM-based brainstorming; (ii) Agent-based Framework, Research Agent [Baek et al., 2025] iteratively leverages a research agent and a review agent, while Chain-of-Ideas [Li et al., 2025] employs a CoI-Agent to model dependency relations among prior works. We also compare against the multi-agent baseline VirSci [Su et al., 2025], which enables discovery through simulated team construction and structured discussion. To ensure a fair comparison, we use GPT-4o-mini as the idea generator for all methods. Implementation details and method costs are provided in Appendix B.1.
+
+Evaluation Benchmarks and Metrics. We evaluate all methods on two SIG benchmarks. (i) AI Idea Bench 2025 [Qiu et al., 2025], which comprises papers from top AI conferences such as ICLR, CVPR and ACL, as the target idea source. It contains three main tasks: idea-to-topic matching (I2T), idea-to-idea matching (I2I), and idea multiple-choice evaluation (IMCQ). The first two tasks use an LLM-as-a-judge paradigm with scores ranging from 1 to 5, while IMCQ uses accuracy. (ii) IdeaBench [Guo et al., 2025], which contains 2,374 influential biomedical papers, evaluates generated ideas using two similarity-based metrics: BERTScore for semantic similarity, with a practical upper limit of 0.718 reported in the original paper and idea overlap on a 0-10 scale; it also uses two insight score for novelty and feasibility, computed from the relative ranking of generated ideas against the target paper’s idea. For fair and consistent evaluation, all metrics are assessed using the frontier GPT-5-mini model. Detailed task and metric definitions are provided in Appendix D.1.
+
+Human Evaluation Setup. We follow the criteria of Si et al. [2025], employing human experts who are computer science PhD students to blindly evaluate 20% randomly sampled ideas from AI Idea
+
+Bench 2025 per method on novelty, feasibility, excitement, and expected effectiveness using a 10-point scale. Details are provided in Appendix D.3.
+
+###### 4.2. Results
+
+I2T I2I IMCQ Motivation Exp Plan Motivation Exp Plan Motivation Exp Plan
+
+Method
+
+SCIPIP 4.18±0.662 — 3.68±0.383 — 0.464 Research Agent 4.56±0.679 3.59±0.670 3.78±0.491 3.45±0.619 0.510 0.497 Chain-of-Ideas 4.63±0.703 3.79±0.566 3.74±0.504 3.50±0.653 0.507 0.433 VirSci 4.32±0.652 3.68±0.565 3.95±0.410 3.84±0.410 0.560 0.580 FlowPIE (Ours) 4.64±0.606 3.72±0.481 4.44±0.318 3.85±0.347 0.780 0.635
+
+Initial Population 4.58±0.616 3.58±0.512 4.26±0.224 3.61±0.235 0.753 0.622
+
+- Table 1 | Main results on AI-Idea-Bench-2025. We generate three ideas with each method and report using the mean ± std for I2T and I2I. Bold indicates the best score, and underlining denotes the second-best score.
+
+Method Simi. Overlap NI FI
+
+SCIPIP 0.526 5.03 0.816 0.133 Research Agent 0.558 6.66 0.722 0.138 Chain-of-Ideas 0.482 7.24 0.926 0.095 VirSci 0.521 6.24 0.716 0.075 FlowPIE(Ours) 0.559 7.76 0.825 0.105 Initial Population 0.532 7.64 0.750 0.136
+
+Table 2 | IdeaBench Results. Simi. denotes Semantic Similarity, while Overlap denotes Idea Overlap. NI and FI denote the Novelty and Feasibility Insight scores.
+
+Benchmark Results. As shown in Table 1 and
+
+- Table 2, we report results on AI Idea Bench 2025 and IdeaBench, respectively. Across the three tasks of AI Idea Bench 2025, FlowPIE generates ideas that demonstrate high consistency with the target topic and strong relevance to the idea of target paper, and is the only method to obtain a motivation score above 4 in I2I task. Compared with competing candidate ideas, it achieves a motivation selection accuracy of 0.780 and experiment plan selection accuracy of 0.635 in the IMCQ task when selecting the best idea among alternatives.
+
+For IdeaBench, our FlowPIE achieves the highest Semantic Similarity and Idea Overlap with the target paper. Considering the Novelty Insight Score (NI) and Feasibility Insight Score (FI), FlowPIE and its initial population both lie on the Pareto front, indicating a competitive balance between novelty and feasibility. In particular, FlowPIE achieves a well-balanced trade-off between NI and FI.
+
+Overall, FlowPIE achieves superior performance on both benchmarks and lies on the Pareto frontier. Notably, even the initial population of our FlowPIE surpasses strong baselines such as SCIPIP. We report the standard deviation (std) for each task in Table 1 to provide a more reliable evaluation. The consistently lower std of FlowPIE indicates that it generates ideas with greater robustness and more consistently high quality. We further provide additional results in Appendix E.1 using Qwen2.5-7B and LLaMA3.1-8B as backbones, demonstrating that our method generalizes across different LLMs. Although the absolute performance is bounded by the capability of the underlying model, our method consistently yields stable relative improvements.
+
+Reward Human Evaluation N F Avg. N F E EE Avg.
+
+Method
+
+SCIPIP 0.50 0.73 0.62 0.38 0.37 0.30 0.29 0.34 Research Agent 0.49 0.66 0.58 0.22 0.19 0.13 0.13 0.17 Chain-of-Ideas 0.59 0.66 0.63 0.34 0.29 0.31 0.29 0.31 VirSci 0.60 0.65 0.63 0.27 0.17 0.20 0.20 0.21 FlowPIE (Ours) 0.75 0.76 0.76 0.45 0.36 0.38 0.37 0.39
+
+Initial Population 0.68 0.68 0.68 – – – – – w/o isolation island 0.72 0.73 0.73 – – – – –
+
+Table 3 | Reward and human evaluation results. N: Novelty, F: Feasibility, E: Excitement, EE: Expected Effectiveness, and Avg.: Average.
+
+Reward Performance. As shown in Table 3, we evaluate all generated ideas on AI Idea Bench 2025 using the GRM, where the reward computation is aligned with the fitness evaluation in our evolution process. We use DeepSeek-V3.2 model as the backbone of the GRM. The final idea population of FlowPIE achieves the highest average reward score among all baselines, with its initial idea population already outperforming competing methods. This initial population is generated using a threshold-based stopping criterion to guarantee sufficient exploration, instead of a fixed budget or step size.
+
+Additionally, we visualize the reward lifecycle of FlowPIE in Figure 2, which exhibits a scaling trend in reward. The rewards of the initial ideas increase with evolution steps, although a bottleneck exists despite already being higher than other baseline methods. Subsequent idea evolution from this initial population substantially improves the rewards and shifts the distribution toward higher scores,
+
+- as reflected by the continuously decreasing standard deviation. We conduct correlation analysis between reward and benchmark results in Appx. E.2.
+
+Domain Generalization. Due to the multidomain nature of IdeaBench, which encompasses eight fields spanning Health & Medicine (HM), Genetics & Molecular Biology (GMB), Environmental Sciences (ES), Neuroscience & Cognitive Sciences (NCS), Technology & Engineering, (TE) Social & Behavioral Sciences (SBS), Materials Science (MS) and Public Health & Policy (PHP), together with the AI domain covered by AI Idea Bench 2025. We report domain-specific rewards in Table 4, which demonstrate the strong domain generalization of FlowPIE. It achieves the highest rewards across nine different domains, especially excelling in Materials Science.
+
+Method AI HM GMB ES NCS TE SBS MS PHP SCIPIP 0.62 0.60 0.64 0.63 0.63 0.62 0.61 0.67 0.60 Research Agent 0.58 0.63 0.66 0.65 0.65 0.63 0.60 0.69 0.58 Chain-of-Ideas 0.63 0.67 0.71 0.71 0.70 0.70 0.66 0.73 0.67 VirSci 0.60 0.65 0.69 0.66 0.67 0.67 0.61 0.70 0.60 FlowPIE(Ours) 0.75 0.81 0.80 0.83 0.81 0.77 0.76 0.88 0.78 Initial Population 0.68 0.72 0.67 0.78 0.70 0.68 0.67 0.83 0.69
+
+Table 4 | Domain-specific reward performance across nine domains.
+
+Human Evaluation Results. We report the human evaluation results in Table 3, demonstrating that the ideas generated by FlowPIE are of higher quality than those produced by the baselines. Additionally, we report the inter-expert Spearman correlations for each metric, together with the correlation between average reward and average human score in Table 5. Our reward demonstrates strong alignment with human judgments, achieving Spearman correlations of 0.60 and 0.87 with the average human ratings on novelty and feasibility, respectively. Notably, these correlations are comparable to or even higher than the agreement between individual experts, suggesting that the reward reliably captures aggregated human preferences.
+
+Categories Metric N F E EE Human and Human Spearman 𝜌 0.49 0.54 0.32 0.47 Human and Reward Spearman 𝜌 0.60 0.87 – –
+
+Table 5 | Inter-expert agreement of human evaluation and correlation between our reward and the average human score on novelty and feasibility.
+
+###### 4.3. Analysis
+
+Literature Exploration Analysis (RQ1). Most prior works recognize the importance of retrieved literature for ideation. They adopt keyword–semantic hybrid retrieval strategies or construct entitycentric citation graphs to equip the framework with more relevant scientific knowledge. However, these methods primarily enrich the literature in a one-shot, static manner by retrieving a fixed number of papers. As shown in Figure 4 (a), our FlowPIE couples retrieval with generation, enabling dynamically broader and deeper exploration. We observe that most ideas rely on approximately 3 publications in their trajectories, some incorporate more than seven or even ten during initial ideation. Notably, this variation is dynamically determined by ideas’ quality rather than a hyperparameter.
+
+Idea Diversity Analysis (RQ2). We assess the diversity of generated ideas following Si et al. [2025], encoding them with all-MiniLM-L6-v2. We consider two ideas to be similar if their cosine similarity over threshold 0.65. The results are illustrated in Figure 4 (b). Si et al. [2025] investigates idea diversity scaling with the increasing number of ideas
+
+| | | |
+|---|---|---|
+| | | |
+| | | |
+| | | |
+
+- at test-time, and find that simply increasing the quantity leading to repeating duplicate ideas. Our FlowPIE achieves the superior diversity score and even the initial population’s diversity outperforms Chain-of-Ideas and VirSci. This result demonstrates that dynamic literature exploration and isolated island–enhanced idea evolution can improve diversity beyond simple count scaling at test-time.
+
+| |[Figure 62]| | | | | | |
+|---|---|---|---|---|---|---|---|
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+
+Figure 4 | (a) Distribution of explored literature count; (b) Diversity score distribution.
+
+###### 4.4. Ablation Study
+
+Ablations on flow-guided literature exploration. Prior LLM-enhanced EAs typically use zero-shot prompting or other methods’ solutions as their initial population, but do not focus on optimizing the quality of their owns. For example, EvoAgent [Yuan et al., 2025] initializes its agent population using MetaGPT [Hong et al., 2024]. Our flow-guided MCTS dynamically explores the literature, filtering low-quality entries and weak ideas to build a high-quality population for subsequent evolution. We conduct an ablation study by using ideas from SCIPIP and Chain-of-Ideas as the initial population, as reported in Table 6, which demonstrates consistent performance improvements. This demonstrates the strong generalization of our idea evolution, as it effectively enhances ideas generated by heterogeneous methods while achieving the largest gains under our initialization strategy.
+
+Ablations on idea evolution, i.e. just initialization. We conduct an ablation study in which removing the idea evolution process, and only using the flow-guided MCTS to generate the initial population. As shown in Table 1, 2, and 3, the initial idea population even outperforms other strong baselines, demonstrating the effectiveness of our method. However, the initial ideas exhibit a bottleneck despite increasing exploration iterations. Figure 2 shows that increasing the number of exploration steps, corresponding to greater breadth and depth in graph, leads to marginal gains, with the rewards of the initial ideas approaching a plateau.
+
+Method AR ↑ I2T ↑ I2I ↑ IMCQ ↑
+
+| | |
+|---|---|
+|SCIPIP 0.61<br><br>w/ Idea Evolution 0.63(+3.3%) Chain-of-Ideas 0.59<br>w/ Idea Evolution 0.64(+8.5%)<br><br><br>|4.18 3.68 0.464 4.24 (+1.4%) 3.70 (+0.5%) 0.475 (+2.4%) 4.21 3.62 0.437 4.23 (+0.5%) 3.63 (+0.3%) 0.448 (+2.5%)|
+|FlowPIE (initial) 0.68<br><br>w/ Idea Evolution 0.75 (+10.1%)|4.08 3.94 0.688 4.18 (+2.5%) 4.15 (+5.3%) 0.708 (+2.9%)|
+
+Table 6 | Idea evolution results with initial ideas from different baselines. We report the average reward (AR) and average score of three tasks in AI Idea Bench 2025.
+
+Ablations on isolation islands within mutation. We conduct an ablation study on the isolation islands within the mutation operator of idea evolution. As shown in Figure 4 (b), the diversity of ideas decreasing compared with full setting. The reward results under this ablation setting (Table 3, last row) only slightly underperform the full setting, suggesting that the isolation island strategy promotes diversity while preserving overall quality.
+
+Input topic: The topic of this paper is improving reasoning capabilities in Large Language Models (LLMs). Final Idea Title: Dynamic Macro-Guided Verification (DMGV): A Modular Reasoning Augmentation Framework for LLMs
+
+Summary: The proposed Dynamic Macro-Guided Verification (DMGV), a framework that converts recurrent reasoning subchains in CoT traces into reusable reasoning macros, and attaches lightweight verifiers to validate their outputs. Instead of repeatedly regenerating similar reasoning steps, the model composes solutions by invoking validated macros and verifying their outputs. The core insight is that many reasoning traces contain repeated sub-structures that can be compressed into reusable operators. By validating macro outputs through interface-level verification rather than re-evaluating entire reasoning chains, DMGV aims to reduce both error accumulation and token-level redundancy in LLM reasoning. It consists of 3 stages: (1) Macro discovery: reasoning traces are segmented and clustered to identify recurrent subchains, which are distilled into parameterized macros with explicit input-output interfaces. (2) Macro-guided reasoning: during inference, the generator composes reasoning steps by invoking macros whenever a subgoal matches a macro signature. (3) Targeted verification: a lightweight verifier checks macro outputs using symbolic, arithmetic, or structural consistency tests; failed cases trigger localized fallback re-synthesis.
+
+Table 7 | Demonstration of an idea generated by FlowPIE. Due to space limitations, we present only a concise summary of the final idea. The complete version of this idea is provided in Table 12.
+
+###### 4.5. Qualitative Analysis
+
+We present an interesting case study on reasoning pattern abstraction for LLM reasoning in Table 7, showing how recurrent CoT subchains can be transformed into reusable and verifiable reasoning units, termed as reasoning macros, which aims to reduce both error accumulation and token-level redundancy in LLM reasoning. Unlike prior modular reasoning approaches, this idea equips each macro with an explicit interface and lightweight verification, enabling reliable reuse, reducing repeated low-level generation, and localizing failures to individual macro calls. Additional cases across various domains are in Appendix G.
+
+### 5. Conclusion
+
+In this paper, we rethink the traditional scientific idea generation that statically retrieves literature before generating ideas, and propose a novel test-time idea evolution framework, FlowPIE. It integrates initial idea generation with dynamic literature exploration via flow-guided MCTS, along with a variety of evolutionary operators for continuous idea refinement. We combine literature retrieval with feedback on the quality of initial ideas, assessed via GRM-based rewards, to enable adaptive exploration by adjusting the flow probability. Human evaluation and benchmark results demonstrate that FlowPIE generates ideas that are more relevant to the query, higher-quality, and more stable than those produced by other strong baselines, while also exhibiting strong domain generalization across various scientific fields. Beyond benchmarks, we conduct a reward analysis, which demonstrates clear test-time scaling of rewards in test time.
+
+### References
+
+Jinheon Baek, Sujay Kumar Jauhar, Silviu Cucerzan, and Sung Ju Hwang. Researchagent: Iterative research idea generation over scientific literature with large language models. In Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers), pages 6709–6738, 2025. URL https://aclanthology.org/2025.naacl-long.342/.
+
+Yoshua Bengio, Salem Lahlou, Tristan Deleu, Edward J Hu, Mo Tiwari, and Emmanuel Bengio. Gflownet foundations. Journal of Machine Learning Research, 24(210):1–55, 2023. URL https: //jmlr.org/papers/v24/22-0364.html.
+
+Jianlyu Chen, Shitao Xiao, Peitian Zhang, Kun Luo, Defu Lian, and Zheng Liu. M3-embedding: Multi-linguality, multi-functionality, multi-granularity text embeddings through self-knowledge distillation. In Findings of the association for computational linguistics: ACL 2024, pages 2318–2335, 2024. URL https://aclanthology.org/2024.findings-acl.137.pdf.
+
+Qiguang Chen, Mingda Yang, Libo Qin, Jinhao Liu, Zheng Yan, Jiannan Guan, Dengyun Peng, Yiyan Ji, Hanjing Li, Mengkang Hu, Yimeng Zhang, Yihao Liang, Yuhang Zhou, Jiaqi Wang, Zhi Chen, and Wanxiang Che. AI4Research: A Survey of Artificial Intelligence for Scientific Research. arXiv e-prints, art. arXiv:2507.01903, July 2025. doi: 10.48550/arXiv.2507.01903.
+
+Qingyan Guo, Rui Wang, Junliang Guo, Bei Li, Kaitao Song, Xu Tan, Guoqing Liu, Jiang Bian, and Yujiu Yang. Connecting large language models with evolutionary algorithms yields powerful prompt optimizers. In The Twelfth International Conference on Learning Representations, 2024. URL https://openreview.net/forum?id=ZG3RaNIsO8.
+
+Sikun Guo, Amir Hassan Shariatmadari, Guangzhi Xiong, Albert Huang, Myles Kim, Corey M Williams, Stefan Bekiranov, and Aidong Zhang. Ideabench: Benchmarking large language models for research idea generation. In Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining V. 2, pages 5888–5899, 2025. URL https://dl.acm.org/doi/10.1145/37118 96.3737419.
+
+Sirui Hong, Mingchen Zhuge, Jonathan Chen, Xiawu Zheng, Yuheng Cheng, Jinlin Wang, Ceyao Zhang, Zili Wang, Steven Ka Shing Yau, Zijuan Lin, Liyang Zhou, Chenyu Ran, Lingfeng Xiao, Chenglin Wu, and Jürgen Schmidhuber. MetaGPT: Meta programming for a multi-agent collaborative framework. In The Twelfth International Conference on Learning Representations, 2024. URL https://openreview.net/forum?id=VtmBAGCN7o.
+
+Aaron Hurst, Adam Lerer, Adam P Goucher, Adam Perelman, Aditya Ramesh, Aidan Clark, AJ Ostrow, Akila Welihinda, Alan Hayes, Alec Radford, et al. Gpt-4o system card. arXiv preprint arXiv:2410.21276, 2024. URL https://arxiv.org/abs/2410.21276.
+
+Kuang-Huei Lee, Ian Fischer, Yueh-Hua Wu, Dave Marwood, Shumeet Baluja, Dale Schuurmans, and Xinyun Chen. Evolving Deeper LLM Thinking. arXiv e-prints, art. arXiv:2501.09891, January 2025. doi: 10.48550/arXiv.2501.09891.
+
+Long Li, Weiwen Xu, Jiayan Guo, and et al. Chain of ideas: Revolutionizing research via novel idea development with LLM agents. In Christos Christodoulopoulos, Tanmoy Chakraborty, Carolyn Rose, and Violet Peng, editors, Findings of the Association for Computational Linguistics: EMNLP 2025, pages 8971–9004, Suzhou, China, November 2025. Association for Computational Linguistics. ISBN 979-8-89176-335-7. doi: 10.18653/v1/2025.findings-emnlp.477. URL https://aclant hology.org/2025.findings-emnlp.477/.
+
+Yusheng Liao, Shuyang Jiang, Zhe Chen, Yu Wang, and Yanfeng Wang. MedCare: Advancing medical LLMs through decoupling clinical alignment and knowledge aggregation. In Yaser AlOnaizan, Mohit Bansal, and Yun-Nung Chen, editors, Findings of the Association for Computational Linguistics: EMNLP 2024, pages 10562–10581, Miami, Florida, USA, November 2024. Association for Computational Linguistics. doi: 10.18653/v1/2024.findings-emnlp.619. URL https:
+
+#### //aclanthology.org/2024.findings-emnlp.619/.
+
+Aixin Liu, Bei Feng, Bing Xue, Bingxuan Wang, Bochao Wu, Chengda Lu, Chenggang Zhao, Chengqi Deng, Chenyu Zhang, Chong Ruan, et al. Deepseek-v3 technical report. arXiv preprint arXiv:2412.19437, 2024. URL https://arxiv.org/abs/2412.19437.
+
+Chris Lu, Cong Lu, Robert Tjarko Lange, Yutaro Yamada, Shengran Hu, Jakob Foerster, David Ha, and Jeff Clune. Towards end-to-end automation of ai research. Nature, 651(8107):914–919, 2026. doi: 10.1038/s41586-026-10265-5. URL https://doi.org/10.1038/s41586-026-10265-5.
+
+Yansheng Qiu, Haoquan Zhang, Zhaopan Xu, Ming Li, Diping Song, Zheng Wang, and Kaipeng Zhang. Ai idea bench 2025: Ai research idea generation benchmark, 2025. URL https://arxiv.org/ abs/2504.14191.
+
+Bernardino Romera-Paredes, Mohammadamin Barekatain, Alexander Novikov, Matej Balog, M. Pawan Kumar, Emilien Dupont, Francisco J. R. Ruiz, Jordan S. Ellenberg, Pengming Wang, Omar Fawzi, Pushmeet Kohli, Alhussein Fawzi, Josh Grochow, Andrea Lodi, Jean-Baptiste Mouret, Talia Ringer, and Tao Yu. Mathematical discoveries from program search with large language models. Nature, 625:468 – 475, 2023. URL https://api.semanticscholar.org/CorpusID:266223700.
+
+Chenglei Si, Diyi Yang, and Tatsunori Hashimoto. Can LLMs generate novel research ideas? a large-scale human study with 100+ NLP researchers. In The Thirteenth International Conference on Learning Representations, 2025. URL https://openreview.net/forum?id=M23dTGWCZy.
+
+Haoyang Su, Renqi Chen, Shixiang Tang, Zhenfei Yin, Xinzhe Zheng, Jinzhe Li, Biqing Qi, Qi Wu, Hui Li, Wanli Ouyang, et al. Many heads are better than one: Improved scientific idea generation by a llm-based multi-agent system. In Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 28201–28240, 2025. URL https:
+
+#### //aclanthology.org/2025.acl-long.1368/.
+
+Jiabin Tang, Lianghao Xia, Zhonghang Li, and Chao Huang. AI-researcher: Autonomous scientific innovation. In The Thirty-ninth Annual Conference on Neural Information Processing Systems, 2025. URL https://openreview.net/forum?id=kQWyOYUAC4.
+
+Wenxiao Wang, Lihui Gu, Liye Zhang, Yunxiang Luo, Yi Dai, Chen Shen, Liang Xie, Binbin Lin, Xiaofei He, and Jieping Ye. Scipip: An llm-based scientific paper idea proposer. arXiv preprint arXiv:2410.23166, 2024. URL https://arxiv.org/abs/2410.23166.
+
+Wanghan Xu, Yuhao Zhou, Yifan Zhou, Qinglong Cao, Shuo Li, Jia Bu, Bo Liu, Yixin Chen, Xuming He, Xiangyu Zhao, et al. Probing scientific general intelligence of llms with scientist-aligned workflows. arXiv preprint arXiv:2512.16969, 2025. URL https://arxiv.org/abs/2512.16969.
+
+Tian Ye, Zicheng Xu, Yuanzhi Li, and Zeyuan Allen-Zhu. Physics of language models: Part 2.1, grade-school math and the hidden reasoning process. In The Thirteenth International Conference on Learning Representations, 2025. URL https://openreview.net/forum?id=Tn5B6Udq3E.
+
+Siyu Yuan, Kaitao Song, Jiangjie Chen, Xu Tan, Dongsheng Li, and Deqing Yang. EvoAgent: Towards automatic multi-agent generation via evolutionary algorithms. In Luis Chiruzzo, Alan Ritter, and Lu Wang, editors, Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers), pages 6192–6217, Albuquerque, New Mexico, April 2025. Association for Computational Linguistics. ISBN 979-8-89176-189-6. doi: 10.18653/v1/2025.naacl-long.315. URL https:
+
+#### //aclanthology.org/2025.naacl-long.315/.
+
+### A. More Related Work Discussion
+
+Scientific Idea Generation Evaluation and Benchmarks. As LLMs continue to demonstrate escalating performance across diverse tasks, there has been a notable proliferation of specialized frameworks designed for idea generation, To effectively measure the efficacy of these systems, several rigorous benchmarks, such as Scientist-Bench [Tang et al., 2025], AI Idea Bench 2025 [Qiu et al., 2025], IdeaBench [Guo et al., 2025] and SGI-Bench Xu et al. [2025]. These benchmarks provide the necessary empirical groundwork to validate the substantive quality of proposed ideas, ensuring they are assessed not only for their surface-level novelty but also for their underlying feasibility and technological grounding.
+
+In this paper, we adopt AI Idea Bench 2025 and Ideabench due to their suitability for our specific idea generation task and their inclusion of multi-domain attributes. These two benchmarks derive their ideas from recent high-quality publications, such as top conferences in the AI domain, providing golden reference ideas. In contrast, SGI-Bench is based on Science’s 125 Big Questions, which do not have explicit optimal idea answers. Additionally, SGI-Bench provides the literature related to each idea in advance, which limits the evaluation of our method’s literature exploration ability. For Scientist-Bench, idea generation is only a subset or starting point of its overall task, which focuses on a full-stage automated research pipeline, including experiment execution, code generation, and paper writing, differing from our research objective.
+
+Due to the complexity and subjective nature of evaluating idea generation, these benchmarks mainly include two types of metrics: LLM-as-a-judge paradigm scores and similarity-based scores. For our experiments on AI Idea Bench 2025 and IdeaBench, which provide golden idea references, we can compute similarity-based metrics, such as I2T and I2I tasks in AI Idea Bench 2025, and Semantic Similarity and Idea Overlap in IdeaBench. They also provide LLM-as-a-judge metrics, such as the IMCQ task in AI Idea Bench 2025 and the Novelty Insight Score and Feasibility Insight Score in IdeaBench. These metrics do not rely on a single scalar score from an LLM; instead, they evaluate the relative quality of generated ideas from pairwise and listwise perspectives.
+
+Although SGI-Bench proposes a combined objective and subjective metric for this task, its objective component heavily relies on the provided related literature. This makes it unfair for frameworks that can retrieve literature themselves, such as SCIPIP, Chain-of-Thought, and our FlowPIE. The objective metric is more suitable for evaluating the scientific information integration ability of the backbone model.
+
+Additionally, the idea formats in prior works vary significantly. For example, Chain-of-Ideas [Li et al., 2025] structures ideas with a title, motivation, method, and experimental plan, whereas SCIPIP [Wang et al., 2024] includes only problem and method sections. Our work builds on the Chain-of-Ideas and Research Agent [Baek et al., 2025] formats, including motivation, method, and experimental plan. These different idea formats also cause the evaluation to be unstable. We believe that unifying the idea format and constructing standard evaluation metrics for these idea generation benchmarks is very important. Even though our evaluation setup includes GRM-based rewards, we consider this standardization an important direction for future work in the community.
+
+Evolutionary Algorithm with LLMs. Evolutionary algorithms (EAs) are usually used for optimization problem search. With the advancement of LLMs, they can be leveraged as both an optimizer and a generator in EAs, thanks to their extensive out-of-domain knowledge and ability to operate in semantically rich language spaces. Researchers have already explored incorporating LLMs into EAs frameworks. Guo et al. [2024] propose EvoPrompt, which combines an LLM-enhanced evolutionary algorithm framework with discrete prompt optimization. Yuan et al. [2025] propose the EvoAgent framework, which treats existing agent frameworks as initial individuals and applies a series of
+
+evolutionary operators, significantly improving performance on writing, code, and travel planning tasks. Notably, Lee et al. [2025] introduce a framework called Mind Evolution, which leverages evolutionary algorithms to scale LLMs’ test-time computation, outperforming Best-of-N and Sequential Revision test-time reasoning strategies at the same computational cost.
+
+Our FlowPIE builds on EAs for test-time computation, leveraging multiple operators to refine the idea population based on the LLM-based idea generator. Additionally, prior works do not focus on evolving a high-quality initial population. Most use zero-shot results as the starting population or rely on results from other methods, such as EvoAgent. We argue that successful evolution depends on a strong initial parent idea population. Therefore, we propose a novel method for constructing the initial idea population, combining dynamic literature exploration and initial idea generation with GFlowNet-inspired flow-guided MCTS, balancing exploration and exploitation of the literature.
+
+### B. Experimental Setting
+
+###### B.1. Implementation Details
+
+We implement our FlowPIE using publicly available LLMs for both idea generation and evaluation. Specially, we use GPT-4o-mini as the backbone model for idea generator, accessed through the official API. For fitness evaluation and idea quality analysis, we employ DeepSeek-V3.2 as the fitness evaluator. For flow-guided MCTS, the exploration coefficient 𝑐 in Eq. 1 is set to commonly used value 𝑐 = √2
+
+Method Prompt Tokens Avg. Tokens / Idea Avg. Cost / Idea
+
+SCIPIP 4062.50 921.33 $0.038 Research Agent 1755.44 477.53 $0.028 Chain-of-Ideas 4526.92 650.43 $0.052 Virsci 1458.36 789.60 $0.061 FlowPIE (Ours) 4123.43 924.25 $0.056
+
+Table 8 | API cost comparison for idea generation across different methods. All methods use GPT-4omini as the idea generator.
+
+for balancing exploration and exploitation. The learning rate 𝛼 for updating the flow probability 𝑃𝑓𝑙𝑜𝑤 in Eq. 2 is set to 0.2. For the test-time Idea Evolution, the maximum number of evolution iterations is limited to 20. Additionally, if the standard deviation of the generated ideas’ fitness score is lower than threshold 0.05, the evolution process terminates as the final ideas.
+
+Method Cost. We report the API cost of each method for generating a scientific idea, whereGPT-4o-mini is used as the LLM-based idea generator across all methods, as shown in Table 8.
+
+###### B.2. Patent-based Literature Database Details
+
+Literature Source and Data Statistics. Our patent-based literature dataset is constructed from available resources released by the USPTO1. We collect 16,050 patents published between October and December 2025. The selected patents cover a wide range of domains organized under the International Patent Classification (IPC) system, ensuring diversity across different technical fields and innovation areas. We provide the distribution of patents across major IPC sections in our dataset in Table 9, which illustrates the technological coverage of the constructed patent corpus.
+
+1https://data.uspto.gov/home
+
+Section Count Percentage (%)
+
+- A 1293 8.06
+- B 980 6.11
+- C 710 4.42
+- D 26 0.16
+- E 123 0.77
+- F 208 1.30
+- G 7957 49.58
+- H 4753 29.61 All 16050 100
+
+Table 9 | Distribution of IPC sections.
+
+- Algorithm 1 Initial Idea Population Construction via Flow-Guided MCTS
+
+Input: Query 𝑞, patent literature graph G = (V, E), maximum iteration 𝑁, convergence threshold 𝜖 Output: Initial idea set I
+
+- 1: Initialize root node 𝑠0 ← 𝑞, global flow 𝐹(𝑠0) ← 1 // Treat the query as the root of literature exploration.
+- 2: Retrieve top-𝑘 relevant patents as children of 𝑠0 // Initialize the starting literature nodes via semantic retrieval.
+- 3: Initialize I ← ∅, reward buffer R ← ∅, 𝑛 ← 0
+- 4: while 𝑛 < 𝑁 and Var(R) > 𝜖 do
+- 5: 𝑛 ← 𝑛 + 1, 𝑠 ← 𝑠0, 𝜙 ← [𝑠0] // Start a new literature exploration trajectory.
+- 6: while 𝐴(𝑠) ≠ ∅ do
+- 7: 𝑠′ ← arg max 𝑢∈𝐴(𝑠)
+
+𝑈𝐶𝐵(𝑢 | 𝑠) // Select next node via flow-guided UCB (Eq. 1).
+
+- 8: Append 𝑠′ to 𝜙, set 𝑠 ← 𝑠′
+- 9: if 𝑠 is expandable and not fully explored then
+- 10: Expand one adjacent patent node into 𝐴(𝑠) // Expand a new literature node for exploration.
+- 11: break
+- 12: end if
+- 13: end while
+- 14: 𝑖 ← GenerateIdea(𝜙) // Generate a scientific idea conditioned on the literature trajectory.
+- 15: 𝑅 ← GRM(𝑖) // Evaluate the idea using the generative reward model.
+- 16: I ← I ∪ {𝑖}, R ← R ∪ {𝑅}
+- 17: for each transition (𝑠𝑡 → 𝑠𝑡+1) in 𝜙 do
+- 18: Compute 𝑅˜𝑡 = 𝑅 · 𝛾𝑇−𝑡 // Apply depth-aware reward decay.
+- 19: Update 𝑄(𝑠𝑡+1 | 𝑠𝑡) by running average
+- 20: Update 𝑃𝑓 (𝑠𝑡+1 | 𝑠𝑡) using Eq. 2
+- 21: Normalize 𝑃𝑓 (· | 𝑠𝑡) over 𝐴(𝑠𝑡)
+- 22: Update global flow 𝐹(𝑠𝑡+1) = 𝐹(𝑠𝑡)·𝑃𝑓 (𝑠𝑡+1 | 𝑠𝑡) // Maintain consistency with global flow constraint.
+- 23: end for
+- 24: end while
+- 25: return I // Generated ideas form the initial population for the evolution stage.
+
+Data Collection and Processing. The raw patent documents are first parsed into structured textual components, including abstracts, claims, and citation metadata. To facilitate structured reasoning over the patent corpus, we employ a LLM to extract key semantic attributes from each patent.
+
+Following the formulation introduced in Section 3.1, each patent 𝑝 ∈ D is mapped into an attribution tuple ⟨A𝑝, F𝑝, S𝑝⟩. Where A𝑝 represents its abstract, is directly extracted from the structured patent metadata. The F𝑝 represents the core technical feature, which is generated by a LLM through analyzing the full patent. The extracted features are further verified by human experts to ensure their correctness and completeness. The S𝑝 denotes its semantic embedding, which is obtained by encoding the patent using BGE-M3 [Chen et al., 2024] as the embedding model.
+
+Dataset Overlap Distribution
+
+10
+
+| | |
+|---|---|
+|AI-Idea-Bench 20<br><br>IdeaBench|25|
+| | |
+| |Overlap = 0|
+| | |
+| | |
+
+8
+
+OverlapRatio(%)
+
+6
+
+4
+
+2
+
+0
+
+0.20 0.40 0.65 0.80 1.00
+
+Similarity Threshold
+
+Figure 5 | Dataset overlap distribution between our literature and two benchmarks across different similarity levels. The overlap ratio rapidly decreases as similarity increases and approaches zero in the high-similarity region, indicating minimal risk of data leakage.
+
+- Algorithm 2 Test-Time Idea Evolution
+
+Input: Initial idea population I0 of size 𝑁, literature graph G, offspring number 𝑀, mutation rate 𝜌, maximum
+
+evolution step 𝑇, convergence threshold 𝜖 Output: Final evolved idea population I∗
+
+- 1: Initialize population I ← I0, evolution step 𝑡 ← 0 // Use the ideas from Alg. 1 as the starting population.
+- 2: Evaluate all ideas in I with GRM to obtain fitness scores // Fitness computation on novelty and feasibility.
+- 3: while 𝑡 < 𝑇 and ΔReward(I) > 𝜖 do
+- 4: 𝑡 ← 𝑡 + 1, O ← ∅ // Generate a new offspring set at each evolution step.
+- 5: for 𝑚 = 1 to 𝑀 do
+- 6: Select two parent ideas 𝑖𝑎, 𝑖𝑏 from I
+- 7: 𝑜 ← Crossover(𝑖𝑎, 𝑖𝑏) // Recombine core technical features of two promising parent ideas.
+- 8: if Bernoulli(𝜌) then
+- 9: L𝑜𝑜𝑑 ← IsolationIsland(G, 𝑖𝑎, 𝑖𝑏)
+- 10: 𝑜 ← Mutate(𝑜, L𝑜𝑜𝑑) // Inject literature from isolated island to encourage conceptual diversity.
+- 11: end if
+- 12: Evaluate offspring 𝑜 with GRM to obtain fitness 𝑅(𝑜)
+- 13: O ← O ∪ {𝑜}
+- 14: end for
+- 15: C ← I ∪ O // Merge parent and offspring ideas into a candidate pool.
+- 16: I𝑛𝑒𝑥𝑡 ← ∅
+- 17: while |I𝑛𝑒𝑥𝑡| < 𝑁 do
+- 18: Sample a random subset S ⊂ C
+- 19: 𝑖∗ ← argmax𝑖∈S 𝑅(𝑖)
+- 20: I𝑛𝑒𝑥𝑡 ← I𝑛𝑒𝑥𝑡 ∪ {𝑖∗}
+- 21: C ← C \ {𝑖∗} // Tournament selection preserves high-fitness ideas for the next generation.
+- 22: end while
+- 23: I ← I𝑛𝑒𝑥𝑡
+- 24: end while
+- 25: return I // Return the final evolved population after convergence.
+
+Data Quality Analysis. We further perform data quality analyses to confirm that our patent-based literature database does not suffer from knowledge leakage. Following Si et al. [2025], we encode all literature (papers and patents) using all-MiniLM-L6-v2 and compute the cosine similarity between our patent-based literature corpus and the target papers in the two benchmarks. We provide the similarity distribution as shown in Figure 5. Most similarity scores fall below the threshold 0.3, with none patent approaching the predefined duplication threshold (0.65). This indicates limited semantic overlap between the two corpora, suggesting that our literature database is largely independent of the benchmark datasets and poses minimal risk of data leakage.
+
+### C. Methodology Details
+
+In this section, we provide further details on the motivation and formulation of the proposed flowguided MCTS, including the flow-guided UCB for forward selection and the backpropagation mechanism. The detailed algorithms are summarized in Algorithm 1 and Algorithm 2.
+
+###### C.1. Flow-Guided Exploration Formulation
+
+We formulate literature exploration as a sequential retrieval process represented by a search tree. Each node corresponds to a partial state 𝑠, and each edge represents an expansion action producing a successor state 𝑠′ ∈ 𝐴(𝑠).
+
+In standard MCTS, action selection relies on empirical value estimation:
+
+𝑁∑︁(𝑠′|𝑠)
+
+1 𝑁(𝑠′|𝑠)
+
+𝑅𝑖 (3)
+
+𝑄(𝑠′|𝑠) =
+
+𝑖=1
+
+where 𝑁(𝑠) and 𝑁(𝑠′|𝑠) denote node and edge visitation counts, respectively. Classical UCB-based selection encourages exploration via uncertainty-driven bonuses:
+
+√︄ 𝑙𝑛𝑁(𝑠)
+
+(4)
+
+𝑈𝐶𝐵(𝑠′|𝑠) = 𝑄(𝑠′|𝑠) + 𝑐
+
+1 + 𝑁(𝑠′|𝑠)
+
+while effective for optimization problems, this mechanism typically concentrates probability mass onto a single dominant trajectory. However, scientific idea generation requires discovering multiple high-quality solutions rather than a single optimum.
+
+To address this limitation, our FlowPIE introduces a global flow variable that redistributes exploration probability across the search tree. FlowPIE associate each state with a non-negative flow quantity 𝐹(𝑠), representing the amount of exploration mass reaching the state. The root node is initialized as 𝐹(𝑠0) = 1 The outgoing flow is decomposed over candidate expansions:
+
+𝐹(𝑠′|𝑠) = 𝐹(𝑠)𝑃𝑓 (𝑠′|𝑠) (5)
+
+where 𝑃𝑓 (𝑠′|𝑠) denotes the relative importance of transition 𝑠 → 𝑠′. This induces the conservation constraint: ∑︁
+
+𝑃𝑓 (𝑠𝑖|𝑠) = 1 (6)
+
+𝑠𝑖∈𝐴(𝑠)
+
+Therefore, we define a probability distribution governing exploration allocation. Replacing uniform exploration in classical UCB with flow-aware allocation yields the proposed Flow-Guided UCB:
+
+√︁𝑁(𝑠) 1 + 𝑁(𝑠′|𝑠)
+
+(7)
+
+𝑈𝐶𝐵(𝑠′|𝑠) = 𝑄(𝑠′|𝑠) + 𝑐 · 𝑃𝑓 (𝑠′|𝑠)
+
+Intuitively, transitions receiving larger global flow probability obtain stronger exploration preference, allowing promising reasoning directions to be revisited without collapsing exploration diversity. The flow probability propagates recursively along trajectories 𝐹(𝑠𝑖+1) = 𝐹(𝑠𝑖)𝑃𝑓 (𝑠𝑖+1|𝑠𝑖), enabling downstream states to inherit global importance.
+
+###### C.2. Reward-Driven Flow Update
+
+Given a rollout terminating with reward 𝑅, temporal credit assignment is performed using a decay mechanism 𝑅˜𝑡 = 𝑅 · 𝛾𝑇−𝑡, where 𝑇 denotes the maximum depth of trajectory, 𝛾 is a discount factor. Transition flow is updated using exponential averaging:
+
+𝑃𝑓 (𝑠′|𝑠) ← (1 − 𝛼)𝑃𝑓 (𝑠′|𝑠) + 𝛼𝑅˜𝑡 (8)
+
+Under this update rule, transitions belonging to high-reward trajectories continuously accumulate larger incoming flow mass.
+
+Consequently, the proposed search process approximates the core principle of Generative Flow Networks, encouraging sampling from a distribution of high-reward solutions rather than converging to a single optimal path.
+
+###### Human Evaluation Criteria: Novelty
+
+Definition and Guideline: Whether the idea is creative and different from existing
+
+works on the topic, and brings fresh insights. You are encouraged to search for related works online. You should consider all papers that appeared online prior to July 2024 as existing work when judging the novelty.
+
+###### Scores
+
+- [1] Not novel at all: there are many existing ideas that are the same
+- [2]
+- [3] Mostly not novel: you can find very similar ideas
+- [4]
+- [5] Somewhat novel: there are differences from existing ideas but not enough to turn into a new paper
+- [6] Reasonably novel: there are some notable differences from existing ideas and probably enough to turn into a new paper
+- [7]
+- [8] Clearly novel: major differences from all existing ideas
+- [9]
+- [10] Very novel: very different from all existing ideas in a very interesting and clever way
+
+###### Human Evaluation Criteria: Feasibility
+
+Definition and Guideline: How feasible it is to implement and execute this idea as a research project? Specifically, how feasible the idea is for a typical CS PhD student to execute within 1-2 months of time. You can assume that we have abundant OpenAI / Anthropic API access, but limited GPU compute.
+
+###### Scores
+
+- [1] Impossible: the idea doesn’t make sense or the proposed experiments are flawed and cannot be implemented
+- [2]
+- [3] Very challenging: there are flaws in the proposed method or experiments, or the experiments require compute/human resources beyond any academic lab
+- [4]
+- [5] Moderately feasible: It can probably be executed within the given time frame but would quire careful planning, efficient use of APIs or some advanced computational strategies to overcome the limited GPU resources, and would require some modifications to the original proposal to make it work
+- [6] Feasible: Can be executed within the given constraints with some reasonable planning
+- [7]
+- [8] Highly Feasible: Straightforward to implement the idea and run all the experiments
+- [9]
+- [10] Easy: The whole proposed project can be quickly executed within a few days without requiring advanced technical skills
+
+- Figure 6 | Human evaluation criteria. Top: The definition and guideline of novelty score. Bottom: The definition and guideline of feasibility score.
+
+### D. Evaluation Details
+
+###### D.1. Benchmark Tasks and Metrics
+
+As mentioned in Section 4.1, we adopt two benchmarks including AI Idea Bench 2025 and IdeaBench. In this section, we provide detailed descriptions of their tasks and metrics to facilitate a better understanding of the experimental results.
+
+AI Idea Bench 2025. This benchmark comprises three main tasks: idea-to-topic matching (I2T), idea-to-idea matching (I2I), and idea multiple-choice evaluation (IMCQ). The first two tasks mainly assess similarity and relevance, measuring the alignment between an idea and the topic, and between an idea and a reference idea. Both tasks leverage an LLM-simulated similarity function to assign scores on a 0–5 scale.
+
+- • I2T: Evaluate whether the generated idea aligns with the specified topic and assess its degree of
+
+alignment with the target paper’s topic, with a LLM-based similarity function 𝐹𝐼𝑇𝐷 : (𝐼𝐵,𝑇topic) → [0, 5], where measures the similarity between an idea 𝑖 ∈ 𝐼𝐵 and the topic 𝑇topic of the target paper. Finally, we leverage the equation below to compute the alignment score of the current baseline B with respect to the topic:
+
+𝑆𝐼𝑇 = max 𝑖𝑗∈𝐼𝐵
+
+𝐹𝐼𝑇𝐷 (𝑖𝑗,𝑇topic) (9)
+
+- • I2I: Compare the generated idea with the motivation and experimental framework of the target
+
+paper using an LLM-based similarity function 𝐹2𝐷𝐼 : (𝐼𝐵, (𝑀𝑇, 𝐸𝑇)) → [0, 5], where measures the similarity between an idea 𝑖 ∈ 𝐼𝐵 and the motivation 𝑀𝑇 and experimental framework 𝐸𝑇. Finally, we compute the score of the current baseline B using the equation below:
+
+𝑆𝐼2 = max 𝑖𝑗∈𝐼𝐵
+
+𝐹2𝐷𝐼(𝑖𝑗, (𝑀𝑇, 𝐸𝑇)) (10)
+
+The final task IMCQ focuses on evaluating the quality of generated ideas by constructing a multiplechoice question for each query. Each question comprises four options, where 𝐿1 and 𝐿2 are drawn from influential prior work exhibiting the closest conceptual alignment with the target paper T and the 𝐿3 is the paper that maintains the highest degree of similarity to all target papers in the dataset. Finally, the baseline-generated idea is incorporated as the answer option 𝐿4 to form the complete option set 𝐶 = {𝐿1, 𝐿2, 𝐿3, 𝐿4}. The answers of each question 𝑅𝐵 = {𝑟1, 𝑟2, . . . , 𝑟𝑛} produced by baseline 𝐵 are compared with the correct option set 𝐴𝑐 (corresponding to baseline’s idea) to compute an accuracy-based score:
+
+1, if 𝐴𝑐 ∩ 𝑅𝐵 ≠ ∅, 0, otherwise.
+
+(11)
+
+𝑆𝑀 =
+
+The selected option is regarded as the best among the four candidates. A higher accuracy indicates that our idea is selected more frequently, reflecting stronger capability of the baseline.
+
+IdeaBench. This benchmark provides two types of metrics: similarity and Insight Score, with the latter assessing novelty and feasibility. The similarity-based metrics comprise two components: semantic similarity, evaluated using the F1 score of BERTScore with DeBERTa-xlarge-MNLI, and idea overlap, which measures the overlap between the generated idea and the abstract of the target paper on a 0–10 scale, accompanied by an explanation. Notably, the original paper reports a practical upper limit of 0.718 for semantic similarity.
+
+The Insight Score is evaluated from a ranking perspective, which combined 𝑚 ideas from target papers and 𝑛 generated ideas from baselines. For each query, we leverage an LLM to rank the n generated ideas together with one target idea. If all generated ideas are ranked higher than the target idea, we assign 𝑟target𝑖|𝑞 = 𝑛 + 1. Conversely, if the target idea outperforms all generated ideas, its rank is 𝑟target𝑖|𝑞 = 1. Otherwise, we use its actual ranking position to compute the Insight Score:
+
+###### ∑︁𝑚
+
+𝑟target𝑖|𝑞 − 1 𝑛
+
+1
+
+(12)
+
+𝐼(𝐿𝐿𝑀, 𝑞) =
+
+𝑚
+
+𝑖=1
+
+Where the novelty and feasibility Insight Scores depend on the specific evaluation prompt. During benchmark evaluation, to ensure stable scoring results and reduce randomness in model outputs, we set the LLM judge’s decoding temperature to 0.2.
+
+###### Human Evaluation Criteria: Excitement
+
+Definition and Guideline: How likely the proposed idea is going to work well (e.g., better than existing baselines).
+
+###### Scores
+
+- [1] Poor: You cannot identify the contributions of this idea, or it’s not interesting at all and you would fight to have it rejected at any major AI conference
+- [2]
+- [3] Mediocre: this idea makes marginal contributions and is very incremental
+- [4]
+- [5] Leaning negative: it has interesting bits but overall not exciting enough
+- [6] Learning positive: exciting enough to be accepted at a major AI conference, but still has some weaknesses or somewhat incremental
+
+- [8] Exciting: would deepen the community’s understanding or make major progress in this research direction
+- [9]
+- [10] Transformative: would change the research field profoundly and worth a best paper award at major AI conferences
+
+###### Human Evaluation Criteria: Expected Effectiveness
+
+Definition and Guideline: How feasible it is to implement and execute this idea as a research project? Specifically, how feasible the idea is for a typical CS PhD student to execute within 1-2 months of time. You can assume that we have abundant OpenAI / Anthropic API access, but limited GPU compute.
+
+###### Scores
+
+- [1] Extremely Unlikely: The idea has major flaws and definitely won’t work well
+- [2]
+- [3] Low Effectiveness: The idea might work in some special scenarios but you don’t expect it to work in general
+- [4]
+- [5] Somewhat ineffective: There might be some chance that the proposed idea can work better than existing baselines but the improvement will be marginal or inconsistent
+- [6] Somewhat effective: There is a decent chance that the proposed idea can beat existing baselines by moderate margins on a few benchmarks
+- [7]
+- [8] Probably Effective: The idea should offer some significant improvement over current methods on the relevant benchmarks
+- [9]
+- [10] Definitely Effective: You are very confident that the proposed idea will outperform existing methods by significant margins on many benchmarks
+
+- Figure 7 | Human evaluation criteria. Top: The definition and guideline of excitement score. Bottom: The definition and guideline of expected effectiveness score.
+
+###### D.2. Reward Metrics
+
+In our FlowPIE, we primarily use novelty and feasibility as reward metrics in the generative reward model, which assigns 1–5 scale scores with a reasoning chain-of-thought to provide interpretable justifications. Novelty measures the degree to which a generated idea introduces new scientific concepts or combinations beyond the existing literature, reflecting its potential to contribute original innovations. Feasibility evaluates whether the proposed idea is technically implementable and logically consistent given current technological capabilities. These two metrics are widely adopted in prior research on automated scientific idea generation such as SCIPIP [Wang et al., 2024] and Research Agent [Baek et al., 2025] also use novelty and feasibility as key criteria to assess the quality of
+
+Method I2T I2I IMCQ Backbone: GPT-4o-mini (released July 2024)
+
+SCIPIP 4.18±0.662 3.68±0.383 0.464 Research Agent 4.08±0.675 3.62±0.555 0.504 FlowPIE (Ours) 4.18±0.544 4.15±0.333 0.708
+
+Backbone: Qwen2.5-7B-Instruct (released Sep. 2024)
+
+SCIPIP 4.02±0.781 3.80±0.434 0.463 Research Agent 3.98±0.539 3.76±0.412 0.442 FlowPIE (Ours) 4.05±0.530 3.87±0.420 0.508
+
+Backbone: LLaMA3.1-8B-Instruct (released July 2024)
+
+SCIPIP 3.37±0.613 3.82±0.393 0.452 Research Agent 3.26±0.725 3.85±0.314 0.433 FlowPIE (Ours) 3.68±0.554 3.89±0.448 0.486
+
+Table 10 | Performance comparison across different LLM backbones on the AI Idea Bench 2025.
+
+ideas, balancing originality with practical viability. The detailed reward criterias and LLM evaluation prompts are provided in Figure 11.
+
+###### D.3. Human Evaluation
+
+Evaluation Criteria. We follow the human evaluation protocol for LLM-generated ideas proposed by Si et al. [2025], adopting a four-dimensional evaluation framework that includes novelty, feasibility, excitement, and expected effectiveness. We provide detailed evaluation guideline and criteria for human experts, including metric definitions and the interpretation of each score on the 1–10 scale, as shown in Figure 6 and 7.
+
+Details of Human Experts. We recruit three PhD students majoring in Computer Science, each of whom has published papers in top-tier AI conferences and has served as a reviewer, ensuring the expertise and reliability of the evaluation. We provide each evaluator with anonymized ideas in random order to ensure that they are unaware of their sources, thereby enabling a fair comparison.
+
+### E. More Analysis
+
+###### E.1. Effects of Different LLM Backbones
+
+As shown in Table 10, we conduct additional experiments on AI Idea Bench 2025 using different backbone models, including Qwen2.5-7B-Instruct (released in September 2024) and LLaMA3.1-8BInstruct (released in July 2024). We intentionally avoid using the most recent open-source models (e.g., the Qwen3.5 series) because of potential data leakage in scientific idea generation benchmarks, where model pretraining data may include papers from the test set. The consistently superior results across different backbone models demonstrate that FlowPIE is compatible with diverse LLMs. Although its performance is still bounded by the capability of the underlying model, FlowPIE consistently delivers improvements over the corresponding backbone.
+
+###### E.2. Reward-Benchmark Consistency Analysis
+
+To evaluate cross-benchmark consistency, we compute Kendall’s W across all metrics and assess rank correlation between average reward and AI Idea Bench 2025. We observe moderate but statistically
+
+significant inter-metric agreement (Kendall’s 𝑊 = 0.326, 𝑝-value = 0.023), indicating partial yet non-random ranking consistency across complementary evaluation dimensions. In addition, average reward exhibits strong correlation with AI Idea Bench 2025 (Kendall’s tau 𝜏 = 0.8667, 𝑝-value = 0.0167), suggesting robust external alignment. Notably, FlowPIE consistently lies on the Pareto frontier, reflecting balanced multi-objective performance rather than metric-specific optimization.
+
+### F. Prompts
+
+Initial Idea Population Construction. We provide the initial idea generation prompt, as shown in Figure 8.
+
+###### Initial Idea Generation Prompt
+
+You are an expert in cross-domain innovation and idea generation. Your task is to generate a scientific idea that aligns with the user’s scientific intent. The objective is to produce ideas that are technically specific, experimentally verifiable, and potentially claim-supportive rather than abstract or purely descriptive. The proposed idea should address a clear scientific problem, produce a measurable and verifiable technical effect, and demonstrate non-trivial scientific value that could be considered meaningful in a paper peer review context. User Query:
+
+{query} And the following materials serve as background context and scientific inspiration. They should not be summarized, paraphrased, or directly reused. Extracted technical elements
+
+{technical_elements}
+
+###### Reference patent-based literature metadata:
+
+{ref_info} Output Requirements: Generate one scientific idea together with a experimental validation plan. The output must contain the following five sections:
+
+- • (A) Core Method Description: Briefly summarize the proposed idea and the scientific problem it addresses.
+- • (B) Functional Principle: Describe the key scientific and functional principle. When appropriate, include 1–2 formulas or models representing the underlying logic.
+- • (C) Concrete Workflow: Provide a concrete workflow describing the operation of the proposed idea.
+- • (D) Potential Innovation Directions: List 3–5 potential scientific direction for future work.
+- • (E) Experimental Design: Design a experiment plan to validate the effect of the idea compared with baselines. The design could specify: Experimental Setup (such as Backbone Models, hyperparameter and so on), Variables (Independent variables, Dependent variables), Evaluation Metrics and Baselines.
+
+The idea should focus on scientific principles and effects, rather than just step-by-step engineering implementation Output Format Return only the five sections (A–E) described above. The experimental design should clearly demonstrate how the proposed idea leads to measurable scientific improvements.
+
+- Figure 8 | Prompt for the initial idea population generation.
+
+Parent Ideas Crossover. We provide the prompt for applying the crossover operator to parent ideas, as shown in Figure 9.
+
+Idea Mutation. We provide the prompt for applying the mutation operator to generated ideas, as shown in Figure 10.
+
+###### Ideas Crossover Prompt
+
+You are an expert innovation designer. Your task is to intelligently fuse two scientific ideas into one superior idea, leveraging the provided literature context including both relevant literature and diverse island literature. Research Topic:
+
+{topic}
+
+Isolation Island Literature Context: {literature_context}
+
+- Scientific Idea A(score:{idea_a.score}):
+
+- {idea_a.text}
+
+Scientific Idea B(score:{idea_b.score}):
+
+- {idea_b.text} Requirement:
+
+- 1. Carefully analyze both ideas and identify their strengths
+- 2. Study the literature context to understand existing science and identify gaps
+- 3. Intelligently merge the best elements from both ideas
+- 4. Leverage insights from island literature to enhance novelty and diversity
+- 5. Create a NEW, COHERENT idea that combines their advantages
+- 6. Ensure all five parts (A-E) are present and well-integrated
+- 7. The new idea should be more innovative, feasible, and diverse than either parent Output Format:
+
+- • (A) Core Method Description(Your fused core method)
+- • (B) Functional Principle(Your fused functional principles)
+- • (C) Concrete Workflow(Your fused workflow)
+- • (D) Potential Innovation Directions(Your fused innovation points)
+- • (E) Experimental Design(Your fused experimental design)
+
+- Figure 9 | Prompt for the parent ideas crossover operator.
+
+Initial Idea Assessment and Fitness Evaluation using GRM. We provide the prompt used for novelty and feasibility assessment by the generative reward model, as shown in Figure 11. The fitness evaluation adopts the same prompt as that used in the GRM-based initial idea assessment, as shown in Figure 11.
+
+### G. Examples
+
+We provide the full version of our demonstration of the idea in Table 12, DMGV, generated by FlowPIE, whose topic is improving reasoning capabilities in large language models. The central idea is to abstract recurrent sub-reasoning patterns into reusable reasoning macros and improve the reliability of their reuse through lightweight verification. This directly targets a central challenge in multi-step LLM reasoning: error propagation and accumulation in intermediate reasoning steps, while repeatedly generating similar reasoning fragments is computationally inefficient. By combining macro reuse with verifier-guided checking, the generated proposal offers a plausible direction for improving both reasoning accuracy and efficiency.
+
+Additionally, we provide several concise summaries of generated ideas across multiple domains, particularly in Health & Medicine, Genetics & Molecular Biology, and Environmental Sciences, as shown in Table 13, 14 and 15.
+
+###### Idea Mutation Prompt
+
+You are an expert innovation improver. Your task is to enhance and mutate an existing scientific idea to make it more novel and technically sound, leveraging diverse literature information. Research Topic:
+
+{topic}
+
+Isolation Island Literature Context: {literature_context}
+
+Original Idea(score:idea.score): {idea.text}
+
+###### Requirement:
+
+- 1. Identify potential weaknesses or areas for improvement
+- 2. Study the literature context to find inspiration from both relevant and island literature
+- 3. Introduce novel scientific elements or approaches inspired by diverse literature sources
+- 4. Enhance the innovation level while maintaining feasibility
+- 5. Improve clarity and scientific depth
+- 6. Make sure all five parts (A-E) are strengthened
+- 7. Incorporate insights from island literature to increase diversity and novelty Output Format:
+
+- • (A) Core Method Description(Your improved core method)
+- • (B) Functional Principle(Your improved functional principles)
+- • (C) Concrete Workflow(Your improved workflow)
+- • (D) Potential Innovation Directions(Your improved innovation points)
+- • (E) Experimental Design(Your improved experimental design)
+
+- Figure 10 | Prompt for the parent ideas mutation operator.
+
+###### GRM Novelty Score Assessment Prompt
+
+You are a patent examination expert, please evaluate the "novelty of the scientific idea" for the following ideas. You MUST output your result in valid JSON format only. Idea content:
+
+{idea.text} Rating criteria: Novelty(1-5) definition: How original and innovative the idea is compared to existing research.
+
+- • 5: Extremely novel and groundbreaking. The idea introduces new, unexplored concepts or radically shifts the direction of the field.
+- • 4: Highly original. The idea is new and innovative but may still be building upon existing concepts or research.
+- • 3: Moderately original. The idea brings some new insights but is similar to existing work or follows well-established concepts.
+- • 2: Slightly original. The idea offers minor variations or incremental improvements to existing research but lacks substantial novelty.
+- • 1: Not original. The idea closely resembles existing research with little to no innovation.
+
+###### Output Format:
+
+{{ "novelty_score": <decimal number between 1 and 5> }}
+
+###### GRM Feasibility Score Assessment Prompt
+
+You are a patent examination expert, please evaluate the "feasibility of the scientific idea" in terms of logic, consistency, and combinatorial reasonableness for the following ideas. You MUST output your result in valid JSON format only. Idea content:
+
+{idea.text} Rating criteria: Feasibility(1-5) definition: How realistic and practical the idea is to implement in current scientific and technological conditions.
+
+- • 5: Fully feasible. The idea can be realistically executed with existing methods, data, and resources, and the plan for implementation is clear and practical.
+- • 4: Highly feasible. The idea is feasible with current technologies but may require some advancements or additional resources.
+- • 3: Moderately feasible. The idea faces significant practical challenges, requiring considerable advancements in technology or data.
+- • 2: Slightly feasible. The idea is difficult to implement with current resources and would need significant breakthroughs.
+- • 1: Not feasible. The idea is impractical and unlikely to be implemented with current technologies or methods.
+
+###### Output Format:
+
+{{ "feasibility_score": <decimal number between 1 and 5> }}
+
+- Figure 11 | Prompt for the generative reward model for novelty and feasibility evaluation.
+
+Input topic: The topic of this paper is improving reasoning capabilities in LLMs. Final Idea: Dynamic Macro-Guided Verification (DMGV): A Modular Reasoning Augmentation Framework for LLMs
+
+- (A) Core Concept Description Introduce a modular reasoning augmentation for LLMs called Dynamic Macro-Guided Verification (DMGV). DMGV automatically discovers, compresses, and reuses recurrent sub-reasoning patterns (¨reasoning macros¨) from LLM chain-of-thought traces, and pairs those macros with a lightweight verifier that performs targeted, symbolic or model-based checks on macro outputs. At inference time the LLM’s generator composes higherlevel proofs by invoking validated macros (rather than re-generating low-level steps), and the verifier selectively validates macro applications and issues localized repairs. The invention addresses the technical problem of error accumulation and inefficiency in multi-step LLM reasoning: by (1) turning repeated sub-proofs into compact, validated operators, and (2) constraining verification to macro interfaces, DMGV reduces cumulative hallucination, lowers tokens/computation for repeated reasoning, and yields measurable improvements in final-answer accuracy and calibration.
+
+- (B) Conceptual Functional Principle Key principles:
+
+- • Pattern discovery: across many proof traces, recurrent sub-chains 𝑓𝑖(𝑥) ≈ 𝑦 (where 𝑥 are sub-problem inputs and 𝑦 their subproof outcomes) are clustered and compressed into parameterized macros 𝑚𝑗(·;𝜃𝑗) that approximate these sub-chains with bounded approximation error 𝜀𝑗.
+- • Interface verification: each macro exposes a small, checkable interface 𝐼𝑗 (inputs, claimed invariants, outputs). A verifier 𝑉 executes a fast check 𝐶𝑗 : 𝐼𝑗 → {pass, fail, repair-hint} that tests logical consistency or symbolic constraints cheaply.
+- • Composition with guarded application: the generator 𝐺 composes macros and raw steps. DMGV
+
+enforces that application of macro 𝑚𝑗 is only accepted if either 𝐶𝑗 passes or a bounded re-synthesis fallback is invoked.
+
+A compact formalization:
+
+Let 𝐺 produce a chain-of-thought trace 𝑇 = [𝑠1, . . . , 𝑠𝑛]. Identify subchains 𝑆𝑘 = 𝑠𝑎 . . . 𝑠𝑏 that map to function 𝑓𝑘 : 𝑋𝑘 → 𝑌𝑘. Learn macro 𝑚𝑗 parameterizing a mapping 𝑚𝑗(𝑥;𝜃𝑗) ≈ 𝑓𝑘(𝑥), with empirical error 𝜀𝑗 = 𝔼[dist(𝑚𝑗(𝑥), 𝑓𝑘(𝑥))]. Verifier applies 𝐶𝑗(𝑥, 𝑚𝑗(𝑥)) and returns pass if 𝑃(𝐶𝑗 | correct) ≥ 𝜏. Expected end-to-end error reduction when using macros: if macros are applied with reuse frequency 𝑟 and verifier true-positive pass rate 𝑝, approximate error reduction Δ ≈ 𝑟·(𝜀raw−𝜀𝑗)· 𝑝, where 𝜀raw is average raw sub-chain error without macro reuse.
+
+- (C) High-Level Conceptual Workflow
+
+- 1. Trace collection phase (offline or continual): Collect many generator traces 𝑇𝑖 for training problems or live tasks; annotate subchain boundaries by structural cues or automatic segmentation (e.g., argument/operation boundaries).
+- 2. Subchain clustering and macro synthesis: Cluster similar subchains by semantic signature (input/output shape, predicates) and distill each cluster into a macro 𝑚𝑗 with a compact parameterization and a succinct interface 𝐼𝑗.
+- 3. Verifier construction: For each macro, design a fast verifier 𝐶𝑗 that checks one or more invariants (e.g., arithmetic equality, type constraints, unit consistency, symbolic simplification, or shallow model prediction). Associate a verifier confidence function conf𝑗.
+- 4. Deployment (inference): For a new query, 𝐺 composes a reasoning plan. When a subgoal matches a macro signature, invoke 𝑚𝑗 instead of expanding the full sub-chain; run 𝐶𝑗 on the macro’s output. If 𝐶𝑗 passes with conf𝑗 ≥ 𝜏, accept and continue; if it fails or is low-confidence, fallback to re-synthesizing the sub-chain with 𝐺 (optionally producing a repaired macro example).
+- 5. Continuous update: Failed or borderline applications are used to refine 𝑚𝑗 (adjust 𝜃𝑗) and to improve 𝐶𝑗 thresholds; successful reuse increments reuse counters for supervisor ranking.
+
+- (D) Potential Innovation Directions
+
+- 1. Formalized Macro Contracts: Define formal pre/post-conditions (contracts) for macros and synthesize
+
+verifiers 𝐶𝑗 with SMT/symbolic engines for domains where symbolic checks are tractable (e.g., algebra, type systems).
+
+- 2. Cross-Domain Macro Transfer: Investigate meta-features for macro signature representation enabling reuse across tasks and modalities (textual proofs ↔ code transformations ↔ symbolic math).
+- 3. Resource-Aware Macro Selection: Add an energy/latency cost model that chooses between macro invocation and raw re-synthesis to optimize a cost-accuracy objective under latency budgets.
+- 4. On-Device Macro Lifecycles: Enable light-weight on-device macro discovery and caching with privacypreserving aggregation across devices (federated macro statistics).
+- 5. Verifier Co-training: Co-train verifier 𝑉 with generator 𝐺 to improve verifier calibration and enable provable probabilistic guarantees (e.g., PAC-style bounds on macro error under verification).
+
+- (E) Theoretical Experimental Design Objective: Validate that DMGV (dynamic macro discovery + verifier-guided reuse) improves multi-step reasoning accuracy, reduces token/computation usage, and improves calibration relative to standard chainof-thought (CoT) and self-consistency baselines. Experimental setup
+
+- • Generator backbone: a reasonably capable open LLM (e.g., LLaMA-2 13B or equivalent) used for generation and macro synthesis. Use same checkpoint for all methods to ensure fairness.
+- • Verifier model: a lightweight transformer (e.g., 200M–700M) fine-tuned for verification tasks per domain, plus domain-specific symbolic checkers where available.
+- • Macro encoder/parameterizer: a compact adapter (10M–50M params) which maps macro inputs to outputs.
+- • Compute budget: fix average allowed tokens-per-query and wall-clock time budget to model deployment constraints.
+- • Datasets (unseen evaluation sets): use held-out splits from multi-step reasoning benchmarks: GSM8K (arithmetic), Proof Writer (formal reasoning), StrategyQA (multi-hop), and a code-synthesis multi-step reasoning subset (e.g., problem-to-algorithm translation tasks). Use separate corpus for macro discovery (training/validation) and unseen tasks for testing to measure generalization.
+
+Independent variables
+
+- • Method:
+
+- – Baseline A: CoT prompting (chain-of-thought) with standard temperature (0.7).
+- – Baseline B: CoT + self-consistency (N samples, majority voting).
+- – Variant C: DMGV-static — macros synthesized offline once from training traces, used at inference without further refinement; verifier present.
+- – Variant D: DMGV-dynamic — macros synthesized and updated online with verifier-driven repair (full proposed method).
+
+- • Verifier fidelity (for DMGV experiments):
+
+- – Low: verifier with conservative pass threshold 𝜏low.
+- – High: verifier with higher threshold 𝜏high.
+
+- • Macro reuse budget 𝑟max: maximum macros allowed per query (tune values: 0, 1, 3, 10).
+
+Dependent variables / measurable indicators
+
+- • Final answer accuracy (primary): fraction of correct final answers on each dataset.
+- • Token consumption per query: average number of model tokens generated (generator + macro expansion).
+- • Wall-clock inference latency per query.
+- • Chain length reduction: average number of low-level reasoning steps synthesized vs baseline.
+- • Verification pass rate: fraction of macro applications accepted without fallback.
+- • Calibration/Brier score: calibration of model confidence on final answers.
+- • Error localization: proportion of failures localized to specific macro applications (for analysis).
+- • Computational cost: compute flops or approximate cost per query.
+- • Statistical significance: use paired bootstrap resampling to test differences in accuracy.
+
+###### Procedures
+
+- • Macro discovery: Use a held-out set of training problems to produce traces via 𝐺. Apply the DMGV
+
+clustering and synthesize macros 𝑚𝑗. For DMGV-dynamic, allow online updates during evaluation by feeding back failed macro instances; for DMGV-static, freeze library once.
+
+- • Baseline runs: Run Baseline A and B over evaluation sets, collect metrics (accuracy, tokens, latency).
+- • DMGV runs: Evaluate DMGV-static and DMGV-dynamic under multiple verifier fidelity settings and reuse budgets. Ensure identical inference temperature and beam settings for generator across runs.
+- • Ablations:
+
+- – No-verifier ablation: DMGV with macros but no verifier (accept all macros).
+- – No-compression ablation: use discovered subchains but do not compress; instead, cache and replay full subchains.
+- – Vary 𝑟max: measure trade-offs.
+
+- • Statistical analysis: For each metric, compute mean ± 95% CI across queries. Use paired statistical tests comparing DMGV-dynamic to best baseline (likely CoT+self-consistency) on accuracy and token savings.
+
+###### Expected measurable effects (testable hypotheses)
+
+- • H1 (accuracy): DMGV-dynamic increases final-answer accuracy over Baseline B by an absolute margin
+
+Δacc ≥ 5–15% on deep multi-step tasks (ProofWriter, GSM8K) due to reduced error accumulation in reused macros.
+
+- • H2 (efficiency): DMGV reduces average tokens per query by at least 20% when macros are frequently reused (𝑟 ≥ 3) versus Baseline A, while maintaining or improving accuracy.
+- • H3 (calibration): DMGV with verifier improves calibration (lower Brier score) because verification provides meaningful pass/fail signals that correlate with correctness.
+- • H4 (targeted repair): Ablations will show that verifier presence is critical: no-verifier DMGV shows token reduction but loses accuracy, demonstrating verifier’s key role in maintaining correctness.
+
+###### Success criteria to support patent-claim-level benefit
+
+- • Statistically significant improvement in accuracy (𝑝 < 0.05 paired bootstrap) versus CoT+selfconsistency on at least two of the four datasets.
+- • Measurable token/latency savings while meeting or exceeding baseline accuracy in deployed-cost budget scenarios.
+- • Demonstration that verifier-driven online macro refinement reduces subsequent per-macro error rate 𝜀𝑗 by a measurable fraction (e.g., 30–60%) across update cycles.
+
+This experimental design ties the core invention — validated, compressed reasoning macros with selective verification and repair — to concrete, measurable improvements in accuracy, efficiency, and calibration, and includes ablations to isolate the contribution of discovery, compression, and verification.
+
+- Table 12 | Full demonstration of an idea generated by FlowPIE.
+
+Domain: Health & Medicine Final Idea Title: A Tumor-Core–Activated Therapeutic Strategy Summary: The proposed strategy introduces a tumor-core–activated neutrophil reprogramming blockade that selectively prevents infiltrating neutrophils from converging into the pro-angiogenic dcTRAIL-R1+ T3 state identified in the target paper. Rather than depleting neutrophils systemically or blocking VEGF broadly, this approach acts upstream at the level of fate determination, using the hypoxic–glycolytic tumor niche as a spatial trigger to locally release an inhibitor against a critical epigenetic or transcriptional effector of the T3 program. The central advantage is that it suppresses tumor-promoting neutrophil plasticity with spatial precision while preserving peripheral neutrophil host-defense functions, thereby overcoming the major limitations of pan-neutrophil depletion and conventional anti-angiogenic therapy. Conceptually, the strategy combines (1) microenvironment-selective activation, ensuring that the payload is engaged primarily within the tumor core; (2) neutrophil fate interception, blocking the chromatin remodeling and transcriptional induction required for dcTRAIL-R1 and VEGF𝛼 upregulation; and (3) functional antitumor consequence, reducing T3 accumulation, intratumoral angiogenesis, and tumor growth. By targeting the newly defined deterministic reprogramming axis rather than only its downstream effector output, this framework offers a more mechanism-based, selective, and potentially safer therapeutic paradigm for modulating tumor-associated neutrophils in solid cancers.
+
+- Table 13 | Demonstration of an idea generated by FlowPIE in the Health & Medicine domain.
+
+Domain: Genetics & Molecular Biology Final Idea Title: A system-and-method for "sticker-resolved flow-activation spectroscopy" of biomolecular condensates
+
+Summary: The proposed framework introduces sticker-resolved flow-activation spectroscopy (SRFAS), a combined experimental–computational system that quantitatively separates the energetic barrier governing condensate network rearrangement from the chain-length–dependent kinetic prefactors that control relaxation dynamics. Instead of relying on conventional rheology that conflates binding energetics with polymer architecture, SRFAS integrates temperature-dependent microrheology, sequence-tunable transient probe tracers, and Bayesian inversion of coarse-grained transient-network models to independently infer two key parameters: the flow activation energy (𝐸𝑎), reflecting sticker binding free energies, and the kinetic prefactor (𝜏0(𝑁, 𝑣, 𝑐)), reflecting chain length, valence, and network topology. This separation enables direct recovery of molecular-scale interaction energetics from purely bulk and tracer-level rheological observables, providing predictive control over macroscopic properties such as viscosity, relaxation time, and molecular diffusion in biomolecular condensates. By coupling experimentally measurable viscoelastic spectra, tracer diffusion, and residence-time distributions with model-based inference, the system delivers experimentally verifiable, sequence-to-rheology mapping that surpasses conventional microrheological approaches in both parameter identifiability and predictive accuracy. As a result, SRFAS establishes a general platform for rational design, screening, and mechanistic analysis of biomolecular condensates and associative polymer materials, with applications ranging from understanding disease-related condensate mutations to engineering synthetic phase-separating biomaterials with programmable dynamic properties.
+
+- Table 14 | Demonstration of an idea generated by FlowPIE in the Genetics & Molecular Biology domain.
+
+Domain: Environmental Sciences Final Idea Title: A transferable Diagnostic-and-Prediction system for ecosystem functional loss under rare short-term droughts
+
+Summary: The proposed DP-Extreme (Diagnostic-and-Prediction system for Extreme drought impacts) introduces a transferable framework that quantitatively predicts ecosystem productivity loss under rare short-term drought events and guides optimized mitigation decisions. Unlike conventional precipitation–productivity models that assume linear sensitivity to rainfall deficits, DP-Extreme explicitly incorporates drought rarity (return period), pre-drought resource stocks (soil moisture and nutrients), and community resilience traits (biodiversity and rooting depth) into a hierarchical scaling law that captures the nonlinear sensitivity of aboveground net primary production (ANPP) to extreme pulses. By combining standardized pulse-exclusion experiments across environmental gradients with Bayesian parameter inference, the system estimates sitespecific parameters that generate an Extreme Sensitivity Index (ESI)—a predictive indicator of expected ANPP loss for rare drought scenarios (e.g., 1-in-100-year events). This enables threshold-triggered mitigation strategies such as targeted irrigation or grazing control that activate only when predicted loss exceeds critical levels. The key advantage is that DP-Extreme decouples drought rarity effects from ecological buffering traits, producing substantially more accurate forecasts of ecosystem productivity loss and enabling resource-efficient interventions. In validation experiments, the system is designed to demonstrate significantly lower prediction error and improved decision efficiency compared with conventional climate-only or linear sensitivity models, establishing a practical decision-support platform for managing ecosystem resilience under increasingly frequent extreme climate events.
+
+- Table 15 | Demonstration of an idea generated by FlowPIE in the Environmental Sciences domain.
+
