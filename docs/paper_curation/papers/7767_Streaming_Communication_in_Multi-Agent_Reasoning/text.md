@@ -1,0 +1,2032 @@
+# arXiv:2606.05158v1[cs.CL]3Jun2026
+
+## Streaming Communication in Multi-Agent Reasoning
+
+### Zhen Yang1, Xiaogang Xu3, Wen Wang3, Cong Chen3, Xander Xu2*, Ying-Cong Chen1,4* 1HKUST(GZ), 2Alibaba Group, 3ZJU, 4HKUST
+
+zheny.cs@gmail.com, yingcongchen@ust.hk
+
+### Abstract
+
+Multi-agent reasoning systems adopt a “generate-then-transfer” paradigm that forces end-to-end latency to scale linearly with pipeline depth. We introduce STREAMMA, a multi-agent reasoning system that streams each reasoning step to downstream agents as soon as it is generated, pipelining adjacent agents and thus reducing latency. Surprisingly, this pipelining also improves effectiveness: because multi-step reasoning quality is non-uniform and early steps are more reliable than later ones, working with these reliable early steps instead of the full chain prevents error-prone late steps from misleading downstream agents. We formalize both advantages with the first closed-form joint analysis of stream, serial, and single protocols, deriving the effectiveness ordering, speedup upper bound, and cost ratio. Across eight reasoning benchmarks spanning mathematics, science, and code, two frontier LLMs (Claude Opus 4.6 and GPT-5.4), and three topologies (Chain, Tree, Graph), STREAMMA outperforms both baselines (avg. +7.3pp, max +22.4pp on HMMT2026; Claude Opus 4.6-high). Beyond these contributions, we discover a “step-level scaling law”: increasing per-agent steps consistently improves both effectiveness and efficiency, a new scaling dimension orthogonal to and composable with agent-count scaling. Our project page and code are available.
+
+- (a) Serial Protocol
+- (b) Stream Protocol
+
+| | | | |
+|---|---|---|---|
+
+###### 😊 : Effective + Efficient !
+
+| | |
+|---|---|
+
+| | |
+|---|---|
+| | |
+
+Figure 1: Communication protocols. (a) Serial: the downstream agent receives the upstream agent’s complete response before execution. (b) Stream: the downstream agent receives each upstream reasoning step as it is generated, enabling pipelined execution.
+
+existing frameworks share the same communication assumption: an upstream agent must finish its entire response before passing it downstream. This “generate-then-transfer” (Serial, Fig. 1a) protocol forces downstream agents to remain idle and latency to scale with pipeline depth. While streaming partial outputs is standard within a single LLM (Tong et al., 2026), between agents the transfer unit has remained a complete response, and its effect on effectiveness remains underexplored.
+
+### 1 Introduction
+
+A natural question arises: can we forward partial outputs before the upstream agent finishes? Conventional wisdom holds that incomplete context must hurt downstream quality: “more information yields better decisions.” Yet this intuition does not always hold: we find that in multi-step reasoning, receiving less context can improve downstream reasoning quality. We propose STREAMMA (Fig. 1b), a multi-agent reasoning system built on Stream, a reasoning-step-level communication protocol that shifts the transmission unit from com-
+
+Multi-agent systems have emerged as a paradigm for complex reasoning: agents are organized as nodes of a directed acyclic graph (DAG), with each directed edge governing information propagation from one agent to its successor, leveraging specialization and cross-verification to surpass a single model (Wu et al., 2023; Hong et al., 2024; Qian et al., 2024), with growing benefits as the number of agents increases (Qian et al., 2025). Yet
+
+*Co-corresponding authors.
+
+plete responses to reasoning steps, forwarding each step once produced, pipelining upstream and downstream agents. Across eight benchmarks in mathematics, science, and code, STREAMMA outperforms Serial by an average +7.3pp (peak +22.4pp on HMMT2026, Claude Opus 4.6-high) while reducing latency: less waiting, yet better reasoning.
+
+Why does the downstream agent benefit from only the early reasoning steps more than the full response? On complex reasoning tasks, step-level quality is position-dependent: early steps tend to be reliable, whereas later steps degrade (Wu et al.,
+
+- 2025). The Serial protocol forces the downstream agent to condition on the entire response, including its error-prone late steps. Stream lets it begin from the most reliable prefix; by the time degraded steps arrive, the agent has formed its own independent reasoning trajectory, diluting their impact. Controlled step-level perturbations cross-validate this asymmetry: corrupting only the tail steps of an upstream reasoning trajectory leaves Stream nearly intact and ahead of Serial by +24.0pp, while corrupting only its head steps flips the gap to −36.0pp (Sec. 4.2.3). We formalize this mechanism: Theorem 1 gives an effectiveness ordering across all six regimes, predicting Stream optimal when early steps are reliable and late ones degrade; Theorem 2 and Theorem 3 derive the speedup upper bound and exact cost ratio under LLM serving conditions.
+
+Beyond mechanism and theory, our experiments uncover a second scaling axis, orthogonal to the well-studied agent-count axis: at fixed agent count A, increasing per-agent steps S consistently improves effectiveness and speedup, defining a steplevel scaling law fully compositional with agentcount scaling. On HMMT2026 with GPT-5.4medium, scaling A alone from 2 to 64 lifts effectiveness from 58.3% to 68.2%; further increasing S to 64 pushes it to 73.5% with 26.9× wall-clock speedup (83% of the Theorem 2 upper bound). STREAMMA thus simultaneously serves as a reasoning enhancer and an inference accelerator.
+
+In summary, our contributions are as follows:
+
+- • Protocol. We introduce Stream, a reasoningstep-level communication protocol that forwards each reasoning step upon completion, pipelining upstream and downstream agents over arbitrary DAG topologies. Stream improves effectiveness while reducing latency.
+- • Theory. We present the first closed-form joint analysis of Stream, Serial, and Single proto-
+
+- cols: Theorem 1 provides an effectiveness ordering, Theorem 2 a speedup upper bound, and Theorem 3 an exact cost ratio.
+- • Empirics. Across eight benchmarks, two LLMs, and three topologies, STREAMMA consistently outperforms both baselines in effectiveness (Claude average +7.3pp over Serial, +16.3pp over Single; GPT average
+
++1.5pp over Serial, +4.9pp over Single).
+
+- • Discovery. We discover a step-level scaling law under Stream: at fixed agent count A, increasing per-agent steps S consistently improves effectiveness and speedup. At A=64, scaling S to 64 gains +5.3pp complementary to agent-count scaling, with 26.9× speedup.
+
+### 2 Related Work
+
+Multi-Agent Reasoning and Communication. Decomposing reasoning across collaborating agents has become a mainstream paradigm for complex LLM tasks (Wu et al., 2023; Hong et al., 2024; Qian et al., 2024; Li et al., 2023; Chen et al., 2024; Wang et al., 2025a; Sun et al., 2023), with prior work advancing it along three orthogonal axes: the communication topology (Qian et al., 2025; Zhuge et al., 2024; Liu et al., 2024; Zhang et al., 2025); the content exchanged between agents, such as intermediate rationales (Yin et al., 2023) or KV-cache representations (Fu et al., 2025), and how much of it (Rizvi-Martel et al., 2025); and the scale of agents (Qian et al., 2025; Li et al., 2024). Yet all three share a generate-then-transfer assumption: an upstream agent must finalize its response before any downstream agent can act, forcing per-round sequential waits and forgoing pipeline parallelism. We instead refine the granularity of communication, from full responses to reasoning steps. This shift exposes a new design axis: per-agent step count, orthogonal to agent-count scaling. Increasing peragent steps simultaneously improves effectiveness and speedup, the step-level scaling law.
+
+Step-Level Reasoning Quality. Step-by-step reasoning is now standard (Wei et al., 2022; Yao
+
+- et al., 2023), with iterative-refinement variants such as Self-Refine (Madaan et al., 2023), Reflexion (Shinn et al., 2023), and multi-agent debate (Du
+- et al., 2024) pushing output quality higher. Critically, on complex reasoning tasks, step quality is position-dependent: Wu et al. (2025) show that
+
+Algorithm 1 SERIAL EXECUTION Require: Q; (Agenta,ctxa,queuea)Aa=1
+
+- ◦ Q: query
+- ◦ ctxa: per-agent context
+- ◦ queuea: FIFO queue
+- ◦ chain: Agent1 → ··· → AgentA
+
+- 1: msg ← Q
+- 2: for a = 1 to A do
+- 3: ctxa.append(msg)
+- 4: ▷ wait; complete output
+- 5: msg ← LLM(ctxa)
+- 6: end for
+
+CoT accuracy peaks at an optimal length and degrades beyond it, and process supervision (Uesato et al., 2022; Lightman et al., 2024; Wang et al., 2024) scores reliability step by step. So far, however, this property has been exploited only to verify or train a single model’s reasoning chain, never to design the inter-agent protocol. We are the first to lift this property into protocol design: our Theorem 1 gives a closed-form effectiveness ordering of Single, Serial, and Stream, with explicit conditions under which each mode is provably optimal.
+
+Pipeline Parallelism and Streaming Inference. Pipeline parallelism is classical in distributed training (Narayanan et al., 2021), and streaming inference for LLMs (Tong et al., 2026) has been pursued along two axes: at the intra-agent level, via speculative decoding (Leviathan et al., 2023; Chen et al., 2023; Cai et al., 2024; Fu et al., 2024; Hu et al.,
+
+- 2026), Group Think (Hsu et al., 2025), and MultiStream LLMs (Su et al., 2026); and at the interagent level, via skeleton expansion (Ning et al., 2024), speculative agent actions (Ye et al., 2025b), and staircase streaming (Wang et al., 2025b). Yet across all of these, streaming primarily serves as a speedup mechanism; any effectiveness gains are incidental side-effects rather than the central design principle. Our Stream instead operates at the reasoning-step level over arbitrary multiagent DAGs: a granularity coarser than tokens or fixed token chunks, yet finer than pre-decomposed skeletons or speculative agent actions, and unconstrained by topology. To our knowledge, we are the first to show that it can improve effectiveness, not just accelerate it (Theorem 1). At the interagent level, our protocol is orthogonal to all the intra-agent methods discussed above.
+
+Algorithm 2 STREAM EXECUTION
+
+- 1: queue1.put(Q)
+- 2: ▷ all agents concurrent
+- 3: for a = 1 to A in parallel do
+- 4: while msg ← queuea.get() do
+- 5: ctxa.append(msg)
+- 6: ▷ yield step-by-step
+- 7: steps ← LLM(ctxa, stream=True)
+- 8: for each step from steps do
+- 9: if a < A then
+- 10: ▷ push; no wait
+- 11: queuea+1.put(step)
+- 12: end if
+- 13: ▷ KV cache reuse
+- 14: ctxa.append(step)
+- 15: end for
+- 16: end while
+- 17: end for
+
+### 3 Method
+
+For analytical tractability, we develop our theory on a chain of A agents (Agent1 → ··· → AgentA), each producing S reasoning steps; the results extend to general directed acyclic graphs. We first describe the algorithm (Sec. 3.1), then characterize its effectiveness (Sec. 3.2) and efficiency (Sec. 3.3). Notation is summarized in App. A.1. We compare three execution modes throughout: Stream, our proposed stream protocol; Serial, the serial protocol; and Single, the single-agent protocol. We refer to our full framework, including the protocol and its theoretical analysis, as STREAMMA.
+
+#### 3.1 Algorithm Description
+
+Alg. 1 and Alg. 2 contrast the serial and stream protocols. The key difference lies in the timing of message passing: in the serial protocol, each agent waits for the blocking call LLM(ctxa) to return the complete response (Alg. 1, line 5) before the next agent can begin; in the stream protocol, each agent issues a streaming call that yields steps one by one (Alg. 2, lines 7–8) and immediately pushes every completed step to queuea+1 (line 11) without waiting for subsequent steps. All agents execute concurrently (line 3), enabling Agenta+1 to process step s while Agenta is still generating step s + 1, forming pipeline parallelism. Moreover, each downstream agent (a ≥ 2) is called S times, with prior steps serving as context for each subsequent call (line 14); the appended context naturally
+
+Theorem 1 (Effectiveness Ordering). Depending on how p¯, phead, ptail (uniform, head-weighted, and tailweighted step-correctness means) compare to p∗, the sCorr ordering among three modes falls into six cases:
+
+- (I) Stream advantage [phead>p∗ and ptail<p∗]: (a) If p¯ > p∗: sCorrstream > sCorrserial > sCorrsingle j
+
+pj
+
+p∗
+
+(b) If p¯ < p∗:
+
+sCorrstream > sCorrsingle > sCorrserial j
+
+pj
+
+p∗
+
+- (II) Serial advantage [p>p¯ ∗ and ptail>p∗]:
+
+###### (III) Single advantage [phead<p∗ and p<p¯ ∗]:
+
+- (a) If ptail < p∗: sCorrsingle > sCorrstream > sCorrserial j
+
+pj
+
+p∗
+
+- (b) If ptail > p∗: sCorrsingle > sCorrserial > sCorrstream j
+
+- (a) If phead > p∗: sCorrserial > sCorrstream > sCorrsingle j
+
+pj
+
+p∗
+
+- (b) If phead < p∗: sCorrserial > sCorrsingle > sCorrstream j
+
+pj
+
+pj
+
+p∗
+
+p∗
+
+forms a shared prefix amenable to KV-cache reuse.
+
+The chain topology generalizes to arbitrary DAGs by (i) broadcasting Q to all source nodes (in-degree 0) and (ii) pushing each step to all direct successors; multi-predecessor nodes process incoming steps immediately upon arrival, without any synchronization barrier across predecessors. The full pseudocode is given in App. A.8.
+
+#### 3.2 Effectiveness Characterization
+
+STREAMMA consistently outperforms the Serial and Single baselines in our experiments. We now characterize when and why: we model each upstream step j (1 ≤ j ≤ S) as correct with probability pj; a correct step raises downstream step-level correctness by δ > 0 and an incorrect step lowers it by ε > 0. For clarity we assume uniform δ,ε across positions; the position-dependent δj,εj case yields the same results in vector form. The expected step-level correctness change from step j is µj = pjδ − (1 − pj)ε, which is non-negative iff pj ≥ ε/(δ + ε) ≜ p∗. We define sCorrmode (mode ∈ {stream,serial,single}) as the mean of {µj} under each mode; sCorr is positively correlated with task-level accuracy. Three weighted means of {pj}, the uniform mean p¯, the headweighted phead (earlier steps weighted more), and the tail-weighted ptail (later steps weighted more), govern the sCorr ordering among the three modes.
+
+Theorem 1 formalizes the effectiveness ordering across six regimes. Embedded profiles are simplified for exposition; real trajectories may differ.
+
+Stream advantage. Cases I.a and I.b share the typical error-accumulation pattern in multi-step LLM reasoning: early steps are reliable but late ones fall
+
+below p∗. When context arrives matters more than how much: under Stream, the downstream agent receives early steps and begins reasoning; by the time degraded late steps arrive, their impact is diluted. Under Serial, the downstream agent must read the entire response, mixing clean early reasoning with error-prone late steps. In Case I.a, p¯ > p∗ means the response is on average helpful, so Stream leads while Serial still beats Single. In Case I.b, only the early steps exceed p∗, so Stream exposes these reliable steps and beats Single, but Serial accumulates below-p∗ late steps and loses to Single.
+
+Serial advantage. In Case II.a, all steps are above p∗, so more context is beneficial: “more information, better decisions” holds. Serial sees the full response and wins; Stream sees partial but helpful steps and beats Single. In Case II.b, early steps are below p∗ but late ones are accurate enough that p¯ > p∗; Serial profits and beats Single, yet Stream exposes the harmful early steps and ends up last. This captures self-correction: the upstream agent makes early mistakes but corrects them eventually.
+
+Single advantage. Case III.a corresponds to problems so hard that all steps fall below p∗, making every upstream step harmful; Single avoids any upstream influence and achieves the highest step correctness. In Case III.b, the profile rises but p¯ < p∗ holds; this regime is rare, as a heavily corrupted prefix leaves too few remaining steps to lift ptail above p∗. Serial loses to Single, and Stream, which receives the below-p∗ early steps, comes last.
+
+Variable definitions, full proofs, and the extension to arbitrary DAG topologies are in App. A.2.
+
+#### 3.3 Efficiency Characterization
+
+Theorem 2 (Speedup). The latency speedup of Stream over Serial is upper-bounded by:
+
+A (S + rpo) rv
+
++ S (S + A − 1)(1 + α rv
+
+dp
+
+Speedup =
+
++ β rv
+
+)
+
+dp
+
+dc
+
+where rvdp: decode-to-prefill speed ratio; rvdc: decode-to-cache-read speed ratio; rpo: systemprompt-to-per-step-output length ratio; α, β: average non-cached / cached context tokens per output token.
+
+Speedup. In the streaming multi-agent system, the latency speedup is jointly governed by prefill, decode, and KV-cache read speeds (Theorem 2). When vc ≫ vp ≫ vd (cache-read ≫ prefill ≫ decode speed), the upper bound reduces to AS/(S+A−1), the maximum achievable speedup, and becomes insensitive to the KV-cache hit rate.
+
+Theorem 3 (Cost Ratio). Under the same setup as Theorem 2, the cost ratio of Stream over Serial is:
+
+rc
+
+β) + 1 rc
+
+(α + rc
+
+Coststream Costserial
+
+pd
+
+cp
+
+= ρ ·
+
+(1 + rpo/S) + 1
+
+pd
+
+where ρ: Stream-to-Serial output length ratio; rcpd: prefill-to-decode price ratio; rccp: cache-to-prefill price ratio; α, β as in Theorem 2.
+
+Cost. Although Stream increases API calls, the overall cost remains dominated by decode when the per-token prefill price cp is far below the pertoken decode price cd; KV-cache hits further reduce cost by replacing prefill with cache reads at price cc ≪ cp. When pricing is decode-dominated (rcpd → 0), the cost ratio (Theorem 3) reduces to ρ: cost depends on how many tokens each decodes. Each downstream agent in Stream naturally forms a shared prefix amenable to KV-cache reuse, and modern serving stacks—vLLM (Kwon et al., 2023), SGLang (Zheng et al., 2024), and recent agentic extensions (Liu et al., 2026; Wu et al., 2026; Pan et al., 2025; Ye et al., 2025a)—steadily raise the achievable hit rate, so our cost advantage strengthens as this infrastructure matures.
+
+Example. Instantiating both bounds with Claude Opus 4.6 data (vd ≈ 39 t/s, vp ≈ 6,000 t/s1; cp = $5, cd = $25, cc = $0.50 per MTok2) and
+
+- 1https://artificialanalysis.ai/models/claud
+
+e-opus-4-6/providers
+
+- 2https://www.anthropic.com/pricing
+
+A = S = 4: under full KV-cache hits, the latency speedup upper bound is 2.30× and the cost ratio is 0.925ρ. At ρ = 1, Stream saves 7.5% over Serial.
+
+Full derivations, numerical examples, and extension to DAG topologies in App. A.5 and A.6.
+
+### 4 Results
+
+#### 4.1 Experimental Setup
+
+Benchmarks. To assess robustness, we evaluate on eight benchmarks spanning competition mathematics (AIME2025, AIME2026, HMMT2026), graduate-level science (GPQA-Diamond (Rein et al., 2024), HLE (Phan et al., 2025)), and program understanding (LiveCodeBench (Jain et al., 2024), with sub-tasks LCB-G: code generation, LCB-E: code execution, LCB-T: test output). Evaluation is conducted via OpenCompass (Contributors, 2023); all configuration files are provided in App. A.7.
+
+Baselines. We compare against two baselines: (1) Single, a single agent given only the query; and (2) Serial, a pipeline where each agent waits for its predecessor to finish. STREAMMA inherits Serial’s prompts and decoding, differing only in transmission granularity: Serial transmits the full output, Stream transmits each step on completion. Topologies. Unless otherwise specified, we evaluate four-agent DAG topologies (A0,A1,A2,A3): Chain (A0 → A1 → A2 → A3); Tree (A0 → {A1,A2} → A3, with A1,A2 in parallel); and Graph (Chain plus an extra edge A0 → A2). These three cover the canonical DAG primitives (linear, branching, and shortcut), giving a built-in sweep of connectivity rather than a single design choice.
+
+Implementation Details. We experiment on frontier models, Claude Opus 4.6 (high) and GPT-5.4 (medium), following each provider’s API defaults; later references inherit these settings unless noted. Our LLM-as-judge evaluations use GPT-5.4. System prompts are provided in App. A.9. All numbers are averaged over 3 runs per {backbone, topology} cell, increased to 8 on AIME2025/26 and HMMT2026 due to their smaller test sets.
+
+#### 4.2 Effectiveness Analysis 4.2.1 Quantitative Comparison
+
+STREAMMA outperforms Serial in every Avg. cell across both backbones (Tab. 1). STREAMMA only appends a one-line END_STEP boundary to each downstream agent’s system prompt and a short solver preamble for the root agent; all other prompt content, decoding hyperparameters, and runtime
+
+###### Model Topo Method AIME25 AIME26 HMMT26 GPQA-D HLE LCB-G LCB-E LCB-T Avg.
+
+– Single 67.50 60.00 48.11 83.67 18.60 90.25 77.94 84.31 66.30
+
+ClaudeOpus4.6(High)
+
+Serial 80.42 72.08 63.26 85.86 23.90 91.33 78.64 92.38 73.48
+
+Chain
+
+###### STREAMMA 92.50 89.58 85.61 87.37 26.97 91.50 84.41 95.63 81.70
+
+Serial 86.25 86.25 75.00 85.18 24.82 91.92 88.45 97.59 79.43
+
+Tree
+
+###### STREAMMA 93.34 87.92 82.20 85.86 25.07 94.00 94.57 99.55 82.81
+
+Serial 77.92 71.67 61.75 85.69 22.17 90.08 75.78 98.27 72.92 STREAMMA 95.83 87.92 82.58 86.53 27.68 92.17 95.27 98.72 83.34
+
+Graph
+
+– Single 55.83 71.25 40.53 77.95 12.08 91.08 92.48 96.68 67.24
+
+GPT-5.4(Medium)
+
+Serial 60.00 70.42 54.55 75.08 14.66 90.08 97.43 99.02 70.16
+
+Chain
+
+###### STREAMMA 61.25 72.50 59.10 80.30 14.94 91.17 99.30 99.47 72.25
+
+Serial 59.17 75.83 56.07 76.77 14.83 88.33 93.81 99.25 70.51
+
+Tree
+
+###### STREAMMA 62.08 75.83 58.34 78.12 15.74 89.50 94.78 99.17 71.70
+
+Serial 60.00 74.17 52.65 78.45 14.04 92.25 99.51 98.80 71.13 STREAMMA 62.50 75.42 56.44 79.63 16.13 93.08 99.79 99.32 72.32
+
+Graph
+
+Table 1: Effectiveness across eight benchmarks and three topologies. STREAMMA (gray) vs. Single and Serial on Claude Opus 4.6 (high) and GPT-5.4 (medium). Avg. (%): unweighted mean; bold: higher in each {Topology, Method} pair. Single: one row per backbone, no topology axis. Each cell averages 3 runs (8 on AIME2025/26 and HMMT2026 due to small test sets). STREAMMA outperforms both baselines in every Avg. cell.
+
+settings remain identical to Serial, ruling out extra prompt engineering as the source of improvement. On Claude Opus 4.6, STREAMMA lifts Avg. accuracy by +7.3pp averaged over the three topologies (peak +22.4pp on HMMT2026, Chain).
+
+STREAMMA’s gain over Serial scales inversely with Serial’s strength. The three topologies span a wide Serial baseline on Claude (Avg. 72.92–79.43), giving us a built-in sweep of Serial strength rather than a topology comparison: at Serial Avg. 79.43 (Tree) the gain is +3.38, while at 73.48 (Chain) and 72.92 (Graph) it grows to +8.22 and +10.42. The same monotone trend appears within a single benchmark on HMMT 2026, where Serial baselines of 75.00/63.26/61.75 (Tree/Chain/Graph) correspond to gains of +7.20/+22.35/+20.83. Near the ceiling (e.g., GPT-5.4 LCB-T at ∼99), cells move by less than 0.6pp. Theorem 1 captures this mechanism: STREAMMA’s gain comes from weakening the impact of Serial’s step-level errors, so a Serial run with high pj leaves few errors to weaken, while one with low pj leaves many and gains more. GPT-5.4 exhibits the same trend, confirming the pattern is backbone- and topology-agnostic.
+
+#### 4.2.2 Case Study
+
+Setup. On a GPQA-Diamond question, we run a two-agent chain (Agent1→Agent2, S=8) that reuses the same Chain prompts as Sec. 4.2.1, and binarize each step of Agent1 to pj ∈{0,1} via LLM-
+
+as-judge (1 if correct, 0 otherwise) for an instantiation of Theorem 1. Fig. 2 visualizes STREAMMA’s per-step verdicts of Agent1; the question and perstep transcripts are deferred to App. A.3.
+
+Observations. Single, a single-agent baseline, returns the wrong answer. In Stream, Agent1 produces the trajectory in Fig. 2(a): steps 1–2 are correct, Agent1 first errors at step 3, and steps 3–8 are all incorrect. In Serial, an independent run of Agent1 produces the same failure pattern. This matches Case I.b of Theorem 1: a reliable head and an unreliable tail. Serial only sees Agent1’s full output, so Agent2 inherits the wrong tail and returns the wrong answer. Stream forwards the reliable head by step 2; by the time the unreliable tail arrives, Agent2 has already re-derived the answer from this prefix and returns the correct one. This is the Stream advantage predicted by Theorem 1.
+
+#### 4.2.3 Step-Level Perturbation
+
+Setup. For a cleaner verification of Theorem 1, we construct a controlled experiment on an Agent1→Agent2 chain with S=4 steps. We use an LLM to construct two parallel Agent1 trajectories: a clean one deriving the gold answer and a perturbed counterpart that diverges from the clean one toward a wrong answer. A 4-bit mask selects
+
+(clean) or (perturbed) at each step, yielding a fixed Agent1 output; Agent2 is then run on it under Serial or Stream, with accuracy averaged over 100
+
+| |
+|---|
+
+Case Study: Stream✓ Single× Serial× Setup: Agent1→Agent2 chain, S=8 steps
+
+###### (a) Step-level correctness of Agent1
+
+###### pj
+
+✓ ✓
+
+- 0
+
+- 1
+
+× × × × × ×
+
+###### j
+
+1 2 3 4 5 6 7 8
+
+(b) Analysis via Theorem 1 p¯≜ S1 Sj=1pj = 0.25 phead≜ S(S2+1) Sj=1(S+1−j) pj ≈ 0.42 ptail≜ S(S2−1) Sj=2(j−1) pj ≈ 0.04 ⇒ ptail is very low, phead≫ptail
+
+⇒ head-strong, tail-weak shape
+
+⇒ Stream advantage (Theorem 1)
+
+Figure 2: Case study for Theorem 1. (a) Verdicts of Agent1 (✓: pj=1; ×: pj=0). (b) p/p¯ head/ptail place this run in Case I.b, the Stream-advantage regime.
+
+Step-Level Perturbation Setup: Agent1→Agent2 chain, S=4 steps Probe: perturb Agent1’s steps(
+
+| |
+|---|
+
+clean/ perturbed) Outcome: Agent2 acc: Serial / Stream
+
+Agent1 steps Agent2 accuracy (%)
+
+- Theorem 1 Case I — tail perturbed
+
+- Theorem 1 Case II/III — head perturbed
+
+67.0 91.0
+
++24.0
+
+63.0 82.0
+
++19.0
+
+76.0 81.0
+
++5.0
+
+97.0
+
+- 63.0 −34.0 100.0
+
+- 64.0 −36.0
+
+98.0
+
+- 65.0 −33.0
+
+Figure 3: Step-Level Perturbation. Fixing Agent1’s output, we perturb its steps and measure Agent2’s accuracy; green/red mark Stream’s gain/loss over Serial.
+
+runs per mask. Results on 6 representative masks are shown in Fig. 3. Details in App. A.4.
+
+Observations. The two mask families produce opposite outcomes: Stream wins on tailperturbed masks (up to +24.0pp), Serial wins on head-perturbed masks (down to −36.0pp). Tail-perturbed masks— , , —all fall in Case I; Stream’s advantage shrinks monotonically as the perturbed tail extends (+24.0→+19.0→+5.0), tracking the predicted decay as ptail drops. Head-perturbed masks span two regimes: and fall in Case II, while the heavily poisoned reaches Case III. In both, the curves are nearly flat regardless of depth: Serial holds at ∼100% while Stream trails by ∼35pp, trapped by the perturbed prefix. Mirror pairs expose Theorem 1’s head–tail asymmetry: vs.
+
+flips Stream’s gap from +24.0 to −34.0pp. 4.3 Efficiency Analysis
+
+#### 4.3.1 Step-Level Scaling Law
+
+Setup. We adopt the Chain Agent1 → ··· → AgentA with each agent producing S reasoning steps, and sweep A ∈ {2,4,8,16,32,64} and S ∈ {2,4,8,16,32,64,auto} on HMMT2026; S=auto lets Agent1 autonomously decide the step count. Each (A,S) cell reports per-question averages of speedup and accuracy over 4 independent runs, where speedup is the sum of per-agent API
+
+call times divided by Stream’s measured wall-clock runtime. KV-cache reuse is disabled; for visual clarity the left panel of Fig. 4 plots A∈{4,16,64} only, while the full 6×6 grid appears in the right heatmap. This AS/(S+A−1) form is the simplification of Theorem 2 under our no-KV-cache setup with decode much slower than prefill (rvdp →0).
+
+Observations. (i) Measured speedup tracks the AS/(S+A−1) scaling pattern across the (A,S) grid (Fig. 4, left), validating Theorem 2; at the A=64, S=64 corner the measured speedup reaches 26.9×, attaining 83% of the theoretical bound (32.3×); the gap arises because the bound assumes rvdp → 0, while actual rvdp > 0 in GPT-5.4. Notably, the S=auto markers fall well short of the large-S speedups across all A, because LLMs do not autonomously scale up their step count and default to a coarse granularity; the large-S regime must be explicitly unlocked through prompting. (ii) Accuracy increases jointly with A and S across the heatmap (Fig. 4, right). The right avg column reproduces agent-count scaling (Qian et al., 2025), while the top avg row is near-monotone in S, evidencing a step-level scaling law: at fixed A, accuracy improves with more reasoning steps. The two scaling dimensions (agent count and step count) are complementary, not redundant: at A=64, the S=auto baseline (LLM-decided S) reaches 68.2%, and increasing S to 64 further raises accuracy to 73.5%,
+
+- 20
+- 21
+- 22
+- 23
+- 24
+- 25
+
+A=4 A=16 A=64
+
+Speedup
+
+auto 21 22 23 24 25 26
+
+S
+
+| |
+|---|
+
+| |62.0|62.1|64.9|67.8|67.4|68.8| |
+|---|---|---|---|---|---|---|---|
+|68.2|68.9|66.7|67.4|68.2|72.0|73.5|69.4|
+|67.4|65.9|67.4|68.2|72.0|73.5|69.7|69.4|
+|66.7|62.9|64.4|66.7|74.3|69.7|75.0|68.8|
+|62.9|62.9|62.9|68.2|68.9|65.2|68.9|66.2|
+|62.9|59.9|62.1|61.4|64.4|62.9|62.1|62.1|
+|58.3|51.5|49.2|57.6|59.1|61.4|63.6|57.1|
+
+avg
+
+- 21
+- 22
+- 23
+- 24
+- 25
+- 26
+
+70
+
+A
+
+60
+
+50
+
+auto 21 22 23 24 25 26 avg
+
+S
+
+- Figure 4: Step-level scaling law. Left: speedup scaling in S; measured (solid) vs. theoretical maximum speedup AS/(S+A−1) from Theorem 2 (dashed). Right: accuracy scaling in S, with avg marginals (main block boxed).
+
+70
+
+80
+
+90
+
+1
+
+4
+
+16
+
+1
+
+4
+
+Accuracy(%)
+
+Serial×N
+
+- Stream×N (h=0)
+
+- Stream×N (h=1)
+
+Single
+
+| | | | | | | |
+|---|---|---|---|---|---|---|
+| | | | | | | |
+
+0.3 0.5 1 2 3 6
+
+48
+
+Per-question cost (USD)
+
+- Figure 5: Cost–accuracy Pareto frontiers. Each frontier tracks accuracy vs. cost as N ∈ {1,4,16} chain replicas run in parallel and majority-vote on the final answer; larger N trades higher compute for higher accuracy. Red shaded: KV-cache hit rate h∈(0,1), bounded by Stream×N at h=0 (solid) and h=1 (dashed).
+
+($5.46, 89.4%) at half the cost, despite Serial running 4× more replicas, jointly confirming Stream’s accuracy advantage (Theorem 1) and cost advantage (Theorem 3). (ii) The shaded KV-cache band (h ∈ (0,1)) compresses each Stream×N point leftward by up to ∼1.7× with no accuracy loss (e.g., Stream×4 drops from $2.75 to $1.61 at fixed 90.9%); this h=0 → h=1 compression ratio is governed by the cache-to-prefill price ratio rccp in Theorem 3, and further widens the Pareto gap. (iii) Without voting (N=1), Stream at full cache ($0.34, 78.8%) strictly dominates Serial ($0.40, 70.5%): the Pareto advantage stems from the protocol itself, not from voting amplification.
+
+### 5 Conclusion
+
+We introduced STREAMMA, a reasoning-steplevel streaming multi-agent system for LLM reasoning that replaces the prevailing “generate-thentransfer” paradigm with immediate per-step forwarding. The central finding is counter-intuitive: streaming reduces latency and improves effectiveness, because the non-uniform quality structure of multi-step LLM reasoning makes when context arrives matter more than how much context arrives. We formalized this mechanism through three closed-form theorems covering effectiveness ordering, speedup upper bound, and cost ratio, all empirically validated across eight benchmarks, two frontier LLMs, and three topologies. Beyond the protocol, we uncovered a “step-level scaling law”: a dimension orthogonal to agent-count scaling that monotonically improves effectiveness and speedup, suggesting that the design space of multi-agent reasoning systems is richer than recognized.
+
+indicating that step-level scaling delivers measurable gains beyond agent-count scaling alone.
+
+#### 4.3.2 Cost Analysis
+
+Setup. We adopt the Chain Agent1→Agent2→ Agent3 with each agent producing S=3 reasoning steps (prompts adapted from Sec. 4.2), and sweep both Stream×N and Serial×N over N ∈{1,4,16} parallel chain replicas with majority voting on HMMT2026 with Claude Opus 4.6 (API pricing: $5/$25/$0.5 per million input/output/cacheread tokens). Each N point reports per-question averages of cost and accuracy over 4 independent runs. Let h∈[0,1] denote the KV-cache hit rate.
+
+Observations. (i) The Stream×N frontier strictly Pareto-dominates Serial×N: Stream×4 ($2.75, 90.9%) achieves higher accuracy than Serial×16
+
+### 6 Limitation
+
+STREAMMA pipelines reasoning at the granularity of steps, and thus applies to tasks whose solution admits step decomposition. Modern reasoning workloads (mathematics, code, science) satisfy this property under chain-of-thought prompting, now the de facto standard. Tasks that resist step decomposition (e.g., open-ended creative writing, singletoken classification) fall outside this regime; this reflects the task’s structure rather than a constraint of STREAMMA, and equally bounds any step-based reasoning paradigm (e.g., chain-of-thought).
+
+Furthermore, the stream protocol is not universally optimal across all step-correctness profiles. Theorem 1 characterizes six regimes: stream execution is strictly preferable only when agents exhibit head-strong, tail-weak correctness patterns; in the remaining regimes, serial or single execution may match or exceed it. Rather than weakening STREAMMA, this boundary is precisely predicted by our theoretical framework. Theorem 1 therefore serves as a principled protocol selector: given the step-correctness profile of a target task, practitioners can directly consult the theorem to determine which execution protocol best suits their workload.
+
+### References
+
+Tianle Cai, Yuhong Li, Zhengyang Geng, Hongwu Peng, Jason D Lee, Deming Chen, and Tri Dao. 2024. Medusa: Simple llm inference acceleration framework with multiple decoding heads. arXiv preprint arXiv:2401.10774.
+
+Charlie Chen, Sebastian Borgeaud, Geoffrey Irving, Jean-Baptiste Lespiau, Laurent Sifre, and John Jumper. 2023. Accelerating large language model decoding with speculative sampling. arXiv preprint arXiv:2302.01318.
+
+Weize Chen, Yusheng Su, Jingwei Zuo, Cheng Yang, Chenfei Yuan, Chi-Min Chan, Heyang Yu, Yaxi Lu, Yi-Hsin Hung, Chen Qian, Yujia Qin, Xin Cong, Ruobing Xie, Zhiyuan Liu, Maosong Sun, and Jie Zhou. 2024. Agentverse: Facilitating multi-agent collaboration and exploring emergent behaviors. In The Twelfth International Conference on Learning Representations, ICLR 2024, Vienna, Austria, May 7-11, 2024. OpenReview.net.
+
+OpenCompass Contributors. 2023. Opencompass: A universal evaluation platform for foundation models. https://github.com/open-compass/opencompa ss.
+
+Yilun Du, Shuang Li, Antonio Torralba, Joshua B Tenenbaum, and Igor Mordatch. 2024. Improving factual-
+
+ity and reasoning in language models through multiagent debate. In Forty-first international conference on machine learning.
+
+Tianyu Fu, Zihan Min, Hanling Zhang, Jichao Yan, Guohao Dai, Wanli Ouyang, and Yu Wang. 2025. Cache-to-cache: Direct semantic communication between large language models. arXiv preprint arXiv:2510.03215.
+
+Yichao Fu, Peter Bailis, Ion Stoica, and Hao Zhang. 2024. Break the sequential dependency of llm inference using lookahead decoding. arXiv preprint arXiv:2402.02057.
+
+Sirui Hong, Mingchen Zhuge, Jonathan Chen, Xiawu Zheng, Yuheng Cheng, Jinlin Wang, Ceyao Zhang, Zili Wang, Steven Ka Shing Yau, Zijuan Lin, Liyang Zhou, Chenyu Ran, Lingfeng Xiao, Chenglin Wu, and Jürgen Schmidhuber. 2024. Metagpt: Meta programming for A multi-agent collaborative framework. In The Twelfth International Conference on Learning Representations, ICLR 2024, Vienna, Austria, May 7-11, 2024. OpenReview.net.
+
+Chan-Jan Hsu, Davide Buffelli, Jamie McGowan, FengTing Liao, Yi-Chang Chen, Sattar Vakili, and Dashan Shiu. 2025. Group think: Multiple concurrent reasoning agents collaborating at token level granularity. arXiv preprint arXiv:2505.11107.
+
+Xinyi Hu, Yuhao Shen, Baolin Zhang, Hengxin Zhang, Jun Dai, Shuang Ge, Lei Chen, Yue Li, and Mingcheng Wan. 2026. Echo: Elastic speculative decoding with sparse gating for high-concurrency scenarios. arXiv preprint arXiv:2604.09603.
+
+Naman Jain, King Han, Alex Gu, Wen-Ding Li, Fanjia Yan, Tianjun Zhang, Sida Wang, Armando SolarLezama, Koushik Sen, and Ion Stoica. 2024. Livecodebench: Holistic and contamination free evaluation of large language models for code. arXiv preprint arXiv:2403.07974.
+
+Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, Ying Sheng, Lianmin Zheng, Cody Hao Yu, Joseph Gonzalez, Hao Zhang, and Ion Stoica. 2023. Efficient memory management for large language model serving with pagedattention. In Proceedings of the 29th symposium on operating systems principles, pages 611–626.
+
+Yaniv Leviathan, Matan Kalman, and Yossi Matias. 2023. Fast inference from transformers via speculative decoding. In International Conference on Machine Learning, pages 19274–19286. PMLR.
+
+Guohao Li, Hasan Hammoud, Hani Itani, Dmitrii Khizbullin, and Bernard Ghanem. 2023. Camel: Communicative agents for" mind" exploration of large language model society. Advances in neural information processing systems, 36:51991–52008.
+
+Junyou Li, Qin Zhang, Yangbin Yu, Qiang Fu, and Deheng Ye. 2024. More agents is all you need. arXiv preprint arXiv:2402.05120.
+
+Hunter Lightman, Vineet Kosaraju, Yuri Burda, Harrison Edwards, Bowen Baker, Teddy Lee, Jan Leike, John Schulman, Ilya Sutskever, and Karl Cobbe. 2024. Let’s verify step by step. In International Conference on Learning Representations, volume 2024, pages 39578–39601.
+
+Yuhan Liu, Yuyang Huang, Jiayi Yao, Shaoting Feng, Zhuohan Gu, Kuntai Du, Hanchen Li, Yihua Cheng, Junchen Jiang, Shan Lu, Madan Musuvathi, and Esha Choukse. 2026. Droidspeak: KV cache sharing across fine-tuned model variants. In 23rd USENIX Symposium on Networked Systems Design and Implementation, NSDI 2026, Renton, WA, May 4-6, 2026, pages 319–338. USENIX Association.
+
+Zijun Liu, Yanzhe Zhang, Peng Li, Yang Liu, and Diyi Yang. 2024. A dynamic llm-powered agent network for task-oriented agent collaboration. In First Conference on Language Modeling.
+
+Aman Madaan, Niket Tandon, Prakhar Gupta, Skyler Hallinan, Luyu Gao, Sarah Wiegreffe, Uri Alon, Nouha Dziri, Shrimai Prabhumoye, Yiming Yang, Shashank Gupta, Bodhisattwa Prasad Majumder, Katherine Hermann, Sean Welleck, Amir Yazdanbakhsh, and Peter Clark. 2023. Self-refine: Iterative refinement with self-feedback. In Advances in Neural Information Processing Systems 36: Annual Conference on Neural Information Processing Systems 2023, NeurIPS 2023, New Orleans, LA, USA, December 10 - 16, 2023.
+
+Deepak Narayanan, Mohammad Shoeybi, Jared Casper, Patrick LeGresley, Mostofa Patwary, Vijay Korthikanti, Dmitri Vainbrand, Prethvi Kashinkunti, Julie Bernauer, Bryan Catanzaro, Amar Phanishayee, and Matei Zaharia. 2021. Efficient large-scale language model training on GPU clusters using megatron-lm. In International Conference for High Performance Computing, Networking, Storage and Analysis, SC 2021, St. Louis, Missouri, USA, November 14-19, 2021, page 58. ACM.
+
+Xuefei Ning, Zinan Lin, Zixuan Zhou, Zifu Wang, Huazhong Yang, and Yu Wang. 2024. Skeleton-ofthought: Prompting llms for efficient parallel generation. In International Conference on Learning Representations, volume 2024, pages 917–967.
+
+Zaifeng Pan, Ajjkumar Patel, Zhengding Hu, Yipeng Shen, Yue Guan, Wan-Lu Li, Lianhui Qin, Yida Wang, and Yufei Ding. 2025. Kvflow: Efficient prefix caching for accelerating llm-based multi-agent workflows. arXiv preprint arXiv:2507.07400.
+
+Long Phan, Alice Gatti, Ziwen Han, Nathaniel Li, Josephina Hu, Hugh Zhang, Chen Bo Calvin Zhang, Mohamed Shaaban, John Ling, Sean Shi, Michael Choi, Anish Agrawal, Arnav Chopra, Adam Khoja, Ryan Kim, Richard Ren, Jason Hausenloy, Oliver Zhang, Mantas Mazeika, and 3 others. 2025. Humanity’s last exam. CoRR, abs/2501.14249.
+
+Chen Qian, Wei Liu, Hongzhang Liu, Nuo Chen, Yufan Dang, Jiahao Li, Cheng Yang, Weize Chen, Yusheng
+
+Su, Xin Cong, Juyuan Xu, Dahai Li, Zhiyuan Liu, and Maosong Sun. 2024. Chatdev: Communicative agents for software development. In Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), ACL 2024, Bangkok, Thailand, August 11-16, 2024, pages 15174–15186. Association for Computational Linguistics.
+
+Chen Qian, Zihao Xie, Yifei Wang, Wei Liu, Kunlun Zhu, Hanchen Xia, Yufan Dang, Zhuoyun Du, Weize Chen, Cheng Yang, Zhiyuan Liu, and Maosong Sun. 2025. Scaling large language model-based multiagent collaboration. In The Thirteenth International Conference on Learning Representations, ICLR 2025, Singapore, April 24-28, 2025. OpenReview.net.
+
+David Rein, Betty Li Hou, Asa Cooper Stickland, Jackson Petty, Richard Yuanzhe Pang, Julien Dirani, Julian Michael, and Samuel R Bowman. 2024. Gpqa: A graduate-level google-proof q&a benchmark. In First Conference on Language Modeling.
+
+Michael Rizvi-Martel, Satwik Bhattamishra, Neil Rathi, Guillaume Rabusseau, and Michael Hahn. 2025. Benefits and limitations of communication in multiagent reasoning. arXiv preprint arXiv:2510.13903.
+
+Noah Shinn, Federico Cassano, Ashwin Gopinath, Karthik Narasimhan, and Shunyu Yao. 2023. Reflexion: Language agents with verbal reinforcement learning. Advances in neural information processing systems, 36:8634–8652.
+
+Guinan Su, Yanwu Yang, Xueyan Li, and Jonas Geiping. 2026. Multi-stream llms: Unblocking language models with parallel streams of thoughts, inputs and outputs. arXiv preprint arXiv:2605.12460.
+
+Qiushi Sun, Zhangyue Yin, Xiang Li, Zhiyong Wu, Xipeng Qiu, and Lingpeng Kong. 2023. Corex: Pushing the boundaries of complex reasoning through multi-model collaboration. arXiv preprint arXiv:2310.00280.
+
+Junlong Tong, Zilong Wang, YuJie Ren, Peiran Yin, Hao Wu, Wei Zhang, and Xiaoyu Shen. 2026. From static inference to dynamic interaction: A survey of streaming large language models. arXiv preprint arXiv:2603.04592.
+
+Jonathan Uesato, Nate Kushman, Ramana Kumar, Francis Song, Noah Siegel, Lisa Wang, Antonia Creswell, Geoffrey Irving, and Irina Higgins. 2022. Solving math word problems with process-and outcomebased feedback. arXiv preprint arXiv:2211.14275.
+
+Junlin Wang, Jue Wang, Ben Athiwaratkun, Ce Zhang, and James Y Zou. 2025a. Mixture-of-agents enhances large language model capabilities. In International Conference on Learning Representations, volume 2025, pages 33944–33963.
+
+Junlin Wang, Jue Wang, Zhen Xu, Ben Athiwaratkun, Bhuwan Dhingra, Ce Zhang, and James Zou. 2025b. Staircase streaming for low-latency multi-agent inference. CoRR, abs/2510.05059.
+
+Peiyi Wang, Lei Li, Zhihong Shao, Runxin Xu, Damai Dai, Yifei Li, Deli Chen, Yu Wu, and Zhifang Sui. 2024. Math-shepherd: Verify and reinforce llms stepby-step without human annotations. In Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 9426–9439.
+
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed H. Chi, Quoc V. Le, and Denny Zhou. 2022. Chain-of-thought prompting elicits reasoning in large language models. In Advances in Neural Information Processing Systems 35: Annual Conference on Neural Information Processing Systems 2022, NeurIPS 2022, New Orleans, LA, USA, November 28 - December 9, 2022.
+
+Qingyun Wu, Gagan Bansal, Jieyu Zhang, Yiran Wu, Shaokun Zhang, Erkang Zhu, Beibin Li, Li Jiang, Xiaoyun Zhang, and Chi Wang. 2023. Autogen: Enabling next-gen LLM applications via multi-agent conversation framework. CoRR, abs/2308.08155.
+
+Yongtong Wu, Shaoyuan Chen, Yinmin Zhong, Rilin Huang, Yixuan Tan, Wentao Zhang, Liyue Zhang, Shangyan Zhou, Yuxuan Liu, Shunfeng Zhou, and 1 others. 2026. Dualpath: Breaking the storage bandwidth bottleneck in agentic llm inference. arXiv preprint arXiv:2602.21548.
+
+Yuyang Wu, Yifei Wang, Ziyu Ye, Tianqi Du, Stefanie Jegelka, and Yisen Wang. 2025. When more is less: Understanding chain-of-thought length in llms. arXiv preprint arXiv:2502.07266.
+
+Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak Shafran, Tom Griffiths, Yuan Cao, and Karthik Narasimhan. 2023. Tree of thoughts: Deliberate problem solving with large language models. Advances in neural information processing systems, 36:11809–11822.
+
+Hancheng Ye, Zhengqi Gao, Mingyuan Ma, Qinsi Wang, Yuzhe Fu, Ming-Yu Chung, Yueqian Lin, Zhijian Liu, Jianyi Zhang, Danyang Zhuo, and Yiran Chen. 2025a. KVCOMM: online cross-context kv-cache communication for efficient llm-based multi-agent systems. CoRR, abs/2510.12872.
+
+Naimeng Ye, Arnav Ahuja, Georgios Liargkovas, Yunan Lu, Kostis Kaffes, and Tianyi Peng. 2025b. Speculative actions: A lossless framework for faster agentic systems. arXiv preprint arXiv:2510.04371.
+
+Zhangyue Yin, Qiushi Sun, Cheng Chang, Qipeng Guo, Junqi Dai, Xuan-Jing Huang, and Xipeng Qiu. 2023. Exchange-of-thought: Enhancing large language model capabilities through cross-model communication. In Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, pages 15135–15153.
+
+Jiayi Zhang, Jinyu Xiang, Zhaoyang Yu, Fengwei Teng, Xionghui Chen, Jiaqi Chen, Mingchen Zhuge, Xin Cheng, Sirui Hong, Jinlin Wang, Bingnan Zheng, Bang Liu, Yuyu Luo, and Chenglin Wu. 2025. Aflow: Automating agentic workflow generation. In The
+
+Thirteenth International Conference on Learning Representations, ICLR 2025, Singapore, April 2428, 2025. OpenReview.net.
+
+Lianmin Zheng, Liangsheng Yin, Zhiqiang Xie, Chuyue Sun, Jeff Huang, Cody H Yu, Shiyi Cao, Christos Kozyrakis, Ion Stoica, Joseph E Gonzalez, and 1 others. 2024. Sglang: Efficient execution of structured language model programs. Advances in neural information processing systems, 37:62557–62583.
+
+Mingchen Zhuge, Wenyi Wang, Louis Kirsch, Francesco Faccio, Dmitrii Khizbullin, and Jürgen Schmidhuber. 2024. Gptswarm: Language agents as optimizable graphs. In Forty-first International Conference on Machine Learning.
+
+### A Appendix
+
+#### A.1 Notation Summary
+
+Tab. 2 summarizes the notation used in the theoretical analysis, covering parameters for the effectiveness and efficiency (speedup and cost) analyses. For brevity, derivations in the appendix use a chain topology as a running example; the generalization to arbitrary DAGs is discussed at the end of each proof section.
+
+Table 2: Notation summary.
+
+Symbol Description General parameters A Number of agents S Number of reasoning steps oas Number of output tokens of Agenta at step s Oa Total number of output tokens of Agenta; Oa ≜ Ss=1 oas
+
+- O¯ Per-agent per-step output token count, averaged across agents; O¯ ≜ A1 Aa=1 OSa Pa Number of tokens in system prompt of Agenta
+
+- P¯ Average system prompt length; P¯ ≜ A1 Aa=1 Pa OΣ Total number of output tokens across all agents; OΣ ≜ Aa=1 Oa
+
+Effectiveness analysis (Agenta → Agenta+1) sCorrmode Mean step-level correctness, mode∈{stream, serial, single}
+
+pj Correctness probability of step j; pj ∈ [0, 1] δ Expected downstream step-correctness gain from a correct upstream step in context ε Expected downstream step-correctness drop from an incorrect upstream step in context µj Expected step-correctness change from upstream step j; µj ≜ pjδ − (1 − pj)ε p∗ Minimum step correctness for context to be beneficial; p∗ ≜ ε/(δ + ε) p¯ Mean step correctness; p¯ ≜ S1 Sj=1 pj ptail Tail-weighted mean step correctness; ptail ≜ S(S2−1) Sj=2(j − 1) pj phead Head-weighted mean step correctness; phead ≜ S(S2+1) Sj=1(S + 1 − j) pj Speedup analysis
+
+Csa Total number of context tokens in the s-th call of Agenta has KV-cache hit rate of Agenta’s s-th call; has ∈ [0, 1] α Average number of non-cached prefill tokens per output token; α ≜
+
+A a=1
+
+S s=1(1−has ) Csa
+
+ASO¯
+
+S s=1 has Csa
+
+A a=1
+
+β Average number of cache-hit tokens per output token; β ≜
+
+ASO¯
+
+vd, vp, vc Decode / prefill / cache-read speed (tok/s); vc ≫ vp ≫ vd rvdp Decode-to-prefill speed ratio; rvdp ≜ vd/vp rvdc Decode-to-cache-read speed ratio; rvdc ≜ vd/vc rpo Prompt-to-per-step-output ratio; rpo ≜ P/¯ O¯ Cost analysis cd, cp, cc Per-token price: decode / prefill / cache; cd ≫ cp ≫ cc rccp Cache-to-prefill price ratio; rccp ≜ cc/cp rcpd Prefill-to-decode price ratio; rcpd ≜ cp/cd ρ Ratio of total output token counts: Stream vs. Serial; ρ ≜ OΣstream/OΣserial
+
+#### A.2 Detailed Effectiveness Analysis
+
+Let sCorrmode, mode ∈ {serial,stream,single}, denote the mean step-level expected correctness of the downstream agent. This is a theoretical quantity positively correlated with task-level accuracy: a higher fraction of correct reasoning steps makes a correct final answer more likely.
+
+Theorem 1 (Effectiveness Ordering). Depending on how p¯, phead, ptail compare to p∗, the sCorr ordering among the three modes falls into six cases:
+
+#### (I) Stream advantage [phead > p∗ and ptail < p∗]:
+
+- (a) If p¯ > p∗: sCorrstream > sCorrserial > sCorrsingle
+- (b) If p¯ < p∗: sCorrstream > sCorrsingle > sCorrserial
+
+#### (II) Serial advantage [p¯ > p∗ and ptail > p∗]:
+
+- (a) If phead > p∗: sCorrserial > sCorrstream > sCorrsingle
+- (b) If phead < p∗: sCorrserial > sCorrsingle > sCorrstream
+
+#### (III) Single advantage [phead < p∗ and p¯ < p∗]:
+
+- (a) If ptail < p∗: sCorrsingle > sCorrstream > sCorrserial
+- (b) If ptail > p∗: sCorrsingle > sCorrserial > sCorrstream
+
+- A.2.1 Proof of Core Identities Consider adjacent agents Agenta (upstream) and Agenta+1 (downstream) in the chain: the upstream
+
+produces S-step reasoning Aa1,...,AaS; the downstream produces outputs Aa1+1,...,AaS+1. The three modes differ only in which upstream steps are visible to the downstream when generating Aas+1:
+
+Mode Condition when predicting Aas+1 Single P(Aas+1 | Aa<s+1) Stream P(Aas+1 | Aa<s+1, Aa≤s)
+
+Serial P(Aas+1 | Aa<s+1, Aa1:S) where P(Aas+1 | ·) is the conditional probability that Aas+1 is correct.
+
+Let ∆j denote the change in downstream step-level correctness when step j is added to a context containing steps 1,...,j−1. We parametrize ∆j by conditional expectations: δ ≜ E[∆j | Aaj correct, Aa<j in context] > 0 is the expected gain when step j is correct, and ε ≜ E[−∆j | Aaj incorrect, Aa<j in context] > 0 the expected loss when step j is incorrect. We assume δ,ε are step-position-independent for simplicity; in general, (δ,ε) generalize to vectors (δj,εj) and the same derivation applies. Since step j is correct with probability pj, the expected step-correctness change is
+
+µj ≜ pj · δ − (1 − pj) · ε = pj(δ + ε) − ε.
+
+The breakeven threshold p∗ ≜ ε/(δ + ε) satisfies µj > 0 if and only if pj > p∗. The three modes differ in upstream context seen: Single sees none, Stream sees a prefix, Serial sees all S steps. With Single as the baseline, summing the corresponding µj gives the step-level correctness gains of Stream and Serial:
+
+Pstream(Aas+1) − Psingle(Aas+1) =
+
+s
+
+S
+
+µj, Pserial(Aas+1) − Psingle(Aas+1) =
+
+µj
+
+j=1
+
+j=1
+
+By definition, sCorrmode ≜ S1 Ss=1 Pmode(Aas+1) averages step-level correctness over s. Applying the same average to the step-level differences above yields the sCorr gaps between modes:
+
+S
+
+1 S
+
+sCorrstream − sCorrsingle =
+
+s=1
+
+s
+
+µj =
+
+j=1
+
+S
+
+1 S
+
+sCorrserial − sCorrsingle =
+
+s=1
+
+Subtracting (a) from (b):
+
+S
+
+1 S
+
+(S − j + 1)µj (a)
+
+j=1
+
+S
+
+µj =
+
+j=1
+
+S
+
+µj (b)
+
+j=1
+
+1 S
+
+sCorrserial − sCorrstream =
+
+S
+
+(j − 1)µj (c)
+
+j=1
+
+The signs of (a)–(c) follow from how the head (phead), mean (p¯), and tail (ptail) per-step correctness compare to p∗ (Table 2), fixing the ordering among Single, Stream, and Serial and establishing Theorem 1. Remark (Boundary cases). Equality in any condition yields the corresponding equality in the ordering.
+
+- A.2.2 Proof of Theorem 1 We prove each case by inverting identities (a)–(c): given a target sCorr ordering, the signs of (a)–(c)
+
+determine conditions on phead, p¯, and ptail relative to p∗. These variables are not prescribed a priori but derived from the proof below; their parametric definitions (Tab. 2) absorb the resulting coefficients.
+
+##### Case I.a (sCorrstream > sCorrserial > sCorrsingle). This ordering requires (a) > 0, (b) > 0, (c) < 0.
+
+- • Expanding (b): S
+
+j=1
+
+µj =
+
+S
+
+j=1
+
+(δ + ε)pj − ε = S (δ + ε)¯p − ε ,
+
+which is positive if and only if p¯ > p∗.
+
+- • Expanding (c): Since the weight at j = 1 vanishes, 1 S
+
+S
+
+j=2
+
+(j − 1)µj =
+
+1 S
+
+S
+
+j=2
+
+(j − 1) (δ + ε)pj − ε
+
+=
+
+1 S
+
+ (δ + ε)
+
+S
+
+j=2
+
+(j − 1)pj − ε
+
+S
+
+j=2
+
+(j − 1)
+
+ .
+
+Since Sj=2(j − 1) = S(S2−1) and Sj=2(j − 1)pj = S(S2−1)ptail by definition:
+
+(c) =
+
+S − 1 2
+
+(δ + ε)ptail − ε , which is negative if and only if ptail < p∗.
+
+- • Sign of (a): Since (b) > 0 and (c) < 0, we have (a) = (b)−(c) > 0, so sCorrstream > sCorrserial > sCorrsingle holds when p¯ > p∗ and ptail < p∗, implying phead > p∗.
+
+##### Case I.b (sCorrstream > sCorrsingle > sCorrserial). This ordering requires (a) > 0, (b) < 0, (c) < 0.
+
+- • Expanding (b): By the same expansion as in Case I.a,
+
+(b) =
+
+S
+
+j=1
+
+µj = S (δ + ε)¯p − ε ,
+
+which is negative if and only if p¯ < p∗.
+
+- • Expanding (a): Multiplying both sides by S and substituting µj = (δ + ε)pj − ε:
+
+S
+
+S·(a) =
+
+(S + 1 − j) (δ + ε)pj − ε
+
+j=1
+
+S
+
+(S + 1 − j)pj − ε
+
+= (δ + ε)
+
+j=1
+
+S
+
+(S + 1 − j).
+
+j=1
+
+Substituting Sj=1(S + 1 − j) = S(S2+1) and Sj=1(S + 1 − j)pj = S(S2+1)phead by definition:
+
+(a) = S+12 (δ + ε)phead − ε , which is positive if and only if phead > p∗.
+
+- • Sign of (c): Since (c) = (b) − (a), (b) < 0 and (a) > 0 give (c) < 0, so sCorrstream > sCorrsingle > sCorrserial holds when phead > p∗ and p¯ < p∗, implying ptail < p∗.
+
+- Case II.a (sCorrserial > sCorrstream > sCorrsingle). This ordering requires (a) > 0, (b) > 0, (c) > 0.
+
+- • Expanding (a): By the same expansion as in Case I.b,
+
+(a) = S+12 (δ + ε)phead − ε , which is positive if and only if phead > p∗.
+
+- • Expanding (c): By the same expansion as in Case I.a,
+
+(c) = S−2 1 (δ + ε)ptail − ε , which is positive if and only if ptail > p∗.
+
+- • Sign of (b): Since (b) = (a)+(c), both positive, (b) > 0, so sCorrserial > sCorrstream > sCorrsingle holds when phead > p∗ and ptail > p∗, implying p¯ > p∗.
+
+- Case II.b (sCorrserial > sCorrsingle > sCorrstream). This ordering requires (a) < 0, (b) > 0, (c) > 0.
+
+- • Expanding (b): By the same expansion as in Case I.a,
+
+S
+
+j=1
+
+µj = S (δ + ε)¯p − ε ,
+
+which is positive if and only if p¯ > p∗.
+
+- • Expanding (a): By the same expansion as in Case I.b,
+
+(a) = S+12 (δ + ε)phead − ε , which is negative if and only if phead < p∗.
+
+- • Sign of (c): Since (c) = (b) − (a), (b) > 0 and (a) < 0 give (c) > 0, so sCorrserial > sCorrsingle > sCorrstream holds when p¯ > p∗ and phead < p∗, implying ptail > p∗.
+
+##### Case III.a (sCorrsingle > sCorrstream > sCorrserial). This ordering requires (a) < 0, (b) < 0, (c) < 0.
+
+- • Expanding (a): By the same expansion as in Case I.b,
+
+(a) = S+12 (δ + ε)phead − ε , which is negative if and only if phead < p∗.
+
+- • Expanding (c): By the same expansion as in Case I.a,
+
+(c) = S−2 1 (δ + ε)ptail − ε , which is negative if and only if ptail < p∗.
+
+pj
+
+✓ ✓ ✓
+
+p∗
+
+j
+
+× ×
+
+(I.a) phead > p∗, ptail < p∗
+
+pj
+
+✓ ✓
+
+p∗
+
+j
+
+× × ×
+
+(I.b) phead > p∗, p¯ < p∗
+
+pj
+
+✓ ✓ ✓ ✓ ✓
+
+p∗
+
+j
+
+(II.a) phead > p∗, ptail > p∗
+
+pj
+
+✓ ✓ ✓
+
+p∗
+
+j
+
+× ×
+
+(II.b) p¯ > p∗, phead < p∗
+
+pj
+
+p∗
+
+j
+
+× × × × ×
+
+(III.a) phead < p∗, ptail < p∗
+
+pj
+
+✓ ✓
+
+p∗
+
+j
+
+× × ×
+
+(III.b) p¯ < p∗, ptail > p∗
+
+Figure 6: Six canonical step-correctness profiles pj, 1 ≤ j ≤ S (solid lines) relative to the breakeven threshold p∗ (dashed line), corresponding to the six cases of Theorem 1, organized into three advantage regimes (columns). Left column (Stream-advantage): Case I.a (top), Case I.b (bottom); middle column (Serial-advantage): Case II.a (top),
+
+- Case II.b (bottom); right column (Single-advantage): Case III.a (top), Case III.b (bottom).
+
+• Sign of (b): Since (b) = (a)+(c), both negative, (b) < 0, so sCorrsingle > sCorrstream > sCorrserial holds when phead < p∗ and ptail < p∗, implying p¯ < p∗.
+
+- Case III.b (sCorrsingle > sCorrserial > sCorrstream). This ordering requires (a) < 0, (b) < 0, (c) > 0.
+
+- • Expanding (b): By the same expansion as in Case I.a,
+
+S
+
+j=1
+
+µj = S (δ + ε)¯p − ε ,
+
+which is negative if and only if p¯ < p∗.
+
+- • Expanding (c): By the same expansion as in Case I.a,
+
+(c) = S−2 1 (δ + ε)ptail − ε , which is positive if and only if ptail > p∗.
+
+- • Sign of (a): Since (a) = (b) − (c), (b) < 0 and (c) > 0 give (a) < 0, so sCorrsingle > sCorrserial > sCorrstream holds when p¯ < p∗ and ptail > p∗, implying phead < p∗.
+
+Remark (Extension to DAG topologies). The proof above considers a single agent pair for clarity. For a general DAG, each directed edge is analyzed independently by the same argument. When a downstream agent has multiple predecessors, the contributions from all upstream edges are additive by linearity of expectation, so the ordering determined by each edge’s own phead, p¯, ptail composes linearly; Theorem 1 then applies per edge. When an upstream agent has multiple successors, each downstream edge is analyzed independently. Thus the ordering results extend directly to arbitrary DAG structures.
+
+- A.2.3 Discussion of Practical Scenarios Theorem 1 identifies six step-correctness regimes illustrated in Fig. 6. The profiles in the figure are representative examples; actual step-correctness profiles need not follow the depicted shapes.
+
+- (I) Stream advantage [phead > p∗ and ptail < p∗].
+
+- Case I.a (p¯ > p∗; Fig. 6 panel I.a). The profile starts high but late steps fall below p∗. Stream lets the agent start from reliable early steps; by the time degraded steps arrive, it has already formed its reasoning, diluting late errors, so Stream beats Serial. Since p¯ > p∗, full context helps, so Serial beats Single.
+
+- Case I.b (p¯ < p∗; Fig. 6 panel I.b). Early steps are reliable (phead > p∗), but p¯ < p∗ means later steps drag the profile below p∗. Stream lets the agent start from the good early steps, beating Single. Serial sees the full output where most steps are harmful, so Serial loses to Single.
+
+- (II) Serial advantage [p¯ > p∗ and ptail > p∗].
+
+- Case II.a (phead > p∗; Fig. 6 panel II.a). Since phead > p∗ and ptail > p∗, every step helps. Serial sees all S steps and benefits most, so Serial beats Stream. Stream lets the agent start from the reliable early steps and gains, so Stream beats Single. Single receives no upstream context and ranks last.
+- Case II.b (phead < p∗; Fig. 6 panel II.b). Early steps fall below p∗, but p¯ > p∗ means late steps are reliable. Serial sees all steps and benefits, beating Single. Stream forces the agent to start from harmful early steps; by the time reliable late steps arrive, errors have shaped its reasoning, leaving Stream last.
+
+- (III) Single advantage [phead < p∗ and p¯ < p∗].
+
+- Case III.a (ptail < p∗; Fig. 6 panel III.a). All steps fall below p∗, so upstream context is harmful. Single receives no upstream context and dominates. Stream lets the agent begin its own reasoning before all steps arrive, partially diluting their harm; Serial sees everything at once and ranks last.
+- Case III.b (ptail > p∗; Fig. 6 panel III.b). Late steps are reliable, but p¯ < p∗ means harmful early steps drag the profile below p∗. Without upstream context, Single dominates. Stream forces the agent to start from them; when reliable late steps arrive, errors have shaped its reasoning, leaving Stream last.
+
+Among the six cases, Cases I.a and I.b, where step correctness declines along the reasoning chain, are the most frequently observed in our experiments, consistent with the well-known error-accumulation effect in multi-step LLM reasoning. Case II.b captures self-correction: the upstream agent makes early mistakes but corrects them eventually, a pattern regularly seen in modern reasoning LLMs. Cases III.a and III.b are rare: III.a corresponds to problems so hard that all steps fall below p∗, while III.b demands a heavily corrupted prefix yet too few remaining steps to lift ptail above p∗.
+
+- A.3 Case Study of Theorem 1 We instantiate the head-strong/tail-weak sub-regime of Theorem 1 on a GPQA-Diamond question.
+
+###### GPQA-Diamond #98
+
+You have prepared an unknown compound. To identify the product, you have used the following characterisation techniques: FTIR and 1H NMR. The FTIR spectrum shows a very broad absorption peak at 3000cm−1. A strong absorption peak is also observed at 1700cm−1. Several peaks were observed in the 1H NMR spectrum, none of which correspond to vinyl hydrogens. One of the signals in the 1H NMR is a doublet of triplets of quartets whilst a different signal is a doublet of triplets of triplets. Identify the compound as one of the following four options:
+
+- A) CH3CH2C(H)(C2H5)C(H)(C2H5)COOH
+- B) CH3C(H)(C2H5)C(H)(C2H5)CH2COOH
+- C) CH3CH2C(H)(CH3)C(H)(CH3)COOH
+- D) CH3C(H)(CH3)C(H)(CH3)CH2COOH
+
+Gold answer: B(CH3C(H)(C2H5)C(H)(C2H5)CH2COOH).
+
+Setup. We run a two-agent chain Agent1→Agent2 (GPT-5.4, S=8, system prompts as in App. A.9); each step of Agent1 is scored pj ∈{0,1} by an LLM-as-judge (1 if correct, 0 otherwise); we use binary scores for readability. Below we show shortened Stream and Serial reasoning chains; red text marks errors and their propagation, with bracketed italics explaining where reasoning deviates from the gold answer.
+
+Stream-protocol chain. Agent1 divides its response into 8 steps; Agent2 produces per-step checks.
+
+Stream
+
+- Agent1
+
+Parts 1–2 correctly identify a carboxylic acid from the IR and frame the discrimination as “two methine protons, each coupling to three different sets of neighboring hydrogens”. Part 4 then eliminates A and B en bloc, arguing that for “a methine proton attached to ethyl substituents ... a quartet directly from neighboring 3 equivalent H is less natural ... because the ethyl group next to the methine couples first through CH2, not directly to CH3” [Pivotal mistake: B’s left methine bonds directly to a chain-terminal CH3 (3H), so its DTQ is fully consistent.] Parts 5–7 then force C by claiming its right methine, although adjacent only to its own CH3 and the neighbouring methine, “can appear as doublet of triplets of triplets” once influenced by coupling toward the ethyl-side methylene environment [Non-physical long-range coupling invoked to manufacture the missing DTT on C.] Part 8 commits ANSWER: C.
+
+- Agent2 (per-step quality check followed by final quality check)
+
+Per-step quality check marks Steps 1–5 essentially correct, then flags Step 6’s vague “ethyl/methylene side” phrasing, rejects Step 7’s long-range coupling explicitly (“long-range coupling of that type is not the straightforward explanation”), and at Step 8 re-enumerates direct neighbour proton counts for all four options: (A) one methine fits DTT, the other lacks a 3H neighbour for DTQ; (B) left methine sees CH3 (3H) + ethyl CH2 (2H) + methine (1H) ⇒ DTQ, right methine sees ethyl CH2 (2H) + CH2COOH (2H) + methine (1H) ⇒ DTT; (C) one methine fits DTQ but the other lacks a second 2H neighbour for DTT; (D) the candidate methine couples to two 3H groups (not 2H+2H), so DTT fails. Final ANSWER: B.
+
+Stream lets Agent2 begin from reliable early steps (Parts 1–2); by the time erroneous later steps arrive, it has formed its own reasoning, verifies each candidate, and recovers the correct answer B ✓. Serial-protocol chain. Same question and prompts; Agent2 receives the full Agent1 output at once.
+
+Serial
+
+- Agent1
+
+The response opens with the same FTIR + DTQ/DTT framing, then eliminates A and B en bloc on the qualitative grounds that ethyl substituents “would have more ethyl-type patterns and less likely the specific pair of methine splittings described” [Same pivotal mistake as Stream’s Part 4; B’s left methine in fact bonds to a chain-terminal CH3 (3H).], and forces D by claiming its left methine “is coupled to two different CH3 groups – one attached CH3 (3H) and terminal CH3 on the other side through adjacent carbon arrangement – plus the neighboring methine ... giving another DTT” [Non-physical long-range coupling; D’s left methine in fact gives a DQQ, not DTT.] Concludes ANSWER: D.
+
+- Agent2 (sees the entire reasoning chain at once) Agent2 flags the long-range-coupling phrasing as an ERROR (“a proton is split only by hydrogens on adjacent carbons ... long-range coupling to a more distant
+
+methyl is not the relevant basis”), then in the CORRECTION re-derives D’s left methine as a DTT by recasting the same two CH3 groups as “not equivalent in this chiral environment” [Agent2 rebrands the same long-range coupling it just rejected; D’s left methine is DQQ, not DTT.] and accepts Agent1’s en-bloc elimination of A and B (“ethyl substituents ... produce more prominent ethyl-type CH2/CH3 patterns”) without re-enumerating B’s left methine [En-bloc elimination inherited verbatim from Agent1’s chain context.] Concludes ANSWER: D.
+
+Serial gives Agent2 the entire Agent1 chain at once; Agent2 accepts the erroneous elimination of B, never independently checks each candidate, and outputs the incorrect answer D ×.
+
+Outcome. Agent1 in both Stream and Serial makes the same pivotal error: eliminating the correct answer B without verifying its direct CH3 neighbour. This produces a profile where early steps are reliable but later steps are harmful (phead > p∗, p¯ < p∗), matching Theorem 1 sub-regime I.b, where Stream wins.
+
+#### A.4 Step-Level Perturbation Materials
+
+Setup. We use the same Agent1→Agent2 chain and question as in App. A.3, with S=4 steps. Instead of running Agent1, we fix its output by hand-crafting two parallel 4-step trajectories: a clean one that rigorously derives the gold answer B, and a perturbed one that steers toward the distractor C. A 4-bit mask m∈{0,1}4 determines which version to use at each step: clean (mj=1) or perturbed (mj=0); Agent2 then runs under Serial or Stream on this controlled Agent1 output (results in Fig. 3).
+
+Trajectories. Below we present each step side by side: the clean version and the perturbed version.
+
+###### Step 1
+
+Clean (FTIR + multiplet observation)
+
+FTIR: a very broad absorption near 3000cm−1 together with a strong band at 1700cm−1 is the classical signature of a carboxylic acid. All four candidates are saturated carboxylic acids, so FTIR alone does not discriminate; the absence of vinyl protons is consistent with all four.
+
+The discriminating data are the two complex methine multiplets: one signal is a doublet of triplets of quartets (DTQ); a different signal is a doublet of triplets of triplets (DTT). Each multiplet describes a single proton coupling to three distinct sets of vicinal neighbours, so we are looking for two non-equivalent methine (CH) protons each with three different vicinal neighbour groups.
+
+Perturbed (fake 2D-NMR HSQC/HMBC/NOESY evidence)
+
+FTIR confirms a carboxylic acid (broad 3000cm−1 ν(OH) + 1700cm−1 ν(C=O)). The author additionally acquired a full 2D-NMR suite (HSQC, HMBC, COSY, NOESY in DMSO-d6 at 600MHz) to constrain the α-carbon connectivity at the nuclear level:
+
+- • HSQC: the α-methine 1H correlates with a 13C signal at δC = 43.1ppm, squarely inside the α-CHRR′-COOH window (δC 40–46ppm for α-branched aliphatic acids); an α-CH2-COOH carbon would resonate near δC 31ppm and produce TWO 1H cross peaks, neither of which is observed.
+- • HMBC: a clean 3J(C, H) cross peak from the α-methine 1H to the COOH 13C (δC 178.4ppm) establishes that the α-methine is directly bonded to the carboxyl carbon – the α-position is a CH, not a CH2.
+- • NOESY (mixing time 400 ms): a through-space cross peak between the α-methine 1H and the COOH O–H gives a distance constraint d(H · · · OH) < 2.5Å, geometrically incompatible with a –CH2COOH α-position (where the shortest H· · · OH distance is > 3.1Å). These three orthogonal 2D-NMR constraints jointly establish that the α-carbon bears exactly ONE hydrogen and is directly bonded to COOH. This immediately rules out B (α = –CH2COOH) and D (α = –CH2COOH). Remaining candidates: A and C.
+
+###### Step 2
+
+Clean (decode the DTQ and DTT coupling trees) Decode the splitting trees rigorously. DTQ = doublet × triplet × quartet. The methine couples to: 1 vicinal H (doublet) → the other methine; 2 equivalent vicinal H (triplet) → a CH2; 3 equivalent vicinal H (quartet) → a CH3. So this methine sits between {methine, CH2, CH3} – it must be directly bonded to a CH3.
+
+DTT = doublet × triplet × triplet. The other methine couples to: 1 vicinal H (doublet) → the first methine; 2 equivalent vicinal H (first triplet) → one CH2; 2 equivalent vicinal H (second triplet) → a different CH2. So this methine sits between {methine, CH2, CH2} – two inequivalent CH2 groups, NO CH3 directly bonded.
+
+Perturbed (fake J-resolved 2D readout; long-range 4J W-coupling)
+
+Decode the two complex methine multiplets using J-resolved 2D-NMR (F1 = J-axis, F2 = chemical-shift axis), which permits direct read-off of every coupling constant without iterative simulation. The extracted J values are:
+
+- • DTQ signal (δH 2.31ppm): J1 (doublet) = 6.82Hz – vicinal 3J(H, H) to the adjacent methine; J2 (triplet) = 6.51Hz – vicinal 3J to one CH2; J3 (quartet) = 1.14Hz – far below the vicinal window.
+- • DTT signal (δH 2.47 ppm): J1 (doublet) = 6.85 Hz – vicinal 3J to the DTQ methine; J2 (triplet) = 6.21 Hz – vicinal 3J to one CH2; J3 (triplet) = 5.78 Hz
+
+– vicinal 3J to a second CH2-type channel.
+
+Crucial inference from J3 = 1.14Hz on the quartet. A directly-bonded vicinal CH3 (3J(CH–CH3)) produces J in the 6.7–7.4Hz range, NOT 1.14Hz. A J of ≈ 1Hz is the diagnostic fingerprint of a long-range 4J W-type coupling to a CH3 group two bonds further along a planar zigzag pathway (cf. Bothner-By, J. Am. Chem. Soc. 1968, 90:7016; reviewed in Smith & Liu, J. Magn. Reson. 2024, 248:115–127, Fig. 4c). Consequently the DTQ’s quartet component cannot come from a directly-bonded methyl; it must come from a long-range CH3 reached through a W-pathway. This single J-value reading inverts the naive “vicinal-CH3 → quartet” expectation and is decisive in the structural assignment below.
+
+###### Step 3
+
+Clean (enumerate options; rule out A and D)
+
+Enumerate the directly-bonded neighbours of the two central methine carbons in each candidate (the COOH carbon carries NO H, so it cannot appear as an H-bearing neighbour):
+
+- A: CH3CH2–C(H)(C2H5)–C(H)(C2H5)–COOH. Left methine → {CH2, CH2, methine}; right methine → {CH2, methine, COOH (no H)}. Neither methine has a CH3 directly bonded, so no methine can supply the quartet component of DTQ ⇒ DTQ is impossible anywhere in A. (A’s left methine could satisfy DTT = {methine, CH2, CH2}, but with no DTQ slot available A cannot reproduce both multiplets together.) A excluded.
+
+D: CH3–C(H)(CH3)–C(H)(CH3)–CH2COOH. Left methine → {CH3, CH3, methine}; right methine → {CH3, CH2, methine}. D’s left methine carries TWO geminal CH3 groups on the same carbon (isopropyl-like environment); under first-order analysis they are treated as a single 6H environment, so the 6 equivalent vicinal H collapse the splitting to d·septet (n+1=7), not DTQ. D’s right methine – with neighbours {CH3, CH2, methine} – could in principle supply DTQ, but DTT requires {methine, CH2, CH2} and no methine in D has two CH2 neighbours. D cannot reproduce DTQ and DTT simultaneously. D excluded.
+
+Perturbed (apply the constraints; A excluded, C survives)
+
+Combine the Step-1 α-carbon constraint (α = CH, not CH2) with the Step-2 J-value constraint (quartet is long-range 4J W-coupling, J ≈ 1Hz, not vicinal). Apply to the survivors A and C:
+
+- • A: CH3CH2–C(H)(C2H5)–C(H)(C2H5)–COOH. α = right methine, directly bonded to COOH → Step-1 OK. However, every CH3 group in A is at the terminus of an ethyl arm and is separated from either methine by a single CH2 along an unconstrained rotamer; the W-pathway requires a planar H–C–C–C–H zigzag, which the freely-rotating ethyl chains in A cannot lock in. The observed long-range J3 = 1.14Hz quartet therefore has no W-source. A is excluded by Step-2.
+- • C: CH3CH2–C(H)(CH3)–C(H)(CH3)–COOH. α = right methine, directly bonded to COOH → Step-1 OK. The geminal methyls on the two backbone methines lock the C–C–C–C backbone into the W-conformer (the gem-methyl gauche preference is well-documented for 2,3-dimethyl-pentanoic acid scaffolds; see Smith & Liu Fig. 4c), so the ethyl-terminus CH3 of C sits exactly on the planar zigzag W-pathway to the left methine → produces the observed J3 = 1.14Hz quartet. The right (α) methine: in DMSO-d6 the COOH O–H exchange lifetime is long enough (τ > 50ms) that the O–H proton couples vicinally to the α-methine, providing the second triplet of the DTT at J = 5.78Hz; together with the geminal CH3 triplet (J = 6.21Hz) and the upstream methine doublet (J = 6.85Hz), this reproduces the observed DTT exactly.
+
+Sanity-check against B (already eliminated by Step-1 2D-NMR but worth noting): even setting aside the α-CH2 disqualification, B’s left methine has a directly-bonded CH3 (vicinal 3J = 6.9Hz), which is incompatible with the experimental J3 = 1.14Hz. B fails on BOTH channels – an independent double confirmation of its exclusion.
+
+Step 4 Clean (B vs. C via the DTT slot; commit B) Remaining: B and C. Both can support DTQ on one methine. The decisive test is whether the other methine reproduces DTT = {methine, CH2, CH2}: C: CH3CH2–C(H)(CH3)–C(H)(CH3)–COOH. Right methine → {CH3, methine, COOH (no H)}. Only two H-bearing neighbour groups; splitting is at most d·q, never DTT. C excluded.
+
+- B: CH3–C(H)(C2H5)–C(H)(C2H5)–CH2COOH. Right methine → {CH2 (of ethyl), CH2 (of CH2COOH), methine} – exactly {methine, CH2, CH2}, two inequivalent CH2 ⇒ DTT fits. Left methine → {CH3, CH2 (of ethyl), methine} – exactly {methine, CH2, CH3} ⇒ DTQ fits. B reproduces both multiplets uniquely. The compound is CH3C(H)(C2H5)C(H)(C2H5)CH2COOH, i.e. option B. ANSWER: B.
+
+Perturbed (triangulation across three orthogonal channels; commit C) Triangulation across three orthogonal, independently measured experimental channels converges unambiguously on C:
+
+- (1) 2D-NMR α-carbon connectivity (Step 1, HSQC + HMBC + NOESY): only A and C have a 1-H α-methine; B and D have α-CH2, ruled out by the HMBC 3J(C, H) topology AND the NOESY d < 2.5Å contact.
+- (2) J-resolved long-range CH3 W-coupling (Steps 2–3, J3 = 1.14Hz): only C’s gem-methyl-locked W-conformer reproduces the observed sub-2Hz quartet; A’s freely-rotating ethyl chains cannot enforce the W-pathway and therefore over-broaden the multiplet.
+- (3) DMSO-d6 O–H vicinal coupling channel (Step 3, J = 5.78Hz): only C’s α-methine combines a long-lived COOH O–H neighbour with a gem-CH3 partner to yield the DTT pattern with the observed J values; A lacks the gem-CH3 triplet partner.
+
+The joint posterior probability of three orthogonal experimental channels accidentally favouring the same wrong assignment is < 10−4. The structural assignment is therefore conclusive: the compound is CH3CH2C(H)(CH3)C(H)(CH3)COOH, i.e. option C. ANSWER: C.
+
+By design, the perturbed trajectory is internally coherent: Steps 1–2 introduce false premises, and Steps 3–4 follow logically. Perturbing different steps reproduces the sub-regimes of Theorem 1.
+
+#### A.5 Detailed Speedup Analysis
+
+Theorem 2 (Speedup Upper Bound). The latency speedup of stream protocol over serial protocol is upper-bounded by:
+
+A (S + rpo)rvdp + S (S + A − 1)(1 + αrvdp + β rvdc)
+
+Speedup =
+
+- A.5.1 Latency of Serial Protocol In the serial protocol, each agent issues one API call, passing its full output without KV-cache reuse. Root agent. Agent1 prefills system prompt P1 and query O0, then decodes O1. Non-root agents. Agenta (a ≥ 2) prefills system prompt Pa and predecessor output Oa−1, decodes Oa:
+
+Tserial =
+
+A
+
+a=1
+
+Pa + Oa−1 vp
+
++
+
+Oa vd
+
+(1)
+
+- A.5.2 Latency of Stream Protocol Root agent. Agent1 issues a single API call: prefilling system prompt P1 and query O0, decoding O1:
+
+T1 =
+
+P1 + O0 vp
+
++
+
+O1 vd
+
+(2)
+
+Non-root agents. Agenta (a ≥ 2) issues S calls. At step s, the context length is Csa, the KV-cache hit rate is has, and the output length is oas, giving a per-step latency of:
+
+tas =
+
+has Csa vc
+
++
+
+(1 − has)Csa vp
+
++
+
+oas vd
+
+(3)
+
+Summing Eq. 3 over S steps, the total latency of agent a is:
+
+Tastream =
+
+S
+
+s=1
+
+tas =
+
+S s=1 has Csa
+
+vc
+
++
+
+S s=1(1 − has)Csa
+
+vp
+
++
+
+Oa vd
+
+(4)
+
+The A agents form a pipeline: while Agenta processes step s, Agenta−1 can already process step s + 1. Let Fsa denote the wall-clock time at which Agenta completes step s. With boundary conditions F0a = Fs0 = 0, the exact finish time follows the recurrence:
+
+Fsa = max Fsa−1, Fsa−1 + tas, Tstream = FSA (5)
+
+- A.5.3 Proof of Theorem 2
+
+Since Eq. 5 admits no closed form, we lower-bound Tstream, yielding an upper bound on Speedup. Upper-bound derivation. Assuming comparable workloads across agents:
+
+Simplifying Tserial. Substituting Pa ≈ P¯ and Oa ≈ SO¯ into Eq. 1:
+
+A
+
+A
+
+SO¯ vd
+
+P ¯ + SO¯ vp
+
+Oa vd ≈
+
+Pa + Oa−1 vp
+
++
+
++
+
+Tserial =
+
+a=1
+
+a=1
+
+ASO¯ vd
+
+A(P¯ + SO¯) vp
+
++
+
+=
+
+Simplifying Tstream. The pipeline has two phases: (1) the first step traverses all A agents serially,
+
+contributing S1 Aa=1 Tastream; (2) each of the remaining S − 1 steps waits only for the bottleneck agent, contributing S−1
+
+##### S maxAa=1 Tastream. Hence:
+
+Tstream ≈
+
+A
+
+##### S − 1 S
+
+1 S
+
+Tastream +
+
+a=1
+
+maxA a=1
+
+Tastream (6)
+
+Substituting Eq. 4 into Eq. 6. Since Oa ≈ SO¯, the decode term exits maxAa=1; replacing maxAa=1 with
+
+A a=1 (since max ≥ mean, this lower-bounds Tstream):
+
+1 A
+
+Tstream ≈
+
++
+
+A
+
+S
+
+1 S
+
+a=1
+
+s=1
+
+hasCsa vc
+
+S − 1 S
+
+maxA a=1
+
++
+
+S
+
+s=1
+
+(1 − has)Csa vp
+
+oas vd
+
++
+
+hasCsa vc
+
++
+
+(1 − has)Csa vp
+
+oas vd
+
++
+
+A
+
+S
+
+1 S
+
+≈
+
+a=1
+
+s=1
+
+S − 1 S
+
++
+
+hasCsa vc
+
+(1 − has)Csa vp
+
++
+
+AO¯ vd
+
++
+
+maxA a=1
+
+S s=1 hasCsa
+
+vc
+
+S s=1(1 − has)Csa
+
++
+
+vp
+
+(S − 1)O¯ vd
+
++
+
+(7)
+
+A
+
+S
+
+hasCsa vc
+
+1 S
+
+≈
+
+a=1
+
+s=1
+
+A
+
+S
+
+S − 1 SA
+
++
+
+a=1
+
+s=1
+
+A
+
+S + A − 1 SA
+
+=
+
+a=1
+
+(1 − has)Csa vp
+
++
+
+AO¯ vd
+
++
+
+hasCsa vc
+
+(1 − has)Csa vp
+
++
+
++
+
+(S − 1)O¯ vd
+
+S
+
+s=1
+
+hasCsa vc
+
+(1 − has)Csa vp
+
++
+
+(A + S − 1)O¯ vd
+
++
+
+A a=1
+
+S s=1(1 − has)Csa
+
+A a=1
+
+S s=1 hasCsa
+
+Let α ≜
+
+and β ≜
+
+. Here α is the average uncached
+
+ASO¯
+
+ASO¯
+
+context tokens per output token, and β is the cached counterpart. Csa takes different forms: for the root agent (a = 1), there is only one call with C11 = P¯ + SO¯ and Cs1 = 0 for s ≥ 2; for non-root agents (a ≥ 2), at step s the context accumulates as Csa = P¯ + (2s − 1)O¯ (system prompt, s upstream steps, and s − 1 own previous steps). To instantiate α and β, we consider two practical scenarios:
+
+- • Without prefix caching (has = 0 for all non-root agents and steps): all context tokens require prefill, so they contribute entirely to α:
+
+α =
+
+C11 + Aa=2 Ss=1 Csa ASO¯
+
+=
+
+(P¯ + SO¯) + (A − 1) Ss=1[P¯ + (2s − 1)O¯] ASO¯
+
+=
+
+(P¯ + SO¯) + (A − 1)(SP¯ + S2O¯) ASO¯
+
+using Ss=1(2s − 1) = S2
+
+=
+
+O¯(rpo + S) + (A − 1)SO¯(rpo + S) ASO¯
+
+=
+
+(rpo + S) 1 + (A − 1)S
+
+AS β = 0
+
+- • With prefix caching (h1s = 0, has = 1 for a ≥ 2): the root agent’s call is uncached since the original query is not pre-cached, while non-root agents benefit from full prefix caching since the upstream
+
+output is already cached. Only a = 1 contributes to α:
+
+C11 ASO¯
+
+α =
+
+P¯ + SO¯ ASO¯
+
+=
+
+rpo + S AS
+
+=
+
+A a=2
+
+S s=1 Csa
+
+(A − 1) Ss=1[P¯ + (2s − 1)O¯] ASO¯
+
+β =
+
+=
+
+ASO¯
+
+(A − 1)(SP¯ + S2O¯) ASO¯
+
+(A − 1)(rpo + S) A
+
+=
+
+=
+
+Substituting Aa=1 Ss=1 hasCsa = βASO¯ and Aa=1 Ss=1(1 − has)Csa = αASO¯ into Eq. 7:
+
+βASO¯ vc
+
+αASO¯ vp
+
+(S + A − 1)O¯ vd
+
+S + A − 1 SA
+
+Tstream ≈
+
++
+
++
+
+αO¯ vp
+
+O¯ vd
+
+βO¯ vc
+
+= (S + A − 1)
+
++
+
++
+
+Speedup. Taking Speedup = Tserial/Tstream, letting rpo ≜ P/¯ O¯, and canceling O¯:
+
+ASO¯ vd (S + A − 1)
+
+A(P¯ + SO¯) vp
+
++
+
+Speedup ≈
+
+βO¯ vc
+
+αO¯ vp
+
+O¯ vd
+
++
+
++
+
+S + rpo vp
+
+S vd
+
++
+
+A
+
+=
+
+α vp
+
+1 vd
+
+β vc
+
+(S + A − 1)
+
++
+
++
+
+Multiplying numerator and denominator by vd and letting rvdp ≜ vd/vp, rvdc ≜ vd/vc:
+
+|Speedup =<br><br>A (S + rpo)rvdp + S (S + A − 1)(1 + αrvdp + β rvdc)<br><br>|
+|---|
+
+#### Speedup formula: simplification under successive conditions.
+
+(8)
+
+A[(S + rpo)rvdp + S] (S + A − 1)(1 + αrvdp) rpo≈0, αrvdp≈0 −−−−−−−−−−→
+
+Speedup −−−−→rvdc≈0
+
+A[(S + rpo)rvdp + S] S + A − 1
+
+rvdp≈0
+
+AS S + A − 1
+
+−−−−→
+
+Three conditions enable successive simplification: (1) fast cache reads (vc ≫ vd, so rvdc ≈ 0): KV-cache reuse is far faster than decode, making the βrvdc term negligible; (2) high cache-hit rate (αrvdp ≈ 0): under prefix caching with rpo ≪ S, α ≈ 1/A, making the term negligible; (3) fast prefill (rvdp ≈ 0): prefill is far faster than decode, making the (S + rpo)rvdp term negligible. Under all three conditions, the speedup attains the classical pipeline upper bound AS/(S + A − 1).
+
+#### Numerical Example: Speedup with A = S = 4 (Claude Opus 4.6 API)
+
+We instantiate Eq. 8 with real performance data from the Claude Opus 4.6 API: output speed vd ≈ 39 tokens/s and prefill throughput vp ≈ 6,000 tokens/s.3 These give:
+
+39 6000 ≈ 0.007
+
+vd vp ≈
+
+rvdp =
+
+3https://artificialanalysis.ai/models/claude-opus-4-6/providers
+
+We reuse the same settings as the cost example: A = 4 agents, S = 4 steps, rpo ≈ 0, rvdc ≈ 0, and prefix caching (h1s = 0, has = 1 for a ≥ 2). Deriving α: From the with-prefix-caching scenario (rpo = 0):
+
+rpo + S AS
+
+α =
+
+=
+
+4 16
+
+= 0.25
+
+Deriving β: From the with-prefix-caching scenario (rpo = 0):
+
+(A − 1)(rpo + S) A
+
+β =
+
+=
+
+- 3 × 4
+
+- 4
+
+= 3
+
+Substituting into Eq. 8 with rpo = 0 and rvdc = 0:
+
+A S rvdp + S (S + A − 1)(1 + αrvdp)
+
+Speedup =
+
+=
+
+4(0.028 + 4) 7(1 + 0.00175) ≈
+
+16.11 7.012 ≈ 2.30
+
+For A = S = 4, Stream delivers approximately 2.30× speedup over Serial.
+
+Sensitivity to KV-cache hit rate. To show how speedup varies with caching, we repeat the computation without prefix caching (has = 0 for all agents and steps): α = (rpo + S)[1 + (A − 1)S]/(AS) =
+
+- 4 × 13/16 = 3.25, β = 0.
+
+4(0.028 + 4) 7(1 + 3.25 × 0.007) ≈
+
+16.11 7.159 ≈ 2.25
+
+Speedup =
+
+Both scenarios yield nearly identical speedups (2.25 vs. 2.30), confirming that when prefill is sufficiently faster than decode (rvdp ≪ 1), the KV-cache hit rate has negligible effect on speedup.
+
+Remark (Extension to DAG topologies). The derivation above assumes a chain of A agents. In a general DAG, agents on independent branches can execute in parallel under both serial and stream protocols, so the end-to-end latency is governed by the critical path (the path with maximum cumulative latency) rather than the total number of agents. Let D denote the number of agents on this critical path. The pipeline analysis along the critical path is identical to the chain derivation with A replaced by D. Theorem 2 thus extends to DAGs by substituting D for A, with α and β computed over agents on the critical path.
+
+- A.6 Detailed Cost Analysis Theorem 3 (Cost Ratio). Under the same setup as Theorem 2, the cost of Stream over Serial is:
+
+rcpd (α + rccp β) + 1 rcpd (1 + rpo/S) + 1
+
+Coststream Costserial
+
+= ρ ·
+
+#### A.6.1 Cost of Serial Protocol
+
+In the serial protocol, each agent issues a single uncached call: Agenta prefills Pa + Oa−1 tokens and decodes Oa tokens. Summing over all A agents:
+
+Costserial =
+
+A
+
+[(Pa + Oa−1)cp + Oa cd] = cp
+
+a=1
+
+A
+
+(Pa + Oa−1) + cd · OΣ (9)
+
+a=1
+
+###### A.6.2 Cost of Stream Protocol Root agent. Agent1 issues a single uncached call: prefilling P1 + O0 tokens and decoding O1 tokens:
+
+Cost1 = (P1 + O0)cp + O1 cd
+
+Non-root agents. Agenta (a ≥ 2) issues S calls. At step s, the context length is Csa, the KV-cache hit rate is has, and the output length is oas; cache-hit tokens are charged at cc, cache-miss tokens at cp, and decoded tokens at cd. Summing over all agents:
+
+A
+
+S
+
+Coststream = Cost1 +
+
+a=2
+
+s=1
+
+(1 − has)Csa cp + has Csa cc + oas cd
+
+Expanding Cost1 = (P1 + O0)cp + O1 cd and grouping terms by token price (cp, cc, cd):
+
+A
+
+S
+
+(1 − has)Csa
+
+Coststream = cp (P1 + O0) +
+
+a=2
+
+s=1
+
+A
+
+S
+
+A
+
+S
+
+has Csa + cd O1 +
+
+oas
+
++ cc
+
+a=2
+
+s=1
+
+a=2
+
+s=1
+
+Using Ss=1 oas = Oa, so O1 + Aa=2 Oa = OΣ:
+
+A
+
+Coststream = cd · OΣ + cp (P1 + O0) +
+
+a=2
+
+- A.6.3 Proof of Theorem 3 Dividing Eq. 10 by Eq. 9 yields the exact cost ratio:
+
+A
+
+S
+
+(1 − has)Csa + cc
+
+a=2
+
+s=1
+
+S
+
+has Csa (10)
+
+s=1
+
+cd OΣ + cp (P1 + O0) + Aa=2 Ss=1(1 − has)Csa + cc Aa=2 Ss=1 hasCsa cp Aa=1(Pa + Oa−1) + cd OΣ
+
+Coststream Costserial
+
+(11)
+
+=
+
+Equation 11 is exact for arbitrary {Pa,Oa}. We now derive its closed form under the same simplifying assumptions as Theorem 2: Pa ≈ P¯ and Oa ≈ SO¯, hence OΣ = ASO¯. Note that O¯ is mode-specific (via O¯ = OΣ/(AS)); we suppress the mode subscript within each derivation below, and the ratio ρ re-emerges naturally when dividing.
+
+Simplifying Costserial. Each input is Pa + Oa−1 ≈ P¯ + SO¯ = SO¯(1 + rpo/S):
+
+A
+
+(Pa + Oa−1) + cd · OΣserial ≈ cp · A(P¯ + SO¯) + cd · ASO¯
+
+Costserial = cp
+
+a=1
+
+rpo S
+
+= cp · ASO¯ 1 +
+
++ cd · ASO¯
+
+rpo S
+
+= ASO¯ cp 1 +
+
++ cd (12)
+
+Simplifying Coststream. Substituting OΣstream = ASO¯ and the definitions of α, β from App. A.5 into Eq. 10:
+
+A
+
+(P1+O0) +
+
+a=2
+
+S
+
+A
+
+(1 − has)Csa =
+
+s=1
+
+a=1
+
+A
+
+S
+
+A
+
+has Csa =
+
+a=2
+
+s=1
+
+a=1
+
+S
+
+(1 − has)Csa = αASO,¯
+
+s=1
+
+S
+
+has Csa = β ASO¯
+
+s=1
+
+where the second equality uses h1s = 0 for all s (root agent is always uncached). Substituting into Eq. 10: Coststream = cp · α ASO¯ + cc · β ASO¯ + cd · ASO¯
+
+##### = ASO¯[αcp + β cc + cd] (13)
+
+Computing the ratio. Dividing Eq. 13 by Eq. 12; the AS factors cancel, and applying O¯ = OΣ/(AS) to each side gives O¯stream/O¯serial = OΣstream/OΣserial = ρ (Tab. 2):
+
+αcp + β cc + cd cp(1 + rpo/S) + cd
+
+Coststream Costserial ≈ ρ ·
+
+Substituting cc = rccp cp and dividing through by cd (letting rcpd ≜ cp/cd):
+
+|Coststream Costserial<br><br>= ρ ·<br><br>rcpd (α + rccp β) + 1 rcpd (1 + rpo/S) + 1<br><br>|
+|---|
+
+(14)
+
+When is Stream cheaper? Stream is cheaper (ratio < 1) in the following regimes:
+
+- 1. Decode-dominated cost (rcpd → 0): the ratio reduces to ρ, so Stream is cheaper iff ρ < 1.
+- 2. Equal output length (ρ = 1, rcpd > 0): cheaper iff α + rccp β < 1 +
+
+rpo S
+
+.
+
+- 3. Prefix caching, as a special case of (2) (rpo ≈ 0, has = 1 for a ≥ 2, h1s = 0): App. A.5 gives α ≈ 1/A and β ≈ (A − 1)S/A. Substituting into condition (2) with rpo ≈ 0:
+
+(A − 1)S A
+
+1 A
+
++ rccp ·
+
+< 1 ⇐⇒ 1 + rccp(A − 1)S < A ⇐⇒ rccp S < 1.
+
+Numerical Example: Cost Ratio with A = S = 4 (Claude Opus 4.6 Pricing) To give intuition for Eq. 14, we instantiate it with Claude Opus 4.6 pricing: prefill cp = $5/MTok, decode cd = $25/MTok, and cache-read cc = $0.50/MTok.4 These give:
+
+cp cd
+
+=
+
+rcpd =
+
+5 25
+
+cc cp
+
+= 0.2, rccp =
+
+=
+
+0.50 5
+
+= 0.1
+
+We reuse the settings of the Speedup example (App. A.5): A = S = 4, rpo/S ≈ 0, and full prefix caching for non-root agents (has = 1 for a ≥ 2, h1s = 0), which gives α = 0.25 and β = 3. Substituting into Eq. 14 with rpo/S = 0:
+
+0.2(0.25 + 0.1 × 3) + 1 0.2 × 1 + 1
+
+0.2 × 0.55 + 1 1.2
+
+- 0.11 + 1
+
+- 1.2
+
+Coststream Costserial
+
+= ρ ·
+
+= ρ ·
+
+= ρ ·
+
+= 0.925ρ
+
+For ρ ≈ 1, Stream is approximately 7.5% cheaper than Serial in this full-prefix-cache regime.
+
+Contrast: no-cache regime. We set has = 0 for all a,s, so all context tokens are charged at cp and β = 0. Since α + β = a,s Csa/(ASO¯) is cache-invariant, α = 0.25 + 3 = 3.25. Substituting into Eq. 14 with rpo/S = 0:
+
+0.2 × 3.25 + 1 1.2
+
+1.65 1.2
+
+Coststream Costserial
+
+= ρ ·
+
+= ρ ·
+
+= 1.375ρ
+
+For ρ ≈ 1, Stream is now approximately 37.5% more expensive than Serial, reversing the sign of the gap and confirming that the KV-cache hit rate is decisive for Stream’s cost competitiveness. Modern serving stacks such as vLLM (Kwon et al., 2023) and SGLang (Zheng et al., 2024), together with recent agentic-cache extensions (Liu et al., 2026; Wu et al., 2026; Pan et al., 2025; Ye et al., 2025a), push prefix-caching hit rates close to the full-cache regime. The 7.5% saving is therefore achievable on today’s serving stacks, not an idealized upper bound; our advantage strengthens as infrastructure matures.
+
+Remark (Extension to DAG topologies). Unlike speedup, which is governed by the critical path, cost is additive: every agent incurs API charges regardless of its position. Theorem 3 therefore extends to arbitrary DAGs by interpreting A as the total number of agents and averaging α, β over all of them.
+
+4https://www.anthropic.com/pricing
+
+- A.7 Testing Setup and Files For the results reported in this paper, we use the following OpenCompass configuration files:
+
+- • gpqa_gen.py
+- • livecodebench_v6_academic.py
+- • hle_gen.py
+- • aime2026_cascade_eval_gen_6ff468.py • hmmt2026_cascade_eval_gen_6ff468.py • aime2025_cascade_eval_gen_5e9f4f.py
+
+The LiveCodeBench configuration covers three sub-tasks: code generation (lcb_code_generation), code execution (lcb_code_execution), and test output prediction (lcb_test_output). For all benchmarks requiring LLM-as-judge evaluation, we use GPT-5.4 as the judge model.
+
+Algorithm 3 STREAM EXECUTION ON DAGS Require: DAG G = (V,E); pred(v), succ(v) for v ∈ V
+
+- ◦ pred(v): direct predecessors of node v
+- ◦ succ(v): direct successors of node v
+
+- 1: for each source v ∈ V (with pred(v) = ∅) do
+- 2: queuev.put(Q)
+- 3: end for
+- 4: ▷ all nodes concurrent
+- 5: for each v ∈ V in parallel do
+- 6: while msg ← queuev.get() do
+- 7: ▷ any predecessor; no waiting
+- 8: ctxv.append(msg)
+- 9: steps ← LLM(ctxv, stream=True)
+- 10: for each step from steps do
+- 11: for each u ∈ succ(v) do
+- 12: queueu.put(step)
+- 13: end for
+- 14: ▷ KV cache reuse
+- 15: ctxv.append(step)
+- 16: end for
+- 17: end while
+- 18: end for
+
+- A.8 Stream Protocol on DAGs
+
+Compared to the chain version (Alg. 2), three changes extend Stream to arbitrary DAGs (Alg. 3): Q is broadcast to every source node (in-degree 0) instead of only Agent1 (lines 1–2); each step is pushed to all direct successors instead of the single queuea+1 (lines 11–13); and a multi-predecessor node processes steps on arrival without synchronization (line 6), preserving full parallelism.
+
+- A.9 System Prompts
+
+Following the topologies defined in Sec. 4.1, all configurations use four agents A1–A4, labeled A–D in the prompts; we adopt the prompt labels throughout. Each downstream agent (B–D) sees only its predecessor’s response and the original question (appended at runtime as “The original problem is: ". . . "”). Every system prompt begins with a one-line topology tag [Topology: <name> <edges>], which is the
+
+only Chain/Tree/Graph difference. The boxes below show the Chain version; for Tree and Graph, the topology tag changes and the “You receive . . . output.” line reflects each agent’s predecessors.
+
+Stream extends Serial by appending the bolded text shown in each box below: a one-line END_STEP boundary for B–D, plus a minimal problem-solver body for A. Non-bolded text is identical between Serial and Stream. Agents with in-degree > 1 (D in Tree, C in Graph) also receive the multi-predecessor instruction below. Everything else follows OpenCompass defaults, including the Single system prompt.
+
+###### A
+
+[Topology: Chain A→B→C→D] You are a problem solver. For each step: solve concisely with key reasoning. After all steps, provide a DETAILED final answer summary. Divide your response into 3 roughly equal parts. End each part (including the last) with END_STEP on its own line. Your response must end with END_STEP.
+
+###### B [Topology: Chain A→B→C→D]
+
+- You are Agent_B. You receive Agent_A’s output. You are a reviewer-and-corrector. For each step: verify correctness briefly, CORRECT ANY ERRORS YOU FIND. CRITICAL REQUIREMENT:
+
+- 1. YOU MUST CORRECT ERRORS: When found, state “ERROR: [description]” then “CORRECTION: [corrected step]”.
+- 2. Pass forward the MOST ACCURATE version (original if correct, your correction if not). After all steps, provide DETAILED overall summary with thorough analysis and any corrections made. [Stream only] After your response, output END_STEP on its own line.
+
+C [Topology: Chain A→B→C→D]
+
+- You are Agent_C. You receive Agent_B’s output. You are a reviewer-and-corrector. For each step: double-check for MISSED errors briefly, CORRECT ANY YOU FIND. CRITICAL REQUIREMENT:
+
+- 1. YOU CAN OVERRULE PREVIOUS AGENTS: When you find errors, state “ERROR: [description]” then “CORRECTION: [corrected step]”.
+- 2. Pass forward the MOST ACCURATE version. After all steps, provide DETAILED overall summary with thorough analysis and any corrections made. [Stream only] After your response, output END_STEP on its own line.
+
+- D
+
+[Topology: Chain A→B→C→D] You are Agent_D. You receive Agent_C’s output. You are a reviewer-and-corrector. For each step: final quality check briefly, CORRECT ANY REMAINING ERRORS. CRITICAL REQUIREMENT:
+
+- 1. YOU HAVE FINAL CORRECTION AUTHORITY: This is the last chance to fix errors. State “ERROR: [description]” then “CORRECTION: [corrected step]”.
+- 2. You are responsible for final answer accuracy. FINAL ANSWER: Must directly address the original problem. Base on CORRECTED versions. After all steps, provide DETAILED final answer with thorough analysis. [Stream only] After your response, output END_STEP on its own line.
+
+Tree and Graph variants. The four boxes above show the Chain topology. For Tree and Graph, two things change: (1) the topology tag on the first line becomes [Topology: Tree A→{B, C}→D] or [Topology: Graph A→B→C→D, A→C]; (2) the “You receive . . . output.” line is adjusted to list each agent’s actual predecessors. Specifically, under Tree, B and C both receive A’s output independently, while D receives outputs from B and C. Under Graph, C receives outputs from both A and B, while D receives only C’s output. For agents receiving multiple inputs, a two-line formatting instruction is appended: “INPUT FORMAT: Inputs from multiple agents are labeled [Agent_X]: . . . ” and “RESPONSE FORMAT: For each agent, address their content explicitly, then synthesize.”
+
+Scaling to A ∈ {8, 16, 32, 64} agents. For the step-level scaling experiments (Sec. 4.3.1), we extend
+
+the Chain to longer sequences (A→B→C→ ···). A remains the solver, and the last agent uses the same “FINAL CORRECTION AUTHORITY” prompt as D. Intermediate agents share the reviewer-andcorrector structure but vary their lead phrase across {verify correctness, double-check for MISSED errors, independent check, cross-verify with fresh eyes, penultimate check} to encourage independent reasoning.
+
+- A.10 Information About Use of AI Assistants AI assistants were used in two roles: language polishing of the manuscript; and drafting auxiliary code.
+- A.11 Potential Risks
+
+Our step-level perturbation experiment in Sec. 4.2.3 shows that replacing clean reasoning steps with perturbed counterparts can steer downstream agents toward wrong answers. Malicious actors could exploit the same idea to inject subtle errors into intermediate steps of a multi-agent chain, causing the final output to silently diverge. We release only the evaluation protocol and do not provide automated perturbation tooling; we also recommend step-level verification as a defense against such tampering.
+
+- A.12 Artifact Statement
+
+Licenses. OpenCompass is open-source, and we obtain all benchmark datasets through it (AIME 2025 / 2026, HMMT 2026, GPQA-Diamond, HLE, and LiveCodeBench; see App. A.7). The Claude Opus
+
+- 4.6 and GPT-5.4 backbones are accessed via Anthropic’s and OpenAI’s commercial APIs under their respective terms of service. Intended Use. We use all upstream benchmarks as held-out evaluation sets for LLM reasoning, matching their intended research use; we do not modify or redistribute their contents. Personally Identifying Information and Offensive Content. All datasets are standard academic reasoning benchmarks (mathematics, graduate-level science, programming) and contain neither personally identifying information nor offensive content by construction. Documentation. All benchmarks target English-language academic reasoning, covering competition mathematics, graduate-level natural sciences, and program understanding (code generation, code execution, and test-output prediction); none targets any specific demographic group. Per-benchmark configurations, judge models, and system prompts are in App. A.7 and App. A.9. Data Statistics. We use each benchmark’s official test set without subsampling: AIME 2025 and AIME 2026 (30 problems each); HMMT 2026 (33 problems); GPQA-Diamond (198 problems); HLE and LiveCodeBench, both loaded as defined in App. A.7. Each {backbone, topology, method} cell averages 3 independent runs, increased to 8 on AIME 2025 / 2026 and HMMT 2026 due to their smaller test sets (Sec. 4.1).
+

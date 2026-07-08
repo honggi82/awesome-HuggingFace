@@ -1,0 +1,859 @@
+# arXiv:2605.05204v3[cs.CV]26May2026
+
+-Image
+
+## D-OPSD: On-Policy Self-Distillation for Continuously Tuning Step-Distilled Diffusion Models
+
+Dengyang Jiang1,2 Xin Jin2 Dongyang Liu4,2 Zanyi Wang3 Mingzhe Zheng1 Ruoyi Du2 Xiangpeng Yang2 Qilong Wu2 Zhen Li2 Peng Gao2✉ Harry Yang1✉ Steven C.H. Hoi2
+
+1The Hong Kong University of Science and Technology 2Z-Image Team, Alibaba Group 3University of California, San Diego 4The Chinese University of Hong Kong
+
+https://vvvvvjdy.github.io/d-opsd
+
+### Abstract
+
+The landscape of high-performance image generation models is currently shifting from the inefficient multi-step ones to the efficient few-step counterparts (e.g, Z-Image-Turbo and FLUX.2-klein). However, these models present significant challenges for direct continuous supervised finetuning. For example, applying the commonly used fine-tuning technique would compromise their inherent few-step inference capability. To address this, we propose D-OPSD, a novel training paradigm for stepdistilled diffusion models that enables on-policy learning during supervised fine-tuning. We first find that the modern diffusion models, where the LLM/VLM serves as the encoder, can inherit its encoder’s in-context capabilities. This enables us to formulate the training as an on-policy selfdistillation process. Specifically, during training, we make the model act as both the teacher and the student with different contexts, where the student is conditioned only on the text feature, while the teacher is conditioned on the multimodal feature of both the text prompt and the target image. Training minimizes the two predicted distributions over the student’s own roll-outs. By optimizing on the model’s own trajectory and under its own supervision, D-OPSD enables the model to learn new concepts, styles, etc., without sacrificing the original few-step capacity.
+
+### 1 Introduction
+
+Recent years have seen significant progress in text-to-image (T2I) generation, with models advancing from synthesizing rudimentary textures to producing images that exhibit strong adherence to semantic descriptions [94, 3, 4, 17, 102, 6, 84, 23, 63]. However, the sampling process typically requires numerous iterative denoising steps [89, 32, 48], leading to substantial latency and computational cost in practice. To address this, researchers have developed various step-distillation techniques [56, 113, 58, 112, 9] that substantially reduce the number of function evaluations (NFEs). Furthermore, recent advances in distillation methodology [49, 38, 112, 12, 59] have enabled state-of-the-art open-source few-step diffusion models to surpass their multi-step predecessors not only in sampling efficiency but also in generated image quality. As a result, such few-step models are increasingly adopted in practical production settings.
+
+Despite these advances, how to continually finetune these step-distilled diffusion models remains unclear. A straightforward solution is to apply the standard supervised finetuning objective used in the multi-step counterpart [48, 52], i.e., feeding a noised target image into the model and supervising it with the corresponding flow-matching target.2 However, this training signal is defined on externally induced states of the target image that belong to an offline data distribution, rather than on the states actually visited by the model’s own few-step sampler. For step-distilled models, whose generation quality relies
+
+✉Corresponding authors 2In this paper, we mainly discuss flow-matching models, as they are currently the default choice in the field.
+
+Tech Report (D-OPSD)
+
+g gen w/ text gen w/ text+img target img gen w/ text gen w/ text+img
+
+concept
+
+target im
+
+style
+
+[Figure 1]
+
+[Figure 2]
+
+[Figure 3]
+
+[Figure 4]
+
+[Figure 5]
+
+[Figure 6]
+
+The wolf plushie sits on wooden floor, facing the camera, against the wall.
+
+The coastal port, with the emerald green sea, several wooden boats, blue sky and white clouds.
+
+concept
+
+style
+
+[Figure 7]
+
+[Figure 8]
+
+[Figure 9]
+
+[Figure 10]
+
+[Figure 11]
+
+[Figure 12]
+
+A tiger stands in a grassy scene.
+
+A close-up of a pair of sunglasses.
+
+- Figure 1: We empirically investigate the visual appearance of generated images when conditioned on only the text prompt feature or the multimodal feature of target image and the text prompt using Z-Image Turbo [94] with 8 steps. Investigation of FLUX.2-klein [4] is provided in Appendix A.
+
+on a small number of carefully distilled denoising updates, such a mismatch can easily perturb the learned few-step dynamics and degrade inference quality. This effect is also borne out empirically: across our experiments, and echoed by community reports, standard SFT often compromises the model’s original distilled few-step ability to generate high-quality images. Online Reinforcement learning (RL), in contrast, would not impair the few-step capabilities when used as the training algorithm for the model [38, 57]. This is because it optimizes the model on samples generated by the current model and derives the learning signal on the same sampled trajectory. However, it requires a well-designed reward function [106, 51, 107, 118, 104, 29, 42], which is not feasible for most secondary developers in the community, as they usually have only the image-text pairs to customize concepts.
+
+Thus, we assume that a suitable continuous-tuning strategy should be a combination of the two: it should update the model on its own roll-outs, and it should incorporate supervision from paired image-text data on those same visited states. A natural candidate is on-policy self-distillation (OPSD), which has recently been studied in autoregressive large language models (LLMs) [85, 109, 117, 28, 66]. OPSD retains the appeal of on-policy learning while avoiding explicit reward design: the model samples from its current policy as a student, while a stronger teacher distribution is obtained by conditioning the same model on richer in-context information [101, 5]. This perspective is particularly appealing in our setting because the target image in each training pair naturally provides the supervision. However, directly transferring the idea of OPSD to diffusion models is nontrivial. In text generation with LLMs, the context can simply be appended to the input sequence. In diffusion models, by contrast, directly feeding the target image into the denoising process would alter the trajectory itself, reducing the formulation back to the standard off-policy SFT regime. The key challenge is therefore: how can target-image information be introduced as stronger context while keeping the student’s few-step roll-out unchanged?
+
+We address this challenge by proposing D-OPSD. Unlike earlier T2I diffusion models that used T5 [74] or CLIP [71] as the encoder [67, 3, 17], current state-of-the-art diffusion models increasingly adopt LLM/VLM backbones [100, 108] as their encoders [4, 94, 102]. This raises a natural question: can the subsequent diffusion model inherit the encoder’s incontext capability? As shown in Figure 1, we find that the answer is yes. When replacing text-only features with multimodal features extracted from both the text prompt and the target image, the diffusion model can already generate variations that preserve the target concept or style (see gen w/text+img), even without any additional training. This emergent behavior enables us to instantiate OPSD in diffusion models. Specifically, during training, we assign the same model two roles: a student conditioned only on the text feature, and a teacher conditioned on the multimodal feature of the text prompt and the target image. We then distill the teacher’s predictions into the student along the student’s own roll-outs, yielding a one-stage on-policy framework that injects target-image information without requiring external modules or reward design.
+
+We evaluate D-OPSD in the settings of both LoRA training on small customized dataset and full fine-tuning on larger dataset, the results show that our method enables the model to acquire new knowledge (e.g, specific concept, style) from the target image-text pair while preserving its original few-step inference capability. Furthermore, rather than learning via overfitting to the training pair, the acquired knowledge with our method demonstrates strong generalization across unseen prompts (e.g, generating training concepts in different scenarios). These results suggest promising prospects for the continual learning of stepdistilled diffusion models.
+
+In summary, our main contributions are as follows:
+
+- • We identify an emergent property of modern text-to-image diffusion models with LLM/VLM encoders and utilize this property to the continuous tuning of the stepdistilled diffusion model.
+- • We propose D-OPSD, a novel diffusion model on-policy self-distillation framework. By assigning the same model two roles with different contexts, D-OPSD enables supervised tuning on the student’s own roll-outs without requiring any external reward function or extra modules.
+- • We validate D-OPSD in different settings. The results show that our method enables the model to learn new concepts, styles, and domain preferences while preserving its original few-step inference capability and previous knowledge.
+
+### 2 Method
+
+#### 2.1 Background
+
+In this study, our goal is to continually tune a step-distilled diffusion model on image-text pairs while preserving its original few-step inference capability. As discussed in Section 1, this is difficult for conventional fine-tuning. Vanilla SFT optimizes the model on noised target images rather than on the states visited by its own sampler, and the supervision is provided by an external target velocity that is unavailable at inference time [48, 52]. Such a train test mismatch may make the model acquire new concepts or styles at the cost of distorting the previously distilled few-step generation distribution (distribution shift). Online RL-style methods are more compatible with this setting because they optimize the model on its own roll-outs and derive supervision from the same on-policy samples [51, 107, 106], but they rely on carefully designed reward functions or preference signals [104, 42], which are typically unavailable in practical customization scenarios. We address this gap by constructing an on-policy self-distillation framework for diffusion models, which uses only paired image-text data and does not require any external reward.
+
+#### 2.2 D-OPSD
+
+OPSD in LLMs and our solution for implication in diffusion models. On-policy selfdistillation (OPSD) is first proposed in language models with a simple idea: the same model can act as both a student and a teacher under different contexts. Given an input query 𝑞, let 𝑟 denote additional in-context information, such as demonstrations, intermediate reasoning, or the ground-truth response [117, 85, 28, 80, 66]. The student predicts under the weaker context 𝑞, while the teacher predicts under the stronger context (𝑞,𝑟). Let 𝜋𝜃(· | 𝑞) denote the student distribution and 𝜋𝜃¯(· | 𝑞,𝑟) the teacher distribution. OPSD optimizes the student on its own sampled outputs 𝑜ˆ ∼ 𝜋𝜃(· | 𝑞), and minimizes a divergence between the teacher and student predictions on that on-policy sample:
+
+LOPSDLLM = E𝑜ˆ∼𝜋
+
+𝜃(·|𝑞) [𝐷(𝜋𝜃¯(· | 𝑞,𝑟), 𝜋𝜃(· | 𝑞))] . (1) This formulation inherits two key properties of on-policy learning: it updates the model on samples produced by the current policy, and the supervision is computed under the same sampled trajectory instead of being borrowed from an external offline distribution.
+
+The challenge in transferring this training paradigm to diffusion models lies in how to construct a stronger context. In LLMs, the extra information 𝑟 can be natively appended to the input sequence [101, 5]. In diffusion models, however, the desired supervision is
+
+on-policy distillation
+
+[Figure 13]
+
+[Figure 14]
+
+[Figure 15]
+
+target image
+
+[Figure 16]
+
+[Figure 17]
+
+Student Model
+
+[Figure 18]
+
+[Figure 19]
+
+[Figure 20]
+
+[Figure 21]
+
+text feature
+
+[Figure 22]
+
+[Figure 23]
+
+[Figure 24]
+
+[Figure 25]
+
+[Figure 26]
+
+[Figure 27]
+
+[Figure 28]
+
+Student Model
+
+[Figure 29]
+
+gradient
+
+###### Encoder
+
+EMA
+
+[Figure 30]
+
+[Figure 31]
+
+[Figure 32]
+
+multimodal feature (text&img)
+
+[Figure 33]
+
+[Figure 34]
+
+Teacher Model
+
+Red Hanfu woman, neon ⚡, fan, 大雁塔 night
+
+on-policy sampling
+
+[Figure 35]
+
+text prompt
+
+- Figure 2: Method overview. For each training pair, we first pass the prompt alone and the prompt together with the target image through the encoder to obtain 𝑐𝑠 and 𝑐𝑡, respectively. We then sample a few-step trajectory using the student branch conditioned on 𝑐𝑠. After that, the teacher and student predict velocities on the same trajectory states, and the student is updated by Equation 6. After training, the teacher branch is discarded, and inference uses exactly the same few-step text-to-image pipeline as the original step-distilled model.
+
+an image, and one cannot simply insert the target image into the denoising trajectory in the same way without returning to the standard off-policy SFT setting (e.g, Once the noisy target image is fed directly into the model like traditional training does, the sampling trajectory is disrupted, reducing the process to a supervision paradigm analogous to teacher forcing in large language models [72, 73, 92].). This challenge suggests that the stronger context in diffusion models needs to be introduced through a representation that enriches the model’s conditioning space while leaving the student’s roll-outs unchanged. In other words, to make OPSD applicable to diffusion models, we need a mechanism that incorporates target-image information without replacing the student’s own sampled states.
+
+We solve this by utilizing the property of modern diffusion models. As we analyse in Section 1 and Figure 1, current SOTA few-step models often adopt LLM/VLM backbones as their encoders and we find that the subsequent diffusion model can inherit the encoder’s in-context capability: when conditioned on the multimodal feature extracted from both the text prompt and the target image, the model can already produce variations that preserve the target concept or style, even without additional training. This observation allows us to instantiate OPSD in diffusion models by treating the target image as in-context supervision, rather than as a direct denoising target.
+
+Formulating OPSD for diffusion models. The overall framework and pseudocode of our method D-OPSD can be seen in Figure 2 and Algorithm 1. Specifically, we consider the model parameterized by 𝜃, whose velocity field is denoted by 𝑣𝜃(𝑥𝑡,𝑡, 𝑐), where 𝑥𝑡 is the latent state at time 𝑡 ∈ [0,1] and 𝑐 is the condition feature. During inference, the model defines an ODE trajectory:
+
+𝑑𝑥𝑡 𝑑𝑡
+
+= 𝑣𝜃(𝑥𝑡,𝑡, 𝑐), (2)
+
+which is solved with a small number of time steps by the few-step sampler (e.g, 4 or 8). Let 1 = 𝑡𝐾 > 𝑡𝐾−1 > · · · > 𝑡0 = 0 denote the inference schedule. Starting from Gaussian noise 𝑥𝑡𝑠
+
+∼ N(0, 𝐼), the student roll-outs is generated by:
+
+𝐾
+
+𝑘−1 = Φ 𝑥𝑡𝑠
+
+𝑥𝑡𝑠
+
+,𝑡𝑘,𝑡𝑘−1, 𝑣𝜃(·, ·, 𝑐𝑠) , 𝑘 = 𝐾, . . . ,1, (3) where Φ denotes the same few-step solver used at test time, and 𝑐𝑠 is the student condition. For each training pair (𝑥0, 𝑦), we construct two conditions from the same encoder:
+
+𝑘
+
+𝑐𝑠 = 𝑓text(𝑦), 𝑐𝑡 = 𝑓mm(𝑦, 𝑥0), (4)
+
+where 𝑓text encodes only the text prompt and 𝑓mm encodes the multimodal context consisting of the text prompt and the target image. The student is conditioned only on 𝑐𝑠, so its inference pathway is exactly the original text-to-image generation process. The teacher is conditioned on 𝑐𝑡, which provides additional information about the target concept, style, or preference to be learned.
+
+Given the on-policy trajectory {𝑥𝑡𝑠
+
+}𝑘𝐾=1, we evaluate both branches on the same visited states:
+
+𝑘
+
+𝑢𝑠𝑘 = 𝑣𝜃(𝑥𝑡𝑠
+
+,𝑡𝑘, 𝑐𝑠), 𝑢𝑡𝑘 = 𝑣𝜃¯(𝑥𝑡𝑠
+
+,𝑡𝑘, 𝑐𝑡), (5)
+
+𝑘
+
+𝑘
+
+where 𝜃¯ denotes the teacher parameters. We then train the student to match the teacher’s velocity prediction by minimizing:
+
+LD−OPSD = E(𝑥0,𝑦)
+
+##### ∑︁𝐾
+
+1
+
+𝐾
+
+𝑘=1
+
+𝑢𝑠𝑘 − sg(𝑢𝑡𝑘) 22 , (6)
+
+where sg(·) denotes stop-gradient operation. In this way, the student is optimized on its own roll-outs states, while the teacher provides a stronger supervision signal through multimodal context.
+
+Note that Equation 6 can be viewed as the diffusion counterpart of Equation 1. At a high level, the analogy is straightforward: the student’s sampled response in LLMs corresponds here to the student’s denoising trajectory, and the teacher’s stronger prediction under a richer context is realized as a stronger conditional denoising field. The main difference lies in the output space of the model. Autoregressive LLMs produce a discrete token distribution [72, 95], so the teacher-student alignment can be written directly as a divergence between vocabulary distributions [117, 85]. Flow-matching diffusion models, by contrast, do not expose such a discrete predictive distribution at each step. Instead, they parameterize the denoising dynamics through a conditional velocity field, whose predictions determine the evolution of the sample trajectory [48, 52, 91]. For this reason, we instantiate the teacher-student alignment in Eq. 6 as a mean-squared error between velocity predictions on the same on-policy states. Although this objective is not a token-level KL divergence [44], it serves the same role in our setting: it pulls the student’s conditional generation dynamics toward those of the teacher, thereby aligning the induced trajectory distribution under a stronger multimodal context. The underlying principle therefore remains unchanged: the model learns from its own trajectory under a stronger self-generated supervision signal.
+
+Discussion on why D-OPSD preserves few-step capability. Compared with vanilla SFT, our method does not force the model to fit states induced by the target image that never appear under its own few-step sample trajectory. Instead, both the optimization states and the supervision signal are defined on the student’s actual rollouts, which substantially reduces the mismatch between training and inference. This distinction is particularly important for step-distilled diffusion models, where even small perturbations to the learned few-step dynamics can directly harm generation quality. As a result, D-OPSD provides an on-policy supervised training paradigm for step-distilled diffusion models, enabling them to learn new concepts, styles, or domain preferences from paired image-text data while preserving the original few-step sampling behavior. More discussion and comparison of different training paradigms are provided in Appendix B.
+
+Algorithm 1: Training Procedure of D-OPSD
+
+Require: Training pairs D = {(𝑥0, 𝑦)} Require: Inference schedule {𝑡0, . . . ,𝑡𝐾} and Solver Φ Require: Base model 𝑣𝜙, Student and Teacher model 𝑣𝜃,
+
+𝑣𝜃¯
+
+- 1: Initialize student weights 𝜃 ← 𝜙
+- 2: Initialize teacher weights 𝜃¯ ← 𝜙
+- 3: while not converged do
+- 4: Sample a mini-batch (𝑥0, 𝑦) ∼ D
+- 5: Encode student condition 𝑐𝑠 ← 𝑓text(𝑦)
+- 6: Encode teacher condition 𝑐𝑡 ← 𝑓mm(𝑦, 𝑥0)
+- 7: Initialize 𝑥𝑡𝑠
+
+𝐾
+
+∼ N(0, 𝐼)
+
+- 8: Initialize LD−OPSD ← 0
+- 9: for 𝑘 = 𝐾, . . . ,1 do
+- 10: 𝑢𝑠𝑘 ← 𝑣𝜃(𝑥𝑡𝑠
+
+𝑘
+
+,𝑡𝑘, 𝑐𝑠)
+
+- 11: 𝑢𝑡𝑘 ← 𝑣𝜃¯(𝑥𝑡𝑠
+
+𝑘
+
+,𝑡𝑘, 𝑐𝑡)
+
+- 12: LD−OPSD ← LD−OPSD + 𝐾1 ∥𝑢𝑠𝑘 − sg(𝑢𝑡𝑘)∥22
+
+- 13: if 𝑘 > 1 then
+- 14: 𝑥𝑡𝑠
+
+𝑘−1
+
+← sg(Φ(𝑥𝑡𝑠
+
+𝑘
+
+,𝑡𝑘,𝑡𝑘−1,𝑢𝑠𝑘))
+
+- 15: end if
+- 16: end for
+- 17: Update student model 𝜃 by minimizing LD−OPSD
+- 18: Update teacher model 𝜃¯ via EMA
+- 19: end while
+
+- Table 1: System-level comparison against baseline methods in LoRA training settings. The best and second-best results on each metric are highlighted in bold and underlined.
+
+Method DINO-D↓ LPIPS-D↓ VLM-J↑ CLIP-S↑ Quality-S↑ Aesthetic-S↑ Z-Image-Turbo
+
+Base-Model 0.2373 0.7520 1.0000 0.3043 3.5088 2.9667 Vanilla SFT 0.2212 0.6501 1.3293 0.3095 2.4236 2.3582 SFT + LoRA on distilled 0.1588 0.7243 1.8525 0.3201 3.6081 3.0027 Dreambooth 0.0902 0.6424 3.0625 0.3328 2.5582 2.3755 PSO 0.0570 0.4974 3.3333 0.2893 3.3422 3.0820 D-OPSD (ours) 0.0823 0.5803 3.3333 0.3664 3.7965 3.1710
+
+FLUX.2-klein
+
+Base-Model 0.2386 0.7518 1.0000 0.3020 3.5076 2.9665 Vanilla SFT 0.2212 0.6500 1.2083 0.3002 2.4119 2.3595 SFT + LoRA on distilled 0.1564 0.7288 1.0000 0.3151 3.6079 3.0021 Dreambooth 0.1053 0.6824 3.0283 0.3266 2.5492 2.3683 PSO 0.0593 0.5120 3.3015 0.2801 3.3258 3.0566 D-OPSD (ours) 0.0822 0.5648 3.1255 0.3689 3.7957 3.1521
+
+### 3 Experiment
+
+#### 3.1 Experimental Setup
+
+Implementation. We use Z-Image-Turbo 6B [94] and FLUX.2-klein 4B [4] as our baseline model to conduct experiment. Detailed experimental implementation, including hyperparameter settings, GPU resources, and other training configs, is provided in Appendix D.
+
+Evaluation. We use the same inference settings as the original step-distilled model across all methods. We choose to report DINO distance (DINO-D) [7], LPIPS distance (LPIPSD) [116], Fréchet Inception Distance (FID [30]) for testing whether the model can learn from the target images, VLM’s judgment of subject or style consistency (VLM-J), CLIP Score (CLIP-S) [29] for testing whether the model can generalize with the learned new knowledge, the Quality Score (Quality-S) and Aesthetic Score (Aesthetic-S) from the reward model for testing whether the model maintain its few-step sampling capacity, as well as GenEval [21] and DPG [34] score to test whether the model retain its previous knowledge. We also provide a user study for evaluation. Detailed explanation of how the evaluation set is constructed and how each metric is obtained are in Appendix E.
+
+Methods for comparison. We compare with several representative baseline methods: (a). directly training with vanilla flow-matching loss [48] (Vanilla SFT). (b). training on the original multi-step model then adding LoRA on the step-distilled model (SFT + LoRA on distilled). (c). Dreambooth style training [79] (Dreambooth). (d). PSO training [62] (PSO). Note that we do not show the results of two-stage training strategies, such as first performing supervised fine-tuning on a multi-step model and then applying step distillation. One practical reason is that, the exact distillation recipe, including key hyperparameter configurations, is not publicly available for the base model we use. Reproducing such pipelines would therefore require substantial implementation assumptions and could introduce unfairness into the comparison. However, we still provide a comparison with a two-stage variant that uses the open-source DMD method in the Appendix C for reference.
+
+#### 3.2 Main Results
+
+D-OPSD for LoRA training on small customized dataset. We first evaluate D-OPSD in the setting of LoRA training on small customized datasets. In this setting, the goal is to learn a new concept from only a few image–text pairs (e.g., 4 examples) while still being able to generalize beyond the training set. We conduct training and evaluation on the DreamBooth dataset [79] together with a small amount of stylized data. As shown in Table 1, our method substantially outperforms SFT style training on DINO-D, LPIPS-D, and VLM-J. Moreover, as illustrated in Figure 3, after training, our method can generalize the newly learned concept beyond the training distribution, e.g., generating the learned object in novel scene that do not appear in the training data, while preserving the original model’s ability to produce high-quality images with a small number of inference steps. In
+
+- Table 2: System-level comparison against baseline methods in full-finetuning settings. The best and second-best results on each metric are highlighted in bold and underlined.
+
+Method FID↓ DINO-D↓ LPIPS-D↓ Quality-S↑ Aesthetic-S↑ GenEval↑ DPG↑ Z-Image-Turbo
+
+Base-Model 48.6858 0.1274 0.7036 3.7624 3.5218 0.7543 84.7645 Vanilla SFT 82.2036 0.1896 0.6787 2.6121 2.4852 0.1588 69.9746 PSO 88.4343 0.1716 0.6530 2.8653 2.6424 0.2475 72.7363 D-OPSD (ours) 40.4938 0.1088 0.6419 3.8438 3.6195 0.7170 84.1116
+
+FLUX.2-klein
+
+Base Model 45.2335 0.1210 0.6894 3.7626 3.4465 0.8155 85.5624 Vanilla SFT 98.7893 0.2565 0.6567 2.5038 2.4121 0.1113 56.2138 PSO 82.1438 0.2185 0.6511 2.8066 2.5952 0.2406 63.4174 D-OPSD (ours) 38.2932 0.0902 0.6476 3.8328 3.5511 0.7298 83.8927
+
+Training Samples Base Model SFT PSO D-OPSD (ours)
+
+[Figure 36]
+
+[Figure 37]
+
+[Figure 38]
+
+[Figure 39]
+
+[Figure 40]
+
+[Figure 41]
+
+[Figure 42]
+
+[Figure 43]
+
+[V] is located in the center of a transparent glass viewing platform suspended above the clouds. Beneath it is an starry sky, and around it float glowing crystal lights. .
+
+[Figure 44]
+
+[Figure 45]
+
+[Figure 46]
+
+[Figure 47]
+
+[Figure 48]
+
+[Figure 49]
+
+[Figure 50]
+
+[Figure 51]
+
+A still life painting featuring [V] placed on a wooden table, with a white cup on the right, set against a mottled white wall, in a calm and elegant style.
+
+[Figure 52]
+
+[Figure 53]
+
+[Figure 54]
+
+[Figure 55]
+
+[Figure 56]
+
+[Figure 57]
+
+[Figure 58]
+
+[Figure 59]
+
+[V] resting sideways in a glowing underwater forest, lit by blue-green light from above, with luminous jellyfish in the background, calm and elegant.
+
+[Figure 60]
+
+[Figure 61]
+
+[Figure 62]
+
+[Figure 63]
+
+[Figure 64]
+
+[Figure 65]
+
+[Figure 66]
+
+[Figure 67]
+
+A deer stands in the magical forest, surrounded by plants and mist. The ground is covered with fallen leaves, and the entire scene has an [V] style.
+
+- Figure 3: Visual comparison between baseline methods and ours finetuned on Z-ImageTurbo under customized training settings. Vanilla SFT training sacrifices the original fewstep capacity, and PSO suffers from the overfitting to training set, whereas our method enables the step-distilled model to continuously learn new concepts while maintaining the few-step capacity.
+
+contrast, other baselines such as SFT and DreamBooth training lose the ability to generate high-quality images under the few-step inference setting, as reflected by the large drops in Quality-S and Aesthetic-S in Table 1, as well as the blurry images shown in the Figure 3. PSO, on the other hand, tends to overfit the training set: although it can capture the target concept, its ability to follow novel instructions degrades substantially, as indicated by the decline in CLIP-S and its failure to generate scenes beyond those in the training data.
+
+D-OPSD for full finetuning on larger scale dataset. We next evaluate D-OPSD in the setting of full finetuning on larger scale dataset. In this setting, the goal is to test whether by fine-tuning, the model can be biased towards a certain preference or domain (in our experiment, it is “anime" domain), and suffer from catastrophic forgetting of previously
+
+Fintuning Domain（New Knowledge Acquire) Original Domain（Prior Knowledge Retain)
+
+Base Model SFT PSO D-OPSD (ours) Base Model SFT PSO D-OPSD (ours)
+
+[Figure 68]
+
+[Figure 69]
+
+[Figure 70]
+
+[Figure 71]
+
+[Figure 72]
+
+[Figure 73]
+
+[Figure 74]
+
+[Figure 75]
+
+[Figure 76]
+
+[Figure 77]
+
+[Figure 78]
+
+[Figure 79]
+
+[Figure 80]
+
+[Figure 81]
+
+[Figure 82]
+
+[Figure 83]
+
+[Figure 84]
+
+[Figure 85]
+
+[Figure 86]
+
+[Figure 87]
+
+[Figure 88]
+
+[Figure 89]
+
+[Figure 90]
+
+[Figure 91]
+
+- Figure 4: Visual comparison between baseline methods and ours finetuned on Z-ImageTurbo under full-finetuning settings. SFT and PSO training sacrifices the original few-step capacity, whereas our method enables the step-distilled model to continuously learn to bias target domain while maintaining the few-step capacity as well as the learned knowledge in the original domain.
+
+[Figure 92]
+
+[Figure 93]
+
+(a) User Study on Image Quality (b) User Study on Image Aesthetics (c) User Study on Prompt Following
+
+[Figure 94]
+
+- Figure 5: User study comparing with baselines. All images are generated using identical noise. Our method produces images with superior aesthetics and prompt coherence.
+
+learned knowledge. We conduct training and evaluation on the high-quality anime dataset.
+
+- As shown in Table 2, our method substantially outperforms both the base model and other training methods on FID, DINO-D, and LPIPS-D, suggesting the output of the model after finetuning is more likely to be closer to the target distribution. Meanwhile, our method is still able to adapt to the new distribution while retaining the model’s original knowledge as well as few-step inference ability. This can be observed from the GenEval and DPG results in the Table 2 and Figure 4, where our method shows no catastrophic degradation after fine-tuning. Although there is a slight drop in benchmark score compared with the base model, we believe this reflects a trade-off introduced by adapting the model to a new distribution whose domain differs from those emphasized by the benchmarks. In contrast, both SFT and PSO fail to simultaneously adapt to the new domain and preserve the model’s few-step inference capability in the full-finetuning on large-scale dataset setting. This is evident from the sharp declines across multiple metrics in Table 2, as well as the blurry generated images shown in Figure 4.
+
+We also report user study results in Figure 5. D-OPSD is preferred over PSO, Vanilla SFT, and even the base model across all three aspects: image quality, aesthetics, and prompt following. The preference margin is particularly large against SFT, indicating that our method better preserves the original few-step generation quality during continual tuning. Notably, D-OPSD also largely outperforms the base model in prompt following, suggesting that the learned target-domain knowledge improves performance without sacrificing overall generation quality.
+
+#### 3.3 Ablation Study
+
+Effect of on-policy self-distillation. Our method consists of two key components: onpolicy sampling and on-policy distillation. To elucidate the role of each component, we conduct four groups of ablation studies in isolation: (1) SFT from target images, which is identical to the vanilla training setting with flow-matching loss. (2) SFT from teacher samples, where we replace the target images with samples generated by conditioning on
+
+[Figure 95]
+
+[Figure 96]
+
+[Figure 97]
+
+[Figure 98]
+
+[Figure 99]
+
+[Figure 100]
+
+(a) Ablation on the training strategy (b) Ablation on construction of the teacher model
+
+- Figure 6: Ablation on (a) the different training strategies, and (b) the different way to build teacher model. We report the curves across training steps of DINO feature similarity between the generated images and the targets, as well as the Quality Score of the generated images. Training conducted on Z-Image-Turbo with LoRA.
+
+multimodal features extracted from the target image and the text prompt, and use these generated samples as the new targets for SFT. (3) Off-policy distillation, where the student model is trained to align with the teacher’s outputs on a fixed dataset. (4) On-policy distillation, which corresponds to our proposed method. As shown in the two left plots of Figure 6, vanilla SFT with the flow-matching loss gradually impairs the model’s ability to generate high-quality images with few steps, as reflected by the progressive decline in the Quality Score. Self-distillation-based schemes effectively mitigate this issue. Compared with the off-policy distillation variant, our method achieves the fastest training convergence, as evidenced by the highest DINO similarity to the target images, while simultaneously maintaining the best generation quality.
+
+Construction of the teacher model. As our method is a self-distillation framework, we study several way to build the teacher model. First, we find that using the frozen base model as the teacher yields stable training and effective results. We then study the commonly used EMA operations [36], like other self-distillation works [39, 7, 120], we also find that it requires a large momentum coefficient to stabilize training; for example, directly using the student copy leads to training collapse. In our experiment, using the EMA teacher with the momentum coefficient 0.9999 leads to the best results, we assume that it is because this can not only extremely smooth the high-variance alignment target to make training stable, but also tracks the student’s progress for better distillation.
+
+### 4 Discussion on Limitations and Future Works
+
+Computation cost. Like other on-policy distillation method [117, 85, 1], our method also need an on-policy roll-outs of student and a teacher inference during training, which results in roughly 4× computational cost in FLOPs and 2× training time per iteration compared to vanilla SFT. However, in our task, continually tuning of few-step diffusion models, we consider this cost acceptable. This is because SFT would degrade the model’s few-step generation capability; when the computational cost of the re-distillation stage is taken into account, our method is in fact more resource efficient.
+
+Requirements for teacher capability. The success of D-OPSD is contingent upon the base model’s in-context abilities. In specific, as shown in Figure 7, even when conditioned on the multimodal feature of target image and the text prompt, the subsequent diffusion model still can not generate the meaningful supervision signals, the training would fail.
+
+target image teacher sample before training after training
+
+[Figure 101]
+
+[Figure 102]
+
+[Figure 103]
+
+[Figure 104]
+
+[v*] sits on the windowsill edge, with a cityscape background, shot from the side.
+
+Figure 7: When the teacher model fails to generate images consistent with the concept ID under multimodal condition and therefore cannot provide an effective supervision signal, training will fail.
+
+Future Works. In this work, we introduce on-policy self-distillation to image generation and show that it is a promising paradigm for continuously training stepdistilled diffusion models. Building on this framework, several directions merit further
+
+study. First, an important open question is how to construct richer teacher-side context (conditioning). One possibility is to incorporate stronger conditional signals from image editing models [23, 43, 46] or video generation models [97, 27, 83]. Second, how to leverage other training target in D-OPSD, for example by combining our framework with additional training constraints [69, 39]. Third, it is worth exploring whether multi-expert OPD [15, 26] can be introduced into the post-training stage of diffusion models based on D-OPSD loss. A possible strategy is to first train domain-specific experts using RL or SFT, and then distill these experts back into a single base model within our framework. More broadly, We hope our study provide useful insights for future research on post-training and continuous adaptation in diffusion-based generation.
+
+### 5 Related Work
+
+We highlight key related studies here and defer discussion of the others to Appendix F.
+
+Step-distilled diffusion models. To accelerate diffusion model inference for enhancing productivity, various timestep distillation methods have been proposed to compress the original model into a generator capable of few-step sampling [113, 56, 82, 58, 55, 60]. This is typically achieved either by distilling the trajectory [56, 76, 119, 9] or from the distribution [113, 112, 38, 12, 81, 82, 54]. Although a significant effort has been made to ensure the quality of the generated contents while reducing the number of inference steps, continual fine-tuning on these distilled models still faces the challenge of how to preserve their few-step inference capability when learning new things. In this work, we solve this by utilizing the in-context capacity of the diffusion model’s encoders to develop an on-policy self-distillation framework that enables the continuous learning of the model under its own supervision, without sacrificing its original few-step inference capability.
+
+On-policy self-distillation. In the field of large language models, on-policy distillation is proposed to mitigate the train-test mismatch issues caused by off-policy SFT or knowledge distillation [1, 90, 53, 37]. However, it still requires a stronger external teacher model for guidance. Therefore, on-policy self-distillation is proposed, which enables the model itself to act as a teacher by leveraging its own in-context capabilities within the pre-existing context (e.g, demonstration, answer) [117, 111, 85, 80, 109, 28, 66]. Unlike these works, which focused on text generation with autoregressive large language models, our approach shows how to utilize on-policy self-distillation in image generation for continuously training step-distilled diffusion models.
+
+### 6 Conclusion
+
+In this work, we present D-OPSD, an on-policy self-distillation framework for continually tuning step-distilled diffusion models. Our method builds on the observation that modern diffusion models with LLM/VLM encoders exhibit an emergent in-context capability, enabling the same model to serve as a student under text-only conditioning and as a teacher under stronger multimodal conditioning. By distilling the teacher’s predictions along the student’s own few-step roll-outs, D-OPSD enables supervised adaptation without external rewards or auxiliary training stages. Experiments on both LoRA adaptation and full finetuning show that our method learns new concepts, styles, and domain preferences while preserving few-step generation quality and prior knowledge.
+
+### 7 Acknowledgment
+
+Since the release of Z-Image-Turbo, we are grateful to the community for many interesting explorations into the internal mechanisms of step-distilled models and how to conduct continuous training [64, 88, 41, 78], and our work is also inspired by these interesting attempts. We cannot list all the works here, but we still want to express our gratitude to all the talented community ‘artists’!
+
+Appendix
+
+- A Investigation of FLUX.2-klein
+
+We also perform a similar analysis with FLUX.2-klein [4] like those have done in Figure 1, as shown in Figure 8, the similar behavior can be seen, suggesting that this inherited incontext capability is broadly applicable to diffusion models that employ LLM/VLMs as encoders.
+
+[Figure 105]
+
+[Figure 106]
+
+[Figure 107]
+
+[Figure 108]
+
+The coastal port, with the emerald green sea, several wooden boats, blue sky and white clouds.
+
+A tiger stands in a grassy scene.
+
+[Figure 109]
+
+[Figure 110]
+
+target im
+
+The wolf plushie sits on wooden floor, facing the camera, against the wall.
+
+A close-up of a pair of sunglasses.
+
+g gen w/ text gen w/ text+img target img gen w/ text gen w/ text+img
+
+style
+
+style
+
+concept
+
+concept
+
+[Figure 111]
+
+[Figure 112]
+
+[Figure 113]
+
+[Figure 114]
+
+[Figure 115]
+
+[Figure 116]
+
+Figure 8: We also empirically investigate the difference of generated images when conditioned on only the text feature or the multimodal feature of target image and the text prompt using FLUX.2-klein-4B with 4 steps. Similar to Z-Image-Turbo, using multimodal features as condition instead of text-only features allows the model to produce image variations while maintaining the target image’s underlying concept or stylistic identity.
+
+- B Discussion and Comparison of Different Training Paradigms
+
+- Table 3 summarizes the main differences among representative training paradigms for continually tuning step-distilled diffusion models. We compare them along four dimensions: the form of supervision signal, whether training is on-policy, whether an additional reward model or reward function is required, and whether the training process matches the model’s inference behavior.
+
+- Table 3: Comparison of different training paradigms regarding the source of the supervision signal, the learning paradigm (whether its in an on-policy way), the necessity of an auxiliary reward model, and the consistency between training-time inference-time state.
+
+Method Supervision Signal On-Policy Reward Model Train-Inference Match
+
+SFT GT velocity × × × RL-offline (e.g, Diffusion-DPO [96], PSO [62]) GT velocity pairs (+/−) × × × RL-online (e.g, ReFL [106], flow-grpo [51] reward function ✓ ✓ ✓ D-OPSD (ours) self-distilled velocity ✓ × ✓
+
+Vanilla SFT. Vanilla supervised fine-tuning optimizes the model using the target image as the source of supervision. In flow-matching models, this means that training is performed on noised states constructed from the ground-truth image, with the model regressed toward the corresponding ground-truth velocity. While this objective is standard for training diffusion models from scratch, it is mismatched to continual tuning of stepdistilled models. The reason is that both the optimization states and the supervision signal are induced by the target image, rather than by the model’s own few-step sampling trajectory. As a result, although the model can absorb new concepts or styles from the training pairs, we suppose that it may do so by altering the distilled generation dynamics that are responsible for high-quality few-step sampling.
+
+Offline RL-style methods. A natural alternative is to replace direct regression on a single target with preference-style or pairwise supervision. Representative examples include Diffusion-DPO [96] and PSO [62]3. These methods can be viewed as offline RL-style objectives, in the sense that their supervision is still derived from a fixed dataset (use target image related states as inputs and rely on ground-truth velocity-based pairwise supervision). Therefore, although methods like PSO try to specially adapt the few-step models, their optimization states and supervision signal are still not fully induced by the student’s own current distribution. This also explains why, in our experimental results, PSO can often learn the target appearance but tends to overfit the training set in the small dataset and fails to learn in the large-scale settings.
+
+Online RL-style methods. Online RL methods, such as ReFL [106] and flow-GRPO [51], are conceptually more suitable for preserving the behavior of step-distilled models because they optimize the model on its own sampled trajectories. In these methods, the model first generates images on-policy, and the resulting samples are then scored by a reward function or reward model. As such, both the optimization states and the supervision signal are tied to the current sampling process, substantially reducing the mismatch between training and inference. This is also an important reason why some studies that perform RL on the stepdistilled model can make the model align with human preference without compromising the original few-step ability [38, 59]. However, this advantage comes at the cost of requiring a well-designed reward function or preference model. In practical customization scenarios, especially when secondary developers only possess a small number of image-text pairs, such reward design is often the main bottleneck.
+
+Our method. Our method occupies a different point in this design space. Like online RL, D-OPSD is on-policy: optimization is performed on the student’s own few-step rollouts, so the model is always updated on states that it actually visits at inference time. More importantly, the supervision signal is also defined on these same states. Instead of introducing the target image as an external denoising target, D-OPSD uses it only to enrich the teacher’s condition through multimodal in-context encoding, and supervises the student with self-distilled velocity predictions evaluated on the student’s current trajectory.
+
+- At the same time, unlike RL-based approaches, D-OPSD does not require any external reward model or manually designed reward function. In this sense, D-OPSD combines the main advantage of online optimization, train-inference consistency, with the practicality of supervised learning from paired image-text data.
+
+Why this distinction matters for step-distilled models. For multi-step diffusion models, moderate train-test mismatch can sometimes be tolerated because iterative denoising provides room for error correction [91, 32, 89, 48]. Step-distilled models are less forgiving: with only a few denoising steps, even small deviations in the learned dynamics can directly harm image quality [112, 35]. For this reason, in our setting, it is important not only whether the training states are aligned with the model’s own sampling trajectory, but also whether the supervision signal is defined under that same trajectory. This is the main motivation behind the design in Table 3. Among the compared paradigms, D-OPSD is the only one that simultaneously satisfies four desirable properties for continual tuning of few-step models: it is on-policy, does not require a reward model, preserves train-inference consistency, and still incorporates target image-text pairs into training through self-distillation.
+
+### C Comparison with Two-stage Training Pipeline
+
+In this section, we compare D-OPSD with a two-stage training pipeline that first fine-tunes a multi-step model on the target data and then distills the tuned model back into a few-step model. We conduct the comparison using open-source Z-Image as the multi-step model and Z-Image-Turbo as its few-step counterpart. For the distillation stage, we adopt the
+
+3PSO can be regarded as a variant of the Diffusion-DPO [96] for the step-distilled model because it only conducts training at the few-step sampling timestep, but it still uses the target image state as input and uses the ground truth velocity for supervision..
+
+- Table 4: System-level comparison with two-stage training pipelines. We compare onestage D-OPSD with SFT on the few-step model, SFT on the multi-step model, and a twostage pipeline that applies DMD distillation after multi-step SFT. Experiments are conducted with Z-Image and Z-Image-Turbo. The best and second-best results on each metric are highlighted.
+
+Method DINO-D↓ Quality-S↑ GenEval↑ Inference NFE↓ Training GPU hours↓ LoRA customization setting
+
+SFT on Z-Image-Turbo 0.2212 2.4236 - 8 5 SFT on Z-Image 0.0547 3.3488 - 100 5 SFT on Z-Image + DMD 0.1024 3.3372 - 8 5 + 882
+
+D-OPSD (ours) 0.0823 3.7965 - 8 9 Full-finetuning setting
+
+SFT on Z-Image-Turbo 0.2565 2.5038 0.1588 8 1066 SFT on Z-Image 0.0843 3.3801 0.6578 100 1066 SFT on Z-Image + DMD 0.1094 3.3652 0.6084 8 1066 + 2054
+
+D-OPSD (ours) 0.1088 3.8438 0.7170 8 1918
+
+open-source DMD algorithm [113, 112]. In the LoRA customization setting, we first train a LoRA adapter on Z-Image, and then train an additional step-distillation LoRA on the tuned model (Main model with LoRA). In the full-finetuning setting, both the tuning stage and the DMD distillation stage are performed with full model updates. The Training GPU hours are tested with the H800 GPU.
+
+The results are reported in Table 4. Directly applying SFT to Z-Image-Turbo is computationally simple, but it substantially weakens the model’s few-step generation capability, especially in the LoRA setting, where the Quality-S score drops from the original few-step model quality regime. This is consistent with our main observation: vanilla SFT optimizes on target-image-induced states rather than on the states visited by the model’s own fewstep sampler, thereby perturbing the distilled few-step dynamics. Fine-tuning the multistep model instead gives the best DINO-D in both settings, indicating strong fitting to the target domain. However, this model requires 100 NFEs at inference time and therefore loses the main efficiency advantage of step-distilled models. Moreover, in the full-finetuning setting, it shows a clear degradation in Quality-S and GenEval, suggesting that adapting to the target domain alone does not preserve the generation behavior desired from the fewstep model.
+
+The two-stage pipeline partially addresses the inference cost by applying DMD after multistep SFT, reducing inference to 8 NFEs. However, it introduces substantial extra training cost and still does not recover the overall performance of the tuned model. In particular, the DMD-distilled variants obtain lower Quality-S and GenEval scores than D-OPSD, indicating degradation in both few-step generation quality and retained prior knowledge. This limitation is partly practical: the strongest distillation recipes used by SOTA few-step foundation models are often not fully public, including key hyperparameters and engineering details [49, 38]. Therefore, reproducing the closed-source distillation pipeline of the original base model is not feasible for most secondary developers. With the publicly available DMD implementation, the additional distillation stage is expensive and can still introduce performance loss.
+
+In contrast, D-OPSD performs continual tuning in a single stage. It learns the new targetdomain information while keeping both optimization and supervision on the student’s own roll-outs, which preserves the original few-step sampling behavior. Although DOPSD requires on-policy student roll-outs and teacher inference during training, leading to roughly 4× FLOPs and about 2× wall-clock training time per iteration compared with vanilla SFT, we consider this cost acceptable for continual tuning of few-step diffusion models. The roll-out and teacher-inference computations do not require gradient computation and can be further optimized in engineering. More importantly, once the cost of re-distillation is included, D-OPSD is more resource-efficient than the two-stage pipeline while achieving better few-step quality and stronger retention of prior knowledge.
+
+- D Implementation Details. We now provide a detailed training and implementation settings of D-OPSD as follows:
+
+Encoder settings of student and teacher. During training, for the student model, we use the original text encoder of the diffusion model (for both Z-Image-Turbo and FLUX.2-klein, text prompts are encoded using Qwen3-4B [108]). For the teacher model, since target image information must be incorporated, a straightforward solution is to replace Qwen3-4B with the corresponding Qwen3-VL-4B [2]. However, in practice, we find that this naive substitution introduces high-frequency artifacts and excessive sharpening in the generated images (See Figure 9, the middle column). We attribute this issue to a mismatch of the feature space between inference and training distribution.4
+
+To address this issue, we replace the weights of the LLM component in Qwen3-VL-4B with those from the more compatible Qwen3-4B, while keeping the ViT and Connector weights unchanged. In this way, we preserve multimodal in-context capability while making the output distribution as consistent as possible with that seen during diffusion model training (See Figure 9 the last column). Notably, this operation can be viewed as approximately reverting the VLM to the stage where the Connector has been trained, but the LLM parameters remain unchanged [50, 100, 11]. Although the final VLM exhibits stronger multimodal capabilities, the model at this earlier stage still retains a certain degree of multimodal understanding. This reflects a trade-off between preserving the output image quality of the final diffusion model and maintaining the in-context capability provided by the VLM. As more LLMs/VLMs evolve toward native multimodal architectures [13, 22, 70], we expect this trade-off to be naturally alleviated in future diffusion models using stronger multimodal encoders, such as Qwen3.5 [70].
+
+w/ Qwen3-VL target img w/ Qwen3-VL weight + LLM reweight
+
+[Figure 117]
+
+[Figure 118]
+
+Figure 9: Comparison of generated images of ZImage-Turbo conditioned on multimodal feature using Qwen3-VL 4B and Qwen3-VL 4B with LLM part reweighted by Qwen3-4B LM.
+
+#### LoRA training on small customized dataset:
+
+- • Z-Image-Turbo: We use LoRA with rank 64 and alpha 128 to finetune the model. We set the total batch size to 4 and the learning rate to 4e-55. The momentum coefficient of EMA decay is set to 0.9999 by default. (Note that since the model is trained with LoRA, we only need to use one main weight and then perform the EMA operation on the LoRA weights. This can effectively save the memory). The model is trained with 1K iterations on a single H800 GPU.
+- • FLUX.2-klein: We also use LoRA with rank 64 and alpha 128 to finetune the model. We set the total batch size to 4 and the learning rate to 1e-5. The momentum coefficient of EMA decay is set to 0.9999 by default. The model is trained with 1K iterations on a single H800 GPU.
+
+#### Full finetuning on larger scale dataset:
+
+• Z-Image-Turbo: In this setup, we unlock all the parameters in the diffusion transformer backbone. We set the total batch size to 256 and the learning rate to 3e-5. The
+
+- 4Since Qwen3-VL is a continually trained variant of Qwen3-LM, the model can still drive image generation, but its output distribution no longer aligns well with that of the diffusion model’s original training setup.
+- 5The learning rate for Z-Image-Turbo is consistently set higher than that for FLUX.2-klein because we find that the norm of the parameters in Z-Image-Turbo is greater than that of other models, including FLUX.2-klein. Consequently, a proportionally larger learning rate is required to maintain effective parameter updates during optimization.
+
+momentum coefficient of EMA decay is set to 0.9999 by default. The model is trained with 10k iterations on 32 H800 GPUs.
+
+• FLUX.2-klein: We also unlock all the parameters in the diffusion transformer backbone. We set the total batch size to 256 and the learning rate to 8e-6. The momentum coefficient of EMA decay is set to 0.9999 by default. The model is trained with 10K iterations on 32 H800 GPUs.
+
+### E More Details of Evaluation
+
+We now provide the detailed evaluation protocols.
+
+LoRA training on a small customized dataset. In this setting, we attempt to follow the community’s common secondary fine-tuning setup, where a concept is learned through LoRA training on the base model using only a small number of text–image pairs (e.g, less then 10). Thus, we adopt DreamBooth-style data [79] for both fine-tuning and evaluation. To ensure stable results, the scores in Table 1 are averaged over multiple categories (30 concept class and 10 style class) rather than selected from one or two cherry-picked cases. We use the following metric to evaluate the model:
+
+- • DINO distance (DINO-D): We first take the training captions of the training images and use the LLM to paraphrase the captions without changing their core semantics. These rewritten prompts are then used to generate images with the fine-tuned model. We compute the cosine distance between the DINO features of the generated images and those of the corresponding target images. For a specific model, we use DINOv3ViT-S-plus [86] as the feature extractor.
+- • LPIPS distance (LPIPS-D): Similar to DINO-D, we compute the LPIPS distance [116] between the generated images and the corresponding target images. For a specific model, we adopt the commonly used VGG network [87] for this metric.
+- • VLM’s judgment of subject or style consistency (VLM-J): We fix the learned training concept and ask the LLM to construct four groups of prompts that differ from the training prompts but still contain the same concept. For object concepts, the new prompts vary aspects such as scene and composition; for style concepts, the new prompts describe specific image contents different from those seen during training. We use these prompts to generate images with the fine-tuned model, and then feed the generated images together with the target image into the VLM, which is asked to assess the similarity of the concept and assign a score followed the rule of scoring: 4 points(basically the same); 3 points(relatively similar); 2 points (slightly similar); 1 point (completely different). For specific model, we use Qwen3-VL-8B-Instruct [2] for evaluation.
+- • CLIP Score (CLIP-S): Using the same images as in VLM-J, we further evaluate whether the model still follows the non-concept parts of the prompt, such as the background. Specifically, we compute the image-text alignment between the generated image and the prompt using CLIP [71, 29]. Note that we replace the special DreamBooth class token ([V]) with the original class name when computing this metric. For a specific model, we use DFN-CLIP-H [18] for evaluation.
+- • Quality Score (Quality-S) and Aesthetic Score (Aesthetic-S): We use our internal VLM-based reward model for scoring. Compared with traditional open-source CLIPbased reward models, such as ImageReward [106] and PickScore [42], the model does not require the text prompt used for image generation as input, and provides more reliable scores thanks to large-scale training with dedicated human preference annotations and a reasoning process before giving a final score during inference. Note that we do not explicitly optimize either of these two scores during fine-tuning. Moreover, all compared methods are evaluated under the same scoring protocol and criteria.
+
+Full finetuning on larger scale dataset: In this setting, we fully fine-tune the model like a normal large-scale SFT. Given that we use the latest state-of-the-art open-source models [94, 4] as our baseline, most publicly available open-source datasets are unsuitable for our full finetuning experiment, as their overall quality is lower than that of the data used to
+
+train these baseline models. Therefore, we rely on an in-house dataset of 25K high-quality anime images. We use the following metric to evaluate the model:
+
+- • Fréchet Inception Distance (FID) [30]: We randomly sample 2K data from the training set, and use the fine-tuned model to generate the images from these prompts. the two sets of images are then fed into the Inception-v3 network [93] to extract features. Assumes both feature distributions are multivariate Gaussian and computes the Fr´echet distance between them.
+- • DINO distance (DINO-D): The images generated for calculating FID score will also be used to calculate DINO distance, following the rules used in the above LoRA evaluation settings.
+- • LPIPS distance (LPIPS-D): Similar to DINO-D, the images generated for calculating FID score will also be used to calculate LPIPS distance following the rules used in the above LoRA evaluation settings.
+- • Quality Score (Quality-S) and Aesthetic Score (Aesthetic-S): Similar to both DINOD and LPIPS-D, the images generated for calculating FID score will also be used to calculate Quality Score and Aesthetic Score from the Reward model we introduced above.
+- • GenEval and DPG score: We follow the evaluation settings in these benchmarks [21, 34] to generate images and calculate score. Note that we use prompts from the original benchmark instead of the Prompt-Enhanced (PE) [98] variants for generating images.
+
+User study. Following prior work [112, 60, 79], we conduct a comprehensive human evaluation to assess overall generation performance. Specifically, we sample 50 prompts from the small-scale LoRA customization setting and another 50 prompts from the large-scale full-finetuning setting, yielding 100 evaluation prompts in total. For the small-scale setting, we additionally provide annotators with the corresponding reference images or style exemplars, so that prompt following can be judged with respect to both the textual instruction and the target concept/style to be learned. To ensure fair and systematic assessment, we compare paired outputs from our method and the baselines under randomized presentation, and ask annotators to evaluate them along three dimensions: image quality, aesthetic quality, and prompt following. We then aggregate the preferences from both settings into a single overall score, and report the final results in Figure 5.
+
+### F More Related Works
+
+We now provide a detailed literature review of other related work.
+
+Image generation diffusion models. Diffusion models have achieved remarkable success in image generation. Early works mainly study unconditional or class-conditional generation, demonstrating that progressively denoising noise can produce highly realistic images [16, 40]. This framework was then extended to text-to-image synthesis, where text conditions are injected into the denoising network to guide image generation according to natural language descriptions [75, 77]. Later, latent-space diffusion models and stronger text-conditioning designs further improve both efficiency and generation quality, making diffusion models the mainstream solution for text-to-image generation [67, 10, 77]. Building on this, recent studies introduce more scalable backbones and objectives, such as diffusion transformers and flow/rectified-flow formulations, which continue to push the frontier of image fidelity, prompt following, and training scalability [65, 61, 10, 17, 3, 105]. Meanwhile, unlike earlier models that usually rely on CLIP [71] or T5 [74] as the condition encoder, the latest high-performance image generation models increasingly adopt large language models or vision-language models as the encoder [68, 94, 102, 4]. Our method is built upon this evolution: we show that the diffusion model can benefit from the in-context capability inherited from these modern encoders, which makes on-policy self-distillation feasible for continuously tuning step-distilled diffusion models.
+
+Knowledge distillation for diffusion model. Besides step-distillation for faster sampling, other forms of knowledge distillation [31, 24] is also widely used in diffusion models. Commonly, a more powerful pretrained model is often used to guide the diffusion model dur-
+
+ing training [14, 114, 19, 103]. Meanwhile, self-distillation frameworks also demonstrates effectiveness even without external components (e.g, stronger model) [39, 99, 121, 8, 25]. For example, SRA [39] aligns the output latent representation of the diffusion transformer in earlier layer with higher noise to that in later layer with lower noise to progressively enhance the overall representation learning during only generative process and accelerate the training convergence of the model, which has also been demonstrated in subsequent study [8] to be applicable in multiple modalities (video, audio, etc.). Our work is also related to self-distillation, while our approach is conducted in an on-policy way for preserving few-step inference capacity during supervised fine-tuning.
+
+Diffusion model fine-tuning. A large body of work studies how to adapt pretrained diffusion models to new concepts, styles, or downstream domains [79, 110, 20, 45, 115, 47]. Representative approaches include standard supervised fine-tuning with all model parameters, subject-driven customization methods such as DreamBooth [79], textual inversion [20], and parameter-efficient adaptation techniques such as LoRA [33]. Among them, full-parameter SFT remains a common choice when sufficient paired data are available, as it directly optimizes the full generative model on the target distribution. However, such standard fine-tuning paradigms are mainly developed for conventional multi-step diffusion models, and they do not explicitly consider whether the adapted model can preserve the few-step inference capability of a step-distilled generator. In particular, directly applying the commonly used denoising or flow-matching objective during SFT would lead to degradation of their original fast-sampling behavior. In contrast, our work focuses on continuously tuning already distilled diffusion models and specifically targets preserving their native few-step generation ability during supervised adaptation.
+
+### References
+
+- [1] Agarwal, R., Vieillard, N., Zhou, Y., Stanczyk, P., Garea, S.R., Geist, M., Bachem, O.: On-policy distillation of language models: Learning from self-generated mistakes. In: The twelfth international conference on learning representations (2024)
+- [2] Bai, S., Cai, Y., Chen, R., Chen, K., Chen, X., Cheng, Z., Deng, L., Ding, W., Gao, C., Ge, C., et al.: Qwen3-vl technical report. arXiv preprint arXiv:2511.21631 (2025)
+- [3] Black Forest Labs: FLUX. https://github.com/black-forest-labs/flux
+
+(2023)
+
+- [4] Black Forest Labs: FLUX.2: Frontier Visual Intelligence. https://bfl.ai/blog/ flux-2 (2025)
+- [5] Brown, T., Mann, B., Ryder, N., Subbiah, M., Kaplan, J.D., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G., Askell, A., et al.: Language models are few-shot learners. Advances in neural information processing systems 33, 1877–1901 (2020)
+- [6] Cao, S., Chen, H., Chen, P., Cheng, Y., Cui, Y., Deng, X., Dong, Y., Gong, K., Gu, T., Gu, X., et al.: Hunyuanimage 3.0 technical report. arXiv preprint arXiv:2509.23951
+
+(2025)
+
+- [7] Caron, M., Touvron, H., Misra, I., Jégou, H., Mairal, J., Bojanowski, P., Joulin, A.: Emerging properties in self-supervised vision transformers. In: Proceedings of the IEEE/CVF international conference on computer vision. pp. 9650–9660 (2021)
+- [8] Chefer, H., Esser, P., Lorenz, D., Podell, D., Raja, V., Tong, V., Torralba, A., Rombach, R.: Self-supervised flow matching for scalable multi-modal synthesis. arXiv preprint arXiv:2603.06507 (2026)
+- [9] Chen, H., Zhang, K., Tan, H., Guibas, L., Wetzstein, G., Bi, S.: pi-flow: Policy-based few-step generation via imitation distillation. arXiv preprint arXiv:2510.14974 (2025)
+- [10] Chen, J., Yu, J., Ge, C., Yao, L., Xie, E., Wu, Y., Wang, Z., Kwok, J., Luo, P., Lu, H., Li, Z.: Pixart-𝛼: Fast training of diffusion transformer for photorealistic text-to-image synthesis. In: International Conference on Learning Representations (2024)
+
+- [11] Chen, Z., Wang, W., Tian, H., Ye, S., Gao, Z., Cui, E., Tong, W., Hu, K., Luo, J., Ma, Z., et al.: How far are we to gpt-4v? closing the gap to commercial multimodal models with open-source suites. Science China Information Sciences 67(12), 220101 (2024)
+- [12] Cheng, Z., Sun, P., Li, J., Lin, T.: Twinflow: Realizing one-step generation on large models with self-adversarial flows. arXiv preprint arXiv:2512.05150 (2025)
+- [13] Comanici, G., Bieber, E., Schaekermann, M., Pasupat, I., Sachdeva, N., Dhillon, I., Blistein, M., Ram, O., Zhang, D., Rosen, E., et al.: Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities. arXiv preprint arXiv:2507.06261 (2025)
+- [14] Daniel Verdú, J.M.: Flux.1 lite: Distilling flux1.dev for efficient text-to-image generation. https://huggingface.co/Freepik (2024)
+- [15] DeepSeek-AI: Deepseek-v4: Towards highly efficient million-token context intelligence (2026)
+- [16] Dhariwal, P., Nichol, A.: Diffusion models beat gans on image synthesis. Advances in neural information processing systems 34, 8780–8794 (2021)
+- [17] Esser, P., Kulal, S., Blattmann, A., Entezari, R., Muller, J., Saini, H., Levi, Y., Lorenz, D., Sauer, A., Boesel, F., Podell, D., Dockhorn, T., English, Z., Lacey, K., Goodwin, A., Marek, Y., Rombach, R.: Scaling rectified flow transformers for high-resolution image synthesis. In: Forty-first international conference on machine learning (2024)
+- [18] Fang, A., Jose, A.M., Jain, A., Schmidt, L., Toshev, A., Shankar, V.: Data filtering networks. arXiv preprint arXiv:2309.17425 (2023)
+- [19] Fang, G., Li, K., Ma, X., Wang, X.: Tinyfusion: Diffusion transformers learned shallow. arXiv preprint arXiv:2412.01199 (2024)
+- [20] Gal, R., Alaluf, Y., Atzmon, Y., Patashnik, O., Bermano, A.H., Chechik, G., CohenOr, D.: An image is worth one word: Personalizing text-to-image generation using textual inversion. arXiv preprint arXiv:2208.01618 (2022)
+- [21] Ghosh, D., Hajishirzi, H., Schmidt, L.: Geneval: An object-focused framework for evaluating text-to-image alignment. Advances in Neural Information Processing Systems 36, 52132–52152 (2023)
+- [22] Google DeepMind: Gemini 3. https://deepmind.google/models/gemini/
+
+(2025)
+
+- [23] Google DeepMind: Gemini 3 pro image model card. https: //storage.googleapis.com/deepmind-media/Model-Cards/ Gemini-3-Pro-Image-Model-Card.pdf (2025)
+- [24] Gou, J., Yu, B., Maybank, S.J., Tao, D.: Knowledge distillation: A survey. International Journal of Computer Vision 129(6), 1789–1819 (2021)
+- [25] Goyal, S., Agrawal, S., Anil, G.G., Jain, P., Paul, S., Kusupati, A.: Elt: Elastic looped transformers for visual generation. arXiv preprint arXiv:2604.09168 (2026)
+- [26] Gu, N., Yang, C., Si, Q., Qin, C., Yao, D., Fu, P., Lin, Z., Wang, W., Duan, N., Wang, J.: Co-evolving policy distillation. arXiv preprint arXiv:2604.27083 (2026)
+- [27] HaCohen, Y., Brazowski, B., Chiprut, N., Bitterman, Y., Kvochko, A., Berkowitz, A., Shalem, D., Lifschitz, D., Moshe, D., Porat, E., et al.: Ltx-2: Efficient joint audio-visual foundation model. arXiv preprint arXiv:2601.03233 (2026)
+- [28] He, Y., Kaur, S., Bhaskar, A., Yang, Y., Liu, J., Ri, N., Fowl, L., Panigrahi, A., Chen, D., Arora, S.: Self-distillation zero: Self-revision turns binary rewards into dense supervision. arXiv preprint arXiv:2604.12002 (2026)
+
+- [29] Hessel, J., Holtzman, A., Forbes, M., Bras, R.L., Choi, Y.: Clipscore: A reference-free evaluation metric for image captioning. arXiv preprint arXiv:2104.08718 (2021)
+- [30] Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., Hochreiter, S.: Gans trained by a two time-scale update rule converge to a local nash equilibrium. Advances in neural information processing systems 30 (2017)
+- [31] Hinton, G., Vinyals, O., Dean, J.: Distilling the knowledge in a neural network. arXiv preprint arXiv:1503.02531 (2015)
+- [32] Ho, J., Jain, A., Abbeel, P.: Denoising diffusion probabilistic models. Advances in neural information processing systems 33, 6840–6851 (2020)
+- [33] Hu, E.J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L., Chen, W., et al.: Lora: Low-rank adaptation of large language models. ICLR 1(2), 3 (2022)
+- [34] Hu, X., Wang, R., Fang, Y., Fu, B., Cheng, P., Yu, G.: Ella: Equip diffusion models with llm for enhanced semantic alignment. arXiv preprint arXiv:2403.05135 (2024)
+- [35] Huang, X., Li, Z., He, G., Zhou, M., Shechtman, E.: Self forcing: Bridging the traintest gap in autoregressive video diffusion. arXiv preprint arXiv:2506.08009 (2025)
+- [36] Hunter, J.S.: The exponentially weighted moving average. Journal of quality technology 18(4), 203–210 (1986)
+- [37] Jang, I., Yeom, J., Yeo, J., Lim, H., Kim, T.: Stable on-policy distillation through adaptive target reformulation. arXiv preprint arXiv:2601.07155 (2026)
+- [38] Jiang, D., Liu, D., Wang, Z., Wu, Q., Li, L., Li, H., Jin, X., Liu, D., Li, Z., Zhang, B., et al.: Distribution matching distillation meets reinforcement learning. arXiv preprint arXiv:2511.13649 (2025)
+- [39] Jiang, D., Wang, M., Li, L., Zhang, L., Wang, H., Wei, W., Dai, G., Zhang, Y., Wang, J.: No other representation component is needed: Diffusion transformers can provide representation guidance by themselves. arXiv preprint arXiv:2505.02831 (2025)
+- [40] Karras, T., Aittala, M., Lehtinen, J., Hellsten, J., Aila, T., Laine, S.: Analyzing and improving the training dynamics of diffusion models. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. pp. 24174–24184 (2024)
+- [41] Kelseye, Duan, Z.: Training strategies of z-image-turbo. https://huggingface. co/blog/kelseye/training-strategies-of-z-image-turbo (2025)
+- [42] Kirstain, Y., Polyak, A., Singer, U., Matiana, S., Penna, J., Levy, O.: Pick-a-pic: An open dataset of user preferences for text-to-image generation. Advances in neural information processing systems 36, 36652–36663 (2023)
+- [43] Kulikov, V., Kleiner, M., Huberman-Spiegelglas, I., Michaeli, T.: Flowedit: Inversionfree text-based editing using pre-trained flow models. In: Proceedings of the IEEE/CVF International Conference on Computer Vision. pp. 19721–19730 (2025)
+- [44] Kullback, S., Leibler, R.A.: On information and sufficiency. The annals of mathematical statistics 22(1), 79–86 (1951)
+- [45] Kumari, N., Zhang, B., Zhang, R., Shechtman, E., Zhu, J.Y.: Multi-concept customization of text-to-image diffusion. In: Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. pp. 1931–1941 (2023)
+- [46] Labs, B.F., Batifol, S., Blattmann, A., Boesel, F., Consul, S., Diagne, C., Dockhorn, T., English, J., English, Z., Esser, P., et al.: Flux. 1 kontext: Flow matching for in-context image generation and editing in latent space. arXiv preprint arXiv:2506.15742 (2025)
+- [47] Li, L., Gong, Y., Liu, S., Cheng, B., Ma, Y., Wu, L., Jiang, D., Wang, Z., Leng, D., Yin, Y.: Refvton: person-to-person try on with additional unpaired visual reference. arXiv preprint arXiv:2511.00956 (2025)
+
+- [48] Lipman, Y., Chen, R.T., Ben-Hamu, H., Nickel, M., Le, M.: Flow matching for generative modeling. arXiv preprint arXiv:2210.02747 (2022)
+- [49] Liu, D., Gao, P., Liu, D., Du, R., Li, Z., Wu, Q., Jin, X., Cao, S., Zhang, S., Li, H., Hoi, S.: Decoupled dmd: Cfg augmentation as the spear, distribution matching as the shield. arXiv preprint arXiv:2511.22677 (2025)
+- [50] Liu, H., Li, C., Wu, Q., Lee, Y.J.: Visual instruction tuning. Advances in neural information processing systems 36, 34892–34916 (2023)
+- [51] Liu, J., Liu, G., Liang, J., Li, Y., Liu, J., Wang, X., Wan, P., Zhang, D., Ouyang, W.: Flow-grpo: Training flow matching models via online rl. arXiv preprint arXiv:2505.05470 (2025)
+- [52] Liu, X., Gong, C., Liu, Q.: Flow straight and fast: Learning to generate and transfer data with rectified flow. arXiv preprint arXiv:2209.03003 (2022)
+- [53] Lu, K., Lab, T.M.: On-policy distillation. Thinking Machines Lab: Connectionism (2025). https://doi.org/10.64434/tml.20251026, https://thinkingmachines.ai/blog/on-policy-distillation
+- [54] Lu, Y., Ren, Y., Xia, X., Lin, S., Wang, X., Xiao, X., Ma, A.J., Xie, X., Lai, J.H.: Adversarial distribution matching for diffusion distillation towards efficient image and video synthesis. arXiv preprint arXiv:2507.18569 (2025)
+- [55] Luhman, E., Luhman, T.: Knowledge distillation in iterative generative models for improved sampling speed. arXiv preprint arXiv:2101.02388 (2021)
+- [56] Luo, S., Tan, Y., Huang, L., Li, J., Zhao, H.: Latent consistency models: Synthesizing high-resolution images with few-step inference. arXiv preprint arXiv:2310.04378
+
+(2023)
+
+- [57] Luo, W.: Diff-instruct++: Training one-step text-to-image generator model to align with human preferences. arXiv preprint arXiv:2410.18881 (2024)
+- [58] Luo, W., Hu, T., Zhang, S., Sun, J., Li, Z., Zhang, Z.: Diff-instruct: A universal approach for transferring knowledge from pre-trained diffusion models. Advances in Neural Information Processing Systems 36, 76525–76546 (2023)
+- [59] Luo, Y., Hu, T., Luo, W., Tang, J.: Tdm-r1: Reinforcing few-step diffusion models with non-differentiable reward. arXiv preprint arXiv:2603.07700 (2026)
+- [60] Luo, Y., Hu, T., Sun, J., Cai, Y., Tang, J.: Learning few-step diffusion models by trajectory distribution matching. arXiv preprint arXiv:2503.06674 (2025)
+- [61] Ma, N., Goldstein, M., Albergo, M.S., Boffi, N.M., Vanden-Eijnden, E., Xie, S.: Sit: Exploring flow and diffusion-based generative models with scalable interpolant transformers. In: European Conference on Computer Vision. pp. 23–40. Springer (2024)
+- [62] Miao, Z., Yang, Z., Lin, K., Wang, Z., Liu, Z., Wang, L., Qiu, Q.: Tuning timestep-distilled diffusion model using pairwise sample optimization. arXiv preprint arXiv:2410.03190 (2024)
+- [63] OpenAI: Gpt-Image-1. https://openai.com/index/ introducing-4o-image-generation/ (2025)
+- [64] Ostris: Z-image-de-turbo. https://huggingface.co/ostris/ Z-Image-De-Turbo (2025)
+- [65] Peebles, W., Xie, S.: Scalable diffusion models with transformers. In: Proceedings of the IEEE/CVF international conference on computer vision. pp. 4195–4205 (2023)
+- [66] Penaloza, E., Vattikonda, D., Gontier, N., Lacoste, A., Charlin, L., Caccia, M.: Privileged information distillation for language models. arXiv preprint arXiv:2602.04942
+
+(2026)
+
+- [67] Podell, D., English, Z., Lacey, K., Blattmann, A., Dockhorn, T., Müller, J., Penna, J., Rombach, R.: Sdxl: Improving latent diffusion models for high-resolution image synthesis. arXiv preprint arXiv:2307.01952 (2023)
+- [68] Qin, Q., Zhuo, L., Xin, Y., Du, R., Li, Z., Fu, B., Lu, Y., Li, X., Liu, D., Zhu, X., et al.: Lumina-image 2.0: A unified and efficient image generative framework. In: Proceedings of the IEEE/CVF International Conference on Computer Vision. pp. 20031– 20042 (2025)
+- [69] Qin, Y., Wang, L., Fei, H., Zimmermann, R., Bo, L., Lu, Q., Wang, C.: Soar: Selfcorrection for optimal alignment and refinement in diffusion models. arXiv preprint arXiv:2604.12617 (2026)
+- [70] Qwen Team: Qwen3.5: Towards native multimodal agents. https://qwen.ai/ blog?id=qwen3.5 (2026)
+- [71] Radford, A., Kim, J.W., Hallacy, C., Ramesh, A., Goh, G., Agarwal, S., Sastry, G., Askell, A., Mishkin, P., Clark, J., Krueger, G., Sutskever, I.: Learning transferable visual models from natural language supervision. In: International conference on machine learning. pp. 8748–8763. PMLR (2021)
+- [72] Radford, A., Narasimhan, K., Salimans, T., Sutskever, I., et al.: Improving language understanding by generative pre-training (2018)
+- [73] Radford, A., Wu, J., Child, R., Luan, D., Amodei, D., Sutskever, I., et al.: Language models are unsupervised multitask learners. OpenAI blog 1(8), 9 (2019)
+- [74] Raffel, C., Shazeer, N., Roberts, A., Lee, K., Narang, S., Matena, M., Zhou, Y., Li, W., Liu, P.J.: Exploring the limits of transfer learning with a unified text-to-text transformer. Journal of machine learning research 21(140), 1–67 (2020)
+- [75] Ramesh, A., Dhariwal, P., Nichol, A., Chu, C., Chen, M.: Hierarchical text-conditional image generation with clip latents. arXiv preprint arXiv:2204.06125 1(2), 3 (2022)
+- [76] Ren, Y., Xia, X., Lu, Y., Zhang, J., Wu, J., Xie, P., Wang, X., Xiao, X.: Hyper-sd: Trajectory segmented consistency model for efficient image synthesis. arXiv preprint arXiv:2404.13686 (2024)
+- [77] Rombach, R., Blattmann, A., Lorenz, D., Esser, P., Ommer, B.: High-resolution image synthesis with latent diffusion models. In: Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. pp. 10684–10695 (2022)
+- [78] r/StableDiffusion, the Reddit Community: Z-image lora training. https: //www.reddit.com/r/StableDiffusion/comments/1pj0469/zimage_lora_ training/ (2025)
+- [79] Ruiz, N., Li, Y., Jampani, V., Pritch, Y., Rubinstein, M., Aberman, K.: Dreambooth: Fine tuning text-to-image diffusion models for subject-driven generation. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition
+
+(2023)
+
+- [80] Sang, H., Xu, Y., Zhou, Z., He, R., Wang, Z., Sun, J.: On-policy self-distillation for reasoning compression. arXiv preprint arXiv:2603.05433 (2026)
+- [81] Sauer, A., Boesel, F., Dockhorn, T., Blattmann, A., Esser, P., Rombach, R.: Fast highresolution image synthesis with latent adversarial diffusion distillation. In: SIGGRAPH Asia 2024 Conference Papers. pp. 1–11 (2024)
+- [82] Sauer, A., Lorenz, D., Blattmann, A., Rombach, R.: Adversarial diffusion distillation. In: European Conference on Computer Vision. pp. 87–103. Springer (2024)
+- [83] Seedance, T., Chen, D., Chen, L., Chen, X., Chen, Y., Chen, Z., Chen, Z., Cheng, F., Cheng, T., Cheng, Y., et al.: Seedance 2.0: Advancing video generation for world complexity. arXiv preprint arXiv:2604.14148 (2026)
+
+- [84] Seedream, T., Chen, Y., Gao, Y., Gong, L., Guo, M., Guo, Q., Guo, Z., Hou, X., Huang, W., Huang, Y., et al.: Seedream 4.0: Toward next-generation multimodal image generation. arXiv preprint arXiv:2509.20427 (2025)
+- [85] Shenfeld, I., Damani, M., Hübotter, J., Agrawal, P.: Self-distillation enables continual learning. arXiv preprint arXiv:2601.19897 (2026)
+- [86] Siméoni, O., Vo, H.V., Seitzer, M., Baldassarre, F., Oquab, M., Jose, C., Khalidov, V., Szafraniec, M., Yi, S., Ramamonjisoa, M., et al.: Dinov3. arXiv preprint arXiv:2508.10104 (2025)
+- [87] Simonyan, K., Zisserman, A.: Very deep convolutional networks for large-scale image recognition. arXiv preprint arXiv:1409.1556 (2014)
+- [88] Somepalli, G., Somepalli, S.: Latent scaffolding image generation models. https://somepago.github.io/posts/latent-scaffolding-series/ (2026)
+- [89] Song, J., Meng, C., Ermon, S.: Denoising diffusion implicit models. arXiv preprint arXiv:2010.02502 (2020)
+- [90] Song, M., Zheng, M.: A survey of on-policy distillation for large language models. arXiv preprint arXiv:2604.00626 (2026)
+- [91] Song, Y., Sohl-Dickstein, J., Kingma, D.P., Kumar, A., Ermon, S., Poole, B.: Scorebased generative modeling through stochastic differential equations. arXiv preprint arXiv:2011.13456 (2020)
+- [92] Sutskever, I., Vinyals, O., Le, Q.V.: Sequence to sequence learning with neural networks. Advances in neural information processing systems 27 (2014)
+- [93] Szegedy, C., Vanhoucke, V., Ioffe, S., Shlens, J., Wojna, Z.: Rethinking the inception architecture for computer vision. In: Proceedings of the IEEE conference on computer vision and pattern recognition. pp. 2818–2826 (2016)
+- [94] Team, Z.I., Cai, H., Cao, S., Du, R., Gao, P., Hoi, S., Hou, Z., Huang, S., Jiang, D., Jin, X., Li, L., Li, Z., Li, Z.Y., Liu, D., Liu, D., Shi, J., Wu, Q., Yu, F., Zhang, C., Zhang, S., Zhou, S.: Z-image: An efficient image generation foundation model with singlestream diffusion transformer. arXiv preprint arXiv:2511.22699 (2025)
+- [95] Touvron, H., Lavril, T., Izacard, G., Martinet, X., Lachaux, M.A., Lacroix, T., Rozière, B., Goyal, N., Hambro, E., Azhar, F., et al.: Llama: Open and efficient foundation language models. arXiv preprint arXiv:2302.13971 (2023)
+- [96] Wallace, B., Dang, M., Rafailov, R., Zhou, L., Lou, A., Purushwalkam, S., Ermon, S., Xiong, C., Joty, S., Naik, N.: Diffusion model alignment using direct preference optimization. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. pp. 8228–8238 (2024)
+- [97] Wan, T., Wang, A., Ai, B., Wen, B., Mao, C., Xie, C.W., Chen, D., Yu, F., Zhao, H., Yang, J., et al.: Wan: Open and advanced large-scale video generative models. arXiv preprint arXiv:2503.20314 (2025)
+- [98] Wang, L., Xing, X., Cheng, Y., Zhao, Z., Li, D., Hang, T., Tao, J., Wang, Q., Li, R., Chen, C., et al.: Promptenhancer: A simple approach to enhance text-to-image models via chain-of-thought prompt rewriting. arXiv preprint arXiv:2509.04545 (2025)
+- [99] Wang, M., Jiang, D., Li, L., Lin, Y., Shen, G., Kong, X., Liu, Y., Dai, G., Wang, J.: Vae-repa: Variational autoencoder representation alignment for efficient diffusion training. arXiv preprint arXiv:2601.17830 (2026)
+- [100] Wang, P., Bai, S., Tan, S., Wang, S., Fan, Z., Bai, J., Chen, K., Liu, X., Wang, J., Ge, W., et al.: Qwen2-vl: Enhancing vision-language model’s perception of the world at any resolution. arXiv preprint arXiv:2409.12191 (2024)
+
+- [101] Wei, J., Wang, X., Schuurmans, D., Bosma, M., Xia, F., Chi, E., Le, Q.V., Zhou, D., et al.: Chain-of-thought prompting elicits reasoning in large language models. Advances in neural information processing systems 35, 24824–24837 (2022)
+- [102] Wu, C., Li, J., Zhou, J., Lin, J., Gao, K., Yan, K., Yin, S.m., Bai, S., Xu, X., Chen, Y., et al.: Qwen-image technical report. arXiv preprint arXiv:2508.02324 (2025)
+- [103] Wu, G., Zhang, S., Shi, R., Gao, S., Chen, Z., Wang, L., Chen, Z., Gao, H., Tang, Y., Yang, J., et al.: Representation entanglement for generation: Training diffusion transformers is much easier than you think. arXiv preprint arXiv:2507.01467 (2025)
+- [104] Wu, X., Hao, Y., Sun, K., Chen, Y., Zhu, F., Zhao, R., Li, H.: Human preference score v2: A solid benchmark for evaluating human preferences of text-to-image synthesis. arXiv preprint arXiv:2306.09341 (2023)
+- [105] Xie, E., Chen, J., Chen, J., Cai, H., Tang, H., Lin, Y., Zhang, Z., Li, M., Zhu, L., Lu, Y., et al.: Sana: Efficient high-resolution image synthesis with linear diffusion transformers. arXiv preprint arXiv:2410.10629 (2024)
+- [106] Xu, J., Liu, X., Wu, Y., Tong, Y., Li, Q., Ding, M., Tang, J., Dong, Y.: Imagereward: Learning and evaluating human preferences for text-to-image generation. Advances in Neural Information Processing Systems 36, 15903–15935 (2023)
+- [107] Xue, Z., Wu, J., Gao, Y., Kong, F., Zhu, L., Chen, M., Liu, Z., Liu, W., Guo, Q., Huang, W., et al.: Dancegrpo: Unleashing grpo on visual generation. arXiv preprint arXiv:2505.07818 (2025)
+- [108] Yang, A., Li, A., Yang, B., Zhang, B., Hui, B., Zheng, B., Yu, B., Gao, C., Huang, C., Lv, C., et al.: Qwen3 technical report. arXiv preprint arXiv:2505.09388 (2025)
+- [109] Yang, C., Qin, C., Si, Q., Chen, M., Gu, N., Yao, D., Lin, Z., Wang, W., Wang, J., Duan, N.: Self-distilled rlvr. arXiv preprint arXiv:2604.03128 (2026)
+- [110] Ye, H., Zhang, J., Liu, S., Han, X., Yang, W.: Ip-adapter: Text compatible image prompt adapter for text-to-image diffusion models. arXiv preprint arXiv:2308.06721
+
+(2023)
+
+- [111] Ye, T., Dong, L., Wu, X., Huang, S., Wei, F.: On-policy context distillation for language models. arXiv preprint arXiv:2602.12275 (2026)
+- [112] Yin, T., Gharbi, M., Park, T., Zhang, R., Shechtman, E., Durand, F., Freeman, B.: Improved distribution matching distillation for fast image synthesis. Advances in neural information processing systems 37, 47455–47487 (2024)
+- [113] Yin, T., Gharbi, M., Zhang, R., Shechtman, E., Durand, F., Freeman, W.T., Park, T.: One-step diffusion with distribution matching distillation. In: Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. pp. 6613–6623
+
+(2024)
+
+- [114] Yu, S., Kwak, S., Jang, H., Jeong, J., Huang, J., Shin, J., Xie, S.: Representation alignment for generation: Training diffusion transformers is easier than you think. In: International Conference on Learning Representations (2025)
+- [115] Zhang, L., Rao, A., Agrawala, M.: Adding conditional control to text-to-image diffusion models. In: Proceedings of the IEEE/CVF international conference on computer vision. pp. 3836–3847 (2023)
+- [116] Zhang, R., Isola, P., Efros, A.A., Shechtman, E., Wang, O.: The unreasonable effectiveness of deep features as a perceptual metric. In: Proceedings of the IEEE conference on computer vision and pattern recognition. pp. 586–595 (2018)
+- [117] Zhao, S., Xie, Z., Liu, M., Huang, J., Pang, G., Chen, F., Grover, A.: Self-distilled reasoner: On-policy self-distillation for large language models. arXiv preprint arXiv:2601.18734 (2026)
+
+- [118] Zheng, K., Chen, H., Ye, H., Wang, H., Zhang, Q., Jiang, K., Su, H., Ermon, S., Zhu, J., Liu, M.Y.: Diffusionnft: Online diffusion reinforcement with forward process. arXiv preprint arXiv:2509.16117 (2025)
+- [119] Zheng, K., Wang, Y., Ma, Q., Chen, H., Zhang, J., Balaji, Y., Chen, J., Liu, M.Y., Zhu, J., Zhang, Q.: Large scale diffusion distillation via score-regularized continuous-time consistency. arXiv preprint arXiv:2510.08431 (2025)
+- [120] Zhou, J., Wei, C., Wang, H., Shen, W., Xie, C., Yuille, A., Kong, T.: ibot: Image bert pre-training with online tokenizer. In: International Conference on Learning Representations (2022)
+- [121] Zhu, R., Pan, Y., Li, Y., Yao, T., Sun, Z., Mei, T., Chen, C.W.: Sd-dit: Unleashing the power of self-supervised discrimination in diffusion transformer. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. pp. 8435– 8445 (2024)
+
