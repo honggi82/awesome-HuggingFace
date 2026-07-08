@@ -1,0 +1,1833 @@
+# arXiv:2512.08294v2[cs.CV]10Dec2025
+
+## OpenSubject: Leveraging Video-Derived Identity and Diversity Priors for Subject-driven Image Generation and Manipulation
+
+Yexin Liu1,2 Manyuan Zhang2,* Yueze Wang3 Hongyu Li2 Dian Zheng2 Weiming Zhang4 Changsheng Lu1 Yan Feng2 Peng Pei2 Xunliang Cai2 Harry Yang1†
+
+1HKUST 2Meituan 3Independent Researcher 4HKUST(GZ) *Project Leader †Corresponding Author yliu292@connect.ust.hk, harryyang.hk@gmail.com GitHub Link: https://github.com/LAW1223/OpenSubject
+
+[Figure 1]
+
+[Figure 2]
+
+[Figure 3]
+
+[Figure 4]
+
+[Figure 5]
+
+[Figure 6]
+
+[Figure 7]
+
+[Figure 8]
+
+[Figure 9]
+
+[Figure 10]
+
+[Figure 11]
+
+[Figure 12]
+
+[Figure 13]
+
+[Figure 14]
+
+[Figure 15]
+
+[Figure 16]
+
+[Figure 17]
+
+[Figure 18]
+
+[Figure 19]
+
+[Figure 20]
+
+[Figure 21]
+
+[Figure 22]
+
+[Figure 23]
+
+[Figure 24]
+
+[Figure 25]
+
+[Figure 26]
+
+[Figure 27]
+
+[Figure 28]
+
+[Figure 29]
+
+[Figure 30]
+
+[Figure 31]
+
+[Figure 32]
+
+[Figure 33]
+
+[Figure 34]
+
+[Figure 35]
+
+[Figure 36]
+
+[Figure 37]
+
+[Figure 38]
+
+[Figure 39]
+
+[Figure 40]
+
+[Figure 41]
+
+[Figure 42]
+
+[Figure 43]
+
+[Figure 44]
+
+[Figure 45]
+
+[Figure 46]
+
+[Figure 47]
+
+[Figure 48]
+
+[Figure 49]
+
+[Figure 50]
+
+[Figure 51]
+
+Figure 1. OpenSubject examples illustrating single- and multi-subject driven image generation and manipulation across human, object, and cartoon domains, spanning indoor and outdoor scenes and diverse viewpoints, and highlighting identity fidelity and contextual diversity.
+
+### Abstract
+
+exploits cross-frame identity priors. (i) Video Curation. We apply resolution and aesthetic filtering to obtain high-quality clips. (ii) Cross-Frame Subject Mining and Pairing. We utilize vision-language model (VLM)–based category consensus, local grounding, and diversity-aware pairing to select image pairs. (iii) Identity-Preserving Reference Image Synthesis. We introduce segmentation map-guided outpainting to synthesize the input images for subject-driven generation and box-guided inpainting to generate input images
+
+Despite the promising progress in subject-driven image generation, current models often deviate from the reference identities and struggle in complex scenes with multiple subjects. To address this challenge, we introduce OpenSubject, a video-derived large-scale corpus with 2.5M samples and 4.35M images for subject-driven generation and manipulation. The dataset is built with a four-stage pipeline that
+
+for subject-driven manipulation, together with geometryaware augmentations and irregular boundary erosion. (iv) Verification and Captioning. We utilize a VLM to validate synthesized samples, re-synthesize failed samples based on stage (iii), and then construct short and long captions. In addition, we introduce a benchmark covering subject-driven generation and manipulation, and then evaluate identity fidelity, prompt adherence, manipulation consistency, and background consistency with a VLM judge. Extensive experiments show that training with OpenSubject improves generation and manipulation performance, particularly in complex scenes. The project is available on GitHub.
+
+### 1. Introduction
+
+Subject-driven image generation aims to synthesize realistic images of specified subjects conditioned on text prompts while preserving identity [8, 31]. This capability underpins applications in personalized content creation [22], portrait or character re-rendering [13], and interactive editing [11, 37]. With the advent of Diffusion Transformers (DiTs) [28], methods in this area have achieved substantial progress, particularly in the single-subject setting, enabling identity-consistent image generation.
+
+Recent work has shifted toward multi-subject personalization [2, 5, 40], in which a model composes several subjects into a single, coherent scene while preserving each identity. Compared with the single-subject setting, this scenario is considerably more challenging: the model must maintain per-subject identity under novel poses and contexts and follow the textual specification.
+
+To address these issues, prior work has pursued two paradigms for constructing paired samples, synthesis-based and retrieval-based, as summarized in Tab. 1. Synthesisbased pipelines [40, 44, 47] typically leverage text-to-image (T2I) or image-to-image models to produce paired exemplars with controlled variation but often inherit model biases and exhibit identity inconsistency. Retrieval-based approaches [45] collect web images (e.g., using celebrity names), but struggle to scale to multi-subject settings, are skewed toward public figures, and provide limited coverage of general object categories.
+
+In this work, we leverage video as an underexplored yet promising source of identity-consistent supervision. Videos naturally provide multi-frame observations of subjects with rich variation in viewpoint, illumination, and environment, making them well-suited for learning appearance priors for multi-reference conditioning. However, two challenges remain: 1) selecting cross-frame pairs that maximize diversity while preserving identity consistency; and 2) ensuring sufficient context variation, as naive within-clip pairing often yields near-identical backgrounds and thus weak supervision for subject-driven generation.
+
+To address these challenges, we introduce OpenSubject, a dataset constructed via a four-stage pipeline. (i) Video curation: we collect large-scale open-source videos and apply resolution and aesthetic filters to obtain high-quality, subjectpersistent clips. (ii) Cross-frame subject mining and pairing: we sample candidate frames, enforce clip-level subject consensus with a vision–language model (VLM), perform instance-level local verification with Grounding-DINO [20] and the VLM, and select a maximally diverse frame pair using DINOv2 embeddings [27]. (iii) Identity-preserving reference image synthesis: we use mask-guided outpainting to construct cross-frame inputs for subject-driven generation, complemented by geometry-aware augmentations and irregular boundary erosion; we also introduce an editing task, subject-driven manipulation, defined as replacing the target subject in the input image with the referenced identity while preserving all non-target content, for which we synthesize inputs via box-guided inpainting. (iv) Verification and captioning: we validate synthesized samples with a VLM, re-synthesize failures based on stage (iii), and generate both short and long captions. The resulting corpus (2.5M samples, 4.35M images) supports both subject-driven generation and manipulation (see Fig. 1). OpenSubject is a video-grounded yet synthetic-paired corpus: real videos define the subject identities, poses, and multi-view context, while FLUX.1 Fill [dev] [16] in-/out-painting is used to synthesize the inputs.
+
+We further establish an open-ended benchmark that spans subject-driven generation and manipulation, comprising four sub-tasks and evaluated with a rubricized VLM judge (GPT4.1 [25]), reporting identity fidelity, prompt adherence, manipulation fidelity, and background consistency. Extensive experiments demonstrate that models trained on OpenSubject achieve stronger identity preservation and manipulation fidelity, particularly in multi-subject settings.
+
+Our main contributions are as follows: (i) Large-scale, video-derived corpus for subject-driven generation and manipulation. We present OpenSubject, a 2.5M-sample (4.35M-image) dataset for subject-driven image generation and manipulation, covering both single- and multi-subject settings. (ii) Scalable video-based construction pipeline. We develop a four-stage pipeline that ensures subject consistency, diversity, and scalability. (iii) Open-ended benchmark and evaluation protocol. We introduce a benchmark with four sub-tasks and a rubricized VLM judge, and demonstrate that training on OpenSubject yields improvements on both our benchmark and external suites.
+
+### 2. Related Works
+
+Subject-driven image generation. Subject-driven image generation aims to synthesize identity-consistent images of specified subjects. Existing approaches fall into two architectural families: U-Net–based and DiT-based. Early work is predominantly U-Net–based; for example, DreamBooth [31]
+
+Table 1. Comparison of subject-driven image generation and manipulation datasets. Counts denote the number of paired input samples.
+
+Paired Single-subject Paired Multi-subject Subject-driven
+
+General Diverse
+
+Dataset
+
+IP Source
+
+Input Samples Input Samples Manipulation Objects Contexts
+
+Echo-4o-Image [47] ✗ 73k ✗ Synthesis ✓ ✗ UNO-1M [40] 1M ✗ ✗ Synthesis ✓ ✗ Subjects200K [44] 200k ✗ ✗ Synthesis ✓ ✗ MultiID-2M [45] ✗ 500k ✗ Retrieval ✗ ✗
+
+OpenSubject (ours) 748k 1752k ✓ Video ✓ ✓
+
+adapts Stable Diffusion [30] for single-subject personalization via test-time fine-tuning [8, 15, 32]. Zero-shot variants such as IP-Adapter [46], PhotoVerse [3], FastComposer [42], and FlashFace [51] improve inference efficiency by injecting identity features through vision encoders or lightweight adapters, yet they inherit limitations of U-Net architectures. By contrast, recent DiT-based methods offer stronger representational capacity and more flexible conditioning. For single-subject generation, models such as IC-LoRA [10], InstantID [36], and InfiniteYou [13] introduce mechanisms including residual identity injection and attention-based control to improve identity fidelity and prompt alignment. Extending to multi-subject generation, frameworks including UNO [44], OmniControl [44], UniReal [4], DreamO [22], XVerse [2], OmniGen [39, 43], and Emu3.5 [6] employ multi-image conditioning, token-level constraints, and textstream modulation to enable personalized control over multiple identities. Despite this progress, achieving scalable, high-quality multi-subject generation, especially in openended scenes, remains a significant challenge. To mitigate this challenge, we introduce OpenSubject, a large-scale corpus for subject-driven generation and manipulation.
+
+Datasets for subject-driven image generation. Highquality datasets are essential for preserving identity across diverse poses, illumination, and scenes. Prior work follows two paradigms: synthesis-based and retrieval-based. Synthesis-based corpora, such as Subjects200K [44] and UNO-1M [44], use strong base models (e.g., FLUX.1 [35]) with prompts to create identity-consistent pairs across varied contexts; Echo-4o-Image [47] extends this direction with roughly 180K long-tailed samples that complement real-world coverage. Retrieval-based datasets, exemplified by MultiID-2M [45], curate real-world group photos paired with individual identity references. However, these resources largely rely on static web images or synthetic pairings and therefore lack scalable multi-reference coverage and frame-level identity coherence. We address these gaps with OpenSubject, a million-scale, video-derived dataset that captures cross-frame identity priors and supports both subject-driven generation and subject-driven manipulation. By leveraging temporal consistency and controlled reference synthesis, OpenSubject improves prompt adherence and multi-reference fidelity in subject-conditioned models.
+
+### 3. OpenSubject
+
+Fig. 2 provides an overview of the OpenSubject dataconstruction pipeline, which comprises video curation, crossframe subject mining and pairing, identity-preserving reference image synthesis, and verification and captioning.
+
+#### 3.1. Video Curation
+
+Video collection. We construct OpenSubject from largescale, publicly available video corpora (OpenVid [23], OpenHumanVid [18], OpenS2V [50]).
+
+Quality filtering. We discard videos that do not meet quality requirements, including those with insufficient spatial resolution (below 720p) or low aesthetic scores (below 5.8).
+
+#### 3.2. Cross-Frame Subject Mining and Pairing
+
+To construct reliable cross-frame training pairs, we use a hierarchical procedure: (i) uniformly sample four mid-range frames; (ii) enforce clip-level subject consensus, retaining only frames that share the same detected subject category; (iii) perform instance-level verification via grounding and a VLM to remove spurious detections; and (iv) select a diversity-aware pair by choosing the two filtered frames with maximal DINOv2 [27] embedding distance.
+
+Frame sampling. We uniformly sample four mid-range frames to capture natural appearance variation without redundancy, yielding candidates that differ meaningfully in viewpoint and context.
+
+Cross-frame subject verification. We apply Qwen2.5-VL7B [1] to each candidate frame to detect foreground subjects and retain only instances occupying at least 5% of the image area. We then enforce cross-frame consensus by computing the intersection (or majority agreement) of subject categories across frames and keeping only frames/instances whose category belongs to this consensus set. If the set is empty, the clip is discarded.
+
+Local verification. To ensure spatial and semantic validity, we run instance-level grounding with Grounding-DINO [20] using class-specific confidence thresholds (0.5 for objects, 0.8 for humans). Detections are filtered using geometric priors—box count, relative area, aspect ratio, and pairwise IoU—to remove spurious or degenerate cases. The corresponding regions of interest are then cropped and evaluated
+
+###### Video Curation (Section 3.1)
+
+|OpenHumanVid|
+|---|
+
+[Figure 52]
+
+[Figure 53]
+
+[Figure 54]
+
+[Figure 55]
+
+[Figure 56]
+
+[Figure 57]
+
+|Resolution|
+|---|
+
+Quality Filtering
+
+Video Collection
+
+|OpenVid|
+|---|
+
+|Aesthetic|
+|---|
+
+|OpenS2V|
+|---|
+
+###### Cross-Frame Subject Mining and Pairing (Section 3.2)
+
+Frame Sampling Local Verification
+
+Cross-frame Object Verification
+
+###### Diversity-aware Cross-frame Pairing
+
+[Figure 58]
+
+[Figure 59]
+
+Label Label
+
+- 1
+
+- 2
+
+Criteria
+
+[Figure 60]
+
+woman”,{“
+
+mural“”} woman{“”}
+
+|Occlusion|
+|---|
+
+VLMVerification
+
+|[Figure 61]|
+|---|
+
+|Completeness|
+|---|
+
+###### Verification
+
+[Figure 62]
+
+[Figure 63]
+
+[Figure 64]
+
+[Figure 65]
+
+DINOv2
+
+woman{“”}
+
+|1|
+|---|
+
+|Motion Blur|
+|---|
+
+VLM
+
+|2|
+|---|
+
+|Facial Visibility|
+|---|
+
+……
+
+|[Figure 66]|
+|---|
+
+……
+
+###### …...
+
+|Visual Clarity|
+|---|
+
+|3|
+|---|
+
+|[Figure 67]| |
+|---|---|
+| | |
+
+[Figure 68]
+
+[Figure 69]
+
+4
+
+[Figure 70]
+
+[Figure 71]
+
+|4|
+|---|
+
+|Category Correctness|
+|---|
+
+###### Identity-Preserving Reference Image Synthesis (Section 3.3)
+
+Input Image Synthesis for Subject-driven Image Generation
+
+###### Input Image Synthesis for Subject-driven Image Manipulation
+
+Inpainting
+
+Inpainting
+
+|[Figure 72]|
+|---|
+
+[Figure 73]
+
+[Figure 74]
+
+Mask
+
+Grounding-DINO
+
+Input
+
+Grounding-DINO
+
+Inpainting Input
+
+[Figure 75]
+
+SAM2
+
+[Figure 76]
+
+Input Image
+
+Input Image
+
+Small Object Rescale Irregular Boundary Erosion
+
+Position Shift Augmentation
+
+Inpainting Mask
+
+Inpainting Prompt: “ ” Inpainting Prompt: “ object”
+
+Output Image
+
+Output Image
+
+[Figure 77]
+
+[Figure 78]
+
+Inpainting
+
+Inpainting
+
+[Figure 79]
+
+[Figure 80]
+
+[Figure 81]
+
+mask
+
+input
+
+FLUX.1 Fill [dev]
+
+FLUX.1 Fill [dev]
+
+###### Verification and Captioning (Section 3.4)
+
+|Reference Images<br><br>…...<br><br>[Figure 82]<br><br>[Figure 83]|
+|---|
+
+[Figure 84]
+
+[Figure 85]
+
+|Long Caption|
+|---|
+
+VLM-based Artifact
+
+Yes
+
+Verification Pass?
+
+Captioning
+
+|Short Caption|
+|---|
+
+No
+
+Output Image
+
+Re-generation
+
+- Figure 2. Overview of the OpenSubject pipeline. (a) Video curation: collect videos from OpenHumanVid, OpenVid, and OpenS2V, and apply resolution and aesthetic filters. (b) Cross-frame subject mining and pairing: verify objects with a vision–language model (category consensus, visual clarity, occlusion, facial visibility), localize with Grounding-DINO, and select diverse frame pairs. (c) Identity-preserving reference synthesis: use mask-guided outpainting for generation and box-guided inpainting for manipulation. (d) Automated verification and captioning: perform VLM-based artifact checks and regenerate failures, then produce short and long captions for training.
+
+by Qwen2.5-VL-7B [1] for (i) label correctness, (ii) occlusion, (iii) completeness, (iv) motion blur, and (v) facial visibility (for human subjects).
+
+Diversity-aware cross-frame pairing. To broaden scenecontext coverage, we compute DINOv2’s embeddings for the filtered frames and select a pair with the largest cosine distance. Clips with fewer than two frames are discarded.
+
+#### 3.3. Identity-Preserving Reference Image Synthesis
+
+Given curated frames, we define two subject-conditioned tasks: subject-driven generation (input and target drawn from different frames of the same clip) and subject-driven manipulation (edits within a single frame). Ground-truth targets are the original video frames, while inputs are synthesized by mask-guided outpainting (for generation) or inpainting (for manipulation). To standardize resolution and improve visual quality, we apply geometry-aware augmentations (scale and
+
+position jitter) and perform irregular boundary erosion on masks to reduce seam artifacts (e.g., banding, black borders) before synthesis.
+
+Input image synthesis for subject-driven generation. Given verified subject labels and bounding boxes, we synthesize training inputs via mask-guided outpainting. (i) Fine mask construction. We refine localization with GroundingDINO and SAM2 [29] to obtain instance masks. (ii) Mask topology and geometry normalization. To mitigate identity leakage, overlapping masks are reconciled by subtracting nested regions from larger instances. We then apply geometry augmentations (scale and placement): instances with area < 30% are upscaled to a random target in 30–40% (aspect ratio preserved), and all subjects are re-centered with bounded jitter to enhance layout diversity while maintaining identity fidelity. (iii) Outpainting. Using subject pixels and refined masks as constraints, we perform outpainting with
+
+[Figure 86]
+
+[Figure 87]
+
+[Figure 88]
+
+(a) (b) (c)
+
+[Figure 89]
+
+[Figure 90]
+
+(d) (e)
+
+- Figure 3. Dataset statistics of OpenSubject. (a) Spatial resolution distributions. (b) Distribution of the number of references per sample. (c) Word cloud for subjects. (d) Task composition across four sub-tasks. (e) Subject category frequency.
+
+FLUX.1 Fill [dev] [16] to complete the surrounding context, yielding identity-preserving, composition-ready inputs for subject-driven generation.
+
+Input image synthesis for subject-driven manipulation. We construct input images for the manipulation task via mask-guided inpainting. (i) Sample selection. We choose multi-object images with low pairwise box overlap and randomly select one or more target instances as editing regions. (ii) Mask construction. Unlike the generation branch, segmentation masks are not required. Instead, the bounding box is used to define the erase mask and the corresponding input conditioning. (iii) Inpainting. FLUX.1 Fill [dev] is applied to complete the erased regions. The resulting pairs provide precise localization supervision for referent replacement while preserving non-target content.
+
+#### 3.4. Verification and Captioning
+
+We adopt a verify–refine–caption stage. Qwen2.5-VL-7B acts as the verifier, assessing synthesized samples for artifacts and physical plausibility. Samples that fail are resynthesized with a different random seed. For accepted samples, Qwen2.5-VL-7B then generates two caption variants (short and long), with the instruction style randomly instantiated as either generation or editing.
+
+#### 3.5. Statistical Analysis
+
+We construct the OpenSubject dataset with the above pipeline, yielding 2.5M samples and 4.35M images. As shown in Fig. 3 (a–e), resolutions are predominantly 720p, with a smaller 1080p subset. The reference set includes a single-image subset (748k), while the remaining samples contain two or more input images, enabling both single- and multi-reference settings. The corpus spans four sub-tasks: single-subject generation, single-subject manipulation, multisubject generation, and multi-subject manipulation, with generation accounting for roughly two-thirds of the data. Category and scene coverage is broad, encompassing people, objects, and diverse environments.
+
+### 4. Benchmark
+
+Prior benchmarks (e.g., XVerse [2]) focus on clean, singlesubject portraits and rarely evaluate subjects in complex scenes; moreover, subject-driven manipulation is typically omitted. We introduce a benchmark (named OSBench) that spans subject-driven generation and manipulation tasks.
+
+Tasks. The benchmark comprises four sub-tasks (60 samples each): (i) Single-subject generation. Synthesize an identity-consistent image from one reference under an openended prompt; (ii) Multi-subject generation. Synthesize an
+
+Table 2. Quantitative results of single-subject and multi-subject driven generation and manipulation on the OSBench.
+
+Subject-driven generation Subject-driven manipulation
+
+Method Size (B)
+
+Single-Subject Multi-Subject Single-Subject Multi-Subject Average ↑ PA IF Overall PA IF Overall MF BC Overall MF BC Overall
+
+Closed-source models
+
+Gemini 2.5 Flash Image Preview [34] - 9.07 8.83 8.92 8.17 8.42 8.14 7.23 8.20 7.16 6.90 4.87 5.12 7.34 GPT-4o-2024-11-20 [24] - 9.23 8.49 8.82 8.39 7.59 7.82 7.64 6.22 6.80 7.10 2.93 3.77 6.80 Gemini 2.0 Flash Image Preview [9] - 8.33 8.30 8.27 7.62 7.38 7.39 3.37 3.22 2.25 4.98 2.38 2.81 5.18
+
+Open-source models
+
+UNO [40] 12 7.53 5.30 5.95 7.13 6.12 6.40 2.83 0.55 0.78 1.45 0.85 0.73 3.46 DreamO [22] 12 7.10 4.12 5.13 7.03 6.18 6.52 3.86 0.27 0.38 2.13 0.71 0.72 3.19 XVerse [2] 12 6.58 1.95 3.11 7.00 5.28 5.95 3.15 0.38 0.65 0.82 0.67 0.38 2.52 DreamOmni2 [41] 19 8.00 7.35 7.53 7.42 6.62 6.88 6.08 6.30 5.72 5.10 1.40 2.16 5.57 Qwen-Image-Edit-2509 [38] 20 9.03 8.55 8.77 7.83 7.25 7.44 7.63 6.53 6.69 7.90 3.85 5.10 7.00 OmniGen2 [39] 7 8.50 8.70 8.55 7.98 7.97 7.89 5.92 5.00 4.99 7.37 3.27 4.31 6.43
+
+- Table 3. Ablation study of fine-tuning with OpenSubject. Row 2 adds synthetic T2I data to improve prompt adherence. Row 3 additionally incorporates sampled OpenSubject data on top of T2I. Green and red indicate performance improvements and decreases, respectively.
+
+###### Subject-driven generation Subject-driven manipulation
+
+Method
+
+Single-Subject Multi-Subject Single-Subject Multi-Subject Average↑ PA IF Overall PA IF Overall MF BC Overall MF BC Overall
+
+OmniGen2 (baseline) 8.50 8.70 8.55 7.98 7.97 7.89 5.92 5.00 4.99 7.37 3.27 4.31 6.43
+
++ T2I 8.62 (+0.12) 8.17 (-0.53) 8.33 (-0.22) 8.12 (+0.14) 7.72 (-0.25) 7.81 (-0.08) 5.08 (-0.84) 3.22 (-1.78) 3.60 (-1.39) 6.47 (-0.90) 1.97 (-1.30) 2.98 (-1.33) 5.68 (-0.75) + OpenSubject (ours) 8.30 (-0.20) 8.95 (+0.25) 8.58 (+0.03) 8.05 (+0.07) 8.65 (+0.68) 8.26 (+0.37) 7.18 (+1.26) 5.22 (+0.22) 5.80 (+0.81) 7.85 (+0.48) 5.20 (+1.93) 6.22 (+1.91) 7.22 (+0.79)
+
+image by fusing two to four references under an open-ended prompt; (iii) Single-subject manipulation. Replace one target in a scene that contains a single principal object; and (iv) Multi-subject manipulation. Replace one target in a complex scene (containing multiple subjects) while preserving non-target content.
+
+Evaluation dimensions. Following instruction-based assessment methods (e.g., VIEScore [14], OmniContext [39]), we use a strong VLM judge (GPT-4.1 [25]) to assign 0–10 scores with rubricized prompts and independent criteria. For generation tasks, we report Prompt Adherence (PA) (attribute/count/relation compliance), Identity Fidelity (IF) (consistency with the subject across provided references), and Overall (geometric mean of PA and IF). For manipulation tasks, we report Manipulation Fidelity (MF) (match between edited regions and the referenced subject(s)), Background Consistency (BC) (stability of non-edited regions), and Overall (geometric mean of MF and BC).
+
+### 5. Experiment 5.1. Experiment Setups
+
+Evaluation baselines. We evaluate both closed- and opensource models. Closed-source methods include Gemini 2.5 Flash Image Preview [34], GPT-4o [24], and Gemini 2.0 Flash Image Preview [9]. Open-source subject-driven models include UNO [40], DreamO [22], XVerse [2], QwenImage-Edit-2509 [38], and OmniGen2 [39].
+
+Implementation details. For closed-source models, we use the official inference APIs; when an API does not expose output-resolution control, we specify the target resolution in the prompt. For open-source models, we use the official checkpoints and default inference settings. Because Gemini 2.5 Flash Image Preview, Gemini 2.0 Flash Image Preview, and GPT-4o do not permit setting the output resolution, we request the desired resolution via the prompt. All other models generate one image per item at a fixed resolution. We also report an open-source baseline fine-tuned on our corpus: OmniGen2 is trained with full-parameter updates on 500k randomly sampled OpenSubject instances plus 100k internal T2I samples to maintain prompt-following ability, using 16× H800 GPUs.
+
+#### 5.2. Quantitative Results
+
+We evaluate on three benchmarks: OSBench, OmniContext [39], and ImgEdit [48]. OSBench and OmniContext assess subject-driven generation, whereas ImgEdit measures instruction-based image editing performance. 5.2.1. Quantitative evaluation on OSBench.
+
+Limitations of existing methods. As shown in Tab. 2, most approaches struggle on multi-subject generation and subject-driven manipulation. Open-source models such as UNO, DreamO, and XVerse exhibit very low manipulation performance (single-subject Overall ≤ 0.78, multi-subject Overall ≤ 0.73), indicating weak identity replacement and
+
+- Table 4. Quantitative comparison results on OmniContext. “Char. + Obj.” indicates Character + Object. Fine-tuning on OpenSubject yields large gains on the MULTIPLE subset and consistent improvements on SINGLE and SCENE.
+
+Model Size (B)
+
+SINGLE MULTIPLE SCENE
+
+Average↑ Character Object Character Object Char. + Obj. Character Object Char. + Obj.
+
+Closed-source models
+
+FLUX.1 Kontext [Max] [17] - 8.48 8.68 - - - - - - Gemini 2.5 Flash Image Preview [34] - 8.52 9.14 7.80 8.64 6.63 6.74 7.11 6.04 7.58 Gemini 2.5 Flash Image [34] - 8.62 8.91 7.88 8.92 7.39 7.29 7.05 6.68 7.84 GPT-4o [24] - 8.90 9.01 9.07 8.95 8.54 8.90 8.44 8.60 8.80 Gemini 2.0 Flash [9] - 5.06 5.17 2.91 2.16 3.80 3.02 3.89 2.92 3.62
+
+Open-source models
+
+Emu3.5 [6] 32 8.72 9.46 8.65 9.09 8.78 8.78 8.89 8.15 8.82 Qwen-Image-Edit-2509 [38] 20 8.35 9.13 7.65 8.85 7.90 5.16 7.75 6.73 7.69 OmniGen [43] 3.8 7.21 5.71 5.65 5.44 4.68 3.59 4.32 5.12 4.34 InfiniteYou [13] 12 6.05 - - - - - - - UNO [40] 12 6.60 6.83 2.54 6.51 4.39 2.06 4.33 4.37 4.71 BAGEL [7] 14 5.48 7.03 5.17 6.64 6.24 4.07 5.71 5.47 5.73
+
+Baseline (OmniGen2 [39]) 7 8.05 7.58 7.11 7.13 7.45 6.38 6.71 7.04 7.18 Ours 7 8.18 (+0.13) 7.54 (-0.04) 7.34 (+0.23) 7.37 (+0.24) 7.87 (+0.42) 6.50 (+0.12) 6.92 (+0.21) 7.00 (-0.04) 7.34 (+0.16)
+
+- Table 5. Quantitative results on ImgEdit [48]. Fine-tuning on OpenSubject also yields gains in image editing, especially on the “Add”, “Extract”, “Background”, and “Hybrid” subsets. The fine-tuned model achieves a higher overall score than FLUX.1 Kontext [Dev] [17].
+
+Model Add Adjust Extract Replace Remove Background Style Hybrid Action Overall ↑ Closed-source models
+
+FLUX.1 Kontext [Pro] [17] 4.25 4.15 2.35 4.56 3.57 4.26 4.57 3.68 4.63 4.00 GPT-Image-1 [High] [26] 4.61 4.33 2.90 4.35 3.66 4.57 4.93 3.96 4.89 4.20 Gemini 2.5 Flash Image Preview [34] 4.47 4.19 3.81 4.39 4.70 4.20 4.18 3.48 4.68 4.23 Gemini 2.5 Flash Image [34] 4.65 4.34 3.69 4.49 4.65 4.32 4.13 3.66 4.59 4.28
+
+Open-source models
+
+AnyEdit [49] 3.18 2.95 1.88 2.47 2.23 2.24 2.85 1.56 2.65 2.45 UltraEdit [53] 3.44 2.81 2.13 2.96 1.45 2.83 3.76 1.91 2.98 2.70 OmniGen [43] 3.47 3.04 1.71 2.94 2.43 3.21 4.19 2.24 3.38 2.96 ICEdit [52] 3.58 3.39 1.73 3.15 2.93 3.08 3.84 2.04 3.68 3.05 Step1X-Edit [21] 3.88 3.14 1.76 3.40 2.41 3.16 4.63 2.64 2.52 3.06 BAGEL [7] 3.56 3.31 1.70 3.3 2.62 3.24 4.49 2.38 4.17 3.20 UniWorld-1 [19] 3.82 3.64 2.27 3.47 3.24 2.99 4.21 2.96 2.74 3.26 Lego-Edit [12] 3.67 3.82 2.47 3.22 3.39 4.47 4.01 3.18 3.24 3.50 FLUX.1 Kontext [Dev] [17] 4.12 3.80 2.04 4.22 3.09 3.97 4.51 3.35 4.25 3.71 Qwen-Image-Edit [38] 4.38 4.16 3.43 4.66 4.14 4.38 4.81 3.82 4.69 4.27 Qwen-Image-Edit-2509 [38] 4.32 4.36 4.04 4.64 4.52 4.37 4.84 3.39 4.71 4.35 Emu3.5 [6] 4.61 4.32 3.96 4.84 4.58 4.35 4.79 3.69 4.57 4.41
+
+Baseline (OmniGen2 [39]) 3.57 3.06 1.77 3.74 3.20 3.57 4.81 2.52 4.68 3.44 Ours 4.28 (+0.71) 3.27 (+0.21) 2.61 (+0.84) 3.97 (+0.23) 3.43 (+0.23) 4.13 (+0.56) 4.66 (-0.15) 3.28 (+0.76) 4.45 (-0.23) 3.72 (+0.28)
+
+preservation in complex scenes. Strong closed-source models also drop markedly from generation to manipulation. For example, Gemini 2.5 Flash Image Preview attains only 5.12 Overall on multi-subject manipulation despite solid generation scores. Qwen-Image-Edit-2509 is the strongest open-source baseline for manipulation but remains limited in multi-subject cases (Overall 5.10). In summary, current models are not robust when multiple identities must be fused or replaced while keeping non-target content intact.
+
+Fine-tuning with OpenSubject improves quality. We evaluate three OmniGen2 configurations: the baseline, the baseline finetuned with 100k T2I samples, and fine-tuned on 500k randomly sampled OpenSubject instances and the T2I data. As shown in Tab. 3, adding only T2I yields gains in prompt adherence for generation but reduces identity fidelity and weakens manipulation. Fine-tuning on both the OpenSubject and T2I dataset reverses these declines and produces consistent improvements across tasks, raising the Average from 6.43 to 7.22. The largest gains occur in manipulation
+
+(single-subject Overall: +0.81; multi-subject Overall: +1.91, with BC: +1.93 and MF: +0.48), while generation benefits in identity fidelity (IF: +0.25 for single-subject and +0.68 for multi-subject) without sacrificing overall performance. These results indicate that OpenSubject provides identityconsistent supervision.
+
+##### 5.2.2. Quantitative Evaluation on Other Benchmarks
+
+OmniContext [39]. As shown in Tab. 4, fine-tuning OmniGen2 on OpenSubject yields a consistent improvement in average performance from 7.18 to 7.34 (+0.16). Gains concentrate in settings that require integrating multiple references and grounding within scenes: MULTIPLE/Character increases from 7.11 to 7.34 (+0.23), MULTIPLE/Object from 7.13 to 7.37 (+0.24), and MULTIPLE/Char.+Obj. from 7.45 to 7.87 (+0.42). Scene-level categories also improve (SCENE/Character: 6.38→6.50; SCENE/Object:
+
+###### 6.71→6.92), while the single-image case SINGLE/Object remains essentially unchanged (7.58→7.54). These results
+
+Gemini-2.5 Flash Image Preview
+
+Qwen-Image-Edit2509
+
+Input images
+
+GPT-4o
+
+DreamOmni2 OmniGen2 Ours
+
+UNO
+
+[Figure 91]
+
+[Figure 92]
+
+[Figure 93]
+
+[Figure 94]
+
+[Figure 95]
+
+[Figure 96]
+
+[Figure 97]
+
+[Figure 98]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| | |
+|---|---|
+| | |
+| | |
+
+| |
+|---|
+
+| |
+|---|
+
+| | |
+|---|---|
+| | |
+| | |
+
+[Figure 99]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+Prompt: Place the young man beside the young woman in her white collared shirt and navy blue striped vest, seated on the same ornate white couch……
+
+| |
+|---|
+
+[Figure 100]
+
+[Figure 101]
+
+[Figure 102]
+
+[Figure 103]
+
+[Figure 104]
+
+[Figure 105]
+
+[Figure 106]
+
+[Figure 107]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 108]
+
+| |
+|---|
+
+| |
+|---|
+
+Prompt: Two men are seated side-by-side at a wooden table in a dimly lit. A professional video camera on a tripod is positioned……
+
+[Figure 109]
+
+[Figure 110]
+
+[Figure 111]
+
+[Figure 112]
+
+[Figure 113]
+
+[Figure 114]
+
+[Figure 115]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| | |
+|---|---|
+| |[Figure 116]|
+| | |
+
+| |
+|---|
+
+| | | |
+|---|---|---|
+| | | |
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 117]
+
+| |
+|---|
+
+Prompt: Replace the dog in the scene with the person from Image 2......
+
+| |
+|---|
+
+[Figure 118]
+
+[Figure 119]
+
+[Figure 120]
+
+[Figure 121]
+
+[Figure 122]
+
+[Figure 123]
+
+[Figure 124]
+
+[Figure 125]
+
+[Figure 126]
+
+| |
+|---|
+
+Prompt: Replace the cat in the scene with the person......
+
+| |
+|---|
+
+[Figure 127]
+
+[Figure 128]
+
+[Figure 129]
+
+[Figure 130]
+
+[Figure 131]
+
+[Figure 132]
+
+[Figure 133]
+
+| |
+|---|
+
+|[Figure 134]| |
+|---|---|
+| | |
+| | |
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| | |
+|---|---|
+| | |
+| | |
+
+| |
+|---|
+
+[Figure 135]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+Prompt: Replace the child in Image 1 with the man from Image 2, keeping the same warm, modern cafe scene with red chairs and soft natural lighting…...
+
+[Figure 136]
+
+[Figure 137]
+
+[Figure 138]
+
+[Figure 139]
+
+[Figure 140]
+
+[Figure 141]
+
+[Figure 142]
+
+| |[Figure 143]|
+|---|---|
+| | |
+
+| |
+|---|
+
+[Figure 144]
+
+| |
+|---|
+
+Prompt: Replace the woman with long, wavy reddish-brown hair wearing a grey sleeveless top on the right side of the scene with the subject photo......
+
+| | |
+|---|---|
+| | |
+| | |
+
+| |
+|---|
+
+[Figure 145]
+
+[Figure 146]
+
+[Figure 147]
+
+[Figure 148]
+
+[Figure 149]
+
+[Figure 150]
+
+[Figure 151]
+
+[Figure 152]
+
+| |
+|---|
+
+| |
+|---|
+
+| | | |
+|---|---|---|
+| | | |
+
+| | |
+|---|---|
+| | |
+
+| |
+|---|
+
+| | | |
+|---|---|---|
+| | | |
+
+| |
+|---|
+
+| |
+|---|
+
+| | |
+|---|---|
+| | |
+
+|[Figure 153]|
+|---|
+
+|[Figure 154]|
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+Prompt: A woman…… Behind her, a bright, modern kitchen features colorful bowls and multi-paned window adorned with potted plants on the sill……
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 155]
+
+[Figure 156]
+
+[Figure 157]
+
+[Figure 158]
+
+[Figure 159]
+
+[Figure 160]
+
+[Figure 161]
+
+| |
+|---|
+
+| |
+|---|
+
+[Figure 162]
+
+[Figure 163]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| | |
+|---|---|
+| | |
+| | |
+
+| |
+|---|
+
+[Figure 164]
+
+[Figure 165]
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+| |
+|---|
+
+Prompt: A woman in a black turtleneck……, holding a dark brown leather clutch bag. To her right, a tall black metal floor lamp. Behind her, an abstract artwork…… On a small wooden side table beside the lamp, a dark green glass vase holds a full arrangement of fluffy beige pampas grass.
+
+- Figure 4. Qualitative comparison. Colored dashed boxes mark regions of interest for comparison. Boxes of the same color denote corresponding regions across methods and refer to the related area in the input image.
+
+indicate that OpenSubject primarily enhances identity reasoning and compositional control when multiple entities or strong contextual constraints are present.
+
+ImgEdit [48]. Tab. 5 shows that OpenSubject fine-tuning improves instruction-based editing for OmniGen2, increasing the overall score from 3.44 to 3.72 (+0.28). The largest gains occur in categories requiring precise localization or structural adjustments: Extract (1.77→2.61, +0.84), Hybrid (2.52→3.28, +0.76), Add (3.57→4.28, +0.71), and Background (3.57→4.13, +0.56). Moderate improvements are observed in Replace, Remove (+0.23 each), and Adjust (+0.21), with minor reductions in Style (4.81→4.66) and Action (4.68→4.45).Overall, these findings indicate that edit robustness has improved across various types of tasks.
+
+- 5.3. Qualitative Results
+
+Subject better maintains subject identity, adheres to attribute specifications, and produces coherent multi-subject compositions. For manipulation, edits remain confined to the marked regions, and non-target content is preserved, whereas other methods frequently exhibit identity drift or unintended changes beyond the edited area.
+
+### 6. Conclusion
+
+We presented OpenSubject, a large-scale, video-derived resource for subject-driven image generation and manipulation, along with a four-stage construction pipeline comprising video curation, cross-frame subject mining and pairing, identity-preserving reference image synthesis, and verification and captioning. We further introduced a benchmark that evaluates single- and multi-subject generation and manipulation using rubricized, aspect-specific criteria. Empirically, prevailing methods degrade on multi-subject generation and subject-conditioned editing in complex scenes. Experiments on our benchmark and external suites demonstrate that fine-tuning on OpenSubject improves identity
+
+Fig. 4 presents representative comparisons across methods. Many models struggle to preserve identity in multi-subject scenes and often modify regions outside the intended edits. Compared with OmniGen2, the model finetuned on Open-
+
+fidelity and strengthens manipulation robustness.
+
+Ethical considerations. All data are drawn from publicly available, open-licensed data corpora, and we comply with the original licensing items. The dataset will be released for research-only use under an acceptable-use policy that prohibits biometric identification, re-identification, surveillance, and non-consensual impersonation.
+
+### References
+
+- [1] Shuai Bai, Keqin Chen, Xuejing Liu, Jialin Wang, Wenbin Ge, Sibo Song, Kai Dang, Peng Wang, Shijie Wang, Jun Tang, et al. Qwen2. 5-vl technical report. arXiv preprint arXiv:2502.13923, 2025. 3, 4, 11
+- [2] Bowen Chen, Mengyi Zhao, Haomiao Sun, Li Chen, Xu Wang, Kang Du, and Xinglong Wu. Xverse: Consistent multi-subject control of identity and semantic attributes via dit modulation. arXiv preprint arXiv:2506.21416, 2025. 2, 3, 5, 6
+- [3] Li Chen, Mengyi Zhao, Yiheng Liu, Mingxu Ding, Yangyang Song, Shizun Wang, Xu Wang, Hao Yang, Jing Liu, Kang Du, et al. Photoverse: Tuning-free image customization with textto-image diffusion models. arXiv preprint arXiv:2309.05793,
+
+2023. 3
+
+- [4] Xi Chen, Zhifei Zhang, He Zhang, Yuqian Zhou, Soo Ye Kim, Qing Liu, Yijun Li, Jianming Zhang, Nanxuan Zhao, Yilin Wang, et al. Unireal: Universal image generation and editing via learning real-world dynamics. In Proceedings of the Computer Vision and Pattern Recognition Conference, pages 12501–12511, 2025. 3
+- [5] Yufeng Cheng, Wenxu Wu, Shaojin Wu, Mengqi Huang, Fei Ding, and Qian He. Umo: Scaling multi-identity consistency for image customization via matching reward. arXiv preprint arXiv:2509.06818, 2025. 2
+- [6] Yufeng Cui, Honghao Chen, Haoge Deng, Xu Huang, Xinghang Li, Jirong Liu, Yang Liu, Zhuoyan Luo, Jinsheng Wang, Wenxuan Wang, et al. Emu3. 5: Native multimodal models are world learners. arXiv preprint arXiv:2510.26583, 2025. 3, 7
+- [7] Anne de Jong, Sacha AFT van Hijum, Jetta JE Bijlsma, Jan Kok, and Oscar P Kuipers. Bagel: a web-based bacteriocin genome mining tool. Nucleic acids research, 34(suppl 2): W273–W279, 2006. 7
+
+- [8] Rinon Gal, Yuval Alaluf, Yuval Atzmon, Or Patashnik, Amit H Bermano, Gal Chechik, and Daniel Cohen-Or. An image is worth one word: Personalizing text-to-image generation using textual inversion. arXiv preprint arXiv:2208.01618,
+
+2022. 2, 3
+
+- [9] Google. Gemini 2.0 flash. https://developers. googleblog . com / en / experiment - with gemini-20-flash-native-image-generation,
+
+2025. 6, 7
+
+- [10] Lianghua Huang, Wei Wang, Zhi-Fan Wu, Yupeng Shi, Huanzhang Dou, Chen Liang, Yutong Feng, Yu Liu, and Jingren Zhou. In-context lora for diffusion transformers. arXiv preprint arXiv:2410.23775, 2024. 3
+- [11] Qihan Huang, Siming Fu, Jinlong Liu, Hao Jiang, Yipeng Yu, and Jie Song. Resolving multi-condition confusion for
+
+- finetuning-free personalized image generation. In Proceedings of the AAAI Conference on Artificial Intelligence, pages 3707–3714, 2025. 2
+- [12] Qifei Jia, Yu Liu, Yajie Chai, Xintong Yao, Qiming Lu, Yasen Zhang, Runyu Shi, Ying Huang, and Guoquan Zhang. Legoedit: A general image editing framework with model-level bricks and mllm builder. arXiv preprint arXiv:2509.12883,
+
+2025. 7
+
+- [13] Liming Jiang, Qing Yan, Yumin Jia, Zichuan Liu, Hao Kang, and Xin Lu. Infiniteyou: Flexible photo recrafting while preserving your identity. arXiv preprint arXiv:2503.16418,
+
+2025. 2, 3, 7
+
+- [14] Max Ku, Dongfu Jiang, Cong Wei, Xiang Yue, and Wenhu Chen. Viescore: Towards explainable metrics for conditional image synthesis evaluation. arXiv preprint arXiv:2312.14867,
+
+2023. 6, 16
+
+- [15] Nupur Kumari, Bingliang Zhang, Richard Zhang, Eli Shechtman, and Jun-Yan Zhu. Multi-concept customization of textto-image diffusion. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 1931–1941, 2023. 3
+- [16] Black Forest Labs. Flux.1-fill-dev. https : / / huggingface.co/black-forest-labs/FLUX.1Fill-dev, 2025. Hugging Face model card. 2, 5, 14
+- [17] Black Forest Labs, Stephen Batifol, Andreas Blattmann, Frederic Boesel, Saksham Consul, Cyril Diagne, Tim Dockhorn, Jack English, Zion English, Patrick Esser, et al. Flux. 1 kontext: Flow matching for in-context image generation and editing in latent space. arXiv preprint arXiv:2506.15742,
+
+2025. 7
+
+- [18] Hui Li, Mingwang Xu, Yun Zhan, Shan Mu, Jiaye Li, Kaihui Cheng, Yuxuan Chen, Tan Chen, Mao Ye, Jingdong Wang, et al. Openhumanvid: A large-scale high-quality dataset for enhancing human-centric video generation. In Proceedings of the Computer Vision and Pattern Recognition Conference, pages 7752–7762, 2025. 3, 11
+- [19] Bin Lin, Zongjian Li, Xinhua Cheng, Yuwei Niu, Yang Ye, Xianyi He, Shenghai Yuan, Wangbo Yu, Shaodong Wang, Yunyang Ge, et al. Uniworld: High-resolution semantic encoders for unified visual understanding and generation. arXiv preprint arXiv:2506.03147, 2025. 7
+- [20] Shilong Liu, Zhaoyang Zeng, Tianhe Ren, Feng Li, Hao Zhang, Jie Yang, Qing Jiang, Chunyuan Li, Jianwei Yang, Hang Su, et al. Grounding dino: Marrying dino with grounded pre-training for open-set object detection. In European conference on computer vision, pages 38–55. Springer, 2024. 2, 3
+- [21] Shiyu Liu, Yucheng Han, Peng Xing, Fukun Yin, Rui Wang, Wei Cheng, Jiaqi Liao, Yingming Wang, Honghao Fu, Chunrui Han, et al. Step1x-edit: A practical framework for general image editing. arXiv preprint arXiv:2504.17761, 2025. 7
+- [22] Chong Mou, Yanze Wu, Wenxu Wu, Zinan Guo, Pengze Zhang, Yufeng Cheng, Yiming Luo, Fei Ding, Shiwen Zhang, Xinghui Li, et al. Dreamo: A unified framework for image customization. arXiv preprint arXiv:2504.16915, 2025. 2, 3, 6
+- [23] Kepan Nan, Rui Xie, Penghao Zhou, Tiehan Fan, Zhenheng Yang, Zhijie Chen, Xiang Li, Jian Yang, and Ying Tai.
+
+- Openvid-1m: A large-scale high-quality dataset for text-tovideo generation. arXiv preprint arXiv:2407.02371, 2024. 3, 11
+- [24] OpenAI. Gpt-4o. https://openai.com/index/ introducing-4o-image-generation, 2025. 6, 7
+- [25] OpenAI. Gpt-4.1. https://openai.com/index/ gpt-4-1, 2025. 2, 6, 16
+- [26] OpenAI. Image generation API. https://openai.com/ index/image-generation-api/, 2025. 7
+- [27] Maxime Oquab, Timoth´ee Darcet, Th´eo Moutakanni, Huy Vo, Marc Szafraniec, Vasil Khalidov, Pierre Fernandez, Daniel Haziza, Francisco Massa, Alaaeldin El-Nouby, et al. Dinov2: Learning robust visual features without supervision. arXiv preprint arXiv:2304.07193, 2023. 2, 3
+- [28] William Peebles and Saining Xie. Scalable diffusion models with transformers. In Proceedings of the IEEE/CVF international conference on computer vision, pages 4195–4205,
+
+- 2023. 2
+
+[29] Nikhila Ravi, Valentin Gabeur, Yuan-Ting Hu, Ronghang Hu, Chaitanya Ryali, Tengyu Ma, Haitham Khedr, Roman R¨adle, Chloe Rolland, Laura Gustafson, et al. Sam 2: Segment anything in images and videos. arXiv preprint arXiv:2408.00714,
+
+- 2024. 4
+
+- [30] Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Bj¨orn Ommer. High-resolution image synthesis with latent diffusion models. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 10684–10695, 2022. 3
+- [31] Nataniel Ruiz, Yuanzhen Li, Varun Jampani, Yael Pritch, Michael Rubinstein, and Kfir Aberman. Dreambooth: Fine tuning text-to-image diffusion models for subject-driven generation. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 22500–22510,
+
+2023. 2
+
+- [32] Nataniel Ruiz, Yuanzhen Li, Varun Jampani, Wei Wei, Tingbo Hou, Yael Pritch, Neal Wadhwa, Michael Rubinstein, and Kfir Aberman. Hyperdreambooth: Hypernetworks for fast personalization of text-to-image models. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 6527–6536, 2024. 3
+- [33] Christoph Schuhmann. Improved aesthetic predictor. https://github.com/christophschuhmann/ improved-aesthetic-predictor, 2024. improvedaesthetic-predictor Lab. 11
+- [34] Gemini Team. Gemini 2.5 flash & gemini 2.5 flash image model card. https://storage.googleapis. com/deepmind-media/Model-Cards/Gemini-25-Flash-Model-Card.pdf, 2025. 6, 7
+- [35] InstantX Team. Flux.1-dev-controlnet-union-pro. https : / / github . com / InstantX / Flux . 1 dev-controlnet-union-pro, 2025. Accessed: Nov.
+
+2025. 3
+
+- [36] Qixun Wang, Xu Bai, Haofan Wang, Zekui Qin, Anthony Chen, Huaxia Li, Xu Tang, and Yao Hu. Instantid: Zero-shot identity-preserving generation in seconds. arXiv preprint arXiv:2401.07519, 2024. 3
+
+- [37] Xierui Wang, Siming Fu, Qihan Huang, Wanggui He, and Hao Jiang. Ms-diffusion: Multi-subject zero-shot image personalization with layout guidance. arXiv preprint arXiv:2406.07209, 2024. 2
+- [38] Chenfei Wu, Jiahao Li, Jingren Zhou, Junyang Lin, Kaiyuan Gao, Kun Yan, Sheng-ming Yin, Shuai Bai, Xiao Xu, Yilei Chen, et al. Qwen-image technical report. arXiv preprint arXiv:2508.02324, 2025. 6, 7
+- [39] Chenyuan Wu, Pengfei Zheng, Ruiran Yan, Shitao Xiao, Xin Luo, Yueze Wang, Wanli Li, Xiyan Jiang, Yexin Liu, Junjie Zhou, et al. Omnigen2: Exploration to advanced multimodal generation. arXiv preprint arXiv:2506.18871, 2025. 3, 6, 7, 16
+- [40] Shaojin Wu, Mengqi Huang, Wenxu Wu, Yufeng Cheng, Fei Ding, and Qian He. Less-to-more generalization: Unlocking more controllability by in-context generation. arXiv preprint arXiv:2504.02160, 2025. 2, 3, 6, 7
+- [41] Bin Xia, Bohao Peng, Yuechen Zhang, Junjia Huang, Jiyang Liu, Jingyao Li, Haoru Tan, Sitong Wu, Chengyao Wang, Yitong Wang, et al. Dreamomni2: Multimodal instruction-based editing and generation. arXiv preprint arXiv:2510.06679,
+
+2025. 6
+
+- [42] Guangxuan Xiao, Tianwei Yin, William T Freeman, Fr´edo Durand, and Song Han. Fastcomposer: Tuning-free multisubject image generation with localized attention. International Journal of Computer Vision, 133(3):1175–1194, 2025. 3
+- [43] Shitao Xiao, Yueze Wang, Junjie Zhou, Huaying Yuan, Xingrun Xing, Ruiran Yan, Chaofan Li, Shuting Wang, Tiejun Huang, and Zheng Liu. Omnigen: Unified image generation. In Proceedings of the Computer Vision and Pattern Recognition Conference, pages 13294–13304, 2025. 3, 7
+- [44] Yiming Xie, Varun Jampani, Lei Zhong, Deqing Sun, and Huaizu Jiang. Omnicontrol: Control any joint at any time for human motion generation. arXiv preprint arXiv:2310.08580,
+
+2023. 2, 3
+
+- [45] Hengyuan Xu, Wei Cheng, Peng Xing, Yixiao Fang, Shuhan Wu, Rui Wang, Xianfang Zeng, Daxin Jiang, Gang Yu, Xingjun Ma, et al. Withanyone: Towards controllable and id consistent image generation. arXiv preprint arXiv:2510.14975, 2025. 2, 3
+- [46] Hu Ye, Jun Zhang, Sibo Liu, Xiao Han, and Wei Yang. Ipadapter: Text compatible image prompt adapter for text-toimage diffusion models. arXiv preprint arXiv:2308.06721,
+
+2023. 3
+
+- [47] Junyan Ye, Dongzhi Jiang, Zihao Wang, Leqi Zhu, Zhenghao Hu, Zilong Huang, Jun He, Zhiyuan Yan, Jinghua Yu, Hongsheng Li, et al. Echo-4o: Harnessing the power of gpt4o synthetic images for improved image generation. arXiv preprint arXiv:2508.09987, 2025. 2, 3
+- [48] Yang Ye, Xianyi He, Zongjian Li, Bin Lin, Shenghai Yuan, Zhiyuan Yan, Bohan Hou, and Li Yuan. Imgedit: A unified image editing dataset and benchmark. arXiv preprint arXiv:2505.20275, 2025. 6, 7, 8
+- [49] Qifan Yu, Wei Chow, Zhongqi Yue, Kaihang Pan, Yang Wu, Xiaoyang Wan, Juncheng Li, Siliang Tang, Hanwang Zhang, and Yueting Zhuang. Anyedit: Mastering unified high-quality
+
+- image editing for any idea. In Proceedings of the Computer Vision and Pattern Recognition Conference, pages 26125– 26135, 2025. 7
+- [50] Shenghai Yuan, Xianyi He, Yufan Deng, Yang Ye, Jinfa Huang, Bin Lin, Jiebo Luo, and Li Yuan. Opens2v-nexus: A detailed benchmark and million-scale dataset for subject-tovideo generation. arXiv preprint arXiv:2505.20292, 2025. 3, 11
+- [51] Shilong Zhang, Lianghua Huang, Xi Chen, Yifei Zhang, Zhi-Fan Wu, Yutong Feng, Wei Wang, Yujun Shen, Yu Liu, and Ping Luo. Flashface: Human image personalization with high-fidelity identity preservation. arXiv preprint arXiv:2403.17008, 2024. 3
+- [52] Zechuan Zhang, Ji Xie, Yu Lu, Zongxin Yang, and Yi Yang. In-context edit: Enabling instructional image editing with incontext generation in large scale diffusion transformer. arXiv preprint arXiv:2504.20690, 2025. 7
+- [53] Haozhe Zhao, Xiaojian Shawn Ma, Liang Chen, Shuzheng Si, Rujie Wu, Kaikai An, Peiyu Yu, Minjia Zhang, Qing Li, and Baobao Chang. Ultraedit: Instruction-based fine-grained image editing at scale. Advances in Neural Information Processing Systems, 37:3058–3093, 2024. 7
+
+### 7. Implementation Details about OpenSubject Data Construction Pipeline
+
+#### 7.1. Video Curation
+
+A critical step in constructing the OpenSubject dataset lies in the curation of high-quality video sources. To ensure both identity consistency and visual fidelity, we establish two key criteria: (1) the presence of a single, persistent subject throughout the video without scene transitions, and (2) high aesthetic quality with clear visual composition. We build upon the filtering pipelines adopted by several existing opensource video datasets, which have already performed coarselevel segmentation and initial quality screening. Based on this foundation, we select three high-quality video datasets, OpenHumanVid [18], OpenVid [23], and OpenS2V [50], as our primary video sources. Details are as follows.
+
+OpenHumanVid offers three notable advantages. (1) Large scale and high resolution: it contains a wide variety of 720p–1080p videos collected from professional media sources such as films, television series, and documentaries, covering diverse human appearances, poses, expressions, and environments. (2) Rich motion conditions: it includes multiple motion-driven modalities such as text prompts, skeletal trajectories, and synchronized speech audio, supporting both short and long textual forms. (3) Comprehensive identity representation: the dataset encompasses individuals with varied demographics and appearance diversity, facilitating research on identity preservation and controllable generation.
+
+OpenVid-1M complements OpenHumanVid by providing over one million high-quality text–video pairs, each accompanied by expressive and contextually rich captions. Its
+
+open-domain coverage makes it well-suited for training textto-video (T2V) models under general scenarios.
+
+OpenS2V contributes five million 720p subject–text–video triples, emphasizing fine-grained subject representation. Specifically, subject diversity is enhanced by (1) segmenting subjects and constructing cross-video associations to capture identity coherence, and (2) prompting GPT-Image on raw frames to synthesize multi-view depictions. However, OpenS2V relies on synthetic generation of subject reference images and restricts to single-subject cases, which motivates us to extend beyond its design to support multi-subject and manipulation-oriented tasks.
+
+After collecting these datasets, we perform an additional quality screening step. Given that their intra-video subject consistency is already satisfactory, no further scene segmentation is required. We directly remove low-resolution (below 720P) or low-aesthetic (below 5.8) samples using the aesthetic predictor [33], ensuring that only visually pleasing and identity-consistent clips are retained.
+
+#### 7.2. Cross-Frame Subject Mining and Pairing
+
+To construct reliable subject–reference pairs from raw videos, we perform cross-frame subject mining followed by multistage verification to ensure identity consistency, completeness, and visual quality.
+
+Frame Sampling. Processing all frames from each video would incur prohibitive computational cost and is unnecessary for discovering stable subject appearances. Instead, we adopt a sparse middle-frame sampling strategy: for every video, we uniformly extract four frames from the central region of the sequence. This strategy provides a good balance between efficiency and reliability—middle frames typically avoid transitional or unstable segments, while four-frame sampling offers sufficient temporal diversity for cross-frame verification.
+
+Cross-Frame Subject Verification. Given the sampled frames, we employ Qwen2.5-VL-7B [1] to detect all visible foreground objects. For each video, we retain only those objects that appear consistently across at least two of the sampled frames. This cross-frame intersection step eliminates transient or low-confidence detections, ensuring that the remaining objects represent stable, trackable subjects suitable for subject-driven generation and manipulation tasks. The prompt is shown in Fig. 5.
+
+Local Verification. While cross-frame overlap ensures temporal consistency, it does not guarantee subject quality. Therefore, we introduce a two-stage local verification process:
+
+**Role** You are a senior visual analyst.
+
+**Task** List every main object that
+
+- 1. covers ≥ 5% of the image area.
+- 2. is ≥ 50% visible to the naked eye.
+
+**Naming rule**
+
+- - Use single, generic, singular nouns in lower-case English, such as: “person”, “dog”, “car”, “chair”, “backpack”, ...
+- - Skip brand, model, color, material, adjectives.
+- - One distinct physical entity = one string.
+- - Provide the names of up to three objects.
+
+**Output format (strict JSON, no comments, no markdown wrappers)** {“objects”: [“ < name1 > ”,“ < name2 > ”, ...]}
+
+Figure 5. Prompt for object extraction.
+
+- • Role-based filtering. We first remove subjects that do not meet pre-defined semantic roles (e.g., human, pet, common manipulable objects). Although effective for rejecting irrelevant categories, this step is insufficient for handling real-world visual defects such as occlusion, truncation, motion blur, or missing body parts.
+- • VLM-based quality filtering. To address these cases, we further apply a Vision-Language Model (VLM) Qwen2.5VL-7B evaluator to assess subject completeness and visibility. The VLM checks for occlusion level, degree of blur, boundary completeness, and viewpoint stability. Subjects failing these checks are discarded. This step substantially improves subject reliability compared to role-based filtering alone.
+
+##### 7.2.1. Role-based filtering
+
+We perform two cleaning pipeline on the human-only and mixing videos to retain only high-quality training samples.
+
+- (1) Human-only Clips. The role-based filtering for human only are as follows.
+
+1) Single-Person Clips. For sequences that contain only one bounding box per frame, a sample is accepted if and only if it simultaneously satisfies
+
+N = 1, (1) 0.2 ≤ Abox ≤ 0.8, (2)
+
+conf ≥ 0.85, (3) top ∈ B ∧ bottom ∈ B ∧ Abox > 0.7 = false, (4)
+
+where Abox = w · h is the normalized area and B denotes the set of border tags (Sec. 7.2.1).
+
+Table 6. Border–confidence constraints for three-person samples. B is the border set of a box. Any box that triggers the left condition must satisfy the minimum confidence on the right; otherwise the whole sample is rejected.
+
+Triggering condition Min. conf.
+
+bottom ∈ B ∧ (left ∈ B ∨ right ∈ B) 0.87 {top, bottom, left} ⊆ B or {top, bottom, right} ⊆ B 0.88 {top, bottom} ⊆ B 0.87 top ∈ B ∧ bottom ∈/ B reject
+
+- 2) 2-3 Person Clips For three-person scenes we require N = 3, (5)
+
+IoU(bi,bj) ≤ 0.2 ∀0 ≤ i < j < 3, (6) 2 k=0
+
+A(boxk) ≥ 0.2, (7) conf(k) ≥ 0.8 ∀k, (8)
+
+together with the border–confidence rules summarised in Table 6.
+
+- 3) Border Tagging A box (xc,yc,w,h) is converted to pixel coordinates as
+
+x1 = (xc − w2 )W, y1 = (yc − h2)H, x2 = (xc + w2 )W, y2 = (yc + h2)H.
+
+(9)
+
+With tolerance τ = 15px, the border set is defined as
+
+B = β ∈ {top,bottom,left,right} | dβ ≤ τ , (10)
+
+with dtop = y1, dbottom = H − y2, dleft = x1, and dright = W − x2.
+
+Table 7. Blacklisted categories used for filtering mixed-object clips.
+
+Category Category Category Category armchairs apron beard bench blouse building cabinet ceiling chair chest cityscape coat collar counter countertop couch desk face faucet field finger foot hair hand head jersey jacket jumpsuit leggings neck pants podium scarf shirt shorts sky suit sweater table tire trousers t-shirt uniform vest wheel wetsuit
+
+4) Filtering Algorithm The complete filtering procedure is
+
+- summarised in Algorithm 1. After processing, kept samples are re-written to the original jsonl files, while discarded records are permanently removed.
+
+(2) Mixed-Object Clips. We apply a role-based, per-frame filtering strategy to mixed-object clips. A lightweight cleaning stage removes low-quality detections according to the rules below, and the operations are executed in the order
+
+- summarised in Algorithm 2.
+
+- 1) Hard Rules.
+
+- 1. Area: 0.01 ≤ Abox ≤ 0.60.
+- 2. Confidence: conf ≥ 0.5 for generic classes; conf ≥ 0.8 for person.
+- 3. Person count: 1 ≤ #person ≤ 3; frames without any person are discarded.
+- 4. Total objects: 1 ≤ object number ≤ 5.
+
+- 5. Singleton box: if only one object remains, its area must lie in [0.20,0.60].
+
+- 2) Blacklisted Categories. We discard any box whose label belongs to the blacklist in Table 7. These categories correspond to background elements, clothing parts, or furniture that rarely constitute valid human-centric training targets.
+- 3) Duplicate Removal. For detections sharing the same label, we keep the one with the largest bounding-box area (line 12 in Algorithm 2). Some examples are shown in Fig. 8.
+
+- 7.2.2. VLM-based Filtering
+
+Beyond the rule-based constraints above, we further employ a VLM to filter out semantically unreliable detections. Unlike the geometric and confidence thresholds, this stage explicitly verifies whether each cropped region visually matches its predicted label.
+
+We treat human and non-human objects differently. For boxes labelled as person, the VLM is prompted to describe the cropped region and to answer whether it depicts a complete, clearly visible human subject. Only regions that are
+
+Algorithm 1 Sample filtering for human use.
+
+Require: JSONL file list F, tolerance τ = 15px
+
+- 1: for f ∈ F do
+- 2: L ← ∅
+- 3: for line ℓ in f do
+- 4: parse (N, {bk}, {ck}, W, H) from ℓ
+- 5: if W ̸= 1280 or H ̸= 720 then
+- 6: continue
+- 7: end if
+- 8: if N = 1 and SINGLEVALID(b0, c0) then
+- 9: L ← L ∪ {ℓ}
+- 10: else if N = 3 and THREEVALID({bk}, {ck}) then
+- 11: L ← L ∪ {ℓ}
+- 12: end if
+- 13: end for
+- 14: overwrite f with L
+- 15: end for
+- 16:
+- 17: function SINGLEVALID(b, c)
+- 18: A ← w · h from b
+- 19: if A < 0.2 or A > 0.8 or c < 0.85 then
+- 20: return false
+- 21: end if
+- 22: B ←BORDER(b)
+- 23: if {top, bottom} ⊆ B and A > 0.7 then
+- 24: return false
+- 25: end if
+- 26: return true
+- 27: end function
+- 28:
+- 29: function THREEVALID({bk}, {ck})
+- 30: for i < j do
+- 31: if IoU(bi, bj) > 0.2 then
+- 32: return false
+- 33: end if
+- 34: end for
+- 35: Asum ← k wkhk
+- 36: if Asum < 0.2 then
+- 37: return false
+- 38: end if
+- 39: for k = 0, . . . , 2 do
+- 40: if ck < 0.8 then
+- 41: return false
+- 42: end if
+- 43: B ←BORDER(bk)
+- 44: if top ∈ B and bottom ∈/ B then
+- 45: return false
+- 46: end if
+- 47: if Table 6 conditions are violated then return false
+- 48: end for
+- 49: return true
+- 50: end function
+
+recognised as a person with sufficient detail (e.g., no severe occlusion, truncation, or motion blur) are kept; others are discarded. For non-human objects, the VLM is asked to
+
+- Algorithm 2 Per-frame filtering for mixed-object clips.
+
+Require: raw labels L, boxes B, confidences C Ensure: cleaned sample or ∅
+
+- 1: remove all boxes with A ∈/ [0.01, 0.60] ▷ area filter
+- 2: remove all boxes whose label is in Table 7
+- 3: remove all boxes with conf < 0.5
+- 4: for each box b with label person do
+- 5: if conf(b) < 0.8 then
+- 6: remove b
+- 7: end if
+- 8: end for
+- 9: if #person = 0 or #person > 3 then
+- 10: return ∅
+- 11: end if
+- 12: merge duplicates by keeping the largest box per label
+- 13: N ← |L|
+- 14: if N < 1 or N > 5 then
+- 15: return ∅
+- 16: end if
+- 17: if N = 1 then
+- 18: A ← area(B0)
+- 19: if A < 0.20 or A > 0.60 then
+- 20: return ∅
+- 21: end if
+- 22: end if
+- 23: return updated sample
+
+confirm both the presence and the category of the object and to reject regions that it recognizes as background textures or irrelevant accessories.
+
+The exact prompts used for human-centric and generic object filtering are illustrated in Fig. 6 and Fig. 7, respectively. These prompts are designed to be short and instruction-like, so that the VLM can robustly distinguish valid training targets from noisy detections in a wide range of scenes. Some examples are shown in Fig. 9.
+
+#### 7.3. Identity-Preserving Reference Image Synthesis
+
+To construct reference images for subject-driven generation, we synthesize identity-preserving inputs via outpainting. A naive choice is to use the detected bounding box as the outpainting region directly; however, object shapes are highly irregular, and the rectangular box typically includes large portions of irrelevant background. For human subjects in particular, the background inside the bounding box provides a strong prior for the outpainting model [16], which tends to reconstruct a scene that closely matches the original context, yielding reference images whose background is almost identical to the input frame.
+
+To mitigate this issue, we instead derive an outpainting mask from the segmentation map and use it as a more precise structural guide. The segmentation mask focuses the synthesis on the true foreground region, reducing background leakage. For convenience and consistency with other compo-
+
+nents, we still associate each segmentation mask with its corresponding bounding box and optionally truncate the mask within that box. In some cases (e.g., half-body crops), this truncation interacts with the prior of FLUX.1-Fill [Dev] [16], producing unnaturally clean horizontal boundaries that manifest as black bars near the top or bottom of the synthesized image. We therefore apply an irregular morphological erosion to the mask boundaries, introducing slight shape perturbations that break these artificial edges and lead to more natural, identity-preserving reference images.
+
+Given an annotated frame (I,M) with N person instances, we generate an outpainting pair (I,˜ M˜ ) where the human figure is randomly re-positioned inside a 1280×720 canvas and the remaining region becomes the inpainting mask. The pipeline is summarised in Algorithm 3 and detailed below.
+
+Notation. Let bi = [xc,yc,w,h] be the normalised box of instance i, and Mi ∈ {0,1}H×W its binary mask. The pixel-level foreground area is Ai= u,v Mi[u,v]. The total image area is Aimg=HW.
+
+- Step-1: overlap cleaning. To avoid nested detections we sequentially remove pixels of smaller instances from larger ones:
+
+Mi′=Mi \
+
+j : Aj<Ai
+
+Mj. (11)
+
+After cleaning, each crop contains only pixels belonging to the current person.
+
+- Step-2: scale decision. An instance is regarded as small
+
+if Ai/Aimg < 0.30. For small targets, we up-scale them so that their foreground occupies 30%–40% of the canvas; otherwise, we down-scale by a random factor in [0.6,0.8]. The scaling factor is therefore
+
+si=
+
+tAimg/Ai, small object, t∼U(0.30,0.40), U(0.6,0.8), otherwise.
+
+(12) The scaled crop must fit the canvas, i.e. siwi≤W, sihi≤H.
+
+- Step-3: placement The top-left corner (x0,y0) is sampled from a Gaussian centred at the image middle with σ=0.1W (or 0.1H), ensuring the object rarely touches the boundary.
+- Step-4: mask generation The hole mask M˜ ∈ {0,255}H×W is defined as
+
+0, if (u,v) lies inside the placed foreground, 255, otherwise.
+
+M˜ [u,v]=
+
+(13) Optionally, a stochastic tear-border erosion (depth δ ∼ [5,25] px, frequency 15 px) can be applied to mimic handdrawn rough edges. Some examples are shown in Fig. 10.
+
+The entire pipeline is implemented with OpenCV and NumPy and runs in parallel with a thread-pool (default 15 workers), achieving ∼650 fps on a single 64-core node. Some examples are shown in Fig. 11.
+
+- *Task*: You are a quality-inspection agent. Given the cropped image of a single bounding-box labeled “person”, evaluate it against the following four criteria and return the exact JSON below.
+- *Criteria*: Occlusion - if the body/face is heavily occluded (≥ 15% hidden) → true, otherwise false Back - if the person is a back view → true, otherwise false Motion-blur - if the person region shows noticeable motion blur or camera shake ß true, otherwise false Full-face - if the full head is in frame → true, otherwise false Single-person - if the crop contains exactly one individual → true, otherwise false
+- *Output Format: do not output any other text except the JSON format*: {“Occlusion”: true/false, “Back”: true/false, “Motion-blur”: true/false, “Full-face”: true/false, “Single-person”: true/false}
+
+Figure 6. Prompt for VLM-based filtering for human.
+
+- *Task*: You are a quality-inspection agent. Given the cropped image of a single bounding-box labeled “person”, evaluate it against the following four criteria and return the exact JSON below.
+- *Criteria*: Category-match - the main object must match the given label exactly. Completeness - the object must not be cut off by the image border (≤ 10% occlusion allowed). Clarity - the object region must be free from motion blur, out-of-focus, heavy pixelation, under-exposure or over-exposure that hides recognizable details. Occlusion - if the body/face is heavily occluded (≥ 15% hidden) → true, otherwise false Motion-blur - if the person region shows noticeable motion blur or camera shake ß true, otherwise false
+- *Output Format: do not output any other text except the JSON format*: {“category-match”: true/false, “completeness”: true/false, “clarity”: true/false, “Occlusion”: true/false,“Motion-blur”: true/false}
+
+Figure 7. Prompt for VLM-based filtering for object.
+
+#### 7.4. Verification and Captioning
+
+To ensure that the extracted subjects and synthesized samples meet the quality requirements for subject-driven generation and manipulation, we employ Qwen2.5-VL-7B for both verification and caption generation. The model is prompted with carefully designed, task-specific instructions that assess visual quality, detect artifacts, and produce semantically rich descriptions.
+
+For verification, we use structured prompts that guide the VLM to evaluate each cropped subject or synthesized sample across multiple dimensions, including completeness, visibility, geometric plausibility, artifact detection, and scene consistency. These prompts enable consistent, interpretable filtering decisions. Representative verification prompts are shown in Fig. 12.
+
+For captioning, we design separate prompt templates tailored for manipulation-focused and generation-focused tasks. Each template is available in both short-form and long-form variants to match different training needs. The short captions emphasize identity, appearance, and high-level context, while the long captions enrich the description with detailed attributes such as pose, viewpoint, clothing, background elements, and interaction cues. The captioning templates are illustrated in Fig. 13, Fig. 14, Fig. 15, and Fig. 16.
+
+Together, these verification and captioning prompts form a comprehensive VLM-based pipeline that ensures highquality subject selection and accurate textual descriptions, ultimately strengthening the reliability and diversity of the OpenSubject dataset.
+
+Failed Role-based Filtering Success Role-based Filtering
+
+[Figure 166]
+
+[Figure 167]
+
+[Figure 168]
+
+[Figure 169]
+
+[Figure 170]
+
+[Figure 171]
+
+[Figure 172]
+
+[Figure 173]
+
+[Figure 174]
+
+[Figure 175]
+
+[Figure 176]
+
+[Figure 177]
+
+- Figure 8. Visualization of samples that fail and pass role-based bounding box filtering.
+
+Failed VLM-based Filtering Success VLM-based Filtering
+
+[Figure 178]
+
+[Figure 179]
+
+[Figure 180]
+
+[Figure 181]
+
+[Figure 182]
+
+[Figure 183]
+
+[Figure 184]
+
+[Figure 185]
+
+[Figure 186]
+
+[Figure 187]
+
+[Figure 188]
+
+[Figure 189]
+
+[Figure 190]
+
+[Figure 191]
+
+[Figure 192]
+
+[Figure 193]
+
+- Figure 9. Visualization of samples that fail and pass vlm-based bounding box filtering.
+
+### 8. Implementation Details about OpenSubject Benchmark
+
+In the main paper, we introduced the evaluation dimensions for both generation and manipulation tasks. Here, we provide additional details on the scoring procedure, rubric design, and prompt construction used in our benchmark.
+
+Evaluation Protocol. Following recent instruction-based evaluation frameworks such as VIEScore [14] and OmniContext [39], we employ a strong VLM judge—GPT-4.1 [25]—
+
+to assign 0–10 scores according to rubricized prompts with clearly defined criteria. Each dimension is evaluated independently to ensure controllable, fine-grained assessment.
+
+Generation Tasks. For generation scenarios, we evaluate a model’s ability to satisfy textual instructions and identity constraints. We report:
+
+- • Prompt Adherence (PA): Measures how well the generated output satisfies textual attributes, object counts, and relational descriptions.
+- • Identity Fidelity (IF): Measures consistency of the gener-
+
+[Figure 194]
+
+[Figure 195]
+
+[Figure 196]
+
+[Figure 197]
+
+[Figure 198]
+
+[Figure 199]
+
+[Figure 200]
+
+[Figure 201]
+
+[Figure 202]
+
+[Figure 203]
+
+[Figure 204]
+
+[Figure 205]
+
+[Figure 206]
+
+[Figure 207]
+
+Mask with
+
+Mask without
+
+Original Image
+
+Output with erosion Output without erosion
+
+erosion
+
+erosion
+
+Figure 10. Visualization of samples with and without erosion.
+
+[Figure 208]
+
+[Figure 209]
+
+[Figure 210]
+
+[Figure 211]
+
+[Figure 212]
+
+[Figure 213]
+
+[Figure 214]
+
+[Figure 215]
+
+Figure 11. Visualization of samples synthesized with FLUX.1-Fill [Dev].
+
+ated subject with the provided reference images, including facial features, hairstyle, clothing cues, and global appearance.
+
+applicable, the reference subject(s). This includes the correctness of replaced identity, edited attributes, and local semantics.
+
+• Overall: Defined as the geometric mean of PA and IF, reflecting a balanced evaluation of semantic accuracy and identity preservation.
+
+- • Background Consistency (BC): Assesses whether regions outside the edited area remain unchanged, including background structure, lighting, object layout, and scene components.
+- • Overall: The geometric mean of MF and BC, reflecting the trade-off between edit accuracy and scene stability.
+
+The complete rubric and PA/IF scoring prompts are shown in Fig. 17 and Fig. 18.
+
+Manipulation Tasks. For manipulation scenarios, we measure whether the model faithfully edits the target region without altering irrelevant content. We report:
+
+• Manipulation Fidelity (MF): Evaluates how accurately the edited region matches the requested change and, when
+
+The MF and BC scoring prompts are presented in Fig. 19 and Fig. 20.
+
+- *Task*: You are an artifact-inspection agent. Given a synthesized image, evaluate whether the sample exhibits visual artifacts or violates basic physical plausibility. Follow the criteria below and return the required JSON only.
+- *Criteria*: Geometry-error — true if there are distorted limbs, inconsistent proportions, broken body parts, or unnatural joint angles; otherwise false. Texture-artifact — true if there are repeated patterns, abnormal textures, over-smoothing, or patch-like regions; otherwise false. Lighting-violation — true if lighting direction, shadows, or reflections contradict physical plausibility; otherwise false. Background-conflict — true if the subject and background do not align (e.g., mismatched perspective, depth inconsistency, floating objects); otherwise false.
+- *Output Format: return only the JSON object below (no extra text)*: { “Geometry-error”: true/false, “Texture-artifact”: true/false, “Lighting-violation”: true/false, “Background-conflict”: true/false }
+
+Figure 12. Prompt for VLM-based artifact and physical-plausibility assessment.
+
+- Algorithm 3 Per-frame out-painting pair generation.
+
+Require: image I, masks {Mi}, boxes {bi}, canvas size (W, H) Ensure: out-painted image I˜, hole mask M˜
+
+- 1: compute areas Ai= Mi; sort descending
+- 2: for i = 1 . . . N do
+- 3: Mi′←Mi \ j<i Mj′ ▷ remove smaller overlaps
+- 4: crop Ci←I[bi] masked by Mi′
+- 5: if Ai/Aimg < 0.30 then
+- 6: s← U(0.30, 0.40) Aimg/Ai
+
+- 7: else
+- 8: s←U(0.6, 0.8)
+- 9: end if
+- 10: s←min(s, W/wi, H/hi) ▷ fit canvas
+- 11: resize (Ci, Mi′) by s
+- 12: sample (x0, y0) with Gaussian centre prior
+- 13: paste Ci into I˜at (x0, y0)
+- 14: set M˜ [x0 : x0+swi, y0 : y0+shi]=0
+- 15: end for
+- 16: optional apply tear-border erosion to M˜
+- 17: return (I,˜ M˜ )
+
+### 9. Visualization
+
+We further report additional visual results in Fig. 21 to Fig. 28. These figures cover a wide range of scenarios.
+
+Prompt for short caption with generation style (manipulation task) You are a professional, referenced subject replacement prompt writer. I will provide you with two input images and a output image:
+
+- - Input Images: 1) Full scene photo (everything visible); 2) subject photo that must disappear
+- - Output image: Identical scene, only the subject has been substituted. Your Task:
+
+- 1. Identify the difference between the complete scene image and the output image. The difference should be only the subject.
+- 2. In 1-2 sentences, describe how to swap the subject in the complete scene image to the output image. Pinpoint the swap process in the description.
+- 3. Since the subject photo is a part of the complete scene image, the complete scene image is not provided, you need to describe the details of the subject.
+- 4. Tone should mimic user’s instruction prompt when using referenced subject replacement image generation model.
+- 5. Output only the description.
+
+Prompt for short caption with editing style (manipulation task) You are a professional, referenced subject replacement prompt writer. I will provide you with two input images and a output image:
+
+- - Input Images: 1) Full scene photo (everything visible); 2) subject photo that must disappear
+- - Output image: Identical scene, only the subject has been substituted. Your Task:
+
+- 1. Identify the difference between the complete scene image and the output image. The difference should be only the subject.
+- 2. In 1-2 sentences, describe how to edit the complete scene image to obtain the output image by substituting the subject.
+- 3. Since the subject photo is a part of the complete scene image, the complete scene image is not provided, you need to describe the details of the subject.
+- 4. Tone should mimic user’s instruction prompt when using referenced subject replacement image editing model.
+- 5. Output only the description.
+
+Figure 13. Prompt for short caption with generation or editing style (manipulation task).
+
+Prompt for long caption with generation style (manipulation task) You are a professional, referenced subject replacement prompt writer. I will provide you with two input images and a output image:
+
+- - Input Images: 1) Full scene photo (everything visible); 2) subject photo that must disappear
+- - Output image: Identical scene, only the subject has been substituted. Your Task:
+
+- 1. Identify the difference between the complete scene image and the output image. The difference should be only the subject.
+- 2. In 3-4 sentences, describe how to swap the subject in the complete scene image to the output image. Pinpoint the swap process in the description.
+- 3. Since the subject photo is a part of the complete scene image, the complete scene image is not provided, you need to describe the details of the subject.
+- 4. Tone should mimic user’s instruction prompt when using referenced subject replacement image generation model.
+- 5. Output only the description. Prompt for long caption with editing style (manipulation task) You are a professional, referenced subject replacement prompt writer. I will provide you with two input images and a output image:
+
+- - Input Images: 1) Full scene photo (everything visible); 2) subject photo that must disappear
+- - Output image: Identical scene, only the subject has been substituted. Your Task:
+
+- 1. Identify the difference between the complete scene image and the output image. The difference should be only the subject.
+- 2. In 3-4 sentences, describe how to edit the complete scene image to obtain the output image by substituting the subject.
+- 3. Since the subject photo is a part of the complete scene image, the complete scene image is not provided, you need to describe the details of the subject.
+- 4. Tone should mimic user’s instruction prompt when using referenced subject replacement image editing model.
+- 5. Output only the description.
+
+Figure 14. Prompt for long caption with generation or editing style (manipulation task).
+
+Prompt for short caption with generation style You are a professional, multi-subject combination-driven new scene generation prompt writer. I will provide you with multiple images and tell you which one contains the target object:
+
+- - Input Images: 1) Multiple images; 2)Label the objects (target objects) in the images.
+- - Output image: A photograph of the combination of multiple objects (target objects) transplanted into a completely new scene. Your Task:
+
+- 1. Identify each object in the input images and its label, know that the objects in the input image is a part of the output image.
+- 2. In 1-2 sentences, describe how the objects in the input images are combined in the output image. Focus on the combination of multiple objects in the scene.
+- 3. Since the object images are cropped from the complete scene images,the complete scene image is not provided, you need to describe the details of the objects in the output image based on the information in the input images. Each object should be described in detail, such as the category/pose/appearance/color/material/dress-style/etc.
+- 4. Tone should mimic user’s instruction prompt when using multi-subject combination-driven new scene generation image generation model. Should clearly describe the transformation of the object from input to output image.
+- 5. Output only the description.
+
+Prompt for short caption with editing style You are a professional, multi-subject combination-driven new scene generation prompt writer. I will provide you with multiple images and tell you which one contains the target object:
+
+- - Input Images: 1) Multiple images; 2)Label the objects (target objects) in the images.
+- - Output image: A photograph of the combination of multiple objects (target objects) transplanted into a completely new scene. Your Task:
+
+- 1. Identify each object in the input images and its label, know that the objects in the input image is a part of the output image.
+- 2. In 1-2 sentences, describe how the objects in the input images are combined in the output image. Focus on the combination of multiple objects in the scene.
+- 3. Since the object images are cropped from the complete scene images,the complete scene image is not provided, you need to describe the details of the objects in the output image based on the information in the input images. Each object should be described in detail, such as the category/pose/appearance/color/material/dress-style/etc.
+- 4. Tone should mimic user’s instruction prompt when using multi-subject combination-driven new scene editing model. Should clearly describe the transformation of the object from input to output image.
+- 5. Output only the description.
+
+Figure 15. Prompt for short caption with generation or editing style.
+
+Prompt for long caption with generation style You are a professional, multi-subject combination-driven new scene generation prompt writer. I will provide you with multiple images and tell you which one contains the target object:
+
+- - Input Images: 1) Multiple images; 2)Label the objects (target objects) in the images.
+- - Output image: A photograph of the combination of multiple objects (target objects) transplanted into a completely new scene. Your Task: 1. Identify each object in the input images and its label, know that the objects in the input image is a part of the output image.
+
+- 2. In 5-6 sentences, describe how the objects in the input images are combined in the output image. Focus on the combination of multiple objects in the scene.
+- 3. Since the object images are cropped from the complete scene images,the complete scene image is not provided, you need to describe the details of the objects in the output image based on the information in the input images. Each object should be described in detail, such as the category/pose/appearance/color/material/dress-style/etc.
+- 4. Tone should mimic user’s instruction prompt when using multi-subject combination-driven new scene generation image generation model. Should clearly describe the transformation of the object from input to output image.
+- 5. Output only the description. Prompt for long caption with editing style You are a professional, multi-subject combination-driven new scene generation prompt writer. I will provide you with multiple images and tell you which one contains the target object:
+
+- - Input Images: 1) Multiple images; 2)Label the objects (target objects) in the images.
+- - Output image: A photograph of the combination of multiple objects (target objects) transplanted into a completely new scene. Your Task: 1. Identify each object in the input images and its label, know that the objects in the input image is a part of the output image.
+
+- 2. In 5-6 sentences, describe how the objects in the input images are combined in the output image. Focus on the combination of multiple objects in the scene.
+- 3. Since the object images are cropped from the complete scene images,the complete scene image is not provided, you need to describe the details of the objects in the output image based on the information in the input images. Each object should be described in detail, such as the category/pose/appearance/color/material/dress-style/etc.
+- 4. Tone should mimic user’s instruction prompt when using multi-subject combination-driven new scene editing model. Should clearly describe the transformation of the object from input to output image.
+- 5. Output only the description.
+
+Figure 16. Prompt for long caption with generation or editing style.
+
+subject.
+
+- - **4-6:** The manipulation is *partially successful* — some recognizable traits of the reference subject appear, but major inconsistencies remain.
+- - **7-9:** The manipulation is *mostly accurate*, with strong resemblance to the reference subject and only minor mismatches.
+- - **10:** The manipulation is *perfectly successful* — the subject is seamlessly and accurately represented, matching the reference in identity, structure, and style.
+
+—- **Pay special attention to**
+
+- - **Identity fidelity:** Facial structure, hairstyle, clothing, and other distinctive features should closely match the reference subject.
+- - **Pose and spatial alignment:** The manipulated subject should align naturally with the scene’s geometry, position, and orientation in the base image.
+- - **Expression and attributes:** Facial expressions and physical traits (e.g., age, gender, skin tone) should remain consistent with the reference.
+- - **Semantic correctness:** The correct individual or object from the reference should appear exactly where specified by the instruction.
+- - **Selective manipulation:** Only the target subject should be replaced or modified — no unintended entities should appear or disappear.
+
+—- **Important Notes**
+
+- - **Deduct points** for every visible mismatch in identity, shape, or manipulation accuracy.
+- - Do *not* consider **background consistency**, **artifact realism**, or **aesthetic appeal** — focus exclusively on the correctness of the subject manipulation itself.
+- - The final score should reflect **how accurately and faithfully the model followed the instruction to manipulate or replace the subject**.
+- - **Scoring should be strict** — assign high scores only when the manipulated subject strongly and consistently matches the reference.
+
+**Editing instruction:** ‘ < instruction > ‘
+
+Figure 17. Prompt for PA score.
+
+Evaluate whether the **identities of subjects** in the **final image** match those of the corresponding individuals in the **first images**.
+
+—- **Scoring Criteria**
+
+- - **0:** The subject identities in the image are *completely inconsistent* with those in the reference images.
+- - **1-3:** The identities are *severely inconsistent*, showing only a few minor resemblances.
+- - **4-6:** The image displays *some notable similarities*, but major inconsistencies remain — indicating a
+
+- *moderate* level of identity match.
+
+- - **7-9:** The identities are *mostly consistent*, with only subtle or localized mismatches.
+- - **10:** The subject identities in the final image are *perfectly consistent* with those in the reference images.
+
+—- **Pay special attention to**
+
+- - **Facial and cranial features:** Match in the appearance and placement of eyes, nose, mouth, cheekbones, jawline, wrinkles, makeup, hairstyle, hair color, and overall head shape.
+- - **Correct identity usage:** Verify that the proper individuals or objects from the input images are used (no identity swaps or omissions).
+- - **Physical traits:** Check that body shape, skin tone, and other defining physical attributes remain consistent, without distortion or abnormal anatomy.
+- - **Clothing and accessories:** If the instruction does *not* request changes to clothing or hairstyle, ensure these remain consistent with the input images.
+- - **Subtle identity cues:** Look for alignment in facial expression, proportions, and unique personal features (e.g., freckles, scars, glasses).
+
+—- **Important Notes**
+
+- - **Deduct points** for each visible identity mismatch or inconsistency.
+- - **Deduct points** for each unreasonable lighting on the face. Please use the **first image** as a reference.
+- - The score must reflect the **identity consistency** across all objects mentioned in the instruction, please use the first image as a reference.
+- - **Scoring should be strict** — high scores should only be given when identity match is clearly strong and consistent throughout.
+
+- **Editing instruction:** ‘ < instruction > ‘
+
+Figure 18. Prompt for IF score.
+
+subject.
+
+- - **4-6:** The manipulation is *partially successful* — some recognizable traits of the reference subject appear, but major inconsistencies remain.
+- - **7-9:** The manipulation is *mostly accurate*, with strong resemblance to the reference subject and only minor mismatches.
+- - **10:** The manipulation is *perfectly successful* — the subject is seamlessly and accurately represented, matching the reference in identity, structure, and style.
+
+—- **Pay special attention to**
+
+- - **Identity fidelity:** Facial structure, hairstyle, clothing, and other distinctive features should closely match the reference subject.
+- - **Pose and spatial alignment:** The manipulated subject should align naturally with the scene’s geometry, position, and orientation in the base image.
+- - **Expression and attributes:** Facial expressions and physical traits (e.g., age, gender, skin tone) should remain consistent with the reference.
+- - **Semantic correctness:** The correct individual or object from the reference should appear exactly where specified by the instruction.
+- - **Selective manipulation:** Only the target subject should be replaced or modified — no unintended entities should appear or disappear.
+
+—- **Important Notes**
+
+- - **Deduct points** for every visible mismatch in identity, shape, or manipulation accuracy.
+- - Do *not* consider **background consistency**, **artifact realism**, or **aesthetic appeal** — focus exclusively on the correctness of the subject manipulation itself.
+- - The final score should reflect **how accurately and faithfully the model followed the instruction to manipulate or replace the subject**.
+- - **Scoring should be strict** — assign high scores only when the manipulated subject strongly and consistently matches the reference.
+
+**Editing instruction:** ‘ < instruction > ‘
+
+Figure 19. Prompt for MF score.
+
+Evaluate how well the **non-edited regions** of the **model’s output image** remain consistent with the **reference image**, focusing solely on the **unchanged parts of the scene**.
+
+This evaluation measures **scene preservation**, not subject replacement accuracy.
+
+—- **Scoring Criteria**
+
+- - **0:** The image is *completely inconsistent* — large portions of the original scene are altered, distorted, or missing.
+- - **1-3:** The overall scene has *major inconsistencies*, with substantial background changes or unnatural modifications.
+- - **4-6:** The main structure of the scene is *partially preserved*, but noticeable distortions, lighting shifts, or color inconsistencies remain.
+- - **7-9:** The scene is *mostly consistent*, with only minor local deviations or blending artifacts in non-target regions.
+- - **10:** The scene is *perfectly consistent* — all unedited regions are visually identical to the reference, with no perceptible changes.
+
+—- **Pay special attention to**
+
+- - **Background integrity:** Buildings, furniture, landscape, and other static elements should remain identical to the reference.
+- - **Lighting and tone stability:** Global illumination, color temperature, and shading should remain consistent across the entire scene.
+- - **Texture and color fidelity:** Non-edited areas should preserve the same texture, hue, and contrast as in the reference.
+- - **Spatial structure:** Perspective, geometry, and layout of the environment should be unchanged.
+- - **Boundary transitions:** The area surrounding the edited region should blend smoothly into the preserved background without distortion or ghosting.
+
+—- **Important Notes**
+
+- - Deduct points for any visible deviation, distortion, or inconsistency in regions **unrelated to the instructed edit**.
+- - Do *not* evaluate the accuracy of the replaced subject or the realism of the edit itself — focus **only** on the similarity of **unchanged areas**.
+- - The score should reflect **how faithfully the original scene was preserved** apart from the intended modification.
+- - **Scoring should be strict** — even small but noticeable inconsistencies should lower the score.
+
+Figure 20. Prompt for BC score.
+
+[Figure 216]
+
+[Figure 217]
+
+[Figure 218]
+
+[Figure 219]
+
+[Figure 220]
+
+[Figure 221]
+
+[Figure 222]
+
+[Figure 223]
+
