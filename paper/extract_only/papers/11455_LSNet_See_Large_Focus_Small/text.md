@@ -1,0 +1,996 @@
+# arXiv:2503.23135v1[cs.CV]29Mar2025
+
+## LSNet: See Large, Focus Small
+
+Ao Wang1 Hui Chen2* Zijia Lin1 Jungong Han3 Guiguang Ding1 1School of Software, Tsinghua University 2BNRist, Tsinghua University 3Department of Automation, Tsinghua University
+
+wanga24@mails.tsinghua.edu.cn jichenhui2012@gmail.com linzijia07@tsinghua.org.cn jungonghan77@gmail.com dinggg@tsinghua.edu.cn
+
+### Abstract
+
+Vision network designs, including Convolutional Neural Networks and Vision Transformers, have significantly advanced the field of computer vision. Yet, their complex computations pose challenges for practical deployments, particularly in real-time applications. To tackle this issue, researchers have explored various lightweight and efficient network designs. However, existing lightweight models predominantly leverage self-attention mechanisms and convolutions for token mixing. This dependence brings limitations in effectiveness and efficiency in the perception and aggregation processes of lightweight networks, hindering the balance between performance and efficiency under limited computational budgets. In this paper, we draw inspiration from the dynamic heteroscale vision ability inherent in the efficient human vision system and propose a “See Large, Focus Small” strategy for lightweight vision network design. We introduce LS (Large-Small) convolution, which combines large-kernel perception and smallkernel aggregation. It can efficiently capture a wide range of perceptual information and achieve precise feature aggregation for dynamic and complex visual representations, thus enabling proficient processing of visual information. Based on LS convolution, we present LSNet, a new family of lightweight models. Extensive experiments demonstrate that LSNet achieves superior performance and efficiency over existing lightweight networks in various vision tasks. Codes and models are available at https: //github.com/jameslahm/lsnet.
+
+### 1. Introduction
+
+Vision network designs have consistently been a focal point of research in the field of computer vision [19, 24, 26, 52, 53, 102], where two prominent network architectures, i.e., Convolutional Neural Networks (CNNs) [26, 31, 40, 41, 53]
+
+*Corresponding author.
+
+and Vision Transformers (ViTs) [19, 52, 67, 78, 92, 97], have significantly pushed the boundaries in various computer vision tasks [3, 4, 25, 74, 86, 88, 96]. However, both of them have traditionally been computationally expensive, presenting remarkable challenges for their practical deployments, especially for real-time applications [46, 51].
+
+Recently, researchers have been actively exploring the lightweight and efficient designs of vision networks [7, 36, 59, 61, 64, 80] for practical applications. Despite effective, these lightweight models typically rely on certain basic modules, such as self-attention mechanism [19, 81, 90] and convolution [40, 41], for token mixing [77]. This reliance poses challenges regarding the efficiency and effectiveness of the underlying perception and aggregation processes within lightweight networks, often compromising the architectural expressiveness or inference speed.
+
+Essentially, contextual perception and aggregation are core processes for token mixing [21, 77, 95], facilitating spatial information fusion. Perception models contextual relationships among tokens, while aggregation integrates token features based on corresponding relationships. In existing lightweight models, two dominant token mixing approaches, self-attention and convolution, employ distinct perception and aggregation processes. Specifically, selfattention employs global perception through holistic feature interaction and global aggregation via weighted sum of all features. Convolution uses the relative positional relationships among tokens for perception and aggregates features with static kernel weights. However, as shown in Fig. 1.(a) and (b), both approaches have limitations. (1) Self-attention often introduces excessive attention to regions lacking significant interconnections, leading to less critical aggregation, e.g., in less informative background [48, 69]. Besides, its perception and aggregation share the same mixing scope. The expansion of context in self-attention and its variants [21, 35, 51] comes at the expense of notable computational complexity. These hinder lightweight models from pursuing high representational ability under low computational budgets. (2) In convolution, the relationships
+
+| | | | | |
+|---|---|---|---|---|
+| | | | | |
+| | | | | |
+| | | | | |
+| | | | | |
+
+| | | | | |
+|---|---|---|---|---|
+| | | | | |
+| | | | | |
+| | | | | |
+| | | | | |
+| | | |[Figure 1]| |
+
+[Figure 2]
+
+See Large
+
+Focus Small
+
+[Figure 3]
+
+[Figure 4]
+
+[Figure 5]
+
+[Figure 6]
+
+[Figure 7]
+
+Softmax
+
+Retina
+
+×
+
+[Figure 8]
+
+Rods
+
+[Figure 9]
+
+Fovea
+
+[Figure 10]
+
+×
+
+Cones
+
+- (a) Self-attention
+- (b) Convolution
+
+Rods
+
+|∗|
+|---|
+
+[Figure 11]
+
+Perception Aggregation
+
+| | | | |
+|---|---|---|---|
+| | | | |
+| | | | |
+| | | | |
+
+Peripheral
+
+Central
+
+|∗|
+|---|
+
+vision
+
+vision
+
+Normal Redundant
+
+| |
+|---|
+
+| |
+|---|
+
+Perception Aggregation
+
+Kernel
+
+(c) Human vision
+
+(d) Distribution of rods and cones in retina
+
+Figure 1. The mechanism of self attention (a) and convolution (b). (c) shows that the human vision system can “See Large” through the peripheral vision, and “Focus Small” through the central vision. (d) shows the distribution of rods and cones depending on the eccentricity from the fovea of the human eye. They contribute to the formation of extensive peripheral vision and focal central vision.
+
+among tokens modeled by the perception, i.e., the aggregation weights, are determined by the fixed kernel weights. Consequently, while efficient, convolution lacks sensitivity to varying contextual neighborhoods. This imposes constraints on the expressiveness of lightweight models, especially considering that the model capabilities of lightweight networks are inherently limited. Given these, exploring a token mixing way for lightweight models with more effective and efficient perception and aggregation processes under limited computational costs is imperative.
+
+To this end, we first thoroughly inspect the intuitions underlying the processes of perception and aggregation. We discover that they align closely with the phenomenon of dynamic heteroscale vision ability in the efficient human vision system. Specifically, as shown in Fig. 1.(c), the human vision system follows dual-step mechanism: (1) The broad overview of the scene is firstly captured through the peripheral vision’s large-field perception [66, 73], i.e., “See Large”. (2) Subsequently, attention can be directed towards specific elements of the scene, enabling a detailed comprehension facilitated by the central vision’s small-field aggregation [63, 73], i.e., “Focus Small”. Such characteristic arises from distinct spatial distribution and vision abilities of two types of photoreceptor cells in the retina [38, 66], i.e., rod cells and cone cells, as shown in Fig. 1.(d). Rod cells are widely distributed in the peripheral regions of retina [63] and produce relatively unsharp images with limited spatial detail [82]. However, they exhibit broad responses across the visible spectrum and contribute to large-field peripheral vision in conjunction with cone cells in the retina periphery [76], allowing “See Large”. Furthermore, cone cells are primarily concentrated in the fovea, a small area for central vision [91]. The fovea contains a high density of cone cells, which constitute the sharpest region capable of capturing fine details and complex features [37, 79, 82], enabling “Focus Small”. Guided by efficient large-field perception of the peripheral photoreceptor cells, the fovea can effectively focus on precise imaging of subtle features via small-field aggregation [66]. This “See Large, Focus Small” approach empowers the human vision system to process visual information swiftly and proficiently [82], thereby facilitating
+
+accurate and efficient visual comprehension.
+
+These inspections motivate us to design effective and efficient vision networks with the ability to perceive large fields and aggregate small fields. To this end, we first propose a novel operation, Large-Small (LS) convolution, which aims to emulate the “See Large, Focus Small” strategy observed in human vision system, thereby extracting discriminative visual patterns. Generally, LS convolution employs a large-kernel static convolution for largefield perception and a small-kernel dynamic convolution for small-field aggregation. Rather than simply combining large-kernel and small-kernel convolutions, it firstly leverages broad contextual information captured by large-kernel depth-wise convolution to model the spatial relationships. Then, parameterized by them, a small-kernel dynamic convolution operation with group mechanism is constructed to fuse features within highly related visual field. In this way, large-kernel static convolution well perceive the enlarged neighborhood information, leading to improved relationship modeling, like the peripheral vision system. Furthermore, benefiting from this, small-kernel dynamic convolution can adaptively aggregate the intricate visual features in small surroundings, enabling detailed visual understanding like the central vision system. Meanwhile, we delicately design LS convolution efficiently with depth-wise convolution and group mechanism. The aggregation scope is limited in a small region. These well ensure the low complexity of both perception and aggregation processes. Consequently, our LS convolution prioritizes both the performance and efficiency, enabling lightweight models to fully harness the representational capability under low computational costs.
+
+We consider LS convolution as the fundamental operation of token mixing and integrate it with other common architecture designs to form a LS block. Building upon the LS block, we present a new family of lightweight models, dubbed LSNet. Extensive experiments demonstrate that LSNet achieves superior performance and efficiency compared with existing state-of-the-art lightweight models in various vision tasks [12, 49, 106]. We hope that LSNet can serve as a strong baseline and inspire further advancements in the field of lightweight and efficient models.
+
+### 2. Related Work
+
+Efficient CNNs. CNNs have emerged as the fundamental network architecture in various vision tasks [2, 17, 18, 54, 70, 83] over the past decade. To facilitate their practical applications, researchers have devoted significant efforts to designing lightweight and efficient networks [13, 14, 32, 33, 57, 75, 85]. For example, MobileNet [33] and Xception [8] proposes architectures utilizing depth-wise separable convolutions. MobileNetV2 [71] introduces inverted residual blocks with linear bottleneck for improving efficiency. ShuffleNet [104] and ShuffleNetV2 [57] incorporate channel shuffling and channel split operations to enhance group information exchange. Hardware-aware neural architecture search (NAS) has also been explored to obtain compact vision networks [32, 75]. Meanwhile, considering the limited receptive field, some works have explored enhancing lightweight CNNs’ capability for modeling long-range dependencies [36, 65, 101]. For example, ParC-Net [101] introduces position aware circular convolution to boast a global receptive field. AFFNet [36] presents adaptive frequency filtering for global convolution via a circular padding.
+
+Efficient ViTs. Later, since the inception of Vision Transformer [19], transformer-based architectures have gained significant popularity in the field of computer vision. ViTs have been adapted to diverse vision tasks and shown superior performance [20, 103]. Meanwhile, efforts have been made to enhance the efficiency, resulting in lightweight ViTs for practical deployments [46, 62, 80, 84]. For example, MobileViT [61] combines MobileNet blocks and MHSA blocks, achieving a hybrid architecture. EdgeViT [64] proposes the integration of self-attention and convolutions to achieve cost-effective information exchange. Besides, to alleviate the inference bottleneck, EfficientFormer [46] presents a dimension-consistent design paradigm that enhances the latency and performance tradeoff. FastViT [80] introduces structural re-parameterization and large-kernel convolutions to enhance hybrid ViTs.
+
+Efficient Token Mixing. CNNs and ViTs adopt different token mixing ways, i.e., convolution and self-attention, respectively, along with distinct perception and aggregation processes. Based on them, to develop lightweight vision networks, researchers have explored different efficient token mixing ways for spatial information exchange. For example, for convolution, Involution [43] leverages MLP for perception to derive the aggregation weights conditioned on single pixel. CondConv [94] proposes per-example routing with global context to linearly combining multiple convolution kernels. For self-attention, EdgeNeXt [59] presents split depth-wise transpose attention (SDTA) to mix multiscale features. PVTv2 [89] employs linear spatial reduction attention (LSRA) to achieve linear computational complexity for the attention layer. EfficientViT [51] designs the cas-
+
+| | |[Figure 12]| | | | |
+|---|---|---|---|---|---|---|
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+
+| | | | | | | | |
+|---|---|---|---|---|---|---|---|
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+|[Figure 13]| | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+
+| | | | | | | | |
+|---|---|---|---|---|---|---|---|
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | |[Figure 14]| |
+| | | | | | | | |
+| | | | | | | | |
+| | | | | | | | |
+
+[Figure 15]
+
+[Figure 16]
+
+[Figure 17]
+
+Perception Aggregation
+
+Perception Aggregation Perception Aggregation
+
+See Large, Focus Large See Small, Focus Small See Large, Focus Small
+
+(a) Self-attention (b) Convolution (c) Our LS convolution
+
+Figure 2. Comparison of self-attention, convolution, and LS conv.
+
+caded group attention to enhance capability efficiently.
+
+### 3. Methodology
+
+#### 3.1. Revisiting Self-Attention and Convolution
+
+Self-attention and convolution are two prominent token mixing ways [97] for modeling visual features in existing lightweight networks. For an input image, given its feature map X ∈ RH×W×C where H ×W is the spatial resolution and C is the number of channels, token mixing generates the feature representation yi ∈ RC for each token xi ∈ RC based on its contextual region N(xi) by:
+
+yi = A(P(xi, N(xi)), N(xi)), (1)
+
+where P denotes perception, involving extracting contextual information and capturing the relationships among tokens, and A denotes aggregation, integrating the features based on the outcome of perception and enabling the incorporation of information from other tokens.
+
+In self-attention, its perception Pattn obtains the attention scores between xi and X through the pairwise correlations after softmax normalization. Its aggregation Aattn weights the features of X by attention scores to obtain yi. As shown in Fig. 2.(a), the process can be summarized as:
+
+yi = Aattn(Pattn(xi, X), X) = Pattn(xi, X)(XWv); (2) Pattn(xi, X) = softmax((xiWq)(XWk)T), (3)
+
+where Wq, Wk and Wv are the projection matrices. It can be observed that Pattn and Aattn involve redundant attention and excessive aggregation in less informative regions [48, 69], limiting the efficacy of lightweight models. Moreover, they operate at the same contextual scale for xi. Such a homoscale property leads to the notable computational complexity when increasing the mixing scope N(xi), imposing challenges in expanding the perception context under low computational budgets. Thus, self-attention and its variants in existing lightweight models [21, 51] struggle to achieve an optimal balance between representation capability and efficiency with limited computation cost [36].
+
+For convolution with the kernel size of K, the contextual region is the neighborhood of size K × K centered around xi, denoted as NK(xi). The perception Pconv utilizes the relative positions between xi and NK(xi) to derive
+
+the aggregation weights. For each xj ∈ NK(xi), its aggregation weight is the value at the corresponding relative position in the fixed convolutional kernel weights Wconv. The aggregation Aconv then leverages the weights to convolve the features in NK(xi). As shown in Fig. 2.(b), the whole process can be formulated as:
+
+yi = Aconv(Pconv(xi, NK(xi)), NK(xi))
+
+(4)
+
+= Pconv(xi, NK(xi)) ⊛ NK(xi);
+
+Pconv(xi, NK(xi)) = Wconv, (5)
+
+where ⊛ denotes the convolution operation. It can be observed that the token mixing scope in convolution is determined by kernel size K which is usually small for lightweight models, thus resulting in a limited perception range. Besides, the relationships among tokens modeled by the perception Pconv, i.e., the aggregation weights, depend only on the relative positions and thus are shared and fixed for all tokens. It prevents tokens from adapting to their related context, restricting the expressive ability. Such limitation becomes particularly pronounced considering the inherently small modeling capability of lightweight networks.
+
+#### 3.2. LS (Large-Small) Convolution
+
+Inspired by dynamic heteroscale vision ability exhibited by human vision system [63, 66, 76], we introduce a novel “See Large, Focus Small” strategy for the perception and aggregation processes, aiming for efficient and effective token mixing in lightweight models, as shown in Fig. 2.(c). Our approach enables the effective collection of comprehensive contextual information and modeling of the relationships by large-field perception. It further facilitates detailed visual representations through efficient fusion in highly related surroundings by small-field aggregation. Specifically, for token xi, with the contextual regions of perception and aggregation as NP(xi) and NA(xi), respectively, where NP(xi) encompasses a larger spatial extent compared with NA(xi), the process can be formulated as:
+
+yi = A(P(xi, NP(xi)), NA(xi)). (6)
+
+It can be observed that (1) The perception P and aggregation A involves different contextual scopes, i.e., NP(xi) and NA(xi), respectively, allowing for utilizing heteroscale contextual information and capturing both the overall context and fine-grained details. (2) For the perception with a large spatial extent, cost-effective operations, such as large-kernel depth-wise convolution, can be employed. The perception context can thus be enlarged with minimal overhead. (3) For the aggregation with a small surrounding region, we can adopt adaptive weighted feature summation. Due to the limited range of aggregation, the efficiency can be guaranteed with low computation cost and the less important aggregation in self-attention can be mitigated.
+
+Based on these, we present a novel LS (Large-Small)
+
+convolution. As shown in Fig. 3.(a), for each token, it introduces two steps: (1) Large-kernel perception Pls models the neighborhood relationships with the enlarged receptive field through large-kernel static convolutions. (2) Small-kernel aggregation Als adaptively integrates the surrounding features through small-kernel dynamic convolution.
+
+Large-Kernel Perception (LKP) adopts the design of a large-kernel bottleneck block. Given visual feature map X ∈ RH×W×C, we initially utilize the point-wise convolution (PW) to project the tokens into a lower channel dimension, i.e., C2 by default, to reduce the computational cost and make the model lightweight as possible. For xi, we then employ large-kernel depth-wise convolution (DW) with the kernel size of KL × KL to efficiently capture large-field spatial contextual information of NKL
+
+(xi), where NKL
+
+(xi) denotes the surroundings of size KL ×KL centered around xi. The large-kernel DW can well expand the receptive field and enhance the context perception capability under minimal cost. We then leverage point-wise convolutions (PW) to model the spatial relationships among tokens, i.e., generating the context-adaptive weights W ∈ RH×W×D for the aggregation step. The whole process can be formulated as:
+
+wi = Pls(xi, NKL(xi))
+
+(7)
+
+= PW(DWKL×KL(PW(NKL(xi)))),
+
+where wi ∈ RD is the generated weights for xi.
+
+Small-Kernel Aggregation (SKA) employs the design of grouped dynamic convolutions. For the visual feature map X ∈ RH×W×C, we divide its channels into G groups. Each group containing CG channels and the channels in the same group share the aggregation weights, to reduce the memory overhead and computational cost for lightweight models. For each xi, we reshape its corresponding weights wi ∈ RD generated by large-kernel perception to obtain wi∗ ∈ RG×K
+
+S×KS, where KS × KS is the small kernel size. We then leverage wi∗ to aggregate its highly related context of NKS
+
+(xi) represents the neighborhood of size KS × KS centered around xi. Specifically, we denote the c-th channel of xi as xic, which belongs to the g-th channel group. We obtain its aggregated feature representation yic through the convolution operation between NKS
+
+(xi), where NKS
+
+S×KS. In this way, the adaptive fine-grained features can be effectively represented, making model sensitive to dynamic and complex changes in diverse contexts. The whole process can be formulated as:
+
+(xic) and wig∗ ∈ RK
+
+yic = Als(wig∗ , NKS(xic)) = wig∗ ⊛ NKS(xic). (8)
+
+In contrast to simply combining large-kernel with smallkernel conv, and other dynamic convs, our LKP utilizes enriched large-field visual perception to guide adaptive feature fusion within highly related context by SKA. This enables more discriminative representations for intricate visual information. Thus, LS conv shows superiority over them, as
+
+|𝐶4|
+|---|
+
+Large Kernel Perception
+
+|𝐻 × 𝑊 × 𝐶|
+|---|
+| |
+
+FC
+
+Stem
+
+Downsample
+
+[Figure 18]
+
+1×1
+
+Pooling
+
+𝐶 2
+
+𝐻 × 𝑊 ×
+
+Stride=2
+
+Stride=2
+
+Stride=2
+
+Stride=2
+
+DW3x3
+
+1x1
+
+3x3
+
+3x3
+
+3x3
+
+DW 𝐾𝐿 × 𝐾𝐿
+
+MSA Block
+
+𝐻 64
+
+𝑊 64
+
+×
+
+× 𝐶4
+
+1×1
+
+Downsample
+
+𝐶
+
+𝐻 × 𝑊 ×
+
+| | |
+|---|---|
+| | |
+
+2
+
+1×1
+
+LS Block
+
+LS Block
+
+𝐻 32
+
+𝑊 32
+
+𝐻 × 𝑊 × D
+
+LS Convolution
+
+×
+
+× 𝐶3
+
+R R Reshape
+
+Downsample
+
+DW3x3
+
+𝐻 × 𝑊 × 𝐺 × 𝐾𝑠 × 𝐾𝑠
+
+FFN
+
+FFN
+
+SE
+
+Small Kernel Aggregation
+
+LS Block
+
+𝐻 16
+
+𝑊 16
+
+[Figure 19]
+
+×
+
+× 𝐶2
+
+Downsample
+
+MSA Block
+
+|∗|
+|---|
+
+[Figure 20]
+
+LS Block
+
+∗
+
+[Figure 21]
+
+|∗|
+|---|
+
+|∗|
+|---|
+
+𝐻 8
+
+𝑊 8
+
+×
+
+× 𝐶1
+
+DW3x3
+
+MHSA
+
+[Figure 22]
+
+Stem
+
+FFN
+
+FFN
+
+[Figure 23]
+
+SE
+
+[Figure 24]
+
+[Figure 25]
+
+[Figure 26]
+
+𝐻 × 𝑊 × 3
+
+𝐶
+
+|∗|
+|---|
+
+Convolution
+
+𝐺
+
+(a) (b)
+
+Figure 3. (a) The illustration of our proposed LS convolution. (b) The illustration of our proposed LSNet. LSNet has four stages with H 8 × W8 , 16H × W16, 32H × W32, and 64H × W64 resolutions respectively, where H and W denote the width and height of the input image. C
+
+represents the channel dimension. The norm layer and nonlinearity are omitted for simplicity.
+
+shown in Tab. 6 and Tab. 7. We also present the comparisons from mathematical perspectives in supplementary.
+
+Complexity Analysis. The computation of LS convolution mainly consists of three parts: point-wise convolutions in Pls, depth-wise convolution with kernel size of KL in Pls, and convolution aggregation with kernel size of KS in Als. Their corresponding computations are O(3HWC
+
+2 L
+
+2
+
+4 + HWCD2 ), O(HWCK
+
+2 ), and O(HWCKS2), respectively. Therefore, the total amount is O(HWC4 (3C + 2KL2 + (2G + 4)KS2)), enjoying the linear computational complexity with respect to the input resolution.
+
+#### 3.3. LSNet: Large-Small Network
+
+Using LS convolution as the primary operation, we present the basic block, i.e., LS block, and the lightweight model design, i.e., LSNet, as shown in Fig. 3.(b).
+
+LS Block leverages LS convolution to perform effective token mixing. Skip connection is adopted to facilitate model optimization. Besides, we utilize the extra depthwise convolution and SE layer [34] to enhance model capability by introducing more local inductive bias [11, 51]. Feed forward network (FFN) is adopted for channel mixing.
+
+LSNet utilizes overlapping patch embedding [93] to project the input image into the visual feature map. For downsampling, we leverage the depth-wise and point-wise convolution to reduce the spatial resolution and modulate the channel dimension, respectively. Besides, we stack LS blocks in the top three stages. In the last stage, we adopt the MSA block to capture long-range dependencies due to the small resolution, following [61, 80]. MSA block incor-
+
+porates multi-head self-attention (MHSA), and we utilize the same depth-wise convolution and SE layer to introduce more local structural information like LS block.
+
+We build three LSNet variants for different computational budgets. The LSNet with tiny size (LSNet-T), small size (LSNet-S), and base size (LSNet-B) has 0.3G, 0.5G, and 1.3G FLOPs, respectively. Following [23, 51], we employ more blocks in late stages, due to that processing on early stages with higher resolution is more time consuming. We empirically use KL = 7, KS = 3, and G = C8 for all model variants by default, following [14, 53]. The architectural details can be found in the supplementary.
+
+### 4. Experiments
+
+#### 4.1. Image Classification
+
+We conduct experiments on ImageNet-1K [12] under the same training recipe as [36, 51, 64] to assess the performance of LSNet on the image classification task.
+
+As shown in Tab. 1, we note that LSNet consistently achieves state-of-the-art performance across various computational costs. Besides, it shows the best trade-offs between accuracy and inference speed. For example, our LSNet-B outperforms the advanced AFFNet by 0.5% top-1 accuracy with a nearly 3× faster inference speed. It also surpasses RepViT-M1.1 and FastViT-T12 with 0.9% and 1.2% top-1 accuracies with higher efficiency, respectively. For smaller models, our LSNet also obtains superior performance with lower computation costs. Specifically, LSNetS outperforms UniRepLKNet-A and FasterNet-T1 signif-
+
+- Table 1. Classification results on ImageNet-1K. The throughput is tested on a Nvidia RTX3090 with maximum power-of-two batch size that fits in memory, following [36, 51]. * denotes the results with distillation using the RegNetY-16GF [68] with 82.9% top-1 accuracy as the teacher model. EFormer denotes EfficientFormer.
+
+Params (M)
+
+FLOPs (G)
+
+Throughput (img/s)
+
+Top-1 (%)
+
+Model
+
+EdgeNeXt-XXS [59] 1.3 0.3 5089 71.2
+
+- FasterNet-T0 [5] 3.9 0.3 14467 71.9 ShuffleNetV2 [57] 3.5 0.3 9593 72.6 AFFNet-ET [36] 1.4 0.4 2877 73.0 EfficientViT-M3 [51] 6.9 0.3 14613 73.4 StarNet-S1 [58] 2.9 0.4 5034 73.5 LSNet-T 11.4 0.3 14708 74.9 LSNet-T* 11.4 0.3 14708 76.1
+
+EdgeNeXt-XS [59] 2.3 0.5 3118 75.0 PVT-Tiny [88] 13.2 1.9 2125 75.1 MobileNetV3-L [32] 5.4 0.2 7921 75.2 FastViT-T8 [80] 3.6 0.7 3909 75.6 EFormerV2-S0* [47] 3.5 0.4 1329 75.7
+
+- FasterNet-T1 [5] 7.6 0.9 8660 76.2 UniRepLKNet-A [16] 4.4 0.6 3931 77.0 EfficientNet-B0 [75] 5.3 0.4 4481 77.1 PoolFormer-S12 [97] 12.0 1.8 2769 77.2 SHViT-S3 [98] 14.2 0.6 8993 77.4 RepViT-M0.9 [85] 5.1 0.8 4817 77.4 LSNet-S 16.1 0.5 9023 77.8 LSNet-S* 16.1 0.5 9023 79.0
+
+EdgeViT-XS [64] 6.7 1.1 2751 77.5 SwiftFormer-S* [72] 6.1 1.0 3376 78.5 UniRepLKNet-F [16] 6.2 0.9 3209 78.6 FastViT-T12 [80] 6.8 1.4 2586 79.1 EFormer-L1* [46] 12.3 1.3 3280 79.2 EdgeNeXt-S [59] 5.6 1.3 2128 79.4 RepViT-M1.1 [85] 8.2 1.3 3604 79.4 PVT-Small [88] 24.5 3.8 1160 79.8 AFFNet [36] 5.5 1.5 1355 79.8 LSNet-B 23.2 1.3 3996 80.3 LSNet-B* 23.2 1.3 3996 81.6
+
+icantly by 0.8% and 1.6% top-1 accuracies, respectively, along with higher throughput. Compared with StarNet-S1 and EfficientViT-M3, LSNet-T also improves the top-1 accuracy by 1.4% and 1.5%, respectively. These results well show the effectiveness and efficiency of our LSNet models.
+
+#### 4.2. Downstream Tasks
+
+Object Detection and Instance Segmentation. We evaluate LSNet on object detection and instance segmentation tasks to verify its transferability. Following [51, 64], we integrate LSNet into RetinaNet [50] and Mask R-CNN [27] and conduct experiments on COCO-2017 [49]. As shown in Tab. 2, our LSNet consistently shows superior performance compared with competitor models. Specifically, in
+
+the RetinaNet framework for object detection, LSNet-T outperforms StarNet-S1 by 0.6 AP and 1.3 AP50 under notably less computational cost. For large models, our LSNet-B also surpasses PoolFormer-S12 and PVT-Tiny with considerable margins of 3.0 AP and 2.5 AP, respectively. When integrated into the Mask R-CNN framework for object detection and instance segmentation, LSNet-S obtains the favorable improvements of 0.5 APb and 2.5 APb over SHViT-S3 and EfficientViT-M5, respectively. Compared with RepViTM1.1, LSNet-B also achieves 1.0 higher APb and 0.6 higher APm, demonstrating the superiority in transferring.
+
+Semantic Segmentation. We evaluate LSNet on the semantic segmentation task by conducting experiments on ADE20K [106]. Following [46, 64], we incorporate LSNet in the Semantic FPN [39] segmentation model. As shown in Tab. 3, LSNet performs clearly better in all comparisons across different model scales. It can achieve superior performance under low computational costs. Specifically, LSNet-T significantly outperforms VAN-B0 by 1.6 mIoU, and it also achieves 2.9 higher mIoU over PVTv2-B0. For larger models, LSNet-S obtains the improvements of 0.4 mIoU and 1.0 mIoU over the advanced RepViT-M1.1 and SHViT-S3, respectively, with lower computational complexity. Additionally, LSNet-B surpasses SwiftFormer-L1 and FastViT-SA24 by margins of 1.6 and 2.0 mIoUs respectively. These results further show the efficacy of LSNet.
+
+#### 4.3. Robustness Evaluation
+
+We conduct robustness evaluation for LSNet on various benchmarks, including ImageNet-C [28], ImageNet-A [30], ImageNet-R [29], and ImageNet-Sketch [87]. Following [53, 60, 80], we report mean corruption error (lower is better) for ImageNet-C and top-1 accuracies for other datasets. As shown in Table 4, LSNet shows strong domain generalization capabilities and promising robustness to corruptions, achieving state-of-the-art performance. For example, compared with UniRepLKNet-A, LSNet-B exhibits a 1.3 mCE reduction on ImageNet-C, along with top-1 accuracy gains of 1.2%, 1.5%, and 1.5% on ImageNet-A, ImageNet-R, and ImageNet-Sketch, respectively. LSNetT also outperforms StarNet-S1 significantly by 2.2% and
+
+- 3.7% on ImageNet-A and ImageNet-Sketch, respectively, highlighting the robust generalization ability.
+- 4.4. Model Analyses
+
+We conduct experiments to analyze the design elements in LSNet on ImageNet-1K. Following [23, 51], all models are trained for 100 epochs for limitations in training time and computation resource. LSNet-T is employed for analyses, with KL = 7, KS = 3 and C/G = 8, by default.
+
+Effectiveness of LS convolution. We analyze the effectiveness of our proposed LS convolution by first comparing it with “w/o LS conv.”, in which all LS convolutions are
+
+- Table 2. Object detection and instance segmentation results on COCO. APb and APm indicate bounding box AP and mask AP, respectively. Following common convention [80], FLOPs (G) of backbone is measured on image crops of 512×512.
+
+Backbone FLOPs
+
+RetinaNet Mask R-CNN
+
+AP AP50 AP75 APS APM APL APb APb50 APb75 APm APm50 APm75 MobileNetV2 [71] 1.6 28.3 46.7 29.3 14.8 30.7 38.1 29.6 48.3 31.5 27.2 45.2 28.6 MobileNetV3 [32] 1.1 29.9 49.3 30.8 14.9 33.3 41.1 29.2 48.6 30.3 27.1 45.5 28.2 FairNAS-C [9] 1.7 31.2 50.8 32.7 16.3 34.4 42.3 31.8 51.2 33.8 29.4 48.3 31.0 EfficientViT-M4 [51] 1.6 32.7 52.2 34.1 17.6 35.3 46.0 32.8 54.4 34.5 31.0 51.2 32.2 StarNet-S1 [58] 2.2 33.6 53.3 35.1 18.3 36.0 47.0 33.8 56.1 35.5 31.9 52.9 33.4 LSNet-T 1.5 34.2 54.6 35.2 17.8 37.1 48.5 35.0 57.0 37.3 32.7 53.8 34.3
+
+ResNet18 [26] 9.5 31.8 49.6 33.6 16.3 34.3 43.2 34.0 54.0 36.7 31.2 51.0 32.7 DFvT-T [22] 6.9 - - - - - - 34.8 56.9 37.0 32.6 53.7 34.5 EfficientViT-M5 [51] 2.8 34.3 54.2 36.1 18.0 36.9 48.2 34.9 57.0 37.0 32.8 53.7 34.6 SHViT-S3 [98] 3.0 36.1 56.6 38.0 19.9 39.1 50.8 36.9 59.4 39.6 34.4 56.3 36.1 LSNet-S 2.6 36.7 57.2 38.6 20.0 39.7 51.8 37.4 59.9 39.8 34.8 56.8 36.6
+
+ResNet50 [26] 21.4 36.3 55.3 38.6 19.3 40.0 48.8 38.0 58.6 41.4 34.4 55.1 36.7 PVT-Tiny [88] 11.8 36.7 56.9 38.9 22.6 38.8 50.0 36.7 59.2 39.3 35.1 56.7 37.3 PoolFormer-S12 [97] 9.5 36.2 56.2 38.2 20.8 39.1 48.0 37.3 59.0 40.1 34.6 55.8 36.9 FasterNet-S [5] 23.8 - - - - - - 39.9 61.2 43.6 36.9 58.1 39.7 FastViT-SA12 [80] 7.7 - - - - - - 38.9 60.5 42.2 35.9 57.6 38.1 RepViT-M1.1 [85] 7.0 - - - - - - 39.8 61.9 43.5 37.2 58.8 40.1 LSNet-B 6.2 39.2 60.0 41.5 22.1 43.0 52.9 40.8 63.4 44.0 37.8 60.5 40.1
+
+- Table 3. Semantic segmentation on ADE20K. Following [80], FLOPs (G) of backbone are measured on image crops of 512×512.
+
+Table 4. Robustness evaluation results on benchmark datasets, where we report mCE for ImageNet-C and top-1 accuracies for ImageNet-A, ImageNet-R, and ImageNet-Sketch.
+
+Backbone FLOPs mIoU
+
+Backbone FLOPs mIoU
+
+Model FLOPs C (↓) A R SK
+
+StarNet-S1 2.2 36.0 MobileNetV3 1.1 37.0 PVTv2-B0 3.8 37.2 VAN-B0 4.5 38.5 LSNet-T 1.5 40.1
+
+EFormer-L1 6.8 38.9 PVT-Small 23.1 39.8 PoolFormer-S24 17.8 40.3 FastViT-SA24 15.0 41.0 EdgeViT-XS 6.3 41.4 SwiftFormer-L1 8.3 41.4 Swin-T 25.6 41.5 EFormerV2-S2 7.3 42.4 PVTv2-B1 12.8 42.5 LSNet-B 6.2 43.0
+
+FasterNet-T0 [5] 0.3 89.8 2.3 28.6 16.3 EdgeNeXt-XXS [59] 0.3 94.6 3.6 29.5 18.5 EfficientViT-M3 [51] 0.3 71.1 5.2 36.1 23.4 StarNet-S1 [58] 0.4 77.5 4.5 34.1 21.8 LSNet-T 0.3 68.2 6.7 38.5 25.5
+
+EdgeViT-XXS 3.2 39.7 SHViT-S3 3.0 40.0 FastViT-SA12 7.7 38.0 RepViT-M1.1 7.0 40.6 LSNet-S 2.6 41.0
+
+FastViT-T8 [80] 0.7 72.1 6.9 36.8 25.5
+
+- PVTv2-B0 [89] 0.6 75.4 4.2 34.2 21.5 EdgeNeXt-XS [59] 0.5 88.4 6.3 32.5 22.0 UniRepLKNet-A [16] 0.6 67.0 8.4 37.9 26.0 LSNet-S 0.5 65.7 9.6 39.4 27.5
+
+PVT-Tiny [88] 1.9 79.6 7.9 33.9 21.5 PoolFormer-S12 [97] 1.8 67.7 6.9 37.7 25.2 FasterNet-T2 [5] 1.9 70.8 8.7 40.5 27.2 EdgeNeXt-S [59] 1.3 72.1 11.9 40.1 28.8
+
+- PVTv2-B1 [89] 2.1 62.2 14.6 41.8 28.9 FastViT-T12 [80] 1.4 64.3 14.0 39.9 27.6 LSNet-B 1.3 59.3 17.3 43.1 30.7
+
+replaced with identity functions. As shown in Tab. 5, our LS convolution improves 2.3% top-1 accuracy with only 0.02G FLOPs increase compared with “w/o LS conv.”. Furthermore, we compare our LS convolution with other effective token mixing methods by directly replacing all LS convolutions with others. As shown in Tab. 5, LS convolution achieves superior performance with low computational costs. By employing other methods, the top-1 accuracy consistently decreases. Compared with (S)W-SA [52], SDTA [59], and LSRA [89], LS convolution obtains improvements of 0.8%, 1.0%, and 1.1% top-1 accuracies, respectively, with fewer FLOPs. Besides, LS convolution outperforms RepMixer [80] and CGA [51] by 1.9% and 1.1% top-1 accuracies, respectively. Meanwhile, we compare our LS convolution with other dynamic convolutions by simply replacing the LS convolution. As shown in Tab. 6, thanks
+
+to incorporating large-field perception and small-field aggregation, LS convolution exhibits superiority in terms of accuracy and efficiency compared with other methods. For example, LS convolution surpasses CondConv [94] and DYConv [6] by considerable margins of 1.8% and 1.6% top-1 accuracies, respectively, well showing the effectiveness.
+
+Importance of large-kernel perception. We verify the effect of large-kernel perception (LKP) by first comparing
+
+Table 5. Superiority of LS conv.
+
+##### Table 6. Comparing other conv.
+
+FLOPs Top-1
+
+w/o LS conv. 0.29 69.3 LS conv. 0.31 71.6 (S)W-SA [52] 0.36 70.8 SDTA [59] 0.37 70.6 LSRA [89] 0.37 70.5 RepMixer [80] 0.29 69.7 CGA [51] 0.32 70.5 AFF [36] 0.30 69.5
+
+FLOPs Top-1
+
+LS conv. 0.31 71.6 CondConv [94] 0.29 69.8 DY-Conv [6] 0.29 70.0 Involution [43] 0.31 70.3 DCD [44] 0.29 69.8 CoT [45] 0.37 71.1 ODConv [42] 0.29 70.0
+
+Table 7. LKP and SKA.
+
+FLOPs Top-1
+
+LSNet-T 0.31 71.6 w/o LKP 0.31 70.5 KL = 3 0.31 70.9 KL = 5 0.31 71.2 KL = 9 0.32 71.5 w/o SKA 0.31 70.1 KS = 1 0.30 69.6 KS = 5 0.34 71.6
+
+##### Table 8. Other designs.
+
+FLOPs Top-1
+
+LSNet-T 0.31 71.6 C/G = 1 0.38 71.7 C/G = 4 0.33 71.6 C/G = 16 0.31 71.3 C/G = 32 0.31 70.9 w/o DW 0.31 71.1 w/o SE 0.31 71.3
+
+it with “w/o LKP”, in which we remove the large-kernel depth-wise convolution in the LKP. As shown in Tab. 7, we can observe that the top-1 accuracy is significantly reduced by 1.1% in the absence of the large-field perception. We further investigate the impact of the large-kernel size, i.e., KL, in the LKP. As shown in Tab. 7, the model performance continues to increase as the kernel size grows larger, showing the benefit of capturing contextual information with a large receptive field. Besides, the top-1 accuracy reaches a saturation point around a kernel size of 7, which is similar to the observations in previous works [53].
+
+Importance of small-kernel aggregation. We show the importance of small-kernel aggregation (SKA) by first comparing it with “w/o SKA”, in which we leverage a static depth-wise convolution with the kernel size of KS × KS to directly process the outcome of LKP as the output. Note that “w/o SKA” is the combination of large-kernel and small-kernel convolutions. Tab. 7 presents the comparison results. We can observe that our LS convolution significantly outperforms “w/o SKA” by 1.5% top-1 accuracy. It highlights the superiority of our LS convolution over the simple combination of large-kernel and small-kernel convolutions. Additionally, we inspect the impact of the contextual scope of aggregation, i.e., NKS
+
+(xi), by adopting different KS in the SKA. As shown in Tab. 7, we can achieve the optimal trade-off between accuracy and computational costs under the KS of 3. It demonstrates the efficacy of adaptive aggregation in highly related surroundings.
+
+Impact of the number of groups. We inspect the impact of different numbers of groups, i.e., G, in LS conv. As G increases, the number of channels with shared aggregation weights, i.e., GC, decreases, with higher computational
+
+Table 9. Generalization ability of LS convolution on other architectures. We simply replace 3×3 convolution and self-attention with LS convolution for ResNet and DeiT, respectively.
+
+Model LS conv. FLOPs (G) Top-1 (%)
+
+ResNet50 × 4.1 78.8 ResNet50 ✓ 2.6 80.7
+
+DeiT-T × 1.3 72.2 DeiT-T ✓ 0.9 73.0
+
+costs. As shown in Tab. 8, as CG increases from 1 to 32, the top-1 accuracy decreases from 71.7% to 70.9%, along with
+
+the reduced computation complexity. It shows the benefit of performing different aggregation ways for varying channels, due to that they usually encode different representation subspaces and diverse semantic attributes [1]. Besides, we can observe that CG = 8 achieves the best balance.
+
+Impact of extra DW and SE layers. We verify the effect of the extra depth-wise convolution and SE layer by removing them separately, which are denoted as “w/o DW” and “w/o SE”, respectively. In Tab. 8, they decrease the top-1 accuracy by 0.5% and 0.3%, respectively, showing the efficacy of introducing more local structural information.
+
+Generalization of LS convolution to other architectures. We show the generalization of LS convolution by transferring it to other vision networks. Specifically, we conduct experiments on two widely recognized architectures, i.e., ResNet [26] and DeiT [78], by simply replacing their all 3×3 convolution, and self-attention with LS convolution, respectively. All models are trained under the same settings for 300 epochs. As shown in Tab. 9, incorporating LS convolution into ResNet50, and DeiT-T significantly improves their top-1 accuracies by 1.9%, and 0.8%, respectively, which showcases its good generalization capability.
+
+### 5. Conclusion
+
+In this work, we present LSNet, a novel family of lightweight vision networks that integrates the “See Large, Focus Small” strategy inspired by the human vision system. LSNet incorporates LS convolution, a new operation that combines large-kernel perception and small-kernel aggregation, enabling efficient and accurate processing of visual information. Extensive experiments demonstrate that LSNet achieves state-of-the-art performance and efficiency trade-offs. It shows the superiority over others across diverse tasks. We hope that LSNet can serve as a strong baseline and inspire further advancements in the development of lightweight and efficient vision networks.
+
+### 6. Acknowledgments
+
+This work was supported by Beijing Natural Science Foundation (Nos. L223023, L247026), National Natural Science Foundation of China (Nos. 62271281, 62441235,
+
+62021002), and the Key R & D Program of Xinjiang, China (2022B01006).
+
+### References
+
+- [1] David Bau, Jun-Yan Zhu, Hendrik Strobelt, Agata Lapedriza, Bolei Zhou, and Antonio Torralba. Understanding the role of individual units in a deep neural network. Proceedings of the National Academy of Sciences, 117(48): 30071–30078, 2020. 8
+- [2] Daniel Bolya, Chong Zhou, Fanyi Xiao, and Yong Jae Lee. Yolact: Real-time instance segmentation. In Proceedings of the IEEE/CVF international conference on computer vision, pages 9157–9166, 2019. 3
+- [3] Hui Chen, Guiguang Ding, Zijia Lin, Sicheng Zhao, and Jungong Han. Show, observe and tell: Attribute-driven attention model for image captioning. In IJCAI, pages 606– 612, 2018. 1
+- [4] Hui Chen, Guiguang Ding, Xudong Liu, Zijia Lin, Ji Liu, and Jungong Han. Imram: Iterative matching with recurrent attention memory for cross-modal image-text retrieval. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 12655–12663, 2020. 1
+- [5] Jierun Chen, Shiu-hong Kao, Hao He, Weipeng Zhuo, Song Wen, Chul-Ho Lee, and S-H Gary Chan. Run, don’t walk: Chasing higher flops for faster neural networks. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 12021–12031, 2023. 6, 7
+- [6] Yinpeng Chen, Xiyang Dai, Mengchen Liu, Dongdong Chen, Lu Yuan, and Zicheng Liu. Dynamic convolution: Attention over convolution kernels. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 11030–11039, 2020. 7, 8
+- [7] Yinpeng Chen, Xiyang Dai, Dongdong Chen, Mengchen Liu, Xiaoyi Dong, Lu Yuan, and Zicheng Liu. Mobileformer: Bridging mobilenet and transformer. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 5270–5279, 2022. 1
+- [8] Fran¸cois Chollet. Xception: Deep learning with depthwise separable convolutions. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 1251–1258, 2017. 3
+- [9] Xiangxiang Chu, Bo Zhang, and Ruijun Xu. Fairnas: Rethinking evaluation fairness of weight sharing neural architecture search. In Proceedings of the IEEE/CVF International Conference on computer vision, pages 12239–12248,
+
+2021. 7
+
+- [10] Ekin D Cubuk, Barret Zoph, Jonathon Shlens, and Quoc V Le. Randaugment: Practical automated data augmentation with a reduced search space. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition workshops, pages 702–703, 2020. 13
+- [11] Zihang Dai, Hanxiao Liu, Quoc V Le, and Mingxing Tan. Coatnet: Marrying convolution and attention for all data sizes. Advances in neural information processing systems, 34:3965–3977, 2021. 5
+
+- [12] Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li Fei-Fei. Imagenet: A large-scale hierarchical image database. In 2009 IEEE conference on computer vision and pattern recognition, pages 248–255. Ieee, 2009. 2, 5, 13, 17
+- [13] Xiaohan Ding, Yuchen Guo, Guiguang Ding, and Jungong Han. Acnet: Strengthening the kernel skeletons for powerful cnn via asymmetric convolution blocks. In Proceedings of the IEEE/CVF international conference on computer vision, pages 1911–1920, 2019. 3
+- [14] Xiaohan Ding, Xiangyu Zhang, Ningning Ma, Jungong Han, Guiguang Ding, and Jian Sun. Repvgg: Making vggstyle convnets great again. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 13733–13742, 2021. 3, 5
+- [15] Xiaohan Ding, Xiangyu Zhang, Jungong Han, and Guiguang Ding. Scaling up your kernels to 31x31: Revisiting large kernel design in cnns. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 11963–11975, 2022. 14
+- [16] Xiaohan Ding, Yiyuan Zhang, Yixiao Ge, Sijie Zhao, Lin Song, Xiangyu Yue, and Ying Shan. Unireplknet: A universal perception large-kernel convnet for audio video point cloud time-series and image recognition. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 5513–5524, 2024. 6, 7
+- [17] Zixuan Ding, Ao Wang, Hui Chen, Qiang Zhang, Pengzhang Liu, Yongjun Bao, Weipeng Yan, and Jungong Han. Exploring structured semantic prior for multi label recognition with incomplete labels. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 3398–3407, 2023. 3
+- [18] Chao Dong, Chen Change Loy, Kaiming He, and Xiaoou Tang. Image super-resolution using deep convolutional networks. IEEE transactions on pattern analysis and machine intelligence, 38(2):295–307, 2015. 3
+- [19] Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, et al. An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929, 2020. 1, 3
+- [20] Patrick Esser, Robin Rombach, and Bjorn Ommer. Taming transformers for high-resolution image synthesis. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 12873–12883, 2021. 3
+- [21] Qihang Fan, Huaibo Huang, Xiaoqiang Zhou, and Ran He. Lightweight vision transformer with bidirectional interaction. Advances in Neural Information Processing Systems, 36, 2024. 1, 3
+- [22] Li Gao, Dong Nie, Bo Li, and Xiaofeng Ren. Doubly-fused vit: Fuse information from vision transformer doubly with local representation. In European Conference on Computer Vision, pages 744–761. Springer, 2022. 7
+- [23] Benjamin Graham, Alaaeldin El-Nouby, Hugo Touvron, Pierre Stock, Armand Joulin, Herv´e J´egou, and Matthijs Douze. Levit: a vision transformer in convnet’s clothing for
+
+- faster inference. In Proceedings of the IEEE/CVF international conference on computer vision, pages 12259–12269, 2021. 5, 6
+- [24] Kai Han, Yunhe Wang, Hanting Chen, Xinghao Chen, Jianyuan Guo, Zhenhua Liu, Yehui Tang, An Xiao, Chunjing Xu, Yixing Xu, et al. A survey on vision transformer. IEEE transactions on pattern analysis and machine intelligence, 45(1):87–110, 2022. 1
+- [25] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Spatial pyramid pooling in deep convolutional networks for visual recognition. IEEE transactions on pattern analysis and machine intelligence, 37(9):1904–1916, 2015. 1
+- [26] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 770–778, 2016. 1, 7, 8, 13
+- [27] Kaiming He, Georgia Gkioxari, Piotr Doll´ar, and Ross Girshick. Mask r-cnn. In Proceedings of the IEEE international conference on computer vision, pages 2961–2969,
+
+2017. 6, 16
+
+- [28] Dan Hendrycks and Thomas Dietterich. Benchmarking neural network robustness to common corruptions and perturbations. arXiv preprint arXiv:1903.12261, 2019. 6, 13
+- [29] Dan Hendrycks, Steven Basart, Norman Mu, Saurav Kadavath, Frank Wang, Evan Dorundo, Rahul Desai, Tyler Zhu, Samyak Parajuli, Mike Guo, et al. The many faces of robustness: A critical analysis of out-of-distribution generalization. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 8340–8349, 2021. 6, 13
+- [30] Dan Hendrycks, Kevin Zhao, Steven Basart, Jacob Steinhardt, and Dawn Song. Natural adversarial examples. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 15262–15271, 2021. 6, 13
+- [31] Qibin Hou, Cheng-Ze Lu, Ming-Ming Cheng, and Jiashi Feng. Conv2former: A simple transformer-style convnet for visual recognition. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2024. 1
+- [32] Andrew Howard, Mark Sandler, Grace Chu, Liang-Chieh Chen, Bo Chen, Mingxing Tan, Weijun Wang, Yukun Zhu, Ruoming Pang, Vijay Vasudevan, et al. Searching for mobilenetv3. In Proceedings of the IEEE/CVF international conference on computer vision, pages 1314–1324, 2019. 3, 6, 7
+- [33] Andrew G Howard, Menglong Zhu, Bo Chen, Dmitry Kalenichenko, Weijun Wang, Tobias Weyand, Marco Andreetto, and Hartwig Adam. Mobilenets: Efficient convolutional neural networks for mobile vision applications. arXiv preprint arXiv:1704.04861, 2017. 3
+- [34] Jie Hu, Li Shen, and Gang Sun. Squeeze-and-excitation networks. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 7132–7141,
+
+2018. 5
+
+- [35] Tao Huang, Lang Huang, Shan You, Fei Wang, Chen Qian, and Chang Xu. Lightvit: Towards light-weight convolutionfree vision transformers. arXiv preprint arXiv:2207.05557,
+
+- [36] Zhipeng Huang, Zhizheng Zhang, Cuiling Lan, Zheng-Jun Zha, Yan Lu, and Baining Guo. Adaptive frequency filters as efficient global token mixers. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 6049–6059, 2023. 1, 3, 5, 6, 8, 13
+- [37] Jost B. Jonas, Ulrike Schneider, and Gottfried O. H. Naumann. Count and density of human retinal photoreceptors. Graefe’s Archive for Clinical and Experimental Ophthalmology, 230(6):505–510, 1992. 2
+- [38] Jeong-Sik Kim and Seung-Woo Lee. Peripheral dimming: A new low-power technology for oled display based on gaze tracking. IEEE Access, 8:209064–209073, 2020. 2
+- [39] Alexander Kirillov, Ross Girshick, Kaiming He, and Piotr Doll´ar. Panoptic feature pyramid networks. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 6399–6408, 2019. 6, 16
+- [40] Alex Krizhevsky, Ilya Sutskever, and Geoffrey E Hinton. Imagenet classification with deep convolutional neural networks. Advances in neural information processing systems, 25, 2012. 1
+- [41] Yann LeCun, L´eon Bottou, Yoshua Bengio, and Patrick Haffner. Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11):2278–2324,
+
+1998. 1
+
+- [42] Chao Li, Aojun Zhou, and Anbang Yao. Omni-dimensional dynamic convolution. arXiv preprint arXiv:2209.07947,
+
+2022. 8
+
+- [43] Duo Li, Jie Hu, Changhu Wang, Xiangtai Li, Qi She, Lei Zhu, Tong Zhang, and Qifeng Chen. Involution: Inverting the inherence of convolution for visual recognition. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 12321–12330, 2021. 3, 8, 14
+- [44] Yunsheng Li, Yinpeng Chen, Xiyang Dai, Mengchen Liu, Dongdong Chen, Ye Yu, Lu Yuan, Zicheng Liu, Mei Chen, and Nuno Vasconcelos. Revisiting dynamic convolution via matrix decomposition. arXiv preprint arXiv:2103.08756,
+
+2021. 8
+
+- [45] Yehao Li, Ting Yao, Yingwei Pan, and Tao Mei. Contextual transformer networks for visual recognition. IEEE Transactions on Pattern Analysis and Machine Intelligence, 45
+
+(2):1489–1500, 2022. 8
+
+- [46] Yanyu Li, Geng Yuan, Yang Wen, Ju Hu, Georgios Evangelidis, Sergey Tulyakov, Yanzhi Wang, and Jian Ren. Efficientformer: Vision transformers at mobilenet speed. Advances in Neural Information Processing Systems, 35: 12934–12949, 2022. 1, 3, 6, 13
+- [47] Yanyu Li, Ju Hu, Yang Wen, Georgios Evangelidis, Kamyar Salahi, Yanzhi Wang, Sergey Tulyakov, and Jian Ren. Rethinking vision transformers for mobilenet size and speed. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 16889–16900, 2023. 6, 13
+- [48] Youwei Liang, Chongjian Ge, Zhan Tong, Yibing Song, Jue Wang, and Pengtao Xie. Not all patches are what you need: Expediting vision transformers via token reorganizations. arXiv preprint arXiv:2202.07800, 2022. 1, 3
+- [49] Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays, Pietro Perona, Deva Ramanan, Piotr Doll´ar, and
+
+- C Lawrence Zitnick. Microsoft coco: Common objects in context. In Computer Vision–ECCV 2014: 13th European Conference, Zurich, Switzerland, September 6-12, 2014, Proceedings, Part V 13, pages 740–755. Springer, 2014. 2, 6, 13, 16
+- [50] Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Doll´ar. Focal loss for dense object detection. In Proceedings of the IEEE international conference on computer vision, pages 2980–2988, 2017. 6
+- [51] Xinyu Liu, Houwen Peng, Ningxin Zheng, Yuqing Yang, Han Hu, and Yixuan Yuan. Efficientvit: Memory efficient vision transformer with cascaded group attention. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 14420–14430, 2023. 1, 3, 5, 6, 7, 8, 13, 14
+- [52] Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, and Baining Guo. Swin transformer: Hierarchical vision transformer using shifted windows. In Proceedings of the IEEE/CVF international conference on computer vision, pages 10012–10022, 2021. 1, 7, 8
+- [53] Zhuang Liu, Hanzi Mao, Chao-Yuan Wu, Christoph Feichtenhofer, Trevor Darrell, and Saining Xie. A convnet for the 2020s. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 11976– 11986, 2022. 1, 5, 6, 8, 13
+- [54] Jonathan Long, Evan Shelhamer, and Trevor Darrell. Fully convolutional networks for semantic segmentation. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 3431–3440, 2015. 3
+- [55] Ilya Loshchilov and Frank Hutter. Decoupled weight decay regularization. arXiv preprint arXiv:1711.05101, 2017. 13
+- [56] Wenjie Luo, Yujia Li, Raquel Urtasun, and Richard Zemel. Understanding the effective receptive field in deep convolutional neural networks. Advances in neural information processing systems, 29, 2016. 14
+- [57] Ningning Ma, Xiangyu Zhang, Hai-Tao Zheng, and Jian Sun. Shufflenet v2: Practical guidelines for efficient cnn architecture design. In Proceedings of the European conference on computer vision (ECCV), pages 116–131, 2018. 3, 6
+- [58] Xu Ma, Xiyang Dai, Yue Bai, Yizhou Wang, and Yun Fu. Rewrite the stars. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 5694–5703, 2024. 6, 7
+- [59] Muhammad Maaz, Abdelrahman Shaker, Hisham Cholakkal, Salman Khan, Syed Waqas Zamir, Rao Muhammad Anwer, and Fahad Shahbaz Khan. Edgenext: efficiently amalgamated cnn-transformer architecture for mobile vision applications. In European Conference on Computer Vision, pages 3–20. Springer, 2022. 1, 3, 6, 7, 8
+- [60] Xiaofeng Mao, Gege Qi, Yuefeng Chen, Xiaodan Li, Ranjie Duan, Shaokai Ye, Yuan He, and Hui Xue. Towards robust vision transformer. In Proceedings of the IEEE/CVF conference on Computer Vision and Pattern Recognition, pages 12042–12051, 2022. 6, 13
+- [61] Sachin Mehta and Mohammad Rastegari. Mobilevit: lightweight, general-purpose, and mobile-friendly vision transformer. arXiv preprint arXiv:2110.02178, 2021. 1, 3, 5
+
+- [62] Sachin Mehta and Mohammad Rastegari. Separable selfattention for mobile vision transformers. arXiv preprint arXiv:2206.02680, 2022. 3
+- [63] G. Østerberg. Topography of the Layer of Rods and Cones in the Human Retina. A. Busck, 1935. 2, 4
+- [64] Junting Pan, Adrian Bulat, Fuwen Tan, Xiatian Zhu, Lukasz Dudziak, Hongsheng Li, Georgios Tzimiropoulos, and Brais Martinez. Edgevits: Competing light-weight cnns on mobile devices with vision transformers. In European Conference on Computer Vision, pages 294–311. Springer,
+
+2022. 1, 3, 5, 6, 13
+
+- [65] Chao Peng, Xiangyu Zhang, Gang Yu, Guiming Luo, and Jian Sun. Large kernel matters–improve semantic segmentation by global convolutional network. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 4353–4361, 2017. 3
+- [66] Dale Purves, George J Augustine, David Fitzpatrick, Lawrence C Katz, Anthony-Samuel LaMantia, James O McNamara, and S Mark Williams. Anatomical distribution of rods and cones. In Neuroscience. 2nd edition. Sinauer Associates, 2001. 2, 4
+- [67] Shengju Qian, Yi Zhu, Wenbo Li, Mu Li, and Jiaya Jia. What makes for good tokenizers in vision transformer? IEEE Transactions on Pattern Analysis and Machine Intelligence, 45(11):13011–13023, 2022. 1
+- [68] Ilija Radosavovic, Raj Prateek Kosaraju, Ross Girshick, Kaiming He, and Piotr Doll´ar. Designing network design spaces. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 10428– 10436, 2020. 6
+- [69] Yongming Rao, Wenliang Zhao, Benlin Liu, Jiwen Lu, Jie Zhou, and Cho-Jui Hsieh. Dynamicvit: Efficient vision transformers with dynamic token sparsification. Advances in neural information processing systems, 34: 13937–13949, 2021. 1, 3
+- [70] Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi. You only look once: Unified, real-time object detection. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 779–788, 2016. 3
+- [71] Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh Chen. Mobilenetv2: Inverted residuals and linear bottlenecks. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 4510–4520, 2018. 3, 7
+- [72] Abdelrahman Shaker, Muhammad Maaz, Hanoona Rasheed, Salman Khan, Ming-Hsuan Yang, and Fahad Shahbaz Khan. Swiftformer: Efficient additive attention for transformer-based real-time mobile vision applications. arXiv preprint arXiv:2303.15446, 2023. 6
+- [73] Emma E. M. Stewart, Matteo Valsecchi, and Alexander C. Sch¨utz. A review of interactions between peripheral and foveal vision. Journal of Vision, page 2, 2020. 2
+- [74] Weixuan Sun, Zhen Qin, Hui Deng, Jianyuan Wang, Yi Zhang, Kaihao Zhang, Nick Barnes, Stan Birchfield, Lingpeng Kong, and Yiran Zhong. Vicinity vision transformer. IEEE Transactions on Pattern Analysis and Machine Intelligence, 45(10):12635–12649, 2023. 1
+
+- [75] Mingxing Tan and Quoc Le. Efficientnet: Rethinking model scaling for convolutional neural networks. In International conference on machine learning, pages 6105–
+
+6114. PMLR, 2019. 3, 6
+
+- [76] Alexandra Tikidji-Hamburyan, Katja Reinhard, Riccardo Storchi, Johannes Dietter, Hartwig Seitter, Katherine E. Davis, Saad Idrees, Marion Mutter, Lauren Walmsley, Robert A. Bedford, Marius Ueffing, Petri Ala-Laurila, Timothy M. Brown, Robert J. Lucas, and Thomas A. M¨unch. Rods progressively escape saturation to drive visual responses in daylight conditions. Nature Communications, 8(1), 2017. 2, 4
+- [77] Ilya O Tolstikhin, Neil Houlsby, Alexander Kolesnikov, Lucas Beyer, Xiaohua Zhai, Thomas Unterthiner, Jessica Yung, Andreas Steiner, Daniel Keysers, Jakob Uszkoreit, et al. Mlp-mixer: An all-mlp architecture for vision. Advances in neural information processing systems, 34: 24261–24272, 2021. 1
+- [78] Hugo Touvron, Matthieu Cord, Matthijs Douze, Francisco Massa, Alexandre Sablayrolles, and Herv´e J´egou. Training data-efficient image transformers & distillation through attention. In International conference on machine learning, pages 10347–10357. PMLR, 2021. 1, 8
+- [79] Vipin Tyagi. Understanding digital image processing, 2018. 2
+- [80] Pavan Kumar Anasosalu Vasu, James Gabriel, Jeff Zhu, Oncel Tuzel, and Anurag Ranjan. Fastvit: A fast hybrid vision transformer using structural reparameterization. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 5785–5795, 2023. 1, 3, 5, 6, 7, 8, 13, 14
+- [81] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. Advances in neural information processing systems, 30, 2017. 1
+- [82] Brian A Wandell. Foundations of vision. Sinauer Associates, 1995. 2
+- [83] Ao Wang, Hui Chen, Zijia Lin, Zixuan Ding, Pengzhang Liu, Yongjun Bao, Weipeng Yan, and Guiguang Ding. Hierarchical prompt learning using clip for multi-label classification with single positive labels. In Proceedings of the 31st ACM International Conference on Multimedia, pages 5594–5604, 2023. 3
+- [84] Ao Wang, Hui Chen, Zijia Lin, Sicheng Zhao, Jungong Han, and Guiguang Ding. Cait: Triple-win compression towards high accuracy, fast inference, and favorable transferability for vits. arXiv preprint arXiv:2309.15755, 2023. 3
+- [85] Ao Wang, Hui Chen, Zijia Lin, Jungong Han, and Guiguang Ding. Repvit: Revisiting mobile cnn from vit perspective. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 15909–15920, 2024. 3, 6, 7
+- [86] Ao Wang, Hui Chen, Lihao Liu, Kai Chen, Zijia Lin, Jungong Han, and Guiguang Ding. Yolov10: Real-time endto-end object detection. arXiv preprint arXiv:2405.14458,
+
+- [87] Haohan Wang, Songwei Ge, Zachary Lipton, and Eric P Xing. Learning robust global representations by penalizing local predictive power. Advances in Neural Information Processing Systems, 32, 2019. 6, 13
+- [88] Wenhai Wang, Enze Xie, Xiang Li, Deng-Ping Fan, Kaitao Song, Ding Liang, Tong Lu, Ping Luo, and Ling Shao. Pyramid vision transformer: A versatile backbone for dense prediction without convolutions. In Proceedings of the IEEE/CVF international conference on computer vision, pages 568–578, 2021. 1, 6, 7
+- [89] Wenhai Wang, Enze Xie, Xiang Li, Deng-Ping Fan, Kaitao Song, Ding Liang, Tong Lu, Ping Luo, and Ling Shao. Pvt v2: Improved baselines with pyramid vision transformer. Computational Visual Media, 8(3):415–424, 2022. 3, 7, 8
+- [90] Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He. Non-local neural networks. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 7794–7803, 2018. 1
+- [91] E M Wells-Gray, S S Choi, A Bries, and N Doble. Variation in rod and cone density from the fovea to the mid-periphery in healthy human retinas using adaptive optics scanning laser ophthalmoscopy. Eye, 30(8):1135–1143, 2016. 2
+- [92] Yu-Huan Wu, Yun Liu, Xin Zhan, and Ming-Ming Cheng. P2t: Pyramid pooling transformer for scene understanding. IEEE transactions on pattern analysis and machine intelligence, 45(11):12760–12771, 2022. 1
+- [93] Tete Xiao, Mannat Singh, Eric Mintun, Trevor Darrell, Piotr Doll´ar, and Ross Girshick. Early convolutions help transformers see better. Advances in neural information processing systems, 34:30392–30400, 2021. 5
+- [94] Brandon Yang, Gabriel Bender, Quoc V Le, and Jiquan Ngiam. Condconv: Conditionally parameterized convolutions for efficient inference. Advances in neural information processing systems, 32, 2019. 3, 7, 8, 14
+- [95] Jianwei Yang, Chunyuan Li, Xiyang Dai, and Jianfeng Gao. Focal modulation networks. Advances in Neural Information Processing Systems, 35:4203–4217, 2022. 1
+- [96] Ting Yao, Yehao Li, Yingwei Pan, Yu Wang, Xiao-Ping Zhang, and Tao Mei. Dual vision transformer. IEEE transactions on pattern analysis and machine intelligence, 45
+
+(9):10870–10882, 2023. 1
+
+- [97] Weihao Yu, Mi Luo, Pan Zhou, Chenyang Si, Yichen Zhou, Xinchao Wang, Jiashi Feng, and Shuicheng Yan. Metaformer is actually what you need for vision. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 10819–10829, 2022. 1, 3, 6, 7, 13
+- [98] Seokju Yun and Youngmin Ro. Shvit: Single-head vision transformer with memory efficient macro design. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 5756–5767, 2024. 6, 7
+- [99] Sangdoo Yun, Dongyoon Han, Seong Joon Oh, Sanghyuk Chun, Junsuk Choe, and Youngjoon Yoo. Cutmix: Regularization strategy to train strong classifiers with localizable features. In Proceedings of the IEEE/CVF international conference on computer vision, pages 6023–6032, 2019. 13
+
+- [100] Hongyi Zhang, Moustapha Cisse, Yann N Dauphin, and David Lopez-Paz. mixup: Beyond empirical risk minimization. arXiv preprint arXiv:1710.09412, 2017. 13
+- [101] Haokui Zhang, Wenze Hu, and Xiaoyu Wang. Parc-net: Position aware circular convolution with merits from convnets and transformer. In European Conference on Computer Vision, pages 613–630. Springer, 2022. 3
+- [102] Qiming Zhang, Jing Zhang, Yufei Xu, and Dacheng Tao. Vision transformer with quadrangle attention. IEEE Transactions on Pattern Analysis and Machine Intelligence,
+
+2024. 1
+
+- [103] Wenqiang Zhang, Zilong Huang, Guozhong Luo, Tao Chen, Xinggang Wang, Wenyu Liu, Gang Yu, and Chunhua Shen. Topformer: Token pyramid transformer for mobile semantic segmentation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 12083–12093, 2022. 3
+- [104] Xiangyu Zhang, Xinyu Zhou, Mengxiao Lin, and Jian Sun. Shufflenet: An extremely efficient convolutional neural network for mobile devices. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 6848–6856, 2018. 3
+- [105] Zhun Zhong, Liang Zheng, Guoliang Kang, Shaozi Li, and Yi Yang. Random erasing data augmentation. In Proceedings of the AAAI conference on artificial intelligence, pages 13001–13008, 2020. 13
+- [106] Bolei Zhou, Hang Zhao, Xavier Puig, Sanja Fidler, Adela Barriuso, and Antonio Torralba. Scene parsing through ade20k dataset. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 633–641,
+
+2017. 2, 6, 13, 16
+
+### A. Implementation and Architectural Details
+
+- A.1. Implementation Details
+
+For image classification on ImageNet-1K [12], we adopt the same training recipe as [36, 51, 80]. Specifically, we employ the standard image size of 224×224 for both training and testing. All models are trained from scratch for 300 epochs. We use the AdamW optimizer [55] with a cosine learning rate scheduler. The initial learning rate is set to 4×10−3, and the total batch size is set to 2048. For data augmentation, we leverage mixup [100], RandAugment [10], CutMix [99], and random erasing [105], etc.
+
+- Tab. 10 provides the training details of LSNet. For object detection and instance segmentation on
+
+COCO-2017 [49], we employ the same training setting as [46, 51, 80]. Specifically, we utilize the AdamW optimizer and train the model for 12 epochs with a batch size of 16. The training resolution is 1333×800 and the initial learning rate is set to 2×10−4. The learning rate decays with a rate of 0.1 at the 8-th and 11-th epochs. We initialize the backbones with the pretrained ImageNet-1K weights.
+
+For semantic segmentation on ADE20K [106], following [47, 80], all models are trained for 40K iterations by the AdamW [55] optimizer with a batch size of 32. We adopt the poly learning rate schedule with the power of 0.9 and the initial learning rate of 2×10−4, like [47, 80]. We employ the training resolution of 512×512 and report the single scale testing results on the ADE20K validation set, as in [64, 97]. The backbone models are initialized with the pretrained weights on ImageNet-1K.
+
+For robustness evaluation, following [53, 60, 80], we employ the ImageNet-C [28], ImageNet-A [30], ImageNetR [29], and ImageNet-Sketch [87] benchmarks. Specifically, ImageNet-C consists of algorithmically generated corruptions that are applied to the ImageNet test set. ImageNet-A contains naturally occurring examples misclassified by ResNets [26]. ImageNet-R comprises natural renditions of object classes in ImageNet, incorporating various textures and image statistics. ImageNet-Sketch includes white and black sketches of all ImageNet classes, gathered through google image queries.
+
+A.2. Architectural Details
+
+- Tab. 11 presents the architectural details of LSNet variants, which are distinguished by the number of blocks and the number of channels within each stage.
+
+### B. More Comparisons
+
+We present more comparisons between LS convolution and others from mathematical perspectives. Specifically, for simply combining large-kernel with small-kernel convolutions, it follows the similar perception Pconv and aggregation Aconv processes as the standard convolution, i.e.,
+
+- Table 10. Training details on ImageNet-1K.
+
+Model LSNet-T/S/B optimizer AdamW batch size 2048
+
+training epochs 300
+
+LR schedule cosine learning rate 0.004
+
+warmup epochs 5
+
+weight decay 0.025/0.025/0.05 augmentation RandAug(9, 0.5) random erase 0.25 color jitter 0.4 mixup 0.8 cutmix 1.0
+
+gradient clip 0.02 label smooth 0.1
+
+- Table 11. Architectural details of LSNet variants.
+
+|Stage<br><br>|Resolution|Type<br><br>|Config|LSNet| | |
+|---|---|---|---|---|---|---|
+| | | | |T|S<br><br>|B|
+
+|stem|H 2 × W2<br><br>|Convolution|channels|16<br><br>|24<br><br>|32|
+|---|---|---|---|---|---|---|
+| |H 4 × W4<br><br>|Convolution<br><br>|channels|32<br><br>|48<br><br>|64|
+| |H 8 × W8<br><br>|Convolution|channels<br><br>|64|96<br><br>|128|
+|1|H 8 × W8<br><br>|LS Block|channels<br><br>|64|96<br><br>|128|
+| | | |blocks|0|1|4|
+|2|H 16 × W16<br><br>|LS Block<br><br>|channels<br><br>|128|192<br><br>|256|
+| | | |blocks|2<br><br>|2<br><br>|6|
+|3<br><br>|H 32 × W32<br><br>|LS Block<br><br>|channels|256<br><br>|320<br><br>|384|
+| | | |blocks|8|8<br><br>|8|
+|4<br><br>|H 64 × W64<br><br>|MSA Block<br><br>|channels<br><br>|384|448<br><br>|512|
+| | | |blocks<br><br>|10<br><br>|10<br><br>|10|
+
+leveraging relative positions for relationship modeling and static kernel weights for feature integration. However, compared with LS convolution, it suffers from the limited modeling capability due to the lack of adaptability for different contexts. In other dynamic ways, Involution [43] leverages MLP for perception Pinv to derive the aggregation weights conditioned on xi. Its aggregation Ainv then use the weights to convolve the features in NK(xi) with the process of yi = Ainv(Pinv(xi),NK(xi)) = MLP(xi) ⊛ NK(xi). Although the aggregation process is dynamic, its perception process is confined to xi, which leads to inadequate neighborhood relationship modeling compared with LS convolution. Additionally, CondConv [94] proposes per-example routing with global average pooling and MLP to linearly combining multiple convolution kernels for the aggregation weights in its perception Pcond. Its aggregation Acond then convolves the features in NK(xi) with the weights. Its process yi = Acond(Pcond(X),NK(xi)) can be formulated as yi = ( MLP(GAP(X)) · Wcond) ⊛ NK(xi). How-
+
+[Figure 27]
+
+[Figure 28]
+
+(a) RepMixer (Convolution) (b) CGA (Self-attention)
+
+[Figure 29]
+
+[Figure 30]
+
+(c) LS convolution (d) w/o LKP
+
+Figure 4. Visualization of the effective receptive field. Best viewed when zoomed in. (a) and (b) show that RepMixer and CGA exhibit unnatural patterns in the effective receptive field. (c) illustrates that LS convolution enables broad peripheral perception and central view focusing simultaneously. (d) shows that without LKP, LS convolution presents a smaller receptive field compared with (c), indicating the effectiveness of LKP.
+
+ever, unlike LS convolution, CondConv leverages exampledependent perception, which prevents distinct tokens to adapt to diverse contexts.
+
+### C. Qualitative Analyses
+
+#### C.1. Analyses for LS Convolution
+
+We present the visualization analyses to qualitatively show the effectiveness of LS convolution. Specifically, we employ the effective receptive field [15, 56] method to compare LS convolution with convolution and self-attention, based on LSNet-T. We introduce the state-of-the-art RepMixer [80] and CGA [51] as the representatives of convolution and self-attention, respectively. Besides, we simply replace all LS convolutions in the model with others. As shown in Fig. 4, RepMixer and CGA suffer from the unnatural patterns, caused by static convolution kernels and window-based self-attention, respectively. In contrast, LS convolution enjoys both central area focusing and extensive peripheral viewing, showing smooth visual processing. Meanwhile, compared with “w/o LKP” where the largekernel depth-wise convolution in the LKP is removed, LS convolution exhibits an enlarged effective receptive field. It is attributed to the ability of LKP to efficiently capture broad contextual information.
+
+Furthermore, we conduct visualization for the aggregation weights in LS convolution. Specifically, we obtain
+
+[Figure 31]
+
+[Figure 32]
+
+[Figure 33]
+
+[Figure 34]
+
+Input
+
+[Figure 35]
+
+[Figure 36]
+
+[Figure 37]
+
+[Figure 38]
+
+LS conv.
+
+[Figure 39]
+
+[Figure 40]
+
+[Figure 41]
+
+[Figure 42]
+
+w/o LKP
+
+- Figure 5. Visualization of the aggregation weights in LS convolution. The second row shows that the aggregation weights are well correlated with semantic relevant areas. The third row indicates that integrating LKP enables LS convolution to capture more precise visual patterns with improved contextual information.
+
+[Figure 43]
+
+[Figure 44]
+
+[Figure 45]
+
+Input LKP SKA Input LKP SKA
+
+[Figure 46]
+
+[Figure 47]
+
+[Figure 48]
+
+[Figure 49]
+
+[Figure 50]
+
+[Figure 51]
+
+[Figure 52]
+
+[Figure 53]
+
+[Figure 54]
+
+[Figure 55]
+
+[Figure 56]
+
+[Figure 57]
+
+[Figure 58]
+
+[Figure 59]
+
+[Figure 60]
+
+- Figure 6. Visualization of the feature maps of LKP and SKA. The second column in each part shows that LKP can encompass a broad view of the scene. The third column in each part indicates that based on LKP, SKA can further grasp more subtle features and detailed patterns.
+
+the cumulative value of the aggregation coefficients corresponding to each token in all aggregation processes it is involved in. We then visualize the average of the absolute values of all channels in the last layer at the third stage and perform upsampling for display. As shown in Fig. 5, the aggregation weights of SKA enjoy favorable interpretability.
+
+They effectively strengthen semantically relevant vision regions and accurately capture discriminative patterns in images. Besides, compared with “w/o LKP”, LS convolution exhibits more precise emphasis on important visual areas, showcasing the improved modeling of spatial relationships facilitated by LKP. Based on LKP and SKA, LS convolution
+
+[Figure 61]
+
+[Figure 62]
+
+[Figure 63]
+
+[Figure 64]
+
+[Figure 65]
+
+[Figure 66]
+
+[Figure 67]
+
+[Figure 68]
+
+Figure 7. Qualitative results for object detection and instance segmentation on COCO-2017 [49].
+
+[Figure 69]
+
+[Figure 70]
+
+[Figure 71]
+
+[Figure 72]
+
+[Figure 73]
+
+[Figure 74]
+
+[Figure 75]
+
+[Figure 76]
+
+[Figure 77]
+
+[Figure 78]
+
+Figure 8. Qualitative results for semantic segmentation on ADE20K [106]. The upper row shows the ground truth masks, and the lower row presents the predicted masks.
+
+can thus help the model to grasp the critical visual information under limited computational costs, enhancing both efficiency and effectiveness.
+
+Besides, we also visualize the feature maps generated by the LKP and SKA for more inspection. Specifically, we use the features after the large-kernel depth-wise convolution and the small-kernel dynamic convolution in the first stage for demonstration. As shown in Fig. 6, the feature maps produced by LKP exhibit a broad receptive field, capturing a wide range of contextual information in the scene. This characteristic is reminiscent of the human peripheral vision system, adept at sensing the general surroundings. On the other hand, based on LKP, SKA further demonstrates the ability to grasp finer details within the image. It can result in more subtle features like gradients of hairs and clear outlines. This behavior is analogous to the human central vision system, which excels at discerning fine details and high-resolution information. Thanks to them, LS convolu-
+
+tion can well help the model achieve the effective and efficient perception and aggregation processes.
+
+#### C.2. Analyses for Downstream Tasks
+
+We present the qualitative results when integrating LSNet into the Mask-RCNN framework [27] for object detection and instance segmentation tasks, and into the Semantic FPN framework [39] for the semantic segmentation task. As illustrated in Fig. 7, the model can achieve precise detection and segmentation of instances in diverse images. Besides, as shown in Fig. 8, the model demonstrates the ability to generate high-quality semantic segmentation masks.
+
+### D. Contribution, Limitation, and Impact
+
+Contribution. In summary, our contributions are threefold, as follows:
+
+1. We advocate a new strategy “See Large, Focus Small”, inspired by the human vision system, for lightweight and
+
+efficient network design. By encompassing a broad perceptual range with enriched contextual information, it facilitates focused feature aggregation, fostering detailed visual understanding.
+
+- 2. We propose LS convolution as a novel operation for modeling visual features in lightweight models. LS convolution integrates large-kernel perception and smallkernel aggregation, enabling proficient processing of visual information through both effective and efficient perception and aggregation processes.
+- 3. We present a new family of lightweight vision networks, namely LSNet, which is built on LS convolution. Extensive experiments demonstrate that LSNet achieves the state-of-the-art performance and efficiency tradeoffs compared with other lightweight networks across a broad range of vision tasks. Limitation. Due to the limited computational resources,
+
+we do not extend the application of our LSNet to other scenarios, such as visual-language tasks or unsupervised learning. We do not investigate the pretraining of LSNet on large-scale datasets, e.g., ImageNet-21K [12], due to the same reason. However, we are enthusiastic about exploring more applications for LSNet in the future.
+
+Societal Impact. We observe that this study is purely academic, and we have not identified any direct negative social impact resulting from our work. Nevertheless, we acknowledge the potential for malicious use of our models, which is a concern that affects the field. While we believe that it should be mitigated, discussions concerning this matter are beyond the scope of this paper.
+
