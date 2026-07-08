@@ -1,0 +1,1057 @@
+# arXiv:2604.20329v3[cs.CV]3Jun2026
+
+[Figure 1]
+
+2026-06-05
+
+## Image Generators are Generalist Vision Learners
+
+###### Valentin Gabeur★, Shangbang Long★, Songyou Peng★, Paul Voigtlaender∇, Shuyang Sun∇, Yanan Bao∇, Karen Truong∇, Zhicheng Wang∇, Wenlei Zhou∇, Jonathan T. Barron∇, Kyle Genova∇, Nithish Kannen∇, Sherry Ben∇, Yandong Li∇, Mandy Guo∇, Suhas Yogin∇, Yiming Gu†, Huizhong Chen†, Oliver Wang‡, Saining Xie‡, Howard Zhou‡, Kaiming He‡, Thomas Funkhouser‡, Jean-Baptiste Alayrac‡ and Radu Soricut‡
+
+★project leads and equal contributions, ∇core contributors, †project advisors, ‡leadership sponsors
+
+Recent works show that image and video generators exhibit zero-shot visual understanding behaviors, in a way reminiscent of how Large Language Models (LLMs) develop emergent capabilities of language understanding and reasoning from generative pretraining. While it has long been conjectured that the ability to create visual content implies an ability to understand it, there has been limited work demonstrating that generalist image generators can achieve state-of-the-art understanding capabilities on many different vision tasks. In this work, we demonstrate that image generation training serves a role similar to LLM pretraining, and lets models learn powerful and general visual representations that enable state-of-the-art performance on various vision tasks. We introduce Vision Banana, a generalist model built by instruction-tuning Nano Banana Pro (NBP) on a mixture of its original training data alongside a small amount of vision task data. By parameterizing the output space of vision tasks as RGB images, we seamlessly reframe perception as image generation. Our generalist model, Vision Banana, achieves state-of-the-art results on a variety of vision tasks involving both 2D and 3D understanding, beating or rivaling zero-shot domain-specialists, including Segment Anything Model 3 on segmentation tasks, and the Depth Anything series on metric depth estimation. We show that these results can be achieved with lightweight instruction-tuning without sacrificing the base model’s image generation capabilities. The superior results suggest that image generation pretraining is a generalist vision learner. It also shows that image generation serves as a unified and universal interface for vision tasks, similar to text generation’s role in language understanding and reasoning. We could be witnessing a major paradigm shift for computer vision, where generative vision pretraining takes a central role in building Foundational Vision Models for both generation and understanding.
+
+Project Page: vision-banana.github.io
+
+### 1. Introduction
+
+In recent years, advanced image and video generation models (Black Forest Labs, 2025; ByteDance, 2026; Google, 2025a,b; Luma, 2026; OpenAI, 2026) have demonstrated unprecedented generation capabilities, synthesizing highly complex, high-fidelity visual context with precise semantic control. This remarkable capability for visual creation suggests that these models possess a deep, internalized comprehension of the visual world’s underlying structures, semantics, and relationships. However, leading methods on visual representation learning in general do not belong to the family of generative modeling. Instead, they include supervised discriminative learning (Dehghani et al., 2023; Dosovitskiy et al., 2020; Krizhevsky et al., 2012), contrastive learning (Chen et al., 2020b,c; He et al., 2020; Radford et al., 2021; Tschannen et al., 2025; Zhai et al., 2023), bootstrapping (Caron et al., 2021; Grill et al., 2020), auto-encoding (Bao et al., 2021; Chen et al., 2024; He et al., 2022) among others, and their combinations (Cao et al., 2026; Oquab et al., 2023; Siméoni et al., 2025; Zhou et al., 2021). Early efforts in generative vision pretraining (Bai et al., 2024; Chen et al., 2020a) have shown promising scaling behaviors but their effectiveness has lagged behind non-generative models.
+
+Correspondence: vision-banana@google.com © 2026 Google. All rights reserved
+
+“Generate a segmentation / depth / surface normal / … visualization of this image, using the following color map…”
+
+“Change the weather to rainstorm”
+
+An image of a cat.
+
+[Figure 2]
+
+|[Figure 3]|
+|---|
+
+[Figure 4]
+
+[Figure 5]
+
+###### Vision Banana
+
+|[Figure 6]|
+|---|
+
+|[Figure 7]|
+|---|
+
+|[Figure 8]|
+|---|
+
+|[Figure 9]|
+|---|
+
+|[Figure 10]|
+|---|
+
+|[Figure 11]|
+|---|
+
+|[Figure 12]<br><br>[Figure 13]|
+|---|
+
+Depth Estimation
+
+Semantic Segmentation
+
+Surface Normal Estimation
+
+Instance Segmentation
+
+Referring Expression
+
+Image Editing
+
+Segmentation Vision Banana is a generalist vision model in both visual generation and understanding, surpassing or rivaling specialist models.
+
+Text-to-Image
+
+Retains general image generation capabilities.
+
+Generated images follow speciﬁc visualization schemes that can be decoded back to vision outputs for quantitative evaluation on standard benchmarks.
+
+- Figure 1 | We demonstrate the hidden visual understanding capabilities of image generators by instruction-tuning Nano Banana Pro. The instruction-tuned model, Vision Banana , can produce visualizations in a precise format that can enable evaluation on established benchmarks.
+
+[Figure 14]
+
+In this paper, we investigate whether visual generative models are secretly generalist vision learners, i.e., whether models trained for image generation develop internal representations that are suitable for visual understanding tasks. To achieve this, we finetune a pretrained image generator with a small amount of computer vision data (depth estimation, surface normal estimation, segmentation, etc.). We then evaluate the resulting model on a wide variety of vision benchmarks. If the finetuned model performs at or near SOTA on these benchmarks, while retaining its image generation capabilities, then there is strong evidence that the image generator was indeed a foundation model for visual understanding – i.e., a generalist vision learner.
+
+This is not the first paper to study the hidden understanding capabilities of generative models or use image and video generators as base models for visual understanding. Early research efforts show that generative models develop some understanding capabilities hidden in their features (Baranchuk et al., 2021; Bhattad et al., 2023; Chen et al., 2016; Clark and Jaini, 2023; Du et al., 2023; Hedlin et al., 2023; Hjelm et al., 2018; Li et al., 2023, 2024b; Mukhopadhyay et al., 2023; Ranzato et al., 2011; Tang et al., 2023; Yang and Wang, 2023; Zhang et al., 2023b; Zhao et al., 2023). More recent research observes that state-of-the-art image and video generators can generate visual content that look like RGB visualizations of computer vision outputs for tasks such as segmentation, depth estimation, and surface normal estimation (Wiedemer et al., 2025; Zuo et al., 2025). However, those methods do not provide state-of-the-art results on modern benchmarks. This is partially because these models do not strictly follow the prompts to produce vision outputs in the desired formats that can be decoded back to vision outputs for computing quantitative metrics. Other researchers (Garcia et al., 2025; He et al., 2024, 2025; Ke et al., 2024; Wang et al., 2026b; Wu et al., 2025; Xu et al.,
+
+- 2023; Ye et al., 2024; Yu et al., 2024; Zhao et al., 2025) adapt the generation architectures by adding specialized modules and performing full-finetuning to achieve SOTA-level results on specific target tasks. Although these methods successfully leverage the understanding capabilities of the pre-trained features, they sacrifice the model’s generality across other understanding and generation tasks.
+
+We take an approach motivated by recent advancements in large language models (LLMs). In natural language processing (NLP), generative pretraining (Brown et al., 2020; Chowdhery et al.,
+
+###### Capabilities Benchmarks and Metrics Vision Banana Best Counterpart
+
+[Figure 15]
+
+- 2D Understanding
+
+Referring segmentation: RefCOCOg UMD val (cIoU ↑) 73.8 73.4 (SAM3 Agent) Referring segmentation: ReasonSeg val (gIoU ↑) 79.3 77.0 (SAM3 Agent) Semantic segmentation: Cityscapes val (mIoU ↑) 69.9 65.2 (SAM3)
+
+Instance segmentation: SA-Co/Gold (𝑐𝑔𝐹1 ↑) 47.5 24.6 (OWLv2)
+
+- 3D Understanding
+
+Metric depth estimation: average of 4 datasets (𝛿1↑) 0.929 0.918 (Depth Anything 3)
+
+Surface normal estimation: average of 4 datasets (mean angle error ↓) 18.928 19.642 (Lotus-2) Visual Generation
+
+Text-to-image: GenAI-Bench (win rate against the other ↑) 53.5% 46.5% (Nano Banana Pro) Image editing: ImgEdit (win rate against the other ↑) 47.8% 52.2% (Nano Banana Pro)
+
+- Table 1 | The instruction-tuned Vision Banana model surpasses or rivals SOTA specialists across visual generation and understanding. For 2D visual understanding, it beats the highly specialized Segment Anything Model 3 (Carion et al., 2025) on 3 segmentation datasets, and outperforms OWLv2 (Minderer et al., 2023) on instance segmentation. For 3D visual understanding, it surpasses the best metric depth estimation expert, Depth Anything 3 (Lin et al., 2025), and the best surface normal estimation specialist, Lotus-2 (He et al., 2025). In visual generation, Vision Banana inherits its capabilities from Nano Banana Pro and is on par with it on text-to-image and image editing.
+
+- 2023) is performed to produce base models, often referred to as LLMs, that are good at generating text, whereas instruction-tuning (Ouyang et al., 2022; Wei et al., 2021) guides them to follow specific tasks and produce text in requested formats and stay on the task. Analogously, we position a visual generative model as a “base” model and perform instruction-tuning to align the model to produce visual output in desired formats, in accordance with the prompts, as illustrated in Fig. 1. Specifically, the model is instructed to produce RGB images that can be decoded to computer vision outputs. Such instruction prompts and decodable visualization schemes are designed to bridge and calibrate the visual generations to formats where measurable metrics for benchmarking can be applied. For example, by prompting the model to “Segment the skateboard category in pure yellow (<255, 255,
+
+- 0>)”, we can easily parse the mask for skateboard by clustering pixels whose values are close to <255, 255, 0>. This strategy has three main advantages. First, it supports a wide variety of tasks with a single unified model – after instruction tuning, the weights are shared among all tasks, and only the prompt changes. Second, it requires relatively little new training data, since the instruction tuning is solely teaching the model how to format computer vision outputs as RGB. Third, it helps the model retain its original image generation capabilities, since the outputs are simply new RGB images.
+
+We present Vision Banana , a generalist vision model trained by performing a lightweight instruction-tuning to Nano Banana Pro on a mixture of its original image generation data and our additional vision task data. During evaluation across several benchmarks, we find that Visual Banana excels at both visual understanding and generation, as summarized in Tab. 1. On the understanding side, Vision Banana surpasses or matches state-of-the-art results on both 2D and 3D tasks. For example, it beats the highly specialized segmentation model, SAM 3 (Carion et al., 2025), on various segmentation tasks, and the 3D expert, Depth Anything 3 (Lin et al., 2025), on metric depth estimation. On the generation side, it performs on par with its base model on image generation and editing benchmarks. On GenAI-Bench (Li et al., 2024a), Vision Banana scores a 53.5% win rate against its base model. On ImgEdit (Ye et al., 2025) for image editing, Vision Banana’s win rate is 47.8%. Since these results are achieved with a single unified model built by a lightweight instruction-tuning on its base model, there is strong evidence that Nano Banana Pro already possessed internal representations for visual understanding, which only needed to be unlocked with instruction tuning.
+
+[Figure 16]
+
+The implications of this study are two-fold. First, it suggests that image generators are indeed generalist vision learners under the hood, with generative vision pretraining playing a foundational role similar to language model pretraining. Second, it suggests that image generation can serve as a
+
+universal interface for unified visual understanding, mirroring the role of text generation in language understanding and reasoning. We could be witnessing a major paradigm shift for computer vision, where generative vision pretraining takes a central role in building Foundational Vision Models for both generation and understanding.
+
+### 2. Method
+
+Instruction-tuning Nano Banana Pro Recent image and video generators have demonstrated zero-shot capabilities in generating visualizations of visual understanding tasks (Wiedemer et al., 2025; Zuo et al., 2025). To rigorously investigate and benchmark these capabilities, we need to align the models to generate visualizations that can be decoded back to visual task outputs for quantitative evaluation. For example, in metric depth estimation, a generated depth heatmap must be invertible back to physical depth values for quantitative assessment. Therefore, we create Vision Banana by instruction-tuning our base model, Nano Banana Pro, on a selection of vision tasks formatted in such invertible manners. Specifically, we mix vision task data into Nano Banana Pro’s own training mixture at a very low ratio. This process allows us to align the model’s emergent generative representations into measurable physical geometry and semantic labels, allowing our single generalist model to be evaluated and compared against task-specific specialists.
+
+Mixing the vision data at a low ratio serves as a lightweight instruction-tuning strategy, ensuring that our vision task alignment does not degrade the model’s original generative priors. This strategy distinguishes our work from previous approaches that perform full fine-tuning on generative models without retaining the image generation data mixture (Gan et al., 2023; Ke et al., 2024; Zhao et al., 2025). We validate the preservation of image generation capabilities by benchmarking Vision Banana against the base Nano Banana Pro on two tasks: text-to-image generation (GenAI-Bench (Li et al., 2024a)) and image editing (ImgEdit (Ye et al., 2025)). In human evaluations, we obtain win rates of 53.5% and 47.8% respectively, indicating that Vision Banana successfully maintains the generative power of its base model. We provide a detailed discussion of these generative capabilities in section D. Qualitative comparisons in fig. 11 (text-to-image generation) and fig. 12 (image editing) in the appendix confirm that the outputs remain highly similar between Vision Banana and Nano Banana Pro. These results verify that Vision Banana does not forget its generative nature.
+
+Vision Tasks and Data. We evaluate our framework on two fundamental categories of visual understanding: 2D scene understanding and 3D structure inference. The 2D suite consists of referring expression, semantic, and instance segmentation, which collectively test the model’s capability to ground natural language and segment the corresponding objects. For 3D understanding, we focus on monocular metric depth and surface normal estimation, which demand geometric reasoning and internal knowledge about object scales. To collect data for instruction tuning, we utilize in-house model annotations for web-crawled 2D images, as well as synthetic data from rendering engines for 3D tasks. Crucially, no training data from our evaluation benchmarks is included in the instruction-tuning mixture, ensuring that our results reflect true generalist capability.
+
+### 3. Vision Banana - Generalist Vision Model from Image Generator
+
+In this section, we present qualitative and quantitative assessments compared to task-specific specialist models. Built upon an image generator, Vision Banana achieves SOTA-level results across a broad range of visual understanding tasks, without specialized architectures or custom training losses.
+
+Model mIoU ↑ Non Zero-Shot Transfer SegMan-L (Fu et al., 2025b) 84.2 Zero-Shot Transfer
+
+Model 𝑐𝑔𝐹1 ↑ IL_MCC ↑ 𝑝𝑚𝐹1 ↑ Non Zero-Shot Transfer
+
+SAM 3 (Carion et al., 2025) 54.1 0.82 66.1 SAM 3 (Carion et al., 2025) + Llama 3.2 (ft) 61.2 0.86 70.8
+
+Zero-Shot Transfer
+
+APE-D (Shen et al., 2024) 44.2 OpenSeeD (Zhang et al., 2023a) 47.8 X-Decoder (Zou et al., 2023) 52.0 SAM 3 (Carion et al., 2025) 65.2 Vision Banana 69.9
+
+gDino-T (Liu et al., 2024) 3.3 0.15 16.2 LLMDet-L (Fu et al., 2025a) 6.5 0.21 27.3 Gemini 2.5 (Gemini Team, 2025) 13.0 0.29 46.1 APE-D (Shen et al., 2024) 16.4 0.40 36.9 DINO-X (Ren et al., 2024) 21.3 0.38 55.2 OWLv2 (Minderer et al., 2023) 24.6 0.57 42.0 Vision Banana + Gemini 3.1 Flash-Lite 47.5 0.84 56.0
+
+- Table 2 | Semantic segmentation results on Cityscapes val.
+
+#### Table 3 | Instance segmentation results on SA-Co/Gold.
+
+Model cIoU ↑ Non Zero-Shot Transfer
+
+HyperSeg-Phi2-2.7B (Wei et al., 2024) 79.4 X-SAM-Phi3-3.8B (Wang et al., 2026a) 83.8
+
+Zero-Shot Transfer
+
+HybridGL (Liu and Li, 2025) 51.3 LocalizationHeads-LLaVA-1.5-13B (Kang et al., 2025) 67.7 SAM 3 (Carion et al., 2025) + Gemini 2.5 Pro 73.4 Vision Banana 73.8
+
+Table 4 | Referring expression segmentation results on RefCOCOg val (UMD).
+
+Model gIoU ↑ Non Zero-Shot Transfer
+
+X-SAM-Phi-3-3.8B (Wang et al., 2026a) 56.6 LISA-13B-LLaVA1.5 (Lai et al., 2024) 65.0
+
+Zero-Shot Transfer
+
+SegZero-Qwen2.5-VL-7B (Liu et al., 2025) 62.6 RSVP-GPT-4o (Lu et al., 2025) 64.7 SAM 3 (Carion et al., 2025) + Gemini 2.5 Pro 77.0 Vision Banana + Gemini 2.5 Pro 79.3
+
+Table 5 | Referring expression segmentation results on ReasonSeg val.
+
+- 3.1. 2D Semantic Understanding
+
+Image segmentation stands as a cornerstone of visual understanding, traditionally requiring complex, task-specific models to classify pixels into semantic categories or object instances. Current leading methods such as the Segment Anything series (Carion et al., 2025; Kirillov et al., 2023; Ravi et al.,
+
+- 2024) tackle this through heavy architectural specialization and large volumes of expensive, humanannotated mask data. Vision Banana challenges this prevailing paradigm by demonstrating that SOTA segmentation can naturally emerge from image generation pretraining. Rather than training on vast amounts of meticulously crafted segmentation examples, we tap into the rich representations learned by the base image generation model. By instructing the model to generate multi-colored images of segmentation masks, we obtain dense segmentation maps from which individual masks can be decoded, therefore enabling segmentation through image generation. As detailed in Tab. 2, 3, 4 and 5, this elegant generative approach outperforms highly tuned specialist models, achieving SOTA zero-shot transfer performance on all evaluated segmentation benchmarks. We compare with other methods that have not been trained on in-domain data, i.e., the training splits of these benchmarks. We denote them as “Zero-Shot Transfer” in the tables. The usage of this term follows Segment Anything (Kirillov et al., 2023) and CLIP (Radford et al., 2021). Non zero-shot transfer methods are marked in gray.
+
+Semantic Segmentation. Semantic segmentation involves classifying each pixel into a predefined category without distinguishing between individual instances. For example, the Cityscapes benchmark (Cordts et al., 2016) defines 19 classes, including road, person, and sky. While instance and referring expression segmentation also convey semantic information, we use the term “semantic segmentation”
+
+[Figure 17]
+
+- (a) Example 1 “Generateusingthiscolorasemanticmapping:segmentation{"cat": "red",visualization"lock": "pink",image,"exit
+
+[Figure 18]
+
+sign": "light purple", "background": yellow}.”
+
+[Figure 19]
+
+“Generate a visualization image of semantic segmentation, using this color mapping: {"cat ears": <255, 165, 0>, "exit sign": <0, 0, 255>, "background":<125,0, 125>}”
+
+[Figure 20]
+
+- (b) Example 2 “Thismacaronimagecakesisaareper-pixelrepresentedclasslabelingby(255,of255,the0).input.TheThe
+
+[Figure 21]
+
+round plates are represented by (255, 192, 128). The slice cakes are depicted in (64, 192, 64). The flowers are shown in (128, 0, 64). The tongs are (255, 0, 192).”
+
+[Figure 22]
+
+“Generate a semantic segmentation visualization of the input. The menu is #80C000. The dessert is #800000. The patterns on the wall is #40FFC0”
+
+- Figure 2 | Vision Banana can perform semantic segmentation, following the instruction prompts. It handles various prompting styles. It can also segment anything specified via text prompts, from single-word nouns to phrases. It is able to produce segmentation masks with fine details, such as the cat whiskers in Example 1 (middle).
+
+here strictly in this instance-agnostic, category-level sense. This nature of the classical semantic segmentation task can be specified via a text prompt, and we train the model to follow such instructions. We prompt the model to generate a visualization image where each pixel is colored according to its class, as shown in Fig. 2.
+
+Crucially, our approach is open-vocabulary: the target categories are not limited to a fixed set and can be specified dynamically in the prompt along with their corresponding color mappings. We support various prompting styles, including natural language descriptions (e.g., “the macaron cakes are represented by yellow”) and structured JSON mappings, with colors specified as named colors, hex codes, or RGB tuples. For quantitative evaluation, we post-process the generated image by assigning each pixel to the class whose target color is closest in the RGB space.
+
+We compare Vision Banana with existing methods on the Cityscapes validation set in table 2. During evaluation, we use the same text prompt for each example, providing the full class-to-color mapping for the 19 classes, including the ones not present in the image. As shown in table 2, Vision Banana outperforms SAM 3 by 4.7 points in mIoU and achieves the best performance among openvocabulary models, narrowing the gap with closed-set, non-zero-shot specialists like SegMan (Fu et al., 2025b).
+
+[Figure 23]
+
+- (a) Example 1 “Generateimage. Eachanpieceinstanceofgarlicsegmentationiscoloredvisualizationdifferently.” ofthis “Generateimage. Eachanpieceinstanceofbeefsegmentationiscoloreddifferently.”visualizationofthis
+
+[Figure 24]
+
+[Figure 25]
+
+[Figure 26]
+
+- (b) Example 2 “Generateimage. Eachanpriceinstancetagissegmentationcoloreddifferently.visualization” ofthis The“This"crescent"-shapedimageisasegmentationcroissanttaskinstancesderivedarefromeachtheinput.
+
+[Figure 27]
+
+[Figure 28]
+
+represented by a unique, solid color. Background is RGB(88, 50, 82).”
+
+[Figure 29]
+
+- (c) Example 3 “Thisfromtheimageinputshowsimage.segmentationThebackgroundmasksisforsetthetobasketballs#10aa05.
+
+[Figure 30]
+
+[Figure 31]
+
+“This image shows segmentation masks for the balls from the input image. The background is set to white color. Each ball is represented by a different color.”
+
+Each basketball instance is represented by a solid circular mask, and a different colora is used for each mask.”
+
+- Figure 3 | Vision Banana can perform instance segmentation, one class at a time. It renders different instances with different colors. It can understand nuanced language concepts as well.
+
+Instance Segmentation. Unlike semantic segmentation, instance segmentation requires the model to distinguish between individual objects that belong to the same class. For example, if an image contains five dogs, we expect the model to produce an individual mask for each animal. This poses a unique challenge for Vision Banana: since the number of instances is unknown a priori, we cannot assign specific colors in the prompt beforehand. To address this challenge, we prompt the model with only the target class and the background color, instructing it to assign a unique, distinct color to each individual instance. We let the model dynamically assign distinct colors to different instances of that class. Qualitative examples are shown in fig. 3. Individual instance masks can be extracted from the generated RGB images using a multi-stage clustering algorithm, detailed in section A of the appendix.
+
+We evaluate our model on the open-vocabulary noun-phrase (NP) instance segmentation benchmark SA-Co/Gold (Carion et al., 2025). We summarize the main results in table 3 and provide a comprehensive category breakdown in table 8, section B of the appendix. We also perform a qualitative
+
+evaluation in section C of the appendix. The SA-Co/Gold benchmark consists of 168k Image-NP pairs, where a large majority are negative queries (i.e., the target NP is absent from the image). While Vision Banana could theoretically handle these negative queries by generating a solid black image, we did not tune the model to generate such empty mask images. We instead defer the task of classifying the Image-NP pairs as positives or negatives to a MLLM. To do so, we prompt Gemini 3.1 Flash-Lite with “Is there an instance of <NP> visible in this image? Choose your answer from the following options: (A): Yes, (B): No.”. We then only process the positive-predicted examples with Vision Banana to generate an image of the masks. This approach is related to the "SAM 3 + Llama 3.2 (ft)" method, presented as "SAM 3 + EV" in Carion et al. (2025) where they fine-tuned Llama 3.2 to produce a presence score for SAM 3.
+
+Under the zero-shot transfer setting, Vision Banana (paired with Gemini 3.1 Flash-Lite) achieves state-of-the-art performance, outperforming existing models including Gemini 2.5 (Gemini Team,
+
+- 2025), APE-D (Shen et al., 2024), DINO-X (Ren et al., 2024), and OWLv2 (Minderer et al., 2023). While Vision Banana still lags behind the SAM 3 specialist on SA-Co/Gold, we emphasize that unlike SAM 3, we did not include the SA-Co dataset in our training data mixture.
+
+Referring Expression Segmentation. Unlike traditional fixed-class segmentation, referring expression segmentation evaluates a model’s ability to segment objects described by long, free-form natural language queries. This task requires models to comprehend and reason about nuanced natural language expressions, as well as capture complex relationships between objects. As summarized in tables 4 and 5, our model achieves state-of-the-art performance under the zero-shot transfer setting, obtaining a cIoU of 73.8% on RefCOCOg UMD (Kazemzadeh et al., 2014) and a gIoU of 79.3% on ReasonSeg (Lai et al., 2024). It consistently outperforms SAM 3 Agent (Carion et al., 2025) (which pairs SAM 3 with Gemini 2.5 Pro) and other recent zero-shot methods, including HybridGL (Liu and Li, 2025), LocalizationHeads (Kang et al., 2025), SegZero (Liu et al., 2025), and RSVP (Lu et al.,
+
+- 2025). On RefCOCOg, a performance gap remains compared to methods that are trained on the training split like HyperSeg (Wei et al., 2024) and X-SAM (Wang et al., 2026a).
+
+For the complex reasoning queries in ReasonSeg, we follow standard practice by delegating the reasoning step to a multimodal LLM. Specifically, we utilize Gemini 2.5 Pro to translate the reasoning query into a descriptive reference, which then serves as the prompt for Vision Banana. We evaluate this pipeline in a single-turn inference setup, where both Gemini and Vision Banana are queried exactly once. In this setting, Vision Banana paired with Gemini 2.5 Pro outperforms several non-zero-shot methods that were trained directly on ReasonSeg, including X-SAM (Wang et al., 2026a) and LISA (Lai et al., 2024). Qualitative results in fig. 4 illustrate Vision Banana’s ability to ground diverse language cues, from physical actions (“stretching cat”) and atypical object roles (“toaster as a game controller”) to multilingual text on signage. This highlights a key advantage of our approach: the rich multimodal priors inherited from generative pre-training allow Vision Banana to reason about ’what’ to segment more effectively than specialized segmentation models.
+
+Intriguingly, Vision Banana also exhibits strong cross-task transfer by demonstrating a similar grasp of referring expressions combined with standard semantic and instance segmentation tasks, despite not being explicitly trained on free-form queries for those tasks. For example, in Fig. 2b (right), the model understands what “patterns on the wall” is referring to. In Fig. 3b (right), the model successfully distinguishes crescent-shaped croissants from other variations of croissants. These findings suggest that our generative pre-training yields highly robust, transferable representations across distinct visual grounding paradigms.
+
+[Figure 32]
+
+[Figure 33]
+
+(a) Input image Acorrespondssegmentationtothemapmanimage.inpinkThetareashirtthatis rendered solid white; the other man is rendered in green.
+
+[Figure 34]
+
+[Figure 35]
+
+(b) Input image Acatsegmentationisrenderedinmapgreen,image.theThecatthatstretchingis
+
+cleaning itself is in cyan.
+
+[Figure 36]
+
+[Figure 37]
+
+- (c) Input image Thisthegivenimageimage.showsThesegmentationbackgroundmasksisblackfrom
+
+color. The game control device is represented by a solid yellow.
+
+[Figure 38]
+
+[Figure 39]
+
+(d) Input image Thisthegivenimageimage.showsThesegmentationbackgroundmasksisblackfrom color. The chef’s names in both Chinese and English are rendered as cyan color.
+
+- Figure 4 | Vision Banana can understand natural language prompts and reason about them, including but not limited to: (a) description of objects’ appearances (“man in pink t shirt”); (b) description of actions (“stretching” and “cleaning”); (c) objects that have uncommon usage (toaster as a game controller); and (d) multilingual text content (text on the menu in Chinese and English). This requires strong and comprehensive visual understanding capability.
+
+#### 3.2. 3D Understanding from Monocular Images
+
+Vision Banana demonstrates a strong ability to infer 3D structures from 2D monocular images. We evaluate this capability on two classical tasks: monocular metric depth estimation and surface normal estimation. As summarized in Tab. 1, Vision Banana achieves SOTA performance on both tasks, surpassing specialists such as Depth Anything V3 (Lin et al., 2025) and Lotus-2 (He et al., 2025).
+
+Metric Depth Estimation. The goal of depth estimation is to produce a depth map from a monocular image, where each pixel’s value represents the physical metric distance from the camera plane to the observed object (Eigen et al., 2014). This is a fundamental computer vision task that benefits a wide range of applications such as robotics, augmented/virtual reality, and autonomous driving. However, depth estimation is inherently ill-posed, as 2D projections inherently discard critical 3D geometric information. Furthermore, monocular depth estimation is particularly challenging due to the absence of parallax cues available in multi-view setups, even when camera intrinsic parameters are known.
+
+In the deep-learning era, the research community has largely framed depth estimation as a dense per-pixel supervised regression problem, employing specialized architectures and domain-specific loss functions. Most recent SOTA methods rely on camera intrinsics during training, inference, or both (Bochkovskii et al., 2024; Cai et al., 2025; He et al., 2024, 2025; Hu et al., 2024; Lin et al., 2025; Piccinelli et al., 2025a,b; Wang et al., 2025b,c; Yang et al., 2024). While using intrinsics mitigates the inherent ambiguity of depth estimation, it also necessitates specialized model designs. In contrast, our work is predicated on the hypothesis that the mode-seeking nature of generative modeling naturally resolves training target ambiguities, thereby eliminating the need for such specialized techniques. Furthermore, the broad world knowledge acquired during pretraining endows the model with stronger priors on object sizes and distances compared to narrowly targeted models. To enable Nano Banana Pro to estimate depth in metric units, we instruct the model to output a carefully constructed false-color visualization of depth values.
+
+To visualize depth maps as RGB images, we establish a mapping between unbounded depth values in [0, ∞) and bounded RGB values in [0, 1]3. Because the utility of accurate metric depth for nearby image content is generally higher than that of distant content (e.g., graspable objects matter more for robotics tasks, stereo/monodepth benchmarks usually measure accuracy terms of disparity or relative/log-depth) we “curve” metric depth prior to RGB encoding. Specifically, this is achieved by first applying the power transform of Barron (2025) to warp the depth values, and then using those curved distances to produce a false-color visualization. We constrain the power transform to 𝜆 < −1 and rescale it to map metric distances 𝑑 ∈ [0, ∞) to normalized distances in [0, 1):
+
+𝑓 (𝑑, 𝜆, 𝑐) = 1 − (1 − 𝑑/𝜆𝑐)𝜆+1 (1)
+
+In all experiments, we set the shape parameter to 𝜆 = −3 and the scale parameter to 𝑐 = 10/3. These curved and normalized distances 𝑓 (𝑑, 𝜆, 𝑐) are then used to interpolate along a piecewise-linear function that follows the edges of the RGB cube, traversing along its edges from black to white, similarly to the first iteration of a 3D Hilbert curve. A visualization of this process is provided in Fig. 5.
+
+[Figure 40]
+
+Figure 5 | A visualization of our bijection between scalar metric distances 𝑑 ≥ 0 and RGB color values in [0, 1]3, which is achieved by curving metric depth with a power transform, and then interpolating along the edges of the color cube according to that curved metric depth. The metric depth values (in meters) corresponding to various RGB colors are overlaid.
+
+This mapping from normalized distance to RGB color can be inverted by simply projecting the RGB values onto the nearest line segment and then inverting the linear interpolation along the cube’s edges. Because both the false-color visualization and the power transform are strictly invertible, their composition forms a bijection between metric depth in [0, ∞] and RGB space in [0, 1]3. During training, we apply this mapping to ground-truth metric depths to generate RGB training targets. At inference, we apply the inverse mapping to decode the model’s generated RGB images back into metric depth, enabling direction evaluation on standard depth benchmarks. To enhance the model’s robustness across diverse color representations, we augment our training data with alternative color maps, such as Plasma, Inferno, Viridis, and grayscale.
+
+| | |DepthLM-7B<br><br>(Cai et al., 2025)|Depth Any. v3<br><br>(Lin et al., 2025)|Depth Pro<br><br>(Bochkovskii et al., 2024)<br><br>|UniK3D<br><br>(Piccinelli et al., 2025a)|MoGe-2<br><br>(Wang et al., 2025c)|Vision Banana<br><br>[Figure 41]|
+|---|---|---|---|---|---|---|---|
+|Camera Intrinsics<br><br>|Inference Training<br><br>|✓<br><br>|✓| | | | |
+| | |✓|✓|✓<br><br>|✓|✓| |
+|Average Benchmarks<br><br>|𝛿1 ↑ AbsRel|partial*|partial*<br><br>|0.715<br><br>|0.823 0.156|0.802 0.144<br><br>|0.882 0.116|
+| |↓| | | | | | |
+|NYU<br><br>(Silberman et al., 2012)|𝛿1 ↑ AbsRel<br><br>|0.915|0.963 0.07<br><br>|0.961<br><br>|0.965 0.074|0.961 0.0733|0.948 0.081|
+| |↓| | | | | | |
+|iBims1<br><br>(Koch et al., 2018)<br><br>|𝛿1 ↑ AbsRel|0.92| |0.913<br><br>|0.919 0.104|0.830 0.136|0.934 0.078|
+| |↓| | | | | | |
+|ETH3D<br><br>(Schops et al., 2019)|𝛿1 ↑ AbsRel|0.718<br><br>|0.917 0.104|0.415 0.327<br><br>|0.687 0.236|0.908 0.104<br><br>|0.935 0.103|
+| |↓| | | | | | |
+|DIODE-Indoor<br><br>(Vasiljevic et al., 2019)|𝛿1 ↑ AbsRel| |0.838 0.123<br><br>|0.671 0.199|0.713 0.161|0.664 0.175<br><br>|0.917 0.108|
+| |↓| | | | | | |
+|KITTI<br><br>(Uhrig et al., 2017)<br><br>|𝛿1 ↑ AbsRel| |0.953 0.086|0.843‡ 0.121<br><br>|0.812 0.174<br><br>|0.629 0.181<br><br>|0.915 0.107|
+| |↓| | |‡<br><br>| | | |
+|nuScenes<br><br>(Caesar et al., 2020)|𝛿1 ↑ AbsRel|0.865†| |0.491 0.287<br><br>|0.840 0.189|0.820 0.195<br><br>|0.643 0.219|
+| |↓| | | | | | |
+
+* The average 𝛿1 of DepthLM-7B on the 4 datasets it evaluated on (NYU + iBims1 + ETH3D + nuScenes) is 0.855; our average 𝛿1 on the same 4 datasets is 0.865. The average 𝛿1 of Depth-Anything V3 on the 4 datasets it evaluated on (NYU + ETH3D + DIODE + KITTI) is 0.918; our average 𝛿1 on the same 4 datasets is 0.929. † DepthLM is trained on nuScenes so it’s not zero-shot. ‡ Numbers reported by Depth-Anything V3 (Lin et al., 2025).
+
+- Table 6 | Monocular metric depth estimation under the zero-shot transfer setting. Vision Banana achieves superior results on public datasets without using camera intrinsics in neither training of inference. Metrics marked with ↑ are better if higher; metrics marked with ↓ are better if lower.
+
+Tab. 6 presents the empirical results of Vision Banana compared to specialist models across six major academic benchmarks. Vision Banana achieves an average 𝛿1 accuracy of 0.882, outperforming Unik3D (Piccinelli et al., 2025a) by nearly 6 points, while achieving a 20% lower absolute relative error (AbsRel) compared to MoGe-2 (Wang et al., 2025c). Notably, Vision Banana outperforms Depth Anything V3 (Lin et al., 2025) on average across the four datasets (NYU, ETH3D, DIODE, KITTI) on which it was evaluated (0.929 v.s. 0.918), demonstrating robust performance in both near-field and distant scenes. Our model is trained entirely on synthetic depth data created from simulation engines — we use zero real-world depth data, and exclude training data from any of the depth datasets we evaluate on. Note that this result is achieved without relying on camera parameters (neither intrinsics nor extrinsics) during both training or inference. By leveraging the immense geometric priors embedded in its foundation model, Vision Banana infers absolute scale solely from visual cues and object relationships, enabling zero-shot generalization to any arbitrary input image.
+
+Qualitative inspections further validate the model’s capabilities. As illustrated in Fig. 6, Vision Banana generates highly precise depth maps that preserve crisp geometric details, even in cluttered environments like classrooms. When these 2D predictions are unprojected into 3D point clouds, they exhibit global consistency across diverse scenes, maintaining accurate planar surfaces and correct geometry. In addition to common academic benchmarks, we also conducted a “vibe test” using a casual smartphone photograph, as shown in Fig. 7. Crossed validated by depth measured on Google Maps, Vision Banana successfully produced an accurate depth estimation on this photo captured by a consumer device unseen during training.
+
+[Figure 42]
+
+[Figure 43]
+
+[Figure 44]
+
+[Figure 45]
+
+[Figure 46]
+
+[Figure 47]
+
+[Figure 48]
+
+[Figure 49]
+
+[Figure 50]
+
+[Figure 51]
+
+[Figure 52]
+
+[Figure 53]
+
+[Figure 54]
+
+[Figure 55]
+
+[Figure 56]
+
+[Figure 57]
+
+[Figure 58]
+
+[Figure 59]
+
+[Figure 60]
+
+[Figure 61]
+
+Input image Generated depth image Vis. view 1 Vis. view 2
+
+- Figure 6 | Demonstration of Vision Banana’s metric depth estimation capabilities. The two columns to the left are the input images and the depth visualization image generated by Vision Banana. The depth images are then decoded back to metric depth values. Combining them with the camera intrinsics, we can reconstruct the 3D scene accurately. The two columns on the right are random views of the reconstructed scenes. Note that camera intrinsics are not needed in predicting the depth itself. Samples taken from NYU v2 (Silberman et al., 2012) and ETH 3D (Schops et al., 2019).
+
+[Figure 62]
+
+[Figure 63]
+
+(a) Photo taken at Kinkaku-Ji (b) Vision Banana estimated depth
+
+[Figure 64]
+
+(c) Measurement from Google Maps
+
+- Figure 7 | Vision Banana depth estimation in the wild. (a) Author of this paper takes a picture near Kinkaku-Ji with a consumer cell-phone. (b) Vision Banana generates a depth estimation image. The depth value at the position marked by a green star is decoded to be 13.71 meters. (c) Author then measures the actual distance using Google Map, which turns out to be 12.87 meters. The AbsRel error at this point is around 0.065.
+
+Surface Normal Estimation. Surface normal estimation represents another critical vision task. Surface normals, which are unit vectors (𝑥, 𝑦, 𝑧) with values ranging from −1.0 to 1.0, serve as a critical proxy for local geometry and scene structures. Unlike the complex color mapping required for metric depth, the visualization of surface normals is intrinsically aligned with the RGB color space, allowing straightforward integration into our model.
+
+We specifically utilize a camera-space normal formulation using the standard right-handed coordinate system (+x right, +y up, +z pointing out of the image plane). In this representation, the directional vector components map directly to RGB channels, i.e. 𝑅 = 𝑡𝑟𝑢𝑛𝑐((1 − 𝑥)/2, 𝑚𝑖𝑛 = 0, 𝑚𝑎𝑥 =
+
+- 1) × 255, 𝐺 = 𝑡𝑟𝑢𝑛𝑐((1 + 𝑦)/2, 𝑚𝑖𝑛 = 0, 𝑚𝑎𝑥 = 1) × 255, 𝐵 = 𝑡𝑟𝑢𝑛𝑐((1 + 𝑧)/2, 𝑚𝑖𝑛 = 0, 𝑚𝑎𝑥 = 1) × 255:
+
+- • Facing Left (−1, 0, 0): Encoded as Pinkish Red.
+- • Facing Up (0, 1, 0): Encoded as Light Green.
+- • Facing the Camera (0, 0, 1): Encoded as Light Blue.
+
+Table 7 compares Vision Banana against SOTA specialist methods on four public benchmarks. When averaged across the three indoor datasets, Vision Banana achieves the lowest mean and median angular errors. It also demonstrates competitive accuracy on outdoor scenes.
+
+Figure 8 visually compares the output from Vision Banana with the leading external method, Lotus-2 (He et al., 2025). Vision Banana consistently produces surface normal maps with significantly higher fidelity and finer granular details. The bottom row of Fig. 8 highlights a sample from Virtual KITTI 2 (Cabon et al., 2020). Although Vision Banana registers slightly higher quantitative errors on this benchmark compared to Lotus-2, it yields demonstrably superior visual quality. Also note that Lotus-2 is trained on Virtual KITTI 2 for surface normal estimation, whereas Vision Banana maintains a strict zero-shot transfer protocol, having never seen the training sets of any evaluated benchmarks.
+
+Indoor Indoor Outdoor Average
+
+Methods
+
+NYUv2
+
+DIODE-indoor
+
+ScanNet
+
+VKitti
+
+(Silberman et al., 2012)
+
+(Vasiljevic et al., 2019)
+
+(Dai et al., 2017)
+
+(Cabon et al., 2020)
+
+mean ↓ median ↓ mean ↓ median ↓ mean ↓ median ↓ mean ↓ median ↓ mean ↓ median ↓ Marigold (Ke et al., 2024) 19.606 11.828 20.864 11.134 16.671 12.084 21.284 12.268 – – DSINE (Bae and Davison, 2024) 17.017 10.190 16.4 8.4 18.453 13.871 16.2 8.3 28.9 9.9 StableNormal (Ye et al., 2024) 17.168 10.028 19.707 10.527 13.701 9.46 18.098 10.097 – – Lotus-2-Normal (He et al., 2025) 16.558 – 16.9 N/A 18.575 N/A 14.2 N/A 28.894 9.677 Vision Banana 15.549 9.300 17.778 8.876 13.818 11.556 15.052 7.468 29.063 10.699
+
+[Figure 65]
+
+- Table 7 | Surface normal estimation results. Vision Banana achieves the lowest mean and median angle errors on the indoor datasets on average, and is on par with previous SOTA on outdoor scenes.
+
+[Figure 66]
+
+[Figure 67]
+
+[Figure 68]
+
+[Figure 69]
+
+[Figure 70]
+
+[Figure 71]
+
+[Figure 72]
+
+[Figure 73]
+
+[Figure 74]
+
+Input image Lotus-2-Normal Vision Banana
+
+[Figure 75]
+
+- Figure 8 | Comparison with SOTA surface normal estimation method Lotus-2 (He et al., 2025). Results of Lotus-2 are obtained using its Hugging-Face demo: https://huggingface.co/spaces/ haodongli/Lotus-2_Normal. Vision Banana can produce surface normal map with much higher visual quality and better fine-grained details. Zoom-in for the details.
+
+### 4. Discussion
+
+Image Generators are Generalist Vision Learners. Generative pretraining (Brown et al., 2020; Radford et al., 2018, 2019) has fundamentally transformed language understanding and reasoning. In the meantime, recent observations of emergent vision capabilities (Wiedemer et al., 2025; Zuo et al., 2025) have ignited speculation that computer vision is approaching a similar paradigm shift. By instruction-tuning a leading image generator, Nano Banana Pro, into a state-of-the-art visual generation and understanding model, we confirm that this shift is already underway. Models pretrained on large-scale image generation naturally acquire robust visual understanding capabilities. These generative priors surpass the specialized architectures and dedicated training paradigms traditionally employed by specialist vision models. We are witnessing a paradigm shift for computer vision that will be fueled by generative vision pretraining, which we believe paves the way for true Foundational Vision Models and Artificial General Intelligence from Vision (AGI-V).
+
+Image Generation as a Universal Interface. As a byproduct of this study, we show that image generation can serve as the universal interface for computer vision, analogous to how text generation acts as the unifying interface for many tasks embedded in natural language, including language understanding, generation, reasoning, math, coding, agentic tasks, etc.. By representing vision task outputs as RGB images, we can use natural language prompts to seamlessly instruct the model. While we are not the first to encode vision outputs as RGB (Gan et al., 2023; Inclusion AI, 2025; Ke et al.,
+
+- 2024; Lu et al., 2022, 2024; Wang et al., 2023; Xie et al., 2024; Zhao et al., 2025), we demonstrate that when combined with powerful pretrained visual generators, this simple design is sufficient to outperform modern domain-specific specialist models.
+
+In addition to the unification of vision task outputs as RGB images, generative modeling naturally provides a workaround for the ambiguity in vision tasks where a single input can correspond to several modes of the output distribution. In order to prevent the collapse of the output to a blurry mean, expert discriminative models (Carion et al., 2025; Lin et al., 2025) usually resort to custom architectures and training losses. For example, the Segment Anything models (Carion et al., 2025; Kirillov et al., 2023; Ravi et al., 2024) return several segmentation masks but only apply the loss to a single one. Generative models, however, inherently learn the full data distribution, gracefully managing ambiguity by design. By eliminating the need for bespoke architectural designs, this formulation could lead to a truly unified “omni” multimodal model.
+
+Future Work. While Vision Banana achieves SOTA results on fundamental tasks for 2D semantic understanding and 3D understanding from monocular images, several exciting avenues remain for future exploration. First, scaling the diversity of instruction-tuned tasks may unlock further emergent cross-task generalization, similar to behaviors observed in LLMs (Wei et al., 2021). Second, our current evaluation focuses on monocular image inputs. In the future, we can extend this framework to process multi-view inputs (Wang et al., 2025a) and video inputs (Zhang et al., 2025). Similarly, investigating whether video generators yield even richer, temporally-aware visual representations presents a highly promising research direction. Another important next step is exploring the synergistic integration of foundational vision models with large language models to enhance cross-modality reasoning. Finally, utilizing image generators like Nano Banana Pro currently incurs a significantly higher computational overhead than running lightweight specialist models. Developing acceleration and cost-reduction strategies will be an essential hurdle to overcome for the deployment of generative vision framework.
+
+### Acknowledgment
+
+We thank Xi Chen, Fei Xia, Kaushik Shivakumar, Abhishek Sinha, Phillip Lippe, Yilin Gao, Javier Rey, Sanghyun Woo, Renshen Wang, Wentao Yuan, Keran Rong, Rundi Wu, Manoj Kumar, Manli Shu, Francesco Piccinno, Ishita Dasgupta, Benigno Uria, Miki Rubinstein, Aäron van den Oord, Jon Shlens for their helpful discussions, advice, and technical guidance.
+
+### References
+
+- G. Bae and A. J. Davison. Rethinking inductive biases for surface normal estimation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 9535–9545, 2024.
+
+Y. Bai, X. Geng, K. Mangalam, A. Bar, A. L. Yuille, T. Darrell, J. Malik, and A. A. Efros. Sequential modeling enables scalable learning for large vision models. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 22861–22872, 2024.
+
+- H. Bao, L. Dong, S. Piao, and F. Wei. Beit: Bert pre-training of image transformers. arXiv preprint arXiv:2106.08254, 2021.
+
+D. Baranchuk, I. Rubachev, A. Voynov, V. Khrulkov, and A. Babenko. Label-efficient semantic segmentation with diffusion models. arXiv preprint arXiv:2112.03126, 2021.
+
+- J. T. Barron. A power transform. arXiv preprint arXiv:2502.10647, 2025.
+
+A. Bhattad, D. McKee, D. Hoiem, and D. Forsyth. Stylegan knows normal, depth, albedo, and more. Advances in Neural Information Processing Systems, 36:73082–73103, 2023.
+
+Black Forest Labs. FLUX.2: Frontier Visual Intelligence. https://bfl.ai/blog/flux-2, 2025.
+
+- A. Bochkovskii, A. Delaunoy, H. Germain, M. Santos, Y. Zhou, S. R. Richter, and V. Koltun. Depth pro: Sharp monocular metric depth in less than a second. arXiv preprint arXiv:2410.02073, 2024.
+
+T. Brown, B. Mann, N. Ryder, M. Subbiah, J. D. Kaplan, P. Dhariwal, A. Neelakantan, P. Shyam,
+
+- G. Sastry, A. Askell, et al. Language models are few-shot learners. Advances in neural information processing systems, 33:1877–1901, 2020.
+
+ByteDance. Seedance 2.0. https://seed.bytedance.com/en/seedance2_0/, 2026. Accessed:
+
+2026-03-18.
+
+- Y. Cabon, N. Murray, and M. Humenberger. Virtual kitti 2. arXiv preprint arXiv:2001.10773, 2020.
+
+H. Caesar, V. Bankiti, A. H. Lang, S. Vora, V. E. Liong, Q. Xu, A. Krishnan, Y. Pan, G. Baldan, and O. Beijbom. nuscenes: A multimodal dataset for autonomous driving. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 11621–11631, 2020.
+
+- Z. Cai, C.-F. Yeh, H. Xu, Z. Liu, G. Meyer, X. Lei, C. Zhao, S.-W. Li, V. Chandra, and Y. Shi. Depthlm: Metric depth from vision language models. arXiv preprint arXiv:2509.25413, 2025.
+
+- B. Cao, K. Chen, K.-K. Maninis, K. Chen, A. Karpur, Y. Xia, S. Dua, T. Dabral, G. Han, B. Han, et al. Tipsv2: Advancing vision-language pretraining with enhanced patch-text alignment. arXiv preprint arXiv:2604.12012, 2026.
+
+N. Carion, L. Gustafson, Y.-T. Hu, S. Debnath, R. Hu, D. Suris, C. Ryali, K. V. Alwala, H. Khedr, A. Huang, et al. Sam 3: Segment anything with concepts. arXiv preprint arXiv:2511.16719, 2025.
+
+M. Caron, H. Touvron, I. Misra, H. Jégou, J. Mairal, P. Bojanowski, and A. Joulin. Emerging properties in self-supervised vision transformers. In Proceedings of the IEEE/CVF international conference on computer vision, pages 9650–9660, 2021.
+
+M. Chen, A. Radford, R. Child, J. Wu, H. Jun, D. Luan, and I. Sutskever. Generative pretraining from pixels. In International conference on machine learning, pages 1691–1703. PMLR, 2020a.
+
+T. Chen, S. Kornblith, M. Norouzi, and G. Hinton. A simple framework for contrastive learning of visual representations. In International conference on machine learning, pages 1597–1607. PmLR, 2020b.
+
+- X. Chen, Y. Duan, R. Houthooft, J. Schulman, I. Sutskever, and P. Abbeel. Infogan: Interpretable representation learning by information maximizing generative adversarial nets. Advances in neural information processing systems, 29, 2016.
+
+- X. Chen, H. Fan, R. Girshick, and K. He. Improved baselines with momentum contrastive learning. arXiv preprint arXiv:2003.04297, 2020c.
+
+- X. Chen, Z. Liu, S. Xie, and K. He. Deconstructing denoising diffusion models for self-supervised learning. arXiv preprint arXiv:2401.14404, 2024.
+
+A. Chowdhery, S. Narang, J. Devlin, M. Bosma, G. Mishra, A. Roberts, P. Barham, H. W. Chung, C. Sutton, S. Gehrmann, et al. Palm: Scaling language modeling with pathways. Journal of machine learning research, 24(240):1–113, 2023.
+
+- K. Clark and P. Jaini. Text-to-image diffusion models are zero shot classifiers. Advances in Neural Information Processing Systems, 36:58921–58937, 2023.
+
+M. Cordts, M. Omran, S. Ramos, T. Rehfeld, M. Enzweiler, R. Benenson, U. Franke, S. Roth, and
+
+- B. Schiele. The cityscapes dataset for semantic urban scene understanding. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 3213–3223, 2016.
+
+A. Dai, A. X. Chang, M. Savva, M. Halber, T. Funkhouser, and M. Nießner. Scannet: Richly-annotated 3d reconstructions of indoor scenes. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 5828–5839, 2017.
+
+M. Dehghani, J. Djolonga, B. Mustafa, P. Padlewski, J. Heek, J. Gilmer, A. P. Steiner, M. Caron,
+
+- R. Geirhos, I. Alabdulmohsin, et al. Scaling vision transformers to 22 billion parameters. In International conference on machine learning, pages 7480–7512. PMLR, 2023.
+
+A. Dosovitskiy, L. Beyer, A. Kolesnikov, D. Weissenborn, X. Zhai, T. Unterthiner, M. Dehghani, M. Minderer, G. Heigold, S. Gelly, et al. An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929, 2020.
+
+- X. Du, N. Kolkin, G. Shakhnarovich, and A. Bhattad. Generative models: What do they know? do they know things? let’s find out! arXiv preprint arXiv:2311.17137, 2023.
+
+- D. Eigen, C. Puhrsch, and R. Fergus. Depth map prediction from a single image using a multi-scale deep network. In Advances in Neural Information Processing Systems (NeurIPS), volume 27, 2014.
+
+- S. Fu, Q. Yang, Q. Mo, J. Yan, X. Wei, J. Meng, X. Xie, and W.-S. Zheng. Llmdet: Learning strong open-vocabulary object detectors under the supervision of large language models. In Proceedings of the Computer Vision and Pattern Recognition Conference, pages 14987–14997, 2025a.
+
+- Y. Fu, M. Lou, and Y. Yu. Segman: Omni-scale context modeling with state space models and local attention for semantic segmentation. In Proceedings of the Computer Vision and Pattern Recognition Conference, pages 19077–19087, 2025b.
+
+- Y. Gan, S. Park, A. Schubert, A. Philippakis, and A. M. Alaa. Instructcv: Instruction-tuned text-to-image diffusion models as vision generalists. arXiv preprint arXiv:2310.00390, 2023.
+
+- G. M. Garcia, K. A. Zeid, C. Schmidt, D. De Geus, A. Hermans, and B. Leibe. Fine-tuning imageconditional diffusion models is easier than you think. In Proceedings of the Winter Conference on Applications of Computer Vision, pages 753–762, 2025.
+
+Gemini Team. Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities. arXiv preprint, 2025.
+
+Google. Introducing nano banana pro. https://blog.google/innovation-and-ai/ products/nano-banana-pro/, 2025a. Accessed: 2026-03-15.
+
+Google. Veo 3 announcement. https://blog.google/innovation-and-ai/products/ generative-media-models-io-2025/, 2025b. Accessed: 2026-03-15.
+
+J.-B. Grill, F. Strub, F. Altché, C. Tallec, P. Richemond, E. Buchatskaya, C. Doersch, B. Avila Pires, Z. Guo, M. Gheshlaghi Azar, et al. Bootstrap your own latent-a new approach to self-supervised learning. Advances in neural information processing systems, 33:21271–21284, 2020.
+
+- J. He, H. Li, W. Yin, Y. Liang, L. Li, K. Zhou, H. Zhang, B. Liu, and Y.-C. Chen. Lotus: Diffusion-based visual foundation model for high-quality dense prediction. arXiv preprint arXiv:2409.18124, 2024.
+
+- J. He, H. Li, M. Sheng, and Y.-C. Chen. Lotus-2: Advancing geometric dense prediction with powerful image generative model. arXiv preprint arXiv:2512.01030, 2025.
+- K. He, H. Fan, Y. Wu, S. Xie, and R. Girshick. Momentum contrast for unsupervised visual representation learning. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 9729–9738, 2020.
+
+- K. He, X. Chen, S. Xie, Y. Li, P. Dollár, and R. Girshick. Masked autoencoders are scalable vision learners. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 16000–16009, 2022.
+
+- E. Hedlin, G. Sharma, S. Mahajan, H. Isack, A. Kar, A. Tagliasacchi, and K. M. Yi. Unsupervised semantic correspondence using stable diffusion. Advances in Neural Information Processing Systems, 36:8266–8279, 2023.
+
+- R. D. Hjelm, A. Fedorov, S. Lavoie-Marchildon, K. Grewal, P. Bachman, A. Trischler, and Y. Bengio. Learning deep representations by mutual information estimation and maximization. arXiv preprint arXiv:1808.06670, 2018.
+
+M. Hu, W. Yin, C. Zhang, Z. Cai, X. Long, H. Chen, K. Wang, G. Yu, C. Shen, and S. Shen. Metric3d v2:
+
+- A versatile monocular geometric foundation model for zero-shot metric depth and surface normal estimation. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2024.
+
+Inclusion AI. Ming-flash-omni: A sparse, unified architecture for multimodal perception and generation. arXiv preprint arXiv:2510.24821, 2025.
+
+- S. Kang, J. Kim, J. Kim, and S. J. Hwang. Your large vision-language model only needs a few attention heads for visual grounding. In Proceedings of the Computer Vision and Pattern Recognition Conference, pages 9339–9350, 2025.
+
+- S. Kazemzadeh, V. Ordonez, M. Matten, and T. Berg. Referitgame: Referring to objects in photographs of natural scenes. In Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP), pages 787–798, 2014.
+
+B. Ke, A. Obukhov, S. Huang, N. Metzger, R. C. Daudt, and K. Schindler. Repurposing diffusion-based image generators for monocular depth estimation. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 9492–9502, 2024.
+
+A. Kirillov, E. Mintun, N. Ravi, H. Mao, C. Rolland, L. Gustafson, T. Xiao, S. Whitehead, A. C. Berg,
+
+- W.-Y. Lo, P. Dollár, and R. Girshick. Segment anything. In IEEE/CVF International Conference on Computer Vision (ICCV), pages 4015–4026, 2023.
+
+T. Koch, L. Liebel, F. Fraundorfer, and M. Korner. Evaluation of cnn-based single-image depth estimation methods. In Proceedings of the European Conference on Computer Vision (ECCV) Workshops, pages 0–0, 2018.
+
+A. Krizhevsky, I. Sutskever, and G. E. Hinton. Imagenet classification with deep convolutional neural networks. Advances in neural information processing systems, 25, 2012.
+
+- X. Lai, Z. Tian, Y. Chen, Y. Li, Y. Yuan, S. Liu, and J. Jia. Lisa: Reasoning segmentation via large language model. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 9579–9589, 2024.
+
+- A. C. Li, M. Prabhudesai, S. Duggal, E. Brown, and D. Pathak. Your diffusion model is secretly a zero-shot classifier. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 2206–2217, 2023.
+- B. Li, Z. Lin, D. Pathak, J. Li, Y. Fei, K. Wu, T. Ling, X. Xia, P. Zhang, G. Neubig, et al. Genai-bench: Evaluating and improving compositional text-to-visual generation. arXiv preprint arXiv:2406.13743, 2024a.
+
+- X. Li, J. Lu, K. Han, and V. A. Prisacariu. Sd4match: Learning to prompt stable diffusion model for semantic matching. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 27558–27568, 2024b.
+
+H. Lin, S. Chen, J. Liew, D. Y. Chen, Z. Li, G. Shi, J. Feng, and B. Kang. Depth anything 3: Recovering the visual space from any views. arXiv preprint arXiv:2511.10647, 2025.
+
+- S. Liu, Z. Zeng, T. Ren, F. Li, H. Zhang, J. Yang, Q. Jiang, C. Li, J. Yang, H. Su, J. Zhu, and L. Zhang. Grounding DINO: marrying DINO with grounded pre-training for open-set object detection. In ECCV (47), Lecture Notes in Computer Science, pages 38–55. Springer, 2024.
+- T. Liu and S. Li. Hybrid global-local representation with augmented spatial guidance for zero-shot referring image segmentation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 29634–29643, 2025.
+
+- Y. Liu, B. Peng, Z. Zhong, Z. Yue, F. Lu, B. Yu, and J. Jia. Seg-zero: Reasoning-chain guided segmentation via cognitive reinforcement. arXiv preprint arXiv:2503.06520, 2025.
+
+- J. Lu, C. Clark, R. Zellers, R. Mottaghi, and A. Kembhavi. Unified-io: A unified model for vision, language, and multi-modal tasks. arXiv preprint arXiv:2206.08916, 2022.
+- J. Lu, C. Clark, S. Lee, Z. Zhang, S. Khosla, R. Marten, D. Hoiem, and A. Kembhavi. Unified-io 2: Scaling autoregressive multimodal models with vision language audio and action. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 26439–26455, 2024.
+
+- Y. Lu, J. Cao, Y. Wu, B. Li, L. Tang, Y. Ji, C. Wu, J. Wu, and W. Zhu. Rsvp: Reasoning segmentation via visual prompting and multi-modal chain-of-thought. In Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 14699–14716, 2025.
+
+Luma. UNI-1. https://lumalabs.ai/uni-1/, 2026. Accessed: 2026-03-19. M. Minderer, A. Gritsenko, and N. Houlsby. Scaling open-vocabulary object detection. Advances in
+
+Neural Information Processing Systems, 36:72983–73007, 2023.
+
+- S. Mukhopadhyay, M. Gwilliam, V. Agarwal, N. Padmanabhan, A. Swaminathan, S. Hegde, T. Zhou, and A. Shrivastava. Diffusion models beat gans on image classification. arXiv preprint arXiv:2307.08702, 2023.
+
+OpenAI. GPT-Image-1.5. https://openai.com/index/new-chatgpt-images-is-here/,
+
+2026. Accessed: 2026-03-19.
+
+- M. Oquab, T. Darcet, T. Moutakanni, H. Vo, M. Szafraniec, V. Khalidov, P. Fernandez, D. Haziza, F. Massa, A. El-Nouby, et al. Dinov2: Learning robust visual features without supervision. arXiv preprint arXiv:2304.07193, 2023.
+
+L. Ouyang, J. Wu, X. Jiang, D. Almeida, C. Wainwright, P. Mishkin, C. Zhang, S. Agarwal, K. Slama, A. Ray, et al. Training language models to follow instructions with human feedback. Advances in neural information processing systems, 35:27730–27744, 2022.
+
+L. Piccinelli, C. Sakaridis, M. Segu, Y.-H. Yang, S. Li, W. Abbeloos, and L. Van Gool. Unik3d: Universal camera monocular 3d estimation. In Proceedings of the Computer Vision and Pattern Recognition Conference, pages 1028–1039, 2025a.
+
+L. Piccinelli, C. Sakaridis, Y.-H. Yang, M. Segu, S. Li, W. Abbeloos, and L. Van Gool. Unidepthv2: Universal monocular metric depth estimation made simpler. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2025b.
+
+A. Radford, K. Narasimhan, T. Salimans, I. Sutskever, et al. Improving language understanding by generative pre-training. 2018.
+
+A. Radford, J. Wu, R. Child, D. Luan, D. Amodei, I. Sutskever, et al. Language models are unsupervised multitask learners. OpenAI blog, 1(8):9, 2019.
+
+A. Radford, J. W. Kim, C. Hallacy, A. Ramesh, G. Goh, S. Agarwal, G. Sastry, A. Askell, P. Mishkin, J. Clark, et al. Learning transferable visual models from natural language supervision. In International conference on machine learning, pages 8748–8763. PmLR, 2021.
+
+- M. Ranzato, J. Susskind, V. Mnih, and G. Hinton. On deep generative models with applications to recognition. In CVPR 2011, pages 2857–2864. IEEE, 2011.
+- N. Ravi, V. Gabeur, Y.-T. Hu, R. Hu, C. Ryali, T. Ma, H. Khedr, R. Rädle, C. Rolland, L. Gustafson, E. Mintun, J. Pan, K. V. Alwala, N. Carion, C.-Y. Wu, R. Girshick, P. Dollár, and C. Feichtenhofer. Sam 2: Segment anything in images and videos. arXiv preprint arXiv:2408.00714, 2024.
+
+- T. Ren, Y. Chen, Q. Jiang, Z. Zeng, Y. Xiong, W. Liu, Z. Ma, J. Shen, Y. Gao, X. Jiang, et al. Dinox: A unified vision model for open-world object detection and understanding. arXiv preprint arXiv:2411.14347, 2024.
+
+- T. Schops, T. Sattler, and M. Pollefeys. Bad slam: Bundle adjusted direct rgb-d slam. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 134–144, 2019.
+
+Y. Shen, C. Fu, P. Chen, M. Zhang, K. Li, X. Sun, Y. Wu, S. Lin, and R. Ji. Aligning and prompting everything all at once for universal visual perception. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 13193–13203, 2024.
+
+- N. Silberman, D. Hoiem, P. Kohli, and R. Fergus. Indoor segmentation and support inference from rgbd images. In European conference on computer vision, pages 746–760. Springer, 2012.
+- O. Siméoni, H. V. Vo, M. Seitzer, F. Baldassarre, M. Oquab, C. Jose, V. Khalidov, M. Szafraniec, S. Yi, M. Ramamonjisoa, et al. Dinov3. arXiv preprint arXiv:2508.10104, 2025.
+
+L. Tang, M. Jia, Q. Wang, C. P. Phoo, and B. Hariharan. Emergent correspondence from image diffusion. Advances in neural information processing systems, 36:1363–1389, 2023.
+
+- M. Tschannen, A. Gritsenko, X. Wang, M. F. Naeem, I. Alabdulmohsin, N. Parthasarathy, T. Evans, L. Beyer, Y. Xia, B. Mustafa, et al. Siglip 2: Multilingual vision-language encoders with improved semantic understanding, localization, and dense features. arXiv preprint arXiv:2502.14786, 2025.
+
+J. Uhrig, N. Schneider, L. Schneider, U. Franke, T. Brox, and A. Geiger. Sparsity invariant cnns. In International Conference on 3D Vision (3DV), 2017.
+
+- I. Vasiljevic, N. Kolkin, S. Zhang, R. Luo, H. Wang, F. Z. Dai, A. F. Daniele, M. Mostajabi, S. Basart, M. R. Walter, and G. Shakhnarovich. DIODE: A Dense Indoor and Outdoor DEpth Dataset. CoRR, abs/1908.00463, 2019. URL http://arxiv.org/abs/1908.00463.
+
+H. Wang, L. Qiao, Z. Jie, Z. Huang, C. Feng, Q. Zheng, L. Ma, X. Lan, and X. Liang. X-sam: From segment anything to any segmentation. In Proceedings of the AAAI Conference on Artificial Intelligence, volume 40, pages 26187–26196, 2026a.
+
+- J. Wang, M. Chen, N. Karaev, A. Vedaldi, C. Rupprecht, and D. Novotny. Vggt: Visual geometry grounded transformer. In Proceedings of the Computer Vision and Pattern Recognition Conference, pages 5294–5306, 2025a.
+
+L. Wang, A. Zanfir, E. G. Bazavan, M. Andriluka, and C. Sminchisescu. Thfm: A unified video foundation model for 4d human perception and beyond. arXiv preprint arXiv:2603.25892, 2026b.
+
+R. Wang, S. Xu, C. Dai, J. Xiang, Y. Deng, X. Tong, and J. Yang. Moge: Unlocking accurate monocular geometry estimation for open-domain images with optimal training supervision. In IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2025b.
+
+R. Wang, S. Xu, Y. Dong, Y. Deng, J. Xiang, Z. Lv, G. Sun, X. Tong, and J. Yang. Moge-2: Accurate monocular geometry with metric scale and sharp details. arXiv preprint arXiv:2507.02546, 2025c.
+
+X. Wang, W. Wang, Y. Cao, C. Shen, and T. Huang. Images speak in images: A generalist painter for in-context visual learning. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 6830–6839, 2023.
+
+- C. Wei, Y. Zhong, H. Tan, Y. Liu, Z. Zhao, J. Hu, and Y. Yang. Hyperseg: Towards universal visual segmentation with large language model. arXiv preprint arXiv:2411.17606, 2024.
+
+J. Wei, M. Bosma, V. Y. Zhao, K. Guu, A. W. Yu, B. Lester, N. Du, A. M. Dai, and Q. V. Le. Finetuned language models are zero-shot learners. arXiv preprint arXiv:2109.01652, 2021.
+
+- T. Wiedemer, Y. Li, P. Vicol, S. S. Gu, N. Matarese, K. Swersky, B. Kim, P. Jaini, and R. Geirhos. Video models are zero-shot learners and reasoners. arXiv preprint arXiv:2509.20328, 2025.
+
+- C. Wu, J. Li, J. Zhou, J. Lin, K. Gao, K. Yan, S.-m. Yin, S. Bai, X. Xu, Y. Chen, et al. Qwen-image technical report. arXiv preprint arXiv:2508.02324, 2025.
+
+J. Xie, W. Mao, Z. Bai, D. J. Zhang, W. Wang, K. Q. Lin, Y. Gu, Z. Chen, Z. Yang, and M. Z. Shou. Show-o: One single transformer to unify multimodal understanding and generation. arXiv preprint arXiv:2408.12528, 2024.
+
+J. Xu, S. Liu, A. Vahdat, W. Byeon, X. Wang, and S. De Mello. Open-vocabulary panoptic segmentation with text-to-image diffusion models. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 2955–2966, 2023.
+
+L. Yang, B. Kang, Z. Huang, Z. Zhao, X. Xu, J. Feng, and H. Zhao. Depth anything v2. Advances in Neural Information Processing Systems, 37:21875–21911, 2024.
+
+- X. Yang and X. Wang. Diffusion model as representation learner. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 18938–18949, 2023.
+
+C. Ye, L. Qiu, X. Gu, Q. Zuo, Y. Wu, Z. Dong, L. Bo, Y. Xiu, and X. Han. Stablenormal: Reducing diffusion variance for stable and sharp normal. ACM Transactions on Graphics (ToG), 43(6):1–18, 2024.
+
+- Y. Ye, X. He, Z. Li, B. Lin, S. Yuan, Z. Yan, B. Hou, and L. Yuan. Imgedit: A unified image editing dataset and benchmark. arXiv preprint arXiv:2505.20275, 2025.
+
+Q. Yu, P.-T. Jiang, H. Zhang, J. Chen, B. Li, L. Zhang, and H. Lu. High-precision dichotomous image segmentation via probing diffusion capacity. arXiv preprint arXiv:2410.10105, 2024.
+
+X. Zhai, B. Mustafa, A. Kolesnikov, and L. Beyer. Sigmoid loss for language image pre-training. In Proceedings of the IEEE/CVF international conference on computer vision, pages 11975–11986, 2023.
+
+- C. Zhang, G. L. Moing, S. Koppula, I. Rocco, L. Momeni, J. Xie, S. Sun, R. Sukthankar, J. K. Barral, R. Hadsell, et al. Efficiently reconstructing dynamic scenes one d4rt at a time. arXiv preprint arXiv:2512.08924, 2025.
+
+H. Zhang, F. Li, X. Zou, S. Liu, C. Li, J. Yang, and L. Zhang. A simple framework for open-vocabulary segmentation and detection. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 1020–1031, 2023a.
+
+J. Zhang, C. Herrmann, J. Hur, L. Polania Cabrera, V. Jampani, D. Sun, and M.-H. Yang. A tale of two features: Stable diffusion complements dino for zero-shot semantic correspondence. Advances in Neural Information Processing Systems, 36:45533–45547, 2023b.
+
+C. Zhao, Y. Sun, M. Liu, H. Zheng, M. Zhu, Z. Zhao, H. Chen, T. He, and C. Shen. Diception: A generalist diffusion model for visual perceptual tasks. arXiv preprint arXiv:2502.17157, 2025.
+
+- W. Zhao, Y. Rao, Z. Liu, B. Liu, J. Zhou, and J. Lu. Unleashing text-to-image diffusion models for visual perception. In IEEE/CVF International Conference on Computer Vision (ICCV), pages 5729–5739, 2023.
+
+J. Zhou, C. Wei, H. Wang, W. Shen, C. Xie, A. Yuille, and T. Kong. ibot: Image bert pre-training with online tokenizer. arXiv preprint arXiv:2111.07832, 2021.
+
+- X. Zou, Z.-Y. Dou, J. Yang, Z. Gan, L. Li, C. Li, X. Dai, H. Behl, J. Wang, L. Yuan, et al. Generalized decoding for pixel, image, and language. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 15116–15127, 2023.
+
+##### J. Zuo, H. Deng, H. Zhou, J. Zhu, Y. Zhang, Y. Zhang, Y. Yan, K. Huang, W. Chen, Y. Deng, R. Jin, N. Sang, and C. Gao. Is nano banana pro a low-level vision all-rounder? A comprehensive evaluation on 14 tasks and 40 datasets. arXiv preprint, 2025.
+
+### Appendix
+
+### A. Multi-stage clustering algorithm for parsing instance masks
+
+While the postprocessing of RGB images into binary masks is straightforward for referring expression segmentation and semantic segmentation, the task is more complex for instance segmentation, for which the number of masks to predict is unknown a priori. We therefore instruct the model to dynamically determine the number of masks and assign a unique color to each individual instance. However, because the output is a generated image, it is subject to high-frequency generation noise, slight color drift across a single object mask, and blending artifacts at boundaries. Standard connectedcomponent algorithms or simple color thresholding fail in the presence of these artifacts. Our proposed algorithm acts as a robust post-processing, ensuring that continuous generative outputs are cleanly mapped back to discrete instance masks.
+
+To parse these individual instance masks from the generated multi-colored segmentation images, we design a multi-stage connected component grouping algorithm. For any generated RGB mask image 𝐼 ∈ [0, 255]𝐻×𝑊×3 with a predefined background color 𝐶bg, the algorithm proceeds as follows:
+
+- 1. Background Initialization: We first identify and label all background pixels. A pixel 𝑝 is classified as background (and initialized with label 0) if its color is close to the predefined background color 𝐶bg:
+
+∥𝐶(𝑝) − 𝐶bg∥2 < 𝜏2 (2) where 𝐶(𝑝) denotes the RGB vector of pixel 𝑝, and 𝜏 = 14 is the color tolerance threshold. Background pixels are excluded from subsequent steps.
+
+- 2. Color Similarity Grouping: We group the remaining unlabeled pixels into initial components
+
+using a seed-based floodfill algorithm with 16-connectivity. Two adjacent pixels 𝑝𝑖, 𝑝𝑗 are merged into the same component if their RGB color distance to the component’s seed pixel
+
+𝑝seed satisfies:
+
+∥𝐶(𝑝𝑖) − 𝐶(𝑝seed)∥2 ≤ 𝜏2 (3)
+
+- 3. Noise Pruning: To filter out minor noise, any component 𝑆 is discarded (re-labeled as background 0) if its total pixel area is smaller than a fraction 𝜃size of the image size:
+
+|𝑆| < 𝜃size · (𝐻 · 𝑊) (4) where 𝜃size = 2 × 10−4 (representing 0.02% of the image area).
+
+- 4. Boundary Artifact Elimination: Generative models often produce thin colored boundary halos between distinct solid-colored objects. To prevent these from forming separate spurious components, we apply a binary erosion ⊖ using a square structuring element 𝐾 of size 3 × 3. A component 𝑆 is pruned if its preserved area ratio after erosion is below 𝜃erosion = 0.1:
+
+|𝑆 ⊖ 𝐾| |𝑆|
+
+< 𝜃erosion (5)
+
+- 5. Spatially Constrained Merging: Spatially disjoint components 𝑆𝑎, 𝑆𝑏 that could represent parts of the same physical object (e.g., due to foreground occlusion) are merged if their average colors
+
+𝜇𝑎, 𝜇𝑏 are similar (∥𝜇𝑎 − 𝜇𝑏∥2 ≤ 𝜏2) and if their combined bounding box area 𝐴(𝑆𝑎 ∪ 𝑆𝑏) does not expand excessively compared to the sum of their individual areas:
+
+𝐴(𝑆𝑎 ∪ 𝑆𝑏) ≤ 𝛾 · (𝐴(𝑆𝑎) + 𝐴(𝑆𝑏)) (6) where 𝛾 = 5.0 is the maximum bounding box expansion factor.
+
+### B. Detailed SA-Co/Gold Quantitative Evaluation
+
+To provide a deeper understanding of our model’s instance segmentation capabilities, we report the per-category performance breakdown on the SA-Co/Gold (Carion et al., 2025) benchmark in table 8. This benchmark evaluates models on diverse noun-phrase queries across seven distinct subsets: Metaclip, SA-1B, Crowded, Food&Drink, Sports Equip., Attributes, and Wiki-Common.
+
+| |Average|Metaclip<br><br>|SA-1B|Crowded<br><br>|Food&Drink|Sports Equip.<br><br>|Attributes<br><br>|Wiki-Common|
+|---|---|---|---|---|---|---|---|---|
+| |cgF1 IL_MCC pmF1<br><br>|cgF1 IL_MCC pmF1|cgF1 IL_MCC pmF1|cgF1 IL_MCC pmF1<br><br>|cgF1 IL_MCC pmF1|cgF1 IL_MCC pmF1<br><br>|cgF1 IL_MCC pmF1<br><br>|cgF1 IL_MCC pmF1|
+
+Trained on SA-Co
+
+SAM 3 (Carion et al., 2025) 54.1 0.82 66.1 47.3 0.81 58.6 53.7 0.86 62.6 61.1 0.9 67.7 53.4 0.79 67.3 65.5 0.89 73.8 54.9 0.76 72.0 42.5 0.70 60.9 SAM 3 + Llama 3.2 (ft) (Carion et al., 2025) 61.2 0.86 70.8 54.2 0.85 64.0 56.0 0.89 62.9 61.3 0.88 69.8 67.6 0.86 78.5 67.5 0.89 75.6 71.1 0.91 77.8 51.1 0.76 67.1 Zero-shot
+
+gDino-T (Liu et al., 2024) 3.3 0.15 16.2 2.9 0.21 13.9 3.1 0.20 15.4 0.28 0.08 3.4 0.96 0.10 9.8 1.1 0.10 11.2 13.8 0.29 47.3 0.70 0.06 12.1 OWLv2 (Minderer et al., 2023) 24.6 0.57 42.0 17.7 0.52 34.3 13.3 0.50 26.8 15.8 0.51 30.7 32.0 0.65 49.4 36.0 0.64 56.2 35.6 0.63 56.2 21.7 0.54 40.3 LLMDet-L (Fu et al., 2025a) 6.5 0.21 27.3 4.5 0.23 19.4 5.3 0.23 22.8 2.4 0.18 13.7 5.5 0.19 29.1 4.4 0.17 25.3 22.2 0.39 57.1 1.2 0.05 23.3 APE-D (Shen et al., 2024) 16.4 0.40 36.9 12.6 0.42 30.1 2.2 0.22 10.0 7.2 0.35 20.3 22.7 0.51 45.0 31.8 0.56 56.5 26.7 0.47 57.3 11.6 0.29 39.5 DINO-X (Ren et al., 2024) 21.3 0.38 55.2 17.2 0.35 49.2 19.7 0.48 40.9 12.9 0.34 37.5 30.1 0.49 61.7 28.4 0.41 69.4 31.0 0.42 74.0 9.7 0.18 53.5 Gemini 2.5 (Gemini Team, 2025) 13.0 0.29 46.1 9.9 0.29 33.8 13.1 0.41 32.1 8.2 0.27 30.3 19.6 0.33 59.5 15.1 0.28 53.5 18.8 0.30 63.1 6.5 0.13 50.3 Vision Banana + Gemini 3.1 Flash-Lite 47.5 0.84 56.0 38.0 0.81 46.7 33.5 0.84 39.8 34.4 0.83 41.2 57.2 0.88 64.8 63.0 0.92 68.2 58.8 0.86 68.7 47.4 0.76 62.3
+
+Table 8 | Instance segmentation results on SA-Co/Gold. The evaluation results reported in this table come from the SAM3 paper (Carion et al., 2025), except for our method which we evaluated using the official SA-Co evaluation codebase.
+
+We adopt the official metrics established for SA-Co evaluation:
+
+- • Positive Micro-𝐹1 (𝑝𝑚𝐹1): The micro-averaged 𝐹1 score computed across all positive queries (where the target noun-phrase is present in the image), evaluating the precision and recall of the predicted masks at 10 IoU thresholds in [0.5 : 0.05 : 0.95].
+- • Image-Level Matthews Correlation Coefficient (𝐼𝐿_𝑀𝐶𝐶): A metric evaluating the binary classification accuracy of the model in predicting whether a noun phrase query is present or absent in the image.
+- • Classification-gated 𝐹1 (𝑐𝑔𝐹1): The primary unified metric, combining 𝑝𝑚𝐹1 and 𝐼𝐿_𝑀𝐶𝐶: 𝑐𝑔𝐹1 = 100 · 𝑝𝑚𝐹1 · 𝐼𝐿_𝑀𝐶𝐶 (7)
+
+Under the zero-shot transfer setting, Vision Banana (paired with Gemini 3.1 Flash-Lite for positive/negative query filtering) demonstrates state-of-the-art performance on the benchmark, outperforming specialized models such as OWLv2, DINO-X, and APE-D. Arguably, our strong 𝐼𝐿_𝑀𝐶𝐶 score can be attributed to Gemini’s discriminative capabilities, and prior works would also benefit from being paired with a MLLM. Nonetheless, Vision Banana also achieves state-of-the-art results on the 𝑝𝑚𝐹1 metric, which directly measures open-vocabulary segmentation quality and is the focus of this work.
+
+### C. Qualitative Instance Segmentation Analysis
+
+In fig. 9 and fig. 10, we present a qualitative comparison of instance segmentation masks predicted by the SAM 3 specialist and our zero-shot Vision Banana model, on examples from the SA-Co/Gold (Carion et al., 2025) benchmark. Below each prediction, we report its best 𝐹1 score across the three independent ground-truth annotations, computed as the average of the 𝐹1 scores across the ten IoU thresholds defined by the SA-Co benchmark.
+
+We illustrate several successful segmentation results in fig. 9. For instance, in examples (9.a),
+
+- (9.b), and (9.c), Vision Banana correctly segments 17 instances of ’manicured and pedicured nail’, 3 instances of ’incandescent lightbulb’, and 1 instance of ’hand-drawn design’, respectively. Despite producing visually accurate segmentation masks, our quantitative 𝐹1 scores can remain low, falling
+
+significantly below those of SAM 3. We found out that this can be explained by misalignments with the SAM-annotated ground-truth masks, which heavily penalize Vision Banana performance at high IoU thresholds. Specifically, the masks produced by our model are usually slightly smaller (see example
+
+- (9.a)) and finer (see example (9.c)) than the SAM-produced masks.
+
+Compared to discriminative models like SAM 3, which suffer from ’mode-averaging’ artifacts under spatial ambiguity (see examples (9.b), (9.c) and (10.f)), Vision Banana naturally resolves such ambiguity by committing to a single, coherent mode of the target mask distribution. Furthermore, unlike SAM 3, our model consistently produces non-overlapping masks and does not leave unnatural gaps between adjacent object boundaries (see example (9.f)).
+
+In fig. 10, we report failure modes of our model. These primarily manifest as: (i) incorrectly merging instances together (e.g., merging wall segments in (10.a), all post boxes in example (10.c), furniture in (10.e), or top and down columns in (10.g)), and (ii) breaking cohesive “group instances” into multiple masks (e.g., segmenting the crowd into individual people in example (10.d) despite the query requesting “the crowd”). Additionally, Vision Banana occasionally misses target objects entirely, such as background walls in example (10.a) or the persons on the left in example (10.d).
+
+This qualitative analysis reveals that our model still has clear room for improvement, particularly in highly cluttered or crowded scenes. Nonetheless, a portion of the quantitative performance gap between Vision Banana and SAM 3 is also attributable to the specific annotation biases of the SA-Co dataset, our model being evaluated zero-shot.
+
+### D. Image generation and editing capabilities
+
+Finally, we assess the generative capabilities of Vision Banana post-instruction-tuning to ensure that fine-tuning the model did not trigger catastrophic forgetting of its core generative features. Figures 11 and 12 compare Vision Banana with its base model, Nano Banana Pro, on text-to-image generation and image-editing tasks.
+
+In Fig. 11, we present generated outputs for prompts sampled from GenAI-Bench (Li et al., 2024a). These results demonstrate that Vision Banana continues to produce detailed and contextually accurate images with a similar quality to those of the base generative model.
+
+Furthermore, in Fig. 12, we evaluate the two checkpoints on instruction-based image-editing tasks using prompts from ImgEdit (Ye et al., 2025). Vision Banana shows robust adherence to detailed instructions, confirming that our instruction-tuning successfully teaches output formats for dense vision tasks without degrading the image editing capabilities learned during pre-training.
+
+SAM 3 Predictions
+
+Vision Banana Predictions
+
+[Figure 76]
+
+Original Image GT a GT b GT c
+
+[Figure 77]
+
+[Figure 78]
+
+[Figure 79]
+
+[Figure 80]
+
+[Figure 81]
+
+[Figure 82]
+
+- (9.a) “pale pink and white manicured and pedicured nail“ F1=0.90(GTa),17masks F1=0.72(GTc),17masks
+
+[Figure 83]
+
+[Figure 84]
+
+[Figure 85]
+
+[Figure 86]
+
+[Figure 87]
+
+[Figure 88]
+
+- (9.b) “incandescent lightbulb“ F1=0.77(GTa),4masks F1=0.60(GTa),3masks
+
+[Figure 89]
+
+[Figure 90]
+
+[Figure 91]
+
+[Figure 92]
+
+[Figure 93]
+
+[Figure 94]
+
+- (9.c) “hand-drawn design“ F1=0.40(GTa),2masks F1=0.10(GTb),1mask
+
+[Figure 95]
+
+[Figure 96]
+
+[Figure 97]
+
+[Figure 98]
+
+[Figure 99]
+
+[Figure 100]
+
+- (9.d) “concrete floor“ F1=0.90(GTc),1mask F1=0.50(GTb),1mask
+
+[Figure 101]
+
+[Figure 102]
+
+[Figure 103]
+
+[Figure 104]
+
+[Figure 105]
+
+[Figure 106]
+
+- (9.e) “eggs Benedict“ F1=0.90(GTa),1mask F1=0.00(GTa),1mask
+
+[Figure 107]
+
+[Figure 108]
+
+[Figure 109]
+
+[Figure 110]
+
+[Figure 111]
+
+[Figure 112]
+
+- (9.f) “sardine“ F1=0.95(GTc),8masks F1=0.91(GTa),8masks
+
+- Figure 9 | Success cases. Qualitative evaluation of instance segmentation results on SA-Co/Gold. For each example, we display the noun-phrase query and the original image, followed by visualizations of the three independent ground truth annotations, the prediction from SAM 3, and the prediction from Vision Banana. Under each prediction visualization, we report the best F1 score along with its associated GT and the number of masks in the prediction. Best seen zoomed-in on screen.
+
+SAM 3 Predictions
+
+Vision Banana Predictions
+
+[Figure 113]
+
+Original Image GT a GT b GT c
+
+[Figure 114]
+
+[Figure 115]
+
+[Figure 116]
+
+[Figure 117]
+
+[Figure 118]
+
+[Figure 119]
+
+- (10.a) “a wall“ F1=0.82(GTb),6masks F1=0.02(GTc),2masks
+
+[Figure 120]
+
+[Figure 121]
+
+[Figure 122]
+
+[Figure 123]
+
+[Figure 124]
+
+[Figure 125]
+
+###### (10.b) “clothing window display“ F1=0.95(GTa),2masks F1=0.00(GTa),3masks
+
+[Figure 126]
+
+[Figure 127]
+
+[Figure 128]
+
+[Figure 129]
+
+[Figure 130]
+
+[Figure 131]
+
+(10.c) “post office box“ F1=1.00(GTa),28masks F1=0.00(GTa),1mask
+
+[Figure 132]
+
+[Figure 133]
+
+[Figure 134]
+
+[Figure 135]
+
+[Figure 136]
+
+[Figure 137]
+
+- (10.d) “the crowd“ F1=1.00(GTc),1mask F1=0.00(GTa),24masks
+
+[Figure 138]
+
+[Figure 139]
+
+[Figure 140]
+
+[Figure 141]
+
+[Figure 142]
+
+[Figure 143]
+
+- (10.e) “the furniture“ F1=0.65(GTc),18masks F1=0.00(GTa),2masks
+
+[Figure 144]
+
+[Figure 145]
+
+[Figure 146]
+
+[Figure 147]
+
+[Figure 148]
+
+[Figure 149]
+
+- (10.f) “a pot“ F1=0.40(GTc),1mask F1=0.00(GTa),1mask
+
+[Figure 150]
+
+[Figure 151]
+
+[Figure 152]
+
+[Figure 153]
+
+[Figure 154]
+
+[Figure 155]
+
+- (10.g) “the column“ F1=0.85(GTc),24masks F1=0.08(GTc),12masks
+
+- Figure 10 | Failure cases. Qualitative evaluation of instance segmentation results on SA-Co/Gold. For each example, we display the noun-phrase query and the original image, followed by visualizations of the three independent ground truth annotations, the prediction from SAM 3, and the prediction from Vision Banana. Under each prediction visualization, we report the best F1 score along with its associated GT and the number of masks in the prediction. Best seen zoomed-in on screen.
+
+[Figure 156]
+
+[Figure 157]
+
+A ghostly ship sailing on a fog-shrouded, moonlit sea.
+
+[Figure 158]
+
+[Figure 159]
+
+A lantern casting dim light in a haunted forest.
+
+[Figure 160]
+
+[Figure 161]
+
+A yellow taxi waiting outside a modern glass building.
+
+[Figure 162]
+
+[Figure 163]
+
+A samurai with a silk sash in a cherry blossom garden.
+
+- Figure 11 | Comparing Vision Banana (left) and Nano Banana Pro (right) on text-to-image generation. Prompts are sampled from GenAI-Bench (Li et al., 2024a). Results verify that Vision Banana does not forget its generative features during the instruction-tuning.
+
+Original image Vision Banana Nano Banana Pro
+
+[Figure 164]
+
+[Figure 165]
+
+[Figure 166]
+
+[Figure 167]
+
+Change the grassy hills in the picture to a beach with ocean waves.
+
+[Figure 168]
+
+[Figure 169]
+
+[Figure 170]
+
+Remove the plant from the shelf, and resize the picture frame to be larger.
+
+[Figure 171]
+
+[Figure 172]
+
+[Figure 173]
+
+Change the vehicle’s color to red.
+
+[Figure 174]
+
+[Figure 175]
+
+[Figure 176]
+
+Change the background of the suit from a blank wall to a luxurious office setting that includes a wooden desk and a large window showing a cityscape.
+
+- Figure 12 | Comparing Vision Banana (left) and Nano Banana Pro (right) on image-editing. Prompts are sampled from ImgEdit (Ye et al., 2025).
+
