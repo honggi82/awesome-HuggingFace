@@ -1,0 +1,596 @@
+# arXiv:2605.18101v1[cs.CV]18May2026
+
+## SENSE: Satellite-based ENergy Synthesis for Sustainable Environment
+
+Kailai Sun
+
+Mingyi He
+
+Heye Huang
+
+SMART, Singapore Massachusetts Institute of Technology Cambridge, MA, USA skl24@mit.edu
+
+Massachusetts Institute of Technology Cambridge, MA, USA mingyihe@mit.edu
+
+SMART, Singapore Massachusetts Institute of Technology Cambridge, MA, USA heyeh@mit.edu
+
+Can Rong
+
+SMART, Singapore Massachusetts Institute of Technology Cambridge, MA, USA rongcan@mit.edu
+
+Alok Prakash
+
+SMART, Singapore Massachusetts Institute of Technology Cambridge, MA, USA alokprks@mit.edu
+
+Baoshen Guo
+
+SMART, Singapore Massachusetts Institute of Technology Cambridge, MA, USA baoshen@mit.edu
+
+Shenhao Wang∗
+
+University of Florida Gainesville, Florida, USA shenhaowang@ufl.edu
+
+Jinhua Zhao∗
+
+Massachusetts Institute of Technology Cambridge, Massachusetts, USA jinhua@mit.edu
+
+#### Abstract
+
+Urban Building Energy Modeling (UBEM) plays a critical role in achieving the United Nations’ Sustainable Development Goals 7 and 11. Although existing studies based on satellite imagery and deep learning have achieved remarkable progress, many challenges exist: most existing studies are inherently predictive, failing to reflect the generative nature of urban planning; although generative AI and diffusion models have seen explosive growth in satellite imagery, they lack the corresponding urban functional generation (e.g., energy layer); third, aligned high-quality highresolution building energy data with satellite imagery is limited and scarce. To address them, we propose SENSE (Satellite-based ENergy Synthesis for Sustainable Environment), a unified generative UBEM framework that jointly synthesizes realistic urban satellite imagery and aligned high-quality building energy consumption and height maps. By conditioning on road networks and urban density metrics, our framework, based on a controllable diffusion model, leverages the knowledge learned by large vision models to generate urban building energy consumption and height information (annotations) in the latent space. Experiments across four cities (New York City, Boston, Lyon, and Busan) demonstrate that SENSE achieves high visual fidelity and strong physical consistency, satisfying the ASHRAE standard. Experiments demonstrate that SENSE can generate enough annotated synthetic data using less than 20% labeled energy data, boosting downstream prediction performance by 10% IoU. Compared to state-of-the-art urban building energy prediction methods, SENSE significantly reduced prediction error (reduced 3%-11% NMBE and 1%-9% CVRMSE). This study offers an energy-efficiency urban planning and physical generation solution for urban science, energy science and building science. The dataset and code links: https://huggingface.co/datasets/skl24/MUSE and https://github.com/kailaisun/GenAI4Urban-Energy/.
+
+∗Jinhua Zhao and Shenhao Wang are the corresponding authors.
+
+#### Keywords
+
+Controllable Diffusion Models; Urban Building Energy Modeling; Satellite Imagery; Generative AI; Synthetic Data Augmentation
+
+#### 1 Introduction
+
+Urban residents comprise 55% of the global population, a figure projected to rise to 68% by 2050 [32]. The rapid urbanization of the global population has positioned cities as the primary battleground for climate change mitigation, and nearly 70 % of world energy is consumed by urban activities [14]. Buildings are a major contributor to global energy consumption and greenhouse gas emissions, accounting for 32 per cent of global energy demand and 34 per cent of CO2 emissions [16]. The total building energy consumption mainly includes Heating, Ventilating and Air-Conditioning (HVAC) and lighting systems [30]. The global imperative to decarbonise cities has placed Urban Building Energy Modeling (UBEM) at the forefront of sustainable development research. Effective modeling and planning of urban energy dynamics is essential for policy-making and achieving United Nations’ (UNs’) Sustainable Development Goals (SDGs), specifically SDG 7 (Affordable and Clean Energy) and SDG 11 (Sustainable Cities and Communities). By optimizing the urban and building designs and improving the energy efficiency, this domain can make a significant contribution to creating a highquality and low-emission built environment [44].
+
+Existing studies usually use satellite imagery as an essential tool for urban monitoring, evaluation, and prediction, because satellite imagery provides rich information. Wang et al. [36] utilized MaskRCNN to extract 2.5D building massing and type from satellite imagery for urban building energy modelling in Chicago and San Francisco. Streltsov et al. [29] train CNNs to segment and predict residential building energy consumption at the building level using overhead imagery. Yang et al. [40] use GCN-LSTM model to perform spatiotemporal predictions of urban building rooftop photovoltaic
+
+potential with satellite imagery. Wang et al. [34] proposed a satellite image encoder with spatio-temporal vision transformer and multi-modal fusion to predict urban power. Mayer et al. [22] and Streltsov et al. [29] apply aerial imagery and street view imagery to estimate building energy efficiency using computer vision models (e.g., Resnet and Inception). Fehrer and Krarti [15] use nighttime light images [33] to explain upwards of 90% of the variability in energy consumption in the United States. Recently, with the development of GenAI, Wang et al. [35] use diffusion models to generate high-fidelity satellite imagery for automating urban planning in Chicago, Dallas, and Los Angeles. He et al. [17] apply multi-stage diffusion models to generate building layouts and satellite imagery for urban planning in Chicago and New York City (NYC).
+
+On the other hand, traditional physics-based urban and building energy simulation approaches, often calculate thermal dynamics based on detailed building physics and meteorological inputs [26]. Bian et al. [10] proposed an integrated workflow coupling microclimate modelling (ENVI-met) with energy simulation to capture the feedback loops between urban morphology and local thermal environments. Li and Feng [20] emphasized the necessity of integrating Environmental Impact Assessment (UB-EIA) into energy modeling to evaluate the lifecycle carbon footprint of urban developments. Beyond physics-based studies, data-driven studies [8] become hot topics. Authors Dai et al. [14] introduced CityTFT, a Temporal Fusion Transformer-based model that predicts heating and cooling loads up to 240 times faster than traditional physics engines.
+
+With the rapid development of computer vision and remote sensing [24, 43], GenAI and diffusion methods [18] have become mainstream. CRS-Diff [31] introduced controllable satellite imagery generation to remote sensing, by integrating text prompts, metadata, and segmentation maps. Diffusionsat [19] proposed a generative foundation model from Stable Diffusion (SD) and latent variants (LDMs) [27] for satellite imagery generation using remote sensing metadata. Xing et al. [39] proposed a dual loop data cleaning method to generate high-quality data for remote sensing generation models.
+
+Although existing studies have achieved remarkable progress, existing UBEM studies are constrained by fundamental methodological and data challenges. First, most existing UBEM studies are inherently predictive (e.g., they map input geometry, image and weather to predict energy consumption). They can evaluate and predict metrics from a given urban plan, but it is hard to generate new, energy-efficient urban morphologies. Second, although diffusion models have seen explosive growth in satellite imagery, these models operate primarily in the visual domain (RGB). They lack the corresponding urban functional generation (e.g., energy layer) in the urban field. Third, developing accurate data-driven UBEMs requires large datasets of aligned satellite imagery and high-quality building energy records. However, such data is scarce and sparse due to privacy, cost, sensitivity, etc [8]. Deep learning models trained on limited data usually overfit and fail to generalize across different real-world scenes.
+
+To address these challenges, in this study, we propose a unified multi-modal generative AI framework for both urban satellite imagery and building energy generation. By conditioning on road networks and text-based urban density metrics, our framework can simultaneously generate realistic and diverse urban satellite imagery, aligned and corresponding high-quality building energy
+
+consumption and height maps. Our framework is a controllable diffusion model conditioned on road networks and urban density metrics, integrated with the proposed building energy decoder and height decoder. Because existing large GenAI computer vision models can implicitly learn rich visual representations, we leverage the knowledge learned by these models to generate urban building energy consumption and height information in latent space, instead of training a joint generator from scratch. We validate our framework on a multi-city global dataset covering New York City, Boston, Lyon, and Busan. The main contributions are:
+
+- • We propose the unified multi-modal GenAI framework that generates satellite imagery and corresponding urban building energy consumption and height maps, conditioned on road-network constraints and urban density metrics.
+- • By extending the co-generated urban modalities (e.g., energy and height decoders with 89.25% and 85.75%accuracies), we demonstrate that urban building energy consumption (achieves NMBE of 3.05% and CVRMSE of 14.62%) and height can be reliably generated from the latent space.
+- • We establish aglobalMulti-cityUrban Satellite-Energy Dataset(MUSE) covering NYC, Boston, Lyon, and Busan, where municipalscale energy disclosure records are spatially aligned with high-resolution satellite imagery.
+- • For the energy data scarcity issue, experiments demonstrate that our generative data augmentation strategy with limited real data (less than 20%) improves the performance of energy prediction models by 10% mIoU. Compared to existing urban building energy prediction methods, our strategy significantly reduced energy prediction error (reduced 3%-11% NMBE and 1%-9% CVRMSE).
+
+2 Multi-city Urban Satellite-Energy Dataset
+
+- 2.1 Data Coverage
+
+We established a new global multi-city dataset, as defined by the GHS Urban Centre Database [21], spanning four cities: North America (NYC and Boston), Western Europe (Lyon), and East Asia (Busan). We align municipal-scale building energy disclosure records with satellite imagery and create paired samples at a fixed spatial extent in Tab. 5 in Appendix section A.3. Specifically, in Fig. 1, each sample corresponds to a 2km × 2km tile, represented by (1) an urban satellite image, (2) a text prompt with urban density metrics,
+
+- (3) a geospatial constraint map with water, railway and main roads,
+- (4) a building-level height map and (5) a building-level energy map where the energy values transformed by a log1p function.
+
+- 2.2 Dataset Overview
+
+2.2.1 Satellite Imagery and Urban Density. Urban boundary data are obtained from the Global Human Settlement (GHS) Urban Centre Database 2023 [5]. High-resolution satellite imagery was obtained from Mapbox [6], then cropped and mosaicked into 512×512 pixel tiles aligned with each grid. Building attributes were derived from the Global Human Settlement Layer (GHSL P2023A) [25]. For each 2 km×2 km cell, we computed three density metrics: (1) Building Volume Density (BVD) = total built-up volume / land area; (2) Building Coverage Ratio (BCR) = total built-up area / land area; and (3) Road Density (RD)= total road area / land area.
+
+Aligned high-quality building height
+
+[Figure 1]
+
+H
+
+Stable Diffusion Denoising U-Net
+
+Height
+
+Decoder
+
+[Figure 2]
+
+Feezed Trainable
+
+Gaussian Noise
+
+|[Figure 3]| |
+|---|---|
+| | |
+
+|𝒟|
+|---|
+
+…
+
+Satellite imagery of New
+
+York City. The Building Coverage Ratio in this area is 24.59 %. The Building Volume Density is 3.20 cubic meters per square meter. The Road Density is 11.29 kilometers per square kilometer
+
+|𝑍𝑡|
+|---|
+
+|𝑍0|
+|---|
+
+|𝑍𝑡−1|
+|---|
+
+VAE Decoder
+
+Satellite Image
+
+Text Encoder
+
+TextConstraint
+
+[Figure 4]
+
+[Figure 5]
+
+|𝐸|
+|---|
+
+[Figure 6]
+
+ZeroConv.
+
+ZeroConv.
+
+ZeroConv.
+
+Image encoder
+
+Road
+
++
+
+Energy
+
+Decoder
+
+Aligned high-quality building energy consumption
+
+Trainable Copy
+
+##### Figure 1: Proposed GenAI framework for generating satellite image, building height and building energy consumption together.
+
+- 2.2.2 Geospatial Constraint. We derive geospatial constraints from OpenStreetMap (OSM) [7], a public database of vectorized urban features. We specifically extract water bodies, railway infrastructure, and major road networks (ranging from motorways to tertiary roads). Minor streets are intentionally excluded to avoid overconstraining the generation of local details. Technically, we perform a spatial intersection between these vectorized layers and each target grid cell, subsequently rasterizing the outputs into 512 × 512 pixels binary masks to serve as the spatial control conditions.
+- 2.2.3 Building Height and Footprint. To construct accurate 3D urban morphological ground truth, we primarily leveraged the 3DGloBFP dataset [11], which serves as the global open-source 3D building footprint database. To ensure the highest fidelity for our target cities, we cross-referenced and supplemented this with local high-resolution authoritative data. Specifically, for the NYC (NYC) case study, building footprints and height attributes were extracted from the official NYC Department of City Planning database [23]. For the Lyon case study, we utilized the 3D city model data [12], which provides detailed height information. These datasets were rasterised to match the spatial resolution (512 × 512 pixels).
+- 2.2.4 Building Energy Consumption. High-quality ground truth is important for training the energy decoder. We compiled a multisource dataset of annual building energy consumption in 2023, using municipal disclosure records. For NYC, we leveraged the Energy and Water Data Disclosure (Local Law 84) dataset [4], which mandates buildings energy benchmarking; for Boston, the Building Emissions Reduction and Disclosure Ordinance (BERDO) registry [1]; for Lyon, address-level energy consumption records from the Metropolis of Lyon via the French national open data platform [3]; for Busan, the Busan Metropolitan City administrative database [2]. Because the energy data (kBtu) exhibit a long-tailed
+
+distribution, we apply the log1p function to transform the data into a Gaussian-like distribution.
+
+#### 2.3 Data Pre-processing
+
+We perform the spatial alignment across high-resolution satellite imagery, geospatial constraints, building height and energy disclosure records, ensuring precise synchronization through a unified geodetic coordinate system. Because MUSE is established by spatially aligning heterogeneous sources, we apply tile-level quality control to remove samples with unreliable and missing building energy annotations (Appendix section A.3 in Fig. 6).
+
+We recruited three urban domain specialists to manually review the energy annotations, flagging a tile as unaccepted if its energy label map exhibited large contiguous blocks of missing or null values. We use expert-in-the-loop filtration to ensure that the model is trained on high-quality samples where the spatial distribution of the energy label map aligns with the observed urban morphology. Finally, the high-quality dataset comprises 2,788 tiles in total, including 579 tiles for NYC, 526 for Boston, 687 for Lyon, and 996 for Busan, providing a data foundation for subsequent analysis. To facilitate further scientific research in urban and energy domains and ensure the reproducibility, we have publicly released the full MUSE dataset at the Hugging Face: https://huggingface.co/datasets/skl24/MUSE. We encourage the community to benchmark and extend GenAI applications for urban and energy sustainability across cities.
+
+#### 3 Method
+
+We propose a unified multimodal generative AI framework to generate realistic and controllable urban satellite imagery, high-quality building energy consumption and building height maps together, conditioned on textual and spatial inputs, such as urban density metrics and road networks. In particular, our framework aims to model the joint distribution 𝑃(x, y𝑒, yℎ|c) of satellite imagery x,
+
+building energy consumption maps y𝑒, and building height maps yℎ, conditioned on urban constraints c. In Fig 1, our framework decouples the generation process into two stages: (1) we train a controllable latent diffusion model to obtain the visual latent feature; and (2) we train building decoders (building height and energy) to extract height and energy layers in the latent space.
+
+#### 3.1 Controllable Geospatial Diffusion Model
+
+The foundation of our framework is the generation of realistic and diverse urban imagery that conditions on natural language (e.g., by prompting for variations in urban density) with strict geospatial constraints (e.g., road networks). To achieve this, we leverage Latent Diffusion Models (LDMs) [27] augmented with ControlNet [42].
+
+- 3.1.1 Preliminaries on latent diffusion models. A pre-trained Variational Autoencoder (VAE) consists of an encoder E and a decoder D. Given a real satellite image x ∈ R𝐻×𝑊 ×3, the encoder maps it to a
+
+latent representation z0 = E(x) ∈ Rℎ×𝑤×𝑐. The diffusion process is modeled as a forward Markov chain that progressively adds Gaussian noise to z0 over 𝑇 timesteps, producing a sequence z1, . . ., z𝑇. The reverse process aims to recover z0 from noise z𝑇 ∼ N(0, I) via a denoising U-Net 𝜖𝜃. The optimization objective is to minimize the noise prediction error:
+
+L𝐿𝐷𝑀 = Ez0,𝑡,c𝑡𝑥𝑡,𝜖∼N(0,1) ∥𝜖 − 𝜖𝜃 (z𝑡,𝑡, c𝑡𝑥𝑡)∥22 , (1) where 𝑡 is the time step, and c𝑡𝑥𝑡 represents the text condition (e.g., "Satellite imagery of New York City. The Building Coverage Ratio in this area is 24.59 %. The Building Volume Density is 3.20 cubic meters per square meter. The Road Density is 11.29 kilometers per square kilometer").
+
+- 3.1.2 Geospatial environmental constraints. Text-to-image generation models often hallucinate buildings in physically invalid locations. To ensure morphological consistency, we introduce a geospa-
+
+tial environmental constraint c𝑒𝑛𝑣 using ControlNet. We first create a trainable copy of the encoding blocks of the Stable Diffusion encoder. Then, let F (·;Θ) denote a neural network block with weights Θ. "Zero convolution" layers Z are initialized with zeros and weights Θ𝑐𝑜𝑝𝑦. The output of a controlled block y is:
+
+y = F (x𝑖𝑛 + Z(c𝑒𝑛𝑣);Θ𝑐𝑜𝑝𝑦)). (2) Z(c𝑒𝑛𝑣) does not influence the base model at the start of training, preserving the pre-trained visual knowledge. As training progresses, it learns to inject the geospatial environmental information c𝑒𝑛𝑣 into the feature space, ensuring that the generated urban imagery strictly respects the topological boundaries. The geospatial environmental constraints (e.g., road network, water, etc.) are important for accurate urban energy modeling.
+
+#### 3.2 Energy and Height Decoders
+
+While the diffusion model can generate the visual urban imagery (RGB), existing studies have not considered the co-generation of building height and building energy. A core hypothesis of this study lies in that the high-level semantic features required to generate a realistic urban imagery (e.g., residential buildings, factories) are intrinsically correlated with building height and energy. Instead of training separate generative models for each modality from scratch, we use the weights of the visual generation module and add
+
+lightweight “plug-and-play” decoders to extract specific building height and energy features in the latent space.
+
+- 3.2.1 Multi-Scale Feature Extraction. Let Ψ𝑆𝐷 be the U-Net of the diffusion model. During the denoising process at a fixed timestep
+
+𝑡∗, we extract a set of hierarchical feature maps {f𝑖}𝑖𝐾=1 from the decoder blocks of the U-Net. These features contain rich semantic
+
+information at different resolutions (e.g., 64 × 64).
+
+F𝑙𝑎𝑡𝑒𝑛𝑡 = Concat (Upsample(f1), . . ., Upsample(f𝐾)) . (3) F𝑙𝑎𝑡𝑒𝑛𝑡 serve as the shared representation for all decoders.
+
+- 3.2.2 H-Decoder. To recover the 3D structure of the generated city, we design the Height-Decoder (H-Decoder) to generate building height levels. Instead of continuous regression, we formulate this as a generative segmentation task to handle the discrete urban data. We employ the SegFormer architecture equipped with Mix Transformer (MiT) encoders to capture multi-scale latent features.
+
+We discretize the spatial data into 𝑁ℎ = 5 distinct categories, whereClass0representsnon-building background areas, and Classes 1–4 represent increasing building height intervals. The H-Decoder outputs a probability map Yˆℎ ∈ R𝐻×𝑊 ×5, learning distinct morphological patterns associated with different building height tiers (e.g., low-rise residential and high-rise commercial). The loss function follows the standard segmentation formulation, combining Cross-Entropy loss and Dice loss to ensure pixel-level accuracy and region-level consistency.
+
+- 3.2.3 E-Decoder. The challenging task is generating the building energy consumption. We consider that visual features encoded in
+
+the latent space F𝑙𝑎𝑡𝑒𝑛𝑡 (e.g., roof size, texture, building density) can be leveraged for physical energy generation.
+
+Similar to the H-Decoder, we discretize the continuous energy consumption values into 𝑁𝑒 = 4 classes: Class 0 denotes non-energy areas (background), and Classes 1-3 correspond to Low, Medium, and High energy consumption levels, respectively. To address the inherent class imbalance in energy data (where high-consumption buildings are rare), we implement a class-weighted cross-entropy loss combined with Dice loss:
+
+L𝑒𝑛𝑒𝑟𝑔𝑦 = −
+
+𝑁∑︁𝑒−1
+
+𝑐=0
+
+𝜔𝑐Y𝑒,𝑐 log(Yˆ𝑒,𝑐) + L𝐷𝑖𝑐𝑒(Yˆ𝑒, Y𝑒), (4)
+
+where 𝜔𝑐 represents the weight assigned to class 𝑐 (calculated inversely proportional to class frequency) to penalize errors on minority classes (e.g., buildings with high-energy consumption).
+
+- 4 Experiments
+
+In this section, we conduct extensive experiments to answer the following research questions:
+
+- • RQ1: How effectively does the proposed framework generate physicallyconsistentandspatiallyaligned building height/energy consumption maps with generated urban imagery?
+- • RQ2: To what extent do the generated physical energy consumption data align with established industry standards for UBEM?
+- • RQ3: Can the knowledge in existing GenAI methods be leveraged for accurate urban physical prediction with limited real data?
+- • RQ4: How does our framework improve existing state-of-the-art urban building energy prediction models with limited real data?
+
+#### 4.1 Experimental Setups
+
+Experiments were conducted on a 64-bit Linux 22.04 platform equipped with an Intel(R) Xeon(R) Gold 6438N 128-core processor, 500 GB RAM, and 8 NVIDIA H100 GPUs (80 GB memory each) running CUDA 12.0. The programming environment was Python 3.10 and PyTorch 1.13. For implementation details and hyperparameters, please see the Appendix section A.1.
+
+#### 4.2 Energy Metric
+
+While semantic segmentation metrics (e.g., mIoU) often evaluate pixel-level segmentation accuracy, urban energy planners are often concerned with the reliability of total energy demand estimates at the district scale. Following ASHRAE Guideline 14 [9, 28], we adopt industry-standard calibration metrics: the Normalized Mean Bias Error (NMBE) and the Coefficient of Variation of the Root Mean Square Error (CVRMSE). NMBE measures the systematic bias (global accuracy), while CVRMSE measures the variance of the errors. We reconstruct the physical energy consumption values from the discrete class predictions using the expm1 function.
+
+𝑁 𝑖=1(𝑦ˆ𝑖 −𝑦𝑖)
+
+NMBE =
+
+× 100%, (5)
+
+𝑁 𝑖=1𝑦𝑖
+
+√︃
+
+1 𝑁
+
+𝑁 𝑖=1(𝑦ˆ𝑖 −𝑦𝑖)2
+
+CVRMSE =
+
+𝑦¯ × 100%, (6)
+
+where 𝑦𝑖 is the ground truth total energy of the 𝑖-th tile, 𝑦ˆ𝑖 is the predicted total energy, 𝑦¯ is the mean of the ground truth values, and 𝑁 is the number of samples in the test set.
+
+#### 4.3 Generative Performance Evaluation
+
+In this section, after training our framework, we evaluate the quality of the three generated outputs: satellite imagery, building height maps, and building energy consumption maps.
+
+4.3.1 Quantitative Evaluation. We perform a quantitative image assessment across three fundamental dimensions: fidelity, diversity, and precision. The framework achieves a Peak Signal-to-Noise Ratio (PSNR) of 14.5, indicating that the generative distribution effectively simulates the statistical properties of real urban satellite imagery. A Learned Perceptual Image Patch Similarity (LPIPS) score of 0.430, complemented by diversity metrics such as SSIM (0.234) and FSIM (0.669), confirms the ability to generate diverse urban images. Moreover, precision assessments (an MS-SSIM of 0.240, SSIM of 0.182, and FSIM of 0.660) validate the high structural fidelity and visual alignment of the generated urban imagery. In summary, these metrics demonstrate that our framework with Cotrolnet successfully encodes complex urban morphologies, generating compliant, realistic, and diverse urban imagery.
+
+We further evaluate the performance of the H-Decoder (Height) and E-Decoder (Energy) using standard segmentation metrics [13] in Fig. 2 and Tab. 4 (see Appendix section A.2).
+
+The performance of H-Decoder reveals some clear patterns. We find: (1) The H-Decoder achieves an overall accuracy of 85.75% and an mIoU of 0.6005. (2) Class 0 (Non-building) achieves the highest IoU (0.8443), demonstrating our framework’s effectiveness in generating building footprints. (3) Class 4 (tall buildings) achieves a high IoU of 0.6664 and Recall of 0.8099, suggesting the latent features
+
+[Figure 7]
+
+##### Figure 2: Normalized confusion matrix for H-Decoder and E-Decoder.
+
+for tall buildings (e.g., shadows, large roof areas) are highly distinctive. (4) The confusion matrix in Fig. 2 exhibits a good diagonal dominance. On the other hand, the E-Decoder demonstrates the capability of our framework to extract invisible energy patterns from visual latents, achieving an overall accuracy of 89.25% and an mIoU of 0.7093. A key finding is the model’s sensitivity to highenergy consumption. In Fig. 2 and Tab. 4, Class 3 (high-energy consumption) yields a significantly higher performance compared to low-energy consumption. It is important for urban planning to identify high-energy-consumption buildings in UBEM.
+
+[Figure 8]
+
+##### Figure 3: Qualitative visualization of generated results across diverse cities. (a) The generated building energy consumption maps and generated satellite imagery. (b) The generated satellite imagery, building height and energy consumption maps conditioning on road networks and prompts.
+
+4.3.2 Qualitative Evaluation. Fig. 3 provides the visualization of the generated samples across four distinct metropolitan areas: NYC,
+
+Satellite imagery Ground Truth Ours Baseline
+
+[Figure 9]
+
+LyonBusanNYCBoston
+
+[Figure 10]
+
+[Figure 11]
+
+[Figure 12]
+
+- Figure 4: Performance comparison of building energy consumption prediction across different methods. Red cycles represent prediction errors by baseline Yap et al. [41]. Baseline predicts more (e.g., in Busan, Boston) or less energy consumption (e.g., in NYC, Lyon, Busan) than ground truth.
+
+Boston, Lyon, and Busan. In Fig. 3 (a), our framework successfully captures the unique urban morphology of each city. For NYC, the model reproduces the grid structures and high-density buildings typical of Manhattan. In contrast, for Lyon and Busan, it accurately synthesizes the irregular, organic street patterns and complex winding road networks inherent to historical European and mountainous Asian cities, respectively. A critical observation is the accurate spatial alignment between satellite imagery and generated building energy consumption maps. For instance, in the Lyon and New York samples, large-footprint institutional buildings are correctly highlighted as high-energy-consumption areas (red in Fig. 3 (a)), while surrounding low-density residential areas are mapped to buildings with lower energy consumption (Busan and Boston samples). In Fig.
+
+- 3 (b), we show some generated satellite imagery, building height and energy consumption maps conditioned on road networks and text prompts. We find that our generated satellite imagery is spatially aligned with the road network. In summary, these results demonstrate the effectiveness of our GenAI framework to generate realistic, diverse and spatially aligned urban scenes (imagery, building height and energy consumption).
+
+- 4.3.3 Energy Performance Evaluation. Beyond the performance evaluation through computer vision metrics, Tab. 1 shows the comparison between our framework and standard calibration criteria. We evaluate the NMBE and CVRMSE using the expm1 function. Remarkably, our framework achieves an NMBE of 3.05%. This result falls well within the strict calibration tolerance (±10%) typically required for energy models. Regarding variance, the model’s CVRMSE is 14.62%, which belongs to the standard range of 30%. It confirms SENSE can capture the physical energy patterns of the urban environment and achieve good performance. Note that our GenAI
+
+framework infers and generates energy value only from the latent features of a generated satellite image (without explicit information of weather, building material, type, HVAC, etc.).
+
+Table 1: Physical energy performance evaluation. Metric Ours ASHRAE guideline 14 a NMBE (%) +3.05% ±10% CVRMSE (%) 14.62% 30%
+
+a ASHRAE Guide 14 considers a building model calibrated if hourly MBE values fall within ±10% [9, 28].
+
+#### 4.4 Urban Data Augmentation Performance
+
+In Section 4.3, the framework was trained on all training samples. However, in practice, ground truth energy data is scarce and limited. To answer RQ3 and RQ4, we conducted data augmentation experiments on downstream urban building energy consumption and height tasks.
+
+We employ three different training strategies: (i) Real Only (Baseline): The prediction model is trained strictly on the limited available real data. (ii) Mixed Training (ours): The prediction model is trained on a combination of the limited real data and a large corpus of synthetic data (see Fig. 5 a). (iii) Synthetic Only: The prediction model is trained exclusively on synthetic data generated by our framework and tested on real data.
+
+- 4.4.1 Energy prediction performance comparison. In Tab. 2, we compare different state-of-the-art methods on MUSE. To avoid data leakage, we train our generative framework (including two building decoders) and the downstream prediction models using the available 20% real training data. All models were evaluated on another fixed real-world test set to ensure fair comparison. Tab. 2 reveals some clear findings: (1) The integration of our generative framework consistently enhances the performance of all baseline models, with mean Intersection over Union (mIoU) improving by
+- 5.46% to 10.88% across all baselines. (2) The Yap et al. [41] model achieves the highest performance gain (about an mIoU of 0.11) by data augmentation. (3) Furthermore, the NMBE shows marked improvement (e.g., the NMBE for Streltsov et al. [29] is reduced from -7.40% to -1.32%), while the CVRMSE drops significantly (e.g., the CVRMSE for Yap et al. [41] is reduced from 24.91% to 14.99%).
+
+Detailed analysis in Tab. 3 confirms that these improvements are consistent across all energy levels, with IoU improvements often exceeding 10% in the Low, Medium, or High categories. These performance gains (e.g., the 15.75% increase for Low-energy precision in the Streltsov et al. [29] model) reveal that our framework can learning valid physical energy consumption patterns, serving as an effective data generator for limited real energy consumption data. The visualization results can be found at Fig. 4. In summary, our proposed framework improves existing state-of-the-art urban building energy prediction models with limited real data.
+
+4.4.2 Results on building energy consumption prediction. To further analyse the impact of our generative framework on few-shot urban building prediction tasks. We train the same model using the available real training data to varying fractions (e.g., 10%, 20%, ..., 80%), and test the model on a fixed test set (20% MUSE). Fig. 5 (b) illustrates the mIoU performance for building energy consumption prediction across different data settings. We find: (1) Increased
+
+Building energy mIoU vs Training set ratio
+
+a b
+
+[Figure 13]
+
+Busan New York
+
+[Figure 14]
+
+[Figure 15]
+
+### … 𝒟
+
+|𝑍0|
+|---|
+
+|𝑍𝑡−1|
+|---|
+
+VAE Decoder
+
+Training set ratio
+
+[Figure 16]
+
+[Figure 17]
+
+c
+
+Building height mIoU vs Training set ratio
+
+[Figure 18]
+
+### 𝐸
+
+Energy
+
+Decoder
+
+Synthetic imageenergy pair
+
+Real image-energy pair
+
+Mixed image-energy pair
+
+Training set ratio
+
+- Figure 5: Performance comparison of downstream building energy consumption and height prediction tasks under different training data. The x-axis represents the percentage of real data used. The y-axis denotes the mIoU on the fixed real test set. (b) Building energy consumption prediction results. (c) Building height prediction results.
+
+Table 2: Energy prediction performance comparison. All models were fairly evaluated on a fixed real test set (20%).
+
+Method Acc↑ mIoU↑ NMBE CVRMSE NMBE (log) CVRMSE (log)
+
+Streltsov et al. [29] 0.8277 0.5705 -7.40% 18.84% -1.65% 5.20% Streltsov et al. [29] + Ours 0.8766 0.6746 -1.32% 15.96% -0.72% 3.53% Diff ( |Ours| - |Baseline| ) +0.0489 +0.1041 -6.08% -2.88% -0.93% -1.67% Xie et al. [38] 0.8322 0.5791 7.53% 18.24% -1.13% 6.93% Xie et al. [38] + Ours 0.8734 0.6845 -4.43% 17.23% -0.23% 4.48% Diff ( |Ours| - |Baseline| ) +0.0412 +0.1054 -3.1% -1.01% -0.90% -2.45% Mayer et al. [22] 0.8059 0.5380 -12.66% 29.57% -2.34% 6.46% Mayer et al. [22] + Ours 0.8321 0.5926 1.58% 23.73% -0.86% 4.16% Diff ( |Ours| - |Baseline| ) +0.0262 +0.0546 -11.08% -5.84% -1.48% -2.30% Yap et al. [41] 0.8692 0.6493 -16.49% 24.91% -3.20% 6.72% Yap et al. [41] + Ours 0.9118 0.7581 -5.03% 14.99% -1.19% 4.03% Diff ( |Ours| - |Baseline| ) +0.0426 +0.1088 -11.46% -9.92% -2.01% -2.69%
+
+training data improves building energy consumption prediction performance, regardless of different training strategies. (2) Although purely synthetic training data leads to a slight performance drop, the performance (orange line) remains competitive. It suggests that our E-Decoder has successfully learned the urban building energy distribution that generalizes well to real-world data. (3) Mixed data training yields a big gain (about 10%)under limited data, showing strong benefits of synthetic augmentation. (4) The generated image and building energy consumption map are spatially aligned.
+
+- 4.4.3 Results on building height prediction. Fig. 5 (c) presents the results for building height prediction. We find: (1) Increased training data improves height prediction performance, regardless of different training strategies. (2) Purely synthetic training data leads to a slight
+
+performance drop. (3) Mixed data training yields a big gain (4%7%) under limited data, showing strong benefits of synthetic data augmentation and good generalization. (4) The generated image and height map are spatially aligned.
+
+In summary, in Fig. 5 (b-c), the "Mixed" training strategy (green line) consistently outperforms the "Real Only" baseline (Blue line) in few-shot settings, demonstrating the efficacy of our data augmentation, particularly when real data is scarce (< 40%).
+
+#### 5 Discussion 5.1 Domain Contributions and Impacts
+
+As rapid urbanisation becomes an essential phenomenon across all global cities, optimizing the urban and building designs and improving the energy efficiency can make a significant contribution
+
+##### Table 3: Segmentation performance comparison for buildings with Background, Low-, Medium-, and High-energy consumption.
+
+IoU (per class) Precision (per class) Recall (per class) Background Low Medium High Background Low Medium High Background Low Medium High
+
+Method
+
+Streltsov et al. [29] 0.8369 0.4280 0.4656 0.5514 0.8961 0.5986 0.6885 0.7389 0.9269 0.6003 0.5898 0.6848 Streltsov et al. [29] + Ours 0.8782 0.5808 0.5892 0.6504 0.9307 0.7561 0.7385 0.7935 0.9396 0.7147 0.7445 0.7829 Diff (Ours−Baseline) +0.0413 +0.1528 +0.1236 +0.0990 +0.0346 +0.1575 +0.0500 +0.0546 +0.0127 +0.1144 +0.1547 +0.0981
+
+Xie et al. [38] 0.8489 0.4452 0.4760 0.5464 0.9173 0.6106 0.6474 0.7172 0.9192 0.6217 0.6426 0.6965 Xie et al. [38] + Ours 0.8735 0.5692 0.6056 0.6897 0.9620 0.6604 0.7290 0.7878 0.9047 0.8048 0.7814 0.8471 Diff (Ours−Baseline) +0.0246 +0.1240 +0.1296 +0.1433 +0.0447 +0.0498 +0.0816 +0.0706 -0.0145 +0.1831 +0.1388 +0.1506
+
+Mayer et al. [22] 0.8126 0.3944 0.4211 0.5240 0.8888 0.6291 0.5747 0.6824 0.9045 0.5139 0.6117 0.6930 Mayer et al. [22] + Ours 0.8319 0.4989 0.4614 0.5781 0.9118 0.6432 0.7001 0.6697 0.9046 0.6898 0.5751 0.8087 Diff (Ours−Baseline) +0.0193 +0.1045 +0.0403 +0.0541 +0.0230 +0.0141 +0.1254 -0.0127 +0.0001 +0.1759 -0.0366 +0.1157
+
+Yap et al. [41] 0.8675 0.5324 0.5618 0.6357 0.8945 0.7797 0.7797 0.8541 0.9663 0.6266 0.6678 0.7131 Yap et al. [41] + Ours 0.9081 0.6877 0.6819 0.7548 0.9442 0.8654 0.7911 0.8836 0.9596 0.7700 0.8317 0.8382 Diff (Ours−Baseline) +0.0406 +0.1553 +0.1201 +0.1191 +0.0497 +0.0857 +0.0114 +0.0295 -0.0067 +0.1434 +0.1639 +0.1251
+
+to UNs’ SDGs 7 and 11. This study supports the integration of building energy consumption maps generation and analysis into urban science and planning. Traditionally, energy modeling is treated as a post-design assessment step. In contrast, our GenAI framework allows planners to use energy consumption as an active design parameter. By adjusting input constraints—such as road networks, building coverage ratios, and volume densities, policymakers can simulate various development scenarios and immediately visualize the resulting energy maps. Furthermore, policymakers can efficiently identify specific building typologies for energy efficiency retrofits, optimizing the allocation of decarbonization resources.
+
+boost prediction performance for sustainable development. By releasing our framework as an open-access tool, we advocate for a democratized planning process, empowering policymakers and communities alike to customize energy-effiency urban planning that actively aligns with SDGs 7 and 11.
+
+#### 5.2 Limitations and Ethical Considerations
+
+This study has several limitations that represent opportunities for future research. Our study focuses on annual total energy consumption and does not capture temporal dynamics. Future work can incorporate temporal dimensions into the generative process to enable the synthesis of hourly energy profiles, even though it is hard to obtain this fine-grained energy data. While the model shows good generalisation across four big metropolitan areas, future work should expand the diversity and global coverage of the dataset.
+
+Besides, a major challenge for global decarbonization is the lack of comprehensive building energy records in developing and rapidly urbanizing cities. We only use less than 20% manually labelled energy data to train SENSE, enabling virtually infinite annotated data generation. The results show that mixing synthetic data with a limited amount of real-world data (e.g., 20%) significantly improves the accuracy of existing state-of-the-art urban building energy prediction models. It confirms that our generated building height and energy consumption maps contain valid semantic signals that help the downstream prediction networks generalize better on unseen real data. Prediction models achieve good performance with synthetic-only and mixed training strategies, verifying the accurate spatial alignment between satellite imagery and the generated building energy consumption or height map. Our findings align with the opinion [37]: GenAI can act as infinite data generators. Hence, municipalities with limited data infrastructure can leverage our framework using publicly available satellite imagery, avoiding the high costs and time requirements of on-site data collection.
+
+All training data in MUSE are derived from publicly available sources, including OpenStreetMap, Mapbox, and municipal energy disclosure records (e.g., Local Law 84), with no use of private or non-consensual household data. As confidentiality often limits the sharing of fine-grained urban energy information, our framework mitigates this constraint by generating synthetic datasets with energy consumption annotations that spatially align with real-world urban environments. This enables high-quality data sharing and algorithm benchmarking while avoiding privacy issues, facilitating scientific discoveries and technical advancements in AI for Science.
+
+#### 6 Conclusion
+
+This study proposes a unified multi-modal GenAI framework that synthesizes spatially aligned satellite imagery, building height, and energy consumption maps. It also establishes a global Multi-city Urban Satellite-Energy Dataset (MUSE). Experiments demonstrate that urban building energy consumption and height can be reliably generated from the latent space in existing GenAI models. For the limited physical energy data issue, experiments demonstrate that our framework can improve the performance of existing SOTA physical energy prediction models, significantly reducing energy prediction error with 3%-11% NMBE and 1%-9% CVRMSE. Our dataset and framework provide a foundation for AI-driven scientific discovery across urban, energy, and building sciences.
+
+Our framework offers a powerful tool for government agencies, urban and energy scientists, and developers to envision urban scenarios and conduct comparative analyses, particularly in data-scarce developing regions. This study reveals the capacity of large GenAI models to bridge the gap between planning concepts/constraints (e.g., road networks and density metrics) and concrete urban form, effectively transforming user-defined parameters into detailed, spatially aligned satellite imagery, energy, and height maps. Moreover, for downstream applications such as building energy consumption prediction, our findings confirm the efficacy of synthetic data in augmenting real training datasets to significantly
+
+#### 7 GenAI Disclosure
+
+The authors declare that artificial intelligence (AI) tools, specifically Gemini, were used solely to assist with language polishing and grammar checking of the manuscript text. All intellectual content, data analysis, interpretations, and conclusions were conceived, written, and verified by the authors.
+
+#### References
+
+- [1] 2024. Building Emissions Reduction and Disclosure Ordinance (BERDO). https://data.boston.gov/dataset/building-emissions-reduction-and-disclosureordinance
+- [2] 2024. Busan Metropolitan City Administrative Database. https://www.busan.go. kr/eng/index
+- [3] 2024. Consommations énergétiques 2020 à l’adresse sur le territoire de la Métropole de Lyon. https://www.data.gouv.fr/datasets/consommationsenergetiques-2020-a-ladresse-sur-le-territoire-de-la-metropole-de-lyon
+- [4] 2024. Energy and Water Data Disclosure for Local Law 84. https: //data.cityofnewyork.us/Environment/Energy-and-Water-Data-Disclosurefor-Local-Law-84-/28fi-3us3/about_data
+- [5] 2024. Global Human Settlement (GHS) Urban Centre Database 2023. https: //human-settlement.emergency.copernicus.eu/ghs_ucdb_2024.php
+- [6] 2024. Mapbox Static Tiles API. https://docs.mapbox.com/api/maps/static-tiles/
+- [7] 2024. OpenStreetMap. https://www.openstreetmap.org
+- [8] U. Ali et al. 2023. A review of urban building energy modeling techniques. Applied Energy 330 (2023), 120345.
+- [9] Refrigerating American Society of Heating and Georgia) Air Conditioning Engineers (Atlanta. 2014. Ashrae Guideline 14-2014: Measurement of Energy, Demand and Water Savings. American Society of Heating, Refrigerating, and AirConditioning Engineers. https://books.google.co.jp/books?id=zlJkAQAACAAJ
+- [10] Chenhang Bian, Ka Lung Cheung, Xi Chen, and Chi Chung Lee. 2025. Integrating microclimate modelling with building energy simulation and solar photovoltaic potential estimation: The parametric analysis and optimization of urban design. Applied Energy 380 (2025), 125062.
+- [11] Yangzi Che, Xuecao Li, Xiaoping Liu, Yuhao Wang, Weilin Liao, Xianwei Zheng, Xucai Zhang, Xiaocong Xu, Qian Shi, Jiajun Zhu, et al. 2024. 3D-GloBFP: The first global three-dimensional building footprint dataset. Earth System Science Data Discussions 2024 (2024), 1–28.
+- [12] Yangzi Che, Xuecao Li, Xiaoping Liu, Yuhao Wang, Weilin Liao, Xianwei Zheng, Xucai Zhang, Xiaocong Xu, Qian Shi, Jiajun Zhu, Hua Yuan, and Yongjiu Dai.
+
+2024. Building height of Europe in 3D-GloBFP. doi:10.5281/zenodo.11391077
+
+- [13] Liang-Chieh Chen, George Papandreou, Florian Schroff, and Hartwig Adam. 2017. Rethinking atrous convolution for semantic image segmentation. arXiv preprint arXiv:1706.05587 (2017).
+- [14] Ting-Yu Dai, Dev Niyogi, and Zoltan Nagy. 2025. CityTFT: A temporal fusion transformer-based surrogate model for urban building energy modeling. Applied Energy 389 (2025), 125712.
+- [15] Derek Fehrer and Moncef Krarti. 2018. Spatial distribution of building energy use in the United States through satellite imagery of the earth at night. Building and Environment 142 (2018), 252–264. doi:10.1016/j.buildenv.2018.06.033
+- [16] GlobalABC. 2025. Global Status Report for Buildings and Construction 2024/25. https://globalabc.org/sites/default/files/2025-03/Global-Status-Report2024_2025.pdf. Accessed 2025-12-16.
+- [17] Mingyi He, Yuebing Liang, Shenhao Wang, Yunhan Zheng, Qingyi Wang, Dingyi Zhuang, Li Tian, and Jinhua Zhao. 2026. Human-guided urban form generation using multimodal diffusion models. Building and Environment 287 (2026), 113892. doi:10.1016/j.buildenv.2025.113892
+- [18] Jonathan Ho, Ajay Jain, and Pieter Abbeel. 2020. Denoising diffusion probabilistic models. Advances in neural information processing systems 33 (2020), 6840–6851.
+- [19] Samar Khanna, Patrick Liu, Linqi Zhou, Chenlin Meng, Robin Rombach, Marshall Burke, David B. Lobell, and Stefano Ermon. 2024. DiffusionSat: A Generative Foundation Model for Satellite Imagery. In The Twelfth International Conference on Learning Representations. https://openreview.net/forum?id=I5webNFDgQ
+- [20] Y. Li and H. Feng. 2025. Integrating urban building energy modeling (UBEM) and urban-building environmental impact assessment (UB-EIA) for sustainable urban development: A comprehensive review. Renewable and Sustainable Energy Reviews 213 (2025), 115471.
+- [21] I. Marí Rivero, M. Melchiorri, and et al. Florio, P. 2024. GHS Urban Centre Database 2024, multitemporal and multidimensional attributes, R2024A. https:// data.jrc.ec.europa.eu/dataset/1a338be6-7eaf-480c-9664-3a8ade88cbcd [Dataset].
+- [22] Kevin Mayer, Lukas Haas, Tianyuan Huang, Juan Bernabé-Moreno, Ram Rajagopal, and Martin Fischer. 2023. Estimating building energy efficiency from street view imagery, aerial imagery, and land surface temperature data. Applied Energy 333 (2023), 120542. doi:10.1016/j.apenergy.2022.120542
+
+- [23] NYC Department of City Planning. 2024. Building Footprints. https://data. cityofnewyork.us/City-Government/BUILDING/5zhs-2jue/about_data. Accessed: 2025-01-05.
+- [24] Nirav Patel. 2023. Generative Artificial Intelligence and Remote Sensing: A perspective on the past and the future [Perspectives]. IEEE Geoscience and Remote Sensing Magazine 11, 2 (2023), 86–100. doi:10.1109/MGRS.2023.3275984
+- [25] Martino Pesaresi, Marcello Schiavina, Panagiotis Politis, and et al. Freire. 2024. Advances on the Global Human Settlement Layer by joint assessment of Earth Observation and population survey data. International Journal of Digital Earth 17, 1 (2024), 2390454.
+- [26] Christoph F Reinhart and Carlos Cerezo Davila. 2016. Urban building energy modeling–A review of a nascent field. Building and Environment 97 (2016), 196–202.
+- [27] Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer. 2022. High-resolution image synthesis with latent diffusion models. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 10684–10695. Foundational paper for Latent Diffusion Models.
+- [28] Mohammad Royapoor and Tony Roskilly. 2015. Building model calibration using energy and environmental data. Energy and Buildings 94 (2015), 109–120. doi:10.1016/j.enbuild.2015.02.050
+- [29] Artem Streltsov, Jordan M Malof, Bohao Huang, and Kyle Bradbury. 2020. Estimating residential building energy consumption using overhead imagery. Applied Energy 280 (2020), 116018.
+- [30] Kailai Sun, Qianchuan Zhao, and Jianhong Zou. 2020. A review of building occupancy measurement systems. Energy and Buildings 216 (2020), 109965.
+- [31] D. Tang et al. 2024. CRS-Diff: Controllable Remote Sensing Image Generation With Diffusion Model. IEEE Transactions on Geoscience and Remote Sensing 62
+
+(2024), 1–14. Benchmark for visual controllability in Remote Sensing GenAI.
+
+- [32] United Nations, Department of Economic and Social Affairs, Population Division.
+
+2018. 68% of the World Population Projected to Live in Urban Areas by 2050, says UN. https://www.un.org/development/desa/en/news/population/2018-revisionof-world-urbanization-prospects.html.
+
+- [33] Gengzhe Wang, Qing Hu, Linghao He, Jialong Guo, Jin Huang, and Lijin Zhong.
+
+2024. The estimation of building carbon emission using nighttime light images: A comparative study at various spatial scales. Sustainable Cities and Society 101 (2024), 105066.
+
+- [34] Kai Wang, Shuo Shan, Weijing Dou, Haikun Wei, and Kanjian Zhang. 2025. A cross-modal deep learning method for enhancing photovoltaic power forecasting with satellite imagery and time series data. Energy Conversion and Management 323 (2025), 119218. doi:10.1016/j.enconman.2024.119218
+- [35] Qingyi Wang, Yuebing Liang, Yunhan Zheng, Kaiyuan Xu, Jinhua Zhao, and Shenhao Wang. 2025. Generative AI for urban planning: Synthesizing satellite imagery via diffusion models. Computers, Environment and Urban Systems 122
+
+(2025), 102339. doi:10.1016/j.compenvurbsys.2025.102339
+
+- [36] Tao Wang, Christoph Reinhart, and Yu Qian Ang. 2025. sat2shp: Extracting key building features from a single satellite image for urban building energy modelling and beyond. Sustainable Cities and Society 118 (2025), 106054. doi:10. 1016/j.scs.2024.106054
+- [37] Weijia Wu, Yuzhong Zhao, Hao Chen, Yuchao Gu, Rui Zhao, Yefei He, Hong Zhou, Mike Zheng Shou, and Chunhua Shen. 2023. DatasetDM: Synthesizing Data with Perception Annotations Using Diffusion Models. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR). 2308–2319.
+- [38] Enze Xie, Wenhai Wang, Zhiding Yu, Anima Anandkumar, Jose M Alvarez, and Ping Luo. 2021. SegFormer: Simple and Efficient Design for Semantic Segmentation with Transformers. In Neural Information Processing Systems (NeurIPS).
+- [39] Tian Xing, Hu Yan, Xinwei Wang, Kailai Sun, Han Yu, Pinjie Li, and Qianchuan Zhao. 2025. DLDC: A Dual Loop Data Cleaning Method for Fine-Tuning Remote Sensing Image Generative Models. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing 18 (2025), 28709–28725. doi:10.1109/JSTARS. 2025.3627924
+- [40] Chen Yang, Shengyuan Li, and Zhonghua Gou. 2025. Spatiotemporal prediction of urban building rooftop photovoltaic potential based on GCN-LSTM. Energy and Buildings 334 (2025), 115522. doi:10.1016/j.enbuild.2025.115522
+- [41] Winston Yap, Abraham Noah Wu, Clayton Miller, and Filip Biljecki. 2025. Revealing building operating carbon dynamics for multiple cities. Nature Sustainability
+
+(2025), 1–12.
+
+- [42] Lvmin Zhang, Anyi Rao, and Maneesh Agrawala. 2023. Adding conditional control to text-to-image diffusion models. In Proceedings of the IEEE/CVF International Conference on Computer Vision. 3836–3847.
+- [43] Tianjie Zhao, Sheng Wang, Chaojun Ouyang, Min Chen, Chenying Liu, Jin Zhang, Long Yu, Fei Wang, Yong Xie, Jun Li, et al. 2024. Artificial intelligence for geoscience: Progress, challenges, and perspectives. The Innovation 5, 5 (2024).
+- [44] Jingfeng Zhou, Jiantong Li, Jiayu Xie, et al. 2025. State-of-the-art review of urban building energy modelling on supporting sustainable development goals. Applied Energy 402 (2025), 126924.
+
+#### A Appendix A.1 Implementation Details
+
+- A.1.1 Building Height Data. Given the inherent noise in satellitederived estimates and the high variance in urban data, we formulate the building height co-generation tasks as segmentation problems rather than continuous regression. This requires discretizing the continuous ground truth values into categorical labels. To ensure statistical validity and alleviate class imbalance during training, we employed a quantile-based discretization strategy. In particular, the building heights are categorized into 5 classes. Class 0 represents non-building background pixels. For building pixels, we calculate the 25𝑡ℎ, 50𝑡ℎ, and 75𝑡ℎ percentiles (𝑄1,𝑄2,𝑄3) of the height distribution. The classes are assigned as follows: Class 1 (Low-rise, ℎ < 𝑄1), Class 2 (Mid-rise, 𝑄1 ≤ ℎ < 𝑄2), Class 3 (High-rise, 𝑄2 ≤ ℎ < 𝑄3), and Class 4 (Super-tall, ℎ ≥ 𝑄3).
+- A.1.2 Building Energy Data. Energy consumption is divided into
+
+4 classes. Class 0 denotes non-energy background. The remaining building pixels are divided into 3 intervals based on the tertiles (33𝑟𝑑 and 66𝑡ℎ percentiles) of the logarithmic energy consumption distribution. This results in Class 1 (Low Energy), Class 2 (Medium Energy), and Class 3 (High Energy). Log-transformation was applied prior to discretization to handle the long-tail distribution typical of urban energy consumption data.
+
+- A.1.3 Hyperparameters. OurframeworkincludesControlNet, which is finetuned with high-resolution satellite imagery at 512 × 512 pixels. To maintain maximum numerical stability and model performance, we utilize full FP32 precision throughout the training phase. The training is conducted with a batch size of 16, leveraging the Distributed Data Parallel (DDP) strategy to ensure efficient and synchronized gradient updates across multiple computation nodes. Under this DDP configuration, each GPU maintains a complete replica of the model and processes unique subsets of the training data. Gradients are synchronized during each backward pass through high-performance NCCL-based communication. The pretrained weights for ControlNet and standard Stable Diffusion (version 1.5) were sourced from the official repository provided by 1.
+
+Our framework includes H-Decoder and E-Decoder. In this study, the H-Decoder is implemented using a SegFormer architecture with a MiT-B3 backbone at a resolution of 512 × 512 pixels using the AdamW optimizer with an initial learning rate of 3 × 10−4. We utilize a batch size of 16 and apply a composite loss function comprising Cross-Entropy and Dice loss weighted by class frequency. Furthermore, the training process incorporates data augmentation techniques, including random flips and 90-degree rotations. Similarly, E-Decoder is trained for 30 epochs with a batch size of 16 using the AdamW optimizer (𝑙𝑟 = 3×10−4, weight decay =1×10−4), employing a composite loss function comprising Cross-Entropy and Dice loss weighted by class frequency.
+
+- A.2 Segmentation performance for H-Decoder and E-decoder
+- A.3 Data filtering
+
+1https://github.com/lllyasviel/ControlNet
+
+##### Table 4: Class-wise segmentation performance for H-Decoder and E-decoder. The model effectively captures extreme values (Background and High-consumption/Tall buildings).
+
+Task Class ID Description Precision Recall IoU Dice
+
+- 0 Background 0.9182 0.9129 0.8443 0.9156
+- 1 Low-rise 0.6548 0.6362 0.4764 0.6454
+- 2 Mid-rise 0.6402 0.6721 0.4878 0.6558
+- 3 High-rise 0.6832 0.6983 0.5275 0.6906
+- 4 Tall 0.7899 0.8099 0.6664 0.7998
+
+Building Height
+
+Overall (Avg) - 0.8575 (Accuracy) 0.7373 0.7459 0.6005 0.7414
+
+- 0 Background 0.950 0.942 0.898 0.946
+- 1 Low consumption 0.756 0.765 0.613 0.760
+- 2 Medium consumption 0.764 0.773 0.624 0.769
+- 3 High consumption 0.812 0.837 0.702 0.825
+
+Building Energy
+
+Overall (Avg) - 0.8925 (Accuracy) 0.8205 0.8293 0.7093 0.8250
+
+Table 5: City-level statistics data in MUSE. City Satellite imagery Geospatial constraint Urban density Original energy map Filtered energy map
+
+New York City 1589 1589 1589 1589 579 Boston 2051 2051 2051 2051 526 Lyon 1412 1412 1412 1412 687 Busan 1438 1438 1438 1438 996
+
+Accepted samples Filtered samples Satellite image Satellite image
+
+City
+
+Energy consumption Energy consumption
+
+[Figure 19]
+
+[Figure 20]
+
+[Figure 21]
+
+[Figure 22]
+
+Busan
+
+[Figure 23]
+
+[Figure 24]
+
+[Figure 25]
+
+[Figure 26]
+
+NewYorkChicagoBostonLyon
+
+[Figure 27]
+
+[Figure 28]
+
+[Figure 29]
+
+[Figure 30]
+
+[Figure 31]
+
+[Figure 32]
+
+[Figure 33]
+
+[Figure 34]
+
+[Figure 35]
+
+[Figure 36]
+
+[Figure 37]
+
+[Figure 38]
+
+[Figure 39]
+
+[Figure 40]
+
+Figure 6: Data filtering. We filtered out samples that clearly lacked building energy labels.
+
